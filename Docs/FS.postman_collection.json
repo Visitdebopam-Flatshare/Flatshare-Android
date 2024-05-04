@@ -4,7 +4,7 @@
 		"name": "FS",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "3473407",
-		"_collection_link": "https://universal-space-697991.postman.co/workspace/Flatshare~5245e3ce-84c4-4e69-b20a-b849e62847ae/collection/18541570-593fa646-6636-4f01-a875-66ba378769a4?action=share&creator=3473407&source=collection_link"
+		"_collection_link": "https://universal-space-697991.postman.co/workspace/Flatshare~5245e3ce-84c4-4e69-b20a-b849e62847ae/collection/18541570-593fa646-6636-4f01-a875-66ba378769a4?action=share&source=collection_link&creator=3473407"
 	},
 	"item": [
 		{
@@ -39,7 +39,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n \"id\": \"6303546278\",\r\n \"deviceToken\": \"fNWPps5OT7y5pRRAbTUe7p:APA91bEnyrZ0nO2kcvuXjYTw5R_2Sm8ztE5qWyrYbt4yDXLAFSJdURwK1J6yVThwvGx7PY3zpC_WAohtWAowT6aPoKwK6YNBTjDKYKFbGkStrkaXiOmWiZuBW8kSvXg0N2OEfqNzMQ3F\",\r\n \"code\": \"236854\",\r\n \"byPassOTP\":\"3518660922081972\"\r\n}",
+							"raw": "{\r\n \"id\": \"8169533929\",\r\n \"deviceToken\": \"eXrtRPgNTpmccTxo3yxuM4:APA91bHWefJgEUJRP8zE3n1S8biSgzNMHECc2am973W0xiNG8wd73WjX6wGXwRzcD7YTMjE5XQHzZnMFFrir9XuQci0lmG3fJ6n9N04m9aDviE1bsEd3OpwT7D3roFTkwUDZdxQi0iM6\",\r\n \"code\": \"236854\",\r\n \"byPassOTP\":\"3518660922081972\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -183,7 +183,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"deviceToken\": \"cool\"\r\n}",
+							"raw": "{\r\n  \"college\": {\r\n    \"loc\": {\r\n      \"coordinates\": [\r\n        72.8558439,\r\n        19.2436162\r\n      ],\r\n      \"type\": \"Point\"\r\n    },\r\n    \"name\": \"St. Francis Institute of Technology\"\r\n  },\r\n  \"completed\": 69.0,\r\n  \"createdAt\": \"2022-08-01T16:29:00.195Z\",\r\n  \"dateProperties\": {\r\n    \"activities\": [\r\n      \r\n    ],\r\n    \"dateType\": 0,\r\n    \"gender\": \"\",\r\n    \"isVerifiedOnly\": false,\r\n    \"plans\": [\r\n      \r\n    ]\r\n  },\r\n  \"deviceToken\": \"et2r9tydR7C8FmsQX1koJw:APA91bFfN--YTjCWXAYdOj2WEFwxG4RvaIHM1H_Xtalr-Mvmv9CyiLl5KsxgR5LclxmWYoB368rb1WDDWliONUdh_s29nnB8eAjSZccTIxPAGQWjaQ3OAD5IiUg453l4pG2ClFm-oW1e\",\r\n  \"dob\": \"1995/12/22\",\r\n  \"dp\": \"Images/8169533929/dp_1688803664061.jpg\",\r\n  \"flatProperties\": {\r\n    \"amenities\": [\r\n      \r\n    ],\r\n    \"dealBreakers\": {\r\n      \"eggs\": 3,\r\n      \"party\": 3,\r\n      \"nonveg\": 3,\r\n      \"pets\": 3,\r\n      \"smoking\": 3,\r\n      \"workout\": 3\r\n    },\r\n    \"flatSize\": [\r\n      \"Studio\",\r\n      \"1 BHK\",\r\n      \"2 BHK\",\r\n      \"3 BHK\",\r\n      \"4 BHK\",\r\n      \"5 BHK\"\r\n    ],\r\n    \"furnishing\": [\r\n      \"Full-Furnished\",\r\n      \"Semi-Furnished\",\r\n      \"Unfurnished\"\r\n    ],\r\n    \"gender\": \"Both\",\r\n    \"interests\": [\r\n      \"Cricket\",\r\n      \"Design\",\r\n      \"Engineering\",\r\n      \"Entrepreneurship\",\r\n      \"Technology\"\r\n    ],\r\n    \"isVerifiedOnly\": false,\r\n    \"languages\": [\r\n      \"Hindi\",\r\n      \"English\",\r\n      \"Marathi\"\r\n    ],\r\n    \"moveinDate\": \"2023-07-08T00:00:00.000Z\",\r\n    \"preferredLocation\": [\r\n      {\r\n        \"loc\": {\r\n          \"coordinates\": [\r\n            74.8570259,\r\n            32.7266016\r\n          ],\r\n          \"type\": \"Point\"\r\n        },\r\n        \"name\": \"Jammu\"\r\n      }\r\n    ],\r\n    \"rentRange\": {\r\n      \"end_range\": 118550,\r\n      \"start_range\": 5000\r\n    },\r\n    \"roomType\": \"Private Room\"\r\n  },\r\n  \"fsCoins\": 0,\r\n  \"gender\": \"Male\",\r\n  \"hangout\": {\r\n    \"loc\": {\r\n      \"coordinates\": [\r\n        73.91141000000002,\r\n        18.5693042\r\n      ],\r\n      \"type\": \"Point\"\r\n    },\r\n    \"name\": \"GAME DOME\"\r\n  },\r\n  \"hometown\": {\r\n    \"loc\": {\r\n      \"coordinates\": [\r\n        74.8797127,\r\n        21.3495981\r\n      ],\r\n      \"type\": \"Point\"\r\n    },\r\n    \"name\": \"Shirpur\"\r\n  },\r\n  \"id\": \"8169533929\",\r\n  \"images\": [\r\n    \"Images/8169533929/User/1688804451932.jpg\",\r\n    \"Images/8169533929/User/1688804480596.jpg\"\r\n  ],\r\n  \"invites\": 29,\r\n  \"isDateSearch\": {\r\n    \"value\": true\r\n  },\r\n  \"isFHTSearch\": {\r\n    \"value\": false\r\n  },\r\n  \"isFlatSearch\": {\r\n    \"value\": false\r\n  },\r\n  \"location\": {\r\n    \"loc\": {\r\n      \"coordinates\": [\r\n        74.8792557,\r\n        21.3465983\r\n      ],\r\n      \"type\": \"Point\"\r\n    },\r\n    \"name\": \"\"\r\n  },\r\n  \"name\": {\r\n    \"firstName\": \"Yash\",\r\n    \"lastName\": \"Agrawal\"\r\n  },\r\n  \"score\": 500,\r\n  \"status\": \"\",\r\n  \"website\": \"joinflatshare.com\",\r\n  \"work\": \"flatshare app\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -230,7 +230,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"id\": \"280282507125\"\n}",
+							"raw": "{\n    // \"id\": \"600312711665\"\n    \"id\": \"600312711665\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -814,7 +814,7 @@
 							}
 						},
 						"url": {
-							"raw": "{{aws}}/flats/likes/add/646bc4277e21c992649047de",
+							"raw": "{{aws}}/flats/likes/add/62e821700274db2d1c4a9387",
 							"host": [
 								"{{aws}}"
 							],
@@ -822,7 +822,7 @@
 								"flats",
 								"likes",
 								"add",
-								"646bc4277e21c992649047de"
+								"62e821700274db2d1c4a9387"
 							]
 						}
 					},
@@ -893,26 +893,17 @@
 						},
 						"method": "PUT",
 						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \"coordinates\": [0,0]\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
 						"url": {
-							"raw": "{{aws}}/users/likes/3/add/9595959595",
+							"raw": "{{aws}}/users/likes/4/add/6303546278",
 							"host": [
 								"{{aws}}"
 							],
 							"path": [
 								"users",
 								"likes",
-								"3",
+								"4",
 								"add",
-								"9595959595"
+								"6303546278"
 							]
 						}
 					},
@@ -944,7 +935,7 @@
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "{{aws}}/users/likes/3/delete/9832394089",
+							"raw": "{{aws}}/users/likes/3/delete/6303546278",
 							"host": [
 								"{{aws}}"
 							],
@@ -953,7 +944,7 @@
 								"likes",
 								"3",
 								"delete",
-								"9832394089"
+								"6303546278"
 							]
 						}
 					},
@@ -985,14 +976,14 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{aws}}/recommendations/users/2",
+							"raw": "{{aws}}/recommendations/users/0",
 							"host": [
 								"{{aws}}"
 							],
 							"path": [
 								"recommendations",
 								"users",
-								"2"
+								"0"
 							]
 						}
 					},
@@ -1039,6 +1030,45 @@
 				},
 				{
 					"name": "FHT Feed",
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": [
+								{
+									"key": "value",
+									"value": "{{token}}",
+									"type": "string"
+								},
+								{
+									"key": "in",
+									"value": "header",
+									"type": "string"
+								},
+								{
+									"key": "key",
+									"value": "x-access-token",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{aws}}/recommendations/fht/1",
+							"host": [
+								"{{aws}}"
+							],
+							"path": [
+								"recommendations",
+								"fht",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Date Feed",
 					"request": {
 						"auth": {
 							"type": "apikey",
@@ -1213,6 +1243,36 @@
 								"me",
 								"fht",
 								"0"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Reveal Likes",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{aws}}/users/likes/reveal/2/9898989898",
+							"host": [
+								"{{aws}}"
+							],
+							"path": [
+								"users",
+								"likes",
+								"reveal",
+								"2",
+								"9898989898"
 							]
 						}
 					},
@@ -1968,6 +2028,26 @@
 					"response": []
 				},
 				{
+					"name": "CDN",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://d3h66075rpaq5n.cloudfront.net/",
+							"protocol": "https",
+							"host": [
+								"d3h66075rpaq5n",
+								"cloudfront",
+								"net"
+							],
+							"path": [
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
 					"name": "Purchase",
 					"request": {
 						"method": "POST",
@@ -1994,36 +2074,6 @@
 						}
 					},
 					"response": []
-				},
-				{
-					"name": "Reveal Likes",
-					"request": {
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "{{aws}}/users/likes/reveal/1/",
-							"host": [
-								"{{aws}}"
-							],
-							"path": [
-								"users",
-								"likes",
-								"reveal",
-								"1",
-								""
-							]
-						}
-					},
-					"response": []
 				}
 			]
 		},
@@ -2045,14 +2095,14 @@
 							}
 						},
 						"url": {
-							"raw": "{{aws}}/users/status/3",
+							"raw": "{{aws}}/users/status/1",
 							"host": [
 								"{{aws}}"
 							],
 							"path": [
 								"users",
 								"status",
-								"3"
+								"1"
 							]
 						}
 					},
@@ -2259,7 +2309,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"ids\": [\r\n        \"012\"\r\n    ]\r\n}",
+							"raw": "{\r\n    \"ids\": [\r\n        \"9832394089\",\r\n        \"8169533929\",\r\n        \"6303546278\"\r\n    ]\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
