@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/drawer_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/color_bg">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginHorizontal="@dimen/_10sdp"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:layout_marginBottom="@dimen/_50sdp"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:id="@+id/ll_chat_empty"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="@dimen/menu_height"
+                android:visibility="gone">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_above="@id/btn_invite"
+                    android:layout_gravity="center"
+                    android:gravity="bottom|center_horizontal"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/img_no_chat" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginVertical="@dimen/_20sdp"
+                        android:fontFamily="@font/font_regular"
+                        android:text="Your chats will show up here."
+                        android:textColor="@color/color_text_primary"
+                        android:textSize="@dimen/_14sdp" />
+
+                </LinearLayout>
+
+                <com.joinflatshare.customviews.CustomButton
+                    android:id="@+id/btn_invite"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/button_height"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginHorizontal="@dimen/_30sdp"
+                    android:layout_marginBottom="@dimen/_20sdp"
+                    android:background="@drawable/drawable_button_blue_more_rounded"
+                    android:fontFamily="@font/font_bold"
+                    android:text="ADD FRIENDS"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/_12sdp" />
+            </RelativeLayout>
+
+
+            <LinearLayout
+                android:id="@+id/ll_chat_holder"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/drawable_button_grey_stroke"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="@dimen/_13sdp"
+                        android:layout_height="@dimen/_13sdp"
+                        android:src="@drawable/ic_search_blue" />
+
+                    <EditText
+                        android:id="@+id/edt_chat_Search"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/_10sdp"
+                        android:background="@android:color/transparent"
+                        android:fontFamily="@font/font_regular"
+                        android:hint="Search"
+                        android:imeOptions="actionDone"
+                        android:inputType="textCapWords"
+                        android:textColor="@color/color_text_primary"
+                        android:textCursorDrawable="@null"
+                        android:textSize="@dimen/_12sdp" />
+                </LinearLayout>
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rv_friends"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_10sdp" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <include
+            layout="@layout/include_menu"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/menu_height"
+            android:layout_alignParentBottom="true" />
+    </RelativeLayout>
+
+    <include layout="@layout/dialog_bottomsheet" />
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

@@ -1,0 +1,284 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/color_bg"
+    android:orientation="vertical">
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_flat_furnishing"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        tools:itemCount="3"
+        tools:listitem="@layout/item_roomtype" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_flat_amenities"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_20sdp"
+        android:visibility="gone"
+        app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+        app:spanCount="2"
+        tools:itemCount="6" />
+
+    <LinearLayout
+        android:id="@+id/ll_flat_rent"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/button_height"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:visibility="gone">
+
+        <TextView
+            android:fontFamily="@font/font_bold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/currency"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_18sdp" />
+
+        <EditText
+        android:fontFamily="@font/font_regular"
+            android:id="@+id/edt_flat_rent"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginStart="@dimen/_10sdp"
+            android:background="@drawable/drawable_edittext"
+            android:digits="0123456789"
+            android:imeOptions="actionDone"
+            android:inputType="numberSigned"
+            android:lines="1"
+            android:padding="@dimen/_10sdp"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_18sdp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_flat_date"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/button_height"
+        android:orientation="horizontal"
+        android:visibility="gone"
+        android:weightSum="5.3">
+
+        <TextView
+            android:fontFamily="@font/font_regular"
+            android:id="@+id/txt_date_dd"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/drawable_edittext"
+            android:gravity="center"
+            android:hint="DD"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_16sdp" />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.1" />
+
+        <TextView
+            android:fontFamily="@font/font_regular"
+            android:id="@+id/txt_date_mm"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/drawable_edittext"
+            android:gravity="center"
+            android:hint="MM"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_16sdp" />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.1" />
+
+        <TextView
+            android:fontFamily="@font/font_regular"
+            android:id="@+id/txt_date_yy"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="2"
+            android:background="@drawable/drawable_edittext"
+            android:gravity="center"
+            android:hint="YYYY"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_16sdp" />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.1" />
+
+        <LinearLayout
+            android:id="@+id/img_date_calendar"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/drawable_edittext"
+            android:gravity="center">
+
+            <ImageView
+                android:layout_width="@dimen/_20sdp"
+                android:layout_height="@dimen/_20sdp"
+                android:src="@drawable/ic_move_in" />
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_flat_gender"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/button_height"
+        android:orientation="horizontal"
+        android:visibility="gone"
+        android:weightSum="2">
+
+        <CheckBox
+            android:id="@+id/ckb_flat_male"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:buttonTint="@color/black"
+            android:fontFamily="@font/font_regular"
+            android:text="Male"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_14sdp" />
+
+        <CheckBox
+            android:id="@+id/ckb_flat_female"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:buttonTint="@color/black"
+            android:fontFamily="@font/font_regular"
+            android:text="Female"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_14sdp" />
+    </LinearLayout>
+
+    <TextView
+            android:fontFamily="@font/font_regular"
+        android:id="@+id/txt_flat_location"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/button_height"
+        android:background="@drawable/drawable_edittext"
+        android:drawableStart="@drawable/ic_search"
+        android:drawablePadding="@dimen/_10sdp"
+        android:ellipsize="end"
+        android:gravity="center_vertical"
+        android:hint="Flat Location"
+        android:lines="1"
+        android:maxLines="1"
+        android:padding="@dimen/_10sdp"
+        android:textColor="@color/black"
+        android:textSize="@dimen/_12sdp"
+        android:visibility="gone" />
+
+    <LinearLayout
+        android:id="@+id/ll_preferred_location"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+        <TextView
+            android:fontFamily="@font/font_regular"
+            android:id="@+id/txt_flat_plocation1"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/button_height"
+            android:background="@drawable/drawable_edittext"
+            android:drawableStart="@drawable/ic_search"
+            android:drawablePadding="@dimen/_10sdp"
+            android:gravity="center_vertical"
+            android:lines="1"
+            android:maxLines="1"
+            android:padding="@dimen/_10sdp"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_12sdp" />
+
+        <TextView
+            android:fontFamily="@font/font_regular"
+            android:id="@+id/txt_flat_plocation2"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/button_height"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:background="@drawable/drawable_edittext"
+            android:drawableStart="@drawable/ic_search"
+            android:drawablePadding="@dimen/_10sdp"
+            android:gravity="center_vertical"
+            android:lines="1"
+            android:maxLines="1"
+            android:padding="@dimen/_10sdp"
+            android:textColor="@color/color_text_primary"
+            android:textSize="@dimen/_12sdp" />
+
+        <TextView
+            android:fontFamily="@font/font_regular"
+            android:id="@+id/txt_flat_plocation3"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/button_height"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:background="@drawable/drawable_edittext"
+            android:drawableStart="@drawable/ic_search"
+            android:drawablePadding="@dimen/_10sdp"
+            android:gravity="center_vertical"
+            android:lines="1"
+            android:maxLines="1"
+            android:padding="@dimen/_10sdp"
+            android:textColor="@color/color_text_primary"
+            android:textSize="@dimen/_12sdp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_rent_range"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+        <com.crystal.crystalrangeseekbar.widgets.CrystalRangeSeekbar
+            android:id="@+id/seekbar_rent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:bar_color="@color/bg_dialog"
+            app:bar_highlight_color="@color/color_text_primary"
+            app:data_type="_integer"
+            app:gap="500"
+            app:left_thumb_color="@color/color_hint"
+            app:right_thumb_color="@color/color_hint"
+            app:steps="500" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+            android:fontFamily="@font/font_regular"
+                android:id="@+id/txt_rent_range_min"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:textColor="@color/color_text_primary"
+                android:textSize="@dimen/_12sdp" />
+
+            <TextView
+            android:fontFamily="@font/font_regular"
+                android:id="@+id/txt_rent_range_max"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:textColor="@color/color_text_primary"
+                android:textSize="@dimen/_12sdp" />
+        </RelativeLayout>
+
+    </LinearLayout>
+</LinearLayout>

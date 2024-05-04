@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <CheckBox
+        android:fontFamily="@font/font_regular"
+        android:id="@+id/ckb_roomtype"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingStart="@dimen/_5sdp"
+        android:buttonTint="@color/color_text_primary"
+        android:paddingEnd="@dimen/_5sdp"
+        android:textColor="@color/color_text_primary"
+        android:textSize="@dimen/_12sdp" />
+
+</LinearLayout>

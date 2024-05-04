@@ -1,0 +1,117 @@
+{
+  "project_info": {
+    "project_number": "646565484161",
+    "firebase_url": "https://civil-keyword-299308-default-rtdb.firebaseio.com",
+    "project_id": "civil-keyword-299308",
+    "storage_bucket": "civil-keyword-299308.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:646565484161:android:3ce6713208db04dcb09f80",
+        "android_client_info": {
+          "package_name": "com.joinflatshare.club"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "646565484161-1qpkoitcgg42rrolbauaqjqekpoufd76.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.joinflatshare.club",
+            "certificate_hash": "c8a26f201a1cf1eb19281977a59cfc23ced9f5c3"
+          }
+        },
+        {
+          "client_id": "646565484161-7advhjv3sgag0lrd4d54inpm9rirbtf2.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.joinflatshare.club",
+            "certificate_hash": "0544f7adfc88f232ae54a6303c6faf04d54ddbf5"
+          }
+        },
+        {
+          "client_id": "646565484161-sg7131ma8eqf1naa0ecllmsq23be2ber.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.joinflatshare.club",
+            "certificate_hash": "213bd9fc708e96a98bafccb0038adc34f61cbafa"
+          }
+        },
+        {
+          "client_id": "646565484161-0fmc4phj6nl0q0hmmo38qtgsdq83id7g.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA2mz-PaOIMtzP1pHkZF6YQxd25WMUGSGw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "646565484161-0fmc4phj6nl0q0hmmo38qtgsdq83id7g.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:646565484161:android:a4bd88d5ccc023cfb09f80",
+        "android_client_info": {
+          "package_name": "com.joinflatshare.club.dev"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "646565484161-5gibe9oajuoo6hkh50js24qok8nf8hk2.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.joinflatshare.club.dev",
+            "certificate_hash": "213bd9fc708e96a98bafccb0038adc34f61cbafa"
+          }
+        },
+        {
+          "client_id": "646565484161-b4nor0gcc8f7j1b1eshuleolk0e29u71.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.joinflatshare.club.dev",
+            "certificate_hash": "c8a26f201a1cf1eb19281977a59cfc23ced9f5c3"
+          }
+        },
+        {
+          "client_id": "646565484161-pcc8u4pjbsp7odja9udvlo7pvb8qgknm.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.joinflatshare.club.dev",
+            "certificate_hash": "0544f7adfc88f232ae54a6303c6faf04d54ddbf5"
+          }
+        },
+        {
+          "client_id": "646565484161-0fmc4phj6nl0q0hmmo38qtgsdq83id7g.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA2mz-PaOIMtzP1pHkZF6YQxd25WMUGSGw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "646565484161-0fmc4phj6nl0q0hmmo38qtgsdq83id7g.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

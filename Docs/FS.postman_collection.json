@@ -1,0 +1,2360 @@
+{
+	"info": {
+		"_postman_id": "593fa646-6636-4f01-a875-66ba378769a4",
+		"name": "FS",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "3473407",
+		"_collection_link": "https://universal-space-697991.postman.co/workspace/Flatshare~5245e3ce-84c4-4e69-b20a-b849e62847ae/collection/18541570-593fa646-6636-4f01-a875-66ba378769a4?action=share&creator=3473407&source=collection_link"
+	},
+	"item": [
+		{
+			"name": "Users",
+			"item": [
+				{
+					"name": "Login",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonData = JSON.parse(responseBody);\r",
+									"pm.collectionVariables.set('token', jsonData.token);\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n \"id\": \"6303546278\",\r\n \"deviceToken\": \"fNWPps5OT7y5pRRAbTUe7p:APA91bEnyrZ0nO2kcvuXjYTw5R_2Sm8ztE5qWyrYbt4yDXLAFSJdURwK1J6yVThwvGx7PY3zpC_WAohtWAowT6aPoKwK6YNBTjDKYKFbGkStrkaXiOmWiZuBW8kSvXg0N2OEfqNzMQ3F\",\r\n \"code\": \"236854\",\r\n \"byPassOTP\":\"3518660922081972\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{aws}}/login/auth/",
+							"host": [
+								"{{aws}}"
+							],
+							"path": [
+								"login",
+								"auth",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "send Otp",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{aws}}/admin/sendOtp/9832394089",
+							"host": [
+								"{{aws}}"
+							],
+							"path": [
+								"admin",
+								"sendOtp",
+								"9832394089"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get User",
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": [
+								{
+									"key": "value",
+									"value": "{{token}}",
+									"type": "string"
+								},
+								{
+									"key": "in",
+									"value": "header",
+									"type": "string"
+								},
+								{
+									"key": "key",
+									"value": "x-access-token",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{aws}}/users/me",
+							"host": [
+								"{{aws}}"
+							],
+							"path": [
+								"users",
+								"me"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Users",
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": [
+								{
+									"key": "value",
+									"value": "{{token}}",
+									"type": "string"
+								},
+								{
+									"key": "in",
+									"value": "header",
+									"type": "string"
+								},
+								{
+									"key": "key",
+									"value": "x-access-token",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{aws}}/users/all/",
+							"host": [
+								"{{aws}}"
+							],
+							"path": [
+								"users",
+								"all",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update",
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": [
+								{
+									"key": "value",
+									"value": "{{token}}",
+									"type": "string"
+								},
+								{
+									"key": "in",
+									"value": "header",
+									"type": "string"
+								},
+								{
+									"key": "key",
+									"value": "x-access-token",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"deviceToken\": \"cool\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{aws}}/users/me",
+							"host": [
+								"{{aws}}"
+							],
+							"path": [
+								"users",
+								"me"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "User verification",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{aws}}/users/verification/request/",
+							"host": [
+								"{{aws}}"
+							],
+							"path": [
+								"users",
+								"verification",
+								"request",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Adhaar Verification Send OTP",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id\": \"280282507125\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{aws}}/users/verification/request",
+							"host": [
+								"{{aws}}"
+							],
+							"path": [
+								"users",
+								"verification",
+								"request"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Adhaar Verification Verify OTP",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"code\":\"519613\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{aws}}/users/verification/verify",
+							"host": [
+								"{{aws}}"
+							],
+							"path": [
+								"users",
+								"verification",
+								"verify"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Flats",
+			"item": [
+				{
+					"name": "Create Flat",
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": [
+								{
+									"key": "value",
+									"value": "{{token}}",
+									"type": "string"
+								},
+								{
+									"key": "in",
+									"value": "header",
+									"type": "string"
+								},
+								{
+									"key": "key",
+									"value": "x-access-token",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": \"9832394089\",\r\n    \"name\": \"Marriott\",\r\n    \"flatProperties\": {\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{aws}}/flats/create/",
+							"host": [
+								"{{aws}}"
+							],
+							"path": [
+								"flats",
+								"create",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Flat",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": [
+								{
+									"key": "key",
+									"value": "x-access-token",
+									"type": "string"
+								},
+								{
+									"key": "value",
+									"value": "{{token}}",
+									"type": "string"
+								},
+								{
+									"key": "in",
+									"value": "header",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{aws}}/flats/646bc4277e21c992649047de",
+							"host": [
+								"{{aws}}"
+							],
+							"path": [
+								"flats",
+								"646bc4277e21c992649047de"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Flats",
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": [
+								{
+									"key": "value",
+									"value": "{{token}}",
+									"type": "string"
+								},
+								{
+									"key": "in",
+									"value": "header",
+									"type": "string"
+								},
+								{
+									"key": "key",
+									"value": "x-access-token",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{aws}}/flats/all/0",
+							"host": [
+								"{{aws}}"
+							],
+							"path": [
+								"flats",
+								"all",
+								"0"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Flat",
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": [
+								{
+									"key": "value",
+									"value": "{{token}}",
+									"type": "string"
+								},
+								{
+									"key": "in",
+									"value": "header",
+									"type": "string"
+								},
+								{
+									"key": "key",
+									"value": "x-access-token",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"completed\": 69.0,\r\n    \"deeplink\": \"https://joinflatshare.com/\",\r\n    \"flatMates\": [],\r\n    \"flatProperties\": {\r\n        \"amenities\": [\r\n            \"Cook\"\r\n        ],\r\n        \"beds\": {\r\n            \"total\": 4,\r\n            \"vacant\": 1\r\n        },\r\n        \"dealBreakers\": {\r\n            \"eggs\": 3,\r\n            \"party\": 1,\r\n            \"nonveg\": 3,\r\n            \"pets\": 1,\r\n            \"smoking\": 1,\r\n            \"workout\": 3\r\n        },\r\n        \"depositPerPerson\": 20000,\r\n        \"flatSize\": \"1 BHK\",\r\n        \"furnishing\": [\r\n            \"Full-Furnished\"\r\n        ],\r\n        \"gender\": \"Male\",\r\n        \"interests\": [],\r\n        \"isVerifiedOnly\": false,\r\n        \"languages\": [],\r\n        \"location\": {\r\n            \"loc\": {\r\n                \"coordinates\": [\r\n                    22.7195687,\r\n                    75.8577258\r\n                ],\r\n                \"type\": \"Point\"\r\n            },\r\n            \"name\": \"Indore\"\r\n        },\r\n        \"moveinDate\": 1674287080326,\r\n        \"rentPerPerson\": 5000,\r\n        \"roomType\": \"Shared Room\"\r\n    },\r\n    \"id\": \"8169533929\",\r\n    \"images\": [\r\n        \"Images/63cb97e9b7d96f544ad2a8b8/Flat/1680157778388.jpg\",\r\n        \"Images/63cb97e9b7d96f544ad2a8b8/Flat/1680157832625.jpg\"\r\n    ],\r\n    \"isMateSearch\": {\r\n        \"timestamp\": 1681140879048,\r\n        \"value\": true\r\n    },\r\n    \"isVerified\": false,\r\n    \"_id\": \"63cb97e9b7d96f544ad2a8b8\",\r\n    \"name\": \"Haventest\",\r\n    \"norms\": \"hhHHhN\",\r\n    \"verifier\": {\r\n        \"coordinates\": [],\r\n        \"distance\": 0.0,\r\n        \"id\": \"\",\r\n        \"timestamp\": 0\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{aws}}/flats/8169533929",
+							"host": [
+								"{{aws}}"
+							],
+							"path": [
+								"flats",
+								"8169533929"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Remove from Flat",
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": [
+								{
+									"key": "value",
+									"value": "{{token}}",
+									"type": "string"
+								},
+								{
+									"key": "in",
+									"value": "header",
+									"type": "string"
+								},
+								{
+									"key": "key",
+									"value": "x-access-token",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{aws}}/flats/remove/0123456789",
+							"host": [
+								"{{aws}}"
+							],
+							"path": [
+								"flats",
+								"remove",
+								"0123456789"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Flat verification",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{aws}}/flats/verification/request/flatid/",
+							"host": [
+								"{{aws}}"
+							],
+							"path": [
+								"flats",
+								"verification",
+								"request",
+								"flatid",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Admin",
+			"item": [
+				{
+					"name": "Get Config",
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": [
+								{
+									"key": "value",
+									"value": "{{token}}",
+									"type": "string"
+								},
+								{
+									"key": "in",
+									"value": "header",
+									"type": "string"
+								},
+								{
+									"key": "key",
+									"value": "x-access-token",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{aws}}/admin/config/",
+							"host": [
+								"{{aws}}"
+							],
+							"path": [
+								"admin",
+								"config",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Flat verification accept[admin]",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{aws}}/flats/verification/true/flatid/",
+							"host": [
+								"{{aws}}"
+							],
+							"path": [
+								"flats",
+								"verification",
+								"true",
+								"flatid",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "User verification accept[admin] Copy",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{aws}}/users/verification/true/userid/",
+							"host": [
+								"{{aws}}"
+							],
+							"path": [
+								"users",
+								"verification",
+								"true",
+								"userid",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Admin Filters",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"filters\": { \"picsExists\": false }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{aws}}/admin/filters/flat/c/0",
+							"host": [
+								"{{aws}}"
+							],
+							"path": [
+								"admin",
+								"filters",
+								"flat",
+								"c",
+								"0"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Reported list",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{aws}}/admin/reported/user/0",
+							"host": [
+								"{{aws}}"
+							],
+							"path": [
+								"admin",
+								"reported",
+								"user",
+								"0"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Restrict",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"moderator\": \"6303546278\",\r\n    \"time\": 1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{aws}}/admin/restrict/user/9832394089",
+							"host": [
+								"{{aws}}"
+							],
+							"path": [
+								"admin",
+								"restrict",
+								"user",
+								"9832394089"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "inBoundary",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"moderator\": \"6303546278\",\r\n    \"time\": 1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{aws}}/admin/inBoundary/28.512509/77.0840869",
+							"host": [
+								"{{aws}}"
+							],
+							"path": [
+								"admin",
+								"inBoundary",
+								"28.512509",
+								"77.0840869"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getBoundary",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"moderator\": \"6303546278\",\r\n    \"time\": 1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{aws}}/admin/getBoundary/Pune",
+							"host": [
+								"{{aws}}"
+							],
+							"path": [
+								"admin",
+								"getBoundary",
+								"Pune"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getCities",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{aws}}/admin/getCities",
+							"host": [
+								"{{aws}}"
+							],
+							"path": [
+								"admin",
+								"getCities"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Recommendation",
+			"item": [
+				{
+					"name": "Flat Like",
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": [
+								{
+									"key": "value",
+									"value": "{{token}}",
+									"type": "string"
+								},
+								{
+									"key": "in",
+									"value": "header",
+									"type": "string"
+								},
+								{
+									"key": "key",
+									"value": "x-access-token",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"coordinates\": [0,0]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{aws}}/flats/likes/add/646bc4277e21c992649047de",
+							"host": [
+								"{{aws}}"
+							],
+							"path": [
+								"flats",
+								"likes",
+								"add",
+								"646bc4277e21c992649047de"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Flat Dislike",
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": [
+								{
+									"key": "value",
+									"value": "{{token}}",
+									"type": "string"
+								},
+								{
+									"key": "in",
+									"value": "header",
+									"type": "string"
+								},
+								{
+									"key": "key",
+									"value": "x-access-token",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{aws}}/flats/likes/delete/646bc4277e21c992649047de",
+							"host": [
+								"{{aws}}"
+							],
+							"path": [
+								"flats",
+								"likes",
+								"delete",
+								"646bc4277e21c992649047de"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "User Like",
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": [
+								{
+									"key": "value",
+									"value": "{{token}}",
+									"type": "string"
+								},
+								{
+									"key": "in",
+									"value": "header",
+									"type": "string"
+								},
+								{
+									"key": "key",
+									"value": "x-access-token",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"coordinates\": [0,0]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{aws}}/users/likes/3/add/9595959595",
+							"host": [
+								"{{aws}}"
+							],
+							"path": [
+								"users",
+								"likes",
+								"3",
+								"add",
+								"9595959595"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "User Dislike",
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": [
+								{
+									"key": "value",
+									"value": "{{token}}",
+									"type": "string"
+								},
+								{
+									"key": "in",
+									"value": "header",
+									"type": "string"
+								},
+								{
+									"key": "key",
+									"value": "x-access-token",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{aws}}/users/likes/3/delete/9832394089",
+							"host": [
+								"{{aws}}"
+							],
+							"path": [
+								"users",
+								"likes",
+								"3",
+								"delete",
+								"9832394089"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Users Feed",
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": [
+								{
+									"key": "value",
+									"value": "{{token}}",
+									"type": "string"
+								},
+								{
+									"key": "in",
+									"value": "header",
+									"type": "string"
+								},
+								{
+									"key": "key",
+									"value": "x-access-token",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{aws}}/recommendations/users/2",
+							"host": [
+								"{{aws}}"
+							],
+							"path": [
+								"recommendations",
+								"users",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Flats Feed",
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": [
+								{
+									"key": "value",
+									"value": "{{token}}",
+									"type": "string"
+								},
+								{
+									"key": "in",
+									"value": "header",
+									"type": "string"
+								},
+								{
+									"key": "key",
+									"value": "x-access-token",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{aws}}/recommendations/flats/0",
+							"host": [
+								"{{aws}}"
+							],
+							"path": [
+								"recommendations",
+								"flats",
+								"0"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "FHT Feed",
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": [
+								{
+									"key": "value",
+									"value": "{{token}}",
+									"type": "string"
+								},
+								{
+									"key": "in",
+									"value": "header",
+									"type": "string"
+								},
+								{
+									"key": "key",
+									"value": "x-access-token",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{aws}}/recommendations/fht/0",
+							"host": [
+								"{{aws}}"
+							],
+							"path": [
+								"recommendations",
+								"fht",
+								"0"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "User Report",
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": [
+								{
+									"key": "value",
+									"value": "{{token}}",
+									"type": "string"
+								},
+								{
+									"key": "in",
+									"value": "header",
+									"type": "string"
+								},
+								{
+									"key": "key",
+									"value": "x-access-token",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{aws}}/users/report/0/6166669196",
+							"host": [
+								"{{aws}}"
+							],
+							"path": [
+								"users",
+								"report",
+								"0",
+								"6166669196"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Flat Report",
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": [
+								{
+									"key": "value",
+									"value": "{{token}}",
+									"type": "string"
+								},
+								{
+									"key": "in",
+									"value": "header",
+									"type": "string"
+								},
+								{
+									"key": "key",
+									"value": "x-access-token",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{aws}}/flats/report/0/625e5a849f287e37302417e8",
+							"host": [
+								"{{aws}}"
+							],
+							"path": [
+								"flats",
+								"report",
+								"0",
+								"625e5a849f287e37302417e8"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Likes",
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": [
+								{
+									"key": "value",
+									"value": "{{token}}",
+									"type": "string"
+								},
+								{
+									"key": "in",
+									"value": "header",
+									"type": "string"
+								},
+								{
+									"key": "key",
+									"value": "x-access-token",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{aws}}/recommendations/likes/users/0",
+							"host": [
+								"{{aws}}"
+							],
+							"path": [
+								"recommendations",
+								"likes",
+								"users",
+								"0"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Received Likes",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{aws}}/users/likes/received/me/fht/0",
+							"host": [
+								"{{aws}}"
+							],
+							"path": [
+								"users",
+								"likes",
+								"received",
+								"me",
+								"fht",
+								"0"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Notification & Requests",
+			"item": [
+				{
+					"name": "Friend Request",
+					"item": [
+						{
+							"name": "Friend Requests",
+							"request": {
+								"auth": {
+									"type": "apikey",
+									"apikey": [
+										{
+											"key": "value",
+											"value": "{{token}}",
+											"type": "string"
+										},
+										{
+											"key": "in",
+											"value": "header",
+											"type": "string"
+										},
+										{
+											"key": "key",
+											"value": "x-access-token",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{aws}}/users/friends/requests/",
+									"host": [
+										"{{aws}}"
+									],
+									"path": [
+										"users",
+										"friends",
+										"requests",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Accept Friend",
+							"request": {
+								"auth": {
+									"type": "apikey",
+									"apikey": [
+										{
+											"key": "value",
+											"value": "{{token}}",
+											"type": "string"
+										},
+										{
+											"key": "in",
+											"value": "header",
+											"type": "string"
+										},
+										{
+											"key": "key",
+											"value": "x-access-token",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [],
+								"url": {
+									"raw": "{{aws}}/users/friends/accept/9832394089",
+									"host": [
+										"{{aws}}"
+									],
+									"path": [
+										"users",
+										"friends",
+										"accept",
+										"9832394089"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Friends list",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{aws}}/users/friends/list/",
+									"host": [
+										"{{aws}}"
+									],
+									"path": [
+										"users",
+										"friends",
+										"list",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Reject Friend",
+							"request": {
+								"auth": {
+									"type": "apikey",
+									"apikey": [
+										{
+											"key": "value",
+											"value": "{{token2}}",
+											"type": "string"
+										},
+										{
+											"key": "in",
+											"value": "header",
+											"type": "string"
+										},
+										{
+											"key": "key",
+											"value": "x-access-token",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{aws}}/users/friends/reject/6303546278",
+									"host": [
+										"{{aws}}"
+									],
+									"path": [
+										"users",
+										"friends",
+										"reject",
+										"6303546278"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Remove Friend",
+							"request": {
+								"auth": {
+									"type": "apikey",
+									"apikey": [
+										{
+											"key": "value",
+											"value": "{{token}}",
+											"type": "string"
+										},
+										{
+											"key": "in",
+											"value": "header",
+											"type": "string"
+										},
+										{
+											"key": "key",
+											"value": "x-access-token",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{aws}}/users/friends/remove/9832394089",
+									"host": [
+										"{{aws}}"
+									],
+									"path": [
+										"users",
+										"friends",
+										"remove",
+										"9832394089"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Add Friend",
+							"request": {
+								"auth": {
+									"type": "apikey",
+									"apikey": [
+										{
+											"key": "value",
+											"value": "{{token}}",
+											"type": "string"
+										},
+										{
+											"key": "in",
+											"value": "header",
+											"type": "string"
+										},
+										{
+											"key": "key",
+											"value": "x-access-token",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "{{aws}}/users/friends/add/6303546278",
+									"host": [
+										"{{aws}}"
+									],
+									"path": [
+										"users",
+										"friends",
+										"add",
+										"6303546278"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Connection Request",
+					"item": [
+						{
+							"name": "Accept Connection",
+							"request": {
+								"auth": {
+									"type": "apikey",
+									"apikey": [
+										{
+											"key": "value",
+											"value": "{{token}}",
+											"type": "string"
+										},
+										{
+											"key": "in",
+											"value": "header",
+											"type": "string"
+										},
+										{
+											"key": "key",
+											"value": "x-access-token",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [],
+								"url": {
+									"raw": "{{aws}}/users/connections/2/request/accept/9832394089",
+									"host": [
+										"{{aws}}"
+									],
+									"path": [
+										"users",
+										"connections",
+										"2",
+										"request",
+										"accept",
+										"9832394089"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Connection Requests",
+							"request": {
+								"auth": {
+									"type": "apikey",
+									"apikey": [
+										{
+											"key": "value",
+											"value": "{{token}}",
+											"type": "string"
+										},
+										{
+											"key": "in",
+											"value": "header",
+											"type": "string"
+										},
+										{
+											"key": "key",
+											"value": "x-access-token",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{aws}}/users/connections/3/requests/",
+									"host": [
+										"{{aws}}"
+									],
+									"path": [
+										"users",
+										"connections",
+										"3",
+										"requests",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "RequestConnection",
+							"request": {
+								"auth": {
+									"type": "apikey",
+									"apikey": [
+										{
+											"key": "value",
+											"value": "{{token}}",
+											"type": "string"
+										},
+										{
+											"key": "in",
+											"value": "header",
+											"type": "string"
+										},
+										{
+											"key": "key",
+											"value": "x-access-token",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "{{aws}}/users/connections/3/request/6303546278",
+									"host": [
+										"{{aws}}"
+									],
+									"path": [
+										"users",
+										"connections",
+										"3",
+										"request",
+										"6303546278"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Remove Connection",
+							"request": {
+								"auth": {
+									"type": "apikey",
+									"apikey": [
+										{
+											"key": "value",
+											"value": "{{token}}",
+											"type": "string"
+										},
+										{
+											"key": "in",
+											"value": "header",
+											"type": "string"
+										},
+										{
+											"key": "key",
+											"value": "x-access-token",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{aws}}/users/connections/2/request/remove/9898989898",
+									"host": [
+										"{{aws}}"
+									],
+									"path": [
+										"users",
+										"connections",
+										"2",
+										"request",
+										"remove",
+										"9898989898"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Reject Connection",
+							"request": {
+								"auth": {
+									"type": "apikey",
+									"apikey": [
+										{
+											"key": "value",
+											"value": "{{token}}",
+											"type": "string"
+										},
+										{
+											"key": "in",
+											"value": "header",
+											"type": "string"
+										},
+										{
+											"key": "key",
+											"value": "x-access-token",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{aws}}/users/connections/2/request/reject/0123456789",
+									"host": [
+										"{{aws}}"
+									],
+									"path": [
+										"users",
+										"connections",
+										"2",
+										"request",
+										"reject",
+										"0123456789"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Flat Invitation Request",
+					"item": [
+						{
+							"name": "Accept",
+							"request": {
+								"auth": {
+									"type": "apikey",
+									"apikey": [
+										{
+											"key": "value",
+											"value": "{{token}}",
+											"type": "string"
+										},
+										{
+											"key": "in",
+											"value": "header",
+											"type": "string"
+										},
+										{
+											"key": "key",
+											"value": "x-access-token",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [],
+								"url": {
+									"raw": "{{aws}}/flats/accept/9832394089",
+									"host": [
+										"{{aws}}"
+									],
+									"path": [
+										"flats",
+										"accept",
+										"9832394089"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Reject",
+							"request": {
+								"auth": {
+									"type": "apikey",
+									"apikey": [
+										{
+											"key": "value",
+											"value": "{{token2}}",
+											"type": "string"
+										},
+										{
+											"key": "in",
+											"value": "header",
+											"type": "string"
+										},
+										{
+											"key": "key",
+											"value": "x-access-token",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{aws}}/flats/reject/8169533929",
+									"host": [
+										"{{aws}}"
+									],
+									"path": [
+										"flats",
+										"reject",
+										"8169533929"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Flat Requests",
+							"request": {
+								"auth": {
+									"type": "apikey",
+									"apikey": [
+										{
+											"key": "value",
+											"value": "{{token}}",
+											"type": "string"
+										},
+										{
+											"key": "in",
+											"value": "header",
+											"type": "string"
+										},
+										{
+											"key": "key",
+											"value": "x-access-token",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{aws}}/flats/flatmate/requests",
+									"host": [
+										"{{aws}}"
+									],
+									"path": [
+										"flats",
+										"flatmate",
+										"requests"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Notifications",
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": [
+								{
+									"key": "value",
+									"value": "{{token}}",
+									"type": "string"
+								},
+								{
+									"key": "in",
+									"value": "header",
+									"type": "string"
+								},
+								{
+									"key": "key",
+									"value": "x-access-token",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{aws}}/users/me/notifications/0",
+							"host": [
+								"{{aws}}"
+							],
+							"path": [
+								"users",
+								"me",
+								"notifications",
+								"0"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "All requests",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{aws}}/users/requests/all",
+							"host": [
+								"{{aws}}"
+							],
+							"path": [
+								"users",
+								"requests",
+								"all"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get all connections",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{aws}}/users/connections/list",
+							"host": [
+								"{{aws}}"
+							],
+							"path": [
+								"users",
+								"connections",
+								"list"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "New apis",
+			"item": [
+				{
+					"name": "Flatmates status",
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": [
+								{
+									"key": "value",
+									"value": "{{token}}",
+									"type": "string"
+								},
+								{
+									"key": "in",
+									"value": "header",
+									"type": "string"
+								},
+								{
+									"key": "key",
+									"value": "x-access-token",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"ids\": [\"6303546278\"]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{aws}}/flats/flatmates/added/",
+							"host": [
+								"{{aws}}"
+							],
+							"path": [
+								"flats",
+								"flatmates",
+								"added",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Friends status",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{aws}}/users/friends/added/",
+							"host": [
+								"{{aws}}"
+							],
+							"path": [
+								"users",
+								"friends",
+								"added",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Lang/Interests search",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{aws}}/admin/search/0/sharding",
+							"host": [
+								"{{aws}}"
+							],
+							"path": [
+								"admin",
+								"search",
+								"0",
+								"sharding"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Purchase",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"payment\": {\r\n    \"isPurchasedThroughCoin\": false,\r\n    \"isPurchasedThroughGoogle\": true,\r\n    \"purchaseAmount\": 99,\r\n    \"cointAmount\": 0,\r\n    \"purchaseType\": \"like\",\r\n    \"purchaseOrder\": {\r\n      \"orderId\": \"GPA.3318-6807-1765-05601\",\r\n      \"packageName\": \"com.joinflatshare.club.dev\",\r\n      \"productId\": \"product_chats_2\",\r\n      \"purchaseTime\": 1686332225959,\r\n      \"purchaseState\": 0,\r\n      \"purchaseToken\": \"ekhnicojdobpjheiahimdgok.AO-J1OwXfS_5k3V-y6ktUqpjr1sfUUlVFhHSsgXynAzO-x5HWtpmuo28ePkJTvc0tMRDpqdF5bMpt0e6gAdY4mHb57jMtKcUv26WUer2G6X4vFgnikgEDrE\",\r\n      \"quantity\": 1,\r\n      \"acknowledged\": false\r\n    }\r\n  }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{aws}}/users/purchase/product",
+							"host": [
+								"{{aws}}"
+							],
+							"path": [
+								"users",
+								"purchase",
+								"product"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Reveal Likes",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{aws}}/users/likes/reveal/1/",
+							"host": [
+								"{{aws}}"
+							],
+							"path": [
+								"users",
+								"likes",
+								"reveal",
+								"1",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Invite",
+			"item": [
+				{
+					"name": "Invite Status Check",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"ids\":[\"9639639639\"],\"requester\":\"9595959595\",\"type\":\"2\"}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{aws}}/users/status/3",
+							"host": [
+								"{{aws}}"
+							],
+							"path": [
+								"users",
+								"status",
+								"3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "App Invite",
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": [
+								{
+									"key": "value",
+									"value": "{{token}}",
+									"type": "string"
+								},
+								{
+									"key": "in",
+									"value": "header",
+									"type": "string"
+								},
+								{
+									"key": "key",
+									"value": "x-access-token",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{aws}}/users/app/invite/6303546278",
+							"host": [
+								"{{aws}}"
+							],
+							"path": [
+								"users",
+								"app",
+								"invite",
+								"6303546278"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Friend Invite",
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": [
+								{
+									"key": "value",
+									"value": "{{token}}",
+									"type": "string"
+								},
+								{
+									"key": "in",
+									"value": "header",
+									"type": "string"
+								},
+								{
+									"key": "key",
+									"value": "x-access-token",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{aws}}/users/friends/add/6303546278",
+							"host": [
+								"{{aws}}"
+							],
+							"path": [
+								"users",
+								"friends",
+								"add",
+								"6303546278"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Request Invite",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n   \"id\": \"0123456786\",\r\n   \"from\": \"6303546278\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{aws}}/users/app/reqInvite/",
+							"host": [
+								"{{aws}}"
+							],
+							"path": [
+								"users",
+								"app",
+								"reqInvite",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Accep Request Invite",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"ids\": [\r\n        \"6303546278\",\r\n        \"0123456789\",\r\n        \"9832394089\",\r\n        \"012456789\"\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{aws}}/users/app/acceptInvite/0123456786",
+							"host": [
+								"{{aws}}"
+							],
+							"path": [
+								"users",
+								"app",
+								"acceptInvite",
+								"0123456786"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Flat Invite",
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": [
+								{
+									"key": "value",
+									"value": "{{token}}",
+									"type": "string"
+								},
+								{
+									"key": "in",
+									"value": "header",
+									"type": "string"
+								},
+								{
+									"key": "key",
+									"value": "x-access-token",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{aws}}/flats/add/6303546278",
+							"host": [
+								"{{aws}}"
+							],
+							"path": [
+								"flats",
+								"add",
+								"6303546278"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Save Contacts",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"ids\": [\r\n        \"012\"\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{aws}}/users/contacts/",
+							"host": [
+								"{{aws}}"
+							],
+							"path": [
+								"users",
+								"contacts",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Suggested Contacts",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{aws}}/users/suggestions/1/0",
+							"host": [
+								"{{aws}}"
+							],
+							"path": [
+								"users",
+								"suggestions",
+								"1",
+								"0"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"auth": {
+		"type": "apikey",
+		"apikey": [
+			{
+				"key": "value",
+				"value": "{{token}}",
+				"type": "string"
+			},
+			{
+				"key": "key",
+				"value": "x-access-token",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "aws",
+			"value": "https://api.joinflatshare.com",
+			"disabled": true
+		},
+		{
+			"key": "aws",
+			"value": "https://dev.joinflatshare.com"
+		},
+		{
+			"key": "local",
+			"value": "http://localhost:50001"
+		},
+		{
+			"key": "token",
+			"value": ""
+		}
+	]
+}

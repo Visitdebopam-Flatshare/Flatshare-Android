@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:gravity="top"
+    android:orientation="horizontal">
+
+    <ImageView
+        android:id="@+id/img_flatmate_add"
+        android:layout_width="@dimen/_45sdp"
+        android:layout_height="@dimen/_45sdp"
+        android:src="@drawable/ic_add_flatmate" />
+
+    <LinearLayout
+        android:id="@+id/ll_member"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <FrameLayout
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/_50sdp">
+
+            <com.makeramen.roundedimageview.RoundedImageView
+                android:id="@+id/img_flatmember"
+                android:layout_width="@dimen/_45sdp"
+                android:layout_height="@dimen/_45sdp"
+                android:scaleType="fitCenter"
+                app:riv_border_color="@color/color_hint"
+                app:riv_border_width="0.4dp"
+                app:riv_corner_radius="@dimen/_17sdp"
+                app:riv_mutate_background="false"
+                app:riv_tile_mode="clamp" />
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/card_admin"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal|bottom"
+                app:cardBackgroundColor="@color/blue"
+                app:cardCornerRadius="@dimen/_3sdp">
+
+                <TextView
+            android:fontFamily="@font/font_regular"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:paddingStart="@dimen/_3sdp"
+                    android:paddingTop="@dimen/_2sdp"
+                    android:paddingEnd="@dimen/_3sdp"
+                    android:paddingBottom="@dimen/_2sdp"
+                    android:text="Admin"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/_9sdp" />
+            </com.google.android.material.card.MaterialCardView>
+
+        </FrameLayout>
+
+
+        <TextView
+            android:fontFamily="@font/font_semibold"
+            android:id="@+id/txt_flatmember"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_5sdp"
+            android:textColor="@color/color_text_primary"
+            android:textSize="@dimen/_10sdp" />
+    </LinearLayout>
+
+    <FrameLayout
+        android:id="@+id/card_vacant_beds"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/_50sdp"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="@dimen/_45sdp"
+            android:layout_height="@dimen/_45sdp"
+            app:cardBackgroundColor="#343434"
+            app:cardCornerRadius="@dimen/_25sdp"
+            app:cardPreventCornerOverlap="true"
+            app:cardUseCompatPadding="false"
+            app:strokeColor="@color/white"
+            app:strokeWidth="@dimen/_2sdp">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <TextView
+            android:fontFamily="@font/font_semibold"
+                    android:id="@+id/txt_vacant_beds"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/_12sdp" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_vacant_beds" />
+
+
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal|bottom"
+            app:cardBackgroundColor="@color/blue"
+            app:cardCornerRadius="@dimen/_3sdp">
+
+            <TextView
+            android:fontFamily="@font/font_regular"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:paddingStart="@dimen/_3sdp"
+                android:paddingTop="@dimen/_2sdp"
+                android:paddingEnd="@dimen/_3sdp"
+                android:paddingBottom="@dimen/_2sdp"
+                android:text="Vacant"
+                android:textColor="@color/white"
+                android:textSize="@dimen/_9sdp" />
+        </com.google.android.material.card.MaterialCardView>
+    </FrameLayout>
+
+
+    <View
+        android:layout_width="@dimen/_15sdp"
+        android:layout_height="@dimen/_15sdp" />
+</LinearLayout>

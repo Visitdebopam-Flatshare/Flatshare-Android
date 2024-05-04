@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <TextView
+            android:fontFamily="@font/font_regular"
+        android:id="@+id/txt_chat_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:layout_marginBottom="@dimen/_10sdp"
+        android:background="@drawable/drawable_chat_time"
+        android:gravity="center"
+        android:paddingStart="@dimen/_8sdp"
+        android:paddingTop="@dimen/_4sdp"
+        android:paddingEnd="@dimen/_8sdp"
+        android:paddingBottom="@dimen/_4sdp"
+        android:textColor="@color/color_text_primary"
+        android:textSize="@dimen/_10sdp" />
+
+
+    <RelativeLayout
+        android:id="@+id/ll_message_chat"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_40sdp"
+            android:layout_marginEnd="@dimen/_10sdp"
+            android:layout_marginBottom="@dimen/_2sdp"
+            android:orientation="vertical">
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_3sdp" />
+
+            <LinearLayout
+                android:id="@+id/ll_chat_click"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:background="@drawable/drawable_chat_me"
+                android:orientation="vertical"
+                android:paddingVertical="@dimen/_3sdp"
+                android:paddingStart="@dimen/_10sdp"
+                android:paddingEnd="@dimen/_3sdp">
+
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/card_chat_reply_holder"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/_5sdp"
+                    android:elevation="0dp"
+                    android:visibility="gone"
+                    app:cardBackgroundColor="#454545"
+                    app:cardCornerRadius="@dimen/_5sdp"
+                    app:cardUseCompatPadding="false"
+                    app:contentPadding="0dp"
+                    app:strokeColor="@color/white"
+                    app:strokeWidth="0.5dp">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <View
+                            android:id="@+id/view_chat_reply"
+                            android:layout_width="@dimen/_2sdp"
+                            android:layout_height="match_parent"
+                            android:background="@color/white" />
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="@dimen/_5sdp"
+                            android:orientation="vertical">
+
+                            <TextView
+            android:fontFamily="@font/font_regular"
+                                android:id="@+id/txt_chat_reply_sender"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textColor="@color/color_blue_light"
+                                android:textSize="@dimen/_10sdp" />
+
+                            <TextView
+            android:fontFamily="@font/font_regular"
+                                android:id="@+id/txt_chat_reply_message"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/_2sdp"
+                                android:textColor="@color/color_blue_light"
+                                android:textSize="@dimen/_8sdp"
+                                android:visibility="gone" />
+
+                            <ImageView
+                                android:id="@+id/img_chat_reply_photo"
+                                android:layout_width="@dimen/_50sdp"
+                                android:layout_height="@dimen/_50sdp"
+                                android:layout_marginTop="@dimen/_2sdp"
+                                android:scaleType="center"
+                                android:visibility="gone" />
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+
+                </com.google.android.material.card.MaterialCardView>
+
+                <LinearLayout
+                    android:id="@+id/ll_chat_contact"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:orientation="horizontal"
+                    android:paddingEnd="@dimen/_7sdp"
+                    android:visibility="gone">
+
+                    <ImageView
+                        android:layout_width="@dimen/_30sdp"
+                        android:layout_height="@dimen/_30sdp"
+                        android:src="@drawable/ic_user_grey" />
+
+                    <TextView
+            android:fontFamily="@font/font_regular"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="@dimen/_10sdp"
+                        android:gravity="center"
+                        android:text="Contact Shared"
+                        android:textColor="#2e2e2e"
+                        android:textSize="@dimen/_11sdp" />
+                </LinearLayout>
+
+                <TextView
+            android:fontFamily="@font/font_regular"
+                    android:id="@+id/txt_message"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/_20sdp"
+                    android:background="@drawable/drawable_chat_me"
+                    android:gravity="start"
+                    android:textColor="#2e2e2e"
+                    android:textSize="@dimen/_14sdp" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end"
+                    android:layout_marginStart="@dimen/_20sdp"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:gravity="end|center_vertical"
+                    android:orientation="horizontal">
+
+                    <TextView
+            android:fontFamily="@font/font_regular"
+                        android:id="@+id/txt_message_timestamp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="end"
+                        android:textColor="@color/color_hint"
+                        android:textSize="@dimen/_7sdp" />
+
+                    <ImageView
+                        android:id="@+id/img_chat_seen_status"
+                        android:layout_width="@dimen/_7sdp"
+                        android:layout_height="@dimen/_7sdp"
+                        android:layout_marginStart="@dimen/_5sdp"
+                        android:src="@drawable/ic_chat_read" />
+
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+        </LinearLayout>
+    </RelativeLayout>
+
+</LinearLayout>

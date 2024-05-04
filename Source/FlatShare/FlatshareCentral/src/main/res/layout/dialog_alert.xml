@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:alpha="@integer/alpha_dialog_bg"
+        android:background="@color/bg_dialog" />
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_margin="@dimen/_20sdp"
+        app:cardBackgroundColor="@color/color_bg"
+        app:cardCornerRadius="@dimen/_10sdp"
+        app:cardElevation="0dp"
+        app:cardUseCompatPadding="false"
+        app:strokeColor="#767676"
+        app:strokeWidth="0dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                            android:fontFamily="@font/font_bold"
+                android:id="@+id/txt_alert_header"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:padding="@dimen/_10sdp"
+                android:textColor="@color/color_text_primary"
+                android:textSize="@dimen/_14sdp" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/line_height"
+                android:background="@color/divider" />
+
+            <TextView
+            android:fontFamily="@font/font_regular"
+                android:id="@+id/txt_alert_desc"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/_10sdp"
+                android:layout_marginTop="@dimen/_20sdp"
+                android:gravity="center_horizontal"
+                android:textColor="@color/color_text_primary"
+                android:textSize="@dimen/_13sdp" />
+
+            <EditText
+        android:fontFamily="@font/font_regular"
+                android:id="@+id/edt_custom_category"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_10sdp"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:layout_marginEnd="@dimen/_10sdp"
+                android:background="@color/white"
+                android:imeOptions="actionDone"
+                android:inputType="textCapSentences"
+                android:padding="@dimen/_5sdp"
+                android:textColor="@color/color_text_primary"
+                android:textSize="@dimen/_12sdp"
+                android:visibility="gone" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginVertical="@dimen/_20sdp"
+                android:orientation="horizontal">
+
+
+                <com.joinflatshare.customviews.CustomButton
+                android:fontFamily="@font/font_regular"
+                    android:id="@+id/btn_alert_black"
+                    android:layout_width="@dimen/_90sdp"
+                    android:layout_height="@dimen/_35sdp"
+                    android:background="@drawable/drawable_button_black_stroke"
+                    android:text="Save"
+                    android:textColor="@color/color_text_primary"
+                    android:textSize="@dimen/_14sdp" />
+
+                <com.joinflatshare.customviews.CustomButton
+                android:fontFamily="@font/font_regular"
+                    android:id="@+id/btn_alert_blue"
+                    android:layout_width="@dimen/_90sdp"
+                    android:layout_height="@dimen/_35sdp"
+                    android:layout_marginStart="@dimen/_10sdp"
+                    android:background="@drawable/drawable_button_blue"
+                    android:text="Cancel"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/_14sdp" />
+            </LinearLayout>
+
+            <com.joinflatshare.customviews.CustomButton
+                android:fontFamily="@font/font_regular"
+                android:id="@+id/btn_alert_cancel"
+                android:layout_width="@dimen/_80sdp"
+                android:layout_height="@dimen/_30sdp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:background="@drawable/drawable_button_blue"
+                android:text="Cancel"
+                android:textColor="@color/white"
+                android:textSize="@dimen/_14sdp"
+                android:visibility="gone" />
+        </LinearLayout>
+    </com.google.android.material.card.MaterialCardView>
+</RelativeLayout>
+
+
+

@@ -1,0 +1,16 @@
+plugins {
+    id 'com.android.library'
+    id 'org.jetbrains.kotlin.android'
+}
+apply from: "$rootDir/version.gradle"
+
+dependencies {
+    // Lottie Animation
+    implementation ("com.airbnb.android:lottie:5.2.0")
+
+    //Auto Dimen
+    implementation("com.intuit.sdp:sdp-android:1.0.6")
+
+    // Design
+    implementation("com.google.android.material:material:1.12.0-alpha03")
+}

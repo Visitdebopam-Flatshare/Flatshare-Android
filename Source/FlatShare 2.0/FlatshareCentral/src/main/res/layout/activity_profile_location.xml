@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/drawer_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/color_bg">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/color_bg">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_alignParentTop="true"
+            android:layout_marginHorizontal="@dimen/_16sdp"
+            android:layout_marginBottom="@dimen/_50sdp"
+            android:gravity="top"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_20sdp">
+
+                <ImageView
+                    android:id="@+id/btn_back"
+                    android:layout_width="@dimen/_25sdp"
+                    android:layout_height="@dimen/_22sdp"
+                    android:layout_centerVertical="true"
+                    android:layout_gravity="start"
+                    android:src="@drawable/ic_back" />
+
+                <TextView
+                    android:id="@+id/btn_skip"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:fontFamily="@font/font_semibold"
+                    android:gravity="center"
+                    android:paddingVertical="@dimen/_5sdp"
+                    android:paddingStart="@dimen/_5sdp"
+                    android:text="Skip"
+                    android:textColor="@color/grey1"
+                    android:textSize="@dimen/_12sdp" />
+            </RelativeLayout>
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_20sdp"
+                android:fontFamily="@font/font_extrabold"
+                android:lineSpacingExtra="@dimen/_minus6sdp"
+                android:text="Turn on location"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_24sdp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_12sdp"
+                android:fontFamily="@font/font_semibold"
+                android:lineSpacingExtra="-2dp"
+                android:text="Location access will help us provide you with more relevant and personalized results."
+                android:textColor="@color/black"
+                android:textSize="@dimen/_12sdp" />
+
+
+            <com.google.android.material.switchmaterial.SwitchMaterial
+                android:id="@+id/switch_location"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_32sdp"
+                android:fontFamily="@font/font_semibold"
+                android:lineSpacingExtra="-2dp"
+                android:text="Get more relevant and personalized results.    "
+                android:textColor="@color/black"
+                android:textSize="@dimen/_12sdp" />
+        </LinearLayout>
+
+        <ImageView
+            android:layout_width="@dimen/_80sdp"
+            android:layout_height="@dimen/_30sdp"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="@dimen/_10sdp"
+            android:src="@drawable/ic_logo_name" />
+
+
+    </RelativeLayout>
+
+    <include layout="@layout/dialog_bottomsheet" />
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

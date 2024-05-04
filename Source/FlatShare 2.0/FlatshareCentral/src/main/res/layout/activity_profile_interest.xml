@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/drawer_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/color_bg">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/color_bg">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_above="@id/btn_interests"
+            android:layout_alignParentTop="true"
+            android:layout_marginHorizontal="@dimen/_16sdp"
+            android:gravity="top"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_20sdp">
+
+                <ImageView
+                    android:id="@+id/btn_back"
+                    android:layout_width="@dimen/_25sdp"
+                    android:layout_height="@dimen/_22sdp"
+                    android:layout_centerVertical="true"
+                    android:layout_gravity="start"
+                    android:src="@drawable/ic_back" />
+
+                <TextView
+                    android:id="@+id/btn_skip"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:fontFamily="@font/font_semibold"
+                    android:gravity="center"
+                    android:paddingVertical="@dimen/_5sdp"
+                    android:paddingStart="@dimen/_5sdp"
+                    android:text="Skip"
+                    android:textColor="@color/grey1"
+                    android:textSize="@dimen/_12sdp" />
+            </RelativeLayout>
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:lineSpacingExtra="@dimen/_minus6sdp"
+                android:layout_marginTop="@dimen/_20sdp"
+                android:fontFamily="@font/font_extrabold"
+                android:text="Your Interests"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_24sdp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_12sdp"
+                android:fontFamily="@font/font_semibold"
+                android:lineSpacingExtra="-2dp"
+                android:text="Pick up to 5 interest you like. It’ll help you match with the flatmate who like them too."
+                android:textColor="@color/black"
+                android:textSize="@dimen/_12sdp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_20sdp"
+                android:fontFamily="@font/font_medium"
+                android:text="Interests"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_20sdp" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_interests"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_10sdp" />
+
+        </LinearLayout>
+
+
+        <com.joinflatshare.customviews.CustomButton
+            android:id="@+id/btn_interests"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_margin="@dimen/_16sdp"
+            android:background="@drawable/drawable_button_light_blue"
+            android:fontFamily="@font/font_semibold"
+            android:text="Next"
+            android:textColor="@color/white"
+            android:textSize="@dimen/button_text_size" />
+
+
+    </RelativeLayout>
+
+    <include layout="@layout/dialog_bottomsheet" />
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

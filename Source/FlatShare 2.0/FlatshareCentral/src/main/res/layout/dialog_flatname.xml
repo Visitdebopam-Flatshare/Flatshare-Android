@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/drawable_edittext"
+    android:orientation="vertical">
+
+    <ImageView
+        android:id="@+id/imgTick"
+        android:layout_width="@dimen/_20sdp"
+        android:layout_height="@dimen/_20sdp"
+        android:layout_alignParentEnd="true"
+        android:layout_centerVertical="true"
+        android:src="@drawable/ic_tick_blue" />
+
+    <EditText
+        android:fontFamily="@font/font_regular"
+        android:id="@+id/edt_flat_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/_25sdp"
+        android:background="@android:color/transparent"
+        android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890._ "
+        android:imeOptions="actionDone"
+        android:inputType="textCapWords"
+        android:lines="1"
+        android:maxLength="20"
+        android:maxLines="1"
+        android:padding="@dimen/_10sdp"
+        android:singleLine="true"
+        android:textColor="@color/black"
+        android:textSize="@dimen/_14sdp" />
+
+</RelativeLayout>

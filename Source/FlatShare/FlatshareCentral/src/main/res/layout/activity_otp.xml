@@ -1,0 +1,287 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/drawer_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/color_bg"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:padding="@dimen/_20sdp">
+
+    <LinearLayout
+        android:id="@+id/ll_otp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true">
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/ll_otp_holder"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="gone"
+            app:cardBackgroundColor="@color/otp_bg"
+            app:cardCornerRadius="@dimen/_20sdp"
+            app:cardElevation="0dp"
+            app:cardUseCompatPadding="false"
+            app:strokeColor="@color/color_icon"
+            app:strokeWidth="0.8dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="@dimen/_20sdp"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:weightSum="10">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/font_bold"
+                    android:text="GET STARTED"
+                    android:textColor="@color/color_text_primary"
+                    android:textSize="@dimen/_14sdp" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="0.5" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:alpha="0.5"
+                    android:fontFamily="@font/font_regular"
+                    android:gravity="center"
+                    android:text="Enter OTP sent to your number"
+                    android:textColor="@color/color_text_primary"
+                    android:textSize="@dimen/_10sdp" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_marginStart="@dimen/_10sdp"
+                    android:layout_marginEnd="@dimen/_10sdp"
+                    android:layout_weight="2"
+                    android:orientation="horizontal"
+                    android:weightSum="7">
+
+                    <EditText
+                        android:id="@+id/edt_otp_1"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:backgroundTint="@color/color_text_primary"
+                        android:fontFamily="@font/font_regular"
+                        android:gravity="center"
+                        android:imeOptions="actionNext"
+                        android:inputType="numberSigned"
+                        android:maxLength="1"
+                        android:textColor="@color/color_text_primary"
+                        android:textCursorDrawable="@null"
+                        android:textSize="@dimen/_14sdp" />
+
+                    <View
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="0.2" />
+
+                    <EditText
+                        android:id="@+id/edt_otp_2"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:backgroundTint="@color/color_text_primary"
+                        android:fontFamily="@font/font_regular"
+                        android:gravity="center"
+                        android:imeOptions="actionNext"
+                        android:inputType="numberSigned"
+                        android:maxLength="1"
+                        android:textColor="@color/color_text_primary"
+                        android:textCursorDrawable="@null"
+                        android:textSize="@dimen/_14sdp" />
+
+                    <View
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="0.2" />
+
+                    <EditText
+                        android:id="@+id/edt_otp_3"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:backgroundTint="@color/color_text_primary"
+                        android:fontFamily="@font/font_regular"
+                        android:gravity="center"
+                        android:imeOptions="actionNext"
+                        android:inputType="numberSigned"
+                        android:maxLength="1"
+                        android:textColor="@color/color_text_primary"
+                        android:textCursorDrawable="@null"
+                        android:textSize="@dimen/_14sdp" />
+
+                    <View
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="0.2" />
+
+                    <EditText
+                        android:id="@+id/edt_otp_4"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:backgroundTint="@color/color_text_primary"
+                        android:fontFamily="@font/font_regular"
+                        android:gravity="center"
+                        android:imeOptions="actionNext"
+                        android:inputType="numberSigned"
+                        android:maxLength="1"
+                        android:textColor="@color/color_text_primary"
+                        android:textCursorDrawable="@null"
+                        android:textSize="@dimen/_14sdp" />
+
+                    <View
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="0.2" />
+
+                    <EditText
+                        android:id="@+id/edt_otp_5"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:backgroundTint="@color/color_text_primary"
+                        android:fontFamily="@font/font_regular"
+                        android:gravity="center"
+                        android:imeOptions="actionNext"
+                        android:inputType="numberSigned"
+                        android:maxLength="1"
+                        android:textColor="@color/color_text_primary"
+                        android:textCursorDrawable="@null"
+                        android:textSize="@dimen/_14sdp" />
+
+                    <View
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="0.2" />
+
+                    <EditText
+                        android:id="@+id/edt_otp_6"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:backgroundTint="@color/color_text_primary"
+                        android:fontFamily="@font/font_regular"
+                        android:gravity="center"
+                        android:imeOptions="actionDone"
+                        android:inputType="numberSigned"
+                        android:maxLength="1"
+                        android:textColor="@color/color_text_primary"
+                        android:textCursorDrawable="@null"
+                        android:textSize="@dimen/_14sdp" />
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="0.5" />
+
+                <LinearLayout
+                    android:id="@+id/otp_resend"
+                    android:layout_width="wrap_content"
+                    android:layout_height="0dp"
+                    android:layout_weight="2"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:alpha="0.5"
+                        android:fontFamily="@font/font_regular"
+                        android:gravity="center"
+                        android:text="Didn’t receive the code?"
+                        android:textColor="@color/color_text_primary"
+                        android:textSize="@dimen/_12sdp" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/font_regular"
+                        android:gravity="center"
+                        android:text="Resend Code"
+                        android:textColor="@color/color_text_primary"
+                        android:textSize="@dimen/_12sdp" />
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="0.5" />
+
+                <com.joinflatshare.customviews.CustomButton
+                    android:id="@+id/otp_confirm"
+                    android:layout_width="@dimen/_150sdp"
+                    android:layout_height="0dp"
+                    android:layout_marginStart="@dimen/_20sdp"
+                    android:layout_marginEnd="@dimen/_20sdp"
+                    android:layout_weight="1.5"
+                    android:background="@drawable/drawable_button_black_elliptical"
+                    android:fontFamily="@font/font_regular"
+                    android:text="Continue"
+                    android:textColor="@color/color_text_secondary"
+                    android:textSize="@dimen/_12sdp" />
+            </LinearLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
+
+    </LinearLayout>
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/ll_otp_back"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/ll_otp"
+        android:layout_marginTop="@dimen/_30sdp"
+        app:cardBackgroundColor="@color/otp_bg"
+        app:cardCornerRadius="@dimen/_20sdp"
+        app:strokeColor="@color/color_icon"
+        app:strokeWidth="0.8dp">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/_20sdp"
+            android:layout_marginVertical="@dimen/_10sdp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="@dimen/_10sdp"
+                android:layout_height="@dimen/_10sdp"
+                android:src="@drawable/ic_arrow_left" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_5sdp"
+                android:fontFamily="@font/font_bold"
+                android:text="Back"
+                android:textColor="@color/color_text_primary"
+                android:textSize="@dimen/_12sdp" />
+        </LinearLayout>
+    </com.google.android.material.card.MaterialCardView>
+
+
+</RelativeLayout>

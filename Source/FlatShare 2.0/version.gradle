@@ -1,0 +1,69 @@
+def MINIMUM_SDK_VERSION = 24
+def TARGET_SDK_VERSION = 34
+def JAVA_VERSION = JavaVersion.VERSION_17
+def JVM_TARGET = '17'
+def VERSION_CODE = 43
+def VERSION_NAME = "3.2.2"
+android {
+    def projectName = project.name
+    def nameSpace = "com.joinflatshare.$projectName"
+    namespace nameSpace
+    signingConfigs {
+        'ProServerProAws-release' {
+            storeFile file('/Users/debopam/Desktop/Work/Projects/Mine/Flatshare/Android/Source/FlatShare/FlatshareCentral/src/main/assets/keystore.jks')
+            storePassword 'android'
+            keyAlias 'flatshare'
+            keyPassword 'android'
+        }
+        debugProduction {
+            storeFile file('/Users/debopam/Desktop/Work/Projects/Mine/Flatshare/flatshare-personal/Source/FlatShare/Mod 3/app/src/main/assets/keystore.jks')
+            storePassword 'android'
+            keyAlias 'flatshare'
+            keyPassword 'android'
+        }
+    }
+    compileSdk TARGET_SDK_VERSION
+
+    defaultConfig {
+        minSdk MINIMUM_SDK_VERSION
+        targetSdk TARGET_SDK_VERSION
+
+        versionCode VERSION_CODE
+        versionName VERSION_NAME
+
+        signingConfig signingConfigs.'ProServerProAws-release'
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+        manifestPlaceholders = [
+                deepLinkUri: "joinfs.app",
+                scheme     : "https"
+        ]
+
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JAVA_VERSION
+        targetCompatibility JAVA_VERSION
+    }
+    kotlinOptions {
+        jvmTarget = JVM_TARGET
+    }
+    buildFeatures {
+        buildConfig = true
+        viewBinding = true
+    }
+    /*bundle {
+        storeArchive {
+            enable = false
+        }
+    }*/
+
+}

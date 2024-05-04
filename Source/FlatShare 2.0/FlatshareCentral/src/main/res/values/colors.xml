@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="colorPrimary">#3D5A6C</color>
+    <color name="colorPrimaryDark">@android:color/white</color>
+    <color name="colorAccent">@color/blue_dark</color>
+
+    <color name="white">@android:color/white</color>
+    <color name="black">#202020</color>
+    <color name="blue_dark">#2464FF</color>
+    <color name="blue_light">#6C97FF</color>
+    <color name="color_bg">@color/white</color>
+    <color name="grey2">#6A6A6A</color>
+    <color name="grey3">#4D4D4D</color>
+    <color name="grey4">#BABABA</color>
+    <color name="red">#FD1C1C</color>
+    <color name="green">#14B463</color>
+
+
+
+
+    <color name="color_text_primary">@color/black</color>
+    <color name="color_text_secondary">@color/white</color>
+
+    <color name="color_feed_divider">#F5F5F5</color>
+    <color name="otp_bg">#F5F5F5</color>
+    <color name="flat_buttons">#9DC8FF</color>
+    <color name="color_flatshare">#434343</color>
+    <color name="color_grey_icon">#939393</color>
+    <color name="color_search_bg">@android:color/white</color>
+    <color name="color_search_border">#EAEAEA</color>
+
+
+    <color name="color_blue_light">#9DC8FF</color>
+    <color name="color_blue_light_2">#9DC8FF</color>
+
+
+    <color name="color_icon">#EAEAEA</color>
+
+    <color name="color_hint">#939393</color>
+    <color name="color_logo">#434343</color>
+    <color name="color_preference_button">#E8F3FD</color>
+    <color name="color_like_button_bg">#E8F3FD</color>
+    <color name="button_bg_black">#2E2E2E</color>
+
+    <color name="chat_header">@color/white</color>
+
+    <color name="bg_dialog">#707070</color>
+    <color name="bg_my_flat_option">#1A222222</color>
+
+    <color name="divider">#66767676</color>
+    <color name="divider_topbar">#767676</color>
+    <color name="grey7">#BEBEBE</color>
+    <color name="pink">#FFA1A1</color>
+
+    <!--Date-->
+    <color name="grey1">#989898</color>
+    <color name="color_date_casual">#FD912D</color>
+    <color name="color_date_long_term">#FF8B9F</color>
+    <color name="color_date_activity_partners">#FFDD52</color>
+    <color name="blue">#2464FF</color>
+</resources>

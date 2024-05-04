@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/card_amenity"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    app:cardCornerRadius="@dimen/_20sdp"
+    app:strokeColor="@color/button_bg_black"
+    app:strokeWidth="1dp">
+
+    <TextView
+            android:fontFamily="@font/font_regular"
+        android:id="@+id/txt_amenity"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:paddingHorizontal="@dimen/_7sdp"
+        android:paddingVertical="@dimen/_8sdp"
+        android:textColor="@color/black"
+        android:textSize="@dimen/_12sdp" />
+
+</com.google.android.material.card.MaterialCardView>

@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/ll_holder"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center_vertical"
+    android:background="@color/color_bg"
+    android:orientation="vertical"
+    android:visibility="visible">
+
+
+    <LinearLayout
+        android:id="@+id/ll_uninvited"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_margin="@dimen/_20sdp"
+        android:layout_marginHorizontal="@dimen/_10sdp"
+        android:gravity="center_vertical"
+        android:orientation="vertical"
+        android:visibility="visible">
+
+        <!--<TextView
+            android:fontFamily="@font/font_regular"
+            android:id="@+id/txt_location"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_20sdp"
+            android:text="flatshare is available in a few select locations.\nCheck your location to see if it's available in yours."
+            android:textColor="@color/button_bg_black"
+            android:textSize="@dimen/_14sdp" />-->
+
+        <TextView
+            android:fontFamily="@font/font_regular"
+            android:id="@+id/txt_location"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_20sdp"
+            android:text="We're sorry.\nflatshare is not available in your location yet.\nWe'll invite you once it's available."
+            android:textColor="@color/button_bg_black"
+            android:textSize="@dimen/_14sdp" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/_150sdp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="@dimen/_20sdp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/location_unavailable"
+            app:riv_corner_radius="@dimen/_35sdp"
+            app:riv_mutate_background="false"
+            app:riv_tile_mode="clamp" />
+
+        <com.joinflatshare.customviews.CustomButton
+            android:fontFamily="@font/font_bold"
+            android:id="@+id/btn_check_location"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/button_height"
+            android:layout_marginTop="@dimen/_20sdp"
+            android:background="@drawable/drawable_button_blue"
+            android:text="Close flatshare"
+            android:textColor="@color/white"
+            android:textSize="@dimen/_12sdp" />
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/ll_location_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_30sdp"
+            android:visibility="gone"
+            app:cardBackgroundColor="@color/otp_bg"
+            app:cardCornerRadius="@dimen/_20sdp"
+            app:strokeColor="@color/color_icon"
+            app:strokeWidth="0.8dp">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/_20sdp"
+                android:layout_marginVertical="@dimen/_10sdp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="@dimen/_10sdp"
+                    android:layout_height="@dimen/_10sdp"
+                    android:src="@drawable/ic_arrow_left" />
+
+                <TextView
+            android:fontFamily="@font/font_bold"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_5sdp"
+                    android:text="Later"
+                    android:textColor="@color/color_text_primary"
+                    android:textSize="@dimen/_12sdp" />
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+    </LinearLayout>
+
+
+</RelativeLayout>

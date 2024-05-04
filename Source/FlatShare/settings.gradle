@@ -1,0 +1,35 @@
+pluginManagement {
+    repositories {
+        google()
+        mavenCentral()
+        gradlePluginPortal()
+        jcenter()
+    }
+}
+dependencyResolutionManagement {
+    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+    repositories {
+        google()
+        maven { url "https://jitpack.io" }
+        maven { url "https://repo.sendbird.com/public/maven" }
+        mavenCentral()
+        maven {
+            url = uri("https://maven.pkg.github.com/visitdebopam/Android-Libraries")
+            credentials {
+                username = System.getenv("GITHUB_USERNAME")
+                password = System.getenv("GITHUB_PASSWORD")
+            }
+        }
+        jcenter()
+        flatDir {
+            dirs 'libs'
+        }
+    }
+}
+rootProject.name = "Flat Share"
+include ':FlatshareCentral'
+include ':FlatsharePhotoPicker'
+include ':FlatshareImageZoom'
+include ':FlatshareWebservice'
+include ':FlatshareCommons'
+include ':FlatshareProgress'
