@@ -2,6 +2,8 @@ package com.joinflatshare.webservice.api
 
 import androidx.activity.ComponentActivity
 import com.joinflatshare.pojo.likes.LikeRequest
+import com.joinflatshare.pojo.user.AdhaarOtp
+import com.joinflatshare.pojo.user.AdhaarRequest
 import com.joinflatshare.pojo.user.OtpRequest
 import com.joinflatshare.pojo.user.User
 import com.joinflatshare.webservice.api.interfaces.IWebservice
@@ -73,6 +75,24 @@ class WebserviceManager {
         if (showProgress)
             handleApiRequestWithProgress(activity, observable, callback)
         else handleApiRequestWithoutProgress(activity, observable, callback)
+    }
+
+    fun sendAadharOtp(
+        activity: ComponentActivity,
+        requestBody: AdhaarRequest,
+        callback: OnFlatshareResponseCallBack<Response<ResponseBody>>
+    ) {
+        val observable = ApiManager.getApiInterface().requestAadharOtp(requestBody)
+        handleApiRequestWithProgress(activity, observable, callback)
+    }
+
+    fun verifyAadhar(
+        activity: ComponentActivity,
+        requestBody: AdhaarOtp,
+        callback: OnFlatshareResponseCallBack<Response<ResponseBody>>
+    ) {
+        val observable = ApiManager.getApiInterface().verifiyAdhaarOtp(requestBody)
+        handleApiRequestWithProgress(activity, observable, callback)
     }
 
     fun getFriendList(

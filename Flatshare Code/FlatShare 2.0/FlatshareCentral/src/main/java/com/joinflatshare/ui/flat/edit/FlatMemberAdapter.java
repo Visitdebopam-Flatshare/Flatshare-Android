@@ -37,8 +37,6 @@ import com.joinflatshare.ui.invite.InviteActivity;
 import com.joinflatshare.ui.liked.LikedActivity;
 import com.joinflatshare.ui.profile.details.ProfileDetailsActivity;
 import com.joinflatshare.utils.helper.CommonMethod;
-import com.joinflatshare.utils.helper.CommonMethods;
-import com.joinflatshare.utils.helper.CommonMethod;
 import com.joinflatshare.utils.helper.ImageHelper;
 import com.makeramen.roundedimageview.RoundedImageView;
 

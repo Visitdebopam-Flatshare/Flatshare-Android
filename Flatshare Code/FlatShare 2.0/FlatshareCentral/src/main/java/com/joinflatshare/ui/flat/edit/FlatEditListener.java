@@ -55,7 +55,6 @@ public class FlatEditListener implements View.OnClickListener {
     }
 
     private void manageClicks() {
-        activity.baseViewBinder.btn_topbar_right.setOnClickListener(this);
         activity.baseViewBinder.btn_back.setOnClickListener(this);
         viewBind.rlFlatLocation.setOnClickListener(this);
         viewBind.edtFlatSociety.setOnClickListener(this);
@@ -69,9 +68,7 @@ public class FlatEditListener implements View.OnClickListener {
 
     @Override
     public void onClick(View view) {
-        if (view.getId() == R.id.btn_topbar_right) {
-            validate();
-        } else if (view.getId() == viewBind.rlFlatLocation.getId()) {
+        if (view.getId() == viewBind.rlFlatLocation.getId()) {
             AutoCompletePlaces.INSTANCE.getPlaces(activity, (intent, requestCode) -> {
                 if (requestCode == REQUEST_CODE_LOCATION) {
                     if (intent != null) {

@@ -30,6 +30,13 @@ interface ApiInterface {
     @POST("login/auth")
     fun login(@Body request: OtpRequest): Observable<Response<ResponseBody>>
 
+    // Verification
+    @POST("users/verification/request")
+    fun requestAadharOtp(@Body request: AdhaarRequest): Observable<Response<ResponseBody>>
+
+    @POST("users/verification/verify")
+    fun verifiyAdhaarOtp(@Body request: AdhaarOtp): Observable<Response<ResponseBody>>
+
     // User Related Information
     @GET("users/{phone}")
     fun getProfile(

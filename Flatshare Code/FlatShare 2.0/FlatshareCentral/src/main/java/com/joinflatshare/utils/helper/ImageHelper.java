@@ -3,6 +3,7 @@ package com.joinflatshare.utils.helper;
 import static com.joinflatshare.constants.RequestCodeConstants.REQUEST_CODE_PICK_IMAGE;
 
 import android.app.Activity;
+import android.content.Context;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.AsyncTask;
@@ -44,6 +45,8 @@ import java.io.FileOutputStream;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.ArrayList;
+
+import de.hdodenhof.circleimageview.CircleImageView;
 
 public class ImageHelper {
     @Deprecated
@@ -110,20 +113,20 @@ public class ImageHelper {
         return UrlConstants.INSTANCE.getIMAGE_URL() + getFlatDp(flatId);
     }
 
-    public static void loadProfileImage(ComponentActivity activity, ImageView img_profile, TextView txtDp, User user) {
+    public static void loadProfileImage(Context context, CircleImageView img_profile, TextView txtDp, User user) {
         try {
-            img_profile.setVisibility(View.GONE);
             txtDp.setVisibility(View.GONE);
-            String url = user.getDp();
+            String url = UrlConstants.INSTANCE.getIMAGE_URL() + user.getDp();
             CommonMethod.INSTANCE.makeLog("Image URL", url);
-            Glide.with(activity).clear(img_profile);
+            Glide.with(context).clear(img_profile);
             RequestOptions options = new RequestOptions().diskCacheStrategy(DiskCacheStrategy.NONE).skipMemoryCache(true).signature(new ObjectKey(System.currentTimeMillis()));
-            Glide.with(activity).load(url).diskCacheStrategy(DiskCacheStrategy.RESOURCE).apply(options).listener(new RequestListener<Drawable>() {
+                Glide.with(context).load(url).diskCacheStrategy(DiskCacheStrategy.RESOURCE).apply(options).listener(new RequestListener<Drawable>() {
                 @Override
                 public boolean onLoadFailed(@androidx.annotation.Nullable GlideException e, @androidx.annotation.Nullable Object model, @NonNull Target<Drawable> target, boolean isFirstResource) {
                     char fname = user.getName().getFirstName().charAt(0);
                     char lname = user.getName().getLastName().charAt(0);
                     txtDp.setVisibility(View.VISIBLE);
+                    img_profile.setVisibility(View.GONE);
                     txtDp.setText("" + fname + lname);
                     return false;
                 }
@@ -131,10 +134,12 @@ public class ImageHelper {
                 @Override
                 public boolean onResourceReady(@NonNull Drawable resource, @NonNull Object model, Target<Drawable> target, @NonNull DataSource dataSource, boolean isFirstResource) {
                     img_profile.setVisibility(View.VISIBLE);
+                    img_profile.setImageDrawable(resource);
                     return false;
                 }
             }).into(img_profile);
         } catch (Exception exception) {
+            exception.printStackTrace();
             Logger.log(Logger.LOG_TYPE_ERROR, exception.getMessage() == null ? "" : exception.getMessage());
         }
     }
@@ -154,13 +159,13 @@ public class ImageHelper {
         }
     }
 
-    public static void loadImage(Activity activity, int defaultIcon, ImageView
+    public static void loadImage(Context context, int defaultIcon, ImageView
             img_profile, String url) {
         try {
             if (defaultIcon == 0) defaultIcon = R.drawable.ic_image_add;
             CommonMethod.INSTANCE.makeLog("Image URL", url);
             if (img_profile != null)
-                Glide.with(activity).load(url).placeholder(defaultIcon).error(defaultIcon).diskCacheStrategy(DiskCacheStrategy.RESOURCE).into(img_profile);
+                Glide.with(context).load(url).placeholder(defaultIcon).error(defaultIcon).diskCacheStrategy(DiskCacheStrategy.RESOURCE).into(img_profile);
         } catch (Exception exception) {
             Logger.log(Logger.LOG_TYPE_ERROR, exception.getMessage() == null ? "" : exception.getMessage());
         }

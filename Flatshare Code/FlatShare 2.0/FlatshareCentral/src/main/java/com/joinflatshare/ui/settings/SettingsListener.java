@@ -1,4 +1,4 @@
-package com.joinflatshare.ui.faq;
+package com.joinflatshare.ui.settings;
 
 import android.content.Intent;
 import android.net.Uri;
@@ -9,11 +9,11 @@ import com.joinflatshare.FlatshareCentral.databinding.ActivityFaqBinding;
 import com.joinflatshare.ui.dialogs.theme.DialogTheme;
 import com.joinflatshare.utils.helper.CommonMethod;
 
-public class FaqListener implements View.OnClickListener {
-    private FaqActivity activity;
+public class SettingsListener implements View.OnClickListener {
+    private SettingsActivity activity;
     private ActivityFaqBinding viewBind;
 
-    public FaqListener(FaqActivity activity, ActivityFaqBinding viewBind) {
+    public SettingsListener(SettingsActivity activity, ActivityFaqBinding viewBind) {
         this.activity = activity;
         this.viewBind = viewBind;
         manageClicks();
@@ -21,15 +21,15 @@ public class FaqListener implements View.OnClickListener {
 
     private void manageClicks() {
         activity.baseViewBinder.img_topbar_profile.setOnClickListener(this);
-        viewBind.txtProfilePrivacy.setOnClickListener(this);
+        /*viewBind.txtProfilePrivacy.setOnClickListener(this);
         viewBind.txtProfileTerms.setOnClickListener(this);
         viewBind.txtProfileLogout.setOnClickListener(this);
-        viewBind.rlProfileTheme.setOnClickListener(this);
+        viewBind.rlProfileTheme.setOnClickListener(this);*/
     }
 
     @Override
     public void onClick(View view) {
-        int id = view.getId();
+        /*int id = view.getId();
         if (id == R.id.txt_profile_logout) {
             CommonMethod.INSTANCE.logout(activity);
         } else if (id == activity.baseViewBinder.img_topbar_profile.getId())
@@ -42,6 +42,6 @@ public class FaqListener implements View.OnClickListener {
         } else if (id == viewBind.txtProfilePrivacy.getId()) {
             Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.joinflatshare.com/privacy.php"));
             activity.startActivity(browserIntent);
-        }
+        }*/
     }
 }

@@ -89,11 +89,11 @@
                     android:background="@drawable/drawable_button_blue_circle" />
 
                 <TextView
-            android:fontFamily="@font/font_regular"
                     android:id="@+id/txt_count_notification"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
+                    android:fontFamily="@font/font_regular"
                     android:text="0"
                     android:textColor="@color/white"
                     android:textSize="@dimen/_7sdp" />
@@ -104,18 +104,31 @@
 
         <LinearLayout
             android:layout_width="0dp"
+            android:gravity="center"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:gravity="center">
+            android:orientation="vertical">
 
-            <com.makeramen.roundedimageview.RoundedImageView
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/imgPhoto"
                 android:layout_width="@dimen/_25sdp"
                 android:layout_height="@dimen/_25sdp"
-                app:riv_border_color="@color/color_hint"
-                app:riv_border_width="0.4dp"
-                app:riv_corner_radius="@dimen/_10sdp"
-                app:riv_mutate_background="false"
-                app:riv_tile_mode="clamp" />
+                android:layout_gravity="center"
+                app:civ_border_color="@color/grey2"
+                app:civ_border_width="0.01dp" />
+
+            <TextView
+                android:id="@+id/txt_photo"
+                android:layout_width="@dimen/_25sdp"
+                android:layout_height="@dimen/_25sdp"
+                android:background="@drawable/drawable_blue_circle"
+                android:gravity="center"
+                android:textAllCaps="true"
+                android:textColor="@color/white"
+                android:textSize="@dimen/_10sdp"
+                android:visibility="gone" />
+
+
         </LinearLayout>
 
     </LinearLayout>

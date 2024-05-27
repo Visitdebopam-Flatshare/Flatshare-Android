@@ -13,13 +13,6 @@ import retrofit2.http.*
 interface ApiInterface {
 
 
-    // Verification
-    @POST("users/verification/request")
-    fun verifiyAdhaar(@Body request: AdhaarRequest): Observable<com.joinflatshare.pojo.BaseResponse?>
-
-    @POST("users/verification/verify")
-    fun verifiyAdhaarOtp(@Body request: AdhaarOtp): Observable<com.joinflatshare.pojo.BaseResponse?>
-
     @POST("users/online/heartbeat")
     fun heartbeat(): Observable<BaseResponse?>
 

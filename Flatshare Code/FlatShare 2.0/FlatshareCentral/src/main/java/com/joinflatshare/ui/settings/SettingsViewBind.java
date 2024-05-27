@@ -1,4 +1,4 @@
-package com.joinflatshare.ui.faq;
+package com.joinflatshare.ui.settings;
 
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -9,13 +9,13 @@ import com.joinflatshare.utils.helper.DateUtils;
 
 ;
 
-public class FaqViewBind {
-    private FaqActivity activity;
+public class SettingsViewBind {
+    private SettingsActivity activity;
     private ActivityFaqBinding viewBind;
     protected RelativeLayout[] rl_profile_details;
     protected TextView[] txt_profile_details;
 
-    public FaqViewBind(FaqActivity activity, ActivityFaqBinding viewBind) {
+    public SettingsViewBind(SettingsActivity activity, ActivityFaqBinding viewBind) {
         this.activity=activity;
         this.viewBind = viewBind;
         bind();
@@ -23,11 +23,11 @@ public class FaqViewBind {
     }
 
     private void bind() {
-        rl_profile_details = new RelativeLayout[]{viewBind.rlProfileName,
+        /*rl_profile_details = new RelativeLayout[]{viewBind.rlProfileName,
                 viewBind.rlProfileMobile, viewBind.rlProfileBirthday,
                 viewBind.rlProfileGender};
         txt_profile_details = new TextView[]{viewBind.txtProfileName,
-                viewBind.txtProfileMobile, viewBind.txtProfileBirthday, viewBind.txtProfileGender};
+                viewBind.txtProfileMobile, viewBind.txtProfileBirthday, viewBind.txtProfileGender};*/
     }
 
     private void setData() {

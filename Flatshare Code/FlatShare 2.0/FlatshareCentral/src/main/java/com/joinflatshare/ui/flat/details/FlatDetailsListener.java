@@ -50,7 +50,6 @@ public class FlatDetailsListener implements View.OnClickListener {
         viewBind.llRequestAccept.setOnClickListener(this);
         viewBind.llRequestDecline.setOnClickListener(this);
         viewBind.cardNotInterested.setOnClickListener(this);
-        activity.baseViewBinder.btn_topbar_right.setOnClickListener(this);
         viewBind.pullToRefresh.setOnRefreshListener(() -> {
             activity.apiController.getFlat();
             viewBind.pullToRefresh.setRefreshing(false);

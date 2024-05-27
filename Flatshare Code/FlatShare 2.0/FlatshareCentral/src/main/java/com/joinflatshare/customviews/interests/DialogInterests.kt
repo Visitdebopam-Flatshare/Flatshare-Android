@@ -57,7 +57,7 @@ class DialogInterests(
     private fun setRoomSize() {
         viewBind.txtHeaderCountTotal.text =
             if (viewType == InterestsView.VIEW_TYPE_INTERESTS) "/5 selected)" else "/3 selected)"
-        viewBind.viewBg.setOnClickListener { view -> }
+        viewBind.viewBg.setOnClickListener { }
         if (AppData.flatData?.interests != null) {
             adapterItems.clear()
             adapterItems.addAll(

@@ -30,7 +30,10 @@ class OtpListener(
                 val otp = viewBind.edtOtp.text.toString().trim()
                 if (otp.length != 6)
                     return
-                activity.apiController?.login(otp)
+                if (activity.intent.getBooleanExtra("aadhar", false))
+                    activity.apiController?.verifyAadhar(otp)
+                else
+                    activity.apiController?.login(otp)
             }
 
             viewBind.txtotpResend.id -> {

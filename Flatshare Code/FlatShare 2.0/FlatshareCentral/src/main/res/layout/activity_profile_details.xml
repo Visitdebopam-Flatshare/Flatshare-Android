@@ -1,665 +1,302 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/drawer_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/color_bg">
 
-    <FrameLayout
+    <LinearLayout xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/color_bg">
+        android:background="@color/color_bg"
+        android:orientation="vertical">
 
-        <LinearLayout
+        <include layout="@layout/include_topbar" />
+
+        <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+            android:id="@+id/pullToRefresh"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical">
+            android:layout_margin="@dimen/_10sdp">
 
-            <include layout="@layout/include_topbar" />
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
-                <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
-                    android:id="@+id/pullToRefresh"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_above="@id/rl_holder_bottom"
-                    android:visibility="gone">
-
-                    <androidx.core.widget.NestedScrollView
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:scrollbars="none">
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginHorizontal="@dimen/_10sdp"
-                            android:orientation="vertical">
-
-                            <androidx.recyclerview.widget.RecyclerView
-                                android:id="@+id/rv_profile_info_image"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="@dimen/_10sdp"
-                                android:orientation="horizontal"
-                                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                                app:spanCount="3"
-                                tools:itemCount="6"
-                                tools:listitem="@layout/item_profile_image" />
-
-                            <RelativeLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="@dimen/_10sdp"
-                                android:paddingVertical="@dimen/_5sdp">
-
-                                <LinearLayout
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_alignParentStart="true"
-                                    android:layout_centerVertical="true"
-                                    android:gravity="center_vertical"
-                                    android:orientation="horizontal">
-
-                                    <ImageView
-                                        android:layout_width="@dimen/_15sdp"
-                                        android:layout_height="@dimen/_15sdp"
-                                        android:src="@drawable/ic_birthday_color" />
-
-                                    <TextView
-                                        android:id="@+id/txt_profile_age"
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
-                                        android:layout_marginStart="@dimen/_10sdp"
-                                        android:fontFamily="@font/font_regular"
-                                        android:textColor="@color/black"
-                                        android:textSize="@dimen/_14sdp" />
-                                </LinearLayout>
-
-
-                                <LinearLayout
-                                    android:id="@+id/ll_profile_location"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_alignParentEnd="true"
-                                    android:layout_centerVertical="true"
-                                    android:gravity="center"
-                                    android:orientation="horizontal"
-                                    android:visibility="gone">
-
-                                    <ImageView
-                                        android:layout_width="@dimen/_15sdp"
-                                        android:layout_height="@dimen/_15sdp"
-                                        android:src="@drawable/ic_location" />
-
-                                    <TextView
-                                        android:id="@+id/txt_profile_location"
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
-                                        android:layout_marginStart="@dimen/_10sdp"
-                                        android:fontFamily="@font/font_regular"
-                                        android:textColor="@color/black"
-                                        android:textSize="@dimen/_14sdp" />
-
-                                </LinearLayout>
-                            </RelativeLayout>
-
-                            <LinearLayout
-                                android:id="@+id/ll_profile_score"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:gravity="center"
-                                android:orientation="horizontal"
-                                android:paddingVertical="@dimen/_5sdp">
-
-                                <ImageView
-                                    android:layout_width="@dimen/_15sdp"
-                                    android:layout_height="@dimen/_15sdp"
-                                    android:src="@drawable/ic_fscore" />
-
-                                <TextView
-                                    android:id="@+id/txt_profile_score"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginStart="@dimen/_10sdp"
-                                    android:fontFamily="@font/font_regular"
-                                    android:textColor="@color/black"
-                                    android:textSize="@dimen/_14sdp" />
-
-                            </LinearLayout>
-
-                            <LinearLayout
-                                android:id="@+id/ll_profile_website"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:gravity="center"
-                                android:orientation="horizontal"
-                                android:paddingVertical="@dimen/_5sdp">
-
-                                <ImageView
-                                    android:layout_width="@dimen/_15sdp"
-                                    android:layout_height="@dimen/_15sdp"
-                                    android:src="@drawable/ic_website_blue" />
-
-                                <TextView
-                                    android:id="@+id/txt_profile_website"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginStart="@dimen/_10sdp"
-                                    android:fontFamily="@font/font_regular"
-                                    android:textColor="@color/blue"
-                                    android:textSize="@dimen/_12sdp" />
-
-                            </LinearLayout>
-
-                            <View
-                                android:layout_width="match_parent"
-                                android:layout_height="@dimen/line_height"
-                                android:layout_marginVertical="@dimen/_10sdp"
-                                android:background="@color/divider" />
-
-                            <LinearLayout
-                                android:id="@+id/ll_profile_holder"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:orientation="vertical">
-
-                                <TextView
-                                    android:id="@+id/txt_profile_about_name"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:fontFamily="@font/font_bold"
-                                    android:textColor="@color/black"
-                                    android:textSize="@dimen/_12sdp" />
-
-                                <LinearLayout
-                                    android:id="@+id/ll_profile_work"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginVertical="@dimen/_5sdp"
-                                    android:gravity="center_vertical"
-                                    android:orientation="horizontal">
-
-                                    <ImageView
-                                        android:layout_width="@dimen/_10sdp"
-                                        android:layout_height="@dimen/_10sdp"
-                                        android:src="@drawable/ic_profile_work" />
-
-                                    <TextView
-                                        android:id="@+id/txt_profile_work"
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
-                                        android:layout_marginStart="@dimen/_10sdp"
-                                        android:fontFamily="@font/font_regular"
-                                        android:textColor="@color/black"
-                                        android:textSize="@dimen/_12sdp" />
-                                </LinearLayout>
-
-                                <LinearLayout
-                                    android:id="@+id/ll_profile_hometown"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginVertical="@dimen/_5sdp"
-                                    android:gravity="center_vertical"
-                                    android:orientation="horizontal">
-
-                                    <ImageView
-                                        android:layout_width="@dimen/_10sdp"
-                                        android:layout_height="@dimen/_10sdp"
-                                        android:src="@drawable/ic_flat_house" />
-
-                                    <TextView
-                                        android:id="@+id/txt_profile_hometown"
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
-                                        android:layout_marginStart="@dimen/_10sdp"
-                                        android:fontFamily="@font/font_regular"
-                                        android:textColor="@color/black"
-                                        android:textSize="@dimen/_12sdp" />
-                                </LinearLayout>
-
-                                <LinearLayout
-                                    android:id="@+id/ll_profile_college"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginVertical="@dimen/_5sdp"
-                                    android:gravity="center_vertical"
-                                    android:orientation="horizontal">
-
-                                    <ImageView
-                                        android:layout_width="@dimen/_10sdp"
-                                        android:layout_height="@dimen/_10sdp"
-                                        android:src="@drawable/ic_profile_college" />
-
-                                    <TextView
-                                        android:id="@+id/txt_profile_college"
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
-                                        android:layout_marginStart="@dimen/_10sdp"
-                                        android:fontFamily="@font/font_regular"
-                                        android:textColor="@color/black"
-                                        android:textSize="@dimen/_12sdp" />
-                                </LinearLayout>
-
-                                <LinearLayout
-                                    android:id="@+id/ll_profile_hangout"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginTop="@dimen/_5sdp"
-                                    android:gravity="center_vertical"
-                                    android:orientation="horizontal">
-
-                                    <ImageView
-                                        android:layout_width="@dimen/_10sdp"
-                                        android:layout_height="@dimen/_10sdp"
-                                        android:src="@drawable/ic_profile_hangout" />
-
-                                    <TextView
-                                        android:id="@+id/txt_profile_hangout"
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
-                                        android:layout_marginStart="@dimen/_10sdp"
-                                        android:fontFamily="@font/font_regular"
-                                        android:textColor="@color/black"
-                                        android:textSize="@dimen/_12sdp" />
-                                </LinearLayout>
-
-                                <View
-                                    android:layout_width="match_parent"
-                                    android:layout_height="@dimen/line_height"
-                                    android:layout_marginVertical="@dimen/_10sdp"
-                                    android:background="@color/divider" />
-
-                            </LinearLayout>
-
-                            <LinearLayout
-                                android:id="@+id/ll_status"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:orientation="vertical">
-
-                                <TextView
-                                    android:id="@+id/txt_profile_status_name"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:fontFamily="@font/font_bold"
-                                    android:textColor="@color/black"
-                                    android:textSize="@dimen/_12sdp" />
-
-                                <TextView
-                                    android:id="@+id/txt_profile_status"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginTop="@dimen/_5sdp"
-                                    android:fontFamily="@font/font_regular"
-                                    android:textColor="@color/black"
-                                    android:textSize="@dimen/_12sdp" />
-
-                                <View
-                                    android:layout_width="match_parent"
-                                    android:layout_height="@dimen/line_height"
-                                    android:layout_marginVertical="@dimen/_10sdp"
-                                    android:background="@color/divider" />
-                            </LinearLayout>
-
-                            <LinearLayout
-                                android:id="@+id/ll_profile_friends"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:orientation="vertical">
-
-                                <TextView
-                                    android:id="@+id/txt_profile_friends"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:fontFamily="@font/font_bold"
-                                    android:text="Friends"
-                                    android:textColor="@color/black"
-                                    android:textSize="@dimen/_12sdp" />
-
-                                <androidx.recyclerview.widget.RecyclerView
-                                    android:id="@+id/rv_flat_member"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginTop="@dimen/_10sdp"
-                                    android:orientation="horizontal"
-                                    tools:itemCount="1" />
-
-                                <View
-                                    android:layout_width="match_parent"
-                                    android:layout_height="@dimen/line_height"
-                                    android:layout_marginVertical="@dimen/_10sdp"
-                                    android:background="@color/divider" />
-                            </LinearLayout>
-
-                            <LinearLayout
-                                android:id="@+id/ll_profile_interest_holder"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:orientation="vertical">
-
-                                <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:fontFamily="@font/font_bold"
-                                    android:text="Interests"
-                                    android:textColor="@color/black"
-                                    android:textSize="@dimen/_12sdp" />
-
-                                <androidx.recyclerview.widget.RecyclerView
-                                    android:id="@+id/rv_profile_interests"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginTop="@dimen/_10sdp"
-                                    tools:itemCount="1" />
-
-                                <View
-                                    android:layout_width="match_parent"
-                                    android:layout_height="@dimen/line_height"
-                                    android:layout_marginVertical="@dimen/_10sdp"
-                                    android:background="@color/divider" />
-                            </LinearLayout>
-
-
-                            <LinearLayout
-                                android:id="@+id/ll_profile_language_holder"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:orientation="vertical">
-
-                                <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:fontFamily="@font/font_bold"
-                                    android:text="Languages"
-                                    android:textColor="@color/black"
-                                    android:textSize="@dimen/_12sdp" />
-
-                                <androidx.recyclerview.widget.RecyclerView
-                                    android:id="@+id/rv_profile_language"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginTop="@dimen/_10sdp"
-                                    tools:itemCount="1" />
-
-                                <View
-                                    android:layout_width="match_parent"
-                                    android:layout_height="@dimen/line_height"
-                                    android:layout_marginVertical="@dimen/_10sdp"
-                                    android:background="@color/divider" />
-                            </LinearLayout>
-
-                            <LinearLayout
-                                android:id="@+id/ll_profile_deals_holder"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:orientation="vertical">
-
-                                <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:fontFamily="@font/font_bold"
-                                    android:text="Deal-Breakers"
-                                    android:textColor="@color/black"
-                                    android:textSize="@dimen/_12sdp" />
-
-                                <androidx.recyclerview.widget.RecyclerView
-                                    android:id="@+id/rv_profile_deals"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginTop="@dimen/_10sdp"
-                                    tools:itemCount="1" />
-
-                                <View
-                                    android:layout_width="match_parent"
-                                    android:layout_height="@dimen/line_height"
-                                    android:layout_marginVertical="@dimen/_10sdp"
-                                    android:background="@color/divider" />
-                            </LinearLayout>
-
-                            <LinearLayout
-                                android:id="@+id/ll_inviter"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_marginBottom="@dimen/_10sdp"
-                                android:gravity="center_vertical"
-                                android:orientation="horizontal">
-
-                                <com.makeramen.roundedimageview.RoundedImageView
-                                    android:id="@+id/img_inviter"
-                                    android:layout_width="@dimen/_40sdp"
-                                    android:layout_height="@dimen/_40sdp"
-                                    android:scaleType="fitCenter"
-                                    app:riv_corner_radius="@dimen/_15sdp"
-                                    app:riv_mutate_background="false"
-                                    app:riv_tile_mode="clamp" />
-
-                                <LinearLayout
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginStart="@dimen/_15sdp"
-                                    android:gravity="center_vertical"
-                                    android:orientation="vertical">
-
-                                    <TextView
-                                        android:id="@+id/txt_join_date"
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
-                                        android:fontFamily="@font/font_regular"
-                                        android:textColor="@color/black"
-                                        android:textSize="@dimen/_12sdp" />
-
-                                    <TextView
-                                        android:id="@+id/txt_inviter"
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
-                                        android:layout_marginTop="@dimen/_3sdp"
-                                        android:fontFamily="@font/font_regular"
-                                        android:textColor="@color/black"
-                                        android:textSize="@dimen/_12sdp"
-                                        android:visibility="gone" />
-                                </LinearLayout>
-                            </LinearLayout>
-
-                            <com.joinflatshare.customviews.CustomButton
-                                android:id="@+id/btn_profile_share"
-                                android:layout_width="match_parent"
-                                android:layout_height="@dimen/button_height"
-                                android:layout_marginBottom="@dimen/_10sdp"
-                                android:background="@drawable/drawable_button_black_stroke"
-                                android:fontFamily="@font/font_regular"
-                                android:text="Recommend to a Friend"
-                                android:textColor="@color/black"
-                                android:textSize="@dimen/_12sdp"
-                                android:visibility="gone" />
-
-                        </LinearLayout>
-
-
-                    </androidx.core.widget.NestedScrollView>
-                </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
-
-                <LinearLayout
-                    android:id="@+id/rl_holder_bottom"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentBottom="true"
-                    android:background="@color/color_text_secondary"
-                    android:orientation="vertical"
-                    android:visibility="gone">
-
-                    <View
-                        android:layout_width="match_parent"
-                        android:layout_height="@dimen/line_height"
-                        android:background="@color/divider" />
-
-                    <RelativeLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="@dimen/_60sdp">
-
-                        <com.joinflatshare.customviews.CustomButton
-                            android:id="@+id/btn_profile_message"
-                            android:layout_width="match_parent"
-                            android:layout_height="@dimen/button_height"
-                            android:layout_centerInParent="true"
-                            android:layout_gravity="center"
-                            android:layout_marginHorizontal="@dimen/_10sdp"
-                            android:layout_marginVertical="@dimen/_10sdp"
-                            android:background="@drawable/drawable_button_blue"
-                            android:fontFamily="@font/font_bold"
-                            android:text="Message"
-                            android:textColor="@color/white"
-                            android:textSize="@dimen/_12sdp"
-                            android:visibility="gone" />
-
-                        <RelativeLayout
-                            android:id="@+id/rl_profile_bottom_default"
-                            android:layout_width="match_parent"
-                            android:layout_height="@dimen/_60sdp">
-
-                            <LinearLayout
-                                android:layout_width="wrap_content"
-                                android:layout_height="@dimen/button_height_small"
-                                android:layout_alignParentStart="true"
-                                android:layout_centerVertical="true"
-                                android:layout_marginHorizontal="@dimen/_20sdp"
-                                android:orientation="horizontal">
-
-                                <com.google.android.material.card.MaterialCardView
-                                    android:id="@+id/cardNotInterested"
-                                    android:layout_width="@dimen/button_height_small"
-                                    android:layout_height="match_parent"
-                                    app:cardBackgroundColor="@color/pink"
-                                    app:cardCornerRadius="@dimen/_5sdp">
-
-                                    <ImageView
-                                        android:layout_width="match_parent"
-                                        android:layout_height="match_parent"
-                                        android:layout_margin="@dimen/_10sdp"
-                                        android:src="@drawable/ic_cross_red" />
-
-                                </com.google.android.material.card.MaterialCardView>
-
-                                <com.google.android.material.card.MaterialCardView
-                                    android:id="@+id/cardLike"
-                                    android:layout_width="@dimen/button_height_small"
-                                    android:layout_height="match_parent"
-                                    android:layout_marginStart="@dimen/_10sdp"
-                                    app:cardBackgroundColor="@color/color_blue_light"
-                                    app:cardCornerRadius="@dimen/_5sdp">
-
-                                    <ImageView
-                                        android:id="@+id/imgLike"
-                                        android:layout_width="match_parent"
-                                        android:layout_height="match_parent"
-                                        android:layout_margin="@dimen/_8sdp"
-                                        android:src="@drawable/ic_tick_blue_fat" />
-
-                                </com.google.android.material.card.MaterialCardView>
-                            </LinearLayout>
-
-                            <TextView
-                                android:id="@+id/txt_chat_request"
-                                android:layout_width="wrap_content"
-                                android:layout_height="@dimen/button_height_small"
-                                android:layout_alignParentEnd="true"
-                                android:layout_centerVertical="true"
-                                android:layout_marginHorizontal="@dimen/_20sdp"
-                                android:background="@drawable/drawable_button_black"
-                                android:fontFamily="@font/font_bold"
-                                android:gravity="center"
-                                android:paddingHorizontal="@dimen/_10sdp"
-                                android:text="Chat Request"
-                                android:textColor="@color/color_text_secondary"
-                                android:textSize="@dimen/_12sdp" />
-
-                        </RelativeLayout>
-
-                        <RelativeLayout
-                            android:id="@+id/rl_profile_bottom_request"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:visibility="gone">
-
-                            <LinearLayout
-                                android:id="@+id/ll_request_block"
-                                android:layout_width="@dimen/_40sdp"
-                                android:layout_height="match_parent"
-                                android:layout_centerVertical="true"
-                                android:layout_marginStart="@dimen/_10sdp"
-                                android:gravity="center"
-                                android:visibility="gone">
-
-                                <ImageView
-                                    android:layout_width="@dimen/_25sdp"
-                                    android:layout_height="@dimen/_25sdp"
-                                    android:background="@android:color/transparent"
-                                    android:src="@drawable/ic_chat_block" />
-
-                            </LinearLayout>
-
-
-                            <TextView
-                                android:id="@+id/ll_request_accept"
-                                android:layout_width="@dimen/_90sdp"
-                                android:layout_height="@dimen/button_height_small"
-                                android:layout_alignParentEnd="true"
-                                android:layout_centerVertical="true"
-                                android:layout_marginEnd="@dimen/_10sdp"
-                                android:background="@drawable/drawable_button_blue"
-                                android:fontFamily="@font/font_bold"
-                                android:gravity="center"
-                                android:text="Accept"
-                                android:textColor="@color/white"
-                                android:textSize="@dimen/_12sdp" />
-
-                            <TextView
-                                android:id="@+id/ll_request_decline"
-                                android:layout_width="@dimen/_90sdp"
-                                android:layout_height="@dimen/_35sdp"
-                                android:layout_centerVertical="true"
-                                android:layout_marginEnd="@dimen/_10sdp"
-                                android:layout_toStartOf="@id/ll_request_accept"
-                                android:background="@drawable/drawable_button_pink"
-                                android:fontFamily="@font/font_bold"
-                                android:gravity="center"
-                                android:text="Reject"
-                                android:textColor="@color/red"
-                                android:textSize="@dimen/_12sdp" />
-
-                        </RelativeLayout>
-
-
-                    </RelativeLayout>
-
-                </LinearLayout>
-            </RelativeLayout>
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/card_edit_profile"
-            android:layout_width="@dimen/round_card_dimen"
-            android:layout_height="@dimen/round_card_dimen"
-            android:layout_gravity="end|bottom"
-            android:layout_margin="@dimen/_10sdp"
-            android:background="@drawable/drawable_circle_black_stroke"
-            android:visibility="gone">
-
-            <ImageView
+            <androidx.core.widget.NestedScrollView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_margin="@dimen/_15sdp"
-                android:background="@drawable/ic_edit" />
+                android:scrollbars="none">
 
-        </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
 
-    </FrameLayout>
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/rv_profile_info_image"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+                        app:spanCount="3"
+                        tools:itemCount="6"
+                        tools:listitem="@layout/item_profile_image" />
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_20sdp"
+                        android:fontFamily="@font/font_semibold"
+                        android:text="Age"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/_12sdp" />
+
+
+                    <TextView
+                        android:id="@+id/txt_profile_age"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:background="@drawable/drawable_edittext"
+                        android:fontFamily="@font/font_regular"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/_12sdp" />
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_20sdp"
+                        android:fontFamily="@font/font_semibold"
+                        android:text="Interests"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/_12sdp" />
+
+                    <TextView
+                        android:id="@+id/txt_profile_interest"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:background="@drawable/drawable_edittext"
+                        android:fontFamily="@font/font_regular"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/_12sdp" />
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_20sdp"
+                        android:fontFamily="@font/font_semibold"
+                        android:text="Languages"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/_12sdp" />
+
+
+                    <TextView
+                        android:id="@+id/txt_profile_languages"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:background="@drawable/drawable_edittext"
+                        android:fontFamily="@font/font_regular"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/_12sdp" />
+
+                    <LinearLayout
+                        android:id="@+id/ll_profile_status"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_20sdp"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/font_semibold"
+                            android:text="About"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/_12sdp" />
+
+
+                        <TextView
+                            android:id="@+id/edt_profile_status"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/_10sdp"
+                            android:background="@drawable/drawable_edittext"
+                            android:fontFamily="@font/font_regular"
+                            android:paddingVertical="@dimen/_5sdp"
+                            android:textColor="@color/color_text_primary"
+                            android:textSize="@dimen/_12sdp" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/ll_profile_work"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_20sdp"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/font_semibold"
+                            android:text="Work"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/_12sdp" />
+
+                        <TextView
+                            android:id="@+id/edt_profile_work"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/_10sdp"
+                            android:background="@drawable/drawable_edittext"
+                            android:fontFamily="@font/font_regular"
+                            android:textColor="@color/color_text_primary"
+                            android:textSize="@dimen/_12sdp" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/ll_profile_education"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_20sdp"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/font_semibold"
+                            android:text="Education"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/_12sdp" />
+
+
+                        <TextView
+                            android:id="@+id/edt_profile_education"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/_10sdp"
+                            android:background="@drawable/drawable_edittext"
+                            android:fontFamily="@font/font_regular"
+                            android:textColor="@color/color_text_primary"
+                            android:textSize="@dimen/_12sdp" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/ll_profile_hometown"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_20sdp"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/font_semibold"
+                            android:text="Hometown"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/_12sdp" />
+
+
+                        <TextView
+                            android:id="@+id/edt_profile_hometown"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/_5sdp"
+                            android:background="@drawable/drawable_edittext"
+                            android:fontFamily="@font/font_regular"
+                            android:textColor="@color/color_text_primary"
+                            android:textSize="@dimen/_12sdp" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/ll_profile_flatscore"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_20sdp"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/font_semibold"
+                            android:text="Flatscore"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/_12sdp" />
+
+
+                        <TextView
+                            android:id="@+id/edt_profile_flatscore"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/_5sdp"
+                            android:background="@drawable/drawable_edittext"
+                            android:fontFamily="@font/font_regular"
+                            android:textColor="@color/color_text_primary"
+                            android:textSize="@dimen/_12sdp" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/ll_profile_bottom"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:orientation="horizontal">
+
+                        <LinearLayout
+                            android:id="@+id/ll_profile_share"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:orientation="horizontal"
+                            android:padding="@dimen/_10sdp">
+
+                            <ImageView
+                                android:layout_width="@dimen/_15sdp"
+                                android:layout_height="@dimen/_15sdp"
+                                android:src="@drawable/ic_share1" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="@dimen/_10sdp"
+                                android:fontFamily="@font/font_regular"
+                                android:text="Share"
+                                android:textColor="@color/black"
+                                android:textSize="@dimen/_12sdp" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/ll_profile_report"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/_20sdp"
+                            android:gravity="center"
+                            android:orientation="horizontal"
+                            android:padding="@dimen/_10sdp">
+
+                            <ImageView
+                                android:layout_width="@dimen/_15sdp"
+                                android:layout_height="@dimen/_15sdp"
+                                android:src="@drawable/ic_report" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="@dimen/_10sdp"
+                                android:fontFamily="@font/font_regular"
+                                android:text="Report"
+                                android:textColor="@color/black"
+                                android:textSize="@dimen/_12sdp" />
+                        </LinearLayout>
+                    </LinearLayout>
+
+                </LinearLayout>
+            </androidx.core.widget.NestedScrollView>
+        </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+    </LinearLayout>
 
     <include layout="@layout/dialog_bottomsheet" />
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

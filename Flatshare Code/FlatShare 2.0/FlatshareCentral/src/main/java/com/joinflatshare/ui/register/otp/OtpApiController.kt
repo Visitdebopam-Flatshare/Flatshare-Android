@@ -1,12 +1,15 @@
 package com.joinflatshare.ui.register.otp
 
+import android.app.Activity
 import android.content.Intent
 import android.content.IntentFilter
 import androidx.localbroadcastmanager.content.LocalBroadcastManager
 import com.google.gson.Gson
 import com.joinflatshare.FlatShareApplication
 import com.joinflatshare.FlatshareCentral.BuildConfig
+import com.joinflatshare.FlatshareCentral.R
 import com.joinflatshare.api.retrofit.ApiManager
+import com.joinflatshare.chat.SendBirdUser
 import com.joinflatshare.constants.AppConstants
 import com.joinflatshare.constants.IntentConstants
 import com.joinflatshare.constants.IntentFilterConstants
@@ -14,8 +17,10 @@ import com.joinflatshare.db.daos.AppDao
 import com.joinflatshare.db.daos.UserDao
 import com.joinflatshare.fcm.NotificationPermissionHandler
 import com.joinflatshare.pojo.BaseResponse
+import com.joinflatshare.pojo.user.AdhaarOtp
 import com.joinflatshare.pojo.user.OtpRequest
 import com.joinflatshare.pojo.user.UserResponse
+import com.joinflatshare.ui.dialogs.DialogLottieViewer
 import com.joinflatshare.ui.explore.ExploreActivity
 import com.joinflatshare.ui.register.create.ProfileCreateActivity
 import com.joinflatshare.utils.helper.CommonMethod
@@ -42,7 +47,7 @@ class OtpApiController(private val activity: OtpActivity) {
                     override fun onResponseCallBack(response: String) {
                         val resp = Gson().fromJson(response, BaseResponse::class.java)
                         if (resp.success) {
-                            activity.showError(false,"An OTP is sent to ${activity.phone}")
+                            activity.showError(false, "An OTP is sent to ${activity.phone}")
                             SmsReader(activity).initialiseRetriever()
                             activity.initReceiver()
                             LocalBroadcastManager.getInstance(activity)
@@ -96,6 +101,45 @@ class OtpApiController(private val activity: OtpActivity) {
 
                 override fun onCallBackError(message: String) {
                     activity.showError(true, message)
+                }
+            })
+    }
+
+
+    fun verifyAadhar(adhaarOTP: String) {
+        WebserviceManager().verifyAadhar(
+            activity,
+            AdhaarOtp(adhaarOTP),
+            object : OnFlatshareResponseCallBack<Response<ResponseBody>> {
+                override fun onResponseCallBack(response: String) {
+                    val resp = Gson().fromJson(response, BaseResponse::class.java)
+                    if (resp.status == 200) {
+                        MixpanelUtils.onButtonClicked("Aadhar OTP Submit")
+                        getProfile()
+                    }
+                }
+            })
+    }
+
+    private fun getProfile() {
+        WebserviceManager().getProfile(
+            true,
+            activity,
+            AppConstants.loggedInUser?.id,
+            object : OnFlatshareResponseCallBack<Response<ResponseBody>> {
+                override fun onResponseCallBack(response: String) {
+                    val sendBirdUser = SendBirdUser(activity)
+                    val params = HashMap<String, String>()
+                    params["nickname"] =
+                        AppConstants.loggedInUser?.name?.firstName + " " + AppConstants.loggedInUser?.name?.lastName
+                    params["profile_url"] =
+                        if (AppConstants.loggedInUser?.dp.isNullOrBlank()) "" else AppConstants.loggedInUser?.dp!!
+                    sendBirdUser.updateUser(
+                        params
+                    ) { }
+                    DialogLottieViewer(activity, R.raw.lottie_verify_profile, null)
+                    activity.setResult(Activity.RESULT_OK)
+                    CommonMethod.finishActivity(activity)
                 }
             })
     }

@@ -14,9 +14,9 @@ import com.joinflatshare.ui.base.BaseActivity
 /**
  * Created by debopam on 17/12/22
  */
-class InterestsView(private val activity: BaseActivity, val viewType: String) {
-    lateinit var recyclerView: RecyclerView
-    val content = ArrayList<String>()
+class InterestsView(private val activity: BaseActivity, private val viewType: String) {
+    private lateinit var recyclerView: RecyclerView
+    internal val content = ArrayList<String>()
     val matchedContent = ArrayList<String>()
     var callback: OnUiEventClick? = null
     private var isOnlyViewable: Boolean = true

@@ -1,7 +1,10 @@
 package com.joinflatshare.ui.profile.language
 
+import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
+import android.text.TextUtils
+import android.view.View
 import androidx.core.content.ContextCompat
 import com.joinflatshare.FlatshareCentral.R
 import com.joinflatshare.FlatshareCentral.databinding.ActivityProfileLanguageBinding
@@ -11,6 +14,7 @@ import com.joinflatshare.interfaces.OnUserFetched
 import com.joinflatshare.pojo.user.UserResponse
 import com.joinflatshare.ui.base.BaseActivity
 import com.joinflatshare.ui.profile.interest.InterestActivity
+import com.joinflatshare.ui.profile.location.LocationActivity
 import com.joinflatshare.utils.helper.CommonMethod
 
 /**
@@ -32,13 +36,29 @@ class LanguageActivity : BaseActivity() {
             this, viewBind.rvLanguages,
             InterestsView.VIEW_TYPE_LANGUAGES, false
         )
-        if (!AppConstants.loggedInUser?.flatProperties?.languages.isNullOrEmpty())
-            interestsView.matchedContent.addAll(AppConstants.loggedInUser?.flatProperties?.languages!!)
+        checkIntent()
         interestsView.assignCallback { _, _ ->
             switchButtonBackground()
         }
         interestsView.show()
         switchButtonBackground()
+    }
+
+    private fun checkIntent() {
+        val isEdit = intent.getBooleanExtra("edit", false)
+        if (isEdit) {
+            viewBind.btnSkip.visibility = View.INVISIBLE
+            viewBind.btnLanguages.text = "Save"
+            interestsView.matchedContent.addAll(
+                TextUtils.split(
+                    intent.getStringExtra("content"),
+                    ", "
+                )
+            )
+        } else {
+            if (!AppConstants.loggedInUser?.flatProperties?.languages.isNullOrEmpty())
+                interestsView.matchedContent.addAll(AppConstants.loggedInUser?.flatProperties?.languages!!)
+        }
     }
 
     private fun switchButtonBackground() {
@@ -62,17 +82,35 @@ class LanguageActivity : BaseActivity() {
             CommonMethod.switchActivity(this@LanguageActivity, intent, false)
         }
         viewBind.btnLanguages.setOnClickListener {
-            if (interestsView.matchedContent.isNotEmpty()) {
-                val user = AppConstants.loggedInUser
-                user?.flatProperties?.languages?.clear()
-                user?.flatProperties?.languages?.addAll(interestsView.matchedContent)
-                baseApiController.updateUser(true, user, object : OnUserFetched {
-                    override fun userFetched(resp: UserResponse?) {
-                        val intent = Intent(this@LanguageActivity, InterestActivity::class.java)
-                        CommonMethod.switchActivity(this@LanguageActivity, intent, false)
+            when (viewBind.btnLanguages.text) {
+                "Save" -> {
+                    if (interestsView.matchedContent.isNotEmpty()) {
+                        val intent = Intent()
+                        intent.putExtra("type", InterestsView.VIEW_TYPE_LANGUAGES)
+                        intent.putExtra(
+                            "language",
+                            TextUtils.join(", ", interestsView.matchedContent)
+                        )
+                        setResult(Activity.RESULT_OK, intent)
+                        CommonMethod.finishActivity(this)
                     }
+                }
 
-                })
+                "Next" -> {
+                    if (interestsView.matchedContent.isNotEmpty()) {
+                        val user = AppConstants.loggedInUser
+                        user?.flatProperties?.languages?.clear()
+                        user?.flatProperties?.languages?.addAll(interestsView.matchedContent)
+                        baseApiController.updateUser(true, user, object : OnUserFetched {
+                            override fun userFetched(resp: UserResponse?) {
+                                val intent =
+                                    Intent(this@LanguageActivity, InterestActivity::class.java)
+                                CommonMethod.switchActivity(this@LanguageActivity, intent, false)
+                            }
+
+                        })
+                    }
+                }
             }
         }
     }

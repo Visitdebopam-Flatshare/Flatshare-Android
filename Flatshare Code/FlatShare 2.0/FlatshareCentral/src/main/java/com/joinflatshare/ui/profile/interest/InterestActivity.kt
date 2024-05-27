@@ -1,7 +1,11 @@
 package com.joinflatshare.ui.profile.interest
 
+import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
+import android.text.TextUtils
+import android.view.View
+import androidx.activity.result.ActivityResult
 import androidx.core.content.ContextCompat
 import com.joinflatshare.FlatshareCentral.R
 import com.joinflatshare.FlatshareCentral.databinding.ActivityProfileInterestBinding
@@ -32,13 +36,29 @@ class InterestActivity : BaseActivity() {
             this, viewBind.rvInterests,
             InterestsView.VIEW_TYPE_INTERESTS, false
         )
-        if (!AppConstants.loggedInUser?.flatProperties?.interests.isNullOrEmpty())
-            interestsView.matchedContent.addAll(AppConstants.loggedInUser?.flatProperties?.interests!!)
+        checkIntent()
         interestsView.assignCallback { _, _ ->
             switchButtonBackground()
         }
         interestsView.show()
         switchButtonBackground()
+    }
+
+    private fun checkIntent() {
+        val isEdit = intent.getBooleanExtra("edit", false)
+        if (isEdit) {
+            viewBind.btnSkip.visibility = View.INVISIBLE
+            viewBind.btnInterests.text = "Save"
+            interestsView.matchedContent.addAll(
+                TextUtils.split(
+                    intent.getStringExtra("content"),
+                    ", "
+                )
+            )
+        } else {
+            if (!AppConstants.loggedInUser?.flatProperties?.interests.isNullOrEmpty())
+                interestsView.matchedContent.addAll(AppConstants.loggedInUser?.flatProperties?.interests!!)
+        }
     }
 
     private fun switchButtonBackground() {
@@ -63,17 +83,35 @@ class InterestActivity : BaseActivity() {
             CommonMethod.switchActivity(this, intent, false)
         }
         viewBind.btnInterests.setOnClickListener {
-            if (interestsView.matchedContent.isNotEmpty()) {
-                val user = AppConstants.loggedInUser
-                user?.flatProperties?.interests?.clear()
-                user?.flatProperties?.interests?.addAll(interestsView.matchedContent)
-                baseApiController.updateUser(true, user, object : OnUserFetched {
-                    override fun userFetched(resp: UserResponse?) {
-                        val intent = Intent(this@InterestActivity, LocationActivity::class.java)
-                        CommonMethod.switchActivity(this@InterestActivity, intent, false)
+            when (viewBind.btnInterests.text) {
+                "Save" -> {
+                    if (interestsView.matchedContent.isNotEmpty()) {
+                        val intent = Intent()
+                        intent.putExtra("type", InterestsView.VIEW_TYPE_INTERESTS)
+                        intent.putExtra(
+                            "interest",
+                            TextUtils.join(", ", interestsView.matchedContent)
+                        )
+                        setResult(Activity.RESULT_OK, intent)
+                        CommonMethod.finishActivity(this)
                     }
+                }
 
-                })
+                "Next" -> {
+                    if (interestsView.matchedContent.isNotEmpty()) {
+                        val user = AppConstants.loggedInUser
+                        user?.flatProperties?.interests?.clear()
+                        user?.flatProperties?.interests?.addAll(interestsView.matchedContent)
+                        baseApiController.updateUser(true, user, object : OnUserFetched {
+                            override fun userFetched(resp: UserResponse?) {
+                                val intent =
+                                    Intent(this@InterestActivity, LocationActivity::class.java)
+                                CommonMethod.switchActivity(this@InterestActivity, intent, false)
+                            }
+
+                        })
+                    }
+                }
             }
         }
     }

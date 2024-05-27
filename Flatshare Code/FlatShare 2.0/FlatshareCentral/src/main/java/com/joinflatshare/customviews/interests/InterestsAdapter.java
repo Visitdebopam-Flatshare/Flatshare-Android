@@ -26,6 +26,7 @@ import com.joinflatshare.utils.system.ThemeUtils;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class InterestsAdapter extends RecyclerView.Adapter<InterestsAdapter.ViewHolder> {
     private ApplicationBaseActivity activity;
@@ -36,13 +37,6 @@ public class InterestsAdapter extends RecyclerView.Adapter<InterestsAdapter.View
     private final ArrayList<String> matchedItems;
     private final String viewType;
     private String currentThemeUrl, alternateThemeUrl, imageUrl;
-
-    public InterestsAdapter(@NotNull ApplicationBaseActivity activity, @NotNull InterestsView interestsView) {
-        this.viewType = interestsView.getViewType();
-        this.interestsView = interestsView;
-        this.matchedItems = interestsView.getMatchedContent();
-        init(activity, interestsView.recyclerView, interestsView.getContent());
-    }
 
     public InterestsAdapter(@NotNull ApplicationBaseActivity activity, @NotNull DialogInterests dialogInterests,
                             @NotNull RecyclerView rvInterests, @NotNull String viewType,
@@ -67,7 +61,7 @@ public class InterestsAdapter extends RecyclerView.Adapter<InterestsAdapter.View
     }
 
     public String getInterests() {
-//        Collections.sort(matchedItems);
+        Collections.sort(matchedItems);
         return TextUtils.join(", ", matchedItems);
     }
 

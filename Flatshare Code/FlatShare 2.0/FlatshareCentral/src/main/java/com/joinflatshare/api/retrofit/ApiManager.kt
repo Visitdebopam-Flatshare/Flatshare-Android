@@ -71,30 +71,6 @@ class ApiManager() {
         }
     }
 
-    fun verifiyAdhaar(adhaarRequest: AdhaarRequest, onResponseCallback: OnResponseCallback<Any?>) {
-        if (ConnectivityListener.checkInternet()) {
-            showProgress()
-            isLoaderShownByApimanager = true
-            CompositeDisposable().add(getClient()?.verifiyAdhaar(adhaarRequest)!!
-                .observeOn(AndroidSchedulers.mainThread()).subscribeOn(Schedulers.io())
-                .subscribe({ trendsResponse ->
-                    sendResponse(trendsResponse, onResponseCallback)
-                }) { throwable -> handleError(throwable as Throwable, onResponseCallback) })
-        }
-    }
-
-    fun verifiyAdhaarOtp(adhaarOtp: AdhaarOtp, onResponseCallback: OnResponseCallback<Any?>) {
-        if (ConnectivityListener.checkInternet()) {
-            showProgress()
-            isLoaderShownByApimanager = true
-            CompositeDisposable().add(getClient()?.verifiyAdhaarOtp(adhaarOtp)!!
-                .observeOn(AndroidSchedulers.mainThread()).subscribeOn(Schedulers.io())
-                .subscribe({ trendsResponse ->
-                    sendResponse(trendsResponse, onResponseCallback)
-                }) { throwable -> handleError(throwable as Throwable, onResponseCallback) })
-        }
-    }
-
     fun heartBeat(onResponseCallback: OnResponseCallback<Any?>) {
         if (ConnectivityListener.checkInternet()) {
             CompositeDisposable().add(getClient()?.heartbeat()!!

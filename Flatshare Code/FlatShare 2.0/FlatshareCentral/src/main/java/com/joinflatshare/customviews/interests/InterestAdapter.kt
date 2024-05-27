@@ -75,7 +75,7 @@ class InterestAdapter(
                     activity,
                     R.mipmap.ic_launcher,
                     holder.imgLanguage,
-                    adapter.imageUrl + ThemeConstants.THEME_DARK + "/" + item + ".png"
+                    adapter.imageUrl + item.replace(" ", "+") + ".png"
                 )
             } else {
                 holder.cardAmenity.setCardBackgroundColor(
@@ -94,7 +94,7 @@ class InterestAdapter(
                     activity,
                     R.mipmap.ic_launcher,
                     holder.imgLanguage,
-                    adapter.imageUrl + ThemeConstants.THEME_LIGHT + "/" + item + ".png"
+                    adapter.imageUrl + item.replace(" ", "+") + ".png"
                 )
             }
 

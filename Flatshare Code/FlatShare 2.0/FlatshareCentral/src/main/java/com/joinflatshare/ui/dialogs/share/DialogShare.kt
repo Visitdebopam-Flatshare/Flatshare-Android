@@ -86,6 +86,7 @@ class DialogShare(
         } else {
             val message =
                 if (shareType == TYPE_FLAT) "The flat profile is incomplete." else "The user profile is incomplete."
+
             com.joinflatshare.customviews.alert.AlertDialog.showAlert(activity, message)
         }
     }

@@ -21,7 +21,7 @@ class ProfileEditActivity : BaseActivity() {
     private lateinit var viewBind: ActivityProfileEditBinding
     lateinit var dataBind: ProfileEditDataBinder
     private lateinit var listener: ProfileEditListener
-    var latProfile = arrayOfNulls<Loc>(4)
+    var latProfile = arrayOfNulls<Loc>(2)
 
     @kotlin.jvm.JvmField
     var imageClickPosition = -1
@@ -67,22 +67,21 @@ class ProfileEditActivity : BaseActivity() {
                             if (dataBind.adapterUserImages.size > 10) {
                                 dataBind.adapterUserImages.removeAt(0)
                             }
-                            dataBind.adapter?.items = dataBind.adapterUserImages
+                            dataBind.adapter?.setItems(dataBind.adapterUserImages)
                             dataBind.adapter?.notifyDataSetChanged()
                             imageClickPosition = -1
-                            dataBind.setCompleteCount()
                         }
                     }
             }
         } else {
             if (resultCode == AutocompleteActivity.RESULT_ERROR) {
                 val status = Autocomplete.getStatusFromIntent(data!!)
-                CommonMethod.makeToast( status.statusMessage)
+                CommonMethod.makeToast(status.statusMessage)
                 CommonMethod.makeLog("Error", status.statusMessage)
             } else if (resultCode == Activity.RESULT_CANCELED) {
                 // The user canceled the operation.
             } else if (resultCode == ImagePicker.RESULT_ERROR) {
-                CommonMethod.makeToast( getError(data))
+                CommonMethod.makeToast(getError(data))
             }
         }
     }

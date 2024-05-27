@@ -13,7 +13,9 @@ import com.joinflatshare.constants.SendBirdConstants;
 import com.joinflatshare.utils.helper.ImageHelper;
 import com.makeramen.roundedimageview.RoundedImageView;
 
-;
+;import org.w3c.dom.Text;
+
+import de.hdodenhof.circleimageview.CircleImageView;
 
 public class BaseViewBinder {
 
@@ -27,7 +29,7 @@ public class BaseViewBinder {
 
     // Bottom Menu
     public LinearLayout[] ll_menu;
-    public RoundedImageView img_menu_profile;
+    public CircleImageView img_menu_profile;
     public View view_menu_explore_circle, view_menu_chat_circle;
     private final int[] icon = {R.drawable.ic_menu_explore, R.drawable.ic_menu_chat, R.drawable.ic_notification};
     private final int[] iconSelected = {R.drawable.ic_menu_explore_selected, R.drawable.ic_menu_chat_selected, R.drawable.ic_notification_black};
@@ -54,12 +56,11 @@ public class BaseViewBinder {
         ll_menu = new LinearLayout[]{(LinearLayout) llHolder.getChildAt(0),
                 (LinearLayout) llHolder.getChildAt(1), (LinearLayout) llHolder.getChildAt(2),
                 (LinearLayout) llHolder.getChildAt(3)};
-        img_menu_profile = (RoundedImageView) ll_menu[3].getChildAt(0);
 
-        img_menu_profile.setImageResource(R.drawable.ic_user);
-        if (AppConstants.loggedInUser != null)
-            ImageHelper.loadImage(activity, R.drawable.ic_user, img_menu_profile,
-                    ImageHelper.getProfileImageWithAwsFromPath(AppConstants.loggedInUser.getDp()));
+        img_menu_profile = (CircleImageView) ll_menu[3].getChildAt(0);
+        TextView txt = (TextView) ll_menu[3].getChildAt(1);
+
+        ImageHelper.loadProfileImage(activity, img_menu_profile, txt, AppConstants.loggedInUser);
         applyMenuClick();
         activity.baseClickListener.manageBottomMenuClicks();
     }
@@ -68,9 +69,9 @@ public class BaseViewBinder {
         for (int i = 0; i < ll_menu.length; i++) {
             if (i == ll_menu.length - 1) {
                 if (i == AppConstants.menuSelected)
-                    ((RoundedImageView) ll_menu[i].getChildAt(0)).setBorderWidth(4f);
+                    ((CircleImageView) ll_menu[i].getChildAt(0)).setBorderWidth(4);
                 else
-                    ((RoundedImageView) ll_menu[i].getChildAt(0)).setBorderWidth(2f);
+                    ((CircleImageView) ll_menu[i].getChildAt(0)).setBorderWidth(2);
             } else {
                 if (i == AppConstants.menuSelected)
                     ((ImageView) ll_menu[i].getChildAt(0)).setImageResource(iconSelected[i]);

@@ -1,10 +1,5 @@
 package com.joinflatshare.ui.base;
 
-import static com.joinflatshare.constants.IntentFilterConstants.INTENT_FILTER_CONSTANT_CHAT_COUNT;
-import static com.joinflatshare.constants.IntentFilterConstants.INTENT_FILTER_CONSTANT_FIREBASE_TOKEN_UPDATED;
-import static com.joinflatshare.constants.IntentFilterConstants.INTENT_FILTER_CONSTANT_RELOAD_NOTIFICATION;
-import static com.joinflatshare.constants.IntentFilterConstants.INTENT_FILTER_CONSTANT_USER_LOCATION_UPDATED;
-
 import android.app.Activity;
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -16,7 +11,6 @@ import android.view.View;
 import android.widget.ImageView;
 
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatDelegate;
 import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 
 import com.joinflatshare.FlatShareApplication;
@@ -36,7 +30,6 @@ import com.joinflatshare.ui.notifications.NotificationActivity;
 import com.joinflatshare.ui.notifications.RequestHandler;
 import com.joinflatshare.ui.profile.myprofile.ProfileActivity;
 import com.joinflatshare.utils.helper.CommonMethod;
-import com.joinflatshare.utils.system.ThemeUtils;
 
 import java.util.Objects;
 
