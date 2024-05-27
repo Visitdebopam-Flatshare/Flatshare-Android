@@ -7,7 +7,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.view.View;
 
-import com.debopam.flatshareprogress.DialogCustomProgress;
+import com.debopam.progressdialog.DialogCustomProgress;
 import com.joinflatshare.FlatShareApplication;
 import com.joinflatshare.FlatshareCentral.databinding.ActivityFlatDetailsBinding;
 import com.joinflatshare.constants.AppConstants;

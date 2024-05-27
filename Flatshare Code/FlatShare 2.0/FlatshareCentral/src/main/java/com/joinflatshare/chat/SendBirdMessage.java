@@ -1,6 +1,6 @@
 package com.joinflatshare.chat;
 
-import com.debopam.flatshareprogress.DialogCustomProgress;
+import com.debopam.progressdialog.DialogCustomProgress;
 import com.joinflatshare.chat.chatInterfaces.OnFileMessageSentListener;
 import com.joinflatshare.chat.chatInterfaces.OnMessageHistoryFetched;
 import com.joinflatshare.chat.chatInterfaces.OnTextMessageSentListener;

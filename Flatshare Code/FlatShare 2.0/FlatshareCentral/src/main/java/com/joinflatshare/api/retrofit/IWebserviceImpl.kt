@@ -1,7 +1,7 @@
 package com.joinflatshare.api.retrofit
 
 import androidx.activity.ComponentActivity
-import com.debopam.flatshareprogress.DialogCustomProgress
+import com.debopam.progressdialog.DialogCustomProgress
 import com.debopam.retrofit.RetrofitHandler
 import com.joinflatshare.FlatShareApplication
 import com.joinflatshare.customviews.alert.AlertDialog

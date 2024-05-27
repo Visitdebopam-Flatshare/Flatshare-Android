@@ -1,6 +1,6 @@
 package com.joinflatshare.ui.invite
 
-import com.debopam.flatshareprogress.DialogCustomProgress
+import com.debopam.progressdialog.DialogCustomProgress
 import com.google.gson.Gson
 import com.joinflatshare.FlatshareCentral.databinding.ActivityInviteBinding
 import com.joinflatshare.constants.AppConstants

@@ -37,7 +37,7 @@ class BaseApiController(private val activity: BaseActivity) {
             FlatShareApplication.getDbInstance().userDao()
                 .insert(UserDao.USER_NEED_FCM_UPDATE, "0")
             // Inform sendbird on new push token
-            SendBirdApiManager().deleteAllPushTokens { response: BaseResponse? ->
+            SendBirdApiManager().deleteAllPushTokens { response: com.joinflatshare.pojo.BaseResponse? ->
                 registerPushToken(
                     fcmToken,
                     null

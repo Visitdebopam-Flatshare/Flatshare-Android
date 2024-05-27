@@ -3,7 +3,7 @@ package com.joinflatshare.ui.register.location_check
 import android.content.Intent
 import android.text.format.DateUtils
 import androidx.activity.ComponentActivity
-import com.debopam.flatshareprogress.DialogCustomProgress
+import com.debopam.progressdialog.DialogCustomProgress
 import com.google.gson.Gson
 import com.joinflatshare.FlatShareApplication
 import com.joinflatshare.api.retrofit.ApiManager

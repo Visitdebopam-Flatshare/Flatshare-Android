@@ -11,7 +11,7 @@ import android.text.TextWatcher;
 
 import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 
-import com.debopam.flatshareprogress.DialogCustomProgress;
+import com.debopam.progressdialog.DialogCustomProgress;
 import com.joinflatshare.FlatshareCentral.databinding.ActivityInviteBinding;
 import com.joinflatshare.constants.AppConstants;
 import com.joinflatshare.constants.ContactConstants;

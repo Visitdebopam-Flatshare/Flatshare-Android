@@ -20,6 +20,7 @@ import com.joinflatshare.ui.flat.flatoptions.view_roomtype.RoomTypeViewBind
 import com.joinflatshare.utils.helper.CommonMethod
 import com.joinflatshare.utils.helper.CommonMethods
 import com.joinflatshare.utils.helper.ImageHelper
+import javax.annotation.Nonnull
 
 class FlatEditActivity : BaseActivity() {
     lateinit var viewBind: ActivityFlatEditBinding
@@ -68,7 +69,9 @@ class FlatEditActivity : BaseActivity() {
 
     override fun onRequestPermissionsResult(
         requestCode: Int,
-        permissions: Array<String?>,
+        @Nonnull
+        permissions: Array<out String>,
+        @Nonnull
         grantResults: IntArray
     ) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)

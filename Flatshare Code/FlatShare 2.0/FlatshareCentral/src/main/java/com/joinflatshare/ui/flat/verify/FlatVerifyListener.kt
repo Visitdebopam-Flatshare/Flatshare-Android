@@ -7,7 +7,7 @@ import android.net.Uri
 import android.view.View
 import androidx.appcompat.app.AppCompatDelegate
 import com.anilokcun.uwmediapicker.UwMediaPicker
-import com.debopam.flatshareprogress.DialogCustomProgress
+import com.debopam.progressdialog.DialogCustomProgress
 import com.joinflatshare.FlatShareApplication
 import com.joinflatshare.FlatshareCentral.databinding.ActivityFlatVerifyBinding
 import com.joinflatshare.api.retrofit.OnResponseCallback

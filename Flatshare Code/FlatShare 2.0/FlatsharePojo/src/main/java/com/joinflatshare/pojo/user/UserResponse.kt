@@ -1,7 +1,6 @@
 package com.joinflatshare.pojo.user
 
 import com.google.gson.annotations.SerializedName
-import com.joinflatshare.constants.ChatRequestConstants
 import com.joinflatshare.pojo.config.RentRange
 import com.joinflatshare.pojo.flat.DealBreakers
 import java.io.Serializable
@@ -154,7 +153,7 @@ data class DateProperties(
     var isVerifiedOnly: Boolean = false,
 
     @field:SerializedName("dateType")
-    var dateType: Int = ChatRequestConstants.CHAT_REQUEST_CONSTANT_DATE_CASUAL,
+    var dateType: Int = 4,
 
     @field:SerializedName("activities")
     var activities: ArrayList<String> = ArrayList(),

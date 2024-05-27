@@ -5,7 +5,6 @@ import androidx.recyclerview.widget.GridLayoutManager
 import com.joinflatshare.FlatshareCentral.databinding.DialogFlatOptionsBinding
 import com.joinflatshare.constants.AppData
 import com.joinflatshare.customviews.GridSpacingItemDecoration
-import com.joinflatshare.pojo.amenities.AmenitiesItem
 import com.joinflatshare.ui.dialogs.DialogFlatOptions
 
 class FurnishingViewBind(private val dialogFlatOptions: DialogFlatOptions) {
@@ -36,10 +35,10 @@ class FurnishingViewBind(private val dialogFlatOptions: DialogFlatOptions) {
                 wholeSize.addAll(dialogFlatOptions.flat?.flatProperties?.furnishing!!)
             }
         }
-        val items = ArrayList<AmenitiesItem>()
+        val items = ArrayList<com.joinflatshare.pojo.amenities.AmenitiesItem>()
         // Furnishing
         for (amen in AppData.flatData!!.furnishing) {
-            val temp = AmenitiesItem()
+            val temp = com.joinflatshare.pojo.amenities.AmenitiesItem()
             temp.isSelected = wholeSize.contains(amen)
             temp.id = 1
             temp.name = amen
@@ -48,7 +47,7 @@ class FurnishingViewBind(private val dialogFlatOptions: DialogFlatOptions) {
         setFurnishingAdapter(items)
     }
 
-    private fun setFurnishingAdapter(items: ArrayList<AmenitiesItem>) {
+    private fun setFurnishingAdapter(items: ArrayList<com.joinflatshare.pojo.amenities.AmenitiesItem>) {
         if (furnishingAdapter == null) {
             viewBind?.rvFlatFurnishing?.setLayoutManager(
                 GridLayoutManager(

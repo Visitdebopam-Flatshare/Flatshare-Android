@@ -16,12 +16,10 @@ import com.joinflatshare.constants.IntentFilterConstants
 import com.joinflatshare.db.daos.UserDao
 import com.joinflatshare.fcm.FcmNavigationUtils
 import com.joinflatshare.interfaces.OnUserFetched
-import com.joinflatshare.pojo.explore.UserRecommendationItem
 import com.joinflatshare.pojo.flat.MyFlatData
 import com.joinflatshare.pojo.user.UserResponse
 import com.joinflatshare.services.MutualContactHandler
 import com.joinflatshare.ui.base.BaseActivity
-import com.joinflatshare.ui.explore.adapter.ExploreAdapter
 import com.joinflatshare.ui.notifications.RequestHandler
 import com.joinflatshare.ui.preferences.flat.PreferenceActivity
 import com.joinflatshare.utils.deeplink.DeepLinkHandler
@@ -36,7 +34,7 @@ class ExploreActivity : BaseActivity() {
 
     @Deprecated("Removed")
     var flat: MyFlatData? = null
-    val userData = ArrayList<UserRecommendationItem>()
+    val userData = ArrayList<com.joinflatshare.pojo.explore.UserRecommendationItem>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

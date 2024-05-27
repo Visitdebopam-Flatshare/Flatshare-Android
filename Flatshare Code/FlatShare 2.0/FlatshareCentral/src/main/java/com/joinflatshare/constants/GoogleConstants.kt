@@ -1,11 +1,11 @@
 package com.joinflatshare.constants
 
-import com.debopam.flatshareprogress.DialogCustomProgress
+import androidx.activity.ComponentActivity
+import com.debopam.progressdialog.DialogCustomProgress
 import com.google.android.libraries.places.api.Places
 import com.joinflatshare.FlatShareApplication
 import com.joinflatshare.firestore.DbGoogleRetriever
 import com.joinflatshare.interfaces.OnStringFetched
-import com.joinflatshare.ui.base.BaseActivity
 import com.joinflatshare.utils.system.ConnectivityListener
 
 object GoogleConstants {
@@ -14,12 +14,14 @@ object GoogleConstants {
     var APP_UPGRADE_TITLE: String? = ""
     var APP_UPGRADE_MESSAGE: String? = ""
 
-    fun initialiseGoogleSdk(activity: BaseActivity?, callback: OnStringFetched) {
+    fun initialiseGoogleSdk(activity: ComponentActivity?, callback: OnStringFetched) {
         if (ConnectivityListener.checkInternet()) {
             if (GOOGLE_API_KEY.isEmpty()) {
-                DialogCustomProgress.showProgress(activity)
+                if (activity != null)
+                    DialogCustomProgress.showProgress(activity)
                 DbGoogleRetriever().getGoogleApiKey {
-                    DialogCustomProgress.hideProgress(activity)
+                    if (activity != null)
+                        DialogCustomProgress.hideProgress(activity)
                     if (it.equals("1")) {
                         if (!Places.isInitialized()) Places.initialize(
                             FlatShareApplication.instance,

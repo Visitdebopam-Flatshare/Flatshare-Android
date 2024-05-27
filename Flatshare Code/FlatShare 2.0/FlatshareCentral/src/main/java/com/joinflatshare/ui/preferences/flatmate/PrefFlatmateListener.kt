@@ -3,7 +3,7 @@ package com.joinflatshare.ui.preferences.flatmate
 import android.app.Activity
 import android.content.Intent
 import android.view.View
-import com.debopam.flatshareprogress.DialogCustomProgress
+import com.debopam.progressdialog.DialogCustomProgress
 import com.joinflatshare.FlatShareApplication
 import com.joinflatshare.FlatshareCentral.databinding.ActivityPrefFlatmateBinding
 import com.joinflatshare.constants.AppConstants

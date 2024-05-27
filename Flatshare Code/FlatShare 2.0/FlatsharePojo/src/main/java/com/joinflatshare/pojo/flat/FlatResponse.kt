@@ -1,8 +1,8 @@
 package com.joinflatshare.pojo.flat
 
-import com.google.gson.annotations.SerializedName
 import com.joinflatshare.pojo.user.ModelLocation
 import com.joinflatshare.pojo.user.User
+import com.google.gson.annotations.SerializedName
 import java.io.Serializable
 
 data class FlatResponse(

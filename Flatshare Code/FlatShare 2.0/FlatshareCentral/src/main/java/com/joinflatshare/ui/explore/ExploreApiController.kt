@@ -4,9 +4,6 @@ import com.google.gson.Gson
 import com.joinflatshare.FlatshareCentral.databinding.ActivityExploreBinding
 import com.joinflatshare.api.retrofit.ApiManager
 import com.joinflatshare.constants.AppConstants
-import com.joinflatshare.payment.PaymentHandler
-import com.joinflatshare.pojo.explore.RecommendationResponse
-import com.joinflatshare.ui.explore.adapter.ExploreAdapter
 import com.joinflatshare.webservice.api.WebserviceManager
 import com.joinflatshare.webservice.api.interfaces.OnFlatshareResponseCallBack
 import okhttp3.ResponseBody
@@ -43,7 +40,7 @@ class ExploreApiController(
                 override fun onResponseCallBack(response: String) {
                     isDataFetching = false
                     AppConstants.isFeedReloadRequired = false
-                    val resp = Gson().fromJson(response, RecommendationResponse::class.java)
+                    val resp = Gson().fromJson(response, com.joinflatshare.pojo.explore.RecommendationResponse::class.java)
                     hasMoreData = currentPage < resp.lastIndex
                     val data = resp.userData
                     if (data.isNotEmpty()) {

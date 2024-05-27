@@ -1,19 +1,14 @@
 package com.joinflatshare.ui.explore.holder
 
 import android.app.Activity
-import android.content.Context
 import android.content.Intent
-import android.view.LayoutInflater
 import android.view.View
-import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.ViewPager2
 import com.google.android.material.tabs.TabLayoutMediator
 import com.joinflatshare.FlatshareCentral.databinding.ItemExploreBinding
 import com.joinflatshare.constants.AppConstants
 import com.joinflatshare.constants.ChatRequestConstants
 import com.joinflatshare.constants.RouteConstants
-import com.joinflatshare.pojo.explore.UserRecommendationItem
-import com.joinflatshare.pojo.flat.MyFlatData
 import com.joinflatshare.pojo.user.User
 import com.joinflatshare.ui.base.BaseActivity
 import com.joinflatshare.ui.dialogs.DialogConnection
@@ -683,7 +678,7 @@ class AdapterUserHolder(private val activity: BaseActivity) {
     }
 
     private fun onHolderClick(
-        activity: BaseActivity, position: Int, searchType: String, data: UserRecommendationItem
+        activity: BaseActivity, position: Int, searchType: String, data: com.joinflatshare.pojo.explore.UserRecommendationItem
     ) {
         val item = data.data
         val intent = Intent(activity, ProfileDetailsActivity::class.java)
@@ -700,7 +695,7 @@ class AdapterUserHolder(private val activity: BaseActivity) {
     }
 
     private fun handleCallback(
-        activity: BaseActivity, intent: Intent?, position: Int, data: UserRecommendationItem
+        activity: BaseActivity, intent: Intent?, position: Int, data: com.joinflatshare.pojo.explore.UserRecommendationItem
     ) {
         val like = intent?.getBooleanExtra("like", false)
         val chat = intent?.getBooleanExtra("chat", false)

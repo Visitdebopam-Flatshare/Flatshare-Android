@@ -1,16 +1,11 @@
 package com.joinflatshare.ui.explore.holder
 
-import com.joinflatshare.FlatshareCentral.R
 import com.joinflatshare.FlatshareCentral.databinding.ItemExploreBinding
 import com.joinflatshare.constants.AppConstants
 import com.joinflatshare.payment.PaymentHandler
-import com.joinflatshare.pojo.explore.Details
-import com.joinflatshare.pojo.explore.UserRecommendationItem
 import com.joinflatshare.pojo.flat.MyFlatData
 import com.joinflatshare.ui.base.BaseActivity
-import com.joinflatshare.ui.dialogs.DialogLottieViewer
 import com.joinflatshare.ui.liked.LikedActivity
-import com.joinflatshare.utils.helper.DistanceCalculator
 import com.joinflatshare.utils.mixpanel.MixpanelUtils
 
 /**
@@ -19,7 +14,7 @@ import com.joinflatshare.utils.mixpanel.MixpanelUtils
 object UserHolderForLiked {
     fun setLocation(
         searchType: String,
-        details: Details,
+        details: com.joinflatshare.pojo.explore.Details,
         holder: ItemExploreBinding,
         flat: MyFlatData?
     ) {
@@ -49,7 +44,7 @@ object UserHolderForLiked {
         activity: LikedActivity,
         position: Int,
         connectionType: String,
-        data: UserRecommendationItem,
+        data: com.joinflatshare.pojo.explore.UserRecommendationItem,
         holder: ItemExploreBinding,
         flat: MyFlatData?,
         adapter: AdapterUserHolder,

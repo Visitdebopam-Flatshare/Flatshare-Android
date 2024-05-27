@@ -12,7 +12,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.debopam.flatshareprogress.DialogCustomProgress;
+import com.debopam.progressdialog.DialogCustomProgress;
 import com.google.android.material.card.MaterialCardView;
 import com.joinflatshare.FlatShareApplication;
 import com.joinflatshare.FlatshareCentral.R;

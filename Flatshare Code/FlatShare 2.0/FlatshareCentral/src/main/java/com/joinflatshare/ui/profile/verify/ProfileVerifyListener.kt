@@ -43,7 +43,7 @@ internal class ProfileVerifyListener(
                     AdhaarRequest(number),
                     object : OnFlatshareResponseCallBack<Response<ResponseBody>> {
                         override fun onResponseCallBack(response: String) {
-                            val resp = Gson().fromJson(response, BaseResponse::class.java)
+                            val resp = Gson().fromJson(response, com.joinflatshare.pojo.BaseResponse::class.java)
                             if (resp.status == 200) {
                                 MixpanelUtils.onButtonClicked("12digit Aadhar Continue")
                                 val intent = Intent(activity, OtpActivity::class.java)

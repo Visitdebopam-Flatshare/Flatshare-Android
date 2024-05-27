@@ -11,7 +11,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.view.View;
 
-import com.debopam.flatshareprogress.DialogCustomProgress;
+import com.debopam.progressdialog.DialogCustomProgress;
 import com.joinflatshare.FlatshareCentral.R;
 import com.joinflatshare.FlatshareCentral.databinding.ActivityFlatBinding;
 import com.joinflatshare.chat.SendBirdFlatChannel;

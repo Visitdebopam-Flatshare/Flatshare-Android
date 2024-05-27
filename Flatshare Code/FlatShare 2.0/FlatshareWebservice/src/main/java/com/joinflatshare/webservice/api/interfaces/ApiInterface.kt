@@ -1,13 +1,19 @@
 package com.joinflatshare.webservice.api.interfaces
 
-import com.joinflatshare.pojo.BaseResponse
-import com.joinflatshare.pojo.invite.*
 import com.joinflatshare.pojo.likes.LikeRequest
-import com.joinflatshare.pojo.user.*
+import com.joinflatshare.pojo.user.AdhaarOtp
+import com.joinflatshare.pojo.user.AdhaarRequest
+import com.joinflatshare.pojo.user.User
 import io.reactivex.Observable
 import okhttp3.ResponseBody
 import retrofit2.Response
-import retrofit2.http.*
+import retrofit2.http.Body
+import retrofit2.http.GET
+import retrofit2.http.PATCH
+import retrofit2.http.POST
+import retrofit2.http.PUT
+import retrofit2.http.Path
+import retrofit2.http.Url
 
 interface ApiInterface {
 
@@ -28,7 +34,7 @@ interface ApiInterface {
     ): Observable<Response<ResponseBody>>
 
     @POST("login/auth")
-    fun login(@Body request: OtpRequest): Observable<Response<ResponseBody>>
+    fun login(@Body request: com.joinflatshare.pojo.user.OtpRequest): Observable<Response<ResponseBody>>
 
     // Verification
     @POST("users/verification/request")
@@ -71,12 +77,12 @@ interface ApiInterface {
     @PUT()
     fun acceptConnection(
         @Url url: String
-    ): Observable<BaseResponse>
+    ): Observable<com.joinflatshare.pojo.BaseResponse>
 
     @PUT("flats/accept/{id}")
     fun acceptFlatRequest(
         @Path("id") id: String
-    ): Observable<BaseResponse>
+    ): Observable<com.joinflatshare.pojo.BaseResponse>
 
     @PUT("users/friends/accept/{id}")
     fun acceptFriendRequest(

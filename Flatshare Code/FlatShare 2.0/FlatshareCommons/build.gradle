@@ -5,7 +5,9 @@ plugins {
 apply from: "$rootDir/version.gradle"
 
 dependencies {
+    api project(":FlatsharePojo")
 
-    implementation("com.squareup.retrofit2:converter-gson:2.9.0")
-    implementation "androidx.datastore:datastore-preferences:1.0.0"
+    api "androidx.activity:activity-ktx:${VERSION_KTX}"
+    api "androidx.appcompat:appcompat:${VERSION_APP_COMPAT}"
+    api "androidx.core:core-ktx:${VERSION_KTX_CORE}"
 }

@@ -2,7 +2,7 @@ package com.joinflatshare.utils.appupdater
 
 import android.os.AsyncTask
 import android.os.Environment
-import com.debopam.flatshareprogress.DialogCustomProgress
+import com.debopam.progressdialog.DialogCustomProgress
 import com.joinflatshare.api.retrofit.ApiManager
 import com.joinflatshare.ui.base.ApplicationBaseActivity
 import com.joinflatshare.utils.helper.CommonMethod

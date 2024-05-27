@@ -1,7 +1,7 @@
 package com.joinflatshare.pojo.flat
 
-import com.google.gson.annotations.SerializedName
 import com.joinflatshare.pojo.user.ModelLocation
+import com.google.gson.annotations.SerializedName
 
 data class CreateFlatRequest(
     @field:SerializedName("norms")

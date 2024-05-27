@@ -5,9 +5,5 @@ plugins {
 apply from: "$rootDir/version.gradle"
 
 dependencies {
-
-    implementation project(":FlatshareCommons")
-
-    // For Retrofit
-    api ("io.github.visitdebopam:retrofit:${VERSION_RETROFIT}")
+    implementation "com.squareup.retrofit2:converter-gson:${VERSION_GSON}"
 }

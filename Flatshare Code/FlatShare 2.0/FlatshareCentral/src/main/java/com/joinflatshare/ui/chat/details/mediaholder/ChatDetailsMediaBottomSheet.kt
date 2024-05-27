@@ -9,7 +9,7 @@ import android.provider.ContactsContract
 import android.view.View
 import android.view.ViewTreeObserver
 import android.widget.LinearLayout
-import com.debopam.flatshareprogress.DialogCustomProgress
+import com.debopam.progressdialog.DialogCustomProgress
 import com.google.android.material.card.MaterialCardView
 import com.google.gson.Gson
 import com.joinflatshare.FlatshareCentral.R

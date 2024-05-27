@@ -5,10 +5,8 @@ import androidx.recyclerview.widget.GridLayoutManager
 import com.joinflatshare.FlatshareCentral.databinding.DialogFlatOptionsBinding
 import com.joinflatshare.constants.AppData
 import com.joinflatshare.customviews.GridSpacingItemDecoration
-import com.joinflatshare.pojo.amenities.AmenitiesItem
 import com.joinflatshare.ui.dialogs.DialogFlatOptions
 import com.joinflatshare.utils.helper.CommonMethod
-import com.joinflatshare.utils.helper.CommonMethods
 
 class RoomSizeViewBind() {
     var dialogFlatOptions: DialogFlatOptions? = null
@@ -51,9 +49,9 @@ class RoomSizeViewBind() {
                 if (!selected.isEmpty())
                     wholeSize.add(selected)
             }
-            val items = ArrayList<AmenitiesItem>()
+            val items = ArrayList<com.joinflatshare.pojo.amenities.AmenitiesItem>()
             for (size in AppData.flatData!!.flatSize) {
-                val temp = AmenitiesItem()
+                val temp = com.joinflatshare.pojo.amenities.AmenitiesItem()
                 temp.isSelected = wholeSize.contains(size)
                 temp.id = 1
                 temp.name = size

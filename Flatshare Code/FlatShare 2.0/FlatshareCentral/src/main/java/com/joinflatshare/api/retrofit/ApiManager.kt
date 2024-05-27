@@ -1,7 +1,7 @@
 package com.joinflatshare.api.retrofit
 
 import com.android.billingclient.api.Purchase
-import com.debopam.flatshareprogress.DialogCustomProgress
+import com.debopam.progressdialog.DialogCustomProgress
 import com.joinflatshare.FlatShareApplication
 import com.joinflatshare.api.retrofit.RetrofitClient.Companion.getClient
 import com.joinflatshare.constants.AppConstants
@@ -16,10 +16,6 @@ import com.joinflatshare.pojo.invite.InvitedRequest
 import com.joinflatshare.pojo.invite.RequestInvite
 import com.joinflatshare.pojo.invite.RequestSavedContacts
 import com.joinflatshare.pojo.purchase.PurchaseRequest
-import com.joinflatshare.pojo.user.AdhaarOtp
-import com.joinflatshare.pojo.user.AdhaarRequest
-import com.joinflatshare.pojo.user.User
-import com.joinflatshare.pojo.user.UserResponse
 import com.joinflatshare.ui.base.ApplicationBaseActivity
 import com.joinflatshare.ui.base.BaseActivity.TYPE_FLAT
 import com.joinflatshare.utils.helper.CommonMethod

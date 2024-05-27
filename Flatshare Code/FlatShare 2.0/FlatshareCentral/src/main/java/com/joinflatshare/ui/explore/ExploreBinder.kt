@@ -2,14 +2,8 @@ package com.joinflatshare.ui.explore
 
 import android.view.View
 import com.joinflatshare.FlatshareCentral.R
-import com.joinflatshare.constants.AppConstants
-import com.joinflatshare.pojo.explore.UserRecommendationItem
 import com.joinflatshare.pojo.flat.DealBreakers
-import com.joinflatshare.pojo.user.ModelLocation
 import com.joinflatshare.ui.explore.holder.AdapterUserHolder
-import com.joinflatshare.utils.helper.CommonMethod
-import com.joinflatshare.utils.helper.DistanceCalculator
-import com.joinflatshare.utils.helper.ImageHelper
 
 
 class ExploreBinder(

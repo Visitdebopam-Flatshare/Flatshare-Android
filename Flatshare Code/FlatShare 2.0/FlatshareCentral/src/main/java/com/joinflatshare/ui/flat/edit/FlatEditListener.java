@@ -11,7 +11,7 @@ import android.widget.LinearLayout;
 
 import androidx.core.content.ContextCompat;
 
-import com.debopam.flatshareprogress.DialogCustomProgress;
+import com.debopam.progressdialog.DialogCustomProgress;
 import com.joinflatshare.FlatShareApplication;
 import com.joinflatshare.FlatshareCentral.R;
 import com.joinflatshare.FlatshareCentral.databinding.ActivityFlatEditBinding;

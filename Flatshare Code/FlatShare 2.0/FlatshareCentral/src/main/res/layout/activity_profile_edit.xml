@@ -149,19 +149,45 @@
                     android:textColor="@color/black"
                     android:textSize="@dimen/_12sdp" />
 
-                <EditText
-                    android:id="@+id/edt_profile_work"
+                <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/_10sdp"
-                    android:background="@drawable/drawable_edittext"
-                    android:fontFamily="@font/font_regular"
-                    android:hint="Tell us about your work life..."
-                    android:imeOptions="actionDone"
-                    android:inputType="textCapSentences"
-                    android:maxLength="30"
-                    android:textColor="@color/color_text_primary"
-                    android:textSize="@dimen/_12sdp" />
+                    android:background="@drawable/drawable_edittext">
+
+                    <TextView
+                        android:id="@+id/txt_profile_work_limit"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignBottom="@id/edt_profile_work"
+                        android:layout_alignParentEnd="true"
+                        android:layout_gravity="end"
+                        android:fontFamily="@font/font_regular"
+                        android:text="150"
+                        android:textColor="@color/color_grey_icon"
+                        android:textSize="@dimen/_8sdp" />
+
+                    <EditText
+                        android:id="@+id/edt_profile_work"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="@dimen/_20sdp"
+                        android:layout_toStartOf="@id/txt_profile_work_limit"
+                        android:background="@android:color/transparent"
+                        android:fontFamily="@font/font_regular"
+                        android:hint="Tell us about your work life..."
+                        android:imeOptions="actionDone"
+                        android:inputType="textMultiLine"
+                        android:maxLength="150"
+                        android:overScrollMode="always"
+                        android:paddingVertical="@dimen/_5sdp"
+                        android:scrollbarAlwaysDrawVerticalTrack="true"
+                        android:scrollbarStyle="insideInset"
+                        android:scrollbars="vertical"
+                        android:scrollHorizontally="false"
+                        android:textColor="@color/color_text_primary"
+                        android:textSize="@dimen/_12sdp" />
+                </RelativeLayout>
 
 
                 <TextView

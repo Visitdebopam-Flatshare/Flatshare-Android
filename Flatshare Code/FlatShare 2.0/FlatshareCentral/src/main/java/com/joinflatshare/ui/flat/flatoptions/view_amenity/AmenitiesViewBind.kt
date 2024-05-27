@@ -4,7 +4,6 @@ import android.view.View
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.joinflatshare.FlatshareCentral.databinding.DialogFlatOptionsBinding
 import com.joinflatshare.constants.AppData
-import com.joinflatshare.pojo.amenities.AmenitiesItem
 import com.joinflatshare.ui.dialogs.DialogFlatOptions
 
 class AmenitiesViewBind(private val dialogFlatOptions: DialogFlatOptions) {
@@ -30,9 +29,9 @@ class AmenitiesViewBind(private val dialogFlatOptions: DialogFlatOptions) {
             dialogFlatOptions.flat?.flatProperties?.amenities?.isEmpty() == false
         )
             wholeSize.addAll(dialogFlatOptions.flat?.flatProperties?.amenities!!)
-        val items = ArrayList<AmenitiesItem>()
+        val items = ArrayList<com.joinflatshare.pojo.amenities.AmenitiesItem>()
         for (amen in AppData.flatData!!.amenities) {
-            val temp = AmenitiesItem()
+            val temp = com.joinflatshare.pojo.amenities.AmenitiesItem()
             temp.isSelected = wholeSize.contains(amen)
             temp.id = 1
             temp.name = amen
@@ -41,7 +40,7 @@ class AmenitiesViewBind(private val dialogFlatOptions: DialogFlatOptions) {
         setAmenitiesAdapter(items)
     }
 
-    private fun setAmenitiesAdapter(items: ArrayList<AmenitiesItem>) {
+    private fun setAmenitiesAdapter(items: ArrayList<com.joinflatshare.pojo.amenities.AmenitiesItem>) {
         if (amenititesAdapter == null) {
             viewBind?.rvFlatAmenities?.setLayoutManager(LinearLayoutManager(dialogFlatOptions.activity))
             amenititesAdapter = AmenitiesAdapter(viewBind?.rvFlatAmenities, items)

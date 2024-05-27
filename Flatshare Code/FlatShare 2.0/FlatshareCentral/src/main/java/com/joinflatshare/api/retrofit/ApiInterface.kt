@@ -18,15 +18,15 @@ interface ApiInterface {
 
     /*------------------------------ INVITE ------------------------------*/
     @POST("users/app/invite/{phone}")
-    fun inviteToApp(@Path("phone") phone: String): Observable<com.joinflatshare.pojo.BaseResponse>
+    fun inviteToApp(@Path("phone") phone: String): Observable<BaseResponse>
 
     @POST("users/friends/add/{phone}")
-    fun addFriends(@Path("phone") phone: String): Observable<com.joinflatshare.pojo.BaseResponse>
+    fun addFriends(@Path("phone") phone: String): Observable<BaseResponse>
 
     @POST("flats/add/{id}")
     fun addFlatmate(
         @Path("id") id: String
-    ): Observable<com.joinflatshare.pojo.BaseResponse>
+    ): Observable<BaseResponse>
 
     @POST("users/status/{type}")
     fun getInvitedStatus(
@@ -37,44 +37,44 @@ interface ApiInterface {
     @POST("users/app/reqInvite/")
     fun requestInvite(
         @Body request: RequestInvite
-    ): Observable<com.joinflatshare.pojo.BaseResponse>
+    ): Observable<BaseResponse>
 
     @POST("users/contacts/")
     fun sendContacts(
         @Body request: RequestSavedContacts
-    ): Observable<com.joinflatshare.pojo.BaseResponse>
+    ): Observable<BaseResponse>
 
     /*------------------------------ Notification & Requests ------------------------------*/
 
     @POST()
     fun requestConnection(
         @Url url: String
-    ): Observable<com.joinflatshare.pojo.BaseResponse>
+    ): Observable<BaseResponse>
 
     @DELETE()
     fun rejectConnection(
         @Url url: String
-    ): Observable<com.joinflatshare.pojo.BaseResponse>
+    ): Observable<BaseResponse>
 
     @DELETE()
     fun removeConnection(
         @Url url: String
-    ): Observable<com.joinflatshare.pojo.BaseResponse>
+    ): Observable<BaseResponse>
 
     @DELETE("flats/reject/{id}")
     fun rejectFlatRequest(
         @Path("id") id: String
-    ): Observable<com.joinflatshare.pojo.BaseResponse>
+    ): Observable<BaseResponse>
 
     @DELETE("users/friends/reject/{id}")
     fun rejectFriendRequest(
         @Path("id") id: String
-    ): Observable<com.joinflatshare.pojo.BaseResponse>
+    ): Observable<BaseResponse>
 
     @DELETE("users/friends/remove/{id}")
     fun removeFriend(
         @Path("id") id: String
-    ): Observable<com.joinflatshare.pojo.BaseResponse>
+    ): Observable<BaseResponse>
 
     /*------------------------------ Flat ------------------------------*/
     @POST("flats/create")
@@ -89,7 +89,7 @@ interface ApiInterface {
     @DELETE("flats/remove/{id}")
     fun removeFlatmate(
         @Path("id") id: String
-    ): Observable<com.joinflatshare.pojo.BaseResponse>
+    ): Observable<BaseResponse>
 
     /*------------------------------ FEED ------------------------------*/
     @DELETE()
@@ -101,20 +101,20 @@ interface ApiInterface {
     fun revealLikes(
         @Path("type") type: String,
         @Path("phone") phone: String
-    ): Observable<com.joinflatshare.pojo.BaseResponse>
+    ): Observable<BaseResponse>
 
 
     /*------------------------------ REPORT ------------------------------*/
     @POST()
     fun report(
         @Url url: String
-    ): Observable<com.joinflatshare.pojo.BaseResponse>
+    ): Observable<BaseResponse>
 
 
     /*------------------------------ PURCHASE ------------------------------*/
     @POST("users/purchase/product")
     fun purchaseOrder(
         @Body request: PurchaseRequest
-    ): Observable<com.joinflatshare.pojo.BaseResponse>
+    ): Observable<BaseResponse>
 
 }

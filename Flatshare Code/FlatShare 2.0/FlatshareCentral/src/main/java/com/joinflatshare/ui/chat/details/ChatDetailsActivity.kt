@@ -6,7 +6,7 @@ import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import androidx.activity.OnBackPressedCallback
-import com.debopam.flatshareprogress.DialogCustomProgress
+import com.debopam.progressdialog.DialogCustomProgress
 import com.joinflatshare.FlatshareCentral.R
 import com.joinflatshare.FlatshareCentral.databinding.ActivityChatDetailsBinding
 import com.joinflatshare.chat.ApplicationChatHandler
@@ -18,7 +18,6 @@ import com.joinflatshare.constants.RequestCodeConstants.REQUEST_CODE_STORAGE_AUD
 import com.joinflatshare.ui.chat.ChatBaseActivity
 import com.joinflatshare.utils.amazonaws.AmazonUploadFile
 import com.joinflatshare.utils.helper.CommonMethod
-import com.joinflatshare.utils.helper.CommonMethods
 import com.joinflatshare.utils.helper.ImageHelper
 import com.sendbird.android.SendbirdChat.removeChannelHandler
 import com.sendbird.android.channel.GroupChannel
@@ -85,7 +84,7 @@ open class ChatDetailsActivity : ChatBaseActivity() {
 
     override fun onRequestPermissionsResult(
         requestCode: Int,
-        permissions: Array<String?>,
+        permissions: Array<out String>,
         grantResults: IntArray
     ) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)

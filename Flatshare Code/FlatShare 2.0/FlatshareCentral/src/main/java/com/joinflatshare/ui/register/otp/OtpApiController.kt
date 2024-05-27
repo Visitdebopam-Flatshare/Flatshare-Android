@@ -18,7 +18,6 @@ import com.joinflatshare.db.daos.UserDao
 import com.joinflatshare.fcm.NotificationPermissionHandler
 import com.joinflatshare.pojo.BaseResponse
 import com.joinflatshare.pojo.user.AdhaarOtp
-import com.joinflatshare.pojo.user.OtpRequest
 import com.joinflatshare.pojo.user.UserResponse
 import com.joinflatshare.ui.dialogs.DialogLottieViewer
 import com.joinflatshare.ui.explore.ExploreActivity
@@ -45,7 +44,7 @@ class OtpApiController(private val activity: OtpActivity) {
                 activity.phone,
                 object : OnFlatshareResponseCallBack<Response<ResponseBody>> {
                     override fun onResponseCallBack(response: String) {
-                        val resp = Gson().fromJson(response, BaseResponse::class.java)
+                        val resp = Gson().fromJson(response, com.joinflatshare.pojo.BaseResponse::class.java)
                         if (resp.success) {
                             activity.showError(false, "An OTP is sent to ${activity.phone}")
                             SmsReader(activity).initialiseRetriever()
@@ -66,7 +65,13 @@ class OtpApiController(private val activity: OtpActivity) {
         val imei = if (AppConstants.isAppLive) "" else "3518660922081972"
         val firebaseToken =
             FlatShareApplication.getDbInstance().appDao().get(AppDao.FIREBASE_TOKEN)
-        val request = OtpRequest(activity.phone, firebaseToken, otp, false, imei)
+        val request = com.joinflatshare.pojo.user.OtpRequest(
+            activity.phone,
+            firebaseToken,
+            otp,
+            false,
+            imei
+        )
         WebserviceManager().login(
             activity,
             request,
@@ -112,7 +117,7 @@ class OtpApiController(private val activity: OtpActivity) {
             AdhaarOtp(adhaarOTP),
             object : OnFlatshareResponseCallBack<Response<ResponseBody>> {
                 override fun onResponseCallBack(response: String) {
-                    val resp = Gson().fromJson(response, BaseResponse::class.java)
+                    val resp = Gson().fromJson(response, com.joinflatshare.pojo.BaseResponse::class.java)
                     if (resp.status == 200) {
                         MixpanelUtils.onButtonClicked("Aadhar OTP Submit")
                         getProfile()

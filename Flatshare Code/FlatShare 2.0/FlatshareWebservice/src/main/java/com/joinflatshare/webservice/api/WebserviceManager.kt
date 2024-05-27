@@ -1,13 +1,12 @@
 package com.joinflatshare.webservice.api
 
 import androidx.activity.ComponentActivity
+import com.joinflatshare.webservice.api.interfaces.IWebservice
+import com.joinflatshare.webservice.api.interfaces.OnFlatshareResponseCallBack
 import com.joinflatshare.pojo.likes.LikeRequest
 import com.joinflatshare.pojo.user.AdhaarOtp
 import com.joinflatshare.pojo.user.AdhaarRequest
-import com.joinflatshare.pojo.user.OtpRequest
 import com.joinflatshare.pojo.user.User
-import com.joinflatshare.webservice.api.interfaces.IWebservice
-import com.joinflatshare.webservice.api.interfaces.OnFlatshareResponseCallBack
 import io.reactivex.Observable
 import okhttp3.ResponseBody
 import retrofit2.Response
@@ -46,7 +45,7 @@ class WebserviceManager {
 
     fun login(
         activity: ComponentActivity,
-        requestBody: OtpRequest,
+        requestBody: com.joinflatshare.pojo.user.OtpRequest,
         callback: OnFlatshareResponseCallBack<Response<ResponseBody>>
     ) {
         val observable = ApiManager.getApiInterface().login(requestBody)

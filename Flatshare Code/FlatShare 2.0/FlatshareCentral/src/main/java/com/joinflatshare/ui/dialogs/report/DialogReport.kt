@@ -11,7 +11,6 @@ import com.joinflatshare.ui.explore.ExploreActivity
 import com.joinflatshare.ui.flat.details.FlatDetailsActivity
 import com.joinflatshare.ui.profile.details.ProfileDetailsActivity
 import com.joinflatshare.utils.helper.CommonMethod
-import com.joinflatshare.utils.helper.CommonMethods
 
 class DialogReport(
     private val activity: BaseActivity,

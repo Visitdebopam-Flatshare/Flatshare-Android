@@ -5,16 +5,13 @@ import android.view.MotionEvent
 import androidx.recyclerview.widget.RecyclerView
 import com.joinflatshare.FlatShareApplication
 import com.joinflatshare.FlatshareCentral.databinding.ActivityLikedBinding
-import com.joinflatshare.constants.AppConstants
-import com.joinflatshare.pojo.explore.FlatRecommendationItem
-import com.joinflatshare.pojo.explore.UserRecommendationItem
 import com.joinflatshare.ui.base.BaseActivity
 
 class LikedActivity : BaseActivity() {
     lateinit var viewBinding: ActivityLikedBinding
     lateinit var apiController: LikedApiController
-    val flats = ArrayList<FlatRecommendationItem>()
-    val users = ArrayList<UserRecommendationItem>()
+    val flats = ArrayList<com.joinflatshare.pojo.explore.FlatRecommendationItem>()
+    val users = ArrayList<com.joinflatshare.pojo.explore.UserRecommendationItem>()
     var SEARCH_TYPE = ""
     val flat = FlatShareApplication.getDbInstance().userDao().getFlatData()
     var viewTypeReceivedLikes = false

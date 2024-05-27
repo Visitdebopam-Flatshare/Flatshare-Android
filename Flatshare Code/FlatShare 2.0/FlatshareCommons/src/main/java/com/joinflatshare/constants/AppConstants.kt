@@ -2,6 +2,7 @@ package com.joinflatshare.constants
 
 import com.joinflatshare.pojo.user.User
 
+
 object AppConstants {
 
     const val isAppLive = false

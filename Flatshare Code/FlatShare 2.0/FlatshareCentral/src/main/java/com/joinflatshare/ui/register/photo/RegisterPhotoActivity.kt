@@ -6,7 +6,7 @@ import android.view.ViewTreeObserver.OnGlobalLayoutListener
 import android.widget.LinearLayout
 import com.debopam.ImagePicker
 import com.debopam.ImagePicker.Companion.getError
-import com.debopam.flatshareprogress.DialogCustomProgress
+import com.debopam.progressdialog.DialogCustomProgress
 import com.joinflatshare.FlatShareApplication
 import com.joinflatshare.FlatshareCentral.databinding.ActivityRegisterPhotoBinding
 import com.joinflatshare.chat.SendBirdUser

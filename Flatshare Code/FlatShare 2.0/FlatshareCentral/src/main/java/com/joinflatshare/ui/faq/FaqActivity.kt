@@ -29,7 +29,12 @@ class FaqActivity : BaseActivity() {
 
     private fun getFaqs(): ArrayList<FaqItem> {
         val faqItems = ArrayList<FaqItem>()
-        faqItems.add(FaqItem("What is flatshare?", true))
+        faqItems.add(
+            FaqItem(
+                "What is flatshare?",
+                true
+            )
+        )
         faqItems.add(
             FaqItem(
                 "flatshare is a new app for students and young adults living in India where members connect with each other for dating, hunting and sharing a flat together.",
@@ -38,8 +43,18 @@ class FaqActivity : BaseActivity() {
         )
 
 
-        faqItems.add(FaqItem("Why did you create flatshare?", true))
-        faqItems.add(FaqItem("Who you live with = Who you become.", false))
+        faqItems.add(
+            FaqItem(
+                "Why did you create flatshare?",
+                true
+            )
+        )
+        faqItems.add(
+            FaqItem(
+                "Who you live with = Who you become.",
+                false
+            )
+        )
         faqItems.add(
             FaqItem(
                 "People you surround yourself with can have a huge impact on your life.",
@@ -52,7 +67,12 @@ class FaqActivity : BaseActivity() {
                 false
             )
         )
-        faqItems.add(FaqItem("People who get you.", false))
+        faqItems.add(
+            FaqItem(
+                "People who get you.",
+                false
+            )
+        )
 
 
         faqItems.add(
@@ -76,7 +96,12 @@ class FaqActivity : BaseActivity() {
 
 
 
-        faqItems.add(FaqItem("How do I find a shared flat?", true))
+        faqItems.add(
+            FaqItem(
+                "How do I find a shared flat?",
+                true
+            )
+        )
         faqItems.add(
             FaqItem(
                 "Looking for an individual bed/room in an already rented flat.\nFinding flatshare has never been easier.",
@@ -104,7 +129,12 @@ class FaqActivity : BaseActivity() {
 
 
 
-        faqItems.add(FaqItem("How do I find a flatmate for my already rented flat?", true))
+        faqItems.add(
+            FaqItem(
+                "How do I find a flatmate for my already rented flat?",
+                true
+            )
+        )
         faqItems.add(
             FaqItem(
                 "Got a vacant room or bed?\nWith flatshare, you can find flatmates like friends.",
@@ -176,7 +206,12 @@ class FaqActivity : BaseActivity() {
 
 
 
-        faqItems.add(FaqItem("What does f - FlatScore mean?", true))
+        faqItems.add(
+            FaqItem(
+                "What does f - FlatScore mean?",
+                true
+            )
+        )
         faqItems.add(
             FaqItem(
                 "FlatScore is a measure of community trust. Higher the community trusts you, the higher your score. No spammer, scammer, or fraudster can have a high FlatScore.",
@@ -193,7 +228,12 @@ class FaqActivity : BaseActivity() {
 
 
 
-        faqItems.add(FaqItem("How do Invites work?", true))
+        faqItems.add(
+            FaqItem(
+                "How do Invites work?",
+                true
+            )
+        )
         faqItems.add(
             FaqItem(
                 "Everybody who joins flatshare can invite a few of their friends. If your friends join you get to invite even more friends.",
@@ -216,7 +256,12 @@ class FaqActivity : BaseActivity() {
 
 
 
-        faqItems.add(FaqItem("When should I report someone?", true))
+        faqItems.add(
+            FaqItem(
+                "When should I report someone?",
+                true
+            )
+        )
         faqItems.add(
             FaqItem(
                 "We care deeply about our users and strive to make our community safe and comfortable. We will not tolerate any form of abuse or harassment.",
@@ -253,7 +298,12 @@ class FaqActivity : BaseActivity() {
 
 
 
-        faqItems.add(FaqItem("Can I share feedback or a feature request?", true))
+        faqItems.add(
+            FaqItem(
+                "Can I share feedback or a feature request?",
+                true
+            )
+        )
         faqItems.add(
             FaqItem(
                 "Constant evolution is our MO. We're always looking for ways to improve and make flatshare the best it can be. So don't be shy - let us know what you think!",

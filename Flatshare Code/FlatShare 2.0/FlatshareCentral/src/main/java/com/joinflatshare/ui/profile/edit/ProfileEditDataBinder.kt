@@ -92,8 +92,13 @@ class ProfileEditDataBinder(
         adapter?.setItems(adapterUserImages)
     }
 
-    fun bioLimit() {
+    internal fun bioLimit() {
         val due: Int = 150 - viewBind.edtProfileStatus.getText().toString().length
         viewBind.txtProfileStatusLimit.text = "" + due
+    }
+
+    internal fun workLimit() {
+        val due: Int = 150 - viewBind.edtProfileWork.getText().toString().length
+        viewBind.txtProfileWorkLimit.text = "" + due
     }
 }

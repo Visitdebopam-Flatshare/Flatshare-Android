@@ -6,7 +6,6 @@ import com.google.gson.Gson
 import com.joinflatshare.FlatshareCentral.databinding.ActivityLikedBinding
 import com.joinflatshare.customviews.PaginationScrollListener
 import com.joinflatshare.payment.PaymentHandler
-import com.joinflatshare.pojo.explore.RecommendationResponse
 import com.joinflatshare.ui.base.BaseActivity
 import com.joinflatshare.ui.explore.adapter.ExploreAdapter
 import com.joinflatshare.webservice.api.WebserviceManager
@@ -70,7 +69,7 @@ class LikedApiController(
                 activity.users.clear()
                 adapter = null
             }
-            val resp = Gson().fromJson(response, RecommendationResponse::class.java)
+            val resp = Gson().fromJson(response, com.joinflatshare.pojo.explore.RecommendationResponse::class.java)
             totalCount = resp.count
 
             if (!isApiCalledForCountOnly) {

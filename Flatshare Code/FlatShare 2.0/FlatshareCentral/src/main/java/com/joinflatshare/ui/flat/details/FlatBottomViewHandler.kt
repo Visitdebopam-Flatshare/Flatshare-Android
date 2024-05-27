@@ -1,7 +1,7 @@
 package com.joinflatshare.ui.flat.details
 
 import android.view.View
-import com.debopam.flatshareprogress.DialogCustomProgress
+import com.debopam.progressdialog.DialogCustomProgress
 import com.joinflatshare.FlatshareCentral.databinding.ActivityFlatDetailsBinding
 import com.joinflatshare.constants.ChatRequestConstants
 import com.joinflatshare.constants.RouteConstants

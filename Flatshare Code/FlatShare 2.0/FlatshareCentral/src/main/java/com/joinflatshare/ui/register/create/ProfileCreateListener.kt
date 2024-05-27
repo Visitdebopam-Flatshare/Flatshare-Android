@@ -16,7 +16,6 @@ import com.joinflatshare.customviews.bottomsheet.BottomSheetView
 import com.joinflatshare.customviews.bottomsheet.ModelBottomSheet
 import com.joinflatshare.pojo.config.RentRange
 import com.joinflatshare.pojo.user.Name
-import com.joinflatshare.pojo.user.User
 import com.joinflatshare.utils.helper.CommonMethod
 import java.util.Calendar
 
@@ -124,7 +123,8 @@ class ProfileCreateListener(
                                 modelUser?.name = name
                                 modelUser?.dob = dob
                                 modelUser?.gender = viewBind.txtGender.text.toString()
-                                modelUser?.flatProperties?.rentRange = RentRange()
+                                modelUser?.flatProperties?.rentRange =
+                                    RentRange()
                                 modelUser?.work = viewBind.txtDob.text.toString()
                                 activity.updateUser(modelUser)
                             }

@@ -2,7 +2,7 @@ package com.joinflatshare.payment
 
 import com.android.billingclient.api.ProductDetails
 import com.android.billingclient.api.Purchase
-import com.debopam.flatshareprogress.DialogCustomProgress
+import com.debopam.progressdialog.DialogCustomProgress
 import com.google.gson.Gson
 import com.joinflatshare.FlatShareApplication
 import com.joinflatshare.constants.GooglePaymentConstants
@@ -11,7 +11,6 @@ import com.joinflatshare.pojo.purchase.PurchaseOrder
 import com.joinflatshare.pojo.purchase.PurchaseRequest
 import com.joinflatshare.ui.base.BaseActivity
 import com.joinflatshare.ui.dialogs.DialogRestriction
-import com.joinflatshare.ui.explore.adapter.ExploreAdapter
 import com.joinflatshare.utils.helper.CommonMethod
 import com.joinflatshare.utils.logger.Logger
 import com.joinflatshare.utils.mixpanel.MixpanelUtils

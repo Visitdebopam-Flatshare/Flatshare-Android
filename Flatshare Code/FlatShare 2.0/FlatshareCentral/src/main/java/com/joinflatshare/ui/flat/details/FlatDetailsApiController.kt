@@ -3,7 +3,7 @@ package com.joinflatshare.ui.flat.details
 import android.app.Activity
 import android.content.Intent
 import android.view.View
-import com.debopam.flatshareprogress.DialogCustomProgress
+import com.debopam.progressdialog.DialogCustomProgress
 import com.google.gson.Gson
 import com.joinflatshare.FlatShareApplication.Companion.getDbInstance
 import com.joinflatshare.FlatshareCentral.R
@@ -82,7 +82,7 @@ class FlatDetailsApiController(
                 override fun onResponseCallBack(response: String) {
                     DialogLottieViewer(activity, R.raw.lottie_like, null);
                     val resp =
-                        Gson().fromJson(response, BaseResponse::class.java)
+                        Gson().fromJson(response, com.joinflatshare.pojo.BaseResponse::class.java)
                     if (resp.status == 200) {
                         activity.flatResponse.isLiked = true
                         viewBind.cardLike.visibility = View.GONE
@@ -127,7 +127,7 @@ class FlatDetailsApiController(
                 showPaymentForChats(activity, null)
             } else {
                 DialogLottieViewer(activity, R.raw.lottie_chat_request, null)
-                val resp = response as BaseResponse?
+                val resp = response as com.joinflatshare.pojo.BaseResponse?
                 if (resp!!.status == 200) {
                     onChatRequested(
                         AppConstants.loggedInUser!!.id,
@@ -157,7 +157,7 @@ class FlatDetailsApiController(
             0,
             activity.flatResponse.data!!.mongoId
         ) { response: Any? ->
-            val resp = response as BaseResponse?
+            val resp = response as com.joinflatshare.pojo.BaseResponse?
             if (resp!!.status == 200) {
                 if (callbackIntent == null)
                     callbackIntent = Intent()
