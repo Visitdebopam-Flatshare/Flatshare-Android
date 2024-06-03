@@ -94,30 +94,6 @@ class WebserviceManager {
         handleApiRequestWithProgress(activity, observable, callback)
     }
 
-    fun getFriendList(
-        activity: ComponentActivity, callback: OnFlatshareResponseCallBack<Response<ResponseBody>>
-    ) {
-        val observable = ApiManager.getApiInterface().getFriendList()
-        handleApiRequestWithProgress(activity, observable, callback)
-    }
-
-    fun getNotifications(
-        activity: ComponentActivity,
-        pageNo: String?,
-        callback: OnFlatshareResponseCallBack<Response<ResponseBody>>
-    ) {
-        val observable = ApiManager.getApiInterface().getNotifications(pageNo)
-        handleApiRequestWithProgress(activity, observable, callback)
-    }
-
-    fun getFriendRequests(
-        activity: ComponentActivity,
-        callback: OnFlatshareResponseCallBack<Response<ResponseBody>>
-    ) {
-        val observable = ApiManager.getApiInterface().getFriendRequests()
-        handleApiRequestWithProgress(activity, observable, callback)
-    }
-
     fun getFlatRequests(
         activity: ComponentActivity,
         callback: OnFlatshareResponseCallBack<Response<ResponseBody>>
@@ -196,7 +172,7 @@ class WebserviceManager {
         activity: ComponentActivity,
         showProgress: Boolean,
         type: String?,
-        pageNo: String?,
+        pageNo: Int?,
         callback: OnFlatshareResponseCallBack<Response<ResponseBody>>
     ) {
         val observable = ApiManager.getApiInterface().getLikesSent(
@@ -210,7 +186,7 @@ class WebserviceManager {
     fun getLikesReceived(
         activity: ComponentActivity,
         type: String?,
-        pageNo: String?,
+        pageNo: Int?,
         callback: OnFlatshareResponseCallBack<Response<ResponseBody>>
     ) {
         val observable = ApiManager.getApiInterface().getLikesReceived(

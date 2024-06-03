@@ -219,7 +219,7 @@ class LikedApiController(
             activity,
             !isApiCalledForCountOnly,
             activity.SEARCH_TYPE,
-            currentSentPage.toString(), callback
+            currentSentPage, callback
         )
     }
 
@@ -227,7 +227,7 @@ class LikedApiController(
         WebserviceManager().getLikesReceived(
             activity,
             activity.SEARCH_TYPE,
-            currentReceivedPage.toString(),
+            currentReceivedPage,
             callback
         )
     }

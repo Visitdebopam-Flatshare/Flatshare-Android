@@ -2,14 +2,15 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content">
 
-    <RelativeLayout
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_above="@id/ll_explore_buttons"
         android:layout_alignParentTop="true"
-        android:layout_marginBottom="@dimen/_10sdp">
+        android:layout_marginBottom="@dimen/_10sdp"
+        android:orientation="vertical">
 
         <com.google.android.material.card.MaterialCardView
             android:layout_width="match_parent"
@@ -26,7 +27,7 @@
 
                 <ImageView
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:background="@drawable/ic_explore_bg"
                     android:scaleType="centerInside" />
 
@@ -37,38 +38,46 @@
                     android:gravity="center"
                     android:orientation="vertical">
 
-
                     <androidx.viewpager2.widget.ViewPager2
                         android:id="@+id/vp_explore"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/_10sdp" />
 
-                    <com.google.android.material.tabs.TabLayout
-                        android:id="@+id/tab_layout"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="bottom"
-                        android:layout_marginTop="@dimen/_10sdp"
-                        android:background="@android:color/transparent"
-                        android:clickable="false"
-                        app:tabBackground="@drawable/drawable_tab_selector"
-                        app:tabGravity="center"
-                        app:tabIndicatorGravity="bottom"
-                        app:tabIndicatorHeight="0dp"
-                        app:tabPaddingEnd="@dimen/_10sdp" />
                 </LinearLayout>
 
                 <com.airbnb.lottie.LottieAnimationView
                     android:id="@+id/lottie_explore"
-                    android:visibility="gone"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent" />
+                    android:layout_height="match_parent"
+                    android:visibility="gone" />
             </FrameLayout>
 
         </com.google.android.material.card.MaterialCardView>
 
-    </RelativeLayout>
+        <LinearLayout
+            android:id="@+id/ll_explore_super_check"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/button_height"
+            android:layout_marginTop="@dimen/_20sdp"
+            android:background="@drawable/drawable_button_black_elliptical"
+            android:gravity="center">
+
+            <ImageView
+                android:layout_width="@dimen/_35sdp"
+                android:layout_height="@dimen/_35sdp"
+                android:src="@drawable/ic_explore_super_check" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/font_semibold"
+                android:text="Send SuperCheck"
+                android:textColor="@color/white"
+                android:textSize="@dimen/_14sdp" />
+        </LinearLayout>
+
+    </LinearLayout>
 
 
     <LinearLayout
@@ -77,6 +86,7 @@
         android:layout_height="@dimen/_60sdp"
         android:layout_alignParentBottom="true"
         android:orientation="horizontal"
+        android:visibility="gone"
         android:weightSum="3">
 
         <ImageView

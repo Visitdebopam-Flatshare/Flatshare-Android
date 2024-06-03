@@ -11,7 +11,9 @@ import com.joinflatshare.constants.ChatRequestConstants
 import com.joinflatshare.constants.RouteConstants
 import com.joinflatshare.pojo.user.User
 import com.joinflatshare.ui.base.BaseActivity
+import com.joinflatshare.ui.checks.ChecksActivity
 import com.joinflatshare.ui.dialogs.DialogConnection
+import com.joinflatshare.ui.explore.ExploreActivity
 import com.joinflatshare.ui.explore.adapter.ExploreUserVpAdapter
 import com.joinflatshare.ui.profile.details.ProfileDetailsActivity
 import com.joinflatshare.utils.helper.CommonMethod
@@ -43,7 +45,7 @@ class AdapterUserHolder(private val activity: BaseActivity) {
         )
             vpSlide.add(VP_SLIDE_WORK)
 
-        // Work
+        // Images
         if (!user.dp.isNullOrBlank() || !user.images.isNullOrEmpty())
             vpSlide.add(VP_SLIDE_IMAGES)
 
@@ -56,10 +58,15 @@ class AdapterUserHolder(private val activity: BaseActivity) {
             holder.vpExplore.adapter = ExploreUserVpAdapter(
                 activity, vpSlide, user
             )
-            // tab layout
-            TabLayoutMediator(holder.tabLayout, holder.vpExplore) { tab, tabPosition ->
+        }
 
-            }.attach()
+
+        if (activity is ExploreActivity) {
+            holder.llExploreButtons.visibility = View.VISIBLE
+            holder.llExploreSuperCheck.visibility = View.GONE
+        } else if (activity is ChecksActivity) {
+            holder.llExploreButtons.visibility = View.GONE
+            holder.llExploreSuperCheck.visibility = View.VISIBLE
         }
 
 
@@ -678,7 +685,10 @@ class AdapterUserHolder(private val activity: BaseActivity) {
     }
 
     private fun onHolderClick(
-        activity: BaseActivity, position: Int, searchType: String, data: com.joinflatshare.pojo.explore.UserRecommendationItem
+        activity: BaseActivity,
+        position: Int,
+        searchType: String,
+        data: com.joinflatshare.pojo.explore.UserRecommendationItem
     ) {
         val item = data.data
         val intent = Intent(activity, ProfileDetailsActivity::class.java)
@@ -695,7 +705,10 @@ class AdapterUserHolder(private val activity: BaseActivity) {
     }
 
     private fun handleCallback(
-        activity: BaseActivity, intent: Intent?, position: Int, data: com.joinflatshare.pojo.explore.UserRecommendationItem
+        activity: BaseActivity,
+        intent: Intent?,
+        position: Int,
+        data: com.joinflatshare.pojo.explore.UserRecommendationItem
     ) {
         val like = intent?.getBooleanExtra("like", false)
         val chat = intent?.getBooleanExtra("chat", false)

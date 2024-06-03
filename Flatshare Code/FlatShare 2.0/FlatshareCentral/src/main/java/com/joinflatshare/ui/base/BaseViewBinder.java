@@ -31,8 +31,8 @@ public class BaseViewBinder {
     public LinearLayout[] ll_menu;
     public CircleImageView img_menu_profile;
     public View view_menu_explore_circle, view_menu_chat_circle;
-    private final int[] icon = {R.drawable.ic_menu_explore, R.drawable.ic_menu_chat, R.drawable.ic_notification};
-    private final int[] iconSelected = {R.drawable.ic_menu_explore_selected, R.drawable.ic_menu_chat_selected, R.drawable.ic_notification_black};
+    private final int[] icon = {R.drawable.ic_menu_explore, R.drawable.ic_menu_chat, R.drawable.ic_menu_check};
+    private final int[] iconSelected = {R.drawable.ic_menu_explore_selected, R.drawable.ic_menu_chat_selected, R.drawable.ic_menu_check_selected};
     protected TextView txt_count_notification;
     protected FrameLayout frame_count_notification;
 

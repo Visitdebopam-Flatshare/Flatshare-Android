@@ -20,7 +20,7 @@ import com.joinflatshare.pojo.flat.MyFlatData
 import com.joinflatshare.pojo.user.UserResponse
 import com.joinflatshare.services.MutualContactHandler
 import com.joinflatshare.ui.base.BaseActivity
-import com.joinflatshare.ui.notifications.RequestHandler
+import com.joinflatshare.ui.checks.RequestHandler
 import com.joinflatshare.ui.preferences.flat.PreferenceActivity
 import com.joinflatshare.utils.deeplink.DeepLinkHandler
 import com.joinflatshare.utils.helper.CommonMethod
@@ -122,11 +122,6 @@ class ExploreActivity : BaseActivity() {
                 }
             })
         } else binder.setup()
-    }
-
-    private fun reloadRequests() {
-        FlatShareApplication.getDbInstance().userDao().insert(UserDao.USER_REQUEST_API_PENDING, 1)
-        RequestHandler.getFriendRequest(this, true)
     }
 
     private fun handleDeepLinking() {

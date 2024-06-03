@@ -1,16 +1,14 @@
-package com.joinflatshare.ui.notifications
+package com.joinflatshare.ui.checks
 
-import android.content.Intent
 import android.view.View
 import android.widget.FrameLayout
 import android.widget.TextView
-import androidx.localbroadcastmanager.content.LocalBroadcastManager
 import com.google.gson.Gson
 import com.joinflatshare.FlatShareApplication
 import com.joinflatshare.FlatshareCentral.R
 import com.joinflatshare.constants.ChatRequestConstants
-import com.joinflatshare.constants.IntentFilterConstants
 import com.joinflatshare.db.daos.UserDao
+import com.joinflatshare.interfaces.OnStringFetched
 import com.joinflatshare.pojo.requests.ConnectionRequestResponse
 import com.joinflatshare.pojo.requests.FlatInviteResponse
 import com.joinflatshare.ui.base.BaseActivity
@@ -33,25 +31,9 @@ object RequestHandler {
             frame?.visibility = View.VISIBLE
         } else frame?.visibility = View.GONE
         FlatShareApplication.getDbInstance().userDao().insert(UserDao.USER_REQUEST_API_PENDING, "0")
-        LocalBroadcastManager.getInstance(activity)
-            .sendBroadcast(Intent(IntentFilterConstants.INTENT_FILTER_CONSTANT_USER_REQUESTS_UPDATED))
     }
 
     // Request APIs
-    fun getFriendRequest(activity: BaseActivity, callAllApis: Boolean) {
-        WebserviceManager().getFriendRequests(activity,
-            object : OnFlatshareResponseCallBack<Response<ResponseBody>> {
-                override fun onResponseCallBack(response: String) {
-                    val resp = Gson().fromJson(response, ConnectionRequestResponse::class.java)
-                    FlatShareApplication.getDbInstance().requestDao()
-                        .handleFriendRequests(resp.data)
-                    if (callAllApis)
-                        getFlatRequests(activity, true)
-                    else calculateTotalRequestCount(activity)
-                }
-            })
-    }
-
     fun getFlatRequests(activity: BaseActivity, callAllApis: Boolean) {
         WebserviceManager().getFlatRequests(activity,
             object : OnFlatshareResponseCallBack<Response<ResponseBody>> {
@@ -96,14 +78,12 @@ object RequestHandler {
                             resp.data,
                             ChatRequestConstants.CHAT_REQUEST_CONSTANT_F2U
                         )
-                    if (callAllApis)
-                        getFHTRequests(activity, callAllApis)
-                    else calculateTotalRequestCount(activity)
+                    calculateTotalRequestCount(activity)
                 }
             })
     }
 
-    fun getFHTRequests(activity: BaseActivity, callAllApis: Boolean) {
+    fun getFHTRequests(activity: BaseActivity, callback: OnStringFetched?) {
         WebserviceManager().getChatRequests(
             activity,
             ChatRequestConstants.CHAT_REQUEST_CONSTANT_FHT,
@@ -115,9 +95,7 @@ object RequestHandler {
                             resp.data,
                             ChatRequestConstants.CHAT_REQUEST_CONSTANT_FHT
                         )
-                    /*if (callAllApis)
-                        getCasualDateRequests(activity, callAllApis)
-                    else */calculateTotalRequestCount(activity)
+                    callback?.onFetched(ChecksActivity.MODE_SUPER_CHECKS)
                 }
             })
     }

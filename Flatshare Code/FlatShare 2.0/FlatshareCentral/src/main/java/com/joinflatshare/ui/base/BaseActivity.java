@@ -26,8 +26,8 @@ import com.joinflatshare.pojo.user.User;
 import com.joinflatshare.ui.base.gpsfetcher.GpsHandler;
 import com.joinflatshare.ui.chat.list.ChatListActivity;
 import com.joinflatshare.ui.explore.ExploreActivity;
-import com.joinflatshare.ui.notifications.NotificationActivity;
-import com.joinflatshare.ui.notifications.RequestHandler;
+import com.joinflatshare.ui.checks.ChecksActivity;
+import com.joinflatshare.ui.checks.RequestHandler;
 import com.joinflatshare.ui.profile.myprofile.ProfileActivity;
 import com.joinflatshare.utils.helper.CommonMethod;
 
@@ -47,8 +47,11 @@ public class BaseActivity extends GpsHandler {
     public static final String TYPE_USER = "users";
     @Deprecated
     public static final String TYPE_DATE = "dating";
+    @Deprecated
     public static final String TYPE_DATE_CASUAL = "csu";
+    @Deprecated
     public static final String TYPE_DATE_LONG_TERM = "ltr";
+    @Deprecated
     public static final String TYPE_DATE_ACTIVITY_PARTNERS = "act";
 
 
@@ -128,7 +131,7 @@ public class BaseActivity extends GpsHandler {
             baseApiController.updateUserOnFirebaseTokenUpdate();
         }
         if (this instanceof ExploreActivity ||
-                this instanceof ChatListActivity || this instanceof NotificationActivity
+                this instanceof ChatListActivity || this instanceof ChecksActivity
                 || this instanceof ProfileActivity)
             RequestHandler.INSTANCE.calculateTotalRequestCount(this);
     }
@@ -155,8 +158,10 @@ public class BaseActivity extends GpsHandler {
         public void onReceive(Context context, Intent intent) {
             if (intent != null) {
                 switch (intent.getAction()) {
-                    case IntentFilterConstants.INTENT_FILTER_CONSTANT_RELOAD_NOTIFICATION -> reloadRequest(intent);
-                    case IntentFilterConstants.INTENT_FILTER_CONSTANT_CHAT_COUNT -> setUnreadMessageCount();
+                    case IntentFilterConstants.INTENT_FILTER_CONSTANT_RELOAD_NOTIFICATION ->
+                            reloadRequest(intent);
+                    case IntentFilterConstants.INTENT_FILTER_CONSTANT_CHAT_COUNT ->
+                            setUnreadMessageCount();
                     case IntentFilterConstants.INTENT_FILTER_CONSTANT_FIREBASE_TOKEN_UPDATED ->
                             baseApiController.updateUserOnFirebaseTokenUpdate();
                     case IntentFilterConstants.INTENT_FILTER_CONSTANT_USER_LOCATION_UPDATED ->
@@ -169,8 +174,6 @@ public class BaseActivity extends GpsHandler {
     private void reloadRequest(Intent intent) {
         String requestType = intent.getStringExtra("requestType");
         switch (requestType) {
-            case ChatRequestConstants.FRIEND_REQUEST_CONSTANT ->
-                    RequestHandler.INSTANCE.getFriendRequest(BaseActivity.this, false);
             case ChatRequestConstants.FLAT_REQUEST_CONSTANT ->
                     RequestHandler.INSTANCE.getFlatRequests(BaseActivity.this, false);
             case ChatRequestConstants.CHAT_REQUEST_CONSTANT_F2U ->
@@ -178,7 +181,7 @@ public class BaseActivity extends GpsHandler {
             case ChatRequestConstants.CHAT_REQUEST_CONSTANT_U2F ->
                     RequestHandler.INSTANCE.getU2FRequests(BaseActivity.this, false);
             case ChatRequestConstants.CHAT_REQUEST_CONSTANT_FHT ->
-                    RequestHandler.INSTANCE.getFHTRequests(BaseActivity.this, false);
+                    RequestHandler.INSTANCE.getFHTRequests(BaseActivity.this, null);
             case "" + ChatRequestConstants.CHAT_REQUEST_CONSTANT_DATE_CASUAL ->
                     RequestHandler.INSTANCE.getCasualDateRequests(BaseActivity.this, false);
             case "" + ChatRequestConstants.CHAT_REQUEST_CONSTANT_DATE_LONG_TERM ->

@@ -25,7 +25,6 @@ class ProfileListener(
         viewBind.cardProfileVerified.setOnClickListener(this)
         viewBind.cardProfileInvite.setOnClickListener(this)
         viewBind.cardProfileFaq.setOnClickListener(this)
-        viewBind.imgProfileEdit.setOnClickListener(this)
         viewBind.imgProfileSettings.setOnClickListener(this)
         viewBind.imgProfileEdit.setOnClickListener(this)
         viewBind.framePhoto.setOnClickListener(this)

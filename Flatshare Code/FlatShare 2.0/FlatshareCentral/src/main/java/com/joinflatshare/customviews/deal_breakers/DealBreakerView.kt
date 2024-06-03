@@ -37,26 +37,11 @@ class DealBreakerView(val activity: BaseActivity, private val recyclerView: Recy
         isEditable = shouldEdit
     }
 
-    @Deprecated("remove")
-    fun setDealValues(dealBreakers: FlatProperties?, view: View?) {
-       //TODO remove
-    }
-
     fun setDealValues(dealBreakers: DealBreakers?, view: View?) {
         if (!isViewVisible(dealBreakers))
             this.dealBreakers = DealBreakers()
         else this.dealBreakers = dealBreakers!!
         view?.visibility = View.VISIBLE
-    }
-
-    @Deprecated("Removed")
-    fun setDealValues(properties: DateProperties?, view: View?) {
-
-    }
-
-    @Deprecated("Removed")
-    fun setDealValues(properties: com.joinflatshare.pojo.flat.FlatProperties?, view: View?) {
-
     }
 
     private fun isViewVisible(dealBreakers: DealBreakers?): Boolean {
@@ -73,12 +58,12 @@ class DealBreakerView(val activity: BaseActivity, private val recyclerView: Recy
             recyclerView.layoutManager = layoutManager
 
             // Set Values
-            if (dealBreakers.smoking > 0) items.add(ModelBottomSheet("Smoking", 1))
-            if (dealBreakers.nonveg > 0) items.add(ModelBottomSheet("Eating Non-Veg", 1))
-            if (dealBreakers.flatparty > 0) items.add(ModelBottomSheet("Drinking Alcohol", 1))
-            if (dealBreakers.eggs > 0) items.add(ModelBottomSheet("Eating Eggs", 1))
-            if (dealBreakers.workout > 0) items.add(ModelBottomSheet("Workout", 1))
-            if (dealBreakers.pets > 0) items.add(ModelBottomSheet("Pets", 1))
+            if (dealBreakers.smoking == 1 || dealBreakers.smoking == 2) items.add(ModelBottomSheet("Smoking", dealBreakers.smoking))
+            if (dealBreakers.nonveg == 1 || dealBreakers.nonveg == 2) items.add(ModelBottomSheet("Eating Non-Veg", dealBreakers.nonveg))
+            if (dealBreakers.flatparty == 1 || dealBreakers.flatparty == 2) items.add(ModelBottomSheet("Drinking Alcohol", dealBreakers.flatparty))
+            if (dealBreakers.eggs == 1 || dealBreakers.eggs == 2) items.add(ModelBottomSheet("Eating Eggs", dealBreakers.eggs))
+            if (dealBreakers.workout == 1 || dealBreakers.workout == 2) items.add(ModelBottomSheet("Workout", dealBreakers.workout))
+            if (dealBreakers.pets == 1 || dealBreakers.pets == 2) items.add(ModelBottomSheet("Pets", dealBreakers.pets))
         } else {
             if (recyclerView.layoutManager == null) {
                 // Editable as well. Set linear layout Manager

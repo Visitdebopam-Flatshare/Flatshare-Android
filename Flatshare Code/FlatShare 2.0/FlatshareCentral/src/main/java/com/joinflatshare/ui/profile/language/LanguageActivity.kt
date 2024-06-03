@@ -78,8 +78,16 @@ class LanguageActivity : BaseActivity() {
             CommonMethod.finishActivity(this)
         }
         viewBind.btnSkip.setOnClickListener {
-            val intent = Intent(this@LanguageActivity, InterestActivity::class.java)
-            CommonMethod.switchActivity(this@LanguageActivity, intent, false)
+            val user = AppConstants.loggedInUser
+            user?.flatProperties?.languages?.clear()
+            user?.flatProperties?.languages = ArrayList()
+            baseApiController.updateUser(true, user, object : OnUserFetched {
+                override fun userFetched(resp: UserResponse?) {
+                    val intent = Intent(this@LanguageActivity, InterestActivity::class.java)
+                    CommonMethod.switchActivity(this@LanguageActivity, intent, false)
+                }
+
+            })
         }
         viewBind.btnLanguages.setOnClickListener {
             when (viewBind.btnLanguages.text) {
@@ -100,6 +108,7 @@ class LanguageActivity : BaseActivity() {
                     if (interestsView.matchedContent.isNotEmpty()) {
                         val user = AppConstants.loggedInUser
                         user?.flatProperties?.languages?.clear()
+                        user?.flatProperties?.languages = ArrayList()
                         user?.flatProperties?.languages?.addAll(interestsView.matchedContent)
                         baseApiController.updateUser(true, user, object : OnUserFetched {
                             override fun userFetched(resp: UserResponse?) {

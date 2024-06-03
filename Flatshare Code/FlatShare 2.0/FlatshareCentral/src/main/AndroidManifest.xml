@@ -157,34 +157,24 @@
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateAlwaysHidden" />
         <activity
-            android:name="com.joinflatshare.ui.notifications.NotificationActivity"
+            android:name="com.joinflatshare.ui.checks.ChecksActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateAlwaysHidden" />
 
         <activity
-            android:name="com.joinflatshare.ui.notifications.request_chat.ChatRequestActivity"
+            android:name="com.joinflatshare.ui.checks.request_chat.ChatRequestActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateAlwaysHidden" />
         <activity
-            android:name="com.joinflatshare.ui.notifications.request_invitation.InvitationRequestActivity"
+            android:name="com.joinflatshare.ui.checks.request_invitation.InvitationRequestActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateAlwaysHidden" />
         <activity
-            android:name="com.joinflatshare.ui.notifications.request_friend.FriendRequestActivity"
+            android:name="com.joinflatshare.ui.checks.request_friend.FriendRequestActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateAlwaysHidden" />
         <activity
             android:name="com.joinflatshare.ui.liked.LikedActivity"
-            android:screenOrientation="portrait"
-            android:windowSoftInputMode="stateAlwaysHidden" />
-
-        <activity
-            android:name="com.joinflatshare.ui.friends.FriendListActivity"
-            android:screenOrientation="portrait"
-            android:windowSoftInputMode="stateAlwaysHidden" />
-
-        <activity
-            android:name="com.joinflatshare.ui.date.DatePreferenceActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateAlwaysHidden" />
 

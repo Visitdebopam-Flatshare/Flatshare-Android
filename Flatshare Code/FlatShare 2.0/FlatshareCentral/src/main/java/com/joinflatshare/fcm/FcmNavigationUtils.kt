@@ -5,10 +5,10 @@ import com.joinflatshare.constants.NotificationConstants
 import com.joinflatshare.ui.base.BaseActivity
 import com.joinflatshare.ui.chat.list.ChatListActivity
 import com.joinflatshare.ui.flat.edit.FlatEditActivity
-import com.joinflatshare.ui.notifications.NotificationActivity
-import com.joinflatshare.ui.notifications.request_chat.ChatRequestActivity
-import com.joinflatshare.ui.notifications.request_friend.FriendRequestActivity
-import com.joinflatshare.ui.notifications.request_invitation.InvitationRequestActivity
+import com.joinflatshare.ui.checks.ChecksActivity
+import com.joinflatshare.ui.checks.request_chat.ChatRequestActivity
+import com.joinflatshare.ui.checks.request_friend.FriendRequestActivity
+import com.joinflatshare.ui.checks.request_invitation.InvitationRequestActivity
 import com.joinflatshare.ui.profile.edit.ProfileEditActivity
 import com.joinflatshare.ui.profile.myprofile.ProfileActivity
 import com.joinflatshare.utils.helper.CommonMethod
@@ -17,7 +17,7 @@ class FcmNavigationUtils(activity: BaseActivity, intent: Intent) {
     init {
         var intnt: Intent? = null
         if (!intent.hasExtra("type")) {
-            intnt = Intent(activity, NotificationActivity::class.java)
+            intnt = Intent(activity, ChecksActivity::class.java)
         } else {
             when (intent.getStringExtra("type")) {
                 NotificationConstants.NOTIFICATION_TYPE_INVITE_FLAT_MEMBER -> {
@@ -31,7 +31,7 @@ class FcmNavigationUtils(activity: BaseActivity, intent: Intent) {
                 NotificationConstants.NOTIFICATION_TYPE_NO_NAVIGATION,
                 NotificationConstants.NOTIFICATION_TYPE_GENERAL_USER,
                 NotificationConstants.NOTIFICATION_TYPE_GENERAL_FLAT -> {
-                    intnt = Intent(activity, NotificationActivity::class.java)
+                    intnt = Intent(activity, ChecksActivity::class.java)
                 }
 
                 NotificationConstants.NOTIFICATION_TYPE_CONNECTION_F2U,

@@ -64,16 +64,4 @@ class ExploreBinder(
         }
     }
 
-    private fun isDealBreakersEmpty(dealBreakers: DealBreakers?): Boolean {
-        if (dealBreakers == null)
-            return true
-        val smoking = dealBreakers.smoking
-        val party = dealBreakers.flatparty
-        val eggs = dealBreakers.eggs
-        val pets = dealBreakers.pets
-        val workout = dealBreakers.workout
-        return (smoking == 1 && party == 1 && eggs == 1 && pets == 1 && workout == 1)
-    }
-
-
 }

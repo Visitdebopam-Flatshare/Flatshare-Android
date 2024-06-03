@@ -194,7 +194,7 @@ public class MyFlatViewBind {
         };
 
 
-        dealBreakerView.setDealValues(properties, null);
+        dealBreakerView.setDealValues(properties.getDealBreakers(), null);
         dealBreakerView.assignCallback(callback);
         dealBreakerView.show();
     }

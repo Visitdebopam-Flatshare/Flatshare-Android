@@ -1,4 +1,4 @@
-package com.joinflatshare.ui.notifications.request_chat
+package com.joinflatshare.ui.checks.request_chat
 
 import android.app.Activity
 import android.content.Intent

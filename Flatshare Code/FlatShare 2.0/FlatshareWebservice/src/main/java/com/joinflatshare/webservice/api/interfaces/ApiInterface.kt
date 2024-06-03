@@ -54,18 +54,7 @@ interface ApiInterface {
         @Body user: User?
     ): Observable<Response<ResponseBody>>
 
-    @GET("users/friends/list/")
-    fun getFriendList(): Observable<Response<ResponseBody>>
-
     /*------------------------------ Notification & Requests ------------------------------*/
-    @GET("users/me/notifications/{pageNo}")
-    fun getNotifications(
-        @Path("pageNo") pageNo: String?
-    ): Observable<Response<ResponseBody>>
-
-    @GET("users/friends/requests")
-    fun getFriendRequests(): Observable<Response<ResponseBody>>
-
     @GET("flats/flatmate/requests")
     fun getFlatRequests(): Observable<Response<ResponseBody>>
 
@@ -124,13 +113,13 @@ interface ApiInterface {
     @GET("recommendations/likes/{type}/{pageNo}")
     fun getLikesSent(
         @Path("type") type: String?,
-        @Path("pageNo") pageNo: String?
+        @Path("pageNo") pageNo: Int?
     ): Observable<Response<ResponseBody>>
 
     @GET("users/likes/received/me/{type}/{pageNo}")
     fun getLikesReceived(
         @Path("type") type: String?,
-        @Path("pageNo") pageNo: String?
+        @Path("pageNo") pageNo: Int?
     ): Observable<Response<ResponseBody>>
 
     @PUT()

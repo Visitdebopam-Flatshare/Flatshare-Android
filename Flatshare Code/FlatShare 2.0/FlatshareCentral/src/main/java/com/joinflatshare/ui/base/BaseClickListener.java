@@ -5,7 +5,7 @@ import android.content.Intent;
 import com.joinflatshare.constants.AppConstants;
 import com.joinflatshare.ui.chat.list.ChatListActivity;
 import com.joinflatshare.ui.explore.ExploreActivity;
-import com.joinflatshare.ui.notifications.NotificationActivity;
+import com.joinflatshare.ui.checks.ChecksActivity;
 import com.joinflatshare.ui.profile.myprofile.ProfileActivity;
 import com.joinflatshare.utils.helper.CommonMethod;
 
@@ -46,7 +46,7 @@ public class BaseClickListener {
                             intent = new Intent(activity, ChatListActivity.class);
                         break;
                     case 2:
-                        intent = new Intent(activity, NotificationActivity.class);
+                        intent = new Intent(activity, ChecksActivity.class);
                         break;
                     case 3:
                         intent = new Intent(activity, ProfileActivity.class);

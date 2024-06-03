@@ -79,8 +79,15 @@ class InterestActivity : BaseActivity() {
             CommonMethod.finishActivity(this)
         }
         viewBind.btnSkip.setOnClickListener {
-            val intent = Intent(this, LocationActivity::class.java)
-            CommonMethod.switchActivity(this, intent, false)
+            val user = AppConstants.loggedInUser
+            user?.flatProperties?.interests?.clear()
+            user?.flatProperties?.interests = ArrayList()
+            baseApiController.updateUser(true, user, object : OnUserFetched {
+                override fun userFetched(resp: UserResponse?) {
+                    val intent = Intent(this@InterestActivity, LocationActivity::class.java)
+                    CommonMethod.switchActivity(this@InterestActivity, intent, false)
+                }
+            })
         }
         viewBind.btnInterests.setOnClickListener {
             when (viewBind.btnInterests.text) {
@@ -101,6 +108,7 @@ class InterestActivity : BaseActivity() {
                     if (interestsView.matchedContent.isNotEmpty()) {
                         val user = AppConstants.loggedInUser
                         user?.flatProperties?.interests?.clear()
+                        user?.flatProperties?.interests = ArrayList()
                         user?.flatProperties?.interests?.addAll(interestsView.matchedContent)
                         baseApiController.updateUser(true, user, object : OnUserFetched {
                             override fun userFetched(resp: UserResponse?) {

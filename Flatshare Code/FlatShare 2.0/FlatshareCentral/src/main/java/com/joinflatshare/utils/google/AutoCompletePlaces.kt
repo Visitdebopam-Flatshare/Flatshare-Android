@@ -36,24 +36,32 @@ object AutoCompletePlaces {
                     activity,
                     intnt, object : GlobalActivityResult.OnActivityResult<ActivityResult?> {
                         override fun onActivityResult(result: ActivityResult?) {
-                            if (result?.data != null && result.resultCode == AutocompleteActivity.RESULT_OK) {
-                                try {
-                                    val place = Autocomplete.getPlaceFromIntent(result.data!!)
-                                    val loc = Loc()
-                                    place.latLng?.let { loc.coordinates.add(it.longitude) }
-                                    place.latLng?.let { loc.coordinates.add(it.latitude) }
-                                    val locationObject = place.name?.let { ModelLocation(it, loc) }
-                                    val intent = Intent()
-                                    intent.putExtra("location", locationObject)
-                                    callback.onClick(intent, REQUEST_CODE_LOCATION)
-                                    return
-                                } catch (exception: Exception) {
-                                    CommonMethod.makeToast("Failed to fetch places")
+
+                            if (result?.data != null) {
+                                val data = result.data!!
+                                CommonMethod.makeLog(
+                                    "Auto Complete Places",
+                                    Autocomplete.getStatusFromIntent(data).toString()
+                                )
+                                if (result.resultCode == AutocompleteActivity.RESULT_OK) {
+                                    try {
+                                        val place = Autocomplete.getPlaceFromIntent(result.data!!)
+                                        val loc = Loc()
+                                        place.latLng?.let { loc.coordinates.add(it.longitude) }
+                                        place.latLng?.let { loc.coordinates.add(it.latitude) }
+                                        val locationObject =
+                                            place.name?.let { ModelLocation(it, loc) }
+                                        val intent = Intent()
+                                        intent.putExtra("location", locationObject)
+                                        callback.onClick(intent, REQUEST_CODE_LOCATION)
+                                        return
+                                    } catch (exception: Exception) {
+                                        CommonMethod.makeToast("Failed to fetch places")
+                                    }
                                 }
                             }
                             callback.onClick(null, REQUEST_CODE_LOCATION)
                         }
-
                     }
                 )
             } else {

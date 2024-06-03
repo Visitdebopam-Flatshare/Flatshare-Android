@@ -220,7 +220,7 @@ public class FlatDetailsViewBind {
     private void setDealBreakers(MyFlatData flatData) {
         FlatProperties properties = flatData.getFlatProperties();
         DealBreakerView dealBreakerView = new DealBreakerView(activity, viewBind.rvFlatDeals);
-        dealBreakerView.setDealValues(properties, viewBind.llDealHolder);
+        dealBreakerView.setDealValues(properties.getDealBreakers(), viewBind.llDealHolder);
         dealBreakerView.show();
     }
 }

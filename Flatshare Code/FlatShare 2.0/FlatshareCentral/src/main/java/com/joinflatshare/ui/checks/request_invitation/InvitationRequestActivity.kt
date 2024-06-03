@@ -1,4 +1,4 @@
-package com.joinflatshare.ui.notifications.request_invitation
+package com.joinflatshare.ui.checks.request_invitation
 
 import android.os.Bundle
 import androidx.recyclerview.widget.LinearLayoutManager

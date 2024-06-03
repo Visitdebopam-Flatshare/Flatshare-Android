@@ -3,11 +3,12 @@ package com.joinflatshare.ui.explore.adapter
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import androidx.viewbinding.ViewBinding
+import com.joinflatshare.FlatshareCentral.databinding.ItemChecksVpBinding
 import com.joinflatshare.FlatshareCentral.databinding.ItemExploreVpBinding
-import com.joinflatshare.interfaces.OnUiEventClick
-import com.joinflatshare.pojo.flat.MyFlatData
 import com.joinflatshare.pojo.user.User
 import com.joinflatshare.ui.base.BaseActivity
+import com.joinflatshare.ui.explore.ExploreActivity
 import com.joinflatshare.ui.explore.holder.AdapterUserVpHolder
 
 /**
@@ -20,8 +21,9 @@ class ExploreUserVpAdapter(
 ) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
-        val viewBind =
+        val viewBind = if (activity is ExploreActivity)
             ItemExploreVpBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        else ItemChecksVpBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return ViewHolder(viewBind)
     }
 
@@ -34,7 +36,7 @@ class ExploreUserVpAdapter(
         holder.vpHolder.bindVp(activity, vpSlide[position], user)
     }
 
-    class ViewHolder(itemView: ItemExploreVpBinding) :
+    class ViewHolder(itemView: ViewBinding) :
         RecyclerView.ViewHolder(itemView.root) {
         val vpHolder: AdapterUserVpHolder = AdapterUserVpHolder(itemView)
     }

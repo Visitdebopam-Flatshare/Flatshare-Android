@@ -16,7 +16,6 @@ import com.joinflatshare.interfaces.OnUserFetched
 import com.joinflatshare.interfaces.OnitemClick
 import com.joinflatshare.pojo.user.ModelLocation
 import com.joinflatshare.pojo.user.UserResponse
-import com.joinflatshare.ui.profile.myprofile.ProfileActivity
 import com.joinflatshare.utils.google.AutoCompletePlaces
 import com.joinflatshare.utils.helper.CommonMethod
 import com.joinflatshare.utils.helper.DateUtils

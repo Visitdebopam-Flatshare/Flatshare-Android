@@ -15,6 +15,7 @@ import com.joinflatshare.chat.SendBirdConnectionManager
 import com.joinflatshare.constants.AppConstants
 import com.joinflatshare.constants.SendBirdConstants
 import com.joinflatshare.db.daos.AppDao
+import com.joinflatshare.pojo.flat.DealBreakers
 import com.joinflatshare.pojo.user.User
 import com.joinflatshare.ui.SplashActivity
 import com.joinflatshare.ui.base.ApplicationBaseActivity
@@ -116,6 +117,15 @@ object CommonMethod {
             val lname = user.name?.lastName!![0]
             "" + fname + lname
         }
+    }
+
+    fun isDealBreakerEmpty(breaker: DealBreakers?): Boolean {
+        if (breaker == null)
+            return true
+        if (breaker.eggs == 0 && breaker.pets == 0 && breaker.nonveg == 0 &&
+            breaker.smoking == 0 && breaker.workout == 0 && breaker.flatparty == 0)
+            return true
+        return false
     }
 
 }

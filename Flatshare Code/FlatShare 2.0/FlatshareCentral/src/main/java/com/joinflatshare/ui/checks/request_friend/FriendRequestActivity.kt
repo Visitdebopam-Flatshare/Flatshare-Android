@@ -1,4 +1,4 @@
-package com.joinflatshare.ui.notifications.request_friend
+package com.joinflatshare.ui.checks.request_friend
 
 import android.os.Bundle
 import androidx.recyclerview.widget.LinearLayoutManager
