@@ -26,6 +26,7 @@ class ProfileDetailsApiController(
                 override fun userFetched(resp: UserResponse?) {
                     activity.userResponse = resp
                     activity.user = activity.userResponse?.data
+                    activity.initUserData(resp)
                 }
             })
         }

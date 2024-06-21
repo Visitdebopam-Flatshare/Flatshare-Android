@@ -12,10 +12,12 @@ import com.joinflatshare.constants.AppConstants
 import com.joinflatshare.constants.RequestCodeConstants
 import com.joinflatshare.customviews.bottomsheet.BottomSheetView
 import com.joinflatshare.customviews.bottomsheet.ModelBottomSheet
+import com.joinflatshare.interfaces.OnStringFetched
 import com.joinflatshare.interfaces.OnUserFetched
 import com.joinflatshare.interfaces.OnitemClick
 import com.joinflatshare.pojo.user.ModelLocation
 import com.joinflatshare.pojo.user.UserResponse
+import com.joinflatshare.ui.bottomsheet.VerifiedBottomSheet
 import com.joinflatshare.utils.google.AutoCompletePlaces
 import com.joinflatshare.utils.helper.CommonMethod
 import com.joinflatshare.utils.helper.DateUtils
@@ -139,16 +141,12 @@ class PreferenceListener(private val activity: PreferenceActivity) : View.OnClic
     private fun switchListener() {
         viewBind.includePrefFlatmate.switchVerifiedMember.setOnCheckedChangeListener { _, isChecked ->
             if (isChecked) {
-                viewBind.includePrefFlatmate.switchVerifiedMember.isChecked = false
-                val list = ArrayList<ModelBottomSheet>()
-                list.add(ModelBottomSheet(R.drawable.ic_tick_verified, "Get Verified For Free"))
-                list.add(ModelBottomSheet(R.drawable.ic_elite, "Join Flatshare Elite"))
-                BottomSheetView(activity, list).show(object : OnitemClick {
-                    override fun onitemclick(view: View?, position: Int) {
-
-                    }
-
-                })
+                if (activity.user?.verification?.isVerified == false) {
+                    viewBind.includePrefFlatmate.switchVerifiedMember.isChecked = false
+                    VerifiedBottomSheet(
+                        activity
+                    ) { viewBind.includePrefFlatmate.switchVerifiedMember.isChecked = true }
+                }
             }
         }
     }

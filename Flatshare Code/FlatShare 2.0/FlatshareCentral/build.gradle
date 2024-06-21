@@ -177,4 +177,7 @@ dependencies {
 
     // Progress Dialog
     implementation("io.github.visitdebopam:progressdialog:${VERSION_PROGRESS_DIALOG}")
+
+    // Blur View
+    implementation ("jp.wasabeef:blurry:4.0.1")
 }

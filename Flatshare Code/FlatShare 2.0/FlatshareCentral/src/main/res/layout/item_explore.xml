@@ -7,7 +7,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_above="@id/ll_explore_buttons"
+        android:layout_above="@id/explore_bottom"
         android:layout_alignParentTop="true"
         android:layout_marginBottom="@dimen/_10sdp"
         android:orientation="vertical">
@@ -31,20 +31,208 @@
                     android:background="@drawable/ic_explore_bg"
                     android:scaleType="centerInside" />
 
-                <LinearLayout
+                <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:layout_margin="@dimen/_10sdp"
-                    android:gravity="center"
                     android:orientation="vertical">
 
-                    <androidx.viewpager2.widget.ViewPager2
-                        android:id="@+id/vp_explore"
+                    <FrameLayout
+                        android:id="@+id/frame_explore_top"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/_10sdp" />
+                        android:layout_alignParentTop="true">
 
-                </LinearLayout>
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:orientation="vertical">
+
+                            <FrameLayout
+                                android:layout_width="@dimen/dp_circular_width"
+                                android:layout_height="@dimen/dp_circular_width"
+                                android:layout_gravity="center_horizontal">
+
+                                <de.hdodenhof.circleimageview.CircleImageView
+                                    android:id="@+id/img_profile"
+                                    android:layout_width="@dimen/dp_circular_width"
+                                    android:layout_height="@dimen/dp_circular_width"
+                                    android:layout_gravity="center"
+                                    android:src="@drawable/ic_user_grey"
+                                    app:civ_border_color="@color/grey2"
+                                    app:civ_border_width="0.01dp"
+                                    app:riv_border_color="@color/white"
+                                    app:riv_border_width="2dp"
+                                    app:riv_corner_radius="@dimen/_36sdp"
+                                    app:riv_mutate_background="true"
+                                    app:riv_tile_mode="clamp" />
+
+                                <TextView
+                                    android:id="@+id/txt_photo"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:background="@drawable/drawable_blue_circle"
+                                    android:gravity="center"
+                                    android:textAllCaps="true"
+                                    android:textColor="@color/white"
+                                    android:textSize="@dimen/_40sdp"
+                                    android:visibility="gone" />
+
+                                <ImageView
+                                    android:id="@+id/img_online"
+                                    android:layout_width="@dimen/_10sdp"
+                                    android:layout_height="@dimen/_10sdp"
+                                    android:layout_gravity="end|bottom"
+                                    android:layout_marginEnd="@dimen/_7sdp"
+                                    android:layout_marginBottom="@dimen/_5sdp"
+                                    android:src="@drawable/drawable_green_circle" />
+                            </FrameLayout>
+
+                            <TextView
+                                android:id="@+id/txt_name"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_horizontal"
+                                android:layout_marginTop="@dimen/_5sdp"
+                                android:fontFamily="@font/font_semibold"
+                                android:textColor="@color/white"
+                                android:textSize="@dimen/_16sdp" />
+
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_horizontal"
+                                android:layout_marginBottom="@dimen/_20sdp"
+                                android:gravity="center"
+                                android:orientation="horizontal">
+
+                                <ImageView
+                                    android:layout_width="@dimen/_12sdp"
+                                    android:layout_height="@dimen/_12sdp"
+                                    android:src="@drawable/ic_location_white" />
+
+                                <TextView
+                                    android:id="@+id/txt_distance"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="@dimen/_5sdp"
+                                    android:fontFamily="@font/font_semibold"
+                                    android:textColor="@color/white"
+                                    android:textSize="@dimen/_12sdp" />
+
+                            </LinearLayout>
+
+
+                        </LinearLayout>
+
+                        <Space
+                            android:id="@+id/view_explore_top"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent" />
+
+                    </FrameLayout>
+
+                    <FrameLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_above="@id/ll_vp_scroll"
+                        android:layout_below="@id/frame_explore_top"
+                        android:layout_marginBottom="@dimen/_10sdp">
+
+                        <FrameLayout
+                            android:id="@+id/frame_vp_holder"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+
+                            <androidx.viewpager2.widget.ViewPager2
+                                android:id="@+id/vp_explore"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content" />
+
+
+
+                            <FrameLayout
+                                android:id="@+id/frame_incomplete_profile"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:visibility="visible">
+
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="@dimen/button_height"
+                                    android:layout_gravity="center"
+                                    android:layout_marginHorizontal="@dimen/_20sdp"
+                                    android:background="@drawable/drawable_button_black_elliptical"
+                                    android:gravity="center">
+
+                                    <ImageView
+                                        android:layout_width="@dimen/_15sdp"
+                                        android:layout_height="@dimen/_15sdp"
+                                        android:src="@drawable/ic_edit_status"
+                                        app:tint="@color/white" />
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginStart="@dimen/_10sdp"
+                                        android:fontFamily="@font/font_semibold"
+                                        android:text="Complete Profile"
+                                        android:textColor="@color/white"
+                                        android:textSize="@dimen/_14sdp" />
+                                </LinearLayout>
+
+                            </FrameLayout>
+                        </FrameLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:orientation="horizontal"
+                            android:weightSum="2">
+
+                            <View
+                                android:id="@+id/view_explore_left"
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="1" />
+
+                            <View
+                                android:id="@+id/view_explore_right"
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="1" />
+                        </LinearLayout>
+                    </FrameLayout>
+
+
+                    <LinearLayout
+                        android:id="@+id/ll_vp_scroll"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_3sdp"
+                        android:layout_alignParentBottom="true"
+                        android:orientation="horizontal"
+                        android:weightSum="2.1">
+
+                        <View
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:background="@color/white" />
+
+                        <View
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="0.1" />
+
+                        <View
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1" />
+
+                    </LinearLayout>
+                </RelativeLayout>
 
                 <com.airbnb.lottie.LottieAnimationView
                     android:id="@+id/lottie_explore"
@@ -55,13 +243,24 @@
 
         </com.google.android.material.card.MaterialCardView>
 
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/explore_bottom"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:orientation="vertical">
+
         <LinearLayout
             android:id="@+id/ll_explore_super_check"
             android:layout_width="match_parent"
             android:layout_height="@dimen/button_height"
             android:layout_marginTop="@dimen/_20sdp"
             android:background="@drawable/drawable_button_black_elliptical"
-            android:gravity="center">
+            android:gravity="center"
+            android:visibility="visible">
 
             <ImageView
                 android:layout_width="@dimen/_35sdp"
@@ -77,38 +276,37 @@
                 android:textSize="@dimen/_14sdp" />
         </LinearLayout>
 
+        <LinearLayout
+            android:id="@+id/ll_explore_buttons"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_60sdp"
+            android:orientation="horizontal"
+            android:weightSum="3">
+
+            <ImageView
+                android:id="@+id/img_cross"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:src="@drawable/ic_explore_cross" />
+
+            <ImageView
+                android:id="@+id/img_super_check"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:src="@drawable/ic_explore_super_check" />
+
+            <ImageView
+                android:id="@+id/img_check"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:src="@drawable/ic_explore_check" />
+        </LinearLayout>
+
+
     </LinearLayout>
 
-
-    <LinearLayout
-        android:id="@+id/ll_explore_buttons"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/_60sdp"
-        android:layout_alignParentBottom="true"
-        android:orientation="horizontal"
-        android:visibility="gone"
-        android:weightSum="3">
-
-        <ImageView
-            android:id="@+id/img_cross"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:src="@drawable/ic_explore_cross" />
-
-        <ImageView
-            android:id="@+id/img_super_check"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:src="@drawable/ic_explore_super_check" />
-
-        <ImageView
-            android:id="@+id/img_check"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:src="@drawable/ic_explore_check" />
-    </LinearLayout>
 
 </RelativeLayout>

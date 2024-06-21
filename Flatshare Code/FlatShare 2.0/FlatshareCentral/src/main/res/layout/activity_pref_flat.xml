@@ -45,4 +45,6 @@
 
     <include layout="@layout/dialog_bottomsheet" />
 
+    <include layout="@layout/dialog_bottomsheet_verified" />
+
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

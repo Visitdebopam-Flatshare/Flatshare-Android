@@ -1,482 +1,261 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/feed_vp_holder"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <RelativeLayout
+    <androidx.core.widget.NestedScrollView
         android:id="@+id/ll_vp_1"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:scrollbars="none"
+        android:visibility="gone">
 
-        <androidx.core.widget.NestedScrollView
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_above="@id/ll_vp_1_scroll"
-            android:layout_marginBottom="@dimen/_10sdp"
-            android:scrollbars="none"
-            android:visibility="visible">
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
 
             <LinearLayout
+                android:id="@+id/ll_vp_about"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
 
-                <FrameLayout
-                    android:layout_width="@dimen/dp_circular_width"
-                    android:layout_height="@dimen/dp_circular_width"
-                    android:layout_gravity="center_horizontal">
-
-                    <de.hdodenhof.circleimageview.CircleImageView
-                        android:id="@+id/img_profile"
-                        android:layout_width="@dimen/dp_circular_width"
-                        android:layout_height="@dimen/dp_circular_width"
-                        android:layout_gravity="center"
-                        android:src="@drawable/ic_user_grey"
-                        app:civ_border_color="@color/grey2"
-                        app:civ_border_width="0.01dp"
-                        app:riv_border_color="@color/white"
-                        app:riv_border_width="2dp"
-                        app:riv_corner_radius="@dimen/_36sdp"
-                        app:riv_mutate_background="true"
-                        app:riv_tile_mode="clamp" />
-
-                    <TextView
-                        android:id="@+id/txt_photo"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:background="@drawable/drawable_blue_circle"
-                        android:gravity="center"
-                        android:textAllCaps="true"
-                        android:textColor="@color/white"
-                        android:textSize="@dimen/_40sdp"
-                        android:visibility="gone" />
-
-                    <ImageView
-                        android:id="@+id/img_online"
-                        android:layout_width="@dimen/_10sdp"
-                        android:layout_height="@dimen/_10sdp"
-                        android:layout_gravity="end|bottom"
-                        android:layout_marginEnd="@dimen/_7sdp"
-                        android:layout_marginBottom="@dimen/_5sdp"
-                        android:src="@drawable/drawable_green_circle" />
-                </FrameLayout>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/font_semibold"
+                    android:text="About"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/_14sdp" />
 
                 <TextView
-                    android:id="@+id/txt_name"
+                    android:id="@+id/txt_about"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal"
-                    android:layout_marginTop="@dimen/_5sdp"
-                    android:fontFamily="@font/font_semibold"
+                    android:fontFamily="@font/font_medium"
                     android:textColor="@color/white"
-                    android:textSize="@dimen/_16sdp" />
+                    android:textSize="@dimen/_12sdp" />
 
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal"
-                    android:layout_marginBottom="@dimen/_20sdp"
-                    android:gravity="center"
-                    android:orientation="horizontal">
-
-                    <ImageView
-                        android:layout_width="@dimen/_12sdp"
-                        android:layout_height="@dimen/_12sdp"
-                        android:src="@drawable/ic_location_white" />
-
-                    <TextView
-                        android:id="@+id/txt_distance"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="@dimen/_5sdp"
-                        android:fontFamily="@font/font_semibold"
-                        android:textColor="@color/white"
-                        android:textSize="@dimen/_12sdp" />
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:id="@+id/ll_vp_about"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/font_semibold"
-                        android:text="About"
-                        android:textColor="@color/white"
-                        android:textSize="@dimen/_14sdp" />
-
-                    <TextView
-                        android:id="@+id/txt_about"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/font_medium"
-                        android:textColor="@color/white"
-                        android:textSize="@dimen/_12sdp" />
-
-                    <View
-                        android:layout_width="@dimen/_10sdp"
-                        android:layout_height="@dimen/_20sdp" />
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:id="@+id/ll_vp_interest"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/font_semibold"
-                        android:text="Interests"
-                        android:textColor="@color/white"
-                        android:textSize="@dimen/_14sdp" />
-
-                    <TextView
-                        android:id="@+id/txt_interest"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/font_medium"
-                        android:textColor="@color/white"
-                        android:textSize="@dimen/_12sdp" />
-
-                    <View
-                        android:layout_width="@dimen/_10sdp"
-                        android:layout_height="@dimen/_20sdp" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:id="@+id/ll_vp_language"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/font_semibold"
-                        android:text="Languages"
-                        android:textColor="@color/white"
-                        android:textSize="@dimen/_14sdp" />
-
-                    <TextView
-                        android:id="@+id/txt_language"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/font_medium"
-                        android:textColor="@color/white"
-                        android:textSize="@dimen/_12sdp" />
-
-                    <View
-                        android:layout_width="@dimen/_10sdp"
-                        android:layout_height="@dimen/_20sdp" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:id="@+id/ll_vp_deals"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/font_semibold"
-                        android:text="Deal-Breakers"
-                        android:textColor="@color/white"
-                        android:textSize="@dimen/_14sdp" />
-
-                    <androidx.recyclerview.widget.RecyclerView
-                        android:id="@+id/rv_vp_deals"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        tools:itemCount="1" />
-
-                </LinearLayout>
+                <View
+                    android:layout_width="@dimen/_10sdp"
+                    android:layout_height="@dimen/_20sdp" />
 
             </LinearLayout>
 
-        </androidx.core.widget.NestedScrollView>
+            <LinearLayout
+                android:id="@+id/ll_vp_interest"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
 
-        <LinearLayout
-            android:id="@+id/ll_vp_1_scroll"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/_3sdp"
-            android:layout_alignParentBottom="true"
-            android:orientation="horizontal"
-            android:weightSum="3.2">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/font_semibold"
+                    android:text="Interests"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/_14sdp" />
 
-            <View
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:background="@color/white" />
+                <TextView
+                    android:id="@+id/txt_interest"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/font_medium"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/_12sdp" />
 
-            <View
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="0.1" />
+                <View
+                    android:layout_width="@dimen/_10sdp"
+                    android:layout_height="@dimen/_20sdp" />
+            </LinearLayout>
 
-            <View
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1" />
+            <LinearLayout
+                android:id="@+id/ll_vp_language"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
 
-            <View
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="0.1" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/font_semibold"
+                    android:text="Languages"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/_14sdp" />
 
-            <View
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1" />
+                <TextView
+                    android:id="@+id/txt_language"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/font_medium"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/_12sdp" />
+
+                <View
+                    android:layout_width="@dimen/_10sdp"
+                    android:layout_height="@dimen/_20sdp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ll_vp_deals"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/font_semibold"
+                    android:text="Deal-Breakers"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/_14sdp" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rv_vp_deals"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    tools:itemCount="1" />
+
+            </LinearLayout>
+
         </LinearLayout>
 
+    </androidx.core.widget.NestedScrollView>
 
-    </RelativeLayout>
-
-    <RelativeLayout
+    <ScrollView
         android:id="@+id/ll_vp_2"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_marginBottom="@dimen/_10sdp"
+        android:scrollbars="none"
         android:visibility="gone">
 
-        <ScrollView
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_above="@id/ll_vp_2_scroll"
-            android:layout_marginBottom="@dimen/_10sdp"
-            android:scrollbars="none">
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
 
             <LinearLayout
+                android:id="@+id/ll_vp_work"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
 
-
-                <LinearLayout
-                    android:id="@+id/ll_vp_work"
-                    android:layout_width="match_parent"
+                <TextView
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical">
+                    android:fontFamily="@font/font_semibold"
+                    android:text="Work"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/_14sdp" />
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/font_semibold"
-                        android:text="Work"
-                        android:textColor="@color/white"
-                        android:textSize="@dimen/_14sdp" />
-
-                    <TextView
-                        android:id="@+id/txt_work"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/font_medium"
-                        android:text="Engineer based in Mumbai, currently shaping the future at Microsoft as a Sr Engineer. Let's connect and share insights in the world of engineering"
-                        android:textColor="@color/white"
-                        android:textSize="@dimen/_12sdp" />
-
-                    <View
-                        android:layout_width="@dimen/_10sdp"
-                        android:layout_height="@dimen/_20sdp" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:id="@+id/ll_vp_education"
-                    android:layout_width="match_parent"
+                <TextView
+                    android:id="@+id/txt_work"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical">
+                    android:fontFamily="@font/font_medium"
+                    android:text="Engineer based in Mumbai, currently shaping the future at Microsoft as a Sr Engineer. Let's connect and share insights in the world of engineering"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/_12sdp" />
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/font_semibold"
-                        android:text="Education"
-                        android:textColor="@color/white"
-                        android:textSize="@dimen/_14sdp" />
+                <View
+                    android:layout_width="@dimen/_10sdp"
+                    android:layout_height="@dimen/_20sdp" />
+            </LinearLayout>
 
-                    <TextView
-                        android:id="@+id/txt_education"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/font_medium"
-                        android:text="Name of the college/Institute"
-                        android:textColor="@color/white"
-                        android:textSize="@dimen/_12sdp" />
+            <LinearLayout
+                android:id="@+id/ll_vp_education"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
 
-                    <View
-                        android:layout_width="@dimen/_10sdp"
-                        android:layout_height="@dimen/_20sdp" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:id="@+id/ll_vp_hometown"
-                    android:layout_width="match_parent"
+                <TextView
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical">
+                    android:fontFamily="@font/font_semibold"
+                    android:text="Education"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/_14sdp" />
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/font_semibold"
-                        android:text="Hometown"
-                        android:textColor="@color/white"
-                        android:textSize="@dimen/_14sdp" />
-
-                    <TextView
-                        android:id="@+id/txt_hometown"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/font_medium"
-                        android:text="Rajasthan, India"
-                        android:textColor="@color/white"
-                        android:textSize="@dimen/_12sdp" />
-
-                    <View
-                        android:layout_width="@dimen/_10sdp"
-                        android:layout_height="@dimen/_20sdp" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:id="@+id/ll_vp_score"
-                    android:layout_width="match_parent"
+                <TextView
+                    android:id="@+id/txt_education"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical">
+                    android:fontFamily="@font/font_medium"
+                    android:text="Name of the college/Institute"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/_12sdp" />
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/font_semibold"
-                        android:text="Flatscore"
-                        android:textColor="@color/white"
-                        android:textSize="@dimen/_14sdp" />
+                <View
+                    android:layout_width="@dimen/_10sdp"
+                    android:layout_height="@dimen/_20sdp" />
+            </LinearLayout>
 
-                    <TextView
-                        android:id="@+id/txt_score"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/font_medium"
-                        android:text="328"
-                        android:textColor="@color/white"
-                        android:textSize="@dimen/_12sdp" />
+            <LinearLayout
+                android:id="@+id/ll_vp_hometown"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
 
-                </LinearLayout>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/font_semibold"
+                    android:text="Hometown"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/_14sdp" />
+
+                <TextView
+                    android:id="@+id/txt_hometown"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/font_medium"
+                    android:text="Rajasthan, India"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/_12sdp" />
+
+                <View
+                    android:layout_width="@dimen/_10sdp"
+                    android:layout_height="@dimen/_20sdp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ll_vp_score"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/font_semibold"
+                    android:text="Flatscore"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/_14sdp" />
+
+                <TextView
+                    android:id="@+id/txt_score"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/font_medium"
+                    android:text="328"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/_12sdp" />
 
             </LinearLayout>
-        </ScrollView>
 
-        <LinearLayout
-            android:id="@+id/ll_vp_2_scroll"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/_3sdp"
-            android:layout_alignParentBottom="true"
-            android:orientation="horizontal"
-            android:weightSum="3.2">
-
-            <View
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:background="@color/white" />
-
-            <View
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="0.1" />
-
-            <View
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1" />
-
-            <View
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="0.1" />
-
-            <View
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1" />
         </LinearLayout>
-    </RelativeLayout>
+    </ScrollView>
 
-    <RelativeLayout
-        android:id="@+id/ll_vp_3"
+    <ImageView
+        android:id="@+id/img_blur"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:visibility="gone">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_above="@id/ll_vp_3_scroll"
-            android:layout_marginBottom="@dimen/_10sdp"
-            android:orientation="vertical"
-            android:visibility="visible">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/font_semibold"
-                android:layout_gravity="center_horizontal"
-                android:text="Image Gallery"
-                android:textColor="@color/white"
-                android:textSize="@dimen/_14sdp" />
-
-            <include
-                android:id="@+id/include_explore_image"
-                android:layout_marginTop="@dimen/_20sdp"
-                layout="@layout/include_explore_image"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/ll_vp_3_scroll"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/_3sdp"
-            android:layout_alignParentBottom="true"
-            android:orientation="horizontal"
-            android:weightSum="3.2">
-
-            <View
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:background="@color/white" />
-
-            <View
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="0.1" />
-
-            <View
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1" />
-
-            <View
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="0.1" />
-
-            <View
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1" />
-        </LinearLayout>
-    </RelativeLayout>
-
-</LinearLayout>
+        android:contentDescription="@null" />
+</RelativeLayout>
