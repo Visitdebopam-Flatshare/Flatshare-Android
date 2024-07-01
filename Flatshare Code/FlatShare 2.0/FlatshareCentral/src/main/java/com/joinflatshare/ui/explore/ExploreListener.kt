@@ -9,14 +9,18 @@ import com.joinflatshare.FlatshareCentral.databinding.ActivityExploreBinding
 import com.joinflatshare.api.retrofit.WebserviceCustomRequestHandler
 import com.joinflatshare.constants.AppConstants
 import com.joinflatshare.constants.ChatRequestConstants
+import com.joinflatshare.constants.ConfigConstants
+import com.joinflatshare.interfaces.OnStringFetched
 import com.joinflatshare.payment.PaymentHandler
 import com.joinflatshare.pojo.likes.LikeRequest
 import com.joinflatshare.ui.base.BaseActivity
+import com.joinflatshare.ui.bottomsheet.IncompleteProfileBottomSheet
 import com.joinflatshare.ui.dialogs.DialogLottieViewer
 import com.joinflatshare.ui.preferences.flat.PreferenceActivity
 import com.joinflatshare.utils.helper.CommonMethod
 import com.joinflatshare.utils.mixpanel.MixpanelUtils
 import com.joinflatshare.webservice.api.ApiManager
+import com.joinflatshare.webservice.api.WebserviceManager
 import com.joinflatshare.webservice.api.interfaces.OnFlatshareResponseCallBack
 import okhttp3.ResponseBody
 import retrofit2.Response
@@ -47,6 +51,13 @@ class ExploreListener(
             }
 
             viewBind.includePagerExplore.imgCross.id -> {
+                val completion = AppConstants.loggedInUser?.completed
+                if (completion == null || completion < ConfigConstants.COMPLETION_MINIMUM_FOR_USERS) {
+                    IncompleteProfileBottomSheet(
+                        activity
+                    ) { activity.binder.showUser() }
+                    return
+                }
                 DialogLottieViewer.loadAnimation(
                     viewBind.includePagerExplore.lottieExplore, R.raw.lottie_not_interested, null
                 )
@@ -62,6 +73,13 @@ class ExploreListener(
             }
 
             viewBind.includePagerExplore.imgCheck.id -> {
+                val completion = AppConstants.loggedInUser?.completed
+                if (completion == null || completion < ConfigConstants.COMPLETION_MINIMUM_FOR_USERS) {
+                    IncompleteProfileBottomSheet(
+                        activity
+                    ) { activity.binder.showUser() }
+                    return
+                }
                 val likeUrl = WebserviceCustomRequestHandler.getLikeRequestUrl(
                     BaseActivity.TYPE_FHT, ChatRequestConstants.CHAT_REQUEST_CONSTANT_FHT,
                     activity.userData[0].data.id
@@ -86,16 +104,26 @@ class ExploreListener(
             }
 
             viewBind.includePagerExplore.imgSuperCheck.id -> {
+                val completion = AppConstants.loggedInUser?.completed
+                if (completion == null || completion < ConfigConstants.COMPLETION_MINIMUM_FOR_USERS) {
+                    IncompleteProfileBottomSheet(
+                        activity
+                    ) { activity.binder.showUser() }
+                    return
+                }
                 DialogLottieViewer.loadAnimation(
                     viewBind.includePagerExplore.lottieExplore, R.raw.lottie_chat_request, null
                 )
-                activity.apiManager.sendConnectionRequest(
-                    false,
-                    ChatRequestConstants.CHAT_REQUEST_CONSTANT_FHT, activity.userData[0].data.id
-                ) { _: Any? ->
-                    activity.userData.removeAt(0)
-                    activity.binder.showUser()
-                }
+                WebserviceManager().sendChatRequest(
+                    activity,
+                    ChatRequestConstants.CHAT_REQUEST_CONSTANT_FHT,
+                    activity.userData[0].data.id,
+                    object : OnFlatshareResponseCallBack<Response<ResponseBody>> {
+                        override fun onResponseCallBack(response: String) {
+                            activity.userData.removeAt(0)
+                            activity.binder.showUser()
+                        }
+                    })
             }
         }
     }

@@ -11,6 +11,7 @@ import com.joinflatshare.FlatshareCentral.databinding.ActivityFlatDetailsBinding
 import com.joinflatshare.api.retrofit.OnResponseCallback
 import com.joinflatshare.api.retrofit.WebserviceCustomRequestHandler.getLikeRequestUrl
 import com.joinflatshare.constants.AppConstants
+import com.joinflatshare.constants.ChatRequestConstants
 import com.joinflatshare.constants.RouteConstants
 import com.joinflatshare.customviews.inapp_review.InAppReview.show
 import com.joinflatshare.interfaces.OnStringFetched
@@ -119,7 +120,8 @@ class FlatDetailsApiController(
     }
 
     fun sendConnectionRequest() {
-        activity.apiManager.sendConnectionRequest(true,
+        /*activity.apiManager.sendConnectionRequest(
+            true,
             activity.chatConnectionForDialogMatch, activity.flatResponse.data!!.id
         ) { response: Any? ->
             if (isRestricted(response)) {
@@ -146,7 +148,7 @@ class FlatDetailsApiController(
                     callbackIntent!!.putExtra("chat", true)
                 }
             }
-        }
+        }*/
     }
 
     fun reportNotInterested() {
@@ -191,23 +193,16 @@ class FlatDetailsApiController(
             }
 
             RouteConstants.ROUTE_CONSTANT_CHAT_REQUEST -> {
-                if (isAccept) {
-                    activity.apiManager.acceptConnection(
-                        id!!, activity.chatConnectionType
-                    ) { response: Any? ->
-                        clearRequestNotification(
-                            callback
-                        )
-                    }
-                } else {
-                    activity.apiManager.rejectConnection(
-                        id!!, activity.chatConnectionType
-                    ) { response: Any? ->
-                        clearRequestNotification(
-                            callback
-                        )
-                    }
-                }
+                WebserviceManager().sendChatRequestResponse(
+                    activity,
+                    isAccept,
+                    ChatRequestConstants.CHAT_REQUEST_CONSTANT_FHT,
+                    id!!,
+                    object : OnFlatshareResponseCallBack<Response<ResponseBody>> {
+                        override fun onResponseCallBack(response: String) {
+                            clearRequestNotification(callback)
+                        }
+                    })
             }
         }
     }

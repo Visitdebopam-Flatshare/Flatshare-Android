@@ -40,6 +40,7 @@ class ChecksListener(
                 if (activity.mode == ChecksActivity.MODE_CHECKS)
                     return
                 activity.mode = ChecksActivity.MODE_CHECKS
+                activity.source = ChecksActivity.SOURCE_SENT
                 activity.dataBinder.prepareButtons()
                 activity.fetchData()
             }
@@ -48,6 +49,7 @@ class ChecksListener(
                 if (activity.mode == ChecksActivity.MODE_SUPER_CHECKS)
                     return
                 activity.mode = ChecksActivity.MODE_SUPER_CHECKS
+                activity.source = ChecksActivity.SOURCE_RECEIVED
                 activity.dataBinder.prepareButtons()
                 activity.fetchData()
             }

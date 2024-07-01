@@ -10,11 +10,11 @@ import com.joinflatshare.utils.mixpanel.MixpanelUtils
 class ChecksActivity : BaseActivity() {
     lateinit var viewBind: ActivityCheckListBinding
     lateinit var dataBinder: ChecksDataBinder
-    var mode = MODE_CHECKS
+    var mode = MODE_SUPER_CHECKS
     var source = SOURCE_RECEIVED
 
     internal companion object {
-        const val MODE_SUPER_CHECKS ="0"
+        const val MODE_SUPER_CHECKS = "0"
         const val MODE_CHECKS = "1"
         const val SOURCE_RECEIVED = "0"
         const val SOURCE_SENT = "1"
@@ -37,8 +37,8 @@ class ChecksActivity : BaseActivity() {
     fun fetchData() {
         dataBinder.list.clear()
         dataBinder.currentPage = 0
-        dataBinder.isDataFetching=false
-        dataBinder.hasMoreData=true
+        dataBinder.isDataFetching = false
+        dataBinder.hasMoreData = true
         dataBinder.getRequests()
     }
 

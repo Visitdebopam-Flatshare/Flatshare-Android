@@ -125,7 +125,7 @@ class ProfileCreateListener(
                                 modelUser?.gender = viewBind.txtGender.text.toString()
                                 modelUser?.flatProperties?.rentRange =
                                     RentRange()
-                                modelUser?.work = viewBind.txtDob.text.toString()
+                                modelUser?.profession = viewBind.txtMyself.text.toString()
                                 activity.updateUser(modelUser)
                             }
                         }

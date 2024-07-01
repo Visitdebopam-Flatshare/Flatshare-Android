@@ -54,7 +54,7 @@ object UserHolderForLiked {
         val item = data.data
         activity.viewBinding.rvLiked.smoothScrollToPosition(position)
         activity.viewBinding.rvLiked.addOnItemTouchListener(activity.rvScrollStopListener)
-        activity.apiManager.sendConnectionRequest(true,
+        /*activity.apiManager.sendConnectionRequest(true,
             connectionType, item.id
         ) { response ->
             activity.viewBinding.rvLiked.removeOnItemTouchListener(activity.rvScrollStopListener)
@@ -62,11 +62,11 @@ object UserHolderForLiked {
                 // Checking payment gateway
                 PaymentHandler.showPaymentForChats(activity, null)
             } else {
-                /*DialogLottieViewer.loadAnimation(
+                *//*DialogLottieViewer.loadAnimation(
                     holder.lottieLike, R.raw.lottie_chat_request
                 ) {
                     activity.viewBinding.rvLiked.removeOnItemTouchListener(activity.rvScrollStopListener)
-                }*/
+                }*//*
                 val resp = response as com.joinflatshare.pojo.BaseResponse
                 if (resp.status == 200) {
                     if (searchType == BaseActivity.TYPE_USER)
@@ -95,6 +95,6 @@ object UserHolderForLiked {
                     }
                 }
             }
-        }
+        }*/
     }
 }

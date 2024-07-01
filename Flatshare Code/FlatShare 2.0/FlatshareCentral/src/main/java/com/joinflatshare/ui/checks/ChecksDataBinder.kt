@@ -39,7 +39,6 @@ class ChecksDataBinder(
     internal fun prepareButtons() {
         when (activity.mode) {
             ChecksActivity.MODE_CHECKS -> {
-                viewBind.llReceivedHolder.visibility = View.VISIBLE
                 viewBind.txtChecks.setTextColor(ContextCompat.getColor(activity, R.color.blue_dark))
                 viewBind.viewChecks.setBackgroundColor(
                     ContextCompat.getColor(
@@ -62,7 +61,6 @@ class ChecksDataBinder(
             }
 
             ChecksActivity.MODE_SUPER_CHECKS -> {
-                viewBind.llReceivedHolder.visibility = View.GONE
                 viewBind.txtSuperChecks.setTextColor(
                     ContextCompat.getColor(
                         activity,
@@ -147,7 +145,11 @@ class ChecksDataBinder(
                         viewBind.rlNoChecks.visibility = View.VISIBLE
                         viewBind.txtNoData.text = "Superchecks you receive will show up here."
                     } else {
-
+                        viewBind.pullToRefresh.visibility = View.VISIBLE
+                        viewBind.rlNoChecks.visibility = View.GONE
+                        list.clear()
+//                        list.addAll(data)
+                        adapter.notifyDataSetChanged()
                     }
                 }
             }
@@ -161,10 +163,12 @@ class ChecksDataBinder(
             val data = resp.userData
             if (data.isEmpty()) {
                 hasMoreData = false
-                viewBind.pullToRefresh.visibility = View.GONE
-                viewBind.rlNoChecks.visibility = View.VISIBLE
-                viewBind.txtNoData.text =
-                    if (activity.source == ChecksActivity.SOURCE_SENT) "Checks you send will show up here." else "Checks you receive will show up here."
+                if (currentPage == 0) {
+                    viewBind.pullToRefresh.visibility = View.GONE
+                    viewBind.rlNoChecks.visibility = View.VISIBLE
+                    viewBind.txtNoData.text =
+                        if (activity.source == ChecksActivity.SOURCE_SENT) "Checks you send will show up here." else "Checks you receive will show up here."
+                }
             } else {
                 viewBind.pullToRefresh.visibility = View.VISIBLE
                 viewBind.rlNoChecks.visibility = View.GONE

@@ -11,6 +11,7 @@ import com.joinflatshare.ui.invite.InviteActivity
 import com.joinflatshare.ui.profile.details.ProfileDetailsActivity
 import com.joinflatshare.ui.profile.edit.ProfileEditActivity
 import com.joinflatshare.ui.profile.verify.ProfileVerifyActivity
+import com.joinflatshare.ui.settings.SettingsActivity
 import com.joinflatshare.utils.helper.CommonMethod
 
 /**
@@ -39,9 +40,14 @@ class ProfileListener(
                     intent
                 ) { result ->
                     if (result?.resultCode == Activity.RESULT_OK) {
-                       activity.setUserData()
+                        activity.setUserData()
                     }
                 }
+            }
+
+            viewBind.imgProfileSettings.id -> {
+                val intent = Intent(activity, SettingsActivity::class.java)
+                CommonMethod.switchActivity(activity, intent, false)
             }
 
             viewBind.cardProfileInvite.id -> {

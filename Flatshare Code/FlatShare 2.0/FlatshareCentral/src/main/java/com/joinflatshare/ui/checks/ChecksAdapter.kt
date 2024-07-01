@@ -3,6 +3,7 @@ package com.joinflatshare.ui.checks
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.joinflatshare.FlatshareCentral.databinding.ItemChecksBinding
 import com.joinflatshare.FlatshareCentral.databinding.ItemExploreBinding
 import com.joinflatshare.pojo.explore.UserRecommendationItem
 import com.joinflatshare.pojo.faq.FaqItem
@@ -14,7 +15,7 @@ class ChecksAdapter(
 ) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         val viewBind =
-            ItemExploreBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+            ItemChecksBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return ViewHolder(viewBind)
     }
 
@@ -28,13 +29,13 @@ class ChecksAdapter(
     }
 
     class ViewHolder(
-        private val view: ItemExploreBinding
+        private val view: ItemChecksBinding
     ) : RecyclerView.ViewHolder(view.root) {
         fun bind(
             position: Int, adapter: ChecksAdapter
         ) {
             val item = adapter.items[position]
-            AdapterUserHolder(adapter.activity).bindUser(item.data, view)
+            AdapterUserHolder().bindUser(adapter.activity,item, view)
         }
     }
 }

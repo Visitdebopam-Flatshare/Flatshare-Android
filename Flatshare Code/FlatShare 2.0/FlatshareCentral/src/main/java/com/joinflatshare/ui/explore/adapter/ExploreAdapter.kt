@@ -22,7 +22,6 @@ class ExploreAdapter(
     }
 
     override fun onBindViewHolder(mainHolder: RecyclerView.ViewHolder, position: Int) {
-        val userHolder = mainHolder as UserViewHolder
     }
 
     override fun getItemCount(): Int {
@@ -34,6 +33,5 @@ class ExploreAdapter(
 
     class UserViewHolder(activity: BaseActivity, itemView: ItemExploreBinding) :
         RecyclerView.ViewHolder(itemView.root) {
-        val userHolder: AdapterUserHolder = AdapterUserHolder(activity)
     }
 }

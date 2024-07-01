@@ -11,7 +11,7 @@ object ConfigConstants {
     const val API_ERROR_CODE_LOGOUT = 403
     const val API_ERROR_CODE_NOT_FOUND = 404
 
-    const val COMPLETION_MINIMUM_FOR_USERS = 15
+    const val COMPLETION_MINIMUM_FOR_USERS = 40
     const val COMPLETION_MINIMUM_FOR_FLATS = 50
 
     init {

@@ -8,6 +8,7 @@ import com.joinflatshare.FlatshareCentral.databinding.ItemChecksVpBinding
 import com.joinflatshare.FlatshareCentral.databinding.ItemExploreVpBinding
 import com.joinflatshare.pojo.user.User
 import com.joinflatshare.ui.base.BaseActivity
+import com.joinflatshare.ui.checks.ChecksActivity
 import com.joinflatshare.ui.explore.ExploreActivity
 import com.joinflatshare.ui.explore.holder.AdapterUserVpHolder
 
@@ -21,9 +22,8 @@ class ExploreUserVpAdapter(
 ) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
-        val viewBind = if (activity is ExploreActivity)
+        val viewBind =
             ItemExploreVpBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-        else ItemChecksVpBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return ViewHolder(viewBind)
     }
 
@@ -33,7 +33,10 @@ class ExploreUserVpAdapter(
 
     override fun onBindViewHolder(mainHolder: RecyclerView.ViewHolder, position: Int) {
         val holder = mainHolder as ViewHolder
-        holder.vpHolder.bindVp(activity, vpSlide[position], user)
+        if (activity is ExploreActivity)
+            holder.vpHolder.bindVp(activity, vpSlide[position], user)
+        else if (activity is ChecksActivity)
+            holder.vpHolder.bindVp(activity, user)
     }
 
     class ViewHolder(itemView: ViewBinding) :

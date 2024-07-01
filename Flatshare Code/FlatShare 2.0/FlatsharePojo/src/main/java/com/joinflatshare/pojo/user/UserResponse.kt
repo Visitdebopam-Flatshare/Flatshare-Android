@@ -67,6 +67,9 @@ data class User(
     @field:SerializedName("work")
     var work: String? = "",
 
+    @field:SerializedName("profession")
+    var profession: String? = "",
+
     @field:SerializedName("dp")
     var dp: String? = null,
 

@@ -114,6 +114,7 @@
                 android:layout_margin="@dimen/_10sdp"
                 android:background="@drawable/drawable_edittext"
                 android:orientation="horizontal"
+                android:visibility="gone"
                 android:weightSum="2">
 
                 <FrameLayout
@@ -184,7 +185,7 @@
                 android:id="@+id/pullToRefresh"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginHorizontal="@dimen/_10sdp"
+                android:layout_margin="@dimen/_10sdp"
                 android:visibility="visible">
 
                 <androidx.recyclerview.widget.RecyclerView

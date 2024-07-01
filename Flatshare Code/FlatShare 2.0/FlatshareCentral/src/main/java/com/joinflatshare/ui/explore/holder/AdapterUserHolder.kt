@@ -2,15 +2,16 @@ package com.joinflatshare.ui.explore.holder
 
 import android.app.Activity
 import android.content.Intent
-import android.graphics.drawable.BitmapDrawable
 import android.view.View
 import androidx.core.content.ContextCompat
 import androidx.viewpager2.widget.ViewPager2
 import com.joinflatshare.FlatshareCentral.R
+import com.joinflatshare.FlatshareCentral.databinding.ItemChecksBinding
 import com.joinflatshare.FlatshareCentral.databinding.ItemExploreBinding
 import com.joinflatshare.constants.AppConstants
 import com.joinflatshare.constants.ChatRequestConstants
 import com.joinflatshare.constants.RouteConstants
+import com.joinflatshare.pojo.explore.UserRecommendationItem
 import com.joinflatshare.pojo.user.ModelLocation
 import com.joinflatshare.pojo.user.User
 import com.joinflatshare.ui.base.BaseActivity
@@ -22,22 +23,25 @@ import com.joinflatshare.ui.profile.details.ProfileDetailsActivity
 import com.joinflatshare.utils.helper.CommonMethod
 import com.joinflatshare.utils.helper.DistanceCalculator
 import com.joinflatshare.utils.helper.ImageHelper
-import jp.wasabeef.blurry.Blurry
+import com.joinflatshare.webservice.api.WebserviceManager
+import com.joinflatshare.webservice.api.interfaces.OnFlatshareResponseCallBack
+import okhttp3.ResponseBody
+import retrofit2.Response
 
 /**
  * Created by debopam on 14/11/22
  */
-class AdapterUserHolder(private val activity: BaseActivity) {
+class AdapterUserHolder {
 
     companion object {
         const val VP_SLIDE_ABOUT = 1
         const val VP_SLIDE_WORK = 2
         const val VP_SLIDE_IMAGES = 3
-        var shouldShowPaymentGateway = true
         var pageNo = 0
     }
 
     fun bindUser(
+        activity: ExploreActivity,
         user: User, holder: ItemExploreBinding
     ) {
 
@@ -108,109 +112,212 @@ class AdapterUserHolder(private val activity: BaseActivity) {
                 override fun onPageSelected(position: Int) {
                     super.onPageSelected(position)
                     if (position == 0) pageNo = 0 else pageNo = 2
-                    onVpPageChange(holder)
+                    onVpPageChange(activity, holder)
                 }
             })
+        }
+    }
 
+    private fun isLocationEmpty(location: ModelLocation?): Boolean {
+        return (location?.loc == null || location.loc.coordinates.isNullOrEmpty())
+    }
 
-            if (activity is ExploreActivity) {
-                holder.llExploreButtons.visibility = View.VISIBLE
-                holder.llExploreSuperCheck.visibility = View.GONE
-            } else if (activity is ChecksActivity) {
-                holder.llExploreButtons.visibility = View.GONE
-                holder.llExploreSuperCheck.visibility = View.VISIBLE
-            }
-
-
-            /*var data = UserRecommendationItem()
-            var searchType = ""
-            if (activity is ExploreActivity) {
-                data = activity.userData[position]
-                searchType = activity.SEARCH_TYPE
-            } else if (activity is LikedActivity) {
-                searchType = activity.SEARCH_TYPE
-
-                data = activity.users[position]
-            }
-            var connectionType = ""
-            var mixpanelSearchType = ""
-            if (searchType.equals(BaseActivity.TYPE_USER)) {
-                connectionType = ChatRequestConstants.CHAT_REQUEST_CONSTANT_F2U
-                mixpanelSearchType = "Flatmate Search"
-            } else if (searchType.equals(BaseActivity.TYPE_FHT)) {
-                connectionType = ChatRequestConstants.CHAT_REQUEST_CONSTANT_FHT
-                mixpanelSearchType = "FHT Search"
-            } else if (searchType.equals(BaseActivity.TYPE_DATE)
-                || searchType.equals(BaseActivity.TYPE_DATE_CASUAL)
-                || searchType.equals(BaseActivity.TYPE_DATE_LONG_TERM)
-                || searchType.equals(BaseActivity.TYPE_DATE_ACTIVITY_PARTNERS)
-            ) {
-                val dateType = AppConstants.loggedInUser?.dateProperties?.dateType
-                connectionType = "" + dateType
-                when (dateType) {
-                    ChatRequestConstants.CHAT_REQUEST_CONSTANT_DATE_CASUAL -> {
-                        mixpanelSearchType = "Casual Date Search"
-                    }
-
-                    ChatRequestConstants.CHAT_REQUEST_CONSTANT_DATE_LONG_TERM -> {
-                        mixpanelSearchType = "Long Term Date Search"
-                    }
-
-                    ChatRequestConstants.CHAT_REQUEST_CONSTANT_DATE_ACTIVITY_PARTNERS -> {
-                        mixpanelSearchType = "Activity Partners Date Search"
-                    }
-                }
-            } else {
-                when (searchType) {
-                    BaseActivity.TYPE_DATE_CASUAL -> {
-                        connectionType = "" + ChatRequestConstants.CHAT_REQUEST_CONSTANT_DATE_CASUAL
-                        mixpanelSearchType = "Casual Date Search"
-                    }
-
-                    BaseActivity.TYPE_DATE_LONG_TERM -> {
-                        connectionType = "" + ChatRequestConstants.CHAT_REQUEST_CONSTANT_DATE_LONG_TERM
-                        mixpanelSearchType = "Long Term Date Search"
-                    }
-
-                    BaseActivity.TYPE_DATE_ACTIVITY_PARTNERS -> {
-                        connectionType =
-                            "" + ChatRequestConstants.CHAT_REQUEST_CONSTANT_DATE_ACTIVITY_PARTNERS
-                        mixpanelSearchType = "Activity Partners Date Search"
-                    }
-                }
-            }
-            val item = data.data
-
-            holder.llExploreNameFlat.visibility = View.GONE
-            holder.llExploreNameUser.visibility = View.VISIBLE
-            // Image
-            ImageHelper.loadImage(
-                activity,
-                R.drawable.ic_user,
-                holder.imgProfile, ImageHelper.getProfileImageWithAws(item)
+    private fun onVpPageChange(activity: ExploreActivity, holder: ItemExploreBinding) {
+        for (i in 0 until holder.llVpScroll.childCount step 2) {
+            if (i == pageNo)
+                (holder.llVpScroll.getChildAt(i) as View).setBackgroundColor(
+                    ContextCompat.getColor(
+                        activity,
+                        R.color.white
+                    )
+                )
+            else (holder.llVpScroll.getChildAt(i) as View).setBackgroundColor(
+                ContextCompat.getColor(
+                    activity,
+                    R.color.blue_light
+                )
             )
+        }
+    }
 
-            // first get the width and height of image recyclerview
-            var name = item.name?.firstName + " " + item.name?.lastName
-            if (name.length > ExploreAdapter.CHARACTER_LIMIT_IN_USER_NAME) {
-                name = name.substring(0, ExploreAdapter.CHARACTER_LIMIT_IN_USER_NAME) + "..."
-            }
-            holder.txtUserName.text = name
-            holder.imgProfileVerified.visibility =
-                if (item.verification?.isVerified == true) View.VISIBLE else View.GONE
+    fun bindUser(
+        activity: ChecksActivity,
+        details: UserRecommendationItem, holder: ItemChecksBinding
+    ) {
+        val user = details.data
 
-            // Score
-            var score = item.score
-            if (score < 0) score = 0
-            holder.txtFscoreUser.text = "" + score
+        ImageHelper.loadProfileImage(activity, holder.imgProfile, holder.txtPhoto, user)
+        holder.imgProfile.setOnClickListener {
+            val intent = Intent(activity, ProfileDetailsActivity::class.java)
+            intent.putExtra("phone", user.id)
+            CommonMethod.switchActivity(activity, intent, false)
+        }
+        // Name
+        holder.txtName.text =
+            "${user.name?.firstName} ${user.name?.lastName}, ${CommonMethod.getAge(user.dob)}"
 
-            // Location
-            val details = data.details
-            if (activity is LikedActivity) {
-                UserHolderForLiked.setLocation(searchType, details, holder, flat)
+
+        // Age
+        if (isLocationEmpty(AppConstants.loggedInUser?.location) || isLocationEmpty(user.location))
+            holder.txtDistance.visibility = View.GONE
+        else {
+            holder.txtDistance.visibility = View.VISIBLE
+            holder.txtDistance.text = (DistanceCalculator.calculateDistance(
+                user.location.loc.coordinates[1],
+                user.location.loc.coordinates[0],
+                AppConstants.loggedInUser?.location?.loc?.coordinates!![1],
+                AppConstants.loggedInUser?.location?.loc?.coordinates!![0]
+            )) + " away"
+        }
+
+        holder.frameExploreTop.setOnClickListener {
+            val intent = Intent(activity, ProfileDetailsActivity::class.java)
+            intent.putExtra("phone", user.id)
+            CommonMethod.switchActivity(activity, intent, false)
+        }
+
+        // Viewpager
+        val vpSlide = ArrayList<Int>()
+
+        vpSlide.add(VP_SLIDE_ABOUT)
+
+        if (vpSlide.size == 0) {
+            holder.vpExplore.visibility = View.GONE
+        } else {
+            holder.vpExplore.visibility = View.VISIBLE
+            holder.vpExplore.orientation = ViewPager2.ORIENTATION_HORIZONTAL
+            holder.vpExplore.adapter = ExploreUserVpAdapter(
+                activity, vpSlide, user
+            )
+        }
+
+        if (activity.mode == ChecksActivity.MODE_CHECKS) {
+            holder.llExploreSuperCheck.visibility = View.VISIBLE
+            holder.llExploreButtons.visibility = View.GONE
+            if (details.details.chatRequestSent) {
+                holder.txtChecksButton.text = "Already Sent"
+                holder.llExploreSuperCheck.setOnClickListener { }
             } else {
-                holder.txtUserLocation.text = "${details.distance} km"
-                *//*if (details.userLocationMatch.isEmpty() || details.flatLocation.isEmpty()) holder.txtUserLocation.text =
+                holder.txtChecksButton.text = "Send SuperCheck"
+                holder.llExploreSuperCheck.setOnClickListener {
+                    WebserviceManager().sendChatRequest(
+                        activity,
+                        ChatRequestConstants.CHAT_REQUEST_CONSTANT_FHT,
+                        user.id,
+                        object : OnFlatshareResponseCallBack<Response<ResponseBody>> {
+                            override fun onResponseCallBack(response: String) {
+                                details.details.chatRequestSent = true
+                                bindUser(activity, details, holder)
+                            }
+                        })
+                }
+            }
+        } else {
+            holder.llExploreSuperCheck.visibility = View.GONE
+            holder.llExploreButtons.visibility = View.VISIBLE
+        }
+
+
+        holder.imgBlock.setOnClickListener {
+
+        }
+        holder.imgReject.setOnClickListener {
+
+        }
+        holder.imgAccept.setOnClickListener {
+
+        }
+    }
+
+    /*var data = UserRecommendationItem()
+    var searchType = ""
+    if (activity is ExploreActivity) {
+        data = activity.userData[position]
+        searchType = activity.SEARCH_TYPE
+    } else if (activity is LikedActivity) {
+        searchType = activity.SEARCH_TYPE
+
+        data = activity.users[position]
+    }
+    var connectionType = ""
+    var mixpanelSearchType = ""
+    if (searchType.equals(BaseActivity.TYPE_USER)) {
+        connectionType = ChatRequestConstants.CHAT_REQUEST_CONSTANT_F2U
+        mixpanelSearchType = "Flatmate Search"
+    } else if (searchType.equals(BaseActivity.TYPE_FHT)) {
+        connectionType = ChatRequestConstants.CHAT_REQUEST_CONSTANT_FHT
+        mixpanelSearchType = "FHT Search"
+    } else if (searchType.equals(BaseActivity.TYPE_DATE)
+        || searchType.equals(BaseActivity.TYPE_DATE_CASUAL)
+        || searchType.equals(BaseActivity.TYPE_DATE_LONG_TERM)
+        || searchType.equals(BaseActivity.TYPE_DATE_ACTIVITY_PARTNERS)
+    ) {
+        val dateType = AppConstants.loggedInUser?.dateProperties?.dateType
+        connectionType = "" + dateType
+        when (dateType) {
+            ChatRequestConstants.CHAT_REQUEST_CONSTANT_DATE_CASUAL -> {
+                mixpanelSearchType = "Casual Date Search"
+            }
+
+            ChatRequestConstants.CHAT_REQUEST_CONSTANT_DATE_LONG_TERM -> {
+                mixpanelSearchType = "Long Term Date Search"
+            }
+
+            ChatRequestConstants.CHAT_REQUEST_CONSTANT_DATE_ACTIVITY_PARTNERS -> {
+                mixpanelSearchType = "Activity Partners Date Search"
+            }
+        }
+    } else {
+        when (searchType) {
+            BaseActivity.TYPE_DATE_CASUAL -> {
+                connectionType = "" + ChatRequestConstants.CHAT_REQUEST_CONSTANT_DATE_CASUAL
+                mixpanelSearchType = "Casual Date Search"
+            }
+
+            BaseActivity.TYPE_DATE_LONG_TERM -> {
+                connectionType = "" + ChatRequestConstants.CHAT_REQUEST_CONSTANT_DATE_LONG_TERM
+                mixpanelSearchType = "Long Term Date Search"
+            }
+
+            BaseActivity.TYPE_DATE_ACTIVITY_PARTNERS -> {
+                connectionType =
+                    "" + ChatRequestConstants.CHAT_REQUEST_CONSTANT_DATE_ACTIVITY_PARTNERS
+                mixpanelSearchType = "Activity Partners Date Search"
+            }
+        }
+    }
+    val item = data.data
+
+    holder.llExploreNameFlat.visibility = View.GONE
+    holder.llExploreNameUser.visibility = View.VISIBLE
+    // Image
+    ImageHelper.loadImage(
+        activity,
+        R.drawable.ic_user,
+        holder.imgProfile, ImageHelper.getProfileImageWithAws(item)
+    )
+
+    // first get the width and height of image recyclerview
+    var name = item.name?.firstName + " " + item.name?.lastName
+    if (name.length > ExploreAdapter.CHARACTER_LIMIT_IN_USER_NAME) {
+        name = name.substring(0, ExploreAdapter.CHARACTER_LIMIT_IN_USER_NAME) + "..."
+    }
+    holder.txtUserName.text = name
+    holder.imgProfileVerified.visibility =
+        if (item.verification?.isVerified == true) View.VISIBLE else View.GONE
+
+    // Score
+    var score = item.score
+    if (score < 0) score = 0
+    holder.txtFscoreUser.text = "" + score
+
+    // Location
+    val details = data.details
+    if (activity is LikedActivity) {
+        UserHolderForLiked.setLocation(searchType, details, holder, flat)
+    } else {
+        holder.txtUserLocation.text = "${details.distance} km"
+        *//*if (details.userLocationMatch.isEmpty() || details.flatLocation.isEmpty()) holder.txtUserLocation.text =
                 "NA"
             else holder.txtUserLocation.text = DistanceCalculator.calculateDistance(
                 details.userLocationMatch[0],
@@ -711,31 +818,6 @@ class AdapterUserHolder(private val activity: BaseActivity) {
                 }
             }
         }*/
-        }
-    }
-
-    private fun isLocationEmpty(location: ModelLocation?): Boolean {
-        return (location?.loc == null || location.loc.coordinates.isNullOrEmpty())
-    }
-
-    private fun onVpPageChange(holder: ItemExploreBinding) {
-        for (i in 0 until holder.llVpScroll.childCount step 2) {
-            if (i == pageNo)
-                (holder.llVpScroll.getChildAt(i) as View).setBackgroundColor(
-                    ContextCompat.getColor(
-                        activity,
-                        R.color.white
-                    )
-                )
-            else (holder.llVpScroll.getChildAt(i) as View).setBackgroundColor(
-                ContextCompat.getColor(
-                    activity,
-                    R.color.blue_light
-                )
-            )
-        }
-    }
-
 
 
     private fun notInterested(activity: BaseActivity, id: String, position: Int) {

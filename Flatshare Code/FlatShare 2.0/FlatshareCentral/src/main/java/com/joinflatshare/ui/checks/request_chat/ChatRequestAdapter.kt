@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.text.HtmlCompat
 import androidx.recyclerview.widget.RecyclerView
+import com.google.gson.Gson
 import com.joinflatshare.FlatShareApplication
 import com.joinflatshare.FlatshareCentral.R
 import com.joinflatshare.FlatshareCentral.databinding.ItemNotificationsBinding
@@ -14,7 +15,9 @@ import com.joinflatshare.constants.AppConstants
 import com.joinflatshare.constants.ChatRequestConstants
 import com.joinflatshare.constants.RouteConstants
 import com.joinflatshare.customviews.inapp_review.InAppReview
+import com.joinflatshare.pojo.BaseResponse
 import com.joinflatshare.pojo.requests.ConnectionItem
+import com.joinflatshare.ui.base.BaseActivity
 import com.joinflatshare.ui.dialogs.DialogConnection
 import com.joinflatshare.ui.flat.details.FlatDetailsActivity
 import com.joinflatshare.ui.profile.details.ProfileDetailsActivity
@@ -22,6 +25,10 @@ import com.joinflatshare.utils.helper.CommonMethod
 import com.joinflatshare.utils.helper.DateUtils
 import com.joinflatshare.utils.helper.ImageHelper
 import com.joinflatshare.utils.mixpanel.MixpanelUtils
+import com.joinflatshare.webservice.api.WebserviceManager
+import com.joinflatshare.webservice.api.interfaces.OnFlatshareResponseCallBack
+import okhttp3.ResponseBody
+import retrofit2.Response
 
 class ChatRequestAdapter(
     private val activity: ChatRequestActivity,
@@ -133,27 +140,24 @@ class ChatRequestAdapter(
             adapter: ChatRequestAdapter,
             isAccept: Boolean
         ) {
-            if (isAccept) {
-                activity.apiManager.acceptConnection(
-                    item.requester?.id!!,
-                    activity.type
-                ) { response ->
-                    val resp = response as com.joinflatshare.pojo.BaseResponse
-                    processResult(resp, adapter, position, true)
-                }
-            } else {
-                activity.apiManager.rejectConnection(
-                    item.requester?.id!!,
-                    activity.type
-                ) { response ->
-                    val resp = response as com.joinflatshare.pojo.BaseResponse
-                    processResult(resp, adapter, position, false)
-                }
-            }
+            WebserviceManager().sendChatRequestResponse(
+                activity,
+                isAccept,
+                ChatRequestConstants.CHAT_REQUEST_CONSTANT_FHT,
+                item.requester?.id!!,
+                object : OnFlatshareResponseCallBack<Response<ResponseBody>> {
+                    override fun onResponseCallBack(response: String) {
+                        val resp = Gson().fromJson(response, BaseResponse::class.java)
+                        processResult(resp, adapter, position, isAccept)
+                    }
+                })
         }
 
         private fun processResult(
-            resp: com.joinflatshare.pojo.BaseResponse, adapter: ChatRequestAdapter, position: Int, isAccept: Boolean
+            resp: BaseResponse,
+            adapter: ChatRequestAdapter,
+            position: Int,
+            isAccept: Boolean
         ) {
             if (resp.status == 200) {
                 if (isAccept) {

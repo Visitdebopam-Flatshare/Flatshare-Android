@@ -1,5 +1,6 @@
 package com.joinflatshare.webservice.api.interfaces
 
+import com.joinflatshare.pojo.BaseResponse
 import com.joinflatshare.pojo.likes.LikeRequest
 import com.joinflatshare.pojo.user.AdhaarOtp
 import com.joinflatshare.pojo.user.AdhaarRequest
@@ -63,10 +64,16 @@ interface ApiInterface {
         @Path("type") type: String?
     ): Observable<Response<ResponseBody>>
 
-    @PUT()
-    fun acceptConnection(
+    @POST()
+    fun sendChatRequest(
         @Url url: String
-    ): Observable<com.joinflatshare.pojo.BaseResponse>
+    ): Observable<Response<ResponseBody>>
+
+
+    @PUT()
+    fun sendChatRequestResponse(
+        @Url url: String
+    ): Observable<Response<ResponseBody>>
 
     @PUT("flats/accept/{id}")
     fun acceptFlatRequest(

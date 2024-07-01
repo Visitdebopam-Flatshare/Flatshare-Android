@@ -110,6 +110,31 @@ class WebserviceManager {
         handleApiRequestWithoutProgress(activity, observable, callback)
     }
 
+    fun sendChatRequest(
+        activity: ComponentActivity,
+        type: String,
+        id: String,
+        callback: OnFlatshareResponseCallBack<Response<ResponseBody>>
+    ) {
+        val url = "users/connections/$type/request/$id"
+        val observable = ApiManager.getApiInterface().sendChatRequest(url)
+        handleApiRequestWithoutProgress(activity, observable, callback)
+    }
+
+    fun sendChatRequestResponse(
+        activity: ComponentActivity,
+        isAccept: Boolean,
+        type: String,
+        id: String,
+        callback: OnFlatshareResponseCallBack<Response<ResponseBody>>
+    ) {
+        val url = if (isAccept)
+            "users/connections/$type/request/accept/$id"
+        else "users/connections/$type/request/reject/$id"
+        val observable = ApiManager.getApiInterface().sendChatRequestResponse(url)
+        handleApiRequestWithoutProgress(activity, observable, callback)
+    }
+
     fun getMutualContacts(
         activity: ComponentActivity,
         type: String?,

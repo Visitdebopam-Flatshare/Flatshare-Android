@@ -120,4 +120,5 @@
     </RelativeLayout>
 
     <include layout="@layout/dialog_bottomsheet" />
+    <include layout="@layout/dialog_bottomsheet_incomplete_profile" />
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

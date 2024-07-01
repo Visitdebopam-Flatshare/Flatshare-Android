@@ -126,56 +126,6 @@ class ApiManager() {
         }
     }
 
-    // Requests
-    fun sendConnectionRequest(
-        showProgress: Boolean,
-        type: String, id: String, onResponseCallback: OnResponseCallback<Any?>
-    ) {
-        if (ConnectivityListener.checkInternet()) {
-            if (showProgress)
-                showProgress()
-            isLoaderShownByApimanager = true
-            val url = "users/connections/$type/request/$id"
-            CompositeDisposable().add(getClient()?.requestConnection(url)!!
-                .observeOn(AndroidSchedulers.mainThread()).subscribeOn(Schedulers.io())
-                .subscribe({ trendsResponse ->
-                    sendResponse(trendsResponse, onResponseCallback)
-                }) { throwable -> handleRestrictionError(throwable, onResponseCallback) })
-        }
-    }
-
-    fun acceptConnection(
-        id: String, type: String, onResponseCallback: OnResponseCallback<Any?>
-    ) {
-        // TODO Fix first
-        /*if (ConnectivityListener.checkInternet()) {
-            showProgress()
-            isLoaderShownByApimanager = true
-            val url = "users/connections/$type/request/accept/$id"
-            CompositeDisposable().add(getClient()?.acceptConnection(url)!!
-                .observeOn(AndroidSchedulers.mainThread()).subscribeOn(Schedulers.io())
-                .subscribe({ trendsResponse ->
-                    sendResponse(trendsResponse, onResponseCallback)
-                }) { throwable -> handleError(throwable as Throwable, onResponseCallback) })
-        }*/
-    }
-
-    fun rejectConnection(
-        id: String, type: String, onResponseCallback: OnResponseCallback<Any?>
-    ) {
-        // TODO Fix first
-        /*if (ConnectivityListener.checkInternet()) {
-            showProgress()
-            isLoaderShownByApimanager = true
-            val url = "users/connections/$type/request/reject/$id"
-            CompositeDisposable().add(getClient()?.rejectConnection(url)!!
-                .observeOn(AndroidSchedulers.mainThread()).subscribeOn(Schedulers.io())
-                .subscribe({ trendsResponse ->
-                    sendResponse(trendsResponse, onResponseCallback)
-                }) { throwable -> handleError(throwable as Throwable, onResponseCallback) })
-        }*/
-    }
-
     fun removeConnection(
         id: String, type: String, onResponseCallback: OnResponseCallback<Any?>
     ) {

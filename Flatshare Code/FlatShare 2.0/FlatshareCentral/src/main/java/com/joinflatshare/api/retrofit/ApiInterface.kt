@@ -46,11 +46,6 @@ interface ApiInterface {
 
     /*------------------------------ Notification & Requests ------------------------------*/
 
-    @POST()
-    fun requestConnection(
-        @Url url: String
-    ): Observable<BaseResponse>
-
     @DELETE()
     fun rejectConnection(
         @Url url: String

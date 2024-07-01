@@ -10,12 +10,9 @@ import com.joinflatshare.FlatshareCentral.databinding.ActivityProfileCreateBindi
 import com.joinflatshare.chat.ApplicationChatHandler
 import com.joinflatshare.chat.SendBirdUser
 import com.joinflatshare.constants.AppConstants
-import com.joinflatshare.db.daos.UserDao
 import com.joinflatshare.fcm.NotificationPermissionHandler
-import com.joinflatshare.interfaces.OnUserFetched
 import com.joinflatshare.pojo.user.User
 import com.joinflatshare.pojo.user.UserResponse
-import com.joinflatshare.ui.base.BaseActivity
 import com.joinflatshare.ui.register.RegisterBaseActivity
 import com.joinflatshare.ui.register.photo.RegisterPhotoActivity
 import com.joinflatshare.utils.helper.CommonMethod
