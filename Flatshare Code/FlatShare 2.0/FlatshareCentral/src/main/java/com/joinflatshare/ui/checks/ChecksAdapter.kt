@@ -4,9 +4,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.joinflatshare.FlatshareCentral.databinding.ItemChecksBinding
-import com.joinflatshare.FlatshareCentral.databinding.ItemExploreBinding
 import com.joinflatshare.pojo.explore.UserRecommendationItem
-import com.joinflatshare.pojo.faq.FaqItem
 import com.joinflatshare.ui.explore.holder.AdapterUserHolder
 
 class ChecksAdapter(
@@ -28,6 +26,11 @@ class ChecksAdapter(
         return items.size
     }
 
+    fun removeItem(position: Int) {
+        items.removeAt(position)
+        notifyItemRemoved(position)
+    }
+
     class ViewHolder(
         private val view: ItemChecksBinding
     ) : RecyclerView.ViewHolder(view.root) {
@@ -35,7 +38,7 @@ class ChecksAdapter(
             position: Int, adapter: ChecksAdapter
         ) {
             val item = adapter.items[position]
-            AdapterUserHolder().bindUser(adapter.activity,item, view)
+            AdapterUserHolder().bindUser(adapter.activity, item, position, view)
         }
     }
 }

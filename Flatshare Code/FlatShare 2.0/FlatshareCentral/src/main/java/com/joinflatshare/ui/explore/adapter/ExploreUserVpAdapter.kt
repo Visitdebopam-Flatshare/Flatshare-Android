@@ -4,7 +4,6 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewbinding.ViewBinding
-import com.joinflatshare.FlatshareCentral.databinding.ItemChecksVpBinding
 import com.joinflatshare.FlatshareCentral.databinding.ItemExploreVpBinding
 import com.joinflatshare.pojo.user.User
 import com.joinflatshare.ui.base.BaseActivity

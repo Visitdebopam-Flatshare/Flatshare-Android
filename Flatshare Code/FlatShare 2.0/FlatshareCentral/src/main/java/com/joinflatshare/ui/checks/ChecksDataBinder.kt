@@ -25,7 +25,7 @@ class ChecksDataBinder(
     var currentPage = 0
     val list = ArrayList<UserRecommendationItem>()
     private val layoutManager: LinearLayoutManager = LinearLayoutManager(activity)
-    private val adapter: ChecksAdapter
+    val adapter: ChecksAdapter
 
     init {
         viewBind.rvChecks.layoutManager = LinearLayoutManager(activity)
@@ -148,7 +148,13 @@ class ChecksDataBinder(
                         viewBind.pullToRefresh.visibility = View.VISIBLE
                         viewBind.rlNoChecks.visibility = View.GONE
                         list.clear()
-//                        list.addAll(data)
+                        data.forEach {
+                            if (it.requester != null) {
+                                val item = UserRecommendationItem()
+                                item.data = it.requester!!
+                                list.add(item)
+                            }
+                        }
                         adapter.notifyDataSetChanged()
                     }
                 }

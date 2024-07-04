@@ -2,6 +2,7 @@ package com.joinflatshare.pojo.requests
 
 import com.google.gson.annotations.SerializedName
 import com.joinflatshare.pojo.user.Name
+import com.joinflatshare.pojo.user.User
 
 data class ConnectionRequestResponse(
 
@@ -18,7 +19,7 @@ data class ConnectionRequestResponse(
 data class ConnectionItem(
 
     @field:SerializedName("requester")
-    val requester: Requester? = null,
+    val requester: User? = null,
 
     @field:SerializedName("createdAt")
     val createdAt: String = "",

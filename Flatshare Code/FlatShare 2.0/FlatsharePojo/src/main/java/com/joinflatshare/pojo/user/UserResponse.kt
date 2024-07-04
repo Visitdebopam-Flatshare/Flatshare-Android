@@ -24,9 +24,6 @@ data class UserResponse(
     @field:SerializedName("distance")
     var distance: Double = 0.0,
 
-    @field:SerializedName("friends")
-    var friends: ArrayList<User> = ArrayList(),
-
     val token: String = ""
 ) : Serializable
 
@@ -246,4 +243,4 @@ data class Verification(
 
     @field:SerializedName("isVerified")
     val isVerified: Boolean? = null
-) : java.io.Serializable
+) : Serializable

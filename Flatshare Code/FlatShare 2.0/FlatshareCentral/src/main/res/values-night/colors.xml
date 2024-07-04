@@ -7,20 +7,14 @@
     <color name="color_text_secondary">#2E2E2E</color>
     <color name="red">#F44545</color>
 
-    <color name="color_feed_divider">#272727</color>
     <color name="otp_bg">#2E2E2E</color>
     <color name="flat_buttons">#434343</color>
-    <color name="color_flatshare">#BEBEBE</color>
     <color name="color_search_bg">#434343</color>
     <color name="color_search_border">#434343</color>
 
     <color name="color_hint">#585858</color>
-    <color name="color_blue_light_2">#2B8FF3</color>
     <color name="color_bg">#2E2E2E</color>
-    <color name="color_preference_button">#273C50</color>
-    <color name="color_like_button_bg">#2A5D8F</color>
     <color name="color_icon">#585858</color>
-    <color name="color_logo">#767676</color>
     <color name="button_bg_black">@android:color/white</color>
     <color name="chat_header">#424242</color>
 

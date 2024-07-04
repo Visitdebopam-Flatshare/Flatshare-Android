@@ -3,7 +3,6 @@
     <dimen name="button_height">@dimen/_36sdp</dimen>
     <dimen name="button_height_small">@dimen/_35sdp</dimen>
     <dimen name="button_text_size">@dimen/_16sdp</dimen>
-    <dimen name="edittext_height">@dimen/_30sdp</dimen>
     <dimen name="menu_width">@dimen/_20sdp</dimen>
     <dimen name="menu_height">@dimen/_40sdp</dimen>
     <dimen name="dimen_topbar_icon">@dimen/_15sdp</dimen>

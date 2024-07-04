@@ -5,12 +5,14 @@ import android.content.Intent
 import android.view.View
 import androidx.core.content.ContextCompat
 import androidx.viewpager2.widget.ViewPager2
+import com.google.gson.Gson
 import com.joinflatshare.FlatshareCentral.R
 import com.joinflatshare.FlatshareCentral.databinding.ItemChecksBinding
 import com.joinflatshare.FlatshareCentral.databinding.ItemExploreBinding
 import com.joinflatshare.constants.AppConstants
 import com.joinflatshare.constants.ChatRequestConstants
 import com.joinflatshare.constants.RouteConstants
+import com.joinflatshare.pojo.BaseResponse
 import com.joinflatshare.pojo.explore.UserRecommendationItem
 import com.joinflatshare.pojo.user.ModelLocation
 import com.joinflatshare.pojo.user.User
@@ -142,7 +144,7 @@ class AdapterUserHolder {
 
     fun bindUser(
         activity: ChecksActivity,
-        details: UserRecommendationItem, holder: ItemChecksBinding
+        details: UserRecommendationItem, position: Int, holder: ItemChecksBinding
     ) {
         val user = details.data
 
@@ -207,7 +209,7 @@ class AdapterUserHolder {
                         object : OnFlatshareResponseCallBack<Response<ResponseBody>> {
                             override fun onResponseCallBack(response: String) {
                                 details.details.chatRequestSent = true
-                                bindUser(activity, details, holder)
+                                bindUser(activity, details, position, holder)
                             }
                         })
                 }
@@ -215,17 +217,38 @@ class AdapterUserHolder {
         } else {
             holder.llExploreSuperCheck.visibility = View.GONE
             holder.llExploreButtons.visibility = View.VISIBLE
-        }
-
-
-        holder.imgBlock.setOnClickListener {
-
-        }
-        holder.imgReject.setOnClickListener {
-
-        }
-        holder.imgAccept.setOnClickListener {
-
+            holder.imgBlock.setOnClickListener {
+                // TODO implement block
+            }
+            holder.imgReject.setOnClickListener {
+                WebserviceManager().sendChatRequestResponse(
+                    activity,
+                    false,
+                    ChatRequestConstants.CHAT_REQUEST_CONSTANT_FHT,
+                    user.id,
+                    object : OnFlatshareResponseCallBack<Response<ResponseBody>> {
+                        override fun onResponseCallBack(response: String) {
+                            activity.dataBinder.adapter.removeItem(position)
+                        }
+                    })
+            }
+            holder.imgAccept.setOnClickListener {
+                WebserviceManager().sendChatRequestResponse(
+                    activity,
+                    false,
+                    ChatRequestConstants.CHAT_REQUEST_CONSTANT_FHT,
+                    user.id,
+                    object : OnFlatshareResponseCallBack<Response<ResponseBody>> {
+                        override fun onResponseCallBack(response: String) {
+                            val resp: BaseResponse? =
+                                Gson().fromJson(response, BaseResponse::class.java)
+                            if (resp?.matched == true) {
+                                // TODO show match popup
+                            }
+                            activity.dataBinder.adapter.removeItem(position)
+                        }
+                    })
+            }
         }
     }
 

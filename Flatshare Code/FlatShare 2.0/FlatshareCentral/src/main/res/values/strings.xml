@@ -6,10 +6,8 @@
     <string name="default_notification_channel_id" translatable="false">@string/app_name</string>
 
     <string name="currency" translatable="false">\u20B9</string>
-    <string name="verified_text_striked" translatable="false">Get Verified for <strike>$8</strike> Free!</string>
 
     <!--    Setup card-->
-    <string name="invited" translatable="false">You’ve been invited by your friend <b>%s</b></string>
 
     <!--ERRORS-->
     <string name="noInternet" translatable="false">Check your internet connection or try again later.</string>
@@ -20,12 +18,8 @@
     \u2022 No non-veg in the common area\n
     \u2022 No smoking in the common area</string>
 
-    <string name="invited_text" translatable="false">Invited by <b>%s</b></string>
     <string name="login_terms" translatable="false"><![CDATA[%s <font color=#2464FF>%s</font>%s<font color=#2464FF>%s</font> %s]]></string>
     <!--Notification Text-->
-    <string name="notification_text_invite" translatable="false"><![CDATA[
-    <b>%s</b> %s  <font color=#808080>%s</font>
-]]></string>
     <string name="notification_text_friend_invite" translatable="false"><![CDATA[
     %s  <font color=#808080>%s</font>
 ]]></string>
@@ -35,13 +29,7 @@
     <string name="notification_text_invite_flat" translatable="false"><![CDATA[
     <b>%s</b> %s <b>%s</b>
 ]]></string>
-    <string name="notification_text_others" translatable="false"><![CDATA[
-    %s  <font color=#808080>%s</font>
-]]></string>
 
     <!--SENDBIRD-->
-    <string name="chatlist_last_message" translatable="false"><![CDATA[
-    %s  .  <font size="10">%s</font>
-]]></string>
     <!-- Group Channel List -->
 </resources>

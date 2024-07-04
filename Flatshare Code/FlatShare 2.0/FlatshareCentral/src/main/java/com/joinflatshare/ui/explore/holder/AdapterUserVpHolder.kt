@@ -2,38 +2,23 @@ package com.joinflatshare.ui.explore.holder
 
 import android.content.Intent
 import android.graphics.drawable.BitmapDrawable
-import android.provider.ContactsContract.Profile
 import android.text.TextUtils
 import android.view.View
-import android.view.ViewTreeObserver
-import android.view.ViewTreeObserver.OnGlobalLayoutListener
-import android.widget.ImageView
-import android.widget.LinearLayout
 import androidx.core.content.ContextCompat
-import androidx.core.view.children
-import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewbinding.ViewBinding
-import com.google.android.material.card.MaterialCardView
 import com.joinflatshare.FlatshareCentral.R
-import com.joinflatshare.FlatshareCentral.databinding.ItemChecksVpBinding
-import com.joinflatshare.FlatshareCentral.databinding.ItemExploreBinding
 import com.joinflatshare.FlatshareCentral.databinding.ItemExploreVpBinding
 import com.joinflatshare.constants.AppConstants
 import com.joinflatshare.constants.ConfigConstants
-import com.joinflatshare.constants.UrlConstants
-import com.joinflatshare.customviews.GridSpacingItemDecoration
 import com.joinflatshare.customviews.deal_breakers.DealBreakerView
 import com.joinflatshare.pojo.user.ModelLocation
 import com.joinflatshare.pojo.user.User
 import com.joinflatshare.ui.base.BaseActivity
 import com.joinflatshare.ui.checks.ChecksActivity
 import com.joinflatshare.ui.explore.ExploreActivity
-import com.joinflatshare.ui.explore.adapter.ExploreImageAdapter
 import com.joinflatshare.ui.profile.details.ProfileDetailsActivity
 import com.joinflatshare.utils.helper.CommonMethod
-import com.joinflatshare.utils.helper.DistanceCalculator
-import com.joinflatshare.utils.helper.ImageHelper
 import jp.wasabeef.blurry.Blurry
 
 /**
