@@ -2,14 +2,8 @@ package com.joinflatshare.ui.bottomsheet
 
 import android.app.Activity
 import android.content.Intent
-import android.os.Handler
-import android.os.Looper
-import android.view.View
-import android.widget.ImageView
-import android.widget.LinearLayout
-import androidx.constraintlayout.widget.ConstraintLayout
-import com.google.android.material.bottomsheet.BottomSheetBehavior
-import com.joinflatshare.FlatshareCentral.R
+import com.google.android.material.bottomsheet.BottomSheetDialog
+import com.joinflatshare.FlatshareCentral.databinding.DialogBottomsheetVerifiedBinding
 import com.joinflatshare.interfaces.OnStringFetched
 import com.joinflatshare.ui.base.ApplicationBaseActivity
 import com.joinflatshare.ui.profile.verify.ProfileVerifyActivity
@@ -22,27 +16,27 @@ class VerifiedBottomSheet(
     private val activity: ApplicationBaseActivity,
     private val callback: OnStringFetched
 ) {
-    private var bottomSheetBehavior: BottomSheetBehavior<ConstraintLayout> =
-        BottomSheetBehavior.from(activity.findViewById(R.id.bottomSheet_verified))
+
+    private lateinit var viewBind: DialogBottomsheetVerifiedBinding
+    private lateinit var dialog: BottomSheetDialog
 
     init {
-        bottomSheetBehavior.isFitToContents = true
-        bottomSheetBehavior.isHideable = true
-        bottomSheetBehavior.state = BottomSheetBehavior.STATE_HIDDEN
-        show()
+        create()
     }
 
-    private fun show() {
-        activity.findViewById<View>(R.id.bottomSheet_verified).visibility = View.VISIBLE
-        bottomSheetBehavior.setState(BottomSheetBehavior.STATE_EXPANDED)
+    private fun create() {
+        dialog = BottomSheetDialog(activity)
+        viewBind = DialogBottomsheetVerifiedBinding.inflate(activity.layoutInflater)
+        dialog.setContentView(viewBind.root)
         click()
+        dialog.show()
     }
 
     private fun click() {
-        activity.findViewById<ImageView>(R.id.img_cross)?.setOnClickListener {
-            bottomSheetBehavior.state = BottomSheetBehavior.STATE_HIDDEN
+        viewBind.imgCross.setOnClickListener {
+            dialog.dismiss()
         }
-        activity.findViewById<LinearLayout>(R.id.ll_explore_super_check).setOnClickListener {
+        viewBind.llExploreSuperCheck.setOnClickListener {
             val intent = Intent(activity, ProfileVerifyActivity::class.java)
             CommonMethod.switchActivity(
                 activity,
@@ -50,7 +44,7 @@ class VerifiedBottomSheet(
             ) { result ->
                 if (result?.resultCode == Activity.RESULT_OK) {
                     callback.onFetched("1")
-                    bottomSheetBehavior.state = BottomSheetBehavior.STATE_HIDDEN
+                    dialog.dismiss()
                 }
             }
         }

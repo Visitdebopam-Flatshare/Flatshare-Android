@@ -133,7 +133,7 @@ object MixpanelUtils {
         sendToMixPanel("Friend Added", props)
     }
 
-    fun onFriendRequestResponded(user: Requester?) {
+    fun onFriendRequestResponded(user: User?) {
         val props = JSONObject()
         props.put("Friend ID", user?.id)
         if (!user?.name?.firstName.isNullOrBlank())

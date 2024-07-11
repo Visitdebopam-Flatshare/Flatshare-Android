@@ -18,6 +18,7 @@ import com.joinflatshare.interfaces.OnFlatFetched
 import com.joinflatshare.interfaces.OnPermissionCallback
 import com.joinflatshare.interfaces.OnStringFetched
 import com.joinflatshare.interfaces.OnUiEventClick
+import com.joinflatshare.interfaces.OnitemClick
 import com.joinflatshare.pojo.flat.FlatResponse
 import com.joinflatshare.pojo.invite.InvitedRequest
 import com.joinflatshare.pojo.invite.InvitedResponse
@@ -28,7 +29,6 @@ import com.joinflatshare.ui.flat.details.FlatDetailsActivity
 import com.joinflatshare.ui.invite.InviteActivity
 import com.joinflatshare.ui.profile.details.ProfileDetailsActivity
 import com.joinflatshare.utils.helper.CommonMethod
-import com.joinflatshare.utils.helper.CommonMethods
 import com.joinflatshare.utils.helper.ImageHelper
 import com.joinflatshare.utils.permission.PermissionUtil
 import com.joinflatshare.utils.system.Prefs
@@ -109,7 +109,7 @@ class ChatDetailsBottomMenu(
                 ModelBottomSheet(R.drawable.ic_chat_remove, "Unmatch", 3)
             )
         else items.add(ModelBottomSheet(R.drawable.ic_chat_remove, "Leave Chat", 3))
-        BottomSheetView(activity, items).show { _: View?, position: Int ->
+        BottomSheetView(activity,items) { _, position ->
             when (position) {
                 0 -> {
                     // View Profile
@@ -270,7 +270,7 @@ class ChatDetailsBottomMenu(
                                 }
                             }
                             // TODO removing the below line to test backend sendbird
-//                            activity.sendBirdChannel.deleteChannel(groupChannel.url)
+                            //                            activity.sendBirdChannel.deleteChannel(groupChannel.url)
 
                         }
                     }
@@ -300,7 +300,7 @@ class ChatDetailsBottomMenu(
         items.add(ModelBottomSheet(R.drawable.ic_chat_clear, "Clear Chat", 3))
         items.add(ModelBottomSheet(R.drawable.ic_leave_flat_red, "Leave Flat", 3))
 
-        BottomSheetView(activity, items).show { _, position ->
+        BottomSheetView(activity,items) { _, position ->
             when (position) {
                 0 -> {
                     val intent = Intent(activity, FlatDetailsActivity::class.java)
@@ -431,7 +431,7 @@ class ChatDetailsBottomMenu(
             items.add(ModelBottomSheet(R.drawable.ic_chat_clear, "Clear Chat", 3))
             items.add(ModelBottomSheet(R.drawable.ic_report_red, "Report and Unmatch", 3))
             items.add(ModelBottomSheet(R.drawable.ic_cross_red, "Unmatch", 3))
-            BottomSheetView(activity, items).show { _, position ->
+            BottomSheetView(activity, items) { _, position ->
                 var name = items[position].name
                 if (name.contains("_")) name = name.substring(0, name.indexOf("_"))
                 if (name.equals("View Flat Profile")) {

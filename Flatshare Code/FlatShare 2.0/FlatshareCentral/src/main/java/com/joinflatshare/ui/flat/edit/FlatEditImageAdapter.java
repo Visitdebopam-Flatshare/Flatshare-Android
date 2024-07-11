@@ -24,9 +24,9 @@ import com.bumptech.glide.request.target.Target;
 import com.joinflatshare.FlatshareCentral.R;
 import com.joinflatshare.customviews.bottomsheet.BottomSheetView;
 import com.joinflatshare.customviews.bottomsheet.ModelBottomSheet;
+import com.joinflatshare.interfaces.OnitemClick;
 import com.joinflatshare.utils.helper.CommonMethod;
 import com.joinflatshare.utils.helper.CommonMethods;
-import com.joinflatshare.utils.helper.CommonMethod;
 import com.joinflatshare.utils.helper.ImageHelper;
 import com.joinflatshare.utils.permission.PermissionUtil;
 import com.joinflatshare.utils.touchitemhelper.ItemTouchHelperAdapter;
@@ -35,7 +35,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 public class FlatEditImageAdapter extends RecyclerView.Adapter<FlatEditImageAdapter.ViewHolder>
-        implements ItemTouchHelperAdapter {
+        implements ItemTouchHelperAdapter, OnitemClick {
     private ArrayList<String> items = new ArrayList<>();
     private final FlatEditActivity activity;
     private final int width, height;
@@ -44,19 +44,12 @@ public class FlatEditImageAdapter extends RecyclerView.Adapter<FlatEditImageAdap
     public FlatEditImageAdapter(FlatEditActivity activity) {
         this.activity = activity;
         width = (CommonMethods.getScreenWidth() * 60) / 100;
-        prepareBottomMenu();
         height = (width / 4) * 3;
     }
 
     public void setItems(ArrayList<String> items) {
         this.items = items;
         notifyDataSetChanged();
-    }
-
-    private void prepareBottomMenu() {
-        ArrayList<ModelBottomSheet> menu = new ArrayList<>();
-        menu.add(new ModelBottomSheet(R.drawable.ic_cross_red, "Remove Photo"));
-        bottomSheetView = new BottomSheetView(activity, menu);
     }
 
     public ArrayList<String> getItems() {
@@ -92,23 +85,28 @@ public class FlatEditImageAdapter extends RecyclerView.Adapter<FlatEditImageAdap
         holder.frame_image.setOnClickListener(v -> {
             CommonMethod.INSTANCE.makeLog("Position", "" + holder.getBindingAdapterPosition());
             if (!item.isEmpty()) {
-                bottomSheetView.show((view, position1) -> {
-                    if (item.startsWith("Images/")) {
-                        activity.dataBind.deletedUserImages.add(item);
+                ArrayList<ModelBottomSheet> menu = new ArrayList<>();
+                menu.add(new ModelBottomSheet(R.drawable.ic_cross_red, "Remove Photo"));
+                bottomSheetView = new BottomSheetView(activity, menu, new OnitemClick() {
+                    @Override
+                    public void onitemclick(View view, int position) {
+                        if (item.startsWith("Images/")) {
+                            activity.dataBind.deletedUserImages.add(item);
+                        }
+                        activity.dataBind.addedUserImages.remove(activity.dataBind.adapterUserImages.get(holder.getBindingAdapterPosition()));
+                        activity.dataBind.adapterUserImages.remove(holder.getBindingAdapterPosition());
+                        if (activity.dataBind.adapterUserImages.size() < 10 && !activity.dataBind.adapterUserImages.get(0).isEmpty())
+                            activity.dataBind.adapterUserImages.add(0, "");
+                        notifyDataSetChanged();
+                        activity.dataBind.setCompleteCount();
                     }
-                    activity.dataBind.addedUserImages.remove(activity.dataBind.adapterUserImages.get(holder.getBindingAdapterPosition()));
-                    activity.dataBind.adapterUserImages.remove(holder.getBindingAdapterPosition());
-                    if (activity.dataBind.adapterUserImages.size() < 10 && !activity.dataBind.adapterUserImages.get(0).isEmpty())
-                        activity.dataBind.adapterUserImages.add(0, "");
-                    notifyDataSetChanged();
-                    activity.dataBind.setCompleteCount();
                 });
             } else {
                 activity.imageClickPosition = holder.getBindingAdapterPosition();
                 PermissionUtil.INSTANCE.validatePermission(activity, Manifest.permission.READ_EXTERNAL_STORAGE, granted -> {
                     if (granted)
                         activity.pickImage();
-                    else CommonMethod.INSTANCE.makeToast( "Permission not provided");
+                    else CommonMethod.INSTANCE.makeToast("Permission not provided");
                 });
             }
         });
@@ -128,6 +126,11 @@ public class FlatEditImageAdapter extends RecyclerView.Adapter<FlatEditImageAdap
 
     @Override
     public void onItemDismiss(int position) {
+
+    }
+
+    @Override
+    public void onitemclick(View view, int position) {
 
     }
 

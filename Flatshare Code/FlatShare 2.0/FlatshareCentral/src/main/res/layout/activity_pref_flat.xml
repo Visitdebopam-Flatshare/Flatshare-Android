@@ -16,7 +16,6 @@
         <androidx.core.widget.NestedScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginTop="@dimen/_5sdp"
             android:descendantFocusability="blocksDescendants"
             android:scrollbars="none">
 
@@ -43,8 +42,5 @@
 
     </LinearLayout>
 
-    <include layout="@layout/dialog_bottomsheet" />
-
-    <include layout="@layout/dialog_bottomsheet_verified" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

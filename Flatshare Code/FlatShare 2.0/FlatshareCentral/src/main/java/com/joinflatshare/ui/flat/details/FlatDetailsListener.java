@@ -25,7 +25,6 @@ import com.joinflatshare.utils.deeplink.DeepLinkHandler;
 import com.joinflatshare.utils.deeplink.FlatShareMessageGenerator;
 import com.joinflatshare.utils.helper.CommonMethod;
 import com.joinflatshare.utils.helper.CommonMethods;
-import com.joinflatshare.utils.helper.CommonMethod;
 
 import java.util.ArrayList;
 
@@ -105,7 +104,7 @@ public class FlatDetailsListener implements View.OnClickListener {
                 list.add(new ModelBottomSheet("Copy Link", 2));
             list.add(new ModelBottomSheet("Report", 3));
 
-            new BottomSheetView(activity, list).show((view, position) -> {
+            new BottomSheetView(activity, list,(view, position) -> {
                 switch (list.get(position).getName()) {
                     case "Copy Link" -> {
                         activity.apiManager.showProgress();

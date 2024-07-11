@@ -22,31 +22,18 @@ import com.joinflatshare.FlatshareCentral.R
 import com.joinflatshare.FlatshareCentral.databinding.ItemProfileImageBinding
 import com.joinflatshare.customviews.bottomsheet.BottomSheetView
 import com.joinflatshare.customviews.bottomsheet.ModelBottomSheet
-import com.joinflatshare.interfaces.OnitemClick
 import com.joinflatshare.ui.base.BaseActivity
 import com.joinflatshare.utils.helper.CommonMethod.makeLog
 import com.joinflatshare.utils.helper.CommonMethod.makeToast
 import com.joinflatshare.utils.helper.ImageHelper
 import com.joinflatshare.utils.permission.PermissionUtil
 import com.stfalcon.imageviewer.StfalconImageViewer
-import com.stfalcon.imageviewer.loader.ImageLoader
 
 class ProfileEditImageAdapter(
     private val activity: BaseActivity
 ) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     private var height = 0
     private val items = ArrayList<String>()
-    private var bottomSheetView: BottomSheetView? = null
-
-    init {
-        prepareBottomMenu()
-    }
-
-    private fun prepareBottomMenu() {
-        val menu = ArrayList<ModelBottomSheet>()
-        menu.add(ModelBottomSheet(R.drawable.ic_cross_red, "Remove Photo"))
-        bottomSheetView = BottomSheetView(activity, menu)
-    }
 
     fun setItems(items: ArrayList<String>) {
         this.items.clear()
@@ -107,7 +94,11 @@ class ProfileEditImageAdapter(
                     if (adapter.activity is ProfileEditActivity) {
                         makeLog("Position", "" + position)
                         if (item.isNotEmpty()) {
-                            adapter.bottomSheetView?.show(OnitemClick { view: View?, _: Int ->
+                            val menu = ArrayList<ModelBottomSheet>()
+                            menu.add(ModelBottomSheet(R.drawable.ic_cross_red, "Remove Photo"))
+                            BottomSheetView(
+                                adapter.activity, menu
+                            ) { _, position ->
                                 if (item.startsWith("Images/")) {
                                     adapter.activity.dataBind.deletedUserImages.add(item)
                                 }
@@ -118,7 +109,7 @@ class ProfileEditImageAdapter(
                                 if (adapter.activity.dataBind.adapterUserImages.size < 6 && adapter.activity.dataBind.adapterUserImages[0].isNotEmpty()
                                 ) adapter.activity.dataBind.adapterUserImages.add(0, "")
                                 adapter.notifyDataSetChanged()
-                            })
+                            }
                         } else {
                             adapter.activity.imageClickPosition = position
                             PermissionUtil.validatePermission(

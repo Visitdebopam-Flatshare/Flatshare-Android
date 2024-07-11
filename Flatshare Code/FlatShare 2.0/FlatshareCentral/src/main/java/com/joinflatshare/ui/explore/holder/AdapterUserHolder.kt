@@ -77,19 +77,6 @@ class AdapterUserHolder {
             CommonMethod.switchActivity(activity, intent, false)
         }
 
-        /*holder.viewExploreLeft.setOnClickListener {
-            if (pageNo != 0) {
-                holder.vpExplore.currentItem = 0
-            }
-        }
-
-        holder.viewExploreRight.setOnClickListener {
-            if (pageNo != 2) {
-                holder.vpExplore.currentItem = 1
-            }
-        }*/
-
-
         // Viewpager
         val vpSlide = ArrayList<Int>()
 
@@ -107,7 +94,7 @@ class AdapterUserHolder {
             holder.vpExplore.visibility = View.VISIBLE
             holder.vpExplore.orientation = ViewPager2.ORIENTATION_HORIZONTAL
             holder.vpExplore.adapter = ExploreUserVpAdapter(
-                activity, vpSlide, user
+                activity, vpSlide, user, holder.vpExplore
             )
             holder.vpExplore.registerOnPageChangeCallback(object :
                 ViewPager2.OnPageChangeCallback() {
@@ -189,7 +176,7 @@ class AdapterUserHolder {
             holder.vpExplore.visibility = View.VISIBLE
             holder.vpExplore.orientation = ViewPager2.ORIENTATION_HORIZONTAL
             holder.vpExplore.adapter = ExploreUserVpAdapter(
-                activity, vpSlide, user
+                activity, vpSlide, user, holder.vpExplore
             )
         }
 
@@ -235,7 +222,7 @@ class AdapterUserHolder {
             holder.imgAccept.setOnClickListener {
                 WebserviceManager().sendChatRequestResponse(
                     activity,
-                    false,
+                    true,
                     ChatRequestConstants.CHAT_REQUEST_CONSTANT_FHT,
                     user.id,
                     object : OnFlatshareResponseCallBack<Response<ResponseBody>> {
@@ -733,7 +720,7 @@ class AdapterUserHolder {
                     list.add(ModelBottomSheet("Copy Link", 2))
                 list.add(ModelBottomSheet("Report", 3))
                 list.add(ModelBottomSheet("Not Interested", 2))
-                BottomSheetView(activity, list).show { view, position ->
+                BottomSheetView(activity, list) { view, position ->
                     when (list[position].name) {
                         "Copy Link" -> {
                             activity.apiManager.showProgress()

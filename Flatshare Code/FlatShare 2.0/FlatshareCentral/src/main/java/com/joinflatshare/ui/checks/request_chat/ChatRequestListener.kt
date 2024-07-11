@@ -26,7 +26,7 @@ class ChatRequestListener(
                 list.add(ModelBottomSheet(0, dao.getCount(""+ ChatRequestConstants.CHAT_REQUEST_CONSTANT_DATE_CASUAL),"Casual Date"))
                 list.add(ModelBottomSheet(0, dao.getCount(""+ ChatRequestConstants.CHAT_REQUEST_CONSTANT_DATE_LONG_TERM),"Long-Term Partner"))
                 list.add(ModelBottomSheet(0, dao.getCount(""+ ChatRequestConstants.CHAT_REQUEST_CONSTANT_DATE_ACTIVITY_PARTNERS),"Activity Partners"))
-                BottomSheetView(activity, list).show { view, position ->
+                BottomSheetView(activity, list) { _, position ->
                     val oldType = activity.type
                     when (position) {
                         0 -> activity.type = ChatRequestConstants.CHAT_REQUEST_CONSTANT_F2U

@@ -50,7 +50,7 @@ class DialogReport(
         }
 
 
-        BottomSheetView(activity, menu).show { view, pos ->
+        BottomSheetView(activity, menu) { view, pos ->
             val name = menu[pos].name
             if (name.startsWith("Share")) {
                 // Show share dialog

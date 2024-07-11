@@ -26,19 +26,18 @@
 
                 <ImageView
                     android:layout_width="wrap_content"
-                    android:layout_height="@dimen/_25sdp"
+                    android:layout_height="@dimen/_28sdp"
                     android:layout_alignParentStart="true"
                     android:layout_centerVertical="true"
-                    android:layout_marginStart="@dimen/_minus10sdp"
                     android:src="@drawable/ic_logo_black" />
 
                 <com.google.android.material.card.MaterialCardView
                     android:id="@+id/card_preferences"
-                    android:layout_width="@dimen/_35sdp"
-                    android:layout_height="@dimen/_20sdp"
+                    android:layout_width="@dimen/_48sdp"
+                    android:layout_height="@dimen/_28sdp"
                     android:layout_alignParentEnd="true"
                     android:layout_centerVertical="true"
-                    app:cardCornerRadius="@dimen/_5sdp"
+                    app:cardCornerRadius="@dimen/_10sdp"
                     app:cardElevation="0dp"
                     app:cardPreventCornerOverlap="true"
                     app:cardUseCompatPadding="false"
@@ -46,8 +45,8 @@
                     app:strokeWidth="1dp">
 
                     <ImageView
-                        android:layout_width="@dimen/_10sdp"
-                        android:layout_height="@dimen/_10sdp"
+                        android:layout_width="@dimen/_15sdp"
+                        android:layout_height="@dimen/_15sdp"
                         android:layout_gravity="center"
                         android:src="@drawable/ic_preferences" />
 
@@ -119,6 +118,5 @@
             android:layout_alignParentBottom="true" />
     </RelativeLayout>
 
-    <include layout="@layout/dialog_bottomsheet" />
-    <include layout="@layout/dialog_bottomsheet_incomplete_profile" />
+
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

@@ -52,7 +52,7 @@ class SettingsListener(
                 val list = ArrayList<ModelBottomSheet>()
                 list.add(ModelBottomSheet(0, "Student"))
                 list.add(ModelBottomSheet(0, "Working Professional"))
-                BottomSheetView(activity, list).show { _, position ->
+                BottomSheetView(activity, list) { _, position ->
                     AppConstants.loggedInUser?.profession = list[position].name
                     activity.baseApiController.updateUser(
                         false,

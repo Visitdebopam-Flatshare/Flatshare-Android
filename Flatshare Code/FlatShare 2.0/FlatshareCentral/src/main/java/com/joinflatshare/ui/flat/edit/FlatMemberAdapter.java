@@ -23,6 +23,7 @@ import com.joinflatshare.constants.SendBirdConstants;
 import com.joinflatshare.customviews.bottomsheet.BottomSheetView;
 import com.joinflatshare.customviews.bottomsheet.ModelBottomSheet;
 import com.joinflatshare.db.daos.UserDao;
+import com.joinflatshare.interfaces.OnitemClick;
 import com.joinflatshare.pojo.flat.MyFlatData;
 import com.joinflatshare.pojo.invite.InvitedItem;
 import com.joinflatshare.pojo.invite.InvitedRequest;
@@ -119,29 +120,31 @@ public class FlatMemberAdapter extends RecyclerView.Adapter<FlatMemberAdapter.Vi
                     }
                     if (options.size() > 0) {
                         final MyFlatActivity act = (MyFlatActivity) activity;
-                        new BottomSheetView(activity, options).show((view, position1) -> {
-                            if (options.get(position1).getName().equals("Add Friend")) {
-                                activity.apiManager.addFriends(item.getId(), res -> {
-                                    CommonMethod.INSTANCE.makeToast("Friend request sent");
-                                });
-                            } else if (options.get(position1).getName().equals("Message " + item.getName().getFirstName())) {
-                                if (AppConstants.isSendbirdLive) {
-                                    activity.apiManager.showProgress();
-                                    SendBirdUserChannel channel = new SendBirdUserChannel(activity);
-                                    channel.joinUserChannel(item.getId(), SendBirdConstants.CHANNEL_TYPE_FRIEND, text -> {
-                                        DialogCustomProgress.INSTANCE.hideProgress(activity);
-                                        if (!text.equals("0")) {
-                                            Intent intent1 = new Intent(activity, ChatDetailsActivity.class);
-                                            intent1.putExtra("channel", text);
-                                            CommonMethod.INSTANCE.switchActivity(activity, intent1, false);
-                                        }
+                        new BottomSheetView(activity, options, new OnitemClick() {
+                            @Override
+                            public void onitemclick(View view, int position1) {
+                                if (options.get(position1).getName().equals("Add Friend")) {
+                                    activity.apiManager.addFriends(item.getId(), res -> {
+                                        CommonMethod.INSTANCE.makeToast("Friend request sent");
                                     });
-                                }
-                            } else if (options.get(position1).getName().equals("Remove " + item.getName().getFirstName())) {
-                                act.apiManager.removeFlatmate(item.getId(), respon -> {
-                                    act.getMyFlat();
-                                });
-                            } else if (options.get(position1).getName().equals("Make Admin")) {
+                                } else if (options.get(position1).getName().equals("Message " + item.getName().getFirstName())) {
+                                    if (AppConstants.isSendbirdLive) {
+                                        activity.apiManager.showProgress();
+                                        SendBirdUserChannel channel = new SendBirdUserChannel(activity);
+                                        channel.joinUserChannel(item.getId(), SendBirdConstants.CHANNEL_TYPE_FRIEND, text -> {
+                                            DialogCustomProgress.INSTANCE.hideProgress(activity);
+                                            if (!text.equals("0")) {
+                                                Intent intent1 = new Intent(activity, ChatDetailsActivity.class);
+                                                intent1.putExtra("channel", text);
+                                                CommonMethod.INSTANCE.switchActivity(activity, intent1, false);
+                                            }
+                                        });
+                                    }
+                                } else if (options.get(position1).getName().equals("Remove " + item.getName().getFirstName())) {
+                                    act.apiManager.removeFlatmate(item.getId(), respon -> {
+                                        act.getMyFlat();
+                                    });
+                                } else if (options.get(position1).getName().equals("Make Admin")) {
                                         /*act.apiManager.makeAdmin(item.getId(),
                                             (OnResponseCallback<BaseResponse>) response -> {
                                                 activity.myFlat.getData().setOwner(item.getId());
@@ -149,6 +152,7 @@ public class FlatMemberAdapter extends RecyclerView.Adapter<FlatMemberAdapter.Vi
                                                 act.viewBind.setData(act.myFlat,act.loggedInUser);
                                                 notifyDataSetChanged();
                                             });*/
+                                }
                             }
                         });
                     }

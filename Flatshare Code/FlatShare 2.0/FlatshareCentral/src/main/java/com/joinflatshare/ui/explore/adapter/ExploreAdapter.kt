@@ -18,7 +18,7 @@ class ExploreAdapter(
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         val viewBind =
             ItemExploreBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-        return UserViewHolder(activity, viewBind)
+        return UserViewHolder(viewBind)
     }
 
     override fun onBindViewHolder(mainHolder: RecyclerView.ViewHolder, position: Int) {
@@ -31,7 +31,7 @@ class ExploreAdapter(
         return size
     }
 
-    class UserViewHolder(activity: BaseActivity, itemView: ItemExploreBinding) :
+    class UserViewHolder(itemView: ItemExploreBinding) :
         RecyclerView.ViewHolder(itemView.root) {
     }
 }

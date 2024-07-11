@@ -17,6 +17,7 @@ import com.joinflatshare.customviews.bottomsheet.ModelBottomSheet
 import com.joinflatshare.pojo.config.RentRange
 import com.joinflatshare.pojo.user.Name
 import com.joinflatshare.utils.helper.CommonMethod
+import com.joinflatshare.utils.helper.CommonMethods
 import java.util.Calendar
 
 /**
@@ -49,11 +50,12 @@ class ProfileCreateListener(
     override fun onClick(view: View?) {
         when (view?.id) {
             viewBind.txtGender.id -> {
+                CommonMethods.hideSoftKeyboard(activity)
                 val list = ArrayList<ModelBottomSheet>()
                 list.add(ModelBottomSheet(0, "Male"))
                 list.add(ModelBottomSheet(0, "Female"))
                 list.add(ModelBottomSheet(0, "Trans"))
-                BottomSheetView(activity, list).show { _, position ->
+                BottomSheetView(activity, list) { _, position ->
                     viewBind.txtGender.text = list[position].name
                 }
             }
@@ -92,7 +94,7 @@ class ProfileCreateListener(
                 val list = ArrayList<ModelBottomSheet>()
                 list.add(ModelBottomSheet(0, "Student"))
                 list.add(ModelBottomSheet(0, "Working Professional"))
-                BottomSheetView(activity, list).show { _, position ->
+                BottomSheetView(activity, list) { _, position ->
                     viewBind.txtMyself.text = list[position].name
                 }
             }

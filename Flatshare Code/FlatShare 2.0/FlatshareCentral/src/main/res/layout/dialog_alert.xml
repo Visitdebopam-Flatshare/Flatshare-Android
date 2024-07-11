@@ -49,7 +49,7 @@
                 android:layout_marginHorizontal="@dimen/_10sdp"
                 android:layout_marginTop="@dimen/_20sdp"
                 android:gravity="center_horizontal"
-                android:fontFamily="@font/font_regular"
+                android:fontFamily="@font/font_medium"
                 android:textColor="@color/black"
                 android:textSize="@dimen/_13sdp" />
 
@@ -86,7 +86,7 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:background="@drawable/drawable_button_black_stroke"
-                    android:fontFamily="@font/font_regular"
+                    android:fontFamily="@font/font_medium"
                     android:text="Save"
                     android:textColor="@color/black"
                     android:textSize="@dimen/_14sdp" />
@@ -102,7 +102,7 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:background="@drawable/drawable_button_blue"
-                    android:fontFamily="@font/font_regular"
+                    android:fontFamily="@font/font_medium"
                     android:text="Cancel"
                     android:textColor="@color/white"
                     android:textSize="@dimen/_14sdp" />
@@ -115,7 +115,7 @@
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="@dimen/_10sdp"
                 android:background="@drawable/drawable_button_blue"
-                android:fontFamily="@font/font_regular"
+                android:fontFamily="@font/font_medium"
                 android:text="Cancel"
                 android:textColor="@color/white"
                 android:textSize="@dimen/_14sdp"

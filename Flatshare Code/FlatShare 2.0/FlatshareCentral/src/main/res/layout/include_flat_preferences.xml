@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginTop="@dimen/_10sdp"
@@ -11,7 +10,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/_10sdp"
+        android:layout_marginStart="@dimen/dimen_margin_horizontal"
         android:fontFamily="@font/font_semibold"
         android:text="Flat Preferences"
         android:textColor="@color/black"
@@ -20,16 +19,17 @@
     <com.google.android.material.card.MaterialCardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/_10sdp"
+        android:layout_margin="@dimen/dimen_margin_horizontal"
         app:cardBackgroundColor="@color/white"
-        app:cardCornerRadius="@dimen/_10sdp"
+        app:cardCornerRadius="@dimen/_16sdp"
+        app:cardElevation="@dimen/_2sdp"
         app:cardPreventCornerOverlap="false"
         app:cardUseCompatPadding="false">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="@dimen/_10sdp"
+            android:layout_margin="@dimen/dimen_margin_horizontal"
             android:orientation="vertical">
 
             <TextView
@@ -61,9 +61,9 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/_10sdp"
                     android:background="@android:color/transparent"
-                    android:fontFamily="@font/font_regular"
+                    android:fontFamily="@font/font_semibold"
                     android:hint="Select Location"
-                    android:textColor="@color/black"
+                    android:textColor="@color/grey2"
                     android:textSize="@dimen/_12sdp" />
             </LinearLayout>
 
@@ -85,7 +85,8 @@
                 android:background="@drawable/drawable_button_grey_stroke"
                 android:fontFamily="@font/font_semibold"
                 android:hint="Move-in By"
-                android:textColor="@color/black" />
+                android:textColor="@color/grey2"
+                android:textSize="@dimen/_12sdp" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -109,10 +110,10 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:background="@drawable/drawable_button_grey_stroke"
-                    android:fontFamily="@font/font_regular"
+                    android:fontFamily="@font/font_semibold"
                     android:gravity="center"
                     android:text="Private Room"
-                    android:textColor="@color/black"
+                    android:textColor="@color/grey2"
                     android:textSize="@dimen/_12sdp" />
 
                 <View
@@ -126,10 +127,10 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:background="@drawable/drawable_button_grey_stroke"
-                    android:fontFamily="@font/font_regular"
+                    android:fontFamily="@font/font_semibold"
                     android:gravity="center"
                     android:text="Shared Room"
-                    android:textColor="@color/black"
+                    android:textColor="@color/grey2"
                     android:textSize="@dimen/_12sdp" />
 
             </LinearLayout>

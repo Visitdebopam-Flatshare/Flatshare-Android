@@ -8,7 +8,6 @@ import com.joinflatshare.FlatshareCentral.databinding.ActivityRegisterPhotoBindi
 import com.joinflatshare.constants.AppConstants
 import com.joinflatshare.customviews.bottomsheet.BottomSheetView
 import com.joinflatshare.customviews.bottomsheet.ModelBottomSheet
-import com.joinflatshare.interfaces.OnPermissionCallback
 import com.joinflatshare.ui.profile.language.LanguageActivity
 import com.joinflatshare.utils.helper.CommonMethod
 import com.joinflatshare.utils.logger.Logger
@@ -74,7 +73,7 @@ class RegisterPhotoListener(
         val list = ArrayList<ModelBottomSheet>()
         list.add(ModelBottomSheet(0, "Choose from gallery"))
         list.add(ModelBottomSheet(0, "Take Photo"))
-        BottomSheetView(activity, list).show { _, position ->
+        BottomSheetView(activity, list) { _, position ->
             when (position) {
                 0 -> {
                     PermissionUtil.validatePermission(

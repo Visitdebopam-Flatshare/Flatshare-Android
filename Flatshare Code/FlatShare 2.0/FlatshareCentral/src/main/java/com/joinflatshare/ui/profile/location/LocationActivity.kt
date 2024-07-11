@@ -86,6 +86,8 @@ class LocationActivity : BaseActivity() {
                                 }
 
                             })
+                        } else {
+                            viewBind.switchLocation.isChecked = false
                         }
                     }
                 }

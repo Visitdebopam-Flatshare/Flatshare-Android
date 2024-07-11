@@ -5,16 +5,13 @@ import android.app.DatePickerDialog
 import android.content.Intent
 import android.view.View
 import android.widget.DatePicker
+import androidx.core.content.ContextCompat
 import com.joinflatshare.FlatShareApplication
 import com.joinflatshare.FlatshareCentral.R
 import com.joinflatshare.FlatshareCentral.databinding.ActivityPrefFlatBinding
 import com.joinflatshare.constants.AppConstants
 import com.joinflatshare.constants.RequestCodeConstants
-import com.joinflatshare.customviews.bottomsheet.BottomSheetView
-import com.joinflatshare.customviews.bottomsheet.ModelBottomSheet
-import com.joinflatshare.interfaces.OnStringFetched
 import com.joinflatshare.interfaces.OnUserFetched
-import com.joinflatshare.interfaces.OnitemClick
 import com.joinflatshare.pojo.user.ModelLocation
 import com.joinflatshare.pojo.user.UserResponse
 import com.joinflatshare.ui.bottomsheet.VerifiedBottomSheet
@@ -53,9 +50,7 @@ class PreferenceListener(private val activity: PreferenceActivity) : View.OnClic
                     if (requestCode == RequestCodeConstants.REQUEST_CODE_LOCATION) {
                         if (intent != null) {
                             val location = CommonMethod.getSerializable(
-                                intent,
-                                "location",
-                                ModelLocation::class.java
+                                intent, "location", ModelLocation::class.java
                             )
                             activity.user?.flatProperties?.preferredLocation = ArrayList()
                             activity.user?.flatProperties?.preferredLocation?.add(location)
@@ -77,7 +72,8 @@ class PreferenceListener(private val activity: PreferenceActivity) : View.OnClic
                         viewBind.includePrefFlat.txtPrefFlatMovein.text = "$dd/$mm/$year"
                         activity.user?.flatProperties?.moveinDate =
                             DateUtils.convertToServerFormat(viewBind.includePrefFlat.txtPrefFlatMovein.text.toString())
-                    }, calendar[Calendar.YEAR],
+                    },
+                    calendar[Calendar.YEAR],
                     calendar[Calendar.MONTH],
                     calendar[Calendar.DAY_OF_MONTH]
                 )
@@ -140,14 +136,43 @@ class PreferenceListener(private val activity: PreferenceActivity) : View.OnClic
 
     private fun switchListener() {
         viewBind.includePrefFlatmate.switchVerifiedMember.setOnCheckedChangeListener { _, isChecked ->
+            setVerified(isChecked)
             if (isChecked) {
                 if (activity.user?.verification?.isVerified == false) {
-                    viewBind.includePrefFlatmate.switchVerifiedMember.isChecked = false
+                    setVerified(false)
                     VerifiedBottomSheet(
                         activity
-                    ) { viewBind.includePrefFlatmate.switchVerifiedMember.isChecked = true }
+                    ) { setVerified(true) }
                 }
             }
+        }
+    }
+
+    private fun setVerified(checked: Boolean) {
+        if (checked) {
+            viewBind.includePrefFlatmate.imgVerified.setColorFilter(
+                ContextCompat.getColor(
+                    activity, R.color.blue_dark
+                )
+            )
+            viewBind.includePrefFlatmate.txtVerified.setTextColor(
+                ContextCompat.getColor(
+                    activity, R.color.blue_dark
+                )
+            )
+            viewBind.includePrefFlatmate.rlVerified.background = ContextCompat.getDrawable(
+                activity, R.drawable.drawable_button_blue_stroke_blue_bg
+            )
+        } else {
+            viewBind.includePrefFlatmate.imgVerified.setColorFilter(0)
+            viewBind.includePrefFlatmate.txtVerified.setTextColor(
+                ContextCompat.getColor(
+                    activity, R.color.grey2
+                )
+            )
+            viewBind.includePrefFlatmate.rlVerified.background = ContextCompat.getDrawable(
+                activity, R.drawable.drawable_button_grey_stroke
+            )
         }
     }
 
@@ -157,12 +182,12 @@ class PreferenceListener(private val activity: PreferenceActivity) : View.OnClic
         if (actualUserData?.flatProperties?.preferredLocation?.equals(activity.user?.flatProperties?.preferredLocation) == false) {
             hasChanged = true
             MixpanelUtils.sendToMixPanel("Preferred Flat Location Filled")
-        } else if (actualUserData?.flatProperties?.moveinDate != activity.user?.flatProperties?.moveinDate)
-            hasChanged = true
-        else if (actualUserData?.flatProperties?.roomType != activity.user?.flatProperties?.roomType)
-            hasChanged = true
-        else if (actualUserData?.flatProperties?.isVerifiedOnly != activity.user?.flatProperties?.isVerifiedOnly)
-            hasChanged = true
+        } else if (actualUserData?.flatProperties?.moveinDate != activity.user?.flatProperties?.moveinDate) hasChanged =
+            true
+        else if (actualUserData?.flatProperties?.roomType != activity.user?.flatProperties?.roomType) hasChanged =
+            true
+        else if (actualUserData?.flatProperties?.isVerifiedOnly != activity.user?.flatProperties?.isVerifiedOnly) hasChanged =
+            true
         else if (actualUserData?.flatProperties?.gender != activity.user?.flatProperties?.gender) {
             hasChanged = true
         }/* else if (actualUserData?.flatProperties?.working != activity.user?.flatProperties?.working) {
@@ -171,22 +196,23 @@ class PreferenceListener(private val activity: PreferenceActivity) : View.OnClic
             hasChanged = true
         } else if (actualUserData?.flatProperties?.dealBreakers == null && activity.user?.flatProperties?.dealBreakers != null) {
             hasChanged = true
-        } else if (actualUserData?.flatProperties?.dealBreakers?.smoking != activity.user?.flatProperties?.dealBreakers?.smoking)
-            hasChanged = true
-        else if (actualUserData?.flatProperties?.dealBreakers?.nonveg != activity.user?.flatProperties?.dealBreakers?.nonveg)
-            hasChanged = true
-        else if (actualUserData?.flatProperties?.dealBreakers?.flatparty != activity.user?.flatProperties?.dealBreakers?.flatparty)
-            hasChanged = true
-        else if (actualUserData?.flatProperties?.dealBreakers?.eggs != activity.user?.flatProperties?.dealBreakers?.eggs)
-            hasChanged = true
-        else if (actualUserData?.flatProperties?.dealBreakers?.pets != activity.user?.flatProperties?.dealBreakers?.pets)
-            hasChanged = true
-        else if (actualUserData?.flatProperties?.dealBreakers?.workout != activity.user?.flatProperties?.dealBreakers?.workout)
-            hasChanged = true
+        } else if (actualUserData?.flatProperties?.dealBreakers?.smoking != activity.user?.flatProperties?.dealBreakers?.smoking) hasChanged =
+            true
+        else if (actualUserData?.flatProperties?.dealBreakers?.nonveg != activity.user?.flatProperties?.dealBreakers?.nonveg) hasChanged =
+            true
+        else if (actualUserData?.flatProperties?.dealBreakers?.flatparty != activity.user?.flatProperties?.dealBreakers?.flatparty) hasChanged =
+            true
+        else if (actualUserData?.flatProperties?.dealBreakers?.eggs != activity.user?.flatProperties?.dealBreakers?.eggs) hasChanged =
+            true
+        else if (actualUserData?.flatProperties?.dealBreakers?.pets != activity.user?.flatProperties?.dealBreakers?.pets) hasChanged =
+            true
+        else if (actualUserData?.flatProperties?.dealBreakers?.workout != activity.user?.flatProperties?.dealBreakers?.workout) hasChanged =
+            true
 
-        if (hasChanged)
-            activity.baseApiController.updateUser(true, activity.user, object :
-                OnUserFetched {
+        if (hasChanged) activity.baseApiController.updateUser(
+            true,
+            activity.user,
+            object : OnUserFetched {
                 override fun userFetched(resp: UserResponse?) {
                     AppConstants.isFeedReloadRequired = true
                     val intent = Intent()

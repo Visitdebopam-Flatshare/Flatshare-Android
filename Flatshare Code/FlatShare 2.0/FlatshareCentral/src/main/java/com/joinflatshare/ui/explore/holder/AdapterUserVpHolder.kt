@@ -7,6 +7,7 @@ import android.view.View
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewbinding.ViewBinding
+import androidx.viewpager2.widget.ViewPager2
 import com.joinflatshare.FlatshareCentral.R
 import com.joinflatshare.FlatshareCentral.databinding.ItemExploreVpBinding
 import com.joinflatshare.constants.AppConstants
@@ -25,7 +26,7 @@ import jp.wasabeef.blurry.Blurry
  * Created by debopam on 14/11/22
  */
 class AdapterUserVpHolder(private val view: ViewBinding) : RecyclerView.ViewHolder(view.root) {
-    fun bindVp(activity: ExploreActivity, vpSlide: Int, user: User) {
+    fun bindVp(activity: ExploreActivity, vpSlide: Int, user: User, vpExplore: ViewPager2) {
         val holder = view as ItemExploreVpBinding
         when (vpSlide) {
             AdapterUserHolder.VP_SLIDE_ABOUT -> {
@@ -60,8 +61,9 @@ class AdapterUserVpHolder(private val view: ViewBinding) : RecyclerView.ViewHold
                     dealBreakerView.setDealValues(user.flatProperties.dealBreakers, null)
                     dealBreakerView.show()
                 }
-
-
+                holder.viewExploreRight.setOnClickListener {
+                    vpExplore.currentItem = 1
+                }
             }
 
             AdapterUserHolder.VP_SLIDE_WORK -> {
@@ -106,6 +108,9 @@ class AdapterUserVpHolder(private val view: ViewBinding) : RecyclerView.ViewHold
                     }
                 }
 
+                holder.viewExploreLeft.setOnClickListener {
+                    vpExplore.currentItem = 0
+                }
             }
         }
 

@@ -2,12 +2,11 @@ package com.joinflatshare.ui.bottomsheet
 
 import android.app.Activity
 import android.content.Intent
-import android.view.View
 import android.widget.ImageView
 import android.widget.LinearLayout
-import androidx.constraintlayout.widget.ConstraintLayout
-import com.google.android.material.bottomsheet.BottomSheetBehavior
+import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.joinflatshare.FlatshareCentral.R
+import com.joinflatshare.FlatshareCentral.databinding.DialogBottomsheetIncompleteProfileBinding
 import com.joinflatshare.interfaces.OnStringFetched
 import com.joinflatshare.ui.base.ApplicationBaseActivity
 import com.joinflatshare.ui.profile.edit.ProfileEditActivity
@@ -20,27 +19,26 @@ class IncompleteProfileBottomSheet(
     private val activity: ApplicationBaseActivity,
     private val callback: OnStringFetched
 ) {
-    private var bottomSheetBehavior: BottomSheetBehavior<ConstraintLayout> =
-        BottomSheetBehavior.from(activity.findViewById(R.id.bottomSheet_profile_incomplete))
+    private lateinit var viewBind: DialogBottomsheetIncompleteProfileBinding
+    private lateinit var dialog: BottomSheetDialog
 
     init {
-        bottomSheetBehavior.isFitToContents = true
-        bottomSheetBehavior.isHideable = true
-        bottomSheetBehavior.state = BottomSheetBehavior.STATE_HIDDEN
-        show()
+        create()
     }
 
-    private fun show() {
-        activity.findViewById<View>(R.id.bottomSheet_profile_incomplete).visibility = View.VISIBLE
-        bottomSheetBehavior.setState(BottomSheetBehavior.STATE_EXPANDED)
+    private fun create() {
+        dialog = BottomSheetDialog(activity)
+        viewBind = DialogBottomsheetIncompleteProfileBinding.inflate(activity.layoutInflater)
+        dialog.setContentView(viewBind.root)
         click()
+        dialog.show()
     }
 
     private fun click() {
-        activity.findViewById<ImageView>(R.id.img_cross_incomplete)?.setOnClickListener {
-            bottomSheetBehavior.state = BottomSheetBehavior.STATE_HIDDEN
+        viewBind.imgCrossIncomplete.setOnClickListener {
+            dialog.dismiss()
         }
-        activity.findViewById<LinearLayout>(R.id.ll_complete_profile).setOnClickListener {
+        viewBind.llCompleteProfile.setOnClickListener {
             val intent = Intent(activity, ProfileEditActivity::class.java)
             CommonMethod.switchActivity(
                 activity,
@@ -48,7 +46,7 @@ class IncompleteProfileBottomSheet(
             ) { result ->
                 if (result?.resultCode == Activity.RESULT_OK) {
                     callback.onFetched("1")
-                    bottomSheetBehavior.state = BottomSheetBehavior.STATE_HIDDEN
+                    dialog.dismiss()
                 }
             }
         }

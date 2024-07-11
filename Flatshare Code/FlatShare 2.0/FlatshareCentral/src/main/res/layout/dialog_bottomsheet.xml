@@ -5,32 +5,30 @@
     android:id="@+id/bottomSheet"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:visibility="gone"
-    app:behavior_hideable="true"
-    app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior">
+    android:background="@android:color/transparent">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/drawable_bottomsheet"
         android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
         <View
-            android:layout_width="@dimen/_50sdp"
-            android:layout_height="@dimen/line_height"
+            android:layout_width="@dimen/_30sdp"
+            android:layout_height="@dimen/_2sdp"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="@dimen/_10sdp"
             android:alpha="@integer/alpha_dialog_bg"
-            android:background="@color/button_bg_black" />
+            android:background="@color/grey2" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_bottomsheet"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="@dimen/_10sdp"
+            android:layout_marginHorizontal="@dimen/_16sdp"
+            android:layout_marginVertical="@dimen/_12sdp"
             tools:itemCount="5"
             tools:listitem="@layout/item_bottomsheet" />
 

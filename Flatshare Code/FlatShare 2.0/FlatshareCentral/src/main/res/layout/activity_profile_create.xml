@@ -149,5 +149,5 @@
 
     </RelativeLayout>
 
-    <include layout="@layout/dialog_bottomsheet" />
+
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

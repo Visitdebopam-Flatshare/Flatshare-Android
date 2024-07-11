@@ -4,6 +4,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewbinding.ViewBinding
+import androidx.viewpager2.widget.ViewPager2
 import com.joinflatshare.FlatshareCentral.databinding.ItemExploreVpBinding
 import com.joinflatshare.pojo.user.User
 import com.joinflatshare.ui.base.BaseActivity
@@ -17,7 +18,8 @@ import com.joinflatshare.ui.explore.holder.AdapterUserVpHolder
 class ExploreUserVpAdapter(
     private val activity: BaseActivity,
     private val vpSlide: ArrayList<Int>,
-    private val user: User
+    private val user: User,
+    private val vpExplore: ViewPager2
 ) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
@@ -33,7 +35,7 @@ class ExploreUserVpAdapter(
     override fun onBindViewHolder(mainHolder: RecyclerView.ViewHolder, position: Int) {
         val holder = mainHolder as ViewHolder
         if (activity is ExploreActivity)
-            holder.vpHolder.bindVp(activity, vpSlide[position], user)
+            holder.vpHolder.bindVp(activity, vpSlide[position], user, vpExplore)
         else if (activity is ChecksActivity)
             holder.vpHolder.bindVp(activity, user)
     }

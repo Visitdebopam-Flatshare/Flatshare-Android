@@ -29,7 +29,7 @@ class LikedListener(
                 list.add(ModelBottomSheet(0, "Casual Date"))
                 list.add(ModelBottomSheet(0, "Long-Term Partner"))
                 list.add(ModelBottomSheet(0, "Activity Partners"))
-                BottomSheetView(activity, list).show { _, position ->
+                BottomSheetView(activity, list) { _, position ->
                     val oldType = activity.SEARCH_TYPE
                     when (position) {
                         0 -> activity.SEARCH_TYPE = BaseActivity.TYPE_FLAT

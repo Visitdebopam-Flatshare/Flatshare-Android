@@ -207,7 +207,7 @@ class DialogShare(
                 CommonMethod.makeLog("Share", flatShareText)
                 return true
             }
-        } else if (shareType.equals(TYPE_USER)) {
+        } else if (shareType.equals(BaseActivity.TYPE_FHT)) {
             if (UserShareMessageGenerator.isUserDataAvailableToShare(user)) {
                 val pronoun = if (user?.gender.equals("Male")) "He" else "She"
                 userShareText =

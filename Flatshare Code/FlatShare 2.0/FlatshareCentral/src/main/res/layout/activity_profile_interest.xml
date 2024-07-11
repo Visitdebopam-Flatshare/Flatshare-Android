@@ -16,7 +16,7 @@
             android:layout_height="match_parent"
             android:layout_above="@id/btn_interests"
             android:layout_alignParentTop="true"
-            android:layout_marginHorizontal="@dimen/_16sdp"
+            android:layout_marginHorizontal="@dimen/dimen_margin_horizontal"
             android:gravity="top"
             android:orientation="vertical">
 
@@ -44,16 +44,16 @@
                     android:paddingStart="@dimen/_5sdp"
                     android:text="Skip"
                     android:textColor="@color/grey1"
-                    android:textSize="@dimen/_12sdp" />
+                    android:textSize="@dimen/_14sdp" />
             </RelativeLayout>
 
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:lineSpacingExtra="@dimen/_minus6sdp"
                 android:layout_marginTop="@dimen/_20sdp"
                 android:fontFamily="@font/font_extrabold"
+                android:lineSpacingExtra="@dimen/_minus6sdp"
                 android:text="Your Interests"
                 android:textColor="@color/black"
                 android:textSize="@dimen/_24sdp" />
@@ -61,7 +61,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/_12sdp"
+                android:layout_marginTop="@dimen/_8sdp"
                 android:fontFamily="@font/font_semibold"
                 android:lineSpacingExtra="-2dp"
                 android:text="Pick up to 5 interest you like. It’ll help you match with the flatmate who like them too."
@@ -71,7 +71,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/_20sdp"
+                android:layout_marginVertical="@dimen/_16sdp"
                 android:fontFamily="@font/font_medium"
                 android:text="Interests"
                 android:textColor="@color/black"
@@ -80,8 +80,7 @@
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rv_interests"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/_10sdp" />
+                android:layout_height="wrap_content" />
 
         </LinearLayout>
 
@@ -91,7 +90,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
-            android:layout_margin="@dimen/_16sdp"
+            android:layout_margin="@dimen/dimen_margin_horizontal"
             android:background="@drawable/drawable_button_light_blue"
             android:fontFamily="@font/font_semibold"
             android:text="Next"
@@ -101,5 +100,5 @@
 
     </RelativeLayout>
 
-    <include layout="@layout/dialog_bottomsheet" />
+
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

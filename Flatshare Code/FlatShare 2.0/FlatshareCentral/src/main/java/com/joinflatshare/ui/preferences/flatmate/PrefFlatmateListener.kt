@@ -1,22 +1,10 @@
 package com.joinflatshare.ui.preferences.flatmate
 
-import android.app.Activity
-import android.content.Intent
 import android.view.View
-import com.debopam.progressdialog.DialogCustomProgress
-import com.joinflatshare.FlatShareApplication
 import com.joinflatshare.FlatshareCentral.databinding.ActivityPrefFlatmateBinding
-import com.joinflatshare.constants.AppConstants
 import com.joinflatshare.customviews.bottomsheet.BottomSheetView
 import com.joinflatshare.customviews.bottomsheet.ModelBottomSheet
-import com.joinflatshare.customviews.interests.InterestsView
 import com.joinflatshare.interfaces.OnitemClick
-import com.joinflatshare.ui.flat.verify.FlatVerifyActivity
-import com.joinflatshare.utils.deeplink.DeepLinkHandler
-import com.joinflatshare.utils.deeplink.FlatShareMessageGenerator
-import com.joinflatshare.utils.helper.CommonMethod
-import com.joinflatshare.utils.helper.CommonMethods
-import com.joinflatshare.utils.mixpanel.MixpanelUtils.onButtonClicked
 
 class PrefFlatmateListener
     (private val activity: PrefFlatmateActivity) : View.OnClickListener {
@@ -118,12 +106,8 @@ class PrefFlatmateListener
             val list = ArrayList<ModelBottomSheet>()
             list.add(ModelBottomSheet(0, "Get Verified For Free"))
             list.add(ModelBottomSheet(0, "Join Flatshare Elite"))
-            BottomSheetView(activity, list).show(object : OnitemClick {
-                override fun onitemclick(view: View?, position: Int) {
-
-                }
-
-            })
+            BottomSheetView(activity, list
+            ) { view, position -> }
 
 
             /*var shouldCheck = false

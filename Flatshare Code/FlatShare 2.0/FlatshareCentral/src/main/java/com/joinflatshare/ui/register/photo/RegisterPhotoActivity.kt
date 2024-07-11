@@ -43,8 +43,7 @@ class RegisterPhotoActivity : BaseActivity() {
     }
 
     fun pickImage(fromGallery: Boolean) {
-        if (fromGallery)
-            ImageHelper.pickImageFromGallery(this, 1f, 1f)
+        if (fromGallery) ImageHelper.pickImageFromGallery(this, 1f, 1f)
         else ImageHelper.pickImageFromCamera(this, 1f, 1f)
     }
 
@@ -57,8 +56,7 @@ class RegisterPhotoActivity : BaseActivity() {
                 val uri = data.data
                 val ap = AmazonUploadFile()
                 ap.upload(
-                    File(uri?.path),
-                    AmazonUploadFile.AWS_TYPE_PROFILE_IMAGE
+                    File(uri?.path), AmazonUploadFile.AWS_TYPE_PROFILE_IMAGE
                 ) { intent: Intent, requestCode1: Int ->
                     DialogCustomProgress.hideProgress(this)
                     if (requestCode1 == AmazonUploadFile.REQUEST_CODE_SUCCESS) {
@@ -73,13 +71,13 @@ class RegisterPhotoActivity : BaseActivity() {
                                 MixpanelUtils.sendToMixPanel("Photo Uploaded")
                                 viewBind.btnUploadPhoto.text = "Next"
                                 viewBind.btnSkip.text = "Change Photo"
+                                viewBind.txtHeader.text = "Set as profile photo"
                             }
 
                         })
                     } else {
                         Logger.log(
-                            "Failed to update profile picture",
-                            Logger.LOG_TYPE_ERROR
+                            "Failed to update profile picture", Logger.LOG_TYPE_ERROR
                         )
                         CommonMethod.makeToast("Failed to update profile picture")
                     }
@@ -101,7 +99,6 @@ class RegisterPhotoActivity : BaseActivity() {
 
     private fun deleteOldProfileImage() {
         val oldDp = user?.dp
-        if (!oldDp.isNullOrEmpty())
-            AmazonDeleteFile().delete(oldDp, null)
+        if (!oldDp.isNullOrEmpty()) AmazonDeleteFile().delete(oldDp, null)
     }
 }

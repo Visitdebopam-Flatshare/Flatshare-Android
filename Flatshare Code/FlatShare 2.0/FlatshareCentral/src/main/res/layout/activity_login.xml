@@ -1,85 +1,93 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/drawer_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/color_bg">
 
-    <ImageView
-        android:layout_width="@dimen/_80sdp"
-        android:layout_height="@dimen/_30sdp"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="@dimen/_10sdp"
-        android:src="@drawable/ic_logo_name" />
-
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_marginHorizontal="@dimen/_16sdp"
-        android:layout_marginTop="@dimen/_40sdp"
-        android:gravity="center"
-        android:orientation="vertical">
+        android:layout_height="match_parent"
+        android:background="@color/color_bg">
 
-        <TextView
+        <ImageView
+            android:layout_width="@dimen/_80sdp"
+            android:layout_height="@dimen/_30sdp"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="@dimen/_10sdp"
+            android:src="@drawable/ic_logo_name" />
+
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/font_extrabold"
-            android:lineSpacingExtra="@dimen/_minus6sdp"
-            android:text="What is your phone number?"
-            android:textColor="@color/black"
-            android:textSize="@dimen/_24sdp" />
+            android:layout_alignParentTop="true"
+            android:layout_marginHorizontal="@dimen/_16sdp"
+            android:layout_marginTop="@dimen/_40sdp"
+            android:gravity="center"
+            android:orientation="vertical">
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/_12sdp"
-            android:fontFamily="@font/font_semibold"
-            android:lineSpacingExtra="-2dp"
-            android:text="we will send you a one-time password (OTP) via text message."
-            android:textColor="@color/black"
-            android:textSize="@dimen/_12sdp" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/font_extrabold"
+                android:lineSpacingExtra="@dimen/_minus6sdp"
+                android:text="What is your phone number?"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_24sdp" />
 
-        <EditText
-            android:id="@+id/edt_login"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginTop="@dimen/_20sdp"
-            android:background="@android:color/transparent"
-            android:digits="1234567890"
-            android:fontFamily="@font/font_semibold"
-            android:gravity="center_vertical"
-            android:hint="Phone Number"
-            android:imeOptions="actionDone"
-            android:inputType="numberSigned"
-            android:lineHeight="@dimen/_32sdp"
-            android:lineSpacingExtra="@dimen/_minus6sdp"
-            android:maxLength="10"
-            android:textColor="@color/black"
-            android:textColorHint="@color/color_hint"
-            android:textCursorDrawable="@null"
-            android:textSize="@dimen/_28sdp" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_12sdp"
+                android:fontFamily="@font/font_semibold"
+                android:lineSpacingExtra="-2dp"
+                android:text="we will send you a one-time password (OTP) via text message."
+                android:textColor="@color/black"
+                android:textSize="@dimen/_12sdp" />
 
-        <TextView
-            android:id="@+id/txtLoginTerms"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/_20sdp"
-            android:fontFamily="@font/font_semibold"
-            android:textColor="@color/black"
-            android:textSize="@dimen/_10sdp" />
+            <EditText
+                android:id="@+id/edt_login"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="@dimen/_20sdp"
+                android:background="@android:color/transparent"
+                android:digits="1234567890"
+                android:fontFamily="@font/font_semibold"
+                android:gravity="center_vertical"
+                android:hint="Phone Number"
+                android:imeOptions="actionDone"
+                android:inputType="numberSigned"
+                android:lineHeight="@dimen/_32sdp"
+                android:lineSpacingExtra="@dimen/_minus6sdp"
+                android:maxLength="10"
+                android:textColor="@color/black"
+                android:textColorHint="@color/color_hint"
+                android:textCursorDrawable="@color/colorAccent"
+                android:textSize="@dimen/_28sdp" />
 
-        <com.joinflatshare.customviews.CustomButton
-            android:id="@+id/btn_login"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/button_height"
-            android:layout_marginTop="@dimen/_8sdp"
-            android:background="@drawable/drawable_button_light_blue"
-            android:fontFamily="@font/font_semibold"
-            android:text="Next"
-            android:textColor="@color/white"
-            android:textSize="@dimen/button_text_size" />
-    </LinearLayout>
+            <TextView
+                android:id="@+id/txtLoginTerms"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_20sdp"
+                android:fontFamily="@font/font_semibold"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_10sdp" />
 
-</RelativeLayout>
+            <com.joinflatshare.customviews.CustomButton
+                android:id="@+id/btn_login"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/button_height"
+                android:layout_marginTop="@dimen/_8sdp"
+                android:background="@drawable/drawable_button_light_blue"
+                android:fontFamily="@font/font_semibold"
+                android:text="Next"
+                android:textColor="@color/white"
+                android:textSize="@dimen/button_text_size" />
+        </LinearLayout>
+
+    </RelativeLayout>
+
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
