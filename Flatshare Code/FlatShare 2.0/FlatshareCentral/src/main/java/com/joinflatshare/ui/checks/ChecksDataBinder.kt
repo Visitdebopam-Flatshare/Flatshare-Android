@@ -143,6 +143,7 @@ class ChecksDataBinder(
                         hasMoreData = false
                         viewBind.pullToRefresh.visibility = View.GONE
                         viewBind.rlNoChecks.visibility = View.VISIBLE
+                        viewBind.imgNoData.setImageResource(R.drawable.img_no_super_check)
                         viewBind.txtNoData.text = "Superchecks you receive will show up here."
                     } else {
                         viewBind.pullToRefresh.visibility = View.VISIBLE
@@ -172,6 +173,7 @@ class ChecksDataBinder(
                 if (currentPage == 0) {
                     viewBind.pullToRefresh.visibility = View.GONE
                     viewBind.rlNoChecks.visibility = View.VISIBLE
+                    viewBind.imgNoData.setImageResource(R.drawable.img_no_checks)
                     viewBind.txtNoData.text =
                         if (activity.source == ChecksActivity.SOURCE_SENT) "Checks you send will show up here." else "Checks you receive will show up here."
                 }

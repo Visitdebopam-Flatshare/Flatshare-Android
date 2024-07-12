@@ -37,8 +37,8 @@
         </RelativeLayout>
 
         <FrameLayout
-            android:layout_width="@dimen/_100sdp"
             android:id="@+id/frame_photo"
+            android:layout_width="@dimen/_100sdp"
             android:layout_height="@dimen/_100sdp"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="@dimen/_10sdp">
@@ -189,7 +189,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginTop="@dimen/_10sdp"
                             android:fontFamily="@font/font_regular"
-                            android:text="Connect with verified members &amp; earn\n500 flatcoins."
+                            android:text="Get verified and connect with other verified members."
                             android:textColor="@color/grey4"
                             android:textSize="@dimen/_10sdp" />
                     </LinearLayout>
@@ -203,6 +203,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="@dimen/_5sdp"
                     android:layout_marginTop="@dimen/_10sdp"
+                    android:visibility="gone"
                     app:cardBackgroundColor="@color/white"
                     app:cardCornerRadius="@dimen/_20sdp"
                     app:cardElevation="@dimen/_5sdp"

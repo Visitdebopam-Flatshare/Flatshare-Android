@@ -31,27 +31,13 @@ class FaqActivity : BaseActivity() {
         val faqItems = ArrayList<FaqItem>()
         faqItems.add(
             FaqItem(
-                "What is flatshare?",
+                "Why did you create Flatshare?",
                 true
             )
         )
         faqItems.add(
             FaqItem(
-                "flatshare is a new app for students and young adults living in India where members connect with each other for dating, hunting and sharing a flat together.",
-                false
-            )
-        )
-
-
-        faqItems.add(
-            FaqItem(
-                "Why did you create flatshare?",
-                true
-            )
-        )
-        faqItems.add(
-            FaqItem(
-                "Who you live with = Who you become.",
+                "Who you live with = Who you'll become.",
                 false
             )
         )
@@ -63,13 +49,13 @@ class FaqActivity : BaseActivity() {
         )
         faqItems.add(
             FaqItem(
-                "That's why we created flatshare - to make it super easy for you to connect with other better and interesting people, people just like you.",
+                "That's why we created flatshare - to make your flat and flatmate search as simple and fun as possible, without you paying any brokerage.",
                 false
             )
         )
         faqItems.add(
             FaqItem(
-                "People who get you.",
+                "So that you can LIVE YOUR BEST LIFE.",
                 false
             )
         )
@@ -77,182 +63,49 @@ class FaqActivity : BaseActivity() {
 
         faqItems.add(
             FaqItem(
-                "What is Flathunt Together and how it’s different from Shared Flat Search?",
+                "How does Flatshare help with finding your Perfect Flat & Flatmate?",
                 true
             )
         )
         faqItems.add(
             FaqItem(
-                "Flathunt together allows you to connect with your future flatmate before you have a flat. Once you’ve found a flatmate you can hunt a private flat and move-in together.",
+                "Flatshare uses an intelligent matching algorithm that only gives you the top recommendations based on your profile and preferences.",
                 false
             )
         )
         faqItems.add(
             FaqItem(
-                "If you are looking for an individual bed/room in an already rented flat.\nShared Flat Search is a better option for you.",
+                "This eliminates the need to search through an overwhelming number of options.\n" +
+                        "We do the work for you, making the process more efficient and tailored to your needs.",
                 false
             )
         )
 
-
-
         faqItems.add(
             FaqItem(
-                "How do I find a shared flat?",
+                "What is FlatScore?",
                 true
             )
         )
         faqItems.add(
             FaqItem(
-                "Looking for an individual bed/room in an already rented flat.\nFinding flatshare has never been easier.",
+                "Flatscore is a measure of trust within the Flatshare community.\n" +
+                        "A higher Flatscore indicates a higher level of trust from the community. ",
                 false
             )
         )
         faqItems.add(
             FaqItem(
-                getEmojiByUnicode(0x1F4AA) + " Build your profile: Your profile is a snapshot of who you are.",
+                "Spammers, scammers, and fraudsters are unlikely to have a high Flatscore.",
                 false
             )
         )
         faqItems.add(
             FaqItem(
-                getEmojiByUnicode(0x2705) + " Check Flats: Based on your preferences, we’ll show you flats that you might like to check.",
+                "This feature helps you connect with people who have a similar Flatscore, ensuring a safe and trustworthy community.",
                 false
             )
         )
-        faqItems.add(
-            FaqItem(
-                getEmojiByUnicode(0x1F91D) + " Match and Chat: If the checking is mutual, you can chat with the flatmates and decide if it’s the right flat for you.",
-                false
-            )
-        )
-
-
-
-        faqItems.add(
-            FaqItem(
-                "How do I find a flatmate for my already rented flat?",
-                true
-            )
-        )
-        faqItems.add(
-            FaqItem(
-                "Got a vacant room or bed?\nWith flatshare, you can find flatmates like friends.",
-                false
-            )
-        )
-        faqItems.add(
-            FaqItem(
-                getEmojiByUnicode(0x1F3E0) + " Add your flat: Add your flat by entering your flatname.",
-                false
-            )
-        )
-        faqItems.add(
-            FaqItem(
-                getEmojiByUnicode(0x1F4AA) + " Build your flat profile: Your flat profile includes you, your flatmates, flat photos and other details.",
-                false
-            )
-        )
-        faqItems.add(
-            FaqItem(
-                getEmojiByUnicode(0x2705) + " Check potential flatmates: Based on your details and preferences, we’ll show you potential flatmates who you might like to live with.",
-                false
-            )
-        )
-        faqItems.add(
-            FaqItem(
-                getEmojiByUnicode(0x1F91D) + "  Match and Chat: If the checking is mutual, you can chat with them and decide if they are the right flatmate for you.",
-                false
-            )
-        )
-
-
-
-        faqItems.add(
-            FaqItem(
-                "Can I send a chat request directly and skip the mutual checking?",
-                true
-            )
-        )
-        faqItems.add(
-            FaqItem(
-                "Yes, you can send chat request and skip the mutual checking. Your chat request still has to be accepted for you to connect.",
-                false
-            )
-        )
-
-
-
-
-        faqItems.add(
-            FaqItem(
-                "Why are there daily limits on Views, Checks and Chat Requests?",
-                true
-            )
-        )
-        faqItems.add(
-            FaqItem(
-                "Our algorithm gives you only the Top Recommendations based on your profile and preferences so that you don't need to find a needle in a haystack. We do it for you.",
-                false
-            )
-        )
-        faqItems.add(
-            FaqItem(
-                "Limits help everyone send and receive the Checks and Chat Requests to the ones they are most interested in. Everyone gets much better quality of Checks and Chat Requests.",
-                false
-            )
-        )
-
-
-
-
-        faqItems.add(
-            FaqItem(
-                "What does f - FlatScore mean?",
-                true
-            )
-        )
-        faqItems.add(
-            FaqItem(
-                "FlatScore is a measure of community trust. Higher the community trusts you, the higher your score. No spammer, scammer, or fraudster can have a high FlatScore.",
-                false
-            )
-        )
-        faqItems.add(
-            FaqItem(
-                "FlatScore helps you in connecting with people who have FlatScore similar to you and keep spammers, scammers, & fraudsters out of flatshare.",
-                false
-            )
-        )
-
-
-
-
-        faqItems.add(
-            FaqItem(
-                "How do Invites work?",
-                true
-            )
-        )
-        faqItems.add(
-            FaqItem(
-                "Everybody who joins flatshare can invite a few of their friends. If your friends join you get to invite even more friends.",
-                false
-            )
-        )
-        faqItems.add(
-            FaqItem(
-                "All the invites expire in 48 hours, so make sure your friends know you’ve invited them.",
-                false
-            )
-        )
-        faqItems.add(
-            FaqItem(
-                "You’ll get credit for the invite on their profile and 1000 flatcoins for each successful invite.",
-                false
-            )
-        )
-
 
 
 
@@ -262,26 +115,26 @@ class FaqActivity : BaseActivity() {
                 true
             )
         )
-        faqItems.add(
-            FaqItem(
-                "We care deeply about our users and strive to make our community safe and comfortable. We will not tolerate any form of abuse or harassment.",
-                false
-            )
-        )
-        faqItems.add(
-            FaqItem(
-                "If you see any member trying to impersonate someone else, asking for brokerage, sending inappropriate messages or photos, go to the bottom of their profile and report.",
-                false
-            )
-        )
-        faqItems.add(
-            FaqItem(
-                "You can also reach out directly to our team directly at hello@flatshare.club and share your feedback. We would love to hear from you.",
-                false
-            )
-        )
 
-
+        faqItems.add(
+            FaqItem(
+                "We take the safety and comfort of our members seriously.",
+                false
+            )
+        )
+        faqItems.add(
+            FaqItem(
+                "Any form of abuse, harassment, impersonation, solicitation of brokerage fees, or inappropriate messages or photos should be reported. ",
+                false
+            )
+        )
+        faqItems.add(
+            FaqItem(
+                "Go to the bottom of the person's profile and select 'report'.\n" +
+                        "You can also reach out to our team directly at hello@flatshare.club to share your feedback.",
+                false
+            )
+        )
 
         faqItems.add(
             FaqItem(
@@ -291,7 +144,13 @@ class FaqActivity : BaseActivity() {
         )
         faqItems.add(
             FaqItem(
-                "If you signed up with the wrong name, birthdate or gender, reach out to our team directly at hello@flatshare.club along with your mobile number and aadhar card and we’ll change it for you.",
+                "If you signed up with incorrect personal information, such as name, birth date, or gender, please reach out to our team at hello@flatshare.club with your mobile number and Aadhar card details.",
+                false
+            )
+        )
+        faqItems.add(
+            FaqItem(
+                "We’ll change it for you.",
                 false
             )
         )
@@ -306,13 +165,13 @@ class FaqActivity : BaseActivity() {
         )
         faqItems.add(
             FaqItem(
-                "Constant evolution is our MO. We're always looking for ways to improve and make flatshare the best it can be. So don't be shy - let us know what you think!",
+                "Absolutely! We value your feedback and are always striving to improve Flatshare.",
                 false
             )
         )
         faqItems.add(
             FaqItem(
-                "If you have any other questions, feedback or want to report a negative experience, please reach out at hello@flatshare.club",
+                "f you have any suggestions, feature requests, or feedback, please reach out to us at hello@flatshare.club. We'd love to hear from you.",
                 false
             )
         )

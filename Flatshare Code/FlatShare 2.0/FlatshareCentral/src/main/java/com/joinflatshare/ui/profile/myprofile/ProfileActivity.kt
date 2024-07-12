@@ -39,7 +39,7 @@ class ProfileActivity : BaseActivity() {
             viewBind.imgProfileVerified.setImageResource(R.drawable.ic_tick_verified_blue)
             viewBind.cardProfileVerified.visibility = View.GONE
         } else {
-            viewBind.imgProfileVerified.setImageResource(R.drawable.ic_tick_verified)
+            viewBind.imgProfileVerified.setImageResource(0)
             viewBind.cardProfileVerified.visibility = View.VISIBLE
         }
     }
