@@ -108,9 +108,9 @@ dependencies {
     implementation 'com.squareup.retrofit2:adapter-rxjava2:2.9.0'
 
     // Location
-    implementation 'com.google.android.gms:play-services-location:21.2.0'
+    implementation 'com.google.android.gms:play-services-location:21.3.0'
     // Places
-    implementation "com.google.android.libraries.places:places:3.4.0"
+    implementation "com.google.android.libraries.places:places:3.5.0"
 
     // Image Loader
     implementation 'com.github.bumptech.glide:glide:4.16.0'
@@ -145,7 +145,7 @@ dependencies {
 
     // OTP Auto read
     implementation 'com.google.android.gms:play-services-auth:21.2.0'
-    implementation 'com.google.android.gms:play-services-auth-api-phone:18.0.2'
+    implementation 'com.google.android.gms:play-services-auth-api-phone:18.1.0'
 
     // Auto App updater
     implementation("com.google.android.play:app-update:2.1.0")
