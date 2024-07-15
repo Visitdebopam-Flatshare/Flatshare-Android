@@ -23,6 +23,7 @@
         app:cardBackgroundColor="@color/white"
         app:cardCornerRadius="@dimen/_16sdp"
         app:cardElevation="@dimen/_2sdp"
+        android:outlineSpotShadowColor="@color/blue_dark"
         app:cardPreventCornerOverlap="false"
         app:cardUseCompatPadding="false">
 

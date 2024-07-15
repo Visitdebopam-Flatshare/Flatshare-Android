@@ -60,6 +60,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginHorizontal="@dimen/dimen_margin_horizontal"
                         android:layout_marginTop="@dimen/_10sdp"
+                        android:outlineSpotShadowColor="@color/blue_dark"
                         app:cardBackgroundColor="@color/white"
                         app:cardCornerRadius="@dimen/dimen_drawable_corner_radius"
                         app:cardElevation="@dimen/_2sdp">
@@ -98,6 +99,7 @@
                             android:layout_marginHorizontal="@dimen/dimen_margin_horizontal"
                             android:layout_marginTop="@dimen/_10sdp"
                             android:layout_marginBottom="@dimen/_2sdp"
+                            android:outlineSpotShadowColor="@color/blue_dark"
                             app:cardBackgroundColor="@color/white"
                             app:cardCornerRadius="@dimen/dimen_drawable_corner_radius"
                             app:cardElevation="@dimen/_2sdp">
@@ -138,6 +140,7 @@
                             android:layout_marginHorizontal="@dimen/dimen_margin_horizontal"
                             android:layout_marginTop="@dimen/_10sdp"
                             android:layout_marginBottom="@dimen/_2sdp"
+                            android:outlineSpotShadowColor="@color/blue_dark"
                             app:cardBackgroundColor="@color/white"
                             app:cardCornerRadius="@dimen/dimen_drawable_corner_radius"
                             app:cardElevation="@dimen/_2sdp">
@@ -178,6 +181,7 @@
                             android:layout_marginHorizontal="@dimen/dimen_margin_horizontal"
                             android:layout_marginTop="@dimen/_10sdp"
                             android:layout_marginBottom="@dimen/_2sdp"
+                            android:outlineSpotShadowColor="@color/blue_dark"
                             app:cardBackgroundColor="@color/white"
                             app:cardCornerRadius="@dimen/dimen_drawable_corner_radius"
                             app:cardElevation="@dimen/_2sdp">
@@ -218,6 +222,7 @@
                             android:layout_marginHorizontal="@dimen/dimen_margin_horizontal"
                             android:layout_marginTop="@dimen/_10sdp"
                             android:layout_marginBottom="@dimen/_2sdp"
+                            android:outlineSpotShadowColor="@color/blue_dark"
                             app:cardBackgroundColor="@color/white"
                             app:cardCornerRadius="@dimen/dimen_drawable_corner_radius"
                             app:cardElevation="@dimen/_2sdp">
@@ -258,6 +263,7 @@
                             android:layout_marginHorizontal="@dimen/dimen_margin_horizontal"
                             android:layout_marginTop="@dimen/_10sdp"
                             android:layout_marginBottom="@dimen/_2sdp"
+                            android:outlineSpotShadowColor="@color/blue_dark"
                             app:cardBackgroundColor="@color/white"
                             app:cardCornerRadius="@dimen/dimen_drawable_corner_radius"
                             app:cardElevation="@dimen/_2sdp">
@@ -298,6 +304,7 @@
                             android:layout_marginHorizontal="@dimen/dimen_margin_horizontal"
                             android:layout_marginTop="@dimen/_10sdp"
                             android:layout_marginBottom="@dimen/_2sdp"
+                            android:outlineSpotShadowColor="@color/blue_dark"
                             app:cardBackgroundColor="@color/white"
                             app:cardCornerRadius="@dimen/dimen_drawable_corner_radius"
                             app:cardElevation="@dimen/_2sdp">
@@ -338,6 +345,7 @@
                             android:layout_marginHorizontal="@dimen/dimen_margin_horizontal"
                             android:layout_marginTop="@dimen/_10sdp"
                             android:layout_marginBottom="@dimen/_2sdp"
+                            android:outlineSpotShadowColor="@color/blue_dark"
                             app:cardBackgroundColor="@color/white"
                             app:cardCornerRadius="@dimen/dimen_drawable_corner_radius"
                             app:cardElevation="@dimen/_2sdp">

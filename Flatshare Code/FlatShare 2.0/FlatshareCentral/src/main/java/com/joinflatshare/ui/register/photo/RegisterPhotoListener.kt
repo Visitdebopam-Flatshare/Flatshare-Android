@@ -51,18 +51,21 @@ class RegisterPhotoListener(
                 val text = viewBind.btnSkip.text.toString()
                 when (text) {
                     "Change Photo" -> {
-                        viewBind.imgPhoto.visibility = View.VISIBLE
-                        viewBind.txtPhoto.visibility = View.GONE
+                        viewBind.imgPhoto?.visibility = View.VISIBLE
+                        viewBind.txtPhoto?.visibility = View.GONE
                         viewBind.btnSkip.text = "Skip for now"
                         takePhoto()
                     }
 
                     "Skip for now" -> {
-                        viewBind.imgPhoto.visibility = View.GONE
-                        viewBind.txtPhoto.visibility = View.VISIBLE
-                        viewBind.txtPhoto.text = CommonMethod.getUserDP(AppConstants.loggedInUser)
+                        viewBind.imgPhoto?.visibility = View.GONE
+                        viewBind.txtPhoto?.visibility = View.VISIBLE
+                        val fname = AppConstants.loggedInUser?.name?.firstName!![0]
+                        val lname = AppConstants.loggedInUser?.name?.lastName!![0]
+                        viewBind.txtPhoto?.text = "" + fname + lname
                         viewBind.btnUploadPhoto.text = "Next"
                         viewBind.btnSkip.text = "Change Photo"
+                        viewBind.txtHeader.text = "Set as profile photo"
                     }
                 }
             }

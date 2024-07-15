@@ -5,6 +5,7 @@ import android.content.Intent
 import android.content.pm.PackageManager
 import android.os.Bundle
 import android.view.View
+import androidx.annotation.NonNull
 import com.debopam.ImagePicker
 import com.debopam.ImagePicker.Companion.getError
 import com.google.android.libraries.places.widget.Autocomplete
@@ -18,9 +19,7 @@ import com.joinflatshare.ui.dialogs.DialogFlatOptions
 import com.joinflatshare.ui.flat.flatoptions.view_roomsize.RoomSizeViewBind
 import com.joinflatshare.ui.flat.flatoptions.view_roomtype.RoomTypeViewBind
 import com.joinflatshare.utils.helper.CommonMethod
-import com.joinflatshare.utils.helper.CommonMethods
 import com.joinflatshare.utils.helper.ImageHelper
-import javax.annotation.Nonnull
 
 class FlatEditActivity : BaseActivity() {
     lateinit var viewBind: ActivityFlatEditBinding
@@ -69,9 +68,9 @@ class FlatEditActivity : BaseActivity() {
 
     override fun onRequestPermissionsResult(
         requestCode: Int,
-        @Nonnull
+        @NonNull
         permissions: Array<out String>,
-        @Nonnull
+        @NonNull
         grantResults: IntArray
     ) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)

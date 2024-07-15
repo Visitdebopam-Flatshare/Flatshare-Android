@@ -75,7 +75,7 @@ class DealBreakerAdapter(
                 holder.txtDeal.setTextColor(
                     ContextCompat.getColor(
                         dealBreaker.activity,
-                        R.color.grey3
+                        R.color.grey2
                     )
                 )
                 holder.imgDealTick.setImageResource(R.drawable.ic_tick_grey)
@@ -141,27 +141,33 @@ class DealBreakerAdapter(
         ) {
             when (item.name) {
                 "Smoking" -> {
-                    adapter.dealBreakers.smoking = value
+                    adapter.dealBreakers.smoking =
+                        if (adapter.dealBreakers.smoking == value) 0 else value
                 }
 
                 "Eating Non-Veg" -> {
-                    adapter.dealBreakers.nonveg = value
+                    adapter.dealBreakers.nonveg =
+                        if (adapter.dealBreakers.nonveg == value) 0 else value
                 }
 
                 "Drinking Alcohol" -> {
-                    adapter.dealBreakers.flatparty = value
+                    adapter.dealBreakers.flatparty =
+                        if (adapter.dealBreakers.flatparty == value) 0 else value
                 }
 
                 "Eating Eggs" -> {
-                    adapter.dealBreakers.eggs = value
+                    adapter.dealBreakers.eggs =
+                        if (adapter.dealBreakers.eggs == value) 0 else value
                 }
 
                 "Workout" -> {
-                    adapter.dealBreakers.workout = value
+                    adapter.dealBreakers.workout =
+                        if (adapter.dealBreakers.workout == value) 0 else value
                 }
 
                 "Pets" -> {
-                    adapter.dealBreakers.pets = value
+                    adapter.dealBreakers.pets =
+                        if (adapter.dealBreakers.pets == value) 0 else value
                 }
             }
 

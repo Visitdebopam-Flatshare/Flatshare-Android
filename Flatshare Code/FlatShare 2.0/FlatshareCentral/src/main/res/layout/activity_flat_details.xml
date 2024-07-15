@@ -597,7 +597,7 @@
 
                     <LinearLayout
                         android:layout_width="wrap_content"
-                        android:layout_height="@dimen/button_height_small"
+                        android:layout_height="@dimen/button_height"
                         android:layout_alignParentStart="true"
                         android:layout_centerVertical="true"
                         android:layout_marginHorizontal="@dimen/_20sdp"
@@ -605,7 +605,7 @@
 
                         <com.google.android.material.card.MaterialCardView
                             android:id="@+id/cardNotInterested"
-                            android:layout_width="@dimen/button_height_small"
+                            android:layout_width="@dimen/button_height"
                             android:layout_height="match_parent"
                             app:cardBackgroundColor="@color/pink"
                             app:cardCornerRadius="@dimen/_5sdp"
@@ -621,7 +621,7 @@
 
                         <com.google.android.material.card.MaterialCardView
                             android:id="@+id/cardLike"
-                            android:layout_width="@dimen/button_height_small"
+                            android:layout_width="@dimen/button_height"
                             android:layout_height="match_parent"
                             android:layout_marginStart="@dimen/_10sdp"
                             app:cardBackgroundColor="@color/color_blue_light"
@@ -641,7 +641,7 @@
                     <TextView
                         android:id="@+id/txt_chat_request"
                         android:layout_width="wrap_content"
-                        android:layout_height="@dimen/button_height_small"
+                        android:layout_height="@dimen/button_height"
                         android:layout_alignParentEnd="true"
                         android:layout_centerVertical="true"
                         android:layout_marginHorizontal="@dimen/_20sdp"
@@ -682,7 +682,7 @@
                     <TextView
                         android:id="@+id/ll_request_accept"
                         android:layout_width="@dimen/_90sdp"
-                        android:layout_height="@dimen/button_height_small"
+                        android:layout_height="@dimen/button_height"
                         android:layout_alignParentEnd="true"
                         android:layout_centerVertical="true"
                         android:layout_marginEnd="@dimen/_10sdp"

@@ -96,7 +96,8 @@
                 android:layout_width="@dimen/_15sdp"
                 android:layout_height="@dimen/_15sdp"
                 android:layout_marginStart="@dimen/_5sdp"
-                android:layout_marginTop="@dimen/_2sdp" />
+                android:layout_marginTop="@dimen/_2sdp"
+                android:src="@drawable/ic_tick_verified" />
         </LinearLayout>
 
         <com.google.android.material.card.MaterialCardView
@@ -140,6 +141,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="@dimen/_5sdp"
+                    android:outlineSpotShadowColor="@color/blue_dark"
                     app:cardBackgroundColor="@color/white"
                     app:cardCornerRadius="@dimen/_20sdp"
                     app:cardElevation="@dimen/_5sdp"
@@ -160,9 +162,9 @@
                                 android:layout_width="@dimen/_10sdp"
                                 android:layout_height="@dimen/_10sdp"
                                 android:layout_alignParentEnd="true"
-                                app:tint="@color/purple"
                                 android:layout_centerVertical="true"
-                                android:src="@drawable/ic_arrow_right" />
+                                android:src="@drawable/ic_arrow_right"
+                                app:tint="@color/purple" />
 
                             <ImageView
                                 android:layout_width="@dimen/_35sdp"
@@ -203,6 +205,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="@dimen/_5sdp"
                     android:layout_marginTop="@dimen/_10sdp"
+                    android:outlineSpotShadowColor="@color/blue_dark"
                     android:visibility="gone"
                     app:cardBackgroundColor="@color/white"
                     app:cardCornerRadius="@dimen/_20sdp"
@@ -266,6 +269,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="@dimen/_5sdp"
                     android:layout_marginTop="@dimen/_10sdp"
+                    android:outlineSpotShadowColor="@color/blue_dark"
                     app:cardBackgroundColor="@color/white"
                     app:cardCornerRadius="@dimen/_20sdp"
                     app:cardElevation="@dimen/_5sdp"

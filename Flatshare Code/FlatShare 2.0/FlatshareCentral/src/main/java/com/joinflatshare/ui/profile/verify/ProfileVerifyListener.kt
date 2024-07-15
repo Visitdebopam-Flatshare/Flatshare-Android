@@ -29,11 +29,16 @@ internal class ProfileVerifyListener(
 ) : OnClickListener {
     init {
         viewBind.btnVerify.setOnClickListener(this)
+        viewBind.btnBack.setOnClickListener(this)
         setPhoneListener()
     }
 
     override fun onClick(view: View?) {
         when (view?.id) {
+            viewBind.btnBack.id -> {
+                activity.onBackPressed()
+            }
+
             viewBind.btnVerify.id -> {
                 val number = viewBind.edtVerify.text.toString().trim()
                 if (number.length != 12)
@@ -43,9 +48,12 @@ internal class ProfileVerifyListener(
                     AdhaarRequest(number),
                     object : OnFlatshareResponseCallBack<Response<ResponseBody>> {
                         override fun onResponseCallBack(response: String) {
-                            val resp = Gson().fromJson(response, com.joinflatshare.pojo.BaseResponse::class.java)
+                            val resp = Gson().fromJson(
+                                response,
+                                com.joinflatshare.pojo.BaseResponse::class.java
+                            )
                             if (resp.status == 200) {
-                                MixpanelUtils.onButtonClicked("12digit Aadhar Continue")
+                                MixpanelUtils.onButtonClicked("12digit Aadhaar Continue")
                                 val intent = Intent(activity, OtpActivity::class.java)
                                 intent.putExtra("phone", number)
                                 intent.putExtra("aadhar", true)
@@ -76,7 +84,7 @@ internal class ProfileVerifyListener(
 
             override fun afterTextChanged(edit: Editable?) {
                 val number = edit.toString().trim()
-                if (number.length == 10)
+                if (number.length == 12)
                     viewBind.btnVerify.setBackgroundDrawable(
                         ContextCompat.getDrawable(
                             activity,

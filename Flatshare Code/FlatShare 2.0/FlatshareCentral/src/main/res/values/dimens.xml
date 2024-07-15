@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <dimen name="button_height">@dimen/_36sdp</dimen>
-    <dimen name="button_height_small">@dimen/_35sdp</dimen>
+    <dimen name="button_height_large">@dimen/_45sdp</dimen>
     <dimen name="button_text_size">@dimen/_15sdp</dimen>
     <dimen name="menu_width">@dimen/_20sdp</dimen>
     <dimen name="menu_height">@dimen/_40sdp</dimen>

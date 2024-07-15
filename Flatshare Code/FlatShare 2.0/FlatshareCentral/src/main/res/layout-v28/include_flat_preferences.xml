@@ -22,6 +22,7 @@
         android:layout_margin="@dimen/dimen_margin_horizontal"
         app:cardBackgroundColor="@color/white"
         app:cardCornerRadius="@dimen/_16sdp"
+        android:outlineSpotShadowColor="@color/blue_dark"
         app:cardElevation="@dimen/_2sdp"
         app:cardPreventCornerOverlap="false"
         app:cardUseCompatPadding="false">

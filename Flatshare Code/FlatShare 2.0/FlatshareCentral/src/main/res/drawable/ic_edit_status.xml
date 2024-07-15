@@ -1,34 +1,9 @@
 <vector xmlns:android="http://schemas.android.com/apk/res/android"
-    android:width="24dp"
-    android:height="21.677225dp"
-    android:viewportWidth="59.639"
-    android:viewportHeight="53.867">
+    android:width="20dp"
+    android:height="20dp"
+    android:viewportWidth="20"
+    android:viewportHeight="20">
     <path
-        android:fillColor="@color/color_grey_icon"
-        android:pathData="M48.591,9.619a10.975,10.975 0,0 0,-7.811 3.232L15.391,38.245L15.391,53.867L31.012,53.867L56.407,28.482A11.052,11.052 0,0 0,48.591 9.619ZM52.323,24.394 L28.631,48.094L21.162,48.094L21.162,40.631l23.7,-23.692a5.281,5.281 0,0 1,7.464 7.464Z"
-        android:strokeAlpha="0.5" />
-    <path
-        android:fillColor="@color/color_grey_icon"
-        android:pathData="M0,15.391h5.771v5.771h-5.771z"
-        android:strokeAlpha="0.5" />
-    <path
-        android:fillColor="@color/color_grey_icon"
-        android:pathData="M15.391,15.391h5.771v5.771h-5.771z"
-        android:strokeAlpha="0.5" />
-    <path
-        android:fillColor="@color/color_grey_icon"
-        android:pathData="M0,0h5.771v5.771h-5.771z"
-        android:strokeAlpha="0.5" />
-    <path
-        android:fillColor="@color/color_grey_icon"
-        android:pathData="M15.391,0h5.771v5.771h-5.771z"
-        android:strokeAlpha="0.5" />
-    <path
-        android:fillColor="@color/color_grey_icon"
-        android:pathData="M30.781,0h5.771v5.771h-5.771z"
-        android:strokeAlpha="0.5" />
-    <path
-        android:fillColor="@color/color_grey_icon"
-        android:pathData="M0,30.781h5.771v5.771h-5.771z"
-        android:strokeAlpha="0.5" />
+        android:fillColor="#ffffff"
+        android:pathData="M15.87,6.165C16.185,5.85 16.359,5.432 16.359,4.987C16.359,4.542 16.185,4.123 15.87,3.808L14.549,2.487C14.394,2.331 14.211,2.208 14.009,2.124C13.806,2.041 13.59,1.998 13.37,1.998C12.925,1.998 12.507,2.172 12.193,2.486L3.333,11.319V14.998H7.011L15.87,6.165ZM13.37,3.665L14.693,4.986L13.368,6.306L12.046,4.985L13.37,3.665ZM5,13.332V12.01L10.866,6.162L12.188,7.483L6.322,13.331H5V13.332ZM3.333,16.665H16.666V18.332H3.333V16.665Z" />
 </vector>

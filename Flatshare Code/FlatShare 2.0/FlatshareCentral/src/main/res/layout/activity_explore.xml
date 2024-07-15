@@ -99,14 +99,15 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginHorizontal="@dimen/_10sdp"
-                android:layout_marginTop="@dimen/_10sdp"
+                android:layout_marginTop="@dimen/_20sdp"
+                android:layout_marginBottom="@dimen/_10sdp"
                 android:visibility="visible">
 
                 <include
                     android:id="@+id/include_pager_explore"
                     layout="@layout/item_explore"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="match_parent" />
             </FrameLayout>
 
         </LinearLayout>

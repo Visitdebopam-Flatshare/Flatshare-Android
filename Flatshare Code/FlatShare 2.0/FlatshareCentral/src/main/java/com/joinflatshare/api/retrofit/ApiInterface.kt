@@ -34,11 +34,6 @@ interface ApiInterface {
         @Body request: InvitedRequest
     ): Observable<InvitedResponse>
 
-    @POST("users/app/reqInvite/")
-    fun requestInvite(
-        @Body request: RequestInvite
-    ): Observable<BaseResponse>
-
     @POST("users/contacts/")
     fun sendContacts(
         @Body request: RequestSavedContacts

@@ -83,7 +83,7 @@ dependencies {
     implementation project(':FlatshareWebservice')
 
     // Kotlin
-    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.8.0"
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.8.3"
 
     //Auto Dimen
     implementation "com.intuit.sdp:sdp-android:${VERSION_SDP}"
@@ -97,20 +97,10 @@ dependencies {
     // Elliptical ImageView
     implementation 'com.makeramen:roundedimageview:2.3.0'
 
-    //    For Retrofit
-    implementation 'com.squareup.retrofit2:retrofit:2.9.0'
-    implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
-    implementation 'com.squareup.okhttp3:logging-interceptor:5.0.0-alpha.12'
-
-    // RxJava
-    implementation 'io.reactivex.rxjava2:rxjava:2.2.21'
-    implementation 'io.reactivex.rxjava2:rxandroid:2.1.1'
-    implementation 'com.squareup.retrofit2:adapter-rxjava2:2.9.0'
-
     // Location
-    implementation 'com.google.android.gms:play-services-location:21.2.0'
+    implementation 'com.google.android.gms:play-services-location:21.3.0'
     // Places
-    implementation "com.google.android.libraries.places:places:3.4.0"
+    implementation "com.google.android.libraries.places:places:3.5.0"
 
     // Image Loader
     implementation 'com.github.bumptech.glide:glide:4.16.0'
@@ -132,7 +122,6 @@ dependencies {
     // Declare the dependencies for the Crashlytics and Analytics libraries
     // When using the BoM, you don't specify versions in Firebase library dependencies
     implementation 'com.google.firebase:firebase-crashlytics-ktx'
-    implementation 'com.google.firebase:firebase-analytics-ktx'
     implementation 'com.google.firebase:firebase-messaging-ktx'
     implementation 'com.google.firebase:firebase-firestore-ktx'
     implementation 'com.google.firebase:firebase-dynamic-links-ktx'
@@ -145,7 +134,7 @@ dependencies {
 
     // OTP Auto read
     implementation 'com.google.android.gms:play-services-auth:21.2.0'
-    implementation 'com.google.android.gms:play-services-auth-api-phone:18.0.2'
+    implementation 'com.google.android.gms:play-services-auth-api-phone:18.1.0'
 
     // Auto App updater
     implementation("com.google.android.play:app-update:2.1.0")
@@ -171,9 +160,6 @@ dependencies {
 
     // Billing
     implementation("com.android.billingclient:billing:7.0.0")
-
-    // Viewpager
-    implementation "androidx.viewpager2:viewpager2:1.1.0"
 
     // Progress Dialog
     implementation("io.github.visitdebopam:progressdialog:${VERSION_PROGRESS_DIALOG}")
