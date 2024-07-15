@@ -25,9 +25,9 @@
                 android:layout_alignParentStart="true"
                 android:layout_centerVertical="true"
                 android:layout_marginStart="@dimen/_10sdp"
-                android:fontFamily="@font/font_regular"
+                android:fontFamily="@font/font_semibold"
                 android:textColor="@color/grey3"
-                android:textSize="@dimen/_12sdp" />
+                android:textSize="@dimen/_14sdp" />
 
             <LinearLayout
                 android:layout_width="wrap_content"
@@ -39,15 +39,15 @@
 
                 <ImageView
                     android:id="@+id/img_deal_untick"
-                    android:layout_width="@dimen/_15sdp"
-                    android:layout_height="@dimen/_15sdp"
+                    android:layout_width="@dimen/_17sdp"
+                    android:layout_height="@dimen/_17sdp"
                     android:src="@drawable/ic_cross_circle_grey" />
 
                 <ImageView
                     android:id="@+id/img_deal_tick"
-                    android:layout_width="@dimen/_15sdp"
-                    android:layout_height="@dimen/_15sdp"
-                    android:layout_marginStart="@dimen/_10sdp"
+                    android:layout_width="@dimen/_17sdp"
+                    android:layout_height="@dimen/_17sdp"
+                    android:layout_marginStart="@dimen/_20sdp"
                     android:src="@drawable/ic_tick_grey" />
 
             </LinearLayout>

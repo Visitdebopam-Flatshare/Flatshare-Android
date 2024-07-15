@@ -65,7 +65,7 @@ class RegisterPhotoActivity : BaseActivity() {
                         user?.dp = serverPath
                         baseApiController.updateUser(true, user, object : OnUserFetched {
                             override fun userFetched(resp: UserResponse?) {
-                                viewBind.imgPhoto.setImageURI(uri)
+                                viewBind.imgPhoto?.setImageURI(uri)
                                 updateSendbirdUserProfile()
                                 CommonMethod.makeToast("Profile picture updated")
                                 MixpanelUtils.sendToMixPanel("Photo Uploaded")

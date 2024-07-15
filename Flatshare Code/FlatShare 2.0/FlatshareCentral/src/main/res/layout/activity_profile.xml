@@ -96,8 +96,7 @@
                 android:layout_width="@dimen/_15sdp"
                 android:layout_height="@dimen/_15sdp"
                 android:layout_marginStart="@dimen/_5sdp"
-                android:layout_marginTop="@dimen/_2sdp"
-                android:src="@drawable/ic_tick_verified" />
+                android:layout_marginTop="@dimen/_2sdp" />
         </LinearLayout>
 
         <com.google.android.material.card.MaterialCardView
@@ -161,8 +160,9 @@
                                 android:layout_width="@dimen/_10sdp"
                                 android:layout_height="@dimen/_10sdp"
                                 android:layout_alignParentEnd="true"
+                                app:tint="@color/purple"
                                 android:layout_centerVertical="true"
-                                android:src="@drawable/ic_arrow_right_purple" />
+                                android:src="@drawable/ic_arrow_right" />
 
                             <ImageView
                                 android:layout_width="@dimen/_35sdp"
@@ -179,7 +179,7 @@
                                 android:layout_marginStart="@dimen/_45sdp"
                                 android:fontFamily="@font/font_bold"
                                 android:text="Get Verified"
-                                android:textColor="@color/purple"
+                                android:textColor="@color/blue_dark"
                                 android:textSize="@dimen/_14sdp" />
 
                         </RelativeLayout>
@@ -188,7 +188,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="@dimen/_10sdp"
-                            android:fontFamily="@font/font_regular"
+                            android:fontFamily="@font/font_semibold"
                             android:text="Get verified and connect with other verified members."
                             android:textColor="@color/grey4"
                             android:textSize="@dimen/_10sdp" />
@@ -224,8 +224,9 @@
                                 android:layout_width="@dimen/_10sdp"
                                 android:layout_height="@dimen/_10sdp"
                                 android:layout_alignParentEnd="true"
+                                app:tint="@color/red"
                                 android:layout_centerVertical="true"
-                                android:src="@drawable/ic_arrow_right_red" />
+                                android:src="@drawable/ic_arrow_right" />
 
                             <ImageView
                                 android:layout_width="@dimen/_35sdp"
@@ -286,7 +287,8 @@
                                 android:layout_height="@dimen/_10sdp"
                                 android:layout_alignParentEnd="true"
                                 android:layout_centerVertical="true"
-                                android:src="@drawable/ic_arrow_right_green" />
+                                android:src="@drawable/ic_arrow_right"
+                                app:tint="@color/red" />
 
                             <ImageView
                                 android:layout_width="@dimen/_35sdp"
@@ -303,7 +305,7 @@
                                 android:layout_marginStart="@dimen/_45sdp"
                                 android:fontFamily="@font/font_bold"
                                 android:text="FAQ"
-                                android:textColor="@color/green"
+                                android:textColor="@color/red"
                                 android:textSize="@dimen/_14sdp" />
 
                         </RelativeLayout>
@@ -312,8 +314,8 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="@dimen/_10sdp"
-                            android:fontFamily="@font/font_regular"
-                            android:text="Quick answers, clear help. Make your flatmate\njourney simple and smooth."
+                            android:fontFamily="@font/font_semibold"
+                            android:text="Quick answers, clear help. Happy flatsharing."
                             android:textColor="@color/grey4"
                             android:textSize="@dimen/_10sdp" />
                     </LinearLayout>

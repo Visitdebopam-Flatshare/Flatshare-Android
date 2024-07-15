@@ -9,6 +9,10 @@ import android.view.View
 import android.view.View.OnClickListener
 import android.widget.DatePicker
 import androidx.core.content.ContextCompat
+import com.google.android.material.datepicker.CalendarConstraints
+import com.google.android.material.datepicker.DateValidatorPointBackward
+import com.google.android.material.datepicker.MaterialDatePicker
+import com.google.android.material.datepicker.MaterialPickerOnPositiveButtonClickListener
 import com.joinflatshare.FlatshareCentral.R
 import com.joinflatshare.FlatshareCentral.databinding.ActivityProfileCreateBinding
 import com.joinflatshare.customviews.alert.AlertDialog
@@ -18,7 +22,9 @@ import com.joinflatshare.pojo.config.RentRange
 import com.joinflatshare.pojo.user.Name
 import com.joinflatshare.utils.helper.CommonMethod
 import com.joinflatshare.utils.helper.CommonMethods
+import java.text.SimpleDateFormat
 import java.util.Calendar
+import java.util.Locale
 
 /**
  * Created by debopam on 03/02/24
@@ -62,32 +68,24 @@ class ProfileCreateListener(
 
             viewBind.txtDob.id -> {
                 val calendar = Calendar.getInstance()
-                val dpd = DatePickerDialog(
-                    activity,
-                    OnDateSetListener { view12: DatePicker?, year: Int, month: Int, dayOfMonth: Int ->
-                        dob = String.format("%04d/%02d/%02d", year, month + 1, dayOfMonth)
-                        val day =
-                            String.format("%02d/%02d/%04d", dayOfMonth, month + 1, year)
-                        val dobCalendar = Calendar.getInstance()
-                        dobCalendar[Calendar.YEAR] = year
-                        dobCalendar[Calendar.MONTH] = month
-                        dobCalendar[Calendar.DAY_OF_MONTH] = dayOfMonth
-                        calendar.add(Calendar.YEAR, -15)
-                        if (dobCalendar.time.after(calendar.time)) {
-                            CommonMethod.makeToast(
-                                "You need to be above the age of fifteen to join "
-                                        + activity.getString(R.string.app_name)
-                            )
-                            return@OnDateSetListener
-                        }
-                        viewBind.txtDob.text = day
-                    },
-                    calendar[Calendar.YEAR],
-                    calendar[Calendar.MONTH],
-                    calendar[Calendar.DAY_OF_MONTH]
-                )
-                dpd.datePicker.maxDate = calendar.timeInMillis
-                dpd.show()
+                calendar.add(Calendar.YEAR, -15)
+                val pickerNowTime = calendar.timeInMillis
+                val constraints = CalendarConstraints.Builder().setEnd(pickerNowTime)
+                    .setValidator(DateValidatorPointBackward.before(pickerNowTime))
+                var sdf = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault())
+                val dpd = MaterialDatePicker.Builder.datePicker().setTitleText("Select date")
+                    .setSelection(calendar.timeInMillis)
+                    .setTextInputFormat(sdf)
+                    .setTheme(R.style.ThemeDatePicker)
+                    .setCalendarConstraints(constraints.build())
+                    .build()
+                dpd.show(activity.supportFragmentManager, "DOB")
+                dpd.addOnPositiveButtonClickListener { it ->
+                    calendar.timeInMillis = it
+                    viewBind.txtDob.text = sdf.format(calendar.time)
+                    sdf = SimpleDateFormat("yyyy/MM/dd", Locale.getDefault())
+                    dob = sdf.format(calendar.time)
+                }
             }
 
             viewBind.txtMyself.id -> {

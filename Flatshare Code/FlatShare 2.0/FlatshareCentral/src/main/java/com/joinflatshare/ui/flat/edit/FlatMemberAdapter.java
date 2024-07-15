@@ -35,7 +35,6 @@ import com.joinflatshare.ui.explore.ExploreActivity;
 import com.joinflatshare.ui.flat.details.FlatDetailsActivity;
 import com.joinflatshare.ui.flat.flat_profile.MyFlatActivity;
 import com.joinflatshare.ui.invite.InviteActivity;
-import com.joinflatshare.ui.liked.LikedActivity;
 import com.joinflatshare.ui.profile.details.ProfileDetailsActivity;
 import com.joinflatshare.utils.helper.CommonMethod;
 import com.joinflatshare.utils.helper.ImageHelper;
@@ -173,7 +172,7 @@ public class FlatMemberAdapter extends RecyclerView.Adapter<FlatMemberAdapter.Vi
                 });
             }
         } else if (activity instanceof FlatDetailsActivity || activity instanceof ExploreActivity
-                || activity instanceof LikedActivity) {
+                ) {
             holder.img_flatmate_add.setVisibility(View.GONE);
             if (position == items.size()) {
                 holder.card_vacant_beds.setVisibility(View.VISIBLE);

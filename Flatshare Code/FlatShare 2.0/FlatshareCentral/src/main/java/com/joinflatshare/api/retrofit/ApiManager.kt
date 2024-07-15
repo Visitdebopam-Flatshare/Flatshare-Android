@@ -54,18 +54,6 @@ class ApiManager() {
         DialogCustomProgress.hideProgress(activity!!)
     }
 
-    fun requestInvite(from: String, id: String, onResponseCallback: OnResponseCallback<Any?>) {
-        if (ConnectivityListener.checkInternet()) {
-            showProgress()
-            isLoaderShownByApimanager = true
-            CompositeDisposable().add(getClient()?.requestInvite(
-                RequestInvite(from, id)
-            )!!.observeOn(AndroidSchedulers.mainThread()).subscribeOn(Schedulers.io())
-                .subscribe({ trendsResponse ->
-                    sendResponse(trendsResponse, onResponseCallback)
-                }) { throwable -> handleError(throwable as Throwable, onResponseCallback) })
-        }
-    }
 
     fun heartBeat(onResponseCallback: OnResponseCallback<Any?>) {
         if (ConnectivityListener.checkInternet()) {

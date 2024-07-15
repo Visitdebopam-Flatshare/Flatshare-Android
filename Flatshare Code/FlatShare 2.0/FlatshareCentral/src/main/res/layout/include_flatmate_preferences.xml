@@ -51,13 +51,14 @@
                         android:id="@+id/img_verified"
                         android:layout_width="@dimen/_15sdp"
                         android:layout_height="@dimen/_15sdp"
+                        android:layout_marginStart="@dimen/_10sdp"
                         android:src="@drawable/ic_tick_verified" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:id="@+id/txt_verified"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="@dimen/_10sdp"
+                        android:layout_marginStart="@dimen/_5sdp"
                         android:fontFamily="@font/font_semibold"
                         android:text="Verified Members"
                         android:textColor="@color/grey2"
@@ -121,14 +122,14 @@
                 android:fontFamily="@font/font_semibold"
                 android:text="Gender"
                 android:textColor="@color/grey3"
-                android:textSize="@dimen/_12sdp" />
+                android:textSize="@dimen/_16sdp" />
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/_10sdp"
+                android:layout_marginTop="@dimen/_5sdp"
                 android:orientation="horizontal"
-                android:weightSum="3.2">
+                android:weightSum="3">
 
                 <TextView
                     android:id="@+id/txt_male"
@@ -144,9 +145,8 @@
 
 
                 <View
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="0.1" />
+                    android:layout_width="@dimen/_10sdp"
+                    android:layout_height="match_parent" />
 
                 <TextView
                     android:id="@+id/txt_female"
@@ -161,9 +161,8 @@
                     android:textSize="@dimen/_12sdp" />
 
                 <View
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="0.1" />
+                    android:layout_width="@dimen/_10sdp"
+                    android:layout_height="match_parent" />
 
                 <TextView
                     android:id="@+id/txtall"
@@ -187,14 +186,14 @@
                 android:fontFamily="@font/font_semibold"
                 android:text="Show"
                 android:textColor="@color/grey3"
-                android:textSize="@dimen/_12sdp" />
+                android:textSize="@dimen/_16sdp" />
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/_10sdp"
+                android:layout_marginTop="@dimen/_5sdp"
                 android:orientation="horizontal"
-                android:weightSum="2.1">
+                android:weightSum="2">
 
                 <TextView
                     android:id="@+id/txt_students"
@@ -210,9 +209,8 @@
 
 
                 <View
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="0.1" />
+                    android:layout_width="@dimen/_10sdp"
+                    android:layout_height="match_parent" />
 
                 <TextView
                     android:id="@+id/txt_working"
@@ -236,13 +234,13 @@
                 android:fontFamily="@font/font_semibold"
                 android:text="Deal-Breakers"
                 android:textColor="@color/grey3"
-                android:textSize="@dimen/_12sdp" />
+                android:textSize="@dimen/_16sdp" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rv_flat_deals"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/_10sdp"
+                android:layout_marginTop="@dimen/_5sdp"
                 tools:itemCount="1" />
 
         </LinearLayout>

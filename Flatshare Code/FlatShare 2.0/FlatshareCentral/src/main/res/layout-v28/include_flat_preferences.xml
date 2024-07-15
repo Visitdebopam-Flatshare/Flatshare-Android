@@ -37,30 +37,29 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/font_semibold"
-                android:text="Preferred Flat Location"
+                android:text="Preferred flat location"
                 android:textColor="@color/grey3"
-                android:textSize="@dimen/_12sdp" />
+                android:textSize="@dimen/_16sdp" />
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/_10sdp"
+                android:layout_marginTop="@dimen/_5sdp"
                 android:background="@drawable/drawable_button_grey_stroke"
                 android:gravity="center_vertical"
                 android:orientation="horizontal">
 
-
                 <ImageView
                     android:layout_width="@dimen/_13sdp"
                     android:layout_height="@dimen/_13sdp"
-                    android:layout_marginStart="@dimen/_5sdp"
+                    android:layout_marginStart="@dimen/_10sdp"
                     android:src="@drawable/ic_location" />
 
                 <TextView
                     android:id="@+id/txt_pref_flat_location"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/_10sdp"
+                    android:layout_marginStart="@dimen/_5sdp"
                     android:background="@android:color/transparent"
                     android:fontFamily="@font/font_semibold"
                     android:hint="Select Location"
@@ -74,36 +73,51 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/_10sdp"
                 android:fontFamily="@font/font_semibold"
-                android:text="Move-in By"
+                android:text="Move-in by"
                 android:textColor="@color/grey3"
-                android:textSize="@dimen/_12sdp" />
+                android:textSize="@dimen/_16sdp" />
 
-            <TextView
-                android:id="@+id/txt_pref_flat_movein"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/_5sdp"
                 android:background="@drawable/drawable_button_grey_stroke"
-                android:fontFamily="@font/font_semibold"
-                android:hint="Move-in By"
-                android:textColor="@color/grey2"
-                android:textSize="@dimen/_12sdp" />
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="@dimen/_13sdp"
+                    android:layout_height="@dimen/_13sdp"
+                    android:layout_marginStart="@dimen/_10sdp"
+                    android:src="@drawable/ic_calendar" />
+
+                <TextView
+                    android:id="@+id/txt_pref_flat_movein"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_5sdp"
+                    android:background="@android:color/transparent"
+                    android:fontFamily="@font/font_semibold"
+                    android:hint="Move-in by"
+                    android:textColor="@color/grey2"
+                    android:textSize="@dimen/_12sdp" />
+            </LinearLayout>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/_10sdp"
                 android:fontFamily="@font/font_semibold"
-                android:text="Room Type"
+                android:text="Room type"
                 android:textColor="@color/grey3"
-                android:textSize="@dimen/_12sdp" />
+                android:textSize="@dimen/_16sdp" />
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/button_height"
-                android:layout_marginTop="@dimen/_10sdp"
+                android:layout_marginTop="@dimen/_5sdp"
                 android:orientation="horizontal"
-                android:weightSum="2.1">
+                android:weightSum="2">
 
                 <TextView
                     android:id="@+id/txtPrefFlatPrivateRoom"
@@ -118,9 +132,8 @@
                     android:textSize="@dimen/_12sdp" />
 
                 <View
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="0.1" />
+                    android:layout_width="@dimen/_10sdp"
+                    android:layout_height="match_parent"/>
 
                 <TextView
                     android:id="@+id/txtPrefFlatSharedRoom"
