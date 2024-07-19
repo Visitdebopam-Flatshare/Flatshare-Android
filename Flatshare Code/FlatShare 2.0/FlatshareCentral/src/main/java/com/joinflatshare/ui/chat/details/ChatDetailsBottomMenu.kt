@@ -4,7 +4,6 @@ import android.Manifest
 import android.content.Intent
 import android.os.Handler
 import android.os.Looper
-import android.view.View
 import com.debopam.progressdialog.DialogCustomProgress
 import com.joinflatshare.FlatshareCentral.R
 import com.joinflatshare.constants.AppConstants
@@ -18,7 +17,6 @@ import com.joinflatshare.interfaces.OnFlatFetched
 import com.joinflatshare.interfaces.OnPermissionCallback
 import com.joinflatshare.interfaces.OnStringFetched
 import com.joinflatshare.interfaces.OnUiEventClick
-import com.joinflatshare.interfaces.OnitemClick
 import com.joinflatshare.pojo.flat.FlatResponse
 import com.joinflatshare.pojo.invite.InvitedRequest
 import com.joinflatshare.pojo.invite.InvitedResponse
@@ -81,7 +79,7 @@ class ChatDetailsBottomMenu(
         // Report user
         items.add(
             ModelBottomSheet(
-                R.drawable.ic_report_red,
+                R.drawable.ic_report,
                 "Report " + activity.sendBirdChannel.getChannelDisplayName(
                     groupChannel
                 ),
@@ -294,11 +292,11 @@ class ChatDetailsBottomMenu(
         items.add(ModelBottomSheet(R.drawable.ic_chat_plus, "Add New Member"))
         items.add(
             ModelBottomSheet(
-                R.drawable.ic_report_red, "Report " + flatResponse?.data?.name, 3
+                R.drawable.ic_report, "Report " + flatResponse?.data?.name, 3
             )
         )
         items.add(ModelBottomSheet(R.drawable.ic_chat_clear, "Clear Chat", 3))
-        items.add(ModelBottomSheet(R.drawable.ic_leave_flat_red, "Leave Flat", 3))
+        items.add(ModelBottomSheet(R.drawable.ic_leave_flat, "Leave Flat", 3))
 
         BottomSheetView(activity,items) { _, position ->
             when (position) {
@@ -429,7 +427,7 @@ class ChatDetailsBottomMenu(
             )*/
             DialogCustomProgress.hideProgress(activity);
             items.add(ModelBottomSheet(R.drawable.ic_chat_clear, "Clear Chat", 3))
-            items.add(ModelBottomSheet(R.drawable.ic_report_red, "Report and Unmatch", 3))
+            items.add(ModelBottomSheet(R.drawable.ic_report, "Report and Unmatch", 3))
             items.add(ModelBottomSheet(R.drawable.ic_cross_red, "Unmatch", 3))
             BottomSheetView(activity, items) { _, position ->
                 var name = items[position].name

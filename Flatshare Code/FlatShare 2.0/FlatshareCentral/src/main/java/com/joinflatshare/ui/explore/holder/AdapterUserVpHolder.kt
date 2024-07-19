@@ -72,20 +72,6 @@ object AdapterUserVpHolder {
             holder.txtScore.text = "" + user.score
         }
 
-        // Images
-        holder.cardGallery.visibility = View.GONE
-        if (!user.images.isNullOrEmpty()) {
-            if ((!user.dp.isNullOrBlank() && user.images.size >= 2) || user.images.size >= 3) {
-                // Show gallery button
-                holder.cardGallery.visibility = View.VISIBLE
-                holder.cardGallery.setOnClickListener {
-                    val intent = Intent(activity, ProfileDetailsActivity::class.java)
-                    intent.putExtra("phone", user.id)
-                    CommonMethod.switchActivity(activity, intent, false)
-                }
-            }
-        }
-
         holder.rlExploreVp.setOnClickListener {
             val intent = Intent(activity, ProfileDetailsActivity::class.java)
             intent.putExtra("phone", user.id)
@@ -95,7 +81,7 @@ object AdapterUserVpHolder {
 
 
     private fun blurView(activity: BaseActivity, holder: ItemExploreVpBinding) {
-        /* Blurry.with(activity).radius(25).sampling(4)
+        /* Blurry.with(activity).radius(25).sampling(4)ẇ
              .color(ContextCompat.getColor(activity, R.color.white)).capture(holder.e)
              .getAsync {
                  holder.imgBlur.setImageDrawable(BitmapDrawable(activity.resources, it))

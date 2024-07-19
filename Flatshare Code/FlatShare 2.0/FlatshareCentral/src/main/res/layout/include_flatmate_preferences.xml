@@ -21,8 +21,8 @@
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/_10sdp"
         app:cardBackgroundColor="@color/white"
-        app:cardCornerRadius="@dimen/_16sdp"
-        app:cardElevation="@dimen/_2sdp"
+        app:cardCornerRadius="@dimen/_20sdp"
+        app:cardElevation="@dimen/_3sdp"
         app:cardPreventCornerOverlap="false"
         app:cardUseCompatPadding="false">
 

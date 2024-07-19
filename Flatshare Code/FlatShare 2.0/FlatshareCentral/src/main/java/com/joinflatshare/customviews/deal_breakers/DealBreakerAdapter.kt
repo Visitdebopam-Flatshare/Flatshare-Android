@@ -7,13 +7,12 @@ import android.widget.LinearLayout
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewbinding.ViewBinding
-import com.google.android.flexbox.FlexboxLayoutManager
 import com.joinflatshare.FlatshareCentral.R
 import com.joinflatshare.FlatshareCentral.databinding.ItemDealBreakerBinding
 import com.joinflatshare.FlatshareCentral.databinding.ItemDealBreakerViewBinding
-import com.joinflatshare.FlatshareCentral.databinding.ItemInterestsBinding
 import com.joinflatshare.customviews.bottomsheet.ModelBottomSheet
 import com.joinflatshare.pojo.flat.DealBreakers
+import com.joinflatshare.utils.helper.CommonMethod
 
 class DealBreakerAdapter(
     private val dealBreaker: DealBreakerView,
@@ -78,10 +77,17 @@ class DealBreakerAdapter(
                         R.color.grey2
                     )
                 )
-                holder.imgDealTick.setImageResource(R.drawable.ic_tick_grey)
-                holder.imgDealUntick.setImageResource(R.drawable.ic_cross_circle_grey)
+                holder.imgDealTick.setImageResource(R.drawable.ic_tick)
+                holder.imgDealUntick.setImageResource(R.drawable.ic_cross_circle)
 
-                if (value == 2) {
+
+                CommonMethod.makeLog("Value", "" + value)
+
+                if (value == 0) {
+                    holder.imgDealTick.setColorFilter(0)
+                    holder.imgDealUntick.setColorFilter(0)
+                }
+                else if (value == 2) {
                     // Untick selected
                     holder.rlDealHolder.background = ContextCompat.getDrawable(
                         dealBreaker.activity,
@@ -93,8 +99,18 @@ class DealBreakerAdapter(
                             R.color.red
                         )
                     )
-                    holder.imgDealTick.setImageResource(R.drawable.ic_tick_red)
-                    holder.imgDealUntick.setImageResource(R.drawable.ic_cross_circle_red)
+                    holder.imgDealTick.setColorFilter(
+                        ContextCompat.getColor(
+                            dealBreaker.activity,
+                            R.color.red
+                        )
+                    )
+                    holder.imgDealUntick.setColorFilter(
+                        ContextCompat.getColor(
+                            dealBreaker.activity,
+                            R.color.red
+                        )
+                    )
                 } else if (value == 1) {
                     // Tick Selected
                     holder.rlDealHolder.background = ContextCompat.getDrawable(
@@ -107,14 +123,24 @@ class DealBreakerAdapter(
                             R.color.blue_dark
                         )
                     )
-                    holder.imgDealTick.setImageResource(R.drawable.ic_tick_blue)
-                    holder.imgDealUntick.setImageResource(R.drawable.ic_cross_circle_blue)
+                    holder.imgDealTick.setColorFilter(
+                        ContextCompat.getColor(
+                            dealBreaker.activity,
+                            R.color.blue_dark
+                        )
+                    )
+                    holder.imgDealUntick.setColorFilter(
+                        ContextCompat.getColor(
+                            dealBreaker.activity,
+                            R.color.blue_dark
+                        )
+                    )
                 }
                 holder.imgDealTick.setOnClickListener {
-                    setDealValue(position, item, 1, adapter)
+                    setDealValue(position, item, 1, adapter, true)
                 }
                 holder.imgDealUntick.setOnClickListener {
-                    setDealValue(position, item, 2, adapter)
+                    setDealValue(position, item, 2, adapter, false)
                 }
             } else {
                 val holder = view as ItemDealBreakerViewBinding
@@ -134,44 +160,70 @@ class DealBreakerAdapter(
         }
 
         private fun setDealValue(
-            postition: Int,
+            position: Int,
             item: ModelBottomSheet,
             value: Int,
-            adapter: DealBreakerAdapter
+            adapter: DealBreakerAdapter,
+            isTickSelected: Boolean
         ) {
             when (item.name) {
                 "Smoking" -> {
                     adapter.dealBreakers.smoking =
-                        if (adapter.dealBreakers.smoking == value) 0 else value
+                        if (isTickSelected) {
+                            if (adapter.dealBreakers.smoking == 1) 0 else value
+                        } else {
+                            if (adapter.dealBreakers.smoking == 2) 0 else value
+                        }
+
                 }
 
                 "Eating Non-Veg" -> {
                     adapter.dealBreakers.nonveg =
-                        if (adapter.dealBreakers.nonveg == value) 0 else value
+                        if (isTickSelected) {
+                            if (adapter.dealBreakers.nonveg == 1) 0 else value
+                        } else {
+                            if (adapter.dealBreakers.nonveg == 2) 0 else value
+                        }
                 }
 
                 "Drinking Alcohol" -> {
                     adapter.dealBreakers.flatparty =
-                        if (adapter.dealBreakers.flatparty == value) 0 else value
+                        if (isTickSelected) {
+                            if (adapter.dealBreakers.flatparty == 1) 0 else value
+                        } else {
+                            if (adapter.dealBreakers.flatparty == 2) 0 else value
+                        }
                 }
 
                 "Eating Eggs" -> {
                     adapter.dealBreakers.eggs =
-                        if (adapter.dealBreakers.eggs == value) 0 else value
+                        if (isTickSelected) {
+                            if (adapter.dealBreakers.eggs == 1) 0 else value
+                        } else {
+                            if (adapter.dealBreakers.eggs == 2) 0 else value
+                        }
                 }
 
                 "Workout" -> {
                     adapter.dealBreakers.workout =
-                        if (adapter.dealBreakers.workout == value) 0 else value
+                        if (isTickSelected) {
+                            if (adapter.dealBreakers.workout == 1) 0 else value
+                        } else {
+                            if (adapter.dealBreakers.workout == 2) 0 else value
+                        }
                 }
 
                 "Pets" -> {
                     adapter.dealBreakers.pets =
-                        if (adapter.dealBreakers.pets == value) 0 else value
+                        if (isTickSelected) {
+                            if (adapter.dealBreakers.pets == 1) 0 else value
+                        } else {
+                            if (adapter.dealBreakers.pets == 2) 0 else value
+                        }
                 }
             }
 
-            adapter.notifyItemChanged(postition)
+            adapter.notifyItemChanged(position)
         }
     }
 }

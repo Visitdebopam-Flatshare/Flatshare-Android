@@ -43,28 +43,37 @@
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="@dimen/_10sdp">
 
-            <LinearLayout
+            <com.google.android.material.card.MaterialCardView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="vertical">
+                android:layout_gravity="center_horizontal"
+                app:cardCornerRadius="@dimen/_80sdp"
+                app:cardBackgroundColor="@android:color/transparent"
+                app:cardElevation="0dp"
+                app:cardPreventCornerOverlap="false"
+                app:cardUseCompatPadding="false"
+                app:strokeColor="@color/grey7"
+                app:strokeWidth="@dimen/_1sdp">
 
                 <de.hdodenhof.circleimageview.CircleImageView
                     android:id="@+id/imgPhoto"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:src="@drawable/ic_user_grey" />
+                    android:layout_margin="@dimen/_5sdp"/>
 
                 <TextView
                     android:id="@+id/txt_photo"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:layout_margin="@dimen/_5sdp"
                     android:background="@drawable/drawable_blue_circle"
                     android:gravity="center"
                     android:textAllCaps="true"
                     android:textColor="@color/white"
                     android:textSize="@dimen/_50sdp"
                     android:visibility="gone" />
-            </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
 
             <ImageView
                 android:id="@+id/img_profile_edit"
@@ -100,27 +109,43 @@
         </LinearLayout>
 
         <com.google.android.material.card.MaterialCardView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="@dimen/_160sdp"
+            android:layout_height="@dimen/_35sdp"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="@dimen/_10sdp"
-            app:cardBackgroundColor="@color/purple"
+            app:cardBackgroundColor="#B4B4B4"
             app:cardCornerRadius="@dimen/_20sdp"
-            app:cardElevation="0dp"
+            app:cardElevation="2dp"
+            app:strokeColor="@color/white"
+            app:strokeWidth="2dp"
             app:cardPreventCornerOverlap="false"
             app:cardUseCompatPadding="false">
 
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
 
-            <TextView
-                android:id="@+id/txt_profile_complete"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="@dimen/_10sdp"
-                android:layout_marginVertical="@dimen/_5sdp"
-                android:fontFamily="@font/font_bold"
-                android:text="25% COMPLETE"
-                android:textColor="@color/white"
-                android:textSize="@dimen/_14sdp" />
+                <LinearLayout
+                    android:id="@+id/ll_profile_complete"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal"
+                    android:weightSum="100">
+
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/txt_profile_complete"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:fontFamily="@font/font_bold"
+                    android:gravity="center"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/_14sdp" />
+
+            </FrameLayout>
+
+
         </com.google.android.material.card.MaterialCardView>
 
         <ScrollView
@@ -142,14 +167,14 @@
                     android:layout_marginHorizontal="@dimen/_5sdp"
                     app:cardBackgroundColor="@color/white"
                     app:cardCornerRadius="@dimen/_20sdp"
-                    app:cardElevation="@dimen/_5sdp"
+                    app:cardElevation="@dimen/_3sdp"
                     app:cardPreventCornerOverlap="false"
                     app:cardUseCompatPadding="false">
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_margin="@dimen/_10sdp"
+                        android:layout_margin="@dimen/_16sdp"
                         android:orientation="vertical">
 
                         <RelativeLayout
@@ -157,16 +182,16 @@
                             android:layout_height="wrap_content">
 
                             <ImageView
-                                android:layout_width="@dimen/_10sdp"
-                                android:layout_height="@dimen/_10sdp"
+                                android:layout_width="@dimen/_16sdp"
+                                android:layout_height="@dimen/_16sdp"
                                 android:layout_alignParentEnd="true"
-                                app:tint="@color/purple"
                                 android:layout_centerVertical="true"
-                                android:src="@drawable/ic_arrow_right" />
+                                android:src="@drawable/ic_arrow_right"
+                                app:tint="@color/blue_dark" />
 
                             <ImageView
-                                android:layout_width="@dimen/_35sdp"
-                                android:layout_height="@dimen/_35sdp"
+                                android:layout_width="@dimen/_36sdp"
+                                android:layout_height="@dimen/_36sdp"
                                 android:layout_alignParentStart="true"
                                 android:layout_centerVertical="true"
                                 android:src="@drawable/ic_profile_verified" />
@@ -180,7 +205,7 @@
                                 android:fontFamily="@font/font_bold"
                                 android:text="Get Verified"
                                 android:textColor="@color/blue_dark"
-                                android:textSize="@dimen/_14sdp" />
+                                android:textSize="@dimen/_20sdp" />
 
                         </RelativeLayout>
 
@@ -191,7 +216,7 @@
                             android:fontFamily="@font/font_semibold"
                             android:text="Get verified and connect with other verified members."
                             android:textColor="@color/grey4"
-                            android:textSize="@dimen/_10sdp" />
+                            android:textSize="@dimen/_12sdp" />
                     </LinearLayout>
 
 
@@ -224,9 +249,9 @@
                                 android:layout_width="@dimen/_10sdp"
                                 android:layout_height="@dimen/_10sdp"
                                 android:layout_alignParentEnd="true"
-                                app:tint="@color/red"
                                 android:layout_centerVertical="true"
-                                android:src="@drawable/ic_arrow_right" />
+                                android:src="@drawable/ic_arrow_right"
+                                app:tint="@color/red" />
 
                             <ImageView
                                 android:layout_width="@dimen/_35sdp"
@@ -244,7 +269,7 @@
                                 android:fontFamily="@font/font_bold"
                                 android:text="Invite Friends"
                                 android:textColor="@color/red"
-                                android:textSize="@dimen/_14sdp" />
+                                android:textSize="@dimen/_20sdp" />
 
                         </RelativeLayout>
 
@@ -255,7 +280,7 @@
                             android:fontFamily="@font/font_regular"
                             android:text="Invite your friends and earn 1000 flatcoins for\neach successful invite."
                             android:textColor="@color/grey4"
-                            android:textSize="@dimen/_10sdp" />
+                            android:textSize="@dimen/_12sdp" />
                     </LinearLayout>
 
                 </com.google.android.material.card.MaterialCardView>
@@ -268,14 +293,14 @@
                     android:layout_marginTop="@dimen/_10sdp"
                     app:cardBackgroundColor="@color/white"
                     app:cardCornerRadius="@dimen/_20sdp"
-                    app:cardElevation="@dimen/_5sdp"
+                    app:cardElevation="@dimen/_3sdp"
                     app:cardPreventCornerOverlap="false"
                     app:cardUseCompatPadding="false">
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_margin="@dimen/_10sdp"
+                        android:layout_margin="@dimen/_16sdp"
                         android:orientation="vertical">
 
                         <RelativeLayout
@@ -283,16 +308,16 @@
                             android:layout_height="wrap_content">
 
                             <ImageView
-                                android:layout_width="@dimen/_10sdp"
-                                android:layout_height="@dimen/_10sdp"
+                                android:layout_width="@dimen/_16sdp"
+                                android:layout_height="@dimen/_16sdp"
                                 android:layout_alignParentEnd="true"
                                 android:layout_centerVertical="true"
                                 android:src="@drawable/ic_arrow_right"
                                 app:tint="@color/red" />
 
                             <ImageView
-                                android:layout_width="@dimen/_35sdp"
-                                android:layout_height="@dimen/_35sdp"
+                                android:layout_width="@dimen/_36sdp"
+                                android:layout_height="@dimen/_36sdp"
                                 android:layout_alignParentStart="true"
                                 android:layout_centerVertical="true"
                                 android:src="@drawable/ic_profile_faq" />
@@ -306,7 +331,7 @@
                                 android:fontFamily="@font/font_bold"
                                 android:text="FAQ"
                                 android:textColor="@color/red"
-                                android:textSize="@dimen/_14sdp" />
+                                android:textSize="@dimen/_20sdp" />
 
                         </RelativeLayout>
 
@@ -317,7 +342,7 @@
                             android:fontFamily="@font/font_semibold"
                             android:text="Quick answers, clear help. Happy flatsharing."
                             android:textColor="@color/grey4"
-                            android:textSize="@dimen/_10sdp" />
+                            android:textSize="@dimen/_12sdp" />
                     </LinearLayout>
 
                 </com.google.android.material.card.MaterialCardView>

@@ -119,7 +119,8 @@
                     android:layout_width="@dimen/_13sdp"
                     android:layout_height="@dimen/_13sdp"
                     android:layout_marginStart="@dimen/_5sdp"
-                    android:src="@drawable/ic_search_blue" />
+                    android:src="@drawable/ic_search"
+                    app:tint="@color/blue_dark" />
 
                 <EditText
                     android:id="@+id/edt_invite"

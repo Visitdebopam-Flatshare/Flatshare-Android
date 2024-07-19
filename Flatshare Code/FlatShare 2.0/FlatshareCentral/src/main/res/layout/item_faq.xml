@@ -10,7 +10,7 @@
         android:layout_height="wrap_content"
         android:fontFamily="@font/font_semibold"
         android:paddingTop="@dimen/_10sdp"
-        android:paddingBottom="@dimen/_5sdp"
+        android:paddingBottom="@dimen/_4sdp"
         android:textColor="@color/black"
         android:textSize="@dimen/_14sdp" />
 
@@ -26,6 +26,6 @@
     <View
         android:id="@+id/gap"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/_20sdp" />
+        android:layout_height="@dimen/_8sdp" />
 
 </LinearLayout>

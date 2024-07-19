@@ -41,7 +41,7 @@
                     android:fontFamily="@font/font_semibold"
                     android:text="Interests"
                     android:textColor="@color/black"
-                    android:textSize="@dimen/_12sdp" />
+                    android:textSize="@dimen/_16sdp" />
 
                 <RelativeLayout
                     android:id="@+id/ll_profile_interests"
@@ -56,7 +56,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginStart="@dimen/_5sdp"
                         android:layout_marginEnd="@dimen/_10sdp"
-                        android:fontFamily="@font/font_regular"
+                        android:fontFamily="@font/font_medium"
                         android:hint="Choose Interests"
                         android:textColor="@color/black"
                         android:textSize="@dimen/_12sdp" />
@@ -69,7 +69,7 @@
                     android:fontFamily="@font/font_semibold"
                     android:text="Languages"
                     android:textColor="@color/black"
-                    android:textSize="@dimen/_12sdp" />
+                    android:textSize="@dimen/_16sdp" />
 
                 <RelativeLayout
                     android:id="@+id/ll_profile_languages"
@@ -84,7 +84,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginStart="@dimen/_5sdp"
                         android:layout_marginEnd="@dimen/_10sdp"
-                        android:fontFamily="@font/font_regular"
+                        android:fontFamily="@font/font_medium"
                         android:hint="Choose Languages"
                         android:textColor="@color/black"
                         android:textSize="@dimen/_12sdp" />
@@ -97,7 +97,7 @@
                     android:fontFamily="@font/font_semibold"
                     android:text="About"
                     android:textColor="@color/black"
-                    android:textSize="@dimen/_12sdp" />
+                    android:textSize="@dimen/_16sdp" />
 
 
                 <RelativeLayout
@@ -113,7 +113,7 @@
                         android:layout_alignBottom="@id/edt_profile_status"
                         android:layout_alignParentEnd="true"
                         android:layout_gravity="end"
-                        android:fontFamily="@font/font_regular"
+                        android:fontFamily="@font/font_medium"
                         android:text="150"
                         android:textColor="@color/color_grey_icon"
                         android:textSize="@dimen/_8sdp" />
@@ -125,7 +125,7 @@
                         android:layout_marginEnd="@dimen/_20sdp"
                         android:layout_toStartOf="@id/txt_profile_status_limit"
                         android:background="@android:color/transparent"
-                        android:fontFamily="@font/font_regular"
+                        android:fontFamily="@font/font_medium"
                         android:hint="Tell us about yourself..."
                         android:imeOptions="actionDone"
                         android:inputType="textMultiLine"
@@ -147,7 +147,7 @@
                     android:fontFamily="@font/font_semibold"
                     android:text="Work"
                     android:textColor="@color/black"
-                    android:textSize="@dimen/_12sdp" />
+                    android:textSize="@dimen/_16sdp" />
 
                 <RelativeLayout
                     android:layout_width="match_parent"
@@ -162,7 +162,7 @@
                         android:layout_alignBottom="@id/edt_profile_work"
                         android:layout_alignParentEnd="true"
                         android:layout_gravity="end"
-                        android:fontFamily="@font/font_regular"
+                        android:fontFamily="@font/font_medium"
                         android:text="150"
                         android:textColor="@color/color_grey_icon"
                         android:textSize="@dimen/_8sdp" />
@@ -174,7 +174,7 @@
                         android:layout_marginEnd="@dimen/_20sdp"
                         android:layout_toStartOf="@id/txt_profile_work_limit"
                         android:background="@android:color/transparent"
-                        android:fontFamily="@font/font_regular"
+                        android:fontFamily="@font/font_medium"
                         android:hint="Tell us about your work life..."
                         android:imeOptions="actionDone"
                         android:inputType="textMultiLine"
@@ -197,7 +197,7 @@
                     android:fontFamily="@font/font_semibold"
                     android:text="Education"
                     android:textColor="@color/black"
-                    android:textSize="@dimen/_12sdp" />
+                    android:textSize="@dimen/_16sdp" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -219,7 +219,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginStart="@dimen/_10sdp"
                         android:background="@android:color/transparent"
-                        android:fontFamily="@font/font_regular"
+                        android:fontFamily="@font/font_medium"
                         android:hint="find your college/institution"
                         android:textColor="@color/color_text_primary"
                         android:textSize="@dimen/_12sdp" />
@@ -232,7 +232,7 @@
                     android:fontFamily="@font/font_semibold"
                     android:text="Hometown"
                     android:textColor="@color/black"
-                    android:textSize="@dimen/_12sdp" />
+                    android:textSize="@dimen/_16sdp" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -254,7 +254,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginStart="@dimen/_10sdp"
                         android:background="@android:color/transparent"
-                        android:fontFamily="@font/font_regular"
+                        android:fontFamily="@font/font_medium"
                         android:hint="find your hometown"
                         android:textColor="@color/color_text_primary"
                         android:textSize="@dimen/_12sdp" />

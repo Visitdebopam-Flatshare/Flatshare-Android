@@ -6,6 +6,7 @@ import android.text.Editable
 import android.text.TextUtils
 import android.text.TextWatcher
 import android.view.View
+import androidx.core.content.ContextCompat
 import com.debopam.progressdialog.DialogCustomProgress
 import com.joinflatshare.FlatShareApplication
 import com.joinflatshare.FlatshareCentral.R
@@ -40,7 +41,13 @@ class ProfileEditListener(
         for (i in dataBinder.edt_profile.indices) {
             val position: Int = i
             dataBinder.edt_profile[i].setOnClickListener {
-                dataBinder.imgSearch[position].setImageResource(R.drawable.ic_search_blue)
+                dataBinder.imgSearch[position].setImageResource(R.drawable.ic_search)
+                dataBinder.imgSearch[position].setColorFilter(
+                    ContextCompat.getColor(
+                        activity,
+                        R.color.blue_dark
+                    )
+                )
                 getPlaces(
                     activity
                 ) { intent: Intent?, requestCode: Int ->

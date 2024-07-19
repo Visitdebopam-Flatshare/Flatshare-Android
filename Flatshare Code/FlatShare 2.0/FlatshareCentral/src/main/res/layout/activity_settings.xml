@@ -38,17 +38,17 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="@dimen/_10sdp"
-                    android:layout_marginTop="@dimen/_10sdp"
+                    android:layout_marginTop="@dimen/_6sdp"
                     app:cardBackgroundColor="@color/white"
-                    app:cardCornerRadius="@dimen/_10sdp"
-                    app:cardElevation="@dimen/_2sdp"
+                    app:cardCornerRadius="@dimen/_20sdp"
+                    app:cardElevation="@dimen/_3sdp"
                     app:cardPreventCornerOverlap="false"
                     app:cardUseCompatPadding="false">
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_margin="@dimen/_10sdp"
+                        android:layout_margin="@dimen/_12sdp"
                         android:orientation="vertical">
 
                         <RelativeLayout
@@ -66,16 +66,29 @@
                                 android:textColor="@color/black"
                                 android:textSize="@dimen/_12sdp" />
 
-                            <TextView
+                            <LinearLayout
                                 android:id="@+id/txt_profile_name_verified"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_alignParentEnd="true"
                                 android:layout_centerVertical="true"
-                                android:fontFamily="@font/font_semibold"
-                                android:text="get verified"
-                                android:textColor="@color/grey1"
-                                android:textSize="@dimen/_10sdp" />
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:fontFamily="@font/font_semibold"
+                                    android:text="get verified"
+                                    android:textColor="@color/grey1"
+                                    android:textSize="@dimen/_10sdp" />
+
+                                <View
+                                    android:layout_width="match_parent"
+                                    android:layout_height="1dp"
+                                    android:background="@color/grey1" />
+
+                            </LinearLayout>
+
 
                         </RelativeLayout>
 
@@ -95,16 +108,29 @@
                                 android:textColor="@color/black"
                                 android:textSize="@dimen/_12sdp" />
 
-                            <TextView
+
+                            <LinearLayout
                                 android:id="@+id/txt_profile_dob_verified"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_alignParentEnd="true"
                                 android:layout_centerVertical="true"
-                                android:fontFamily="@font/font_semibold"
-                                android:text="get verified"
-                                android:textColor="@color/grey1"
-                                android:textSize="@dimen/_10sdp" />
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:fontFamily="@font/font_semibold"
+                                    android:text="get verified"
+                                    android:textColor="@color/grey1"
+                                    android:textSize="@dimen/_10sdp" />
+
+                                <View
+                                    android:layout_width="match_parent"
+                                    android:layout_height="1dp"
+                                    android:background="@color/grey1" />
+
+                            </LinearLayout>
 
                         </RelativeLayout>
 
@@ -124,17 +150,28 @@
                                 android:textColor="@color/black"
                                 android:textSize="@dimen/_12sdp" />
 
-                            <TextView
+                            <LinearLayout
                                 android:id="@+id/txt_profile_gender_verified"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_alignParentEnd="true"
                                 android:layout_centerVertical="true"
-                                android:fontFamily="@font/font_semibold"
-                                android:text="get verified"
-                                android:textColor="@color/grey1"
-                                android:textSize="@dimen/_10sdp" />
+                                android:orientation="vertical">
 
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:fontFamily="@font/font_semibold"
+                                    android:text="get verified"
+                                    android:textColor="@color/grey1"
+                                    android:textSize="@dimen/_10sdp" />
+
+                                <View
+                                    android:layout_width="match_parent"
+                                    android:layout_height="1dp"
+                                    android:background="@color/grey1" />
+
+                            </LinearLayout>
                         </RelativeLayout>
 
                         <RelativeLayout
@@ -153,16 +190,28 @@
                                 android:textColor="@color/black"
                                 android:textSize="@dimen/_12sdp" />
 
-                            <TextView
+                            <LinearLayout
                                 android:id="@+id/txt_profile_profession_update"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_alignParentEnd="true"
                                 android:layout_centerVertical="true"
-                                android:fontFamily="@font/font_semibold"
-                                android:text="update"
-                                android:textColor="@color/grey1"
-                                android:textSize="@dimen/_10sdp" />
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:fontFamily="@font/font_semibold"
+                                    android:text="update"
+                                    android:textColor="@color/grey1"
+                                    android:textSize="@dimen/_10sdp" />
+
+                                <View
+                                    android:layout_width="match_parent"
+                                    android:layout_height="1dp"
+                                    android:background="@color/grey1" />
+
+                            </LinearLayout>
 
                         </RelativeLayout>
 
@@ -203,17 +252,17 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="@dimen/_10sdp"
-                    android:layout_marginTop="@dimen/_10sdp"
+                    android:layout_marginTop="@dimen/_6sdp"
                     app:cardBackgroundColor="@color/white"
-                    app:cardCornerRadius="@dimen/_10sdp"
-                    app:cardElevation="@dimen/_2sdp"
+                    app:cardCornerRadius="@dimen/_20sdp"
+                    app:cardElevation="@dimen/_3sdp"
                     app:cardPreventCornerOverlap="false"
                     app:cardUseCompatPadding="false">
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_margin="@dimen/_10sdp"
+                        android:layout_margin="@dimen/_12sdp"
                         android:orientation="vertical">
 
                         <TextView
@@ -221,7 +270,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/font_semibold"
-                            android:padding="@dimen/_10sdp"
+                            android:paddingVertical="@dimen/_7sdp"
                             android:text="Blocked Account"
                             android:textColor="@color/black"
                             android:textSize="@dimen/_12sdp" />
@@ -231,7 +280,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/font_semibold"
-                            android:padding="@dimen/_10sdp"
+                            android:paddingVertical="@dimen/_7sdp"
                             android:text="Privacy Policy"
                             android:textColor="@color/black"
                             android:textSize="@dimen/_12sdp" />
@@ -241,7 +290,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/font_semibold"
-                            android:padding="@dimen/_10sdp"
+                            android:paddingVertical="@dimen/_7sdp"
                             android:text="Terms of Services"
                             android:textColor="@color/black"
                             android:textSize="@dimen/_12sdp" />
@@ -252,11 +301,11 @@
                 <com.google.android.material.card.MaterialCardView
                     android:id="@+id/card_profile_logout"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="@dimen/button_height"
                     android:layout_marginHorizontal="@dimen/_10sdp"
                     android:layout_marginVertical="@dimen/_20sdp"
                     app:cardBackgroundColor="@color/white"
-                    app:cardCornerRadius="@dimen/_10sdp"
+                    app:cardCornerRadius="@dimen/_5sdp"
                     app:cardElevation="@dimen/_2sdp"
                     app:cardPreventCornerOverlap="false"
                     app:cardUseCompatPadding="false">
@@ -266,10 +315,9 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:fontFamily="@font/font_semibold"
-                        android:padding="@dimen/_10sdp"
                         android:text="Logout"
                         android:textColor="@color/black"
-                        android:textSize="@dimen/_12sdp" />
+                        android:textSize="@dimen/button_text_size" />
                 </com.google.android.material.card.MaterialCardView>
 
             </LinearLayout>

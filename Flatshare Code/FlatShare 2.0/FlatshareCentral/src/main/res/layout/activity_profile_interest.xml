@@ -54,7 +54,7 @@
                 android:layout_marginTop="@dimen/_20sdp"
                 android:fontFamily="@font/font_extrabold"
                 android:lineSpacingExtra="@dimen/_minus6sdp"
-                android:text="Your Interests"
+                android:text="Your interests"
                 android:textColor="@color/black"
                 android:textSize="@dimen/_24sdp" />
 

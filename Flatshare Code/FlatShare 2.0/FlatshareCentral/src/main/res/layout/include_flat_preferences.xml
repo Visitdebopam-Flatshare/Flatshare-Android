@@ -21,15 +21,15 @@
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/dimen_margin_horizontal"
         app:cardBackgroundColor="@color/white"
-        app:cardCornerRadius="@dimen/_16sdp"
-        app:cardElevation="@dimen/_2sdp"
+        app:cardCornerRadius="@dimen/_20sdp"
+        app:cardElevation="@dimen/_3sdp"
         app:cardPreventCornerOverlap="false"
         app:cardUseCompatPadding="false">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="@dimen/dimen_margin_horizontal"
+            android:layout_margin="@dimen/_12sdp"
             android:orientation="vertical">
 
             <TextView

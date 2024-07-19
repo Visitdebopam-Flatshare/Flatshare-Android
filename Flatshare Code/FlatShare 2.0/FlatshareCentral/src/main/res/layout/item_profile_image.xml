@@ -9,9 +9,8 @@
         android:id="@+id/frame_image"
         android:layout_width="match_parent"
         android:layout_height="@dimen/_120sdp"
-        app:cardBackgroundColor="#EEE9FF"
+        app:cardBackgroundColor="#E9F0FF"
         app:cardCornerRadius="@dimen/_10sdp"
-        app:cardElevation="@dimen/_2sdp"
         app:cardPreventCornerOverlap="true"
         app:cardUseCompatPadding="false">
 
@@ -31,7 +30,8 @@
                 android:layout_width="@dimen/_30sdp"
                 android:layout_height="@dimen/_30sdp"
                 android:layout_gravity="center"
-                android:src="@drawable/ic_image_add" />
+                android:src="@drawable/ic_image_add"
+                app:tint="@color/blue_dark" />
         </FrameLayout>
 
     </com.google.android.material.card.MaterialCardView>

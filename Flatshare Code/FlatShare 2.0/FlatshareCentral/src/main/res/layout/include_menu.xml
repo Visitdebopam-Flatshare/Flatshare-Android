@@ -73,40 +73,15 @@
                 android:layout_width="@dimen/menu_width"
                 android:layout_height="@dimen/menu_width"
                 android:layout_gravity="center"
-                android:src="@drawable/ic_notification" />
-
-            <FrameLayout
-                android:id="@+id/frame_count_notification"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginStart="@dimen/_minus7sdp"
-                android:layout_marginBottom="@dimen/_5sdp">
-
-                <View
-                    android:layout_width="@dimen/_12sdp"
-                    android:layout_height="@dimen/_12sdp"
-                    android:background="@drawable/drawable_button_blue_circle" />
-
-                <TextView
-                    android:id="@+id/txt_count_notification"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:fontFamily="@font/font_regular"
-                    android:text="0"
-                    android:textColor="@color/white"
-                    android:textSize="@dimen/_7sdp" />
-            </FrameLayout>
-
+                android:src="@drawable/ic_menu_check" />
 
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="0dp"
-            android:gravity="center"
             android:layout_height="match_parent"
             android:layout_weight="1"
+            android:gravity="center"
             android:orientation="vertical">
 
             <de.hdodenhof.circleimageview.CircleImageView

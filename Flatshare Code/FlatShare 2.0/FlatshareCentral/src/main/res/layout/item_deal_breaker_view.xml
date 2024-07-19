@@ -10,8 +10,8 @@
 
     <ImageView
         android:id="@+id/img_language"
-        android:layout_width="@dimen/_13sdp"
-        android:layout_height="@dimen/_13sdp"
+        android:layout_width="@dimen/_10sdp"
+        android:layout_height="@dimen/_10sdp"
         android:layout_gravity="center_vertical"
         android:layout_marginEnd="@dimen/_5sdp"
         android:visibility="gone" />
@@ -25,6 +25,10 @@
         android:gravity="center_vertical"
         android:maxLines="1"
         android:textColor="@color/color_icon"
-        android:textSize="@dimen/_11sdp" />
+        android:textSize="@dimen/_12sdp" />
+
+    <View
+        android:layout_width="@dimen/_10sdp"
+        android:layout_height="@dimen/_10sdp" />
 
 </LinearLayout>

@@ -9,7 +9,7 @@
     <color name="black">#202020</color>
     <color name="blue_dark">#2464FF</color>
     <color name="blue_light">#6C97FF</color>
-    <color name="color_bg">@color/white</color>
+    <color name="color_bg">#FEFEFE</color>
     <color name="grey2">#6A6A6A</color>
     <color name="grey3">#4D4D4D</color>
     <color name="grey4">#BABABA</color>

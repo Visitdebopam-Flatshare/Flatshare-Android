@@ -4,13 +4,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/rl_explore_vp"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:orientation="vertical">
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:scrollbars="none">
+        android:layout_height="wrap_content">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -41,7 +40,7 @@
 
                 <View
                     android:layout_width="@dimen/_10sdp"
-                    android:layout_height="@dimen/_20sdp" />
+                    android:layout_height="@dimen/_12sdp" />
             </LinearLayout>
 
             <LinearLayout
@@ -69,7 +68,7 @@
 
                 <View
                     android:layout_width="@dimen/_10sdp"
-                    android:layout_height="@dimen/_20sdp" />
+                    android:layout_height="@dimen/_12sdp" />
             </LinearLayout>
 
             <LinearLayout
@@ -94,10 +93,9 @@
                     android:textColor="@color/white"
                     android:textSize="@dimen/_12sdp" />
 
-
                 <View
                     android:layout_width="@dimen/_10sdp"
-                    android:layout_height="@dimen/_20sdp" />
+                    android:layout_height="@dimen/_12sdp" />
             </LinearLayout>
 
             <LinearLayout
@@ -124,7 +122,7 @@
 
                 <View
                     android:layout_width="@dimen/_10sdp"
-                    android:layout_height="@dimen/_20sdp" />
+                    android:layout_height="@dimen/_12sdp" />
             </LinearLayout>
 
             <LinearLayout
@@ -149,7 +147,7 @@
 
                 <View
                     android:layout_width="@dimen/_10sdp"
-                    android:layout_height="@dimen/_20sdp" />
+                    android:layout_height="@dimen/_12sdp" />
             </LinearLayout>
 
             <LinearLayout
@@ -176,7 +174,7 @@
 
                 <View
                     android:layout_width="@dimen/_10sdp"
-                    android:layout_height="@dimen/_20sdp" />
+                    android:layout_height="@dimen/_12sdp" />
             </LinearLayout>
 
             <LinearLayout
@@ -198,13 +196,12 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/font_medium"
-                    android:text="Name of the college/Institute"
                     android:textColor="@color/white"
                     android:textSize="@dimen/_12sdp" />
 
                 <View
                     android:layout_width="@dimen/_10sdp"
-                    android:layout_height="@dimen/_20sdp" />
+                    android:layout_height="@dimen/_12sdp" />
             </LinearLayout>
 
             <LinearLayout
@@ -226,36 +223,10 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/font_medium"
-                    android:text="Rajasthan, India"
                     android:textColor="@color/white"
                     android:textSize="@dimen/_12sdp" />
 
             </LinearLayout>
-
-
-            <com.google.android.material.card.MaterialCardView
-                android:id="@+id/card_gallery"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="end"
-                app:cardBackgroundColor="@android:color/transparent"
-                app:cardCornerRadius="@dimen/_10sdp"
-                app:cardElevation="0dp"
-                app:cardPreventCornerOverlap="false"
-                app:cardUseCompatPadding="false"
-                app:strokeColor="@color/white"
-                app:strokeWidth="1dp">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="@dimen/_10sdp"
-                    android:layout_marginVertical="@dimen/_5sdp"
-                    android:fontFamily="@font/font_semibold"
-                    android:text="View Gallery"
-                    android:textColor="@color/white"
-                    android:textSize="@dimen/_12sdp" />
-            </com.google.android.material.card.MaterialCardView>
         </LinearLayout>
 
     </androidx.core.widget.NestedScrollView>
@@ -265,5 +236,6 @@
         android:id="@+id/img_blur"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:contentDescription="@null" />
+        android:contentDescription="@null"
+        android:visibility="gone" />
 </RelativeLayout>

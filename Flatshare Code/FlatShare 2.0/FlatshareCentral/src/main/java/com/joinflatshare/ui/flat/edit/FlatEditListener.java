@@ -79,7 +79,8 @@ public class FlatEditListener implements View.OnClickListener {
                 }
             });
         } else if (view.getId() == viewBind.edtFlatSociety.getId()) {
-            viewBind.imgSearch.setImageResource(R.drawable.ic_search_blue);
+            viewBind.imgSearch.setImageResource(R.drawable.ic_search);
+            viewBind.imgSearch.setColorFilter(ContextCompat.getColor(activity, R.color.blue_dark));
             viewBind.view2.setBackgroundColor(ContextCompat.getColor(activity, R.color.color_blue_light));
             AutoCompletePlaces.INSTANCE.getPlaces(activity, (intent, requestCode) -> {
                 if (requestCode == REQUEST_CODE_LOCATION) {

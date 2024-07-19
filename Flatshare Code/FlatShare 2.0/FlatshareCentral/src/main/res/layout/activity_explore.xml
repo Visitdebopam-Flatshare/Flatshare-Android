@@ -33,13 +33,14 @@
 
                 <com.google.android.material.card.MaterialCardView
                     android:id="@+id/card_preferences"
-                    android:layout_width="@dimen/_48sdp"
-                    android:layout_height="@dimen/_28sdp"
+                    android:layout_width="@dimen/_36sdp"
+                    android:layout_height="@dimen/_24sdp"
                     android:layout_alignParentEnd="true"
                     android:layout_centerVertical="true"
-                    app:cardCornerRadius="@dimen/_10sdp"
+                    app:cardCornerRadius="@dimen/_8sdp"
                     app:cardElevation="0dp"
                     app:cardPreventCornerOverlap="true"
+                    app:cardBackgroundColor="@android:color/transparent"
                     app:cardUseCompatPadding="false"
                     app:strokeColor="@color/black"
                     app:strokeWidth="1dp">

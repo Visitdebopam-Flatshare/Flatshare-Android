@@ -27,6 +27,7 @@ class ProfileEditDataBinder(
         viewBind.imgSearch1,
         viewBind.imgSearch2
     )
+
     // Image Handlers
     var apiUserImages = ArrayList<String>()
     var adapterUserImages = ArrayList<String>()
@@ -98,7 +99,9 @@ class ProfileEditDataBinder(
     }
 
     internal fun workLimit() {
-        val due: Int = 150 - viewBind.edtProfileWork.getText().toString().length
+        var due: Int = 150 - viewBind.edtProfileWork.getText().toString().length
         viewBind.txtProfileWorkLimit.text = "" + due
+        due = 150 - viewBind.edtProfileStatus.text.toString().length
+        viewBind.txtProfileStatusLimit.text = "" + due
     }
 }

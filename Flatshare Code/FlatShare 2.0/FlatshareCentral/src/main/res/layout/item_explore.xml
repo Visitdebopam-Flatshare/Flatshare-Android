@@ -16,7 +16,6 @@
         <com.google.android.material.card.MaterialCardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:cardBackgroundColor="@color/blue_dark"
             app:cardCornerRadius="@dimen/_20sdp"
             app:cardElevation="0dp"
             app:cardPreventCornerOverlap="false"
@@ -29,8 +28,14 @@
                 <ImageView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:background="@drawable/drawable_explore_bg"
+                    android:scaleType="center" />
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
                     android:background="@drawable/ic_explore_bg"
-                    android:scaleType="centerInside" />
+                    android:scaleType="center" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -107,7 +112,8 @@
                             <ImageView
                                 android:layout_width="@dimen/_12sdp"
                                 android:layout_height="@dimen/_12sdp"
-                                android:src="@drawable/ic_location_white" />
+                                android:src="@drawable/ic_location_black"
+                                app:tint="@color/white" />
 
                             <TextView
                                 android:id="@+id/txt_distance"

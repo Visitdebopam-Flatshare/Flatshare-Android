@@ -7,6 +7,9 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import androidx.core.content.ContextCompat;
+
+import com.joinflatshare.FlatShareApplication;
 import com.joinflatshare.FlatshareCentral.R;
 import com.joinflatshare.constants.AppConstants;
 import com.joinflatshare.constants.SendBirdConstants;
@@ -32,9 +35,6 @@ public class BaseViewBinder {
     public CircleImageView img_menu_profile;
     public View view_menu_explore_circle, view_menu_chat_circle;
     private final int[] icon = {R.drawable.ic_menu_explore, R.drawable.ic_menu_chat, R.drawable.ic_menu_check};
-    private final int[] iconSelected = {R.drawable.ic_menu_explore_selected, R.drawable.ic_menu_chat_selected, R.drawable.ic_menu_check_selected};
-    protected TextView txt_count_notification;
-    protected FrameLayout frame_count_notification;
 
     protected void showBack(Activity activity) {
         btn_back = activity.findViewById(R.id.img_topbar_back);
@@ -50,8 +50,6 @@ public class BaseViewBinder {
     protected void initBottomMenu(BaseActivity activity) {
         view_menu_explore_circle = activity.findViewById(R.id.view_menu_explore_circle);
         view_menu_chat_circle = activity.findViewById(R.id.view_menu_chat_circle);
-        txt_count_notification = activity.findViewById(R.id.txt_count_notification);
-        frame_count_notification = activity.findViewById(R.id.frame_count_notification);
         LinearLayout llHolder = activity.findViewById(R.id.ll_menu_holder);
         ll_menu = new LinearLayout[]{(LinearLayout) llHolder.getChildAt(0),
                 (LinearLayout) llHolder.getChildAt(1), (LinearLayout) llHolder.getChildAt(2),
@@ -73,10 +71,13 @@ public class BaseViewBinder {
                 else
                     ((CircleImageView) ll_menu[i].getChildAt(0)).setBorderWidth(2);
             } else {
-                if (i == AppConstants.menuSelected)
-                    ((ImageView) ll_menu[i].getChildAt(0)).setImageResource(iconSelected[i]);
-                else
+                if (i == AppConstants.menuSelected) {
                     ((ImageView) ll_menu[i].getChildAt(0)).setImageResource(icon[i]);
+                    ((ImageView) ll_menu[i].getChildAt(0)).setColorFilter(ContextCompat.getColor(FlatShareApplication.instance, R.color.black));
+                } else {
+                    ((ImageView) ll_menu[i].getChildAt(0)).setImageResource(icon[i]);
+                    ((ImageView) ll_menu[i].getChildAt(0)).setColorFilter(0);
+                }
             }
         }
         view_menu_chat_circle.setVisibility(SendBirdConstants.unreadChannelCount == 0 ? View.GONE : View.VISIBLE);

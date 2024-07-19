@@ -23,9 +23,9 @@ class LoginActivity : RegisterBaseActivity() {
 
     private fun bind() {
         if (!AppConstants.isAppLive)
-            viewBind.edtLogin.setText("9832394089")
+//            viewBind.edtLogin.setText("9832394089")
 //            viewBind.edtLogin.setText("8169533929")
-//            viewBind.edtLogin.setText("6303546278")
+            viewBind.edtLogin.setText("6303546278")
 //            viewBind.edtLogin.setText("9263471358")
     }
 

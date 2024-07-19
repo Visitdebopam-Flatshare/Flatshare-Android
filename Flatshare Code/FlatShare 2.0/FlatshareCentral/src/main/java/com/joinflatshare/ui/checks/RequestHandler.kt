@@ -21,18 +21,6 @@ import retrofit2.Response
  * Created by debopam on 31/05/23
  */
 object RequestHandler {
-    fun calculateTotalRequestCount(activity: BaseActivity) {
-        val dao = FlatShareApplication.getDbInstance().requestDao()
-        val totalCount = dao.getTotalChatCount()
-        val frame: FrameLayout? = activity.findViewById(R.id.frame_count_notification)
-        if (totalCount > 0) {
-            val count: TextView? = activity.findViewById(R.id.txt_count_notification)
-            count?.text = "" + totalCount
-            frame?.visibility = View.VISIBLE
-        } else frame?.visibility = View.GONE
-        FlatShareApplication.getDbInstance().userDao().insert(UserDao.USER_REQUEST_API_PENDING, "0")
-    }
-
     // Request APIs
     fun getFlatRequests(activity: BaseActivity, callAllApis: Boolean) {
         WebserviceManager().getFlatRequests(activity,
@@ -42,7 +30,6 @@ object RequestHandler {
                     FlatShareApplication.getDbInstance().requestDao().handleFlatRequests(resp.data)
                     if (callAllApis)
                         getU2FRequests(activity, true)
-                    else calculateTotalRequestCount(activity)
                 }
             })
     }
@@ -61,7 +48,6 @@ object RequestHandler {
                         )
                     if (callAllApis)
                         getF2URequests(activity, true)
-                    else calculateTotalRequestCount(activity)
                 }
             })
     }
@@ -78,7 +64,6 @@ object RequestHandler {
                             resp.data,
                             ChatRequestConstants.CHAT_REQUEST_CONSTANT_F2U
                         )
-                    calculateTotalRequestCount(activity)
                 }
             })
     }
@@ -114,7 +99,6 @@ object RequestHandler {
                         )
                     if (callAllApis)
                         getLongTermRequests(activity, callAllApis)
-                    else calculateTotalRequestCount(activity)
                 }
             })
     }
@@ -133,7 +117,6 @@ object RequestHandler {
                         )
                     if (callAllApis)
                         getActivityPartnerRequests(activity)
-                    else calculateTotalRequestCount(activity)
                 }
             })
     }
@@ -150,7 +133,6 @@ object RequestHandler {
                             resp.data,
                             ChatRequestConstants.CHAT_REQUEST_CONSTANT_DATE_ACTIVITY_PARTNERS.toString()
                         )
-                    calculateTotalRequestCount(activity)
                 }
             })
     }

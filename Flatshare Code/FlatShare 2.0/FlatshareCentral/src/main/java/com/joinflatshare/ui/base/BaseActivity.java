@@ -83,7 +83,6 @@ public class BaseActivity extends GpsHandler {
             baseViewBinder.btn_topbar_right.setVisibility(View.GONE);
         } else if (icon == R.drawable.ic_notification) {
             baseViewBinder.btn_topbar_right.setVisibility(View.GONE);
-            baseViewBinder.frame_count_notification.setVisibility(View.GONE);
         } else {
             baseViewBinder.btn_topbar_right.setVisibility(View.VISIBLE);
             baseViewBinder.btn_topbar_right.setVisibility(View.VISIBLE);
@@ -118,7 +117,6 @@ public class BaseActivity extends GpsHandler {
     @Override
     protected void onResume() {
         super.onResume();
-        NotificationIconHandler.Companion.evaluateIcon(this);
         IntentFilter intentFilter = new IntentFilter();
         intentFilter.addAction(IntentFilterConstants.INTENT_FILTER_CONSTANT_RELOAD_NOTIFICATION);
         intentFilter.addAction(IntentFilterConstants.INTENT_FILTER_CONSTANT_CHAT_COUNT);
@@ -130,10 +128,6 @@ public class BaseActivity extends GpsHandler {
         if (Objects.equals(FlatShareApplication.Companion.getDbInstance().userDao().get(UserDao.USER_NEED_FCM_UPDATE), "1")) {
             baseApiController.updateUserOnFirebaseTokenUpdate();
         }
-        if (this instanceof ExploreActivity ||
-                this instanceof ChatListActivity || this instanceof ChecksActivity
-                || this instanceof ProfileActivity)
-            RequestHandler.INSTANCE.calculateTotalRequestCount(this);
     }
 
     private void assignLoggedInUser() {
