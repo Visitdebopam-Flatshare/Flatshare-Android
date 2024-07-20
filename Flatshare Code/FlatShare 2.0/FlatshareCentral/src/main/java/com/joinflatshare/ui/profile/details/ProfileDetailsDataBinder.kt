@@ -3,16 +3,11 @@ package com.joinflatshare.ui.profile.details
 import android.text.TextUtils
 import android.view.View
 import android.view.ViewTreeObserver.OnGlobalLayoutListener
-import androidx.recyclerview.widget.GridLayoutManager
-import com.joinflatshare.FlatShareApplication
 import com.joinflatshare.FlatshareCentral.R
 import com.joinflatshare.FlatshareCentral.databinding.ActivityProfileDetailsBinding
-import com.joinflatshare.constants.AppConstants
 import com.joinflatshare.constants.UrlConstants
-import com.joinflatshare.customviews.GridSpacingItemDecoration
 import com.joinflatshare.db.FlatshareDbManager
 import com.joinflatshare.db.daos.UserDao
-import com.joinflatshare.ui.profile.edit.ProfileEditImageAdapter
 import com.joinflatshare.utils.amazonaws.AmazonFileChecker
 import com.joinflatshare.utils.amazonaws.AmazonUploadFile
 import com.joinflatshare.utils.helper.CommonMethod

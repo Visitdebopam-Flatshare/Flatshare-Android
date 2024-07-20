@@ -16,6 +16,7 @@ import com.joinflatshare.constants.AppConstants
 import com.joinflatshare.constants.SendBirdConstants
 import com.joinflatshare.db.daos.AppDao
 import com.joinflatshare.pojo.flat.DealBreakers
+import com.joinflatshare.pojo.user.ModelLocation
 import com.joinflatshare.pojo.user.User
 import com.joinflatshare.ui.SplashActivity
 import com.joinflatshare.ui.base.ApplicationBaseActivity
@@ -123,9 +124,22 @@ object CommonMethod {
         if (breaker == null)
             return true
         if (breaker.eggs == 0 && breaker.pets == 0 && breaker.nonveg == 0 &&
-            breaker.smoking == 0 && breaker.workout == 0 && breaker.flatparty == 0)
+            breaker.smoking == 0 && breaker.workout == 0 && breaker.flatparty == 0
+        )
             return true
         return false
+    }
+
+    fun isLocationEmpty(location: ModelLocation?): Boolean {
+        if (location?.loc?.coordinates.isNullOrEmpty())
+            return true
+        return false
+    }
+
+    fun isLocationEmpty(location: ArrayList<ModelLocation>?): Boolean {
+        if (location.isNullOrEmpty())
+            return true
+        return isLocationEmpty(location[0])
     }
 
 }

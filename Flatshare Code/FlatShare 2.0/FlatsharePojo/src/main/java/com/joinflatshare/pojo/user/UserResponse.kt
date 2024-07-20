@@ -103,14 +103,14 @@ data class User(
     @field:SerializedName("invites")
     var invites: Int = 0,
 
+    @field:SerializedName("completedDetails")
+    val completed: CompletedDetails?=null,
+
     @field:SerializedName("completed")
-    val completed: Double = 0.0,
+    val completedPercentage: Int?=0,
 
     @field:SerializedName("isFlatSearch")
     var isFlatSearch: IsFlatSearch = IsFlatSearch(),
-
-    @field:SerializedName("isDateSearch")
-    var isDateSearch: IsDateSearch = IsDateSearch(),
 
     @field:SerializedName("isFHTSearch")
     var isFHTSearch: IsFlatSearch = IsFlatSearch(),
@@ -243,4 +243,9 @@ data class Verification(
 
     @field:SerializedName("isVerified")
     val isVerified: Boolean? = null
+) : Serializable
+
+data class CompletedDetails(
+    @field:SerializedName("isConsideredCompleted")
+    val isConsideredCompleted: Boolean? = null
 ) : Serializable

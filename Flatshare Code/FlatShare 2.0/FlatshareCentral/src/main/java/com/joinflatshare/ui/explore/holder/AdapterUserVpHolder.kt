@@ -66,13 +66,9 @@ object AdapterUserVpHolder {
             holder.txtHometown.text = user.hometown?.name
         }
 
-        if (user.score <= 0) holder.llVpScore.visibility = View.GONE
-        else {
-            holder.llVpScore.visibility = View.VISIBLE
-            holder.txtScore.text = "" + user.score
-        }
+        holder.txtScore.text = "" + user.score
 
-        holder.rlExploreVp.setOnClickListener {
+        holder.llContentHolder.setOnClickListener {
             val intent = Intent(activity, ProfileDetailsActivity::class.java)
             intent.putExtra("phone", user.id)
             CommonMethod.switchActivity(activity, intent, false)

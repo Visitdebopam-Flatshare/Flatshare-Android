@@ -48,8 +48,8 @@ class ProfileActivity : BaseActivity() {
     }
 
     private fun setCompletionPercentage() {
-        val userPerc = user?.completed
-        var percentage = 0.0
+        val userPerc = user?.completedPercentage
+        var percentage = 0
         if (userPerc != null)
             percentage = userPerc
         viewBind.txtProfileComplete.text = "$percentage% COMPLETE"

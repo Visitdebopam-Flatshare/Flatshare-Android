@@ -75,15 +75,15 @@ public class FlatDetailsListener implements View.OnClickListener {
             if (viewBind.txtChatRequest.getText().toString().equals("Chat Request")) {
                 if (isFromDeeplinkIntent())
                     return;
-                if (AppConstants.loggedInUser.getCompleted() < ConfigConstants.COMPLETION_MINIMUM_FOR_USERS) {
+                /*if (AppConstants.loggedInUser.getCompleted() < ConfigConstants.COMPLETION_MINIMUM_FOR_USERS) {
                     new DialogIncompleteProfile(activity, TYPE_FLAT);
-                } else activity.apiController.sendConnectionRequest();
+                } else activity.apiController.sendConnectionRequest();*/
             }
         } else if (id == viewBind.cardLike.getId()) {
             if (!activity.flatResponse.isLiked()) {
-                if (AppConstants.loggedInUser.getCompleted() < ConfigConstants.COMPLETION_MINIMUM_FOR_USERS) {
+                /*if (AppConstants.loggedInUser.getCompleted() < ConfigConstants.COMPLETION_MINIMUM_FOR_USERS) {
                     new DialogIncompleteProfile(activity, TYPE_FLAT);
-                } else activity.apiController.likeFlat();
+                } else activity.apiController.likeFlat();*/
             }
         } else if (id == viewBind.llRequestAccept.getId()) {
             activity.apiController.handleRequest(activity.phone, true, isCalledBack -> {

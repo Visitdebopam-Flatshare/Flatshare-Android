@@ -188,17 +188,9 @@ object UserShareMessageGenerator {
     }
 
     fun isUserDataAvailableToShare(user: User?): Boolean {
-        if (user?.completed!! < 15)
-            return false
-        if (user.images.isNullOrEmpty())
-            return false
-        if (user.flatProperties == null)
-            return false
-        val properties = user.flatProperties
-        if (properties.preferredLocation.isNullOrEmpty() ||
-            properties.preferredLocation[0] == null ||
-            properties.preferredLocation[0].name.isNullOrEmpty() ||
-            properties.moveinDate.isNullOrEmpty()
+        val properties = user?.flatProperties
+        if (properties?.roomType.isNullOrEmpty() || CommonMethod.isLocationEmpty(properties?.preferredLocation) ||
+            properties?.moveinDate.isNullOrEmpty()
         )
             return false
         return true

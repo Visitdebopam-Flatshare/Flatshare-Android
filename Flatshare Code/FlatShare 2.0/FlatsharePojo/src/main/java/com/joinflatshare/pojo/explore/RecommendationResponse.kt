@@ -26,14 +26,12 @@ data class RecommendationResponse(
 
     @field:SerializedName("showingUsers")
     val showingUsers: String = ""
-
-
 )
 
 data class UserRecommendationItem(
 
     @field:SerializedName("data")
-    var data: User = User(),
+    var data: User? = null,
 
     @field:SerializedName("details")
     val details: Details = Details()

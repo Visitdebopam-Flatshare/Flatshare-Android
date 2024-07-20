@@ -62,7 +62,7 @@ class DialogShare(
                 var text = ""
                 if (shareType.equals(TYPE_FLAT)) {
                     text = flatShareText
-                } else if (shareType.equals(TYPE_USER)) {
+                } else {
                     text = userShareText
                 }
                 val sendIntent = Intent()
@@ -78,7 +78,7 @@ class DialogShare(
             viewBind.llShareCopyLink.setOnClickListener {
                 if (shareType.equals(TYPE_FLAT))
                     copyText(flatShareText)
-                else if (shareType.equals(TYPE_USER))
+                else
                     copyText(userShareText)
                 CommonMethods.dismissDialog(activity, dialog)
             }
@@ -209,11 +209,18 @@ class DialogShare(
             }
         } else if (shareType.equals(BaseActivity.TYPE_FHT)) {
             if (UserShareMessageGenerator.isUserDataAvailableToShare(user)) {
-                val pronoun = if (user?.gender.equals("Male")) "He" else "She"
-                userShareText =
-                    "${user?.name?.firstName} is looking for ${user?.flatProperties?.roomType} in ${user?.flatProperties?.gender} flat for rent in "
-                val loc = user?.flatProperties?.preferredLocation!![0]
-                userShareText += "${loc.name}.\n\n"
+                val name = user?.name?.firstName
+                val pronoun = if (TextUtils.equals(
+                        user?.gender,
+                        "Male"
+                    )
+                ) "He" else if (TextUtils.equals(user?.gender, "Female")) "She" else name
+                val roomType = user?.flatProperties?.roomType
+                val loc = user?.flatProperties?.preferredLocation!![0].name
+                val moveInDate = DateUtils.convertToAppFormat(user.flatProperties.moveinDate)
+
+                userShareText = "$name is looking for $roomType Room in $loc by $moveInDate\n"
+
                 if (!user.flatProperties.interests.isNullOrEmpty()) {
                     var interests = TextUtils.join(
                         ", ",
@@ -224,7 +231,7 @@ class DialogShare(
                         0,
                         lastIndex
                     ) + " and" + interests.substring(lastIndex + 1)
-                    userShareText += "${user.name?.firstName} is interested in $interests"
+                    userShareText += "${user.name?.firstName} is into $interests."
 
                     if (!user.flatProperties.languages.isNullOrEmpty()) {
                         var interests = TextUtils.join(
@@ -255,40 +262,50 @@ class DialogShare(
 
                 val likes = ArrayList<String>()
                 val dislikes = ArrayList<String>()
-                /*if (user.flatProperties.smoking == 1)
+                if (user.flatProperties.dealBreakers?.smoking == 2)
                     dislikes.add("Smoking")
-                else if (user.flatProperties.smoking == 3)
+                else if (user.flatProperties.dealBreakers?.smoking == 1)
                     likes.add("Smoking")
-                if (user.flatProperties.nonveg == 1)
+                if (user.flatProperties.dealBreakers?.nonveg == 2)
                     dislikes.add("Non-Veg")
-                else if (user.flatProperties.nonveg == 3)
+                else if (user.flatProperties.dealBreakers?.nonveg == 1)
                     likes.add("Non-Veg")
-                if (user.flatProperties.flatparty == 1)
+                if (user.flatProperties.dealBreakers?.flatparty == 2)
                     dislikes.add("Drinking Alcohol")
-                else if (user.flatProperties.flatparty == 3)
+                else if (user.flatProperties.dealBreakers?.flatparty == 1)
                     likes.add("Drinking Alcohol")
-                if (user.flatProperties.eggs == 1)
+                if (user.flatProperties.dealBreakers?.eggs == 2)
                     dislikes.add("Eggs")
-                else if (user.flatProperties.eggs == 3)
-                    likes.add("Eggs")*/
+                else if (user.flatProperties.dealBreakers?.eggs == 1)
+                    likes.add("Eggs")
+                if (user.flatProperties.dealBreakers?.pets == 2)
+                    dislikes.add("Pets")
+                else if (user.flatProperties.dealBreakers?.pets == 1)
+                    likes.add("Pets")
+                if (user.flatProperties.dealBreakers?.workout == 2)
+                    dislikes.add("Workout")
+                else if (user.flatProperties.dealBreakers?.workout == 1)
+                    likes.add("Workout")
 
                 if (likes.size > 0) {
-                    if (userShareText.contains("${user.name?.firstName} is interested") ||
-                        userShareText.contains("${user.name?.firstName} speaks")
-                    )
-                        userShareText += "\n$pronoun"
-                    else userShareText += user.name?.firstName
-                    userShareText += " also likes ${TextUtils.join(", ", likes)}"
+                    userShareText += "\n$pronoun"
+                    userShareText += " also enjoys ${TextUtils.join(", ", likes)}"
                     if (dislikes.size > 0) {
-                        userShareText += " and dislikes ${TextUtils.join(", ", dislikes)}."
+                        userShareText += " & would prefer no ${
+                            TextUtils.join(
+                                ", ",
+                                dislikes
+                            )
+                        } in the flat please!"
                     }
                 } else if (dislikes.size > 0) {
-                    if (userShareText.contains("${user.name?.firstName} is interested") ||
-                        userShareText.contains("${user.name?.firstName} speaks")
-                    )
-                        userShareText += "\n$pronoun"
-                    else userShareText += user.name?.firstName
-                    userShareText += " dislikes ${TextUtils.join(", ", dislikes)}."
+                    userShareText += "\n$pronoun"
+                    userShareText += " would prefer no ${
+                        TextUtils.join(
+                            ", ",
+                            dislikes
+                        )
+                    }in the flat please!"
                 }
                 userShareText += "\n\n" + DeepLinkHandler.createUserDeepLink(user.id)
                 CommonMethod.makeLog("Share", userShareText)

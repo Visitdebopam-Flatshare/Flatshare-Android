@@ -55,7 +55,7 @@ class ExploreBinder(
         } else {
             // Get the topmost data
             val user = activity.userData[0]
-            AdapterUserHolder().bindUser(activity,user.data, viewBind.includePagerExplore)
+            AdapterUserHolder().bindUser(activity,user.data!!, viewBind.includePagerExplore)
         }
     }
 

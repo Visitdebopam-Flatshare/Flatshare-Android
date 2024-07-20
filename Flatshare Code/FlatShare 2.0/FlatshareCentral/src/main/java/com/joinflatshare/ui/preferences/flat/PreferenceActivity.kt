@@ -30,7 +30,7 @@ class PreferenceActivity : BaseActivity() {
         setRoomType()
         setVerified()
         setGender()
-        setWork()
+        setProfession()
         setDealBreakers()
     }
 
@@ -101,7 +101,7 @@ class PreferenceActivity : BaseActivity() {
             ContextCompat.getColor(this, R.color.black)
         )
 
-        when (user?.gender) {
+        when (user?.flatProperties?.gender) {
             "Male" -> {
                 viewBind.includePrefFlatmate.txtMale.background =
                     ContextCompat.getDrawable(this, R.drawable.drawable_button_blue)
@@ -128,7 +128,7 @@ class PreferenceActivity : BaseActivity() {
         }
     }
 
-    fun setWork() {
+    fun setProfession() {
         viewBind.includePrefFlatmate.txtStudents.background =
             ContextCompat.getDrawable(this, R.drawable.drawable_button_grey_stroke)
         viewBind.includePrefFlatmate.txtWorking.background =
@@ -140,7 +140,7 @@ class PreferenceActivity : BaseActivity() {
             ContextCompat.getColor(this, R.color.black)
         )
 
-        when(user?.work) {
+        when(user?.profession) {
             "Student" -> {
                 viewBind.includePrefFlatmate.txtStudents.background =
                     ContextCompat.getDrawable(this, R.drawable.drawable_button_blue)
@@ -148,7 +148,7 @@ class PreferenceActivity : BaseActivity() {
                     ContextCompat.getColor(this, R.color.white)
                 )
             }
-            "Working" -> {
+            "Working Professional" -> {
                 viewBind.includePrefFlatmate.txtWorking.background =
                     ContextCompat.getDrawable(this, R.drawable.drawable_button_blue)
                 viewBind.includePrefFlatmate.txtWorking.setTextColor(

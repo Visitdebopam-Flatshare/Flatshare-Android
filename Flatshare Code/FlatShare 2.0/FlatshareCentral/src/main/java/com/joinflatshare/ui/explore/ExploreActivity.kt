@@ -43,9 +43,7 @@ class ExploreActivity : BaseActivity() {
         showBottomMenu(this)
         moveToPreference()
         handleDeepLinking()
-//        reloadRequests()
         init()
-//        checkUserLocation()
         MutualContactHandler.scheduleContactHandler(this)
     }
 
@@ -84,7 +82,7 @@ class ExploreActivity : BaseActivity() {
             reloadFeed()
     }
 
-    fun reloadFeed() {
+    private fun reloadFeed() {
         MixpanelUtils.onScreenOpened("Feed")
         viewBind.txtNoFeed.text = ""
         if (apiController == null) {
@@ -94,34 +92,7 @@ class ExploreActivity : BaseActivity() {
         apiController?.currentPage = 0
         AppConstants.loggedInUser = FlatShareApplication.getDbInstance().userDao().getUser()
         binder.hideAll()
-        /*if (FlatShareApplication.getDbInstance().userDao().getFlatResponse() == null) {
-            baseApiController.getMyFlat { intent: Intent?, requestCode: Int ->
-                run {
-                    flat = FlatShareApplication.getDbInstance().userDao().getFlatData()
-                    binder.setup()
-                    if (buttonBinder == null) buttonBinder = ProfileButtonBinder(this, viewBind)
-                    buttonBinder?.setAdapter()
-                }
-            }
-        } else {
-            flat = FlatShareApplication.getDbInstance().userDao().getFlatData()
-            binder.setup()
-        }*/
-        revertAllUsersToFHT()
-    }
-
-    private fun revertAllUsersToFHT() {
-        if (AppConstants.loggedInUser?.isFHTSearch?.value == false) {
-            val user = AppConstants.loggedInUser
-            user?.isDateSearch?.value = false
-            user?.isFlatSearch?.value = false
-            user?.isFHTSearch?.value = true
-            baseApiController.updateUser(true, user, object : OnUserFetched {
-                override fun userFetched(resp: UserResponse?) {
-                    binder.setup()
-                }
-            })
-        } else binder.setup()
+        binder.setup()
     }
 
     private fun handleDeepLinking() {

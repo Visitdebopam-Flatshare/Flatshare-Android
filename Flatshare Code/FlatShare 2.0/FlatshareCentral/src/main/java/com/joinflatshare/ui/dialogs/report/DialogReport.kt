@@ -14,13 +14,15 @@ import com.joinflatshare.utils.helper.CommonMethod
 
 class DialogReport(
     private val activity: BaseActivity,
-    private val reportType: String,
+    private var reportType: String,
     private val userId: String?,
     private val flat: MyFlatData?,
     private val callback: OnStringFetched
 ) {
     init {
         val menu = ArrayList<ModelBottomSheet>()
+        if (reportType != BaseActivity.TYPE_FLAT)
+            reportType = BaseActivity.TYPE_USER
         when (reportType) {
             BaseActivity.TYPE_FLAT -> {
                 menu.add(ModelBottomSheet(0, "Seems like a fake flat."))

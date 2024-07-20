@@ -92,37 +92,37 @@ class PreferenceListener(private val activity: PreferenceActivity) : View.OnClic
             }
 
             viewBind.includePrefFlatmate.txtMale.id -> {
-                if (activity.user?.gender != "Male") {
-                    activity.user?.gender = "Male"
+                if (activity.user?.flatProperties?.gender != "Male") {
+                    activity.user?.flatProperties?.gender = "Male"
                     activity.setGender()
                 }
             }
 
             viewBind.includePrefFlatmate.txtFemale.id -> {
-                if (activity.user?.gender != "Female") {
-                    activity.user?.gender = "Female"
+                if (activity.user?.flatProperties?.gender != "Female") {
+                    activity.user?.flatProperties?.gender = "Female"
                     activity.setGender()
                 }
             }
 
             viewBind.includePrefFlatmate.txtall.id -> {
-                if (activity.user?.gender != "All") {
-                    activity.user?.gender = "All"
+                if (activity.user?.flatProperties?.gender != "All") {
+                    activity.user?.flatProperties?.gender = "All"
                     activity.setGender()
                 }
             }
 
             viewBind.includePrefFlatmate.txtStudents.id -> {
-                if (activity.user?.work != "Student") {
-                    activity.user?.work = "Student"
-                    activity.setWork()
+                if (activity.user?.profession != "Student") {
+                    activity.user?.profession = "Student"
+                    activity.setProfession()
                 }
             }
 
             viewBind.includePrefFlatmate.txtWorking.id -> {
-                if (activity.user?.work != "Working") {
-                    activity.user?.work = "Working"
-                    activity.setWork()
+                if (activity.user?.profession != "Working Professional") {
+                    activity.user?.profession = "Working Professional"
+                    activity.setProfession()
                 }
             }
 
@@ -191,9 +191,9 @@ class PreferenceListener(private val activity: PreferenceActivity) : View.OnClic
             true
         else if (actualUserData?.flatProperties?.gender != activity.user?.flatProperties?.gender) {
             hasChanged = true
-        }/* else if (actualUserData?.flatProperties?.working != activity.user?.flatProperties?.working) {
+        } else if (actualUserData?.profession != activity.user?.profession) {
             hasChanged = true
-        }*/ else if (actualUserData?.flatProperties?.interests != activity.user?.flatProperties?.interests) {
+        } else if (actualUserData?.flatProperties?.interests != activity.user?.flatProperties?.interests) {
             hasChanged = true
         } else if (actualUserData?.flatProperties?.dealBreakers == null && activity.user?.flatProperties?.dealBreakers != null) {
             hasChanged = true

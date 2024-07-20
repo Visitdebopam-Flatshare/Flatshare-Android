@@ -51,8 +51,8 @@ class ExploreListener(
             }
 
             viewBind.includePagerExplore.imgCross.id -> {
-                val completion = AppConstants.loggedInUser?.completed
-                if (completion == null || completion < ConfigConstants.COMPLETION_MINIMUM_FOR_USERS) {
+                val completion = AppConstants.loggedInUser?.completed?.isConsideredCompleted
+                if (completion==false) {
                     IncompleteProfileBottomSheet(
                         activity
                     ) { activity.binder.showUser() }
@@ -65,7 +65,7 @@ class ExploreListener(
                     false,
                     BaseActivity.TYPE_FHT,
                     ChatRequestConstants.CHAT_REQUEST_CONSTANT_FHT,
-                    activity.userData[0].data.id
+                    activity.userData[0].data!!.id
                 ) { response ->
                     activity.userData.removeAt(0)
                     activity.binder.showUser()
@@ -73,8 +73,8 @@ class ExploreListener(
             }
 
             viewBind.includePagerExplore.imgCheck.id -> {
-                val completion = AppConstants.loggedInUser?.completed
-                if (completion == null || completion < ConfigConstants.COMPLETION_MINIMUM_FOR_USERS) {
+                val completion = AppConstants.loggedInUser?.completed?.isConsideredCompleted
+                if (completion==false) {
                     IncompleteProfileBottomSheet(
                         activity
                     ) { activity.binder.showUser() }
@@ -82,7 +82,7 @@ class ExploreListener(
                 }
                 val likeUrl = WebserviceCustomRequestHandler.getLikeRequestUrl(
                     BaseActivity.TYPE_FHT, ChatRequestConstants.CHAT_REQUEST_CONSTANT_FHT,
-                    activity.userData[0].data.id
+                    activity.userData[0].data!!.id
                 )
 
                 DialogLottieViewer.loadAnimation(
@@ -104,8 +104,8 @@ class ExploreListener(
             }
 
             viewBind.includePagerExplore.imgSuperCheck.id -> {
-                val completion = AppConstants.loggedInUser?.completed
-                if (completion == null || completion < ConfigConstants.COMPLETION_MINIMUM_FOR_USERS) {
+                val completion = AppConstants.loggedInUser?.completed?.isConsideredCompleted
+                if (completion==false) {
                     IncompleteProfileBottomSheet(
                         activity
                     ) { activity.binder.showUser() }
@@ -117,7 +117,7 @@ class ExploreListener(
                 WebserviceManager().sendChatRequest(
                     activity,
                     ChatRequestConstants.CHAT_REQUEST_CONSTANT_FHT,
-                    activity.userData[0].data.id,
+                    activity.userData[0].data!!.id,
                     object : OnFlatshareResponseCallBack<Response<ResponseBody>> {
                         override fun onResponseCallBack(response: String) {
                             activity.userData.removeAt(0)

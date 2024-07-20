@@ -21,9 +21,10 @@
             android:layout_height="wrap_content">
 
             <ImageView
-                android:layout_width="@dimen/_80sdp"
-                android:layout_height="@dimen/_30sdp"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/_28sdp"
                 android:layout_alignParentStart="true"
+                android:layout_centerVertical="true"
                 android:src="@drawable/ic_logo_black" />
 
 
@@ -47,8 +48,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_gravity="center_horizontal"
-                app:cardCornerRadius="@dimen/_80sdp"
                 app:cardBackgroundColor="@android:color/transparent"
+                app:cardCornerRadius="@dimen/_80sdp"
                 app:cardElevation="0dp"
                 app:cardPreventCornerOverlap="false"
                 app:cardUseCompatPadding="false"
@@ -59,7 +60,7 @@
                     android:id="@+id/imgPhoto"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_margin="@dimen/_5sdp"/>
+                    android:layout_margin="@dimen/_5sdp" />
 
                 <TextView
                     android:id="@+id/txt_photo"
@@ -70,7 +71,7 @@
                     android:gravity="center"
                     android:textAllCaps="true"
                     android:textColor="@color/white"
-                    android:textSize="@dimen/_50sdp"
+                    android:textSize="@dimen/_40sdp"
                     android:visibility="gone" />
             </com.google.android.material.card.MaterialCardView>
 
@@ -116,10 +117,10 @@
             app:cardBackgroundColor="#B4B4B4"
             app:cardCornerRadius="@dimen/_20sdp"
             app:cardElevation="2dp"
-            app:strokeColor="@color/white"
-            app:strokeWidth="2dp"
             app:cardPreventCornerOverlap="false"
-            app:cardUseCompatPadding="false">
+            app:cardUseCompatPadding="false"
+            app:strokeColor="@color/white"
+            app:strokeWidth="2dp">
 
             <FrameLayout
                 android:layout_width="match_parent"

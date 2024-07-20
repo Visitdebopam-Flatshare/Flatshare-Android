@@ -44,52 +44,55 @@
                     android:orientation="vertical">
 
                     <LinearLayout
-                        android:id="@+id/ll_explore_top"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:gravity="center"
                         android:orientation="vertical">
 
-                        <FrameLayout
+                        <com.google.android.material.card.MaterialCardView
                             android:layout_width="@dimen/dp_circular_width"
                             android:layout_height="@dimen/dp_circular_width"
-                            android:layout_gravity="center_horizontal">
+                            android:layout_gravity="center_horizontal"
+                            app:cardBackgroundColor="@android:color/transparent"
+                            app:cardCornerRadius="@dimen/_80sdp"
+                            app:cardElevation="0dp"
+                            app:cardPreventCornerOverlap="false"
+                            app:cardUseCompatPadding="false"
+                            app:strokeColor="@color/grey7"
+                            app:strokeWidth="1.5dp">
 
-                            <de.hdodenhof.circleimageview.CircleImageView
-                                android:id="@+id/img_profile"
-                                android:layout_width="@dimen/dp_circular_width"
-                                android:layout_height="@dimen/dp_circular_width"
-                                android:layout_gravity="center"
-                                android:src="@drawable/ic_user_grey"
-                                app:civ_border_color="@color/grey2"
-                                app:civ_border_width="0.01dp"
-                                app:riv_border_color="@color/white"
-                                app:riv_border_width="2dp"
-                                app:riv_corner_radius="@dimen/_36sdp"
-                                app:riv_mutate_background="true"
-                                app:riv_tile_mode="clamp" />
-
-                            <TextView
-                                android:id="@+id/txt_photo"
+                            <FrameLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
-                                android:background="@drawable/drawable_blue_circle"
-                                android:gravity="center"
-                                android:textAllCaps="true"
-                                android:textColor="@color/white"
-                                android:textSize="@dimen/_40sdp"
-                                android:visibility="gone" />
+                                android:layout_gravity="center_horizontal"
+                                android:layout_margin="@dimen/_5sdp">
 
-                            <ImageView
-                                android:id="@+id/img_online"
-                                android:layout_width="@dimen/_10sdp"
-                                android:layout_height="@dimen/_10sdp"
-                                android:layout_gravity="end|bottom"
-                                android:layout_marginEnd="@dimen/_7sdp"
-                                android:layout_marginBottom="@dimen/_5sdp"
-                                android:src="@drawable/drawable_green_circle"
-                                android:visibility="gone" />
-                        </FrameLayout>
+                                <de.hdodenhof.circleimageview.CircleImageView
+                                    android:id="@+id/imgProfile"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent" />
+
+                                <TextView
+                                    android:id="@+id/txt_photo"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:gravity="center"
+                                    android:textAllCaps="true"
+                                    android:textColor="@color/white"
+                                    android:textSize="@dimen/_40sdp"
+                                    android:visibility="gone" />
+
+                                <ImageView
+                                    android:id="@+id/img_online"
+                                    android:layout_width="@dimen/_10sdp"
+                                    android:layout_height="@dimen/_10sdp"
+                                    android:layout_gravity="end|bottom"
+                                    android:layout_marginEnd="@dimen/_7sdp"
+                                    android:layout_marginBottom="@dimen/_5sdp"
+                                    android:src="@drawable/drawable_green_circle"
+                                    android:visibility="gone" />
+                            </FrameLayout>
+                        </com.google.android.material.card.MaterialCardView>
 
                         <TextView
                             android:id="@+id/txt_name"
@@ -102,6 +105,7 @@
                             android:textSize="@dimen/_16sdp" />
 
                         <LinearLayout
+                            android:id="@+id/ll_distance"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center_horizontal"
@@ -125,7 +129,6 @@
                                 android:textSize="@dimen/_12sdp" />
 
                         </LinearLayout>
-
 
                     </LinearLayout>
 

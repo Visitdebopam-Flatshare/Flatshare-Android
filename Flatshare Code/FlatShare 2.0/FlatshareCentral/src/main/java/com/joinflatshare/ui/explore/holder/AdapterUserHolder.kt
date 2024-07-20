@@ -1,20 +1,15 @@
 package com.joinflatshare.ui.explore.holder
 
-import android.app.Activity
 import android.content.Intent
+import android.text.TextUtils
 import android.view.View
-import androidx.core.content.ContextCompat
-import androidx.viewpager2.widget.ViewPager2
 import com.google.gson.Gson
-import com.joinflatshare.FlatshareCentral.R
 import com.joinflatshare.FlatshareCentral.databinding.ItemChecksBinding
 import com.joinflatshare.FlatshareCentral.databinding.ItemExploreBinding
 import com.joinflatshare.constants.AppConstants
 import com.joinflatshare.constants.ChatRequestConstants
-import com.joinflatshare.constants.RouteConstants
 import com.joinflatshare.pojo.BaseResponse
 import com.joinflatshare.pojo.explore.UserRecommendationItem
-import com.joinflatshare.pojo.user.ModelLocation
 import com.joinflatshare.pojo.user.User
 import com.joinflatshare.ui.base.BaseActivity
 import com.joinflatshare.ui.checks.ChecksActivity
@@ -40,27 +35,28 @@ class AdapterUserHolder {
     ) {
 
         ImageHelper.loadProfileImage(activity, holder.imgProfile, holder.txtPhoto, user)
-        holder.imgProfile.setOnClickListener {
-            val intent = Intent(activity, ProfileDetailsActivity::class.java)
-            intent.putExtra("phone", user.id)
-            CommonMethod.switchActivity(activity, intent, false)
-        }
+
         // Name
         holder.txtName.text =
             "${user.name?.firstName} ${user.name?.lastName}, ${CommonMethod.getAge(user.dob)}"
 
-
-        // Age
-        if (isLocationEmpty(AppConstants.loggedInUser?.location) || isLocationEmpty(user.location))
-            holder.txtDistance.visibility = View.GONE
-        else {
-            holder.txtDistance.visibility = View.VISIBLE
-            holder.txtDistance.text = (DistanceCalculator.calculateDistance(
-                user.location.loc.coordinates[1],
-                user.location.loc.coordinates[0],
-                AppConstants.loggedInUser?.location?.loc?.coordinates!![1],
-                AppConstants.loggedInUser?.location?.loc?.coordinates!![0]
-            )) + " away"
+        // Distance
+        holder.llDistance.visibility = View.GONE
+        val locationLoggedInUser = AppConstants.loggedInUser?.flatProperties?.preferredLocation
+        val locationUser = user.flatProperties.preferredLocation
+        if (!(CommonMethod.isLocationEmpty(locationLoggedInUser)
+                    || CommonMethod.isLocationEmpty(locationLoggedInUser))
+        ) {
+            val distance = (DistanceCalculator.calculateDistance(
+                locationUser[0].loc.coordinates[1],
+                locationUser[0].loc.coordinates[0],
+                locationLoggedInUser!![0].loc.coordinates[1],
+                locationLoggedInUser[0].loc.coordinates[0]
+            ))
+            if (!TextUtils.equals(distance, "NA")) {
+                holder.llDistance.visibility = View.VISIBLE
+                holder.txtDistance.text = distance + " away"
+            }
         }
 
         holder.llExploreHolder.setOnClickListener {
@@ -69,47 +65,37 @@ class AdapterUserHolder {
             CommonMethod.switchActivity(activity, intent, false)
         }
 
-        holder.includeExploreVp.rlExploreVp.setOnClickListener {
-            val intent = Intent(activity, ProfileDetailsActivity::class.java)
-            intent.putExtra("phone", user.id)
-            CommonMethod.switchActivity(activity, intent, false)
-        }
-
         AdapterUserVpHolder.bindVp(activity, holder.includeExploreVp, user)
-    }
-
-    private fun isLocationEmpty(location: ModelLocation?): Boolean {
-        return (location?.loc == null || location.loc.coordinates.isNullOrEmpty())
     }
 
     fun bindUser(
         activity: ChecksActivity,
         details: UserRecommendationItem, position: Int, holder: ItemChecksBinding
     ) {
-        val user = details.data
+        val user = details.data!!
 
         ImageHelper.loadProfileImage(activity, holder.imgProfile, holder.txtPhoto, user)
-        holder.imgProfile.setOnClickListener {
-            val intent = Intent(activity, ProfileDetailsActivity::class.java)
-            intent.putExtra("phone", user.id)
-            CommonMethod.switchActivity(activity, intent, false)
-        }
+
         // Name
         holder.txtName.text =
             "${user.name?.firstName} ${user.name?.lastName}, ${CommonMethod.getAge(user.dob)}"
 
-
-        // Age
-        if (isLocationEmpty(AppConstants.loggedInUser?.location) || isLocationEmpty(user.location))
-            holder.txtDistance.visibility = View.GONE
-        else {
-            holder.txtDistance.visibility = View.VISIBLE
-            holder.txtDistance.text = (DistanceCalculator.calculateDistance(
+        // Distance
+        holder.llDistance.visibility = View.GONE
+        if (!(CommonMethod.isLocationEmpty(AppConstants.loggedInUser?.location) || CommonMethod.isLocationEmpty(
+                user.location
+            ))
+        ) {
+            val distance = (DistanceCalculator.calculateDistance(
                 user.location.loc.coordinates[1],
                 user.location.loc.coordinates[0],
                 AppConstants.loggedInUser?.location?.loc?.coordinates!![1],
                 AppConstants.loggedInUser?.location?.loc?.coordinates!![0]
-            )) + " away"
+            ))
+            if (!TextUtils.equals(distance, "NA")) {
+                holder.llDistance.visibility = View.VISIBLE
+                holder.txtDistance.text = distance + " away"
+            }
         }
 
         holder.llChecksHolder.setOnClickListener {
@@ -190,13 +176,6 @@ class AdapterUserHolder {
                 activity,
                 AppConstants.loggedInUser, null, user,
                 ChatRequestConstants.CHAT_REQUEST_CONSTANT_FHT
-            )
-        } else if (searchType == BaseActivity.TYPE_DATE
-        ) {
-            DialogConnection(
-                activity,
-                AppConstants.loggedInUser, null, user,
-                "" + AppConstants.loggedInUser?.dateProperties?.dateType
             )
         } else if (searchType == BaseActivity.TYPE_DATE_CASUAL
             || searchType == BaseActivity.TYPE_DATE_LONG_TERM
