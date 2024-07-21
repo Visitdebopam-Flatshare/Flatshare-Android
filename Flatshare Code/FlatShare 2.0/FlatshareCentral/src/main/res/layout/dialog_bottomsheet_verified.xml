@@ -20,8 +20,8 @@
 
         <ImageView
             android:id="@+id/img_cross"
-            android:layout_width="@dimen/_16sdp"
-            android:layout_height="@dimen/_16sdp"
+            android:layout_width="@dimen/_20sdp"
+            android:layout_height="@dimen/_20sdp"
             android:layout_gravity="end"
             android:layout_margin="@dimen/_1sdp"
             android:src="@drawable/ic_cross_black" />

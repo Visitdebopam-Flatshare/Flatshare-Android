@@ -9,6 +9,7 @@ import io.reactivex.Observable
 import okhttp3.ResponseBody
 import retrofit2.Response
 import retrofit2.http.Body
+import retrofit2.http.DELETE
 import retrofit2.http.GET
 import retrofit2.http.PATCH
 import retrofit2.http.POST
@@ -43,6 +44,16 @@ interface ApiInterface {
 
     @POST("users/verification/verify")
     fun verifiyAdhaarOtp(@Body request: AdhaarOtp): Observable<Response<ResponseBody>>
+
+    // Account Deletion
+    @POST("admin/deleteAccount/{id}/sendOtp")
+    fun requestAccountDeletionOtp(@Path("id") phone: String?): Observable<Response<ResponseBody>>
+
+    @POST("users/delete/{id}")
+    fun deleteAccount(
+        @Path("id") phone: String?,
+        @Body request: AdhaarOtp
+    ): Observable<Response<ResponseBody>>
 
     // User Related Information
     @GET("users/{phone}")

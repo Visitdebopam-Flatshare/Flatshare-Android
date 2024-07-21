@@ -31,7 +31,9 @@ class OtpListener(
                 if (otp.length != 6)
                     return
                 if (activity.intent.getBooleanExtra("aadhar", false))
-                    activity.apiController?.verifyAadhar(otp)
+                    activity.apiController?.verifyAadhaar(otp)
+                else if (activity.intent.getBooleanExtra("delete", false))
+                    activity.apiController?.deleteAccount(otp)
                 else
                     activity.apiController?.login(otp)
             }

@@ -72,17 +72,19 @@
                     <ImageView
                         android:layout_width="@dimen/_13sdp"
                         android:layout_height="@dimen/_13sdp"
-                        android:src="@drawable/ic_search"
-                        app:tint="@color/blue_dark" />
+                        android:layout_marginStart="@dimen/_12sdp"
+                        android:src="@drawable/ic_menu_explore" />
 
                     <EditText
                         android:id="@+id/edt_chat_Search"
                         android:layout_width="match_parent"
+                        android:layout_marginEnd="@dimen/_12sdp"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="@dimen/_10sdp"
                         android:background="@android:color/transparent"
-                        android:fontFamily="@font/font_regular"
+                        android:fontFamily="@font/font_medium"
                         android:hint="Search"
+                        android:textColorHint="@color/grey2"
                         android:imeOptions="actionDone"
                         android:inputType="textCapWords"
                         android:textColor="@color/black"

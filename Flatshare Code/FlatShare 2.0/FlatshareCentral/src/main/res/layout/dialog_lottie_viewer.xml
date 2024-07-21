@@ -13,7 +13,6 @@
         android:layout_margin="@dimen/_30sdp"
         android:visibility="gone"
         app:lottie_autoPlay="false"
-        app:lottie_loop="false"
-        app:lottie_rawRes="@raw/lottie_verify_profile" />
+        app:lottie_loop="false" />
 
 </LinearLayout>

@@ -9,8 +9,6 @@ import com.google.android.flexbox.JustifyContent
 import com.joinflatshare.FlatshareCentral.R
 import com.joinflatshare.customviews.bottomsheet.ModelBottomSheet
 import com.joinflatshare.pojo.flat.DealBreakers
-import com.joinflatshare.pojo.user.DateProperties
-import com.joinflatshare.pojo.user.FlatProperties
 import com.joinflatshare.ui.base.BaseActivity
 
 /**

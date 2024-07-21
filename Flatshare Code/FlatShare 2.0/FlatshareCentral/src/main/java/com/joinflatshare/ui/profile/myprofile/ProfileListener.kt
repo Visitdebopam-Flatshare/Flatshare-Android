@@ -35,14 +35,7 @@ class ProfileListener(
         when (v?.id) {
             viewBind.cardProfileVerified.id -> {
                 val intent = Intent(activity, ProfileVerifyActivity::class.java)
-                CommonMethod.switchActivity(
-                    activity,
-                    intent
-                ) { result ->
-                    if (result?.resultCode == Activity.RESULT_OK) {
-                        activity.setUserData()
-                    }
-                }
+                CommonMethod.switchActivity(activity, intent, false)
             }
 
             viewBind.imgProfileSettings.id -> {

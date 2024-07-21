@@ -121,11 +121,11 @@ public class FlatEditListener implements View.OnClickListener {
             String text = viewBind.txtShowless.getText().toString();
             if (text.equals("Show Less")) {
                 viewBind.txtShowless.setText("Show More");
-                viewBind.imgArrowAmenities.setImageResource(R.drawable.arrow_down_black);
+                viewBind.imgArrowAmenities.setImageResource(R.drawable.arrow_down);
                 dataBind.loadAmenities(true);
             } else {
                 viewBind.txtShowless.setText("Show Less");
-                viewBind.imgArrowAmenities.setImageResource(R.drawable.ic_arrow_up_black);
+                viewBind.imgArrowAmenities.setImageResource(R.drawable.ic_arrow_up);
                 dataBind.loadAmenities(false);
             }
         }

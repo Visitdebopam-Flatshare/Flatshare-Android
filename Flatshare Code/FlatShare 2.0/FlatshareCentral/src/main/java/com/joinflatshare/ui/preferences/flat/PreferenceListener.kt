@@ -6,6 +6,10 @@ import android.content.Intent
 import android.view.View
 import android.widget.DatePicker
 import androidx.core.content.ContextCompat
+import com.google.android.material.datepicker.CalendarConstraints
+import com.google.android.material.datepicker.DateValidatorPointBackward
+import com.google.android.material.datepicker.DateValidatorPointForward
+import com.google.android.material.datepicker.MaterialDatePicker
 import com.joinflatshare.FlatShareApplication
 import com.joinflatshare.FlatshareCentral.R
 import com.joinflatshare.FlatshareCentral.databinding.ActivityPrefFlatBinding
@@ -22,7 +26,9 @@ import com.joinflatshare.utils.mixpanel.MixpanelUtils
 import com.joinflatshare.utils.system.ThemeUtils
 import java.text.DecimalFormat
 import java.text.NumberFormat
+import java.text.SimpleDateFormat
 import java.util.Calendar
+import java.util.Locale
 
 class PreferenceListener(private val activity: PreferenceActivity) : View.OnClickListener {
     private val viewBind: ActivityPrefFlatBinding = activity.viewBind
@@ -62,23 +68,24 @@ class PreferenceListener(private val activity: PreferenceActivity) : View.OnClic
 
             viewBind.includePrefFlat.txtPrefFlatMovein.id -> {
                 val calendar = Calendar.getInstance()
-                val dpd = DatePickerDialog(
-                    activity,
-                    ThemeUtils.getTheme(activity),
-                    { _: DatePicker?, year: Int, monthOfYear: Int, dayOfMonth: Int ->
-                        val format: NumberFormat = DecimalFormat("00")
-                        val dd = format.format(dayOfMonth.toLong())
-                        val mm = format.format((monthOfYear + 1).toLong())
-                        viewBind.includePrefFlat.txtPrefFlatMovein.text = "$dd/$mm/$year"
-                        activity.user?.flatProperties?.moveinDate =
-                            DateUtils.convertToServerFormat(viewBind.includePrefFlat.txtPrefFlatMovein.text.toString())
-                    },
-                    calendar[Calendar.YEAR],
-                    calendar[Calendar.MONTH],
-                    calendar[Calendar.DAY_OF_MONTH]
-                )
-                dpd.datePicker.minDate = calendar.timeInMillis
-                dpd.show()
+                val pickerNowTime = calendar.timeInMillis
+                val constraints = CalendarConstraints.Builder().setStart(pickerNowTime)
+                    .setValidator(DateValidatorPointForward.from(pickerNowTime))
+                var sdf = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault())
+                val dpd =
+                    MaterialDatePicker.Builder.datePicker().setTitleText("Select Move-in Date")
+                        .setSelection(calendar.timeInMillis)
+                        .setTextInputFormat(sdf)
+                        .setTheme(R.style.ThemeDatePicker)
+                        .setCalendarConstraints(constraints.build())
+                        .build()
+                dpd.show(activity.supportFragmentManager, "DOB")
+                dpd.addOnPositiveButtonClickListener { it ->
+                    calendar.timeInMillis = it
+                    viewBind.includePrefFlat.txtPrefFlatMovein.text = sdf.format(calendar.time)
+                    sdf = SimpleDateFormat("yyyy/MM/dd", Locale.getDefault())
+                    activity.user?.flatProperties?.moveinDate = sdf.format(calendar.time)
+                }
             }
 
             viewBind.includePrefFlat.txtPrefFlatPrivateRoom.id -> {

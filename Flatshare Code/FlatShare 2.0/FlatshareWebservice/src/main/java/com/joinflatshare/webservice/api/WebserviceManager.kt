@@ -94,6 +94,25 @@ class WebserviceManager {
         handleApiRequestWithProgress(activity, observable, callback)
     }
 
+    fun sendAccountDeletionOtp(
+        activity: ComponentActivity,
+        phone: String?,
+        callback: OnFlatshareResponseCallBack<Response<ResponseBody>>
+    ) {
+        val observable = ApiManager.getApiInterface().requestAccountDeletionOtp(phone)
+        handleApiRequestWithProgress(activity, observable, callback)
+    }
+
+    fun deleteAccount(
+        activity: ComponentActivity,
+        otp: String,
+        requestBody: AdhaarOtp,
+        callback: OnFlatshareResponseCallBack<Response<ResponseBody>>
+    ) {
+        val observable = ApiManager.getApiInterface().deleteAccount(otp, requestBody)
+        handleApiRequestWithProgress(activity, observable, callback)
+    }
+
     fun getFlatRequests(
         activity: ComponentActivity,
         callback: OnFlatshareResponseCallBack<Response<ResponseBody>>

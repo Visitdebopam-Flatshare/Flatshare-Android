@@ -58,9 +58,6 @@ class ExploreListener(
                     ) { activity.binder.showUser() }
                     return
                 }
-                DialogLottieViewer.loadAnimation(
-                    viewBind.includePagerExplore.lottieExplore, R.raw.lottie_not_interested, null
-                )
                 activity.apiManager.exploreDisLike(
                     false,
                     BaseActivity.TYPE_FHT,
@@ -84,11 +81,6 @@ class ExploreListener(
                     BaseActivity.TYPE_FHT, ChatRequestConstants.CHAT_REQUEST_CONSTANT_FHT,
                     activity.userData[0].data!!.id
                 )
-
-                DialogLottieViewer.loadAnimation(
-                    viewBind.includePagerExplore.lottieExplore, R.raw.lottie_like, null
-                )
-
                 val observable = ApiManager.getApiInterface().addLike(
                     likeUrl, LikeRequest(AppConstants.loggedInUser!!.location.loc.coordinates)
                 )
@@ -111,9 +103,6 @@ class ExploreListener(
                     ) { activity.binder.showUser() }
                     return
                 }
-                DialogLottieViewer.loadAnimation(
-                    viewBind.includePagerExplore.lottieExplore, R.raw.lottie_chat_request, null
-                )
                 WebserviceManager().sendChatRequest(
                     activity,
                     ChatRequestConstants.CHAT_REQUEST_CONSTANT_FHT,

@@ -106,7 +106,9 @@
                 android:layout_width="@dimen/_15sdp"
                 android:layout_height="@dimen/_15sdp"
                 android:layout_marginStart="@dimen/_5sdp"
-                android:layout_marginTop="@dimen/_2sdp" />
+                android:layout_marginTop="@dimen/_2sdp"
+                android:src="@drawable/ic_tick_verified_blue"
+                app:tint="@color/blue_dark" />
         </LinearLayout>
 
         <com.google.android.material.card.MaterialCardView

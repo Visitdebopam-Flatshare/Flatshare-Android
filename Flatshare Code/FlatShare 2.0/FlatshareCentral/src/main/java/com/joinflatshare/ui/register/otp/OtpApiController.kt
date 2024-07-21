@@ -3,6 +3,7 @@ package com.joinflatshare.ui.register.otp
 import android.app.Activity
 import android.content.Intent
 import android.content.IntentFilter
+import android.text.TextUtils
 import androidx.localbroadcastmanager.content.LocalBroadcastManager
 import com.google.gson.Gson
 import com.joinflatshare.FlatShareApplication
@@ -13,9 +14,11 @@ import com.joinflatshare.chat.SendBirdUser
 import com.joinflatshare.constants.AppConstants
 import com.joinflatshare.constants.IntentConstants
 import com.joinflatshare.constants.IntentFilterConstants
+import com.joinflatshare.customviews.alert.AlertDialog
 import com.joinflatshare.db.daos.AppDao
 import com.joinflatshare.db.daos.UserDao
 import com.joinflatshare.fcm.NotificationPermissionHandler
+import com.joinflatshare.interfaces.OnUserFetched
 import com.joinflatshare.pojo.BaseResponse
 import com.joinflatshare.pojo.user.AdhaarOtp
 import com.joinflatshare.pojo.user.UserResponse
@@ -44,7 +47,10 @@ class OtpApiController(private val activity: OtpActivity) {
                 activity.phone,
                 object : OnFlatshareResponseCallBack<Response<ResponseBody>> {
                     override fun onResponseCallBack(response: String) {
-                        val resp = Gson().fromJson(response, com.joinflatshare.pojo.BaseResponse::class.java)
+                        val resp = Gson().fromJson(
+                            response,
+                            com.joinflatshare.pojo.BaseResponse::class.java
+                        )
                         if (resp.success) {
                             activity.showError(false, "An OTP is sent to ${activity.phone}")
                             SmsReader(activity).initialiseRetriever()
@@ -111,41 +117,54 @@ class OtpApiController(private val activity: OtpActivity) {
     }
 
 
-    fun verifyAadhar(adhaarOTP: String) {
+    fun verifyAadhaar(adhaarOTP: String) {
         WebserviceManager().verifyAadhar(
             activity,
             AdhaarOtp(adhaarOTP),
             object : OnFlatshareResponseCallBack<Response<ResponseBody>> {
                 override fun onResponseCallBack(response: String) {
-                    val resp = Gson().fromJson(response, com.joinflatshare.pojo.BaseResponse::class.java)
-                    if (resp.status == 200) {
-                        MixpanelUtils.onButtonClicked("Aadhar OTP Submit")
+                    val resp =
+                        Gson().fromJson(response, com.joinflatshare.pojo.BaseResponse::class.java)
+                    if (TextUtils.equals(resp.message, "Successfully verified.")) {
+                        MixpanelUtils.onButtonClicked("Aadhar OTP Submitted")
                         getProfile()
+                    } else AlertDialog.showAlert(activity, "Failed to verify profile with Aadhaar")
+                }
+            })
+    }
+
+    fun deleteAccount(otp: String) {
+        WebserviceManager().deleteAccount(
+            activity, activity.phone,
+            AdhaarOtp(otp),
+            object : OnFlatshareResponseCallBack<Response<ResponseBody>> {
+                override fun onResponseCallBack(response: String) {
+                    val resp =
+                        Gson().fromJson(response, com.joinflatshare.pojo.BaseResponse::class.java)
+                    if (resp.status == 200) {
+                        MixpanelUtils.onButtonClicked("Account Deleted")
+                        activity.setResult(Activity.RESULT_OK)
+                        CommonMethod.finishActivity(activity)
                     }
                 }
             })
     }
 
     private fun getProfile() {
-        WebserviceManager().getProfile(
-            true,
-            activity,
-            AppConstants.loggedInUser?.id,
-            object : OnFlatshareResponseCallBack<Response<ResponseBody>> {
-                override fun onResponseCallBack(response: String) {
-                    val sendBirdUser = SendBirdUser(activity)
-                    val params = HashMap<String, String>()
-                    params["nickname"] =
-                        AppConstants.loggedInUser?.name?.firstName + " " + AppConstants.loggedInUser?.name?.lastName
-                    params["profile_url"] =
-                        if (AppConstants.loggedInUser?.dp.isNullOrBlank()) "" else AppConstants.loggedInUser?.dp!!
-                    sendBirdUser.updateUser(
-                        params
-                    ) { }
-                    DialogLottieViewer(activity, R.raw.lottie_verify_profile, null)
-                    activity.setResult(Activity.RESULT_OK)
-                    CommonMethod.finishActivity(activity)
-                }
-            })
+        activity.getUser(activity, true, AppConstants.loggedInUser?.id, object : OnUserFetched {
+            override fun userFetched(resp: UserResponse?) {
+                val sendBirdUser = SendBirdUser(activity)
+                val params = HashMap<String, String>()
+                params["nickname"] =
+                    AppConstants.loggedInUser?.name?.firstName + " " + AppConstants.loggedInUser?.name?.lastName
+                params["profile_url"] =
+                    if (AppConstants.loggedInUser?.dp.isNullOrBlank()) "" else AppConstants.loggedInUser?.dp!!
+                sendBirdUser.updateUser(
+                    params
+                ) { }
+                activity.setResult(Activity.RESULT_OK)
+                CommonMethod.finishActivity(activity)
+            }
+        })
     }
 }

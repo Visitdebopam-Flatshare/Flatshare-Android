@@ -45,6 +45,7 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
+            android:orientation="horizontal"
             android:gravity="center">
 
             <ImageView
@@ -54,12 +55,12 @@
 
             <View
                 android:id="@+id/view_menu_chat_circle"
-                android:layout_width="@dimen/_8sdp"
-                android:layout_height="@dimen/_8sdp"
+                android:layout_width="@dimen/_5sdp"
+                android:layout_height="@dimen/_5sdp"
                 android:layout_gravity="center"
-                android:layout_marginStart="@dimen/_12sdp"
                 android:background="@drawable/drawable_button_blue_circle"
-                android:visibility="gone" />
+                android:visibility="visible" />
+
         </LinearLayout>
 
         <LinearLayout

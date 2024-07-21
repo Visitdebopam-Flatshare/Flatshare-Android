@@ -33,11 +33,21 @@ class OtpActivity : RegisterBaseActivity() {
     private fun init() {
         OtpListener(this, viewBind)
         apiController = OtpApiController(this)
+        customiseScreen()
         initReceiver()
         if (AppConstants.isAppLive) {
             apiController!!.sendOtp()
         } else {
             viewBind.edtOtp.setText("236854")
+        }
+    }
+
+    private fun customiseScreen() {
+        if (intent.getBooleanExtra("aadhar", false)) {
+
+        } else if (intent.getBooleanExtra("delete", false)) {
+            viewBind.txtHeader.text = "Verify the deletion code sent to your phone"
+            viewBind.btnOtp.text = "Delete Account"
         }
     }
 

@@ -4,14 +4,24 @@ import android.app.Activity
 import android.content.Intent
 import android.net.Uri
 import android.view.View
+import com.google.gson.Gson
 import com.joinflatshare.FlatshareCentral.databinding.ActivitySettingsBinding
 import com.joinflatshare.constants.AppConstants
+import com.joinflatshare.customviews.alert.AlertDialog
 import com.joinflatshare.customviews.bottomsheet.BottomSheetView
 import com.joinflatshare.customviews.bottomsheet.ModelBottomSheet
+import com.joinflatshare.interfaces.OnUiEventClick
 import com.joinflatshare.interfaces.OnUserFetched
+import com.joinflatshare.pojo.user.AdhaarRequest
 import com.joinflatshare.pojo.user.UserResponse
 import com.joinflatshare.ui.profile.verify.ProfileVerifyActivity
+import com.joinflatshare.ui.register.otp.OtpActivity
 import com.joinflatshare.utils.helper.CommonMethod
+import com.joinflatshare.utils.mixpanel.MixpanelUtils
+import com.joinflatshare.webservice.api.WebserviceManager
+import com.joinflatshare.webservice.api.interfaces.OnFlatshareResponseCallBack
+import okhttp3.ResponseBody
+import retrofit2.Response
 
 /**
  * Created by debopam on 01/07/24
@@ -30,6 +40,7 @@ class SettingsListener(
         viewBind.txtProfilePrivacy.setOnClickListener(this)
         viewBind.txtProfileTerms.setOnClickListener(this)
         viewBind.cardProfileLogout.setOnClickListener(this)
+        viewBind.cardProfileDelete.setOnClickListener(this)
     }
 
     override fun onClick(v: View?) {
@@ -93,6 +104,46 @@ class SettingsListener(
             viewBind.cardProfileLogout.id -> {
                 CommonMethod.logout(activity)
             }
+
+            viewBind.cardProfileDelete.id -> {
+                AlertDialog.showAlert(
+                    activity,
+                    "Are you sure you want to\ndelete your account?",
+                    "After deleting, this account and your saved flatshare details will be lost.",
+                    "Yes, Proceed",
+                    "Cancel"
+                ) { _, requestCode ->
+                    if (requestCode == 1) {
+                        sendAccountDeletionOTP()
+                    }
+                }
+            }
         }
+    }
+
+    private fun sendAccountDeletionOTP() {
+        WebserviceManager().sendAccountDeletionOtp(activity, AppConstants.loggedInUser?.id,
+            object : OnFlatshareResponseCallBack<Response<ResponseBody>> {
+                override fun onResponseCallBack(response: String) {
+                    val resp = Gson().fromJson(
+                        response,
+                        com.joinflatshare.pojo.BaseResponse::class.java
+                    )
+                    if (resp.success) {
+                        MixpanelUtils.onButtonClicked("Account Delete OTP")
+                        val intent = Intent(activity, OtpActivity::class.java)
+                        intent.putExtra("phone", AppConstants.loggedInUser?.id)
+                        intent.putExtra("delete", true)
+                        CommonMethod.switchActivity(
+                            activity,
+                            intent
+                        ) { result ->
+                            if (result?.resultCode == Activity.RESULT_OK) {
+                                CommonMethod.logout(activity)
+                            }
+                        }
+                    }
+                }
+            })
     }
 }

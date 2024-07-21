@@ -1,5 +1,6 @@
 package com.joinflatshare.pojo.user
 
+import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
 import com.joinflatshare.pojo.config.RentRange
 import com.joinflatshare.pojo.flat.DealBreakers
@@ -76,14 +77,8 @@ data class User(
     @field:SerializedName("fsCoins")
     var fsCoins: Int = 0,
 
-    @field:SerializedName("hangout")
-    var hangout: ModelLocation? = ModelLocation(),
-
     @field:SerializedName("gender")
     var gender: String = "",
-
-    @field:SerializedName("website")
-    var website: String = "",
 
     @field:SerializedName("id")
     var id: String = "",
@@ -103,6 +98,7 @@ data class User(
     @field:SerializedName("invites")
     var invites: Int = 0,
 
+    @Transient
     @field:SerializedName("completedDetails")
     val completed: CompletedDetails?=null,
 
@@ -118,14 +114,8 @@ data class User(
     @field:SerializedName("flatProperties")
     val flatProperties: FlatProperties = FlatProperties(),
 
-    @field:SerializedName("dateProperties")
-    var dateProperties: DateProperties = DateProperties(),
-
     @field:SerializedName("images")
     var images: ArrayList<String> = ArrayList(),
-
-    @field:SerializedName("createdAt")
-    val createdAt: String = "",
 
     @field:SerializedName("deviceToken")
     var deviceToken: String = ""
@@ -135,31 +125,6 @@ data class IsFlatSearch(
 
     @field:SerializedName("value")
     var value: Boolean = false
-) : Serializable
-
-data class IsDateSearch(
-    @field:SerializedName("value")
-    var value: Boolean = false
-) : Serializable
-
-data class DateProperties(
-    @field:SerializedName("gender")
-    var gender: String? = null,
-
-    @field:SerializedName("dealBreakers")
-    var dealBreakers: DealBreakers? = null,
-
-    @field:SerializedName("isVerifiedOnly")
-    var isVerifiedOnly: Boolean = false,
-
-    @field:SerializedName("dateType")
-    var dateType: Int = 4,
-
-    @field:SerializedName("activities")
-    var activities: ArrayList<String> = ArrayList(),
-
-    @field:SerializedName("plans")
-    var plans: ArrayList<String> = ArrayList()
 ) : Serializable
 
 data class Name(
