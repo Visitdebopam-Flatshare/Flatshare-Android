@@ -14,7 +14,6 @@ import com.joinflatshare.constants.AppConstants
 import com.joinflatshare.constants.IntentConstants
 import com.joinflatshare.constants.IntentFilterConstants
 import com.joinflatshare.fcm.FcmNavigationUtils
-import com.joinflatshare.pojo.flat.MyFlatData
 import com.joinflatshare.services.MutualContactHandler
 import com.joinflatshare.ui.base.BaseActivity
 import com.joinflatshare.ui.preferences.flat.PreferenceActivity
@@ -28,7 +27,6 @@ class ExploreActivity : BaseActivity() {
     lateinit var binder: ExploreBinder
     var apiController: ExploreApiController? = null
 
-    @Deprecated("Removed")
     val userData = ArrayList<com.joinflatshare.pojo.explore.UserRecommendationItem>()
 
     override fun onCreate(savedInstanceState: Bundle?) {

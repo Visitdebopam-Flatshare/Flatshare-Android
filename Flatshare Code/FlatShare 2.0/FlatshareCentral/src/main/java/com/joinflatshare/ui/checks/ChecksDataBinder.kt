@@ -7,6 +7,7 @@ import com.google.gson.Gson
 import com.joinflatshare.FlatShareApplication
 import com.joinflatshare.FlatshareCentral.R
 import com.joinflatshare.FlatshareCentral.databinding.ActivityCheckListBinding
+import com.joinflatshare.constants.ChatRequestConstants
 import com.joinflatshare.customviews.PaginationScrollListener
 import com.joinflatshare.pojo.explore.RecommendationResponse
 import com.joinflatshare.pojo.explore.UserRecommendationItem
@@ -138,7 +139,7 @@ class ChecksDataBinder(
                 hasMoreData = false
                 RequestHandler.getFHTRequests(activity) {
                     val dao = FlatShareApplication.getDbInstance().requestDao()
-                    val data = dao.getChatRequests(BaseActivity.TYPE_FHT)
+                    val data = dao.getChatRequests(ChatRequestConstants.CHAT_REQUEST_CONSTANT_FHT)
                     if (data.isEmpty()) {
                         hasMoreData = false
                         viewBind.pullToRefresh.visibility = View.GONE

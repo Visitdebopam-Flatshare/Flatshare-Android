@@ -124,7 +124,7 @@ public class FlatOptionActivity implements OnUiEventClick {
                     view = ((MyFlatActivity) activity).viewBind.txtFlatmateLanguage;
                 }
                 if (view != null) {
-                    InterestsView interestsView = new InterestsView(activity, InterestsView.VIEW_TYPE_LANGUAGES, view);
+                    /*InterestsView interestsView = new InterestsView(activity, InterestsView.VIEW_TYPE_LANGUAGES, view);
                     interestsView.assignCallback((intent, requestCode) -> {
                         ArrayList<String> list = (ArrayList<String>) intent.getSerializableExtra("interestlist");
                         dialogFlatOptions.getFlat().getFlatProperties().setLanguages(list);
@@ -136,7 +136,7 @@ public class FlatOptionActivity implements OnUiEventClick {
                             }
                         });
                     });
-                    interestsView.show();
+                    interestsView.show();*/
                 }
                 break;
             case FlatOptionConstant.VIEW_CONSTANT_INTEREST:
@@ -145,7 +145,7 @@ public class FlatOptionActivity implements OnUiEventClick {
                     view = ((MyFlatActivity) activity).viewBind.txtFlatmateInterest;
                 }
                 if (view != null) {
-                    InterestsView interestsView = new InterestsView(activity, InterestsView.VIEW_TYPE_INTERESTS, view);
+                    /*InterestsView interestsView = new InterestsView(activity, InterestsView.VIEW_TYPE_INTERESTS, view);
                     interestsView.assignCallback((intent, requestCode) -> {
                         ArrayList<String> list = (ArrayList<String>) intent.getSerializableExtra("interestlist");
                         dialogFlatOptions.getFlat().getFlatProperties().setInterests(list);
@@ -157,7 +157,7 @@ public class FlatOptionActivity implements OnUiEventClick {
                             }
                         });
                     });
-                    interestsView.show();
+                    interestsView.show();*/
                 }
                 break;
 

@@ -22,7 +22,6 @@ import com.joinflatshare.chat.metadata.MessageMetaData
 import com.joinflatshare.constants.ChatRequestConstants
 import com.joinflatshare.constants.IntentFilterConstants
 import com.joinflatshare.constants.NotificationConstants
-import com.joinflatshare.constants.NotificationConstants.NOTIFICATION_TYPE_INVITE_FRIEND
 import com.joinflatshare.constants.NotificationConstants.NOTIFICATION_TYPE_SENDBIRD
 import com.joinflatshare.constants.SendBirdConstants
 import com.joinflatshare.db.daos.AppDao
@@ -222,8 +221,6 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
             NotificationConstants.NOTIFICATION_TYPE_INVITE_FLAT_MEMBER ->
                 intent.putExtra("requestType", ChatRequestConstants.FLAT_REQUEST_CONSTANT)
 
-            NOTIFICATION_TYPE_INVITE_FRIEND ->
-                intent.putExtra("requestType", ChatRequestConstants.FRIEND_REQUEST_CONSTANT)
         }
         if (intent.hasExtra("requestType"))
             LocalBroadcastManager.getInstance(context).sendBroadcast(intent)

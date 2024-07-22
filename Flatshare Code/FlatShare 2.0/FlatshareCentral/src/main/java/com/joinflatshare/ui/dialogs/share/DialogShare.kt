@@ -218,7 +218,7 @@ class DialogShare(
                 val loc = user?.flatProperties?.preferredLocation!![0].name
                 val moveInDate = DateUtils.convertToAppFormat(user.flatProperties.moveinDate)
 
-                userShareText = "$name is looking for $roomType Room in $loc by $moveInDate\n"
+                userShareText = "$name is looking for $roomType in $loc by $moveInDate\n"
 
                 if (!user.flatProperties.interests.isNullOrEmpty()) {
                     var interests = TextUtils.join(

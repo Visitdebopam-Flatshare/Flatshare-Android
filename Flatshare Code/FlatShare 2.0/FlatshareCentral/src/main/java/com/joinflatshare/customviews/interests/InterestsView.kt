@@ -35,24 +35,6 @@ class InterestsView(private val activity: BaseActivity, private val viewType: St
         this.recyclerView = recyclerView
     }
 
-    @Deprecated("To be removed")
-    constructor(
-        activity: BaseActivity,
-        recyclerView: RecyclerView, viewType: String
-    ) : this(
-        activity,
-        viewType
-    ) {
-    }
-
-    @Deprecated("To be removed")
-    constructor(activity: BaseActivity, viewType: String, textView: TextView) : this(
-        activity,
-        viewType
-    ) {
-        compareSelectedContent(textView)
-    }
-
     companion object {
         const val VIEW_TYPE_INTERESTS = "INTERESTS"
         const val VIEW_TYPE_LANGUAGES = "LANGUAGES"
@@ -60,12 +42,6 @@ class InterestsView(private val activity: BaseActivity, private val viewType: St
 
     fun assignCallback(callback: OnUiEventClick) {
         this.callback = callback
-    }
-
-    fun setContentValues(content: ArrayList<String>?) {
-        this.content.clear()
-        if (content != null)
-            this.content.addAll(content)
     }
 
     fun show() {
@@ -113,35 +89,6 @@ class InterestsView(private val activity: BaseActivity, private val viewType: St
                 return
             }
 
-        }
-    }
-
-    fun calculateMatchingContent(compareContent: ArrayList<String>?) {
-        this.matchedContent.clear()
-        if (compareContent != null) {
-            for (item in content) {
-                var found = false
-                for (compareItem in compareContent) {
-                    if (compareItem.equals(item)) {
-                        found = true
-                        break
-                    }
-                }
-                if (found) matchedContent.add(item)
-            }
-        }
-    }
-
-    private fun compareSelectedContent(textView: TextView) {
-        this.matchedContent.clear()
-        if (textView.text.toString().isNotEmpty()) {
-            val text = textView.text.toString()
-            val split = text.split(", ").toTypedArray()
-            if (split.isNotEmpty()) {
-                for (txt in split) {
-                    matchedContent.add(txt)
-                }
-            }
         }
     }
 }

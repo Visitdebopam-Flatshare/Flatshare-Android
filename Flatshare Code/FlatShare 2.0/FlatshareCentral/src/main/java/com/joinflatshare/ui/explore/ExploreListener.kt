@@ -12,6 +12,7 @@ import com.joinflatshare.ui.base.BaseActivity
 import com.joinflatshare.ui.bottomsheet.IncompleteProfileBottomSheet
 import com.joinflatshare.ui.preferences.flat.PreferenceActivity
 import com.joinflatshare.utils.helper.CommonMethod
+import com.joinflatshare.utils.mixpanel.MixpanelUtils
 import com.joinflatshare.webservice.api.ApiManager
 import com.joinflatshare.webservice.api.WebserviceManager
 import com.joinflatshare.webservice.api.interfaces.OnFlatshareResponseCallBack
@@ -45,7 +46,7 @@ class ExploreListener(
 
             viewBind.includePagerExplore.imgCross.id -> {
                 val completion = AppConstants.loggedInUser?.completed?.isConsideredCompleted
-                if (completion==false) {
+                if (completion == false) {
                     IncompleteProfileBottomSheet(
                         activity
                     ) { activity.binder.showUser() }
@@ -57,6 +58,7 @@ class ExploreListener(
                     ChatRequestConstants.CHAT_REQUEST_CONSTANT_FHT,
                     activity.userData[0].data!!.id
                 ) { response ->
+                    MixpanelUtils.onButtonClicked("Feed Dislike")
                     activity.userData.removeAt(0)
                     activity.binder.showUser()
                 }
@@ -64,7 +66,7 @@ class ExploreListener(
 
             viewBind.includePagerExplore.imgCheck.id -> {
                 val completion = AppConstants.loggedInUser?.completed?.isConsideredCompleted
-                if (completion==false) {
+                if (completion == false) {
                     IncompleteProfileBottomSheet(
                         activity
                     ) { activity.binder.showUser() }
@@ -82,6 +84,7 @@ class ExploreListener(
                     observable,
                     object : OnFlatshareResponseCallBack<Response<ResponseBody>> {
                         override fun onResponseCallBack(response: String) {
+                            MixpanelUtils.onButtonClicked("Feed Check")
                             activity.userData.removeAt(0)
                             activity.binder.showUser()
                         }
@@ -90,7 +93,7 @@ class ExploreListener(
 
             viewBind.includePagerExplore.imgSuperCheck.id -> {
                 val completion = AppConstants.loggedInUser?.completed?.isConsideredCompleted
-                if (completion==false) {
+                if (completion == false) {
                     IncompleteProfileBottomSheet(
                         activity
                     ) { activity.binder.showUser() }
@@ -102,6 +105,7 @@ class ExploreListener(
                     activity.userData[0].data!!.id,
                     object : OnFlatshareResponseCallBack<Response<ResponseBody>> {
                         override fun onResponseCallBack(response: String) {
+                            MixpanelUtils.onButtonClicked("Feed SuperCheck")
                             activity.userData.removeAt(0)
                             activity.binder.showUser()
                         }

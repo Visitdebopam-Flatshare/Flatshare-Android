@@ -19,12 +19,6 @@ data class UserResponse(
     @field:SerializedName("status")
     var status: Int = 0,
 
-    @field:SerializedName("isLiked")
-    var isLiked: Boolean = false,
-
-    @field:SerializedName("distance")
-    var distance: Double = 0.0,
-
     val token: String = ""
 ) : Serializable
 
@@ -98,7 +92,7 @@ data class User(
     @field:SerializedName("invites")
     var invites: Int = 0,
 
-    @Transient
+    @Expose(serialize = false)
     @field:SerializedName("completedDetails")
     val completed: CompletedDetails?=null,
 

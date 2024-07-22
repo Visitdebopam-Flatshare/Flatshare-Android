@@ -1,5 +1,6 @@
 package com.joinflatshare.ui.profile.edit
 
+import android.Manifest
 import android.app.Activity
 import android.content.Intent
 import android.text.Editable
@@ -11,6 +12,7 @@ import com.debopam.progressdialog.DialogCustomProgress
 import com.joinflatshare.FlatShareApplication
 import com.joinflatshare.FlatshareCentral.R
 import com.joinflatshare.FlatshareCentral.databinding.ActivityProfileEditBinding
+import com.joinflatshare.constants.RequestCodeConstants.REQUEST_CODE_GALLERY
 import com.joinflatshare.constants.RequestCodeConstants.REQUEST_CODE_LOCATION
 import com.joinflatshare.customviews.alert.AlertDialog
 import com.joinflatshare.interfaces.OnUiEventClick
@@ -25,6 +27,9 @@ import com.joinflatshare.utils.amazonaws.AmazonDeleteFile
 import com.joinflatshare.utils.amazonaws.AmazonUploadFile
 import com.joinflatshare.utils.google.AutoCompletePlaces.getPlaces
 import com.joinflatshare.utils.helper.CommonMethod
+import com.joinflatshare.utils.helper.CommonMethod.makeToast
+import com.joinflatshare.utils.helper.ImageHelper
+import com.joinflatshare.utils.permission.PermissionUtil
 import com.joinflatshare.utils.system.ConnectivityListener
 import java.io.File
 
@@ -39,6 +44,7 @@ class ProfileEditListener(
         activity.baseViewBinder.btn_back.setOnClickListener(this)
         viewBind.llProfileInterests.setOnClickListener(this)
         viewBind.llProfileLanguages.setOnClickListener(this)
+        viewBind.cardProfilePhoto.setOnClickListener(this)
         for (i in dataBinder.edt_profile.indices) {
             val position: Int = i
             dataBinder.edt_profile[i].setOnClickListener {
@@ -115,6 +121,16 @@ class ProfileEditListener(
                     if (it?.resultCode == Activity.RESULT_OK) {
                         viewBind.txtProfileLanguages.text = it.data?.getStringExtra("language")
                     }
+                }
+            }
+
+            viewBind.cardProfilePhoto.id -> {
+                PermissionUtil.validatePermission(
+                    activity,
+                    Manifest.permission.READ_EXTERNAL_STORAGE
+                ) { granted: Boolean ->
+                    if (granted) ImageHelper.pickImageFromGallery(activity, 1f, 1f,REQUEST_CODE_GALLERY)
+                    else makeToast("Permission not provided")
                 }
             }
         }

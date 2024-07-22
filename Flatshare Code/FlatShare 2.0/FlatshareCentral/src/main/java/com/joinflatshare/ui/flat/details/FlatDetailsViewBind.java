@@ -136,7 +136,7 @@ public class FlatDetailsViewBind {
         } else {
             viewBind.llInterestHolder.setVisibility(View.VISIBLE);
             FlatProperties properties = activity.flatResponse.getData().getFlatProperties();
-            InterestsView interestsView = new InterestsView(activity, viewBind.rvProfileInterests,
+            /*InterestsView interestsView = new InterestsView(activity, viewBind.rvProfileInterests,
                     InterestsView.VIEW_TYPE_INTERESTS);
             interestsView.setContentValues(properties.getInterests());
             try {
@@ -147,7 +147,7 @@ public class FlatDetailsViewBind {
             } catch (Exception ignored) {
 
             }
-            interestsView.show();
+            interestsView.show();*/
         }
     }
 
@@ -158,7 +158,7 @@ public class FlatDetailsViewBind {
         } else {
             viewBind.llLanguageHolder.setVisibility(View.VISIBLE);
             FlatProperties properties = activity.flatResponse.getData().getFlatProperties();
-            InterestsView interestsView = new InterestsView(activity, viewBind.rvProfileLanguage,
+            /*InterestsView interestsView = new InterestsView(activity, viewBind.rvProfileLanguage,
                     InterestsView.VIEW_TYPE_LANGUAGES);
             interestsView.setContentValues(properties.getLanguages());
             try {
@@ -169,7 +169,7 @@ public class FlatDetailsViewBind {
             } catch (Exception ignored) {
 
             }
-            interestsView.show();
+            interestsView.show();*/
         }
     }
 

@@ -12,13 +12,15 @@ import com.joinflatshare.pojo.BaseResponse
 import com.joinflatshare.pojo.explore.UserRecommendationItem
 import com.joinflatshare.pojo.user.User
 import com.joinflatshare.ui.base.BaseActivity
+import com.joinflatshare.ui.bottomsheet.IncompleteProfileBottomSheet
+import com.joinflatshare.ui.bottomsheet.MatchBottomSheet
 import com.joinflatshare.ui.checks.ChecksActivity
-import com.joinflatshare.ui.dialogs.DialogConnection
 import com.joinflatshare.ui.explore.ExploreActivity
 import com.joinflatshare.ui.profile.details.ProfileDetailsActivity
 import com.joinflatshare.utils.helper.CommonMethod
 import com.joinflatshare.utils.helper.DistanceCalculator
 import com.joinflatshare.utils.helper.ImageHelper
+import com.joinflatshare.utils.mixpanel.MixpanelUtils
 import com.joinflatshare.webservice.api.WebserviceManager
 import com.joinflatshare.webservice.api.interfaces.OnFlatshareResponseCallBack
 import okhttp3.ResponseBody
@@ -121,6 +123,7 @@ class AdapterUserHolder {
                         user.id,
                         object : OnFlatshareResponseCallBack<Response<ResponseBody>> {
                             override fun onResponseCallBack(response: String) {
+                                MixpanelUtils.onButtonClicked("Send SuperCheck")
                                 details.details.chatRequestSent = true
                                 bindUser(activity, details, position, holder)
                             }
@@ -134,6 +137,13 @@ class AdapterUserHolder {
                 // TODO implement block
             }
             holder.imgReject.setOnClickListener {
+                val completion = AppConstants.loggedInUser?.completed?.isConsideredCompleted
+                if (completion == false) {
+                    IncompleteProfileBottomSheet(
+                        activity, null
+                    )
+                    return@setOnClickListener
+                }
                 WebserviceManager().sendChatRequestResponse(
                     activity,
                     false,
@@ -141,11 +151,23 @@ class AdapterUserHolder {
                     user.id,
                     object : OnFlatshareResponseCallBack<Response<ResponseBody>> {
                         override fun onResponseCallBack(response: String) {
+                            MixpanelUtils.onButtonClicked("Check Rejected")
                             activity.dataBinder.adapter.removeItem(position)
                         }
                     })
             }
             holder.imgAccept.setOnClickListener {
+                val completion = AppConstants.loggedInUser?.completed?.isConsideredCompleted
+                if (completion == false) {
+                    IncompleteProfileBottomSheet(
+                        activity, null
+                    )
+                    return@setOnClickListener
+                }
+                if (!AppConstants.isAppLive) {
+                    showConnectionMatch(BaseActivity.TYPE_FHT, activity, user)
+                    return@setOnClickListener
+                }
                 WebserviceManager().sendChatRequestResponse(
                     activity,
                     true,
@@ -153,10 +175,12 @@ class AdapterUserHolder {
                     user.id,
                     object : OnFlatshareResponseCallBack<Response<ResponseBody>> {
                         override fun onResponseCallBack(response: String) {
+                            MixpanelUtils.onButtonClicked("Check Accepted")
                             val resp: BaseResponse? =
                                 Gson().fromJson(response, BaseResponse::class.java)
                             if (resp?.matched == true) {
-                                // TODO show match popup
+                                MixpanelUtils.onMatched(user.id, BaseActivity.TYPE_FHT)
+                                showConnectionMatch(BaseActivity.TYPE_FHT, activity, user)
                             }
                             activity.dataBinder.adapter.removeItem(position)
                         }
@@ -168,43 +192,10 @@ class AdapterUserHolder {
     fun showConnectionMatch(
         searchType: String,
         activity: BaseActivity,
-        user: User,
-        flatId: String?
+        user: User
     ) {
         if (searchType == BaseActivity.TYPE_FHT) {
-            DialogConnection(
-                activity,
-                AppConstants.loggedInUser, null, user,
-                ChatRequestConstants.CHAT_REQUEST_CONSTANT_FHT
-            )
-        } else if (searchType == BaseActivity.TYPE_DATE_CASUAL
-            || searchType == BaseActivity.TYPE_DATE_LONG_TERM
-            || searchType == BaseActivity.TYPE_DATE_ACTIVITY_PARTNERS
-        ) {
-            var dateType = ""
-            when (searchType) {
-                BaseActivity.TYPE_DATE_CASUAL -> dateType =
-                    "" + ChatRequestConstants.CHAT_REQUEST_CONSTANT_DATE_CASUAL
-
-                BaseActivity.TYPE_DATE_LONG_TERM -> dateType =
-                    "" + ChatRequestConstants.CHAT_REQUEST_CONSTANT_DATE_LONG_TERM
-
-                BaseActivity.TYPE_DATE_ACTIVITY_PARTNERS -> dateType =
-                    "" + ChatRequestConstants.CHAT_REQUEST_CONSTANT_DATE_ACTIVITY_PARTNERS
-
-            }
-            DialogConnection(
-                activity,
-                AppConstants.loggedInUser, null, user,
-                dateType
-            )
-        } else {
-            DialogConnection(
-                activity,
-                user,
-                flatId, null,
-                ChatRequestConstants.CHAT_REQUEST_CONSTANT_F2U
-            )
+            MatchBottomSheet(activity, AppConstants.loggedInUser, user)
         }
     }
 }

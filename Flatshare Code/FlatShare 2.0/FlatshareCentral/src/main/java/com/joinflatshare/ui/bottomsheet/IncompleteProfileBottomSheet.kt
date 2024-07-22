@@ -14,7 +14,7 @@ import com.joinflatshare.utils.helper.CommonMethod
  */
 class IncompleteProfileBottomSheet(
     private val activity: ApplicationBaseActivity,
-    private val callback: OnStringFetched
+    private val callback: OnStringFetched?
 ) {
     private lateinit var viewBind: DialogBottomsheetIncompleteProfileBinding
     private lateinit var dialog: BottomSheetDialog
@@ -42,7 +42,7 @@ class IncompleteProfileBottomSheet(
                 intent
             ) { result ->
                 if (result?.resultCode == Activity.RESULT_OK) {
-                    callback.onFetched("1")
+                    callback?.onFetched("1")
                     dialog.dismiss()
                 }
             }

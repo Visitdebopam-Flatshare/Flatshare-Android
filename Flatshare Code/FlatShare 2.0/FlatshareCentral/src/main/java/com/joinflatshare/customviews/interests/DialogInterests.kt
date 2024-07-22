@@ -20,13 +20,6 @@ class DialogInterests(
 ) {
     lateinit var viewType: String
 
-    constructor(
-        activity: ApplicationBaseActivity, viewType: String,
-        callback: OnUiEventClick
-    ) : this(activity, callback) {
-        this.viewType = viewType
-    }
-
     var viewBind: DialogInterestsBinding
     var interestsAdapter: InterestsAdapter? = null
     val dialog: AlertDialog
@@ -73,9 +66,6 @@ class DialogInterests(
 
     private fun setAdapter() {
         viewBind.rvInterests.layoutManager = GridLayoutManager(activity, 2)
-        interestsAdapter = InterestsAdapter(
-            activity, this, viewBind.rvInterests, viewType, adapterItems, selectedItems
-        )
         if (viewBind.rvInterests.itemDecorationCount < 1) {
             val spanCount = 2
             val spacing = 25

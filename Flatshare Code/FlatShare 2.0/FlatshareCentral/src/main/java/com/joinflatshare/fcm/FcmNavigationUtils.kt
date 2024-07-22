@@ -5,8 +5,6 @@ import com.joinflatshare.constants.NotificationConstants
 import com.joinflatshare.ui.base.BaseActivity
 import com.joinflatshare.ui.chat.list.ChatListActivity
 import com.joinflatshare.ui.checks.ChecksActivity
-import com.joinflatshare.ui.checks.request_chat.ChatRequestActivity
-import com.joinflatshare.ui.checks.request_friend.FriendRequestActivity
 import com.joinflatshare.ui.checks.request_invitation.InvitationRequestActivity
 import com.joinflatshare.ui.flat.edit.FlatEditActivity
 import com.joinflatshare.ui.profile.edit.ProfileEditActivity
@@ -24,31 +22,10 @@ class FcmNavigationUtils(activity: BaseActivity, intent: Intent) {
                     intnt = Intent(activity, InvitationRequestActivity::class.java)
                 }
 
-                NotificationConstants.NOTIFICATION_TYPE_INVITE_FRIEND -> {
-                    intnt = Intent(activity, FriendRequestActivity::class.java)
-                }
-
                 NotificationConstants.NOTIFICATION_TYPE_NO_NAVIGATION,
                 NotificationConstants.NOTIFICATION_TYPE_GENERAL_USER,
                 NotificationConstants.NOTIFICATION_TYPE_GENERAL_FLAT -> {
                     intnt = Intent(activity, ChecksActivity::class.java)
-                }
-
-                NotificationConstants.NOTIFICATION_TYPE_CONNECTION_F2U,
-                NotificationConstants.NOTIFICATION_TYPE_CONNECTION_U2F,
-                NotificationConstants.NOTIFICATION_TYPE_CHAT_SFS_F2U,
-                NotificationConstants.NOTIFICATION_TYPE_CHAT_FMS_U2F,
-                NotificationConstants.NOTIFICATION_TYPE_CONNECTION_FHT,
-                NotificationConstants.NOTIFICATION_TYPE_CHAT_FHT_U2U,
-                NotificationConstants.NOTIFICAITON_TYPE_DATING_CASUAL,
-                NotificationConstants.NOTIFICATION_TYPE_DATING_CSU_U2U,
-                NotificationConstants.NOTIFICAITON_TYPE_DATING_LONG_TERM,
-                NotificationConstants.NOTIFICATION_TYPE_DATING_LTR_U2U,
-                NotificationConstants.NOTIFICAITON_TYPE_DATING_ACTIVITY_PARTNERS,
-                NotificationConstants.NOTIFICATION_TYPE_DATING_ACT_U2U,
-                -> {
-                    intnt = Intent(activity, ChatRequestActivity::class.java)
-                    intnt.putExtra("type", intent.getStringExtra("type"))
                 }
                 /*NotificationConstants.NOTIFICATION_TYPE_CONVERSATION -> {
                     val channel = SendBirdFlatChannel(activity)

@@ -28,6 +28,7 @@ import com.bumptech.glide.signature.ObjectKey;
 import com.debopam.ImagePicker;
 import com.joinflatshare.FlatShareApplication;
 import com.joinflatshare.FlatshareCentral.R;
+import com.joinflatshare.constants.AppConstants;
 import com.joinflatshare.constants.UrlConstants;
 import com.joinflatshare.db.daos.UserDao;
 import com.joinflatshare.interfaces.OnStringFetched;
@@ -35,6 +36,7 @@ import com.joinflatshare.pojo.notification.NotificationItem;
 import com.joinflatshare.pojo.requests.Requester;
 import com.joinflatshare.pojo.user.User;
 import com.joinflatshare.ui.base.BaseActivity;
+import com.joinflatshare.utils.amazonaws.AmazonDeleteFile;
 import com.joinflatshare.utils.logger.Logger;
 import com.stfalcon.imageviewer.StfalconImageViewer;
 
@@ -120,7 +122,7 @@ public class ImageHelper {
             CommonMethod.INSTANCE.makeLog("Image URL", url);
             Glide.with(context).clear(img_profile);
             RequestOptions options = new RequestOptions().diskCacheStrategy(DiskCacheStrategy.NONE).skipMemoryCache(true).signature(new ObjectKey(System.currentTimeMillis()));
-                Glide.with(context).load(url).diskCacheStrategy(DiskCacheStrategy.RESOURCE).apply(options).listener(new RequestListener<Drawable>() {
+            Glide.with(context).load(url).diskCacheStrategy(DiskCacheStrategy.RESOURCE).apply(options).listener(new RequestListener<Drawable>() {
                 @Override
                 public boolean onLoadFailed(@androidx.annotation.Nullable GlideException e, @androidx.annotation.Nullable Object model, @NonNull Target<Drawable> target, boolean isFirstResource) {
                     char fname = user.getName().getFirstName().charAt(0);
@@ -271,5 +273,11 @@ public class ImageHelper {
             exception.printStackTrace();
         }
         return tempFile;
+    }
+
+    public static void deleteOldProfileImage() {
+        assert AppConstants.loggedInUser != null;
+        String oldDp = AppConstants.loggedInUser.getDp();
+        if (oldDp!=null && !oldDp.isEmpty()) new AmazonDeleteFile().delete(oldDp, null);
     }
 }

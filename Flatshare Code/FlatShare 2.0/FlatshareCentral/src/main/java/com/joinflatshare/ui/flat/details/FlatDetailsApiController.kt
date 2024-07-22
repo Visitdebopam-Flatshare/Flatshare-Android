@@ -20,7 +20,6 @@ import com.joinflatshare.pojo.flat.FlatResponse
 import com.joinflatshare.pojo.invite.InvitedRequest
 import com.joinflatshare.pojo.likes.LikeRequest
 import com.joinflatshare.ui.base.BaseActivity
-import com.joinflatshare.ui.dialogs.DialogConnection
 import com.joinflatshare.ui.dialogs.DialogLottieViewer
 import com.joinflatshare.ui.invite.InviteActivity
 import com.joinflatshare.utils.mixpanel.MixpanelUtils.onMatched
@@ -217,12 +216,12 @@ class FlatDetailsApiController(
     }
 
     private fun showConnectionMatch() {
-        DialogConnection(
+        /*DialogConnection(
             activity,
             AppConstants.loggedInUser,
             activity.flatResponse.data!!.mongoId, null,
             activity.chatConnectionForDialogMatch
-        )
+        )*/
     }
 
     private fun isRestricted(response: Any?): Boolean {

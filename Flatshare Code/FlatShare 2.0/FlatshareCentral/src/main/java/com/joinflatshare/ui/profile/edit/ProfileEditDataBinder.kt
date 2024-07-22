@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.GridLayoutManager
 import com.joinflatshare.FlatshareCentral.databinding.ActivityProfileEditBinding
 import com.joinflatshare.constants.AppConstants
 import com.joinflatshare.customviews.GridSpacingItemDecoration
+import com.joinflatshare.utils.helper.ImageHelper
 
 class ProfileEditDataBinder(
     private val activity: ProfileEditActivity,
@@ -76,8 +77,18 @@ class ProfileEditDataBinder(
 
 
         // Image
+        loadProfileImage()
 //        loadImages()
 //        viewBind.rvProfileInfoImage.setAdapter(adapter)
+    }
+
+    private fun loadProfileImage() {
+        ImageHelper.loadProfileImage(
+            activity,
+            viewBind.imgPhoto,
+            viewBind.txtPhoto,
+            AppConstants.loggedInUser
+        )
     }
 
     private fun loadImages() {

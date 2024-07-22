@@ -29,6 +29,7 @@ class ProfileDetailsDataBinder(
                 userData?.dp
             ) { _, requestCode ->
                 if (requestCode == AmazonUploadFile.REQUEST_CODE_SUCCESS) {
+                    viewBinding.cardProfilePic.visibility = View.VISIBLE
                     viewBinding.cardProfilePic.viewTreeObserver.addOnGlobalLayoutListener(object :
                         OnGlobalLayoutListener {
                         override fun onGlobalLayout() {
@@ -44,10 +45,9 @@ class ProfileDetailsDataBinder(
                                 viewBinding.imgProfilePic,
                                 UrlConstants.IMAGE_URL + userData?.dp
                             )
-                            viewBinding.cardProfilePic.visibility = View.GONE
                         }
                     })
-                }
+                } else viewBinding.cardProfilePic.visibility = View.GONE
             }
         }
 

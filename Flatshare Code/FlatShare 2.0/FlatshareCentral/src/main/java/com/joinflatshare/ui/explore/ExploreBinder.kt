@@ -1,6 +1,7 @@
 package com.joinflatshare.ui.explore
 
 import android.view.View
+import android.view.animation.TranslateAnimation
 import com.joinflatshare.FlatshareCentral.R
 import com.joinflatshare.ui.explore.holder.AdapterUserHolder
 
@@ -52,10 +53,22 @@ class ExploreBinder(
                 )
             }
         } else {
+            animateView()
+
             // Get the topmost data
             val user = activity.userData[0]
-            AdapterUserHolder().bindUser(activity,user.data!!, viewBind.includePagerExplore)
+            AdapterUserHolder().bindUser(activity, user.data!!, viewBind.includePagerExplore)
         }
     }
 
+    private fun animateView() {
+        // hide View
+        viewBind.frameViewHolder.visibility = View.GONE
+        // Show View
+        viewBind.frameViewHolder.visibility = View.VISIBLE
+        val animate = TranslateAnimation(0f, 0f, viewBind.frameViewHolder.height.toFloat(), 0f)
+        animate.duration = 500
+        animate.fillAfter = true
+        viewBind.frameViewHolder.startAnimation(animate)
+    }
 }

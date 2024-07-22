@@ -123,8 +123,9 @@ object CommonMethod {
     fun isDealBreakerEmpty(breaker: DealBreakers?): Boolean {
         if (breaker == null)
             return true
-        if (breaker.eggs == 0 && breaker.pets == 0 && breaker.nonveg == 0 &&
-            breaker.smoking == 0 && breaker.workout == 0 && breaker.flatparty == 0
+        if ((breaker.eggs < 1 || breaker.eggs > 2) && (breaker.pets < 1 || breaker.pets > 2)
+            && (breaker.flatparty < 1 || breaker.flatparty > 2) && (breaker.nonveg < 1 || breaker.nonveg > 2)
+            && (breaker.smoking < 1 || breaker.smoking > 2) && (breaker.workout < 1 || breaker.workout > 2)
         )
             return true
         return false
