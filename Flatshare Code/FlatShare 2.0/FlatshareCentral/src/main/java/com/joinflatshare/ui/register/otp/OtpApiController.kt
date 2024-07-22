@@ -8,7 +8,6 @@ import androidx.localbroadcastmanager.content.LocalBroadcastManager
 import com.google.gson.Gson
 import com.joinflatshare.FlatShareApplication
 import com.joinflatshare.FlatshareCentral.BuildConfig
-import com.joinflatshare.FlatshareCentral.R
 import com.joinflatshare.api.retrofit.ApiManager
 import com.joinflatshare.chat.SendBirdUser
 import com.joinflatshare.constants.AppConstants
@@ -19,10 +18,8 @@ import com.joinflatshare.db.daos.AppDao
 import com.joinflatshare.db.daos.UserDao
 import com.joinflatshare.fcm.NotificationPermissionHandler
 import com.joinflatshare.interfaces.OnUserFetched
-import com.joinflatshare.pojo.BaseResponse
 import com.joinflatshare.pojo.user.AdhaarOtp
 import com.joinflatshare.pojo.user.UserResponse
-import com.joinflatshare.ui.dialogs.DialogLottieViewer
 import com.joinflatshare.ui.explore.ExploreActivity
 import com.joinflatshare.ui.register.create.ProfileCreateActivity
 import com.joinflatshare.utils.helper.CommonMethod

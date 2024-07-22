@@ -9,8 +9,6 @@ import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import android.provider.Settings.ACTION_APPLICATION_DETAILS_SETTINGS
-import androidx.activity.ComponentActivity
-import androidx.appcompat.app.AppCompatActivity
 import com.joinflatshare.customviews.alert.AlertDialog
 import com.joinflatshare.ui.base.ApplicationBaseActivity
 import com.joinflatshare.utils.helper.CommonMethod

@@ -6,7 +6,6 @@ import com.joinflatshare.interfaces.OnFileFetched
 import com.joinflatshare.interfaces.OnStringFetched
 import com.joinflatshare.ui.base.BaseActivity
 import com.joinflatshare.utils.helper.CommonMethod
-import com.joinflatshare.utils.helper.CommonMethods
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch

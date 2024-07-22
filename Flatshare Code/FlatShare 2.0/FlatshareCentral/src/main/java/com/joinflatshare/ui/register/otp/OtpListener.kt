@@ -8,7 +8,6 @@ import androidx.core.content.ContextCompat
 import com.joinflatshare.FlatshareCentral.R
 import com.joinflatshare.FlatshareCentral.databinding.ActivityOtpBinding
 import com.joinflatshare.utils.helper.CommonMethod
-import com.joinflatshare.utils.helper.CommonMethods
 
 /**
  * Created by debopam on 03/02/24

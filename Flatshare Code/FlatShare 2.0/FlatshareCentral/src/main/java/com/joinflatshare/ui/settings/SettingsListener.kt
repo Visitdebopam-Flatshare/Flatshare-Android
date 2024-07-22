@@ -10,9 +10,7 @@ import com.joinflatshare.constants.AppConstants
 import com.joinflatshare.customviews.alert.AlertDialog
 import com.joinflatshare.customviews.bottomsheet.BottomSheetView
 import com.joinflatshare.customviews.bottomsheet.ModelBottomSheet
-import com.joinflatshare.interfaces.OnUiEventClick
 import com.joinflatshare.interfaces.OnUserFetched
-import com.joinflatshare.pojo.user.AdhaarRequest
 import com.joinflatshare.pojo.user.UserResponse
 import com.joinflatshare.ui.profile.verify.ProfileVerifyActivity
 import com.joinflatshare.ui.register.otp.OtpActivity

@@ -4,10 +4,8 @@ import android.app.Activity;
 import android.content.ClipData;
 import android.content.ClipboardManager;
 import android.content.Context;
-import android.content.Intent;
 import android.content.pm.PackageInfo;
 import android.content.res.Resources;
-import android.os.Build;
 import android.os.Handler;
 import android.util.Log;
 import android.util.Patterns;
@@ -31,10 +29,6 @@ import com.joinflatshare.pojo.flat.MyFlatData;
 import com.joinflatshare.pojo.user.UserResponse;
 import com.joinflatshare.utils.logger.Logger;
 import com.joinflatshare.utils.mixpanel.MixpanelUtils;
-
-import org.jetbrains.annotations.NotNull;
-
-import java.io.Serializable;
 
 public class CommonMethods {
 

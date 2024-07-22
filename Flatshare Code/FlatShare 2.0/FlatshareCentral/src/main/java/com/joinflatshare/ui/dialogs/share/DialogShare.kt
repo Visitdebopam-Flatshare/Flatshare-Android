@@ -7,14 +7,13 @@ import android.content.Intent
 import android.text.TextUtils
 import android.view.View
 import androidx.appcompat.app.AlertDialog
-import com.joinflatshare.FlatshareCentral.R;
+import com.joinflatshare.FlatshareCentral.R
 import com.joinflatshare.FlatshareCentral.databinding.DialogShareBinding
 import com.joinflatshare.FlatshareCentral.databinding.IncludePopupHeaderWhiteBinding
 import com.joinflatshare.pojo.flat.MyFlatData
 import com.joinflatshare.pojo.user.User
 import com.joinflatshare.ui.base.BaseActivity
 import com.joinflatshare.ui.base.BaseActivity.TYPE_FLAT
-import com.joinflatshare.ui.base.BaseActivity.TYPE_USER
 import com.joinflatshare.utils.deeplink.DeepLinkHandler
 import com.joinflatshare.utils.deeplink.UserShareMessageGenerator
 import com.joinflatshare.utils.helper.CommonMethod

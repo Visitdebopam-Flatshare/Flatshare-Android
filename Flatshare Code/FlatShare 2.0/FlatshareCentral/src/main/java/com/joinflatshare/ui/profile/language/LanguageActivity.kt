@@ -14,7 +14,6 @@ import com.joinflatshare.interfaces.OnUserFetched
 import com.joinflatshare.pojo.user.UserResponse
 import com.joinflatshare.ui.base.BaseActivity
 import com.joinflatshare.ui.profile.interest.InterestActivity
-import com.joinflatshare.ui.profile.location.LocationActivity
 import com.joinflatshare.utils.helper.CommonMethod
 
 /**

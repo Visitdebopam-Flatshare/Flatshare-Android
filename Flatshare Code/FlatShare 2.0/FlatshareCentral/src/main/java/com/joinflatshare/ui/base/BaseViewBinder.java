@@ -16,9 +16,9 @@ import com.joinflatshare.constants.SendBirdConstants;
 import com.joinflatshare.utils.helper.ImageHelper;
 import com.makeramen.roundedimageview.RoundedImageView;
 
-;import org.w3c.dom.Text;
-
 import de.hdodenhof.circleimageview.CircleImageView;
+
+;
 
 public class BaseViewBinder {
 

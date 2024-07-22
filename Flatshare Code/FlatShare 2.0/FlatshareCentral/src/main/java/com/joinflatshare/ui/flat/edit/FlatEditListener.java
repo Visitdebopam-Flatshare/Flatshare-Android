@@ -33,8 +33,6 @@ import com.joinflatshare.utils.amazonaws.AmazonDeleteFile;
 import com.joinflatshare.utils.amazonaws.AmazonUploadFile;
 import com.joinflatshare.utils.google.AutoCompletePlaces;
 import com.joinflatshare.utils.helper.CommonMethod;
-import com.joinflatshare.utils.helper.CommonMethods;
-import com.joinflatshare.utils.helper.CommonMethod;
 import com.joinflatshare.utils.mixpanel.MixpanelUtils;
 
 import java.io.File;

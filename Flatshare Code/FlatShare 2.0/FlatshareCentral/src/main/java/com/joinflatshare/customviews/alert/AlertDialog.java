@@ -8,7 +8,6 @@ import com.joinflatshare.FlatshareCentral.R;
 import com.joinflatshare.FlatshareCentral.databinding.DialogAlertBinding;
 import com.joinflatshare.interfaces.OnUiEventClick;
 import com.joinflatshare.utils.helper.CommonMethods;
-import com.joinflatshare.utils.helper.CommonMethod;
 
 public class AlertDialog {
     public static void showAlert(ComponentActivity activity, String title,

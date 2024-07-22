@@ -14,7 +14,6 @@ import androidx.annotation.NonNull;
 import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.bumptech.glide.Glide;
 import com.google.android.material.card.MaterialCardView;
 import com.google.gson.Gson;
 import com.joinflatshare.FlatshareCentral.R;

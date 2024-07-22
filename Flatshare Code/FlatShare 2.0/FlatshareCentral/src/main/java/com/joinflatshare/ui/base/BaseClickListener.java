@@ -4,8 +4,8 @@ import android.content.Intent;
 
 import com.joinflatshare.constants.AppConstants;
 import com.joinflatshare.ui.chat.list.ChatListActivity;
-import com.joinflatshare.ui.explore.ExploreActivity;
 import com.joinflatshare.ui.checks.ChecksActivity;
+import com.joinflatshare.ui.explore.ExploreActivity;
 import com.joinflatshare.ui.profile.myprofile.ProfileActivity;
 import com.joinflatshare.utils.helper.CommonMethod;
 

@@ -8,7 +8,6 @@ import com.joinflatshare.pojo.invite.InvitedResponse;
 import com.joinflatshare.pojo.user.User;
 import com.joinflatshare.pojo.user.UserResponse;
 import com.joinflatshare.ui.dialogs.DialogLottieViewer;
-import com.joinflatshare.utils.helper.CommonMethods;
 import com.joinflatshare.utils.helper.CommonMethod;
 import com.joinflatshare.utils.mixpanel.MixpanelUtils;
 

@@ -15,7 +15,6 @@ import com.android.billingclient.api.QueryProductDetailsParams
 import com.joinflatshare.interfaces.OnStringFetched
 import com.joinflatshare.ui.base.BaseActivity
 import com.joinflatshare.utils.helper.CommonMethod
-import com.joinflatshare.utils.helper.CommonMethods
 
 /**
  * Created by debopam on 26/05/23

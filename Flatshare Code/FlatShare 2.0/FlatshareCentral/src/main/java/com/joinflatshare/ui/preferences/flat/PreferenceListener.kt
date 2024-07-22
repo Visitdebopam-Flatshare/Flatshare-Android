@@ -1,13 +1,10 @@
 package com.joinflatshare.ui.preferences.flat
 
 import android.app.Activity
-import android.app.DatePickerDialog
 import android.content.Intent
 import android.view.View
-import android.widget.DatePicker
 import androidx.core.content.ContextCompat
 import com.google.android.material.datepicker.CalendarConstraints
-import com.google.android.material.datepicker.DateValidatorPointBackward
 import com.google.android.material.datepicker.DateValidatorPointForward
 import com.google.android.material.datepicker.MaterialDatePicker
 import com.joinflatshare.FlatShareApplication
@@ -21,11 +18,7 @@ import com.joinflatshare.pojo.user.UserResponse
 import com.joinflatshare.ui.bottomsheet.VerifiedBottomSheet
 import com.joinflatshare.utils.google.AutoCompletePlaces
 import com.joinflatshare.utils.helper.CommonMethod
-import com.joinflatshare.utils.helper.DateUtils
 import com.joinflatshare.utils.mixpanel.MixpanelUtils
-import com.joinflatshare.utils.system.ThemeUtils
-import java.text.DecimalFormat
-import java.text.NumberFormat
 import java.text.SimpleDateFormat
 import java.util.Calendar
 import java.util.Locale

@@ -28,6 +28,7 @@ import com.joinflatshare.utils.helper.CommonMethod
 import com.joinflatshare.utils.system.ConnectivityListener
 import java.io.File
 
+
 class ProfileEditListener(
     private val activity: ProfileEditActivity,
     private val viewBind: ActivityProfileEditBinding, private val dataBinder: ProfileEditDataBinder
@@ -122,37 +123,23 @@ class ProfileEditListener(
     private fun validate() {
         if (ConnectivityListener.checkInternet()) {
             val user = FlatShareApplication.getDbInstance().userDao().getUser()
-            user?.status = viewBind.edtProfileStatus.text.toString()
-            user?.work = viewBind.edtProfileWork.text.toString()
+            user?.status = viewBind.edtProfileStatus.text.toString().trim()
+            user?.work = viewBind.edtProfileWork.text.toString().trim()
 
             // interests
             var text = viewBind.txtProfileInterest.text.toString()
-            if (text.isEmpty()) {
-                CommonMethod.makeToast("Please select your interests")
-                return
+            if (text.isNotEmpty()) {
+                val arr = TextUtils.split(text, ", ")
+                user?.flatProperties?.interests = arr.toCollection(ArrayList())
             }
-            var items = ArrayList<String>()
-            var split: Array<String?> = text.split(", ").toTypedArray()
-            if (split.isNotEmpty()) {
-                for (txt in split) {
-                    items.add(txt!!)
-                }
-            }
-            user?.flatProperties?.interests = items
+
+
             // languages
-            items = ArrayList()
             text = viewBind.txtProfileLanguages.text.toString()
-            if (text.isEmpty()) {
-                CommonMethod.makeToast("Please select your languages")
-                return
+            if (text.isNotEmpty()) {
+                val arr = TextUtils.split(text, ", ")
+                user?.flatProperties?.languages = arr.toCollection(ArrayList())
             }
-            split = text.split(", ").toTypedArray()
-            if (split.isNotEmpty()) {
-                for (txt in split) {
-                    items.add(txt!!)
-                }
-            }
-            user?.flatProperties?.languages = items
 
             if (activity.latProfile[0] != null) {
                 val loc = Loc()
@@ -168,7 +155,8 @@ class ProfileEditListener(
                 user?.college =
                     ModelLocation(dataBinder.edt_profile[1].text.toString(), loc)
             }
-            prepareImages(user)
+//            prepareImages(user)
+            callAPi(user)
         }
     }
 
@@ -190,7 +178,7 @@ class ProfileEditListener(
         deleteFile.delete(path) { _: Intent?, requestCode: Int ->
             if (requestCode == AmazonUploadFile.REQUEST_CODE_SUCCESS) {
                 dataBinder.deletedUserImages.removeAt(0)
-                dataBinder.apiUserImages.remove(path)
+//                dataBinder.apiUserImages.remove(path)
                 if (dataBinder.deletedUserImages.size > 0) deleteImages(
                     deleteFile,
                     onUiEventClick
@@ -248,12 +236,11 @@ class ProfileEditListener(
     }
 
     private fun callAPi(user: User?) {
-        DialogCustomProgress.hideProgress(activity)
-        user?.images = dataBinder.apiUserImages
+//        DialogCustomProgress.hideProgress(activity)
+//        user?.images = dataBinder.apiUserImages
         activity.baseApiController.updateUser(true, user, object :
             OnUserFetched {
             override fun userFetched(resp: UserResponse?) {
-                CommonMethod.makeToast("Profile updated")
                 CommonMethod.finishActivity(activity)
             }
         })
@@ -264,8 +251,8 @@ class ProfileEditListener(
         val user = FlatShareApplication.getDbInstance().userDao().getUser()
         val newInterests = viewBind.txtProfileInterest.text.toString()
         val newLanguages = viewBind.txtProfileLanguages.text.toString()
-        val newStatus: String = viewBind.edtProfileStatus.getText().toString().trim { it <= ' ' }
-        val newWork: String = viewBind.edtProfileWork.getText().toString().trim { it <= ' ' }
+        val newStatus: String = viewBind.edtProfileStatus.getText().toString().trim()
+        val newWork: String = viewBind.edtProfileWork.getText().toString().trim()
         if (newLanguages != TextUtils.join(", ", user?.flatProperties?.languages!!))
             hasChanged = true
         else if (newInterests != TextUtils.join(", ", user.flatProperties.interests))

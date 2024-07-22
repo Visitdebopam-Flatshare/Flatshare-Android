@@ -4,12 +4,10 @@ import android.Manifest
 import android.app.Activity
 import android.content.pm.PackageManager
 import android.os.Build
-import androidx.activity.ComponentActivity
 import androidx.appcompat.app.AppCompatActivity
 import com.joinflatshare.constants.RequestCodeConstants
 import com.joinflatshare.interfaces.OnPermissionCallback
 import com.joinflatshare.ui.base.ApplicationBaseActivity
-import com.joinflatshare.ui.base.BaseActivity
 import com.joinflatshare.utils.helper.CommonMethod
 
 object PermissionUtil {

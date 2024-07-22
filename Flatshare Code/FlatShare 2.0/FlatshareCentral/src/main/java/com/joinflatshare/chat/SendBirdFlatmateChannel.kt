@@ -14,7 +14,6 @@ import com.joinflatshare.pojo.flat.FlatResponse
 import com.joinflatshare.pojo.user.UserResponse
 import com.joinflatshare.ui.base.BaseActivity
 import com.joinflatshare.utils.helper.CommonMethod
-import com.joinflatshare.utils.helper.CommonMethods
 import com.sendbird.android.channel.GroupChannel
 import com.sendbird.android.exception.SendbirdException
 import com.sendbird.android.params.GroupChannelCreateParams

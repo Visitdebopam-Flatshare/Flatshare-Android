@@ -1,13 +1,8 @@
 package com.joinflatshare.ui.checks
 
-import android.view.View
-import android.widget.FrameLayout
-import android.widget.TextView
 import com.google.gson.Gson
 import com.joinflatshare.FlatShareApplication
-import com.joinflatshare.FlatshareCentral.R
 import com.joinflatshare.constants.ChatRequestConstants
-import com.joinflatshare.db.daos.UserDao
 import com.joinflatshare.interfaces.OnStringFetched
 import com.joinflatshare.pojo.requests.ConnectionRequestResponse
 import com.joinflatshare.pojo.requests.FlatInviteResponse

@@ -14,7 +14,6 @@ import com.joinflatshare.constants.RequestCodeConstants.REQUEST_CODE_PICK_IMAGE
 import com.joinflatshare.pojo.user.Loc
 import com.joinflatshare.ui.base.BaseActivity
 import com.joinflatshare.utils.helper.CommonMethod
-import com.joinflatshare.utils.helper.CommonMethods
 import com.joinflatshare.utils.helper.ImageHelper
 
 class ProfileEditActivity : BaseActivity() {
@@ -60,15 +59,9 @@ class ProfileEditActivity : BaseActivity() {
                         val file = ImageHelper.copyFile(this, data.data)
                         if (file != null && file.exists()) {
                             dataBind.addedUserImages.add(file.absolutePath)
-
-                            if (dataBind.adapterUserImages.size <= 1)
-                                dataBind.adapterUserImages.add(file.absolutePath)
-                            else dataBind.adapterUserImages.add(1, file.absolutePath)
-                            if (dataBind.adapterUserImages.size > 10) {
-                                dataBind.adapterUserImages.removeAt(0)
-                            }
+                            dataBind.adapterUserImages.add(imageClickPosition,file.absolutePath)
                             dataBind.adapter?.setItems(dataBind.adapterUserImages)
-                            dataBind.adapter?.notifyDataSetChanged()
+                            dataBind.adapter?.notifyItemChanged(imageClickPosition)
                             imageClickPosition = -1
                         }
                     }

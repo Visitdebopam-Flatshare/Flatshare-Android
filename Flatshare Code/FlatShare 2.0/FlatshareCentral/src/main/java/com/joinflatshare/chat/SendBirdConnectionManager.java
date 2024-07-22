@@ -13,7 +13,6 @@ import com.joinflatshare.utils.helper.CommonMethod;
 import com.sendbird.android.ConnectionState;
 import com.sendbird.android.SendbirdChat;
 import com.sendbird.android.handler.ConnectionHandler;
-import com.sendbird.android.params.UserUpdateParams;
 
 public class SendBirdConnectionManager {
     public static boolean isSendBirdConnected = false;

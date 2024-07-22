@@ -2,7 +2,6 @@ package com.joinflatshare.ui.explore
 
 import android.view.View
 import com.joinflatshare.FlatshareCentral.R
-import com.joinflatshare.pojo.flat.DealBreakers
 import com.joinflatshare.ui.explore.holder.AdapterUserHolder
 
 

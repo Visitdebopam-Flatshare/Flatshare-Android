@@ -7,7 +7,6 @@ import android.view.ViewAnimationUtils;
 
 import com.joinflatshare.FlatshareCentral.R;
 import com.joinflatshare.utils.helper.CommonMethods;
-import com.joinflatshare.utils.helper.CommonMethod;
 
 public class ChatDetailsMediaAnimator {
     private ChatDetailsMediaBottomSheet mediaBottomSheet;

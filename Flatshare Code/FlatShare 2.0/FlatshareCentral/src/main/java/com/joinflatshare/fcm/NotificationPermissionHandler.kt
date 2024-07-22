@@ -6,7 +6,6 @@ import android.content.Intent
 import android.content.pm.PackageManager
 import android.os.Build
 import androidx.activity.result.ActivityResult
-import androidx.appcompat.app.AppCompatActivity
 import com.joinflatshare.constants.RequestCodeConstants.REQUEST_CODE_NOTIFICATION
 import com.joinflatshare.interfaces.OnStringFetched
 import com.joinflatshare.ui.base.ApplicationBaseActivity

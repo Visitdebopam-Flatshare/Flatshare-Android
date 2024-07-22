@@ -13,7 +13,6 @@ import com.joinflatshare.FlatshareCentral.R;
 import com.joinflatshare.interfaces.OnitemClick;
 import com.joinflatshare.ui.base.BaseActivity;
 import com.joinflatshare.utils.helper.CommonMethods;
-import com.joinflatshare.utils.helper.CommonMethod;
 import com.joinflatshare.utils.helper.ImageHelper;
 
 import java.util.ArrayList;

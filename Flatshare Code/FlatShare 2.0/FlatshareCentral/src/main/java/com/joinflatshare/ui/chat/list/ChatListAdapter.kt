@@ -12,7 +12,6 @@ import com.joinflatshare.FlatshareCentral.databinding.ItemChatListBinding
 import com.joinflatshare.chat.metadata.MessageMetaData
 import com.joinflatshare.chat.utils.DateUtils
 import com.joinflatshare.constants.SendBirdConstants
-import com.joinflatshare.interfaces.OnStringFetched
 import com.joinflatshare.ui.chat.details.ChatDetailsActivity
 import com.joinflatshare.utils.helper.CommonMethod
 import com.joinflatshare.utils.helper.ImageHelper

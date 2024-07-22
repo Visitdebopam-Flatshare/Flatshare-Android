@@ -4,7 +4,6 @@ import android.view.View
 import com.joinflatshare.FlatshareCentral.databinding.ActivityPrefFlatmateBinding
 import com.joinflatshare.customviews.bottomsheet.BottomSheetView
 import com.joinflatshare.customviews.bottomsheet.ModelBottomSheet
-import com.joinflatshare.interfaces.OnitemClick
 
 class PrefFlatmateListener
     (private val activity: PrefFlatmateActivity) : View.OnClickListener {

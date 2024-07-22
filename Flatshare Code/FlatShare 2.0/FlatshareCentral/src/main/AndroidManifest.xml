@@ -173,10 +173,6 @@
             android:name="com.joinflatshare.ui.checks.request_friend.FriendRequestActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateAlwaysHidden" />
-        <activity
-            android:name="com.joinflatshare.ui.liked.LikedActivity"
-            android:screenOrientation="portrait"
-            android:windowSoftInputMode="stateAlwaysHidden" />
 
         <activity
             android:name="com.joinflatshare.utils.permission.PermissionManager"

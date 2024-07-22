@@ -21,7 +21,6 @@ import com.joinflatshare.ui.flat.flatoptions.view_rent.RentViewBind;
 import com.joinflatshare.ui.flat.flatoptions.view_rent_range.RentRangeViewBind;
 import com.joinflatshare.ui.flat.flatoptions.view_roomsize.RoomSizeViewBind;
 import com.joinflatshare.ui.flat.flatoptions.view_roomtype.RoomTypeViewBind;
-import com.joinflatshare.utils.helper.CommonMethods;
 import com.joinflatshare.utils.helper.CommonMethod;
 
 import java.util.ArrayList;

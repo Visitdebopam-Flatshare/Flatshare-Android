@@ -24,7 +24,6 @@ import com.joinflatshare.ui.base.BaseActivity
 import com.joinflatshare.ui.flat.details.FlatDetailsActivity
 import com.joinflatshare.ui.profile.details.ProfileDetailsActivity
 import com.joinflatshare.utils.helper.CommonMethod
-import com.joinflatshare.utils.helper.CommonMethods
 import java.nio.charset.StandardCharsets
 
 

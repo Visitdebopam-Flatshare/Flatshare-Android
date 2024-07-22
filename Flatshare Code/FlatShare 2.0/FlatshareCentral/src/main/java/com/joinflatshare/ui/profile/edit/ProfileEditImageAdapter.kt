@@ -7,9 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.ViewTreeObserver.OnGlobalLayoutListener
-import android.widget.ImageView
 import android.widget.LinearLayout
-import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.DataSource
@@ -22,15 +20,13 @@ import com.joinflatshare.FlatshareCentral.R
 import com.joinflatshare.FlatshareCentral.databinding.ItemProfileImageBinding
 import com.joinflatshare.customviews.bottomsheet.BottomSheetView
 import com.joinflatshare.customviews.bottomsheet.ModelBottomSheet
-import com.joinflatshare.ui.base.BaseActivity
 import com.joinflatshare.utils.helper.CommonMethod.makeLog
 import com.joinflatshare.utils.helper.CommonMethod.makeToast
 import com.joinflatshare.utils.helper.ImageHelper
 import com.joinflatshare.utils.permission.PermissionUtil
-import com.stfalcon.imageviewer.StfalconImageViewer
 
 class ProfileEditImageAdapter(
-    private val activity: BaseActivity
+    private val activity: ProfileEditActivity
 ) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     private var height = 0
     private val items = ArrayList<String>()
@@ -83,7 +79,7 @@ class ProfileEditImageAdapter(
                 val item = adapter.items[position]
                 if (item.isNotEmpty()) {
                     view.imgProfileAdd1.setVisibility(View.GONE)
-                    if (item.startsWith("Images/") && adapter.itemCount > position)
+                    if (item.startsWith("Images/"))
                         loadImage(
                             adapter,
                             position, ImageHelper.getUserImagesWithAws(item), view
@@ -91,54 +87,51 @@ class ProfileEditImageAdapter(
                     else view.imgProfileBanner1.setImageURI(Uri.parse(item))
                 }
                 view.frameImage.setOnClickListener { _: View? ->
-                    if (adapter.activity is ProfileEditActivity) {
-                        makeLog("Position", "" + position)
-                        if (item.isNotEmpty()) {
-                            val menu = ArrayList<ModelBottomSheet>()
-                            menu.add(ModelBottomSheet(R.drawable.ic_cross_red, "Remove Photo"))
-                            BottomSheetView(
-                                adapter.activity, menu
-                            ) { _, position ->
-                                if (item.startsWith("Images/")) {
-                                    adapter.activity.dataBind.deletedUserImages.add(item)
-                                }
-                                adapter.activity.dataBind.addedUserImages.remove(
-                                    adapter.activity.dataBind.adapterUserImages[position]
-                                )
-                                adapter.activity.dataBind.adapterUserImages.removeAt(position)
-                                if (adapter.activity.dataBind.adapterUserImages.size < 6 && adapter.activity.dataBind.adapterUserImages[0].isNotEmpty()
-                                ) adapter.activity.dataBind.adapterUserImages.add(0, "")
-                                adapter.notifyDataSetChanged()
+                    makeLog("Position", "" + position)
+                    if (item.isNotEmpty()) {
+                        val menu = ArrayList<ModelBottomSheet>()
+                        menu.add(ModelBottomSheet(R.drawable.ic_cross_red, "Remove Photo"))
+                        BottomSheetView(
+                            adapter.activity, menu
+                        ) { _, position ->
+                            if (item.startsWith("Images/")) {
+                                adapter.activity.dataBind.deletedUserImages.add(item)
                             }
-                        } else {
-                            adapter.activity.imageClickPosition = position
-                            PermissionUtil.validatePermission(
-                                adapter.activity,
-                                Manifest.permission.READ_EXTERNAL_STORAGE
-                            ) { granted: Boolean ->
-                                if (granted) adapter.activity.pickImage()
-                                else makeToast("Permission not provided")
-                            }
+                            adapter.activity.dataBind.addedUserImages.remove(
+                                adapter.activity.dataBind.adapterUserImages[position]
+                            )
+                            adapter.activity.dataBind.adapterUserImages.removeAt(position)
+                            adapter.notifyDataSetChanged()
                         }
                     } else {
-                        val stfalconViewer: StfalconImageViewer<String> =
-                            StfalconImageViewer.Builder(
-                                adapter.activity, adapter.items
-                            ) { imageView: ImageView?, imageUrl: String? ->
-                                ImageHelper.loadImage(
-                                    adapter.activity,
-                                    R.mipmap.ic_launcher,
-                                    imageView,
-                                    imageUrl
-                                )
-                            }.allowZooming(true).withBackgroundColor(
-                                ContextCompat.getColor(
-                                    adapter.activity,
-                                    R.color.color_bg
-                                )
-                            ).withHiddenStatusBar(true).withStartPosition(position).build()
-                        stfalconViewer.show()
+                        adapter.activity.imageClickPosition = position
+                        PermissionUtil.validatePermission(
+                            adapter.activity,
+                            Manifest.permission.READ_EXTERNAL_STORAGE
+                        ) { granted: Boolean ->
+                            if (granted) adapter.activity.pickImage()
+                            else makeToast("Permission not provided")
+                        }
                     }
+                    /*else {
+                       val stfalconViewer: StfalconImageViewer<String> =
+                           StfalconImageViewer.Builder(
+                               adapter.activity, adapter.items
+                           ) { imageView: ImageView?, imageUrl: String? ->
+                               ImageHelper.loadImage(
+                                   adapter.activity,
+                                   R.mipmap.ic_launcher,
+                                   imageView,
+                                   imageUrl
+                               )
+                           }.allowZooming(true).withBackgroundColor(
+                               ContextCompat.getColor(
+                                   adapter.activity,
+                                   R.color.color_bg
+                               )
+                           ).withHiddenStatusBar(true).withStartPosition(position).build()
+                       stfalconViewer.show()
+                   }*/
                 }
             }
         }

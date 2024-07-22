@@ -15,7 +15,6 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatDelegate;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.bumptech.glide.Glide;
 import com.joinflatshare.FlatshareCentral.R;
 import com.joinflatshare.constants.ThemeConstants;
 import com.joinflatshare.constants.UrlConstants;

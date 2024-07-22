@@ -23,7 +23,6 @@ import com.joinflatshare.interfaces.OnPermissionCallback
 import com.joinflatshare.ui.base.gpsfetcher.GpsHandlerCallback
 import com.joinflatshare.ui.chat.details.ChatDetailsActivity
 import com.joinflatshare.utils.helper.CommonMethod
-import com.joinflatshare.utils.helper.CommonMethods
 import com.joinflatshare.utils.helper.ImageHelper
 import com.joinflatshare.utils.helper.RealPathUtil
 import com.joinflatshare.utils.permission.PermissionUtil

@@ -13,7 +13,6 @@ import com.joinflatshare.constants.SendBirdConstants;
 import com.joinflatshare.ui.chat.details.ChatDetailsActivity;
 import com.joinflatshare.ui.chat.details.ChatDetailsAdapter;
 import com.joinflatshare.utils.helper.CommonMethods;
-import com.joinflatshare.utils.helper.CommonMethod;
 import com.joinflatshare.utils.helper.ImageHelper;
 import com.sendbird.android.message.BaseMessage;
 import com.sendbird.android.message.FileMessage;

@@ -16,8 +16,6 @@ import com.joinflatshare.constants.RouteConstants
 import com.joinflatshare.customviews.inapp_review.InAppReview.show
 import com.joinflatshare.interfaces.OnStringFetched
 import com.joinflatshare.payment.PaymentHandler
-import com.joinflatshare.payment.PaymentHandler.showPaymentForChats
-import com.joinflatshare.pojo.BaseResponse
 import com.joinflatshare.pojo.flat.FlatResponse
 import com.joinflatshare.pojo.invite.InvitedRequest
 import com.joinflatshare.pojo.likes.LikeRequest
@@ -25,7 +23,6 @@ import com.joinflatshare.ui.base.BaseActivity
 import com.joinflatshare.ui.dialogs.DialogConnection
 import com.joinflatshare.ui.dialogs.DialogLottieViewer
 import com.joinflatshare.ui.invite.InviteActivity
-import com.joinflatshare.utils.mixpanel.MixpanelUtils.onChatRequested
 import com.joinflatshare.utils.mixpanel.MixpanelUtils.onMatched
 import com.joinflatshare.webservice.api.WebserviceManager
 import com.joinflatshare.webservice.api.interfaces.OnFlatshareResponseCallBack

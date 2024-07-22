@@ -3,7 +3,6 @@ package com.joinflatshare.ui.checks
 import android.os.Bundle
 import com.joinflatshare.FlatshareCentral.databinding.ActivityCheckListBinding
 import com.joinflatshare.constants.AppConstants
-import com.joinflatshare.pojo.notification.NotificationItem
 import com.joinflatshare.ui.base.BaseActivity
 import com.joinflatshare.utils.mixpanel.MixpanelUtils
 

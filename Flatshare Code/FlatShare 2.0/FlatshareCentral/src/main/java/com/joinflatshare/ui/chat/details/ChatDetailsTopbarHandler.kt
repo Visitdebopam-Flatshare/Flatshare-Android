@@ -2,12 +2,9 @@ package com.joinflatshare.ui.chat.details
 
 import android.view.View
 import android.widget.TextView
-import com.joinflatshare.FlatshareCentral.R;
 import com.joinflatshare.FlatshareCentral.databinding.ActivityChatDetailsBinding
-import com.joinflatshare.interfaces.OnStringFetched
 import com.joinflatshare.utils.helper.CommonMethod
 import com.joinflatshare.utils.helper.ImageHelper
-import com.stfalcon.imageviewer.loader.ImageLoader
 
 class ChatDetailsTopbarHandler(
     private val activity: ChatDetailsActivity,

@@ -7,8 +7,6 @@ import com.joinflatshare.customviews.alert.AlertImageDialog;
 import com.joinflatshare.interfaces.OnStringFetched;
 import com.joinflatshare.ui.base.ApplicationBaseActivity;
 import com.joinflatshare.utils.helper.CommonMethod;
-import com.joinflatshare.utils.helper.CommonMethods;
-import com.joinflatshare.utils.helper.CommonMethod;
 import com.joinflatshare.utils.helper.ImageHelper;
 import com.sendbird.android.SendbirdChat;
 import com.sendbird.android.channel.GroupChannel;

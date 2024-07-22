@@ -14,9 +14,17 @@ import com.google.android.gms.common.ConnectionResult
 import com.google.android.gms.common.GoogleApiAvailability
 import com.google.android.gms.common.api.ApiException
 import com.google.android.gms.common.api.ResolvableApiException
-import com.google.android.gms.location.*
+import com.google.android.gms.location.FusedLocationProviderClient
+import com.google.android.gms.location.LocationCallback
+import com.google.android.gms.location.LocationRequest
+import com.google.android.gms.location.LocationResult
+import com.google.android.gms.location.LocationServices
+import com.google.android.gms.location.LocationSettingsRequest
+import com.google.android.gms.location.LocationSettingsResponse
 import com.google.android.gms.location.LocationSettingsStatusCodes.RESOLUTION_REQUIRED
 import com.google.android.gms.location.LocationSettingsStatusCodes.SETTINGS_CHANGE_UNAVAILABLE
+import com.google.android.gms.location.Priority
+import com.google.android.gms.location.SettingsClient
 import com.google.android.gms.tasks.Task
 import com.joinflatshare.FlatShareApplication
 import com.joinflatshare.constants.AppConstants
@@ -27,7 +35,6 @@ import com.joinflatshare.interfaces.OnPermissionCallback
 import com.joinflatshare.interfaces.OnUiEventClick
 import com.joinflatshare.pojo.user.ModelLocation
 import com.joinflatshare.ui.base.ApplicationBaseActivity
-import com.joinflatshare.ui.base.BaseActivity
 import com.joinflatshare.utils.helper.CommonMethod
 import com.joinflatshare.utils.logger.Logger
 import com.joinflatshare.utils.mixpanel.MixpanelUtils

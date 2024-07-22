@@ -21,7 +21,6 @@ import com.joinflatshare.ui.register.location_check.LocationCheckHandler
 import com.joinflatshare.utils.amazonaws.AmazonDeleteFile
 import com.joinflatshare.utils.amazonaws.AmazonUploadFile
 import com.joinflatshare.utils.helper.CommonMethod
-import com.joinflatshare.utils.helper.CommonMethods
 import com.joinflatshare.utils.helper.DateUtils
 import com.joinflatshare.utils.helper.DistanceCalculator
 import com.joinflatshare.utils.mixpanel.MixpanelUtils

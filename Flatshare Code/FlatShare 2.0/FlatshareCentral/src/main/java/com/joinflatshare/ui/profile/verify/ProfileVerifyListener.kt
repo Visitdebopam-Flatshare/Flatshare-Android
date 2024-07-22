@@ -10,7 +10,6 @@ import androidx.core.content.ContextCompat
 import com.google.gson.Gson
 import com.joinflatshare.FlatshareCentral.R
 import com.joinflatshare.FlatshareCentral.databinding.ActivityProfileVerifyBinding
-import com.joinflatshare.pojo.BaseResponse
 import com.joinflatshare.pojo.user.AdhaarRequest
 import com.joinflatshare.ui.register.otp.OtpActivity
 import com.joinflatshare.utils.helper.CommonMethod

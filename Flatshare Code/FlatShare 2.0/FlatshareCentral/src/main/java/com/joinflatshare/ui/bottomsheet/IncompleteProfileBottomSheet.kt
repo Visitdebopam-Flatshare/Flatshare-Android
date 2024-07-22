@@ -2,10 +2,7 @@ package com.joinflatshare.ui.bottomsheet
 
 import android.app.Activity
 import android.content.Intent
-import android.widget.ImageView
-import android.widget.LinearLayout
 import com.google.android.material.bottomsheet.BottomSheetDialog
-import com.joinflatshare.FlatshareCentral.R
 import com.joinflatshare.FlatshareCentral.databinding.DialogBottomsheetIncompleteProfileBinding
 import com.joinflatshare.interfaces.OnStringFetched
 import com.joinflatshare.ui.base.ApplicationBaseActivity

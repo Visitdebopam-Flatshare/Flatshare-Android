@@ -21,14 +21,9 @@ import com.joinflatshare.firestore.DbAppAccessRetriever
 import com.joinflatshare.firestore.DbAwsRetriever
 import com.joinflatshare.pojo.user.UserResponse
 import com.joinflatshare.ui.explore.ExploreActivity
-import com.joinflatshare.ui.preferences.flat.PreferenceActivity
-import com.joinflatshare.ui.profile.location.LocationActivity
-import com.joinflatshare.ui.register.create.ProfileCreateActivity
 import com.joinflatshare.ui.register.RegisterBaseActivity
+import com.joinflatshare.ui.register.create.ProfileCreateActivity
 import com.joinflatshare.ui.register.login.LoginActivity
-import com.joinflatshare.ui.register.photo.RegisterPhotoActivity
-import com.joinflatshare.utils.amazonaws.AmazonFileChecker
-import com.joinflatshare.utils.amazonaws.AmazonUploadFile
 import com.joinflatshare.utils.appupdater.AppUpdater
 import com.joinflatshare.utils.deeplink.DeepLinkHandler
 import com.joinflatshare.utils.helper.CommonMethod

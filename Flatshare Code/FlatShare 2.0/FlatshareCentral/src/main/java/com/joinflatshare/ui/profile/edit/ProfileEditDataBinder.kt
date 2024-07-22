@@ -1,17 +1,13 @@
 package com.joinflatshare.ui.profile.edit
 
 import android.text.TextUtils
-import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.core.text.HtmlCompat
 import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.joinflatshare.FlatshareCentral.databinding.ActivityProfileEditBinding
 import com.joinflatshare.constants.AppConstants
 import com.joinflatshare.customviews.GridSpacingItemDecoration
-import java.util.Collections
 
 class ProfileEditDataBinder(
     private val activity: ProfileEditActivity,
@@ -52,8 +48,9 @@ class ProfileEditDataBinder(
         viewBind.txtProfileLanguages.text =
             TextUtils.join(", ", AppConstants.loggedInUser?.flatProperties?.languages!!)
         viewBind.edtProfileStatus.setText(AppConstants.loggedInUser?.status)
-        bioLimit()
         viewBind.edtProfileWork.setText(AppConstants.loggedInUser?.work)
+        bioLimit()
+        workLimit()
         if (AppConstants.loggedInUser?.hometown != null) {
             val hometown = AppConstants.loggedInUser?.hometown
             if (hometown!!.name.isEmpty()) {
@@ -79,17 +76,33 @@ class ProfileEditDataBinder(
 
 
         // Image
-        loadImages()
-        viewBind.rvProfileInfoImage.setAdapter(adapter)
+//        loadImages()
+//        viewBind.rvProfileInfoImage.setAdapter(adapter)
     }
 
     private fun loadImages() {
         adapterUserImages.clear()
-        apiUserImages.clear()
-        apiUserImages.addAll(AppConstants.loggedInUser!!.images)
-        adapterUserImages.addAll(AppConstants.loggedInUser!!.images)
-        adapterUserImages.reverse()
-        if (adapterUserImages.size < 10) adapterUserImages.add(0, "")
+        val images = AppConstants.loggedInUser?.images
+        if (!images.isNullOrEmpty()) {
+            if (images.size > 5) {
+                for (i in 0..4) {
+                    adapterUserImages.add(images[i])
+                }
+            } else {
+                adapterUserImages.addAll(images)
+            }
+        }
+
+        var dp = AppConstants.loggedInUser?.dp
+        if (dp.isNullOrEmpty())
+            dp = ""
+        adapterUserImages.add(0, dp)
+        if (adapterUserImages.size < 6) {
+            val due = 6 - adapterUserImages.size
+            for (i in 0 until due) {
+                adapterUserImages.add("")
+            }
+        }
         adapter?.setItems(adapterUserImages)
     }
 
@@ -101,7 +114,5 @@ class ProfileEditDataBinder(
     internal fun workLimit() {
         var due: Int = 150 - viewBind.edtProfileWork.getText().toString().length
         viewBind.txtProfileWorkLimit.text = "" + due
-        due = 150 - viewBind.edtProfileStatus.text.toString().length
-        viewBind.txtProfileStatusLimit.text = "" + due
     }
 }

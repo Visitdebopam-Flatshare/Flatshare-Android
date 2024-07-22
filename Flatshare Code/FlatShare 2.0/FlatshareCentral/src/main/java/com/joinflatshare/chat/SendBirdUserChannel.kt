@@ -11,7 +11,6 @@ import com.joinflatshare.interfaces.OnStringFetched
 import com.joinflatshare.pojo.user.User
 import com.joinflatshare.ui.base.BaseActivity
 import com.joinflatshare.utils.helper.CommonMethod
-import com.joinflatshare.utils.helper.CommonMethods
 import com.sendbird.android.SendbirdChat
 import com.sendbird.android.channel.GroupChannel
 import com.sendbird.android.exception.SendbirdException

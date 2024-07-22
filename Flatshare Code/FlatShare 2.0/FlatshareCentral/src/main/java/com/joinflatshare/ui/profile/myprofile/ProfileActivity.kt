@@ -8,12 +8,10 @@ import com.joinflatshare.FlatShareApplication
 import com.joinflatshare.FlatshareCentral.R
 import com.joinflatshare.FlatshareCentral.databinding.ActivityProfileBinding
 import com.joinflatshare.constants.AppConstants
-import com.joinflatshare.constants.UrlConstants
 import com.joinflatshare.pojo.user.User
 import com.joinflatshare.ui.base.BaseActivity
 import com.joinflatshare.utils.helper.CommonMethod
 import com.joinflatshare.utils.helper.ImageHelper
-import kotlin.math.ceil
 
 /**
  * Created by debopam on 21/05/24

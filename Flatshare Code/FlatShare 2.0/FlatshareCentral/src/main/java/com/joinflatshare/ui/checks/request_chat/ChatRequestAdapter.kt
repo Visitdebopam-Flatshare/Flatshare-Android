@@ -17,7 +17,6 @@ import com.joinflatshare.constants.RouteConstants
 import com.joinflatshare.customviews.inapp_review.InAppReview
 import com.joinflatshare.pojo.BaseResponse
 import com.joinflatshare.pojo.requests.ConnectionItem
-import com.joinflatshare.ui.base.BaseActivity
 import com.joinflatshare.ui.dialogs.DialogConnection
 import com.joinflatshare.ui.flat.details.FlatDetailsActivity
 import com.joinflatshare.ui.profile.details.ProfileDetailsActivity

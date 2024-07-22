@@ -5,10 +5,9 @@ import android.view.View
 import androidx.activity.ComponentActivity
 import androidx.appcompat.app.AlertDialog
 import com.airbnb.lottie.LottieAnimationView
-import com.joinflatshare.FlatshareCentral.R;
+import com.joinflatshare.FlatshareCentral.R
 import com.joinflatshare.FlatshareCentral.databinding.DialogLottieViewerBinding
 import com.joinflatshare.interfaces.OnStringFetched
-import com.joinflatshare.ui.base.BaseActivity
 
 /**
  * Created by debopam on 24/03/23

@@ -4,11 +4,11 @@ import android.content.Intent
 import com.joinflatshare.constants.NotificationConstants
 import com.joinflatshare.ui.base.BaseActivity
 import com.joinflatshare.ui.chat.list.ChatListActivity
-import com.joinflatshare.ui.flat.edit.FlatEditActivity
 import com.joinflatshare.ui.checks.ChecksActivity
 import com.joinflatshare.ui.checks.request_chat.ChatRequestActivity
 import com.joinflatshare.ui.checks.request_friend.FriendRequestActivity
 import com.joinflatshare.ui.checks.request_invitation.InvitationRequestActivity
+import com.joinflatshare.ui.flat.edit.FlatEditActivity
 import com.joinflatshare.ui.profile.edit.ProfileEditActivity
 import com.joinflatshare.ui.profile.myprofile.ProfileActivity
 import com.joinflatshare.utils.helper.CommonMethod

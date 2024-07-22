@@ -7,7 +7,6 @@ import com.joinflatshare.chat.pojo.user.ModelChatUserResponse
 import com.joinflatshare.constants.SendBirdConstants.USER_STATUS_REFRESH_DELAY
 import com.joinflatshare.ui.chat.details.mediaholder.ChatDetailsMediaBottomSheet
 import com.joinflatshare.utils.helper.CommonMethod
-import com.joinflatshare.utils.helper.CommonMethods
 import com.sendbird.android.user.User
 import com.sendbird.android.user.User.ConnectionStatus
 import java.util.Timer

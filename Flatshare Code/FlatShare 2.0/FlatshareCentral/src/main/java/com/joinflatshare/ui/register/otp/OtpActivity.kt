@@ -8,7 +8,6 @@ import androidx.core.content.ContextCompat
 import com.joinflatshare.FlatshareCentral.R
 import com.joinflatshare.FlatshareCentral.databinding.ActivityOtpBinding
 import com.joinflatshare.constants.AppConstants
-import com.joinflatshare.pojo.user.UserResponse
 import com.joinflatshare.ui.register.RegisterBaseActivity
 import com.joinflatshare.utils.helper.CommonMethod.makeLog
 import java.util.regex.Pattern

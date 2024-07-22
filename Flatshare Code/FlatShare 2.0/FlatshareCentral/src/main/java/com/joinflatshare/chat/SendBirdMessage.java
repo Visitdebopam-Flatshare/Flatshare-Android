@@ -6,7 +6,6 @@ import com.joinflatshare.chat.chatInterfaces.OnMessageHistoryFetched;
 import com.joinflatshare.chat.chatInterfaces.OnTextMessageSentListener;
 import com.joinflatshare.chat.metadata.MessageMetaData;
 import com.joinflatshare.ui.base.BaseActivity;
-import com.joinflatshare.utils.helper.CommonMethods;
 import com.joinflatshare.utils.helper.CommonMethod;
 import com.sendbird.android.channel.GroupChannel;
 import com.sendbird.android.message.BaseMessage;

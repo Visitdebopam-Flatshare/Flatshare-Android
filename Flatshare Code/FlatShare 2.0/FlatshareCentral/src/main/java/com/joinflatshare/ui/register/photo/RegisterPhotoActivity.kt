@@ -2,8 +2,6 @@ package com.joinflatshare.ui.register.photo
 
 import android.content.Intent
 import android.os.Bundle
-import android.view.ViewTreeObserver.OnGlobalLayoutListener
-import android.widget.LinearLayout
 import com.debopam.ImagePicker
 import com.debopam.ImagePicker.Companion.getError
 import com.debopam.progressdialog.DialogCustomProgress
@@ -11,7 +9,6 @@ import com.joinflatshare.FlatShareApplication
 import com.joinflatshare.FlatshareCentral.databinding.ActivityRegisterPhotoBinding
 import com.joinflatshare.chat.SendBirdUser
 import com.joinflatshare.chat.pojo.user.ModelChatUserResponse
-import com.joinflatshare.db.daos.UserDao
 import com.joinflatshare.interfaces.OnUserFetched
 import com.joinflatshare.pojo.user.User
 import com.joinflatshare.pojo.user.UserResponse

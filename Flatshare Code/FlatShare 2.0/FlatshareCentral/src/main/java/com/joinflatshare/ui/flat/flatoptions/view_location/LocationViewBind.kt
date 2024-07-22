@@ -7,7 +7,6 @@ import com.joinflatshare.pojo.user.ModelLocation
 import com.joinflatshare.ui.dialogs.DialogFlatOptions
 import com.joinflatshare.utils.google.AutoCompletePlaces
 import com.joinflatshare.utils.helper.CommonMethod
-import com.joinflatshare.utils.helper.CommonMethods
 
 
 class LocationViewBind() {

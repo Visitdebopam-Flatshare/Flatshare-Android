@@ -26,7 +26,7 @@ object UrlConstants {
     }
 
     // Deep Linking
-    const val DEEPLINK_BASE_URL = "https://joinflatshare.com/"
+    const val DEEPLINK_BASE_URL = "https://joinfs.app/"
     const val DEEPLINK_FLATS_URL = "flats/"
     const val DEEPLINK_USERS_URL = "users/"
 }

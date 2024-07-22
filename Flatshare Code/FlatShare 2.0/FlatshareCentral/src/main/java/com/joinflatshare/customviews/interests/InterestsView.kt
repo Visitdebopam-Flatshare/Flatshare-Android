@@ -8,7 +8,6 @@ import com.google.android.flexbox.JustifyContent
 import com.joinflatshare.constants.AppData
 import com.joinflatshare.customviews.alert.AlertDialog
 import com.joinflatshare.interfaces.OnUiEventClick
-import com.joinflatshare.ui.base.ApplicationBaseActivity
 import com.joinflatshare.ui.base.BaseActivity
 
 /**

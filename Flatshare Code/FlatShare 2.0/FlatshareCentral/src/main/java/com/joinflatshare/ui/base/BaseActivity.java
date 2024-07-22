@@ -24,11 +24,7 @@ import com.joinflatshare.constants.SendBirdConstants;
 import com.joinflatshare.db.daos.UserDao;
 import com.joinflatshare.pojo.user.User;
 import com.joinflatshare.ui.base.gpsfetcher.GpsHandler;
-import com.joinflatshare.ui.chat.list.ChatListActivity;
-import com.joinflatshare.ui.explore.ExploreActivity;
-import com.joinflatshare.ui.checks.ChecksActivity;
 import com.joinflatshare.ui.checks.RequestHandler;
-import com.joinflatshare.ui.profile.myprofile.ProfileActivity;
 import com.joinflatshare.utils.helper.CommonMethod;
 
 import java.util.Objects;

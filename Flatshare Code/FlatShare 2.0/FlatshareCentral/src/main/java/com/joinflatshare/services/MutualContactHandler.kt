@@ -16,7 +16,8 @@ import com.joinflatshare.pojo.user.Name
 import com.joinflatshare.pojo.user.User
 import com.joinflatshare.ui.base.ApplicationBaseActivity
 import com.joinflatshare.utils.helper.CommonMethods
-import java.util.*
+import java.util.Timer
+import java.util.TimerTask
 
 /**
  * Created by debopam on 24/04/23

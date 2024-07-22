@@ -9,7 +9,6 @@ import com.joinflatshare.db.daos.AppDao
 import com.joinflatshare.db.daos.UserDao
 import com.joinflatshare.interfaces.OnFlatFetched
 import com.joinflatshare.interfaces.OnUserFetched
-import com.joinflatshare.pojo.BaseResponse
 import com.joinflatshare.pojo.flat.FlatResponse
 import com.joinflatshare.pojo.user.ModelLocation
 import com.joinflatshare.pojo.user.User

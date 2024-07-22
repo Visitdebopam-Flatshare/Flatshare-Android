@@ -1,12 +1,8 @@
 package com.joinflatshare.ui.chat.list
 
-import android.content.Intent
 import android.text.Editable
 import android.text.TextWatcher
 import com.joinflatshare.FlatshareCentral.databinding.ActivityChatListBinding
-import com.joinflatshare.constants.RouteConstants
-import com.joinflatshare.ui.invite.InviteActivity
-import com.joinflatshare.utils.helper.CommonMethod
 import java.util.Locale
 
 class ChatListListener(

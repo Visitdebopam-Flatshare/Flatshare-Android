@@ -9,7 +9,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.joinflatshare.FlatshareCentral.R
 import com.joinflatshare.FlatshareCentral.databinding.ItemInterestsBinding
 import com.joinflatshare.constants.AppConstants
-import com.joinflatshare.constants.ThemeConstants
 import com.joinflatshare.constants.UrlConstants.INTEREST_URL
 import com.joinflatshare.constants.UrlConstants.LANGUAGE_URL
 import com.joinflatshare.interfaces.OnUiEventClick

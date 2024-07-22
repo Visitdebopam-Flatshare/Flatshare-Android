@@ -11,8 +11,6 @@ import com.joinflatshare.chat.pojo.ModelUserMetadataRequest;
 import com.joinflatshare.chat.pojo.user.ModelChatUserResponse;
 import com.joinflatshare.db.daos.UserDao;
 import com.joinflatshare.interfaces.OnitemClick;
-import com.joinflatshare.ui.base.ApplicationBaseActivity;
-import com.joinflatshare.utils.helper.CommonMethods;
 import com.joinflatshare.utils.helper.CommonMethod;
 import com.sendbird.android.SendbirdChat;
 import com.sendbird.android.params.BlockedUserListQueryParams;
