@@ -1,6 +1,5 @@
 package com.joinflatshare.pojo.user
 
-import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
 import com.joinflatshare.pojo.config.RentRange
 import com.joinflatshare.pojo.flat.DealBreakers
@@ -92,7 +91,6 @@ data class User(
     @field:SerializedName("invites")
     var invites: Int = 0,
 
-    @Expose(serialize = false)
     @field:SerializedName("completedDetails")
     val completed: CompletedDetails?=null,
 
@@ -156,6 +154,8 @@ data class Deeplinks(
 ) : Serializable
 
 data class FlatProperties(
+    @field:SerializedName("profession")
+    var profession: String? = "",
 
     @field:SerializedName("furnishing")
     var furnishing: ArrayList<String> = ArrayList(),

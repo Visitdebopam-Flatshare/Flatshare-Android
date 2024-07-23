@@ -5,7 +5,6 @@ import com.joinflatshare.constants.NotificationConstants
 import com.joinflatshare.ui.base.BaseActivity
 import com.joinflatshare.ui.chat.list.ChatListActivity
 import com.joinflatshare.ui.checks.ChecksActivity
-import com.joinflatshare.ui.checks.request_invitation.InvitationRequestActivity
 import com.joinflatshare.ui.flat.edit.FlatEditActivity
 import com.joinflatshare.ui.profile.edit.ProfileEditActivity
 import com.joinflatshare.ui.profile.myprofile.ProfileActivity
@@ -18,10 +17,6 @@ class FcmNavigationUtils(activity: BaseActivity, intent: Intent) {
             intnt = Intent(activity, ChecksActivity::class.java)
         } else {
             when (intent.getStringExtra("type")) {
-                NotificationConstants.NOTIFICATION_TYPE_INVITE_FLAT_MEMBER -> {
-                    intnt = Intent(activity, InvitationRequestActivity::class.java)
-                }
-
                 NotificationConstants.NOTIFICATION_TYPE_NO_NAVIGATION,
                 NotificationConstants.NOTIFICATION_TYPE_GENERAL_USER,
                 NotificationConstants.NOTIFICATION_TYPE_GENERAL_FLAT -> {

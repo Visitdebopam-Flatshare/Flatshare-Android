@@ -34,32 +34,25 @@ class ExploreActivity : BaseActivity() {
         viewBind = ActivityExploreBinding.inflate(layoutInflater)
         setContentView(viewBind.root)
         showBottomMenu(this)
+        init()
         moveToPreference()
         handleDeepLinking()
-        init()
-        MutualContactHandler.scheduleContactHandler(this)
+//        MutualContactHandler.scheduleContactHandler(this)
     }
 
     private fun init() {
         apiController = ExploreApiController(this, viewBind)
         binder = ExploreBinder(this)
         ExploreListener(this, viewBind)
-        reloadFeed()
     }
 
     private fun moveToPreference() {
         if (intent.getBooleanExtra(IntentConstants.INTENT_MOVE_TO_PREFERENCE, false)) {
             intent.removeExtra(IntentConstants.INTENT_MOVE_TO_PREFERENCE)
             val intent = Intent(this, PreferenceActivity::class.java)
-            CommonMethod.switchActivity(
-                this,
-                intent
-            ) { result ->
-                if (result?.resultCode == Activity.RESULT_OK) {
-                    AppConstants.isFeedReloadRequired = true
-                    reloadFeed()
-                }
-            }
+            CommonMethod.switchActivity(this, intent, false)
+        } else {
+            reloadFeed()
         }
     }
 

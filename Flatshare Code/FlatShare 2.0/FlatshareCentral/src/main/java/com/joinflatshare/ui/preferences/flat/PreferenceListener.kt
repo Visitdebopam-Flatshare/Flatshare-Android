@@ -18,6 +18,7 @@ import com.joinflatshare.pojo.user.UserResponse
 import com.joinflatshare.ui.bottomsheet.VerifiedBottomSheet
 import com.joinflatshare.utils.google.AutoCompletePlaces
 import com.joinflatshare.utils.helper.CommonMethod
+import com.joinflatshare.utils.helper.DateUtils
 import com.joinflatshare.utils.mixpanel.MixpanelUtils
 import java.text.SimpleDateFormat
 import java.util.Calendar
@@ -64,7 +65,7 @@ class PreferenceListener(private val activity: PreferenceActivity) : View.OnClic
                 val pickerNowTime = calendar.timeInMillis
                 val constraints = CalendarConstraints.Builder().setStart(pickerNowTime)
                     .setValidator(DateValidatorPointForward.from(pickerNowTime))
-                var sdf = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault())
+                val sdf = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault())
                 val dpd =
                     MaterialDatePicker.Builder.datePicker().setTitleText("Select Move-in Date")
                         .setSelection(calendar.timeInMillis)
@@ -76,8 +77,8 @@ class PreferenceListener(private val activity: PreferenceActivity) : View.OnClic
                 dpd.addOnPositiveButtonClickListener { it ->
                     calendar.timeInMillis = it
                     viewBind.includePrefFlat.txtPrefFlatMovein.text = sdf.format(calendar.time)
-                    sdf = SimpleDateFormat("yyyy/MM/dd", Locale.getDefault())
-                    activity.user?.flatProperties?.moveinDate = sdf.format(calendar.time)
+                    activity.user?.flatProperties?.moveinDate =
+                        DateUtils.convertToServerFormat(sdf.format(calendar.time))
                 }
             }
 
@@ -113,15 +114,15 @@ class PreferenceListener(private val activity: PreferenceActivity) : View.OnClic
             }
 
             viewBind.includePrefFlatmate.txtStudents.id -> {
-                if (activity.user?.profession != "Student") {
-                    activity.user?.profession = "Student"
+                if (activity.user?.flatProperties?.profession != "Student") {
+                    activity.user?.flatProperties?.profession = "Student"
                     activity.setProfession()
                 }
             }
 
             viewBind.includePrefFlatmate.txtWorking.id -> {
-                if (activity.user?.profession != "Working Professional") {
-                    activity.user?.profession = "Working Professional"
+                if (activity.user?.flatProperties?.profession != "Working Professional") {
+                    activity.user?.flatProperties?.profession = "Working Professional"
                     activity.setProfession()
                 }
             }
@@ -191,7 +192,7 @@ class PreferenceListener(private val activity: PreferenceActivity) : View.OnClic
             true
         else if (actualUserData?.flatProperties?.gender != activity.user?.flatProperties?.gender) {
             hasChanged = true
-        } else if (actualUserData?.profession != activity.user?.profession) {
+        } else if (actualUserData?.flatProperties?.profession != activity.user?.flatProperties?.profession) {
             hasChanged = true
         } else if (actualUserData?.flatProperties?.interests != activity.user?.flatProperties?.interests) {
             hasChanged = true
@@ -216,8 +217,6 @@ class PreferenceListener(private val activity: PreferenceActivity) : View.OnClic
             object : OnUserFetched {
                 override fun userFetched(resp: UserResponse?) {
                     AppConstants.isFeedReloadRequired = true
-                    val intent = Intent()
-                    activity.setResult(Activity.RESULT_OK, intent)
                     CommonMethod.finishActivity(activity)
                 }
             })

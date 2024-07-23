@@ -140,7 +140,7 @@ class PreferenceActivity : BaseActivity() {
             ContextCompat.getColor(this, R.color.black)
         )
 
-        when(user?.profession) {
+        when(user?.flatProperties?.profession) {
             "Student" -> {
                 viewBind.includePrefFlatmate.txtStudents.background =
                     ContextCompat.getDrawable(this, R.drawable.drawable_button_blue)

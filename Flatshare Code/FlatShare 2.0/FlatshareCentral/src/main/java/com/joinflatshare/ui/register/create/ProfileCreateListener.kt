@@ -18,6 +18,7 @@ import com.joinflatshare.pojo.config.RentRange
 import com.joinflatshare.pojo.user.Name
 import com.joinflatshare.utils.helper.CommonMethod
 import com.joinflatshare.utils.helper.CommonMethods
+import com.joinflatshare.utils.helper.DateUtils
 import java.text.SimpleDateFormat
 import java.util.Calendar
 import java.util.Locale
@@ -79,8 +80,7 @@ class ProfileCreateListener(
                 dpd.addOnPositiveButtonClickListener { it ->
                     calendar.timeInMillis = it
                     viewBind.txtDob.text = sdf.format(calendar.time)
-                    sdf = SimpleDateFormat("yyyy/MM/dd", Locale.getDefault())
-                    dob = sdf.format(calendar.time)
+                    dob = DateUtils.convertToServerFormat(sdf.format(calendar.time))
                 }
             }
 
