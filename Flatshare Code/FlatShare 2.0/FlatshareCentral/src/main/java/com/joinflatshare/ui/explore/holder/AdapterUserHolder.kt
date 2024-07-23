@@ -164,10 +164,6 @@ class AdapterUserHolder {
                     )
                     return@setOnClickListener
                 }
-                if (!AppConstants.isAppLive) {
-                    showConnectionMatch(BaseActivity.TYPE_FHT, activity, user)
-                    return@setOnClickListener
-                }
                 WebserviceManager().sendChatRequestResponse(
                     activity,
                     true,

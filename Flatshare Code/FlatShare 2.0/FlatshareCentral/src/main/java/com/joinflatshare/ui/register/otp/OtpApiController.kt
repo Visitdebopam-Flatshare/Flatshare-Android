@@ -115,7 +115,7 @@ class OtpApiController(private val activity: OtpActivity) {
 
 
     fun verifyAadhaar(adhaarOTP: String) {
-        WebserviceManager().verifyAadhar(
+        WebserviceManager().verifyAadhaar(
             activity,
             AdhaarOtp(adhaarOTP),
             object : OnFlatshareResponseCallBack<Response<ResponseBody>> {

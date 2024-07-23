@@ -59,7 +59,7 @@
                             app:cardPreventCornerOverlap="false"
                             app:cardUseCompatPadding="false"
                             app:strokeColor="@color/grey7"
-                            app:strokeWidth="1.5dp">
+                            app:strokeWidth="@dimen/_2sdp">
 
                             <FrameLayout
                                 android:layout_width="match_parent"
@@ -79,7 +79,7 @@
                                     android:gravity="center"
                                     android:textAllCaps="true"
                                     android:textColor="@color/white"
-                                    android:textSize="@dimen/_40sdp"
+                                    android:textSize="@dimen/_32sdp"
                                     android:visibility="gone" />
 
                                 <ImageView
@@ -116,7 +116,7 @@
                             <ImageView
                                 android:layout_width="@dimen/_12sdp"
                                 android:layout_height="@dimen/_12sdp"
-                                android:src="@drawable/ic_location_black"
+                                android:src="@drawable/ic_location"
                                 app:tint="@color/white" />
 
                             <TextView

@@ -7,13 +7,11 @@ import com.joinflatshare.FlatshareCentral.databinding.ActivityExploreBinding
 import com.joinflatshare.api.retrofit.WebserviceCustomRequestHandler
 import com.joinflatshare.constants.AppConstants
 import com.joinflatshare.constants.ChatRequestConstants
-import com.joinflatshare.pojo.likes.LikeRequest
 import com.joinflatshare.ui.base.BaseActivity
 import com.joinflatshare.ui.bottomsheet.IncompleteProfileBottomSheet
 import com.joinflatshare.ui.preferences.flat.PreferenceActivity
 import com.joinflatshare.utils.helper.CommonMethod
 import com.joinflatshare.utils.mixpanel.MixpanelUtils
-import com.joinflatshare.webservice.api.ApiManager
 import com.joinflatshare.webservice.api.WebserviceManager
 import com.joinflatshare.webservice.api.interfaces.OnFlatshareResponseCallBack
 import okhttp3.ResponseBody
@@ -52,16 +50,18 @@ class ExploreListener(
                     ) { activity.binder.showUser() }
                     return
                 }
-                activity.apiManager.exploreDisLike(
-                    false,
-                    BaseActivity.TYPE_FHT,
-                    ChatRequestConstants.CHAT_REQUEST_CONSTANT_FHT,
+                val rejectLikeUrl = WebserviceCustomRequestHandler.getRejectLikeRequest(
+                    BaseActivity.TYPE_FHT, ChatRequestConstants.CHAT_REQUEST_CONSTANT_FHT,
                     activity.userData[0].data!!.id
-                ) { response ->
-                    MixpanelUtils.onButtonClicked("Feed Dislike")
-                    activity.userData.removeAt(0)
-                    activity.binder.showUser()
-                }
+                )
+                WebserviceManager().rejectLike(activity, rejectLikeUrl,
+                    object : OnFlatshareResponseCallBack<Response<ResponseBody>> {
+                        override fun onResponseCallBack(response: String) {
+                            MixpanelUtils.onButtonClicked("Feed Reject")
+                            activity.userData.removeAt(0)
+                            activity.binder.showUser()
+                        }
+                    })
             }
 
             viewBind.includePagerExplore.imgCheck.id -> {
@@ -76,12 +76,8 @@ class ExploreListener(
                     BaseActivity.TYPE_FHT, ChatRequestConstants.CHAT_REQUEST_CONSTANT_FHT,
                     activity.userData[0].data!!.id
                 )
-                val observable = ApiManager.getApiInterface().addLike(
-                    likeUrl, LikeRequest(AppConstants.loggedInUser!!.location.loc.coordinates)
-                )
-                ApiManager().callApi(
-                    activity,
-                    observable,
+                WebserviceManager().addLike(activity,
+                    likeUrl,
                     object : OnFlatshareResponseCallBack<Response<ResponseBody>> {
                         override fun onResponseCallBack(response: String) {
                             MixpanelUtils.onButtonClicked("Feed Check")

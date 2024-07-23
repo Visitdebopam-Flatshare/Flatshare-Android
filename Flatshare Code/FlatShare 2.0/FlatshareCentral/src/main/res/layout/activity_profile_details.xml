@@ -59,6 +59,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginHorizontal="@dimen/dimen_margin_horizontal"
+                        android:layout_marginBottom="@dimen/_10sdp"
                         android:layout_marginTop="@dimen/_10sdp"
                         app:cardBackgroundColor="@color/white"
                         app:cardCornerRadius="@dimen/_16sdp"
@@ -80,7 +81,7 @@
                         android:id="@+id/ll_profile_interests"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/_20sdp"
+                        android:layout_marginTop="@dimen/_10sdp"
                         android:orientation="vertical">
 
                         <TextView
@@ -96,8 +97,8 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginHorizontal="@dimen/dimen_margin_horizontal"
+                            android:layout_marginBottom="@dimen/_10sdp"
                             android:layout_marginTop="@dimen/_10sdp"
-                            android:layout_marginBottom="@dimen/_2sdp"
                             app:cardBackgroundColor="@color/white"
                             app:cardCornerRadius="@dimen/_16sdp"
                             app:cardElevation="@dimen/_3sdp">
@@ -120,7 +121,7 @@
                         android:id="@+id/ll_profile_languages"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/_20sdp"
+                        android:layout_marginTop="@dimen/_10sdp"
                         android:orientation="vertical">
 
                         <TextView
@@ -137,7 +138,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginHorizontal="@dimen/dimen_margin_horizontal"
                             android:layout_marginTop="@dimen/_10sdp"
-                            android:layout_marginBottom="@dimen/_2sdp"
+                            android:layout_marginBottom="@dimen/_10sdp"
                             app:cardBackgroundColor="@color/white"
                             app:cardCornerRadius="@dimen/_16sdp"
                             app:cardElevation="@dimen/_3sdp">
@@ -160,7 +161,7 @@
                         android:id="@+id/ll_profile_status"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/_20sdp"
+                        android:layout_marginTop="@dimen/_10sdp"
                         android:orientation="vertical">
 
                         <TextView
@@ -177,7 +178,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginHorizontal="@dimen/dimen_margin_horizontal"
                             android:layout_marginTop="@dimen/_10sdp"
-                            android:layout_marginBottom="@dimen/_2sdp"
+                            android:layout_marginBottom="@dimen/_10sdp"
                             app:cardBackgroundColor="@color/white"
                             app:cardCornerRadius="@dimen/_16sdp"
                             app:cardElevation="@dimen/_3sdp">
@@ -200,7 +201,7 @@
                         android:id="@+id/ll_profile_work"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/_20sdp"
+                        android:layout_marginTop="@dimen/_10sdp"
                         android:orientation="vertical">
 
                         <TextView
@@ -217,7 +218,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginHorizontal="@dimen/dimen_margin_horizontal"
                             android:layout_marginTop="@dimen/_10sdp"
-                            android:layout_marginBottom="@dimen/_2sdp"
+                            android:layout_marginBottom="@dimen/_10sdp"
                             app:cardBackgroundColor="@color/white"
                             app:cardCornerRadius="@dimen/_16sdp"
                             app:cardElevation="@dimen/_3sdp">
@@ -240,7 +241,7 @@
                         android:id="@+id/ll_profile_education"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/_20sdp"
+                        android:layout_marginTop="@dimen/_10sdp"
                         android:orientation="vertical">
 
                         <TextView
@@ -257,7 +258,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginHorizontal="@dimen/dimen_margin_horizontal"
                             android:layout_marginTop="@dimen/_10sdp"
-                            android:layout_marginBottom="@dimen/_2sdp"
+                            android:layout_marginBottom="@dimen/_10sdp"
                             app:cardBackgroundColor="@color/white"
                             app:cardCornerRadius="@dimen/_16sdp"
                             app:cardElevation="@dimen/_3sdp">
@@ -280,7 +281,7 @@
                         android:id="@+id/ll_profile_hometown"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/_20sdp"
+                        android:layout_marginTop="@dimen/_10sdp"
                         android:orientation="vertical">
 
                         <TextView
@@ -297,7 +298,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginHorizontal="@dimen/dimen_margin_horizontal"
                             android:layout_marginTop="@dimen/_10sdp"
-                            android:layout_marginBottom="@dimen/_2sdp"
+                            android:layout_marginBottom="@dimen/_10sdp"
                             app:cardBackgroundColor="@color/white"
                             app:cardCornerRadius="@dimen/_16sdp"
                             app:cardElevation="@dimen/_3sdp">
@@ -320,7 +321,7 @@
                         android:id="@+id/ll_profile_flatscore"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/_20sdp"
+                        android:layout_marginTop="@dimen/_10sdp"
                         android:orientation="vertical">
 
                         <TextView
@@ -337,7 +338,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginHorizontal="@dimen/dimen_margin_horizontal"
                             android:layout_marginTop="@dimen/_10sdp"
-                            android:layout_marginBottom="@dimen/_5sdp"
+                            android:layout_marginBottom="@dimen/_10sdp"
                             app:cardBackgroundColor="@color/white"
                             app:cardCornerRadius="@dimen/_16sdp"
                             app:cardElevation="@dimen/_3sdp">

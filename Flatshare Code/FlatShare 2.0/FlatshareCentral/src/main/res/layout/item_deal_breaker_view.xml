@@ -23,7 +23,6 @@
         android:layout_height="wrap_content"
         android:fontFamily="@font/font_semibold"
         android:gravity="top"
-        android:text="Eating Eggs"
         android:textColor="@color/white"
         android:textSize="@dimen/_12sdp" />
 

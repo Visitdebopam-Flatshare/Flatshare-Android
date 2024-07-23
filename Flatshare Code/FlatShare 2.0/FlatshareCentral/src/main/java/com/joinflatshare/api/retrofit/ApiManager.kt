@@ -16,7 +16,6 @@ import com.joinflatshare.pojo.invite.InvitedRequest
 import com.joinflatshare.pojo.invite.RequestSavedContacts
 import com.joinflatshare.pojo.purchase.PurchaseRequest
 import com.joinflatshare.ui.base.ApplicationBaseActivity
-import com.joinflatshare.ui.base.BaseActivity.TYPE_FLAT
 import com.joinflatshare.utils.helper.CommonMethod
 import com.joinflatshare.utils.helper.CommonMethods
 import com.joinflatshare.utils.helper.DateUtils
@@ -281,30 +280,6 @@ class ApiManager() {
                         }*/
                         sendResponse(trendsResponse, onResponseCallback)
                     }
-                }) { throwable -> handleError(throwable as Throwable, onResponseCallback) })
-        }
-    }
-
-    fun exploreDisLike(
-        showProgress: Boolean,
-        likeType: String,
-        connectionType: String,
-        id: String,
-        onResponseCallback: OnResponseCallback<Any?>
-    ) {
-        if (ConnectivityListener.checkInternet()) {
-            if (showProgress) {
-                showProgress()
-                isLoaderShownByApimanager = true
-            }
-            var like = /*BuildConfig.DOMAIN*/""
-            if (likeType.equals(TYPE_FLAT)) {
-                like += "$likeType/likes/delete/$id"
-            } else like += "users/likes/$connectionType/delete/$id"
-            CompositeDisposable().add(getClient()?.exploreDisLike(like)!!
-                .observeOn(AndroidSchedulers.mainThread()).subscribeOn(Schedulers.io())
-                .subscribe({ trendsResponse ->
-                    sendResponse(trendsResponse, onResponseCallback)
                 }) { throwable -> handleError(throwable as Throwable, onResponseCallback) })
         }
     }

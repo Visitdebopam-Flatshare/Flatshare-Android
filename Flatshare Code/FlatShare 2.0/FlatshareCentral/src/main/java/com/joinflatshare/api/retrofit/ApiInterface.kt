@@ -88,11 +88,6 @@ interface ApiInterface {
     ): Observable<BaseResponse>
 
     /*------------------------------ FEED ------------------------------*/
-    @DELETE()
-    fun exploreDisLike(
-        @Url url: String
-    ): Observable<BaseResponse>
-
     @POST("users/likes/reveal/{type}/{phone}")
     fun revealLikes(
         @Path("type") type: String,

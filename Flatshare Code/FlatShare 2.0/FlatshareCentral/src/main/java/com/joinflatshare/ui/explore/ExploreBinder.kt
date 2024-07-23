@@ -1,5 +1,7 @@
 package com.joinflatshare.ui.explore
 
+import android.os.Handler
+import android.os.Looper
 import android.view.View
 import android.view.animation.TranslateAnimation
 import com.joinflatshare.FlatshareCentral.R
@@ -64,11 +66,19 @@ class ExploreBinder(
     private fun animateView() {
         // hide View
         viewBind.frameViewHolder.visibility = View.GONE
+        val animate = TranslateAnimation(0f, 0f, viewBind.frameViewHolder.height.toFloat(), -100f)
+        animate.duration = 300
+        viewBind.frameViewHolder.startAnimation(animate)
+
+        Handler(Looper.getMainLooper()).postDelayed({ viewBind.frameViewHolder.visibility = View.VISIBLE }, 1000)
+
+
+        /*viewBind.frameViewHolder.visibility = View.GONE
         // Show View
         viewBind.frameViewHolder.visibility = View.VISIBLE
         val animate = TranslateAnimation(0f, 0f, viewBind.frameViewHolder.height.toFloat(), 0f)
         animate.duration = 500
         animate.fillAfter = true
-        viewBind.frameViewHolder.startAnimation(animate)
+        viewBind.frameViewHolder.startAnimation(animate)*/
     }
 }

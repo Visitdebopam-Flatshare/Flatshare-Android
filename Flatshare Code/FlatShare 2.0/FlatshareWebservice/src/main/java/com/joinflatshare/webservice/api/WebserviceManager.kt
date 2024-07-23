@@ -1,12 +1,11 @@
 package com.joinflatshare.webservice.api
 
 import androidx.activity.ComponentActivity
-import com.joinflatshare.webservice.api.interfaces.IWebservice
-import com.joinflatshare.webservice.api.interfaces.OnFlatshareResponseCallBack
-import com.joinflatshare.pojo.likes.LikeRequest
 import com.joinflatshare.pojo.user.AdhaarOtp
 import com.joinflatshare.pojo.user.AdhaarRequest
 import com.joinflatshare.pojo.user.User
+import com.joinflatshare.webservice.api.interfaces.IWebservice
+import com.joinflatshare.webservice.api.interfaces.OnFlatshareResponseCallBack
 import io.reactivex.Observable
 import okhttp3.ResponseBody
 import retrofit2.Response
@@ -85,7 +84,7 @@ class WebserviceManager {
         handleApiRequestWithProgress(activity, observable, callback)
     }
 
-    fun verifyAadhar(
+    fun verifyAadhaar(
         activity: ComponentActivity,
         requestBody: AdhaarOtp,
         callback: OnFlatshareResponseCallBack<Response<ResponseBody>>
@@ -242,12 +241,18 @@ class WebserviceManager {
     fun addLike(
         activity: ComponentActivity,
         url: String?,
-        request: LikeRequest?,
         callback: OnFlatshareResponseCallBack<Response<ResponseBody>>
     ) {
-        val observable = ApiManager.getApiInterface().addLike(
-            url, request
-        )
+        val observable = ApiManager.getApiInterface().addLike(url)
+        handleApiRequestWithoutProgress(activity, observable, callback)
+    }
+
+    fun rejectLike(
+        activity: ComponentActivity,
+        url: String?,
+        callback: OnFlatshareResponseCallBack<Response<ResponseBody>>
+    ) {
+        val observable = ApiManager.getApiInterface().rejectLike(url)
         handleApiRequestWithoutProgress(activity, observable, callback)
     }
 

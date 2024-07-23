@@ -80,7 +80,8 @@ class ProfileCreateListener(
                 dpd.addOnPositiveButtonClickListener { it ->
                     calendar.timeInMillis = it
                     viewBind.txtDob.text = sdf.format(calendar.time)
-                    dob = DateUtils.convertToServerFormat(sdf.format(calendar.time))
+                    sdf = SimpleDateFormat("yyyy/MM/dd", Locale.getDefault())
+                    dob = sdf.format(calendar.time)
                 }
             }
 

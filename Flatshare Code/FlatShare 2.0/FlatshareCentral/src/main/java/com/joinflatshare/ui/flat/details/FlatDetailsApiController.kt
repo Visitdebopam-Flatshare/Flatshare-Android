@@ -18,7 +18,6 @@ import com.joinflatshare.interfaces.OnStringFetched
 import com.joinflatshare.payment.PaymentHandler
 import com.joinflatshare.pojo.flat.FlatResponse
 import com.joinflatshare.pojo.invite.InvitedRequest
-import com.joinflatshare.pojo.likes.LikeRequest
 import com.joinflatshare.ui.base.BaseActivity
 import com.joinflatshare.ui.dialogs.DialogLottieViewer
 import com.joinflatshare.ui.invite.InviteActivity
@@ -69,7 +68,6 @@ class FlatDetailsApiController(
         )
         WebserviceManager().addLike(activity,
             likeUrl,
-            LikeRequest(AppConstants.loggedInUser!!.location.loc.coordinates),
             object : OnFlatshareResponseCallBack<Response<ResponseBody>> {
                 override fun onCallBackPayment(count: Int) {
                     // Checking payment gateway

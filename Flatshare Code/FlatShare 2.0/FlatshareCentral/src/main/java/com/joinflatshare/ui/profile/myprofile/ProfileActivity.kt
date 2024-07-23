@@ -50,15 +50,22 @@ class ProfileActivity : BaseActivity() {
         var percentage = 0
         if (userPerc != null)
             percentage = userPerc
-        viewBind.txtProfileComplete.text = "$percentage% COMPLETE"
-        viewBind.llProfileComplete?.removeAllViews()
-        for (i in 1 until percentage) {
-            val view = View(this)
-            view.layoutParams =
-                LinearLayout.LayoutParams(0, LinearLayout.LayoutParams.MATCH_PARENT, 1f)
-            view.setBackgroundColor(ContextCompat.getColor(this, R.color.blue_dark))
-            viewBind.llProfileComplete?.addView(view)
+        if (percentage == 100) {
+            viewBind.cardProfileComplete.visibility = View.GONE
+        } else {
+            viewBind.cardProfileComplete.visibility = View.VISIBLE
+            viewBind.txtProfileComplete.text = "$percentage% COMPLETE"
+            viewBind.llProfileComplete.removeAllViews()
+            for (i in 1 until percentage) {
+                val view = View(this)
+                view.layoutParams =
+                    LinearLayout.LayoutParams(0, LinearLayout.LayoutParams.MATCH_PARENT, 1f)
+                view.setBackgroundColor(ContextCompat.getColor(this, R.color.blue_dark))
+                viewBind.llProfileComplete?.addView(view)
+            }
         }
+
+
     }
 
     override fun onResume() {

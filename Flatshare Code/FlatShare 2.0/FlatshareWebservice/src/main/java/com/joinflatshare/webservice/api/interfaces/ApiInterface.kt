@@ -1,7 +1,5 @@
 package com.joinflatshare.webservice.api.interfaces
 
-import com.joinflatshare.pojo.BaseResponse
-import com.joinflatshare.pojo.likes.LikeRequest
 import com.joinflatshare.pojo.user.AdhaarOtp
 import com.joinflatshare.pojo.user.AdhaarRequest
 import com.joinflatshare.pojo.user.User
@@ -143,6 +141,10 @@ interface ApiInterface {
     @PUT()
     fun addLike(
         @Url url: String?,
-        @Body request: LikeRequest?
+    ): Observable<Response<ResponseBody>>
+
+    @DELETE()
+    fun rejectLike(
+        @Url url: String?
     ): Observable<Response<ResponseBody>>
 }
