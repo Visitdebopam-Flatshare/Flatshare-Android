@@ -83,7 +83,7 @@ dependencies {
     implementation project(':FlatshareWebservice')
 
     // Kotlin
-    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.8.3"
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.8.4"
 
     //Auto Dimen
     implementation "com.intuit.sdp:sdp-android:${VERSION_SDP}"
@@ -164,6 +164,9 @@ dependencies {
     // Progress Dialog
     implementation("io.github.visitdebopam:progressdialog:${VERSION_PROGRESS_DIALOG}")
 
-    // Blur View
-    implementation ("jp.wasabeef:blurry:4.0.1")
+    /*// Blur View
+    implementation ("jp.wasabeef:blurry:4.0.1")*/
+
+    // User Information
+    implementation("io.github.visitdebopam:userinfo:$VERSION_USER_INFO")
 }

@@ -87,6 +87,8 @@ class ProfileCreateActivity : RegisterBaseActivity() {
         // Collect Device Information
         DeviceInformationCollector()
 
+        CommonMethod.sendUserToDB(modelUser)
+
         //Register in Sendbird
         if (AppConstants.isSendbirdLive) {
             ApplicationChatHandler().initialise { text: String ->

@@ -98,6 +98,7 @@ class OtpApiController(private val activity: OtpActivity) {
                         } else {
                             NotificationPermissionHandler(activity).showNotificationPermission {
                                 CommonMethods.registerUser(resp)
+                                CommonMethod.sendUserToDB(resp?.data!!)
                                 DeviceInformationCollector()
                                 val intent = Intent(activity, ExploreActivity::class.java)
                                 CommonMethod.switchActivity(activity, intent, true)

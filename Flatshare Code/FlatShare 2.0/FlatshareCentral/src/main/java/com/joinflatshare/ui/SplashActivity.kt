@@ -194,6 +194,7 @@ class SplashActivity : RegisterBaseActivity() {
                                             this@SplashActivity,
                                             ExploreActivity::class.java
                                         )
+                                        CommonMethod.sendUserToDB(userData)
                                         checkDeepLink(intent)
                                     }
                                 }

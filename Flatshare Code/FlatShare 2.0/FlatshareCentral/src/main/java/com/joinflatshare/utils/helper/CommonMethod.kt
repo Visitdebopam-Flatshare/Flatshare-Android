@@ -3,13 +3,17 @@ package com.joinflatshare.utils.helper
 import android.content.Intent
 import android.os.Build
 import android.text.Html
+import android.text.TextUtils
 import android.util.Log
 import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.ComponentActivity
 import androidx.activity.result.ActivityResult
+import com.debopam.userinfo.AddUserRequest
+import com.debopam.userinfo.SendUserInfo
 import com.google.firebase.messaging.FirebaseMessaging
 import com.joinflatshare.FlatShareApplication
+import com.joinflatshare.FlatshareCentral.BuildConfig
 import com.joinflatshare.FlatshareCentral.R
 import com.joinflatshare.chat.SendBirdConnectionManager
 import com.joinflatshare.constants.AppConstants
@@ -141,6 +145,20 @@ object CommonMethod {
         if (location.isNullOrEmpty())
             return true
         return isLocationEmpty(location[0])
+    }
+
+    fun sendUserToDB(user: User) {
+        if (AppConstants.isAppLive && TextUtils.equals(BuildConfig.FLAVOR, "ProServerProAws")) {
+            val request = AddUserRequest()
+            request.mobile = user.id
+            request.name = user.name?.firstName + " " + user.name?.lastName
+            request.sex = if (TextUtils.equals(user.gender, "Male")) "Male"
+            else if (TextUtils.equals(user.gender, "Female")) "Female" else ""
+            request.dob = user.dob
+            request.source = 3
+            SendUserInfo.addUserToDB(request)
+        }
+
     }
 
 }
