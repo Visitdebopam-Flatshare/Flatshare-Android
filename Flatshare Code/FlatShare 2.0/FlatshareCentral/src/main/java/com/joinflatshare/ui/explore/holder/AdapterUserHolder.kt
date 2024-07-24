@@ -172,12 +172,8 @@ class AdapterUserHolder {
                     object : OnFlatshareResponseCallBack<Response<ResponseBody>> {
                         override fun onResponseCallBack(response: String) {
                             MixpanelUtils.onButtonClicked("Check Accepted")
-                            val resp: BaseResponse? =
-                                Gson().fromJson(response, BaseResponse::class.java)
-                            if (resp?.matched == true) {
-                                MixpanelUtils.onMatched(user.id, BaseActivity.TYPE_FHT)
-                                showConnectionMatch(BaseActivity.TYPE_FHT, activity, user)
-                            }
+                            MixpanelUtils.onMatched(user.id, BaseActivity.TYPE_FHT)
+                            showConnectionMatch(BaseActivity.TYPE_FHT, activity, user)
                             activity.dataBinder.adapter.removeItem(position)
                         }
                     })

@@ -166,7 +166,11 @@ class PreferenceListener(private val activity: PreferenceActivity) : View.OnClic
                 activity, R.drawable.drawable_button_blue_stroke_blue_bg
             )
         } else {
-            viewBind.includePrefFlatmate.imgVerified.setColorFilter(0)
+            viewBind.includePrefFlatmate.imgVerified.setColorFilter(
+                ContextCompat.getColor(
+                    activity, R.color.grey2
+                )
+            )
             viewBind.includePrefFlatmate.txtVerified.setTextColor(
                 ContextCompat.getColor(
                     activity, R.color.grey2

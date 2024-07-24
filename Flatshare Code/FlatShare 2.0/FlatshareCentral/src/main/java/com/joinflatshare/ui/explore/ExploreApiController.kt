@@ -4,6 +4,7 @@ import com.google.gson.Gson
 import com.joinflatshare.FlatshareCentral.databinding.ActivityExploreBinding
 import com.joinflatshare.api.retrofit.ApiManager
 import com.joinflatshare.constants.AppConstants
+import com.joinflatshare.utils.helper.CommonMethod
 import com.joinflatshare.webservice.api.WebserviceManager
 import com.joinflatshare.webservice.api.interfaces.OnFlatshareResponseCallBack
 import okhttp3.ResponseBody
@@ -40,7 +41,10 @@ class ExploreApiController(
                 override fun onResponseCallBack(response: String) {
                     isDataFetching = false
                     AppConstants.isFeedReloadRequired = false
-                    val resp = Gson().fromJson(response, com.joinflatshare.pojo.explore.RecommendationResponse::class.java)
+                    val resp = Gson().fromJson(
+                        response,
+                        com.joinflatshare.pojo.explore.RecommendationResponse::class.java
+                    )
                     hasMoreData = currentPage < resp.lastIndex
                     val data = resp.userData
                     if (data.isNotEmpty()) {
@@ -55,14 +59,12 @@ class ExploreApiController(
                         if (currentPage == 0) {
                             // Check if user's flat location is filled up
                             var isLocationFilled = false
-                            if (!AppConstants.loggedInUser?.flatProperties?.preferredLocation.isNullOrEmpty()
-                                && !AppConstants.loggedInUser?.flatProperties?.preferredLocation!![0].loc.coordinates.isNullOrEmpty()
-                            ) {
+                            if (!CommonMethod.isLocationEmpty(AppConstants.loggedInUser?.location)) {
                                 isLocationFilled = true
                             }
                             if (isLocationFilled) {
                                 activity.binder.showEmptyData(
-                                    "Sorry, we’ve run out of potential flatmates for you.",
+                                    "Sorry, we’ve run out of potential\nflatmates for you.",
                                     "Edit Preferences"
                                 )
                             } else {

@@ -3,6 +3,10 @@ plugins {
     id 'org.jetbrains.kotlin.android'
 }
 apply from: "$rootDir/version.gradle"
+//apply from: "$project.rootDir/FlatshareCommons/Quality/quality.gradle"
+
+//check.dependsOn 'checkstyle', 'pmd'
+//preBuild.dependsOn 'checkstyle', 'pmd'
 
 dependencies {
 

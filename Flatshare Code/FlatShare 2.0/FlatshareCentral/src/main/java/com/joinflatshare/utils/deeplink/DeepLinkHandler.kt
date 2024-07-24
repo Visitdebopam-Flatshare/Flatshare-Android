@@ -23,6 +23,7 @@ import com.joinflatshare.ui.base.ApplicationBaseActivity
 import com.joinflatshare.ui.base.BaseActivity
 import com.joinflatshare.ui.flat.details.FlatDetailsActivity
 import com.joinflatshare.ui.profile.details.ProfileDetailsActivity
+import com.joinflatshare.ui.settings.SettingsActivity
 import com.joinflatshare.utils.helper.CommonMethod
 import java.nio.charset.StandardCharsets
 
@@ -42,7 +43,16 @@ object DeepLinkHandler {
             } else if (param.startsWith("fht")) {
                 val userId = param.replace("fht/", "")
                 checkFHTOn(activity, userId)
+            } else if (param.startsWith("s/")) {
+                val action = param.substring(param.indexOf("/") + 1)
+                when (action) {
+                    "deleteAccount" -> {
+                        intent.setClass(activity, SettingsActivity::class.java)
+                        CommonMethod.switchActivity(activity, intent, false)
+                    }
+                }
             }
+
         }
     }
 

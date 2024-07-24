@@ -1,5 +1,6 @@
 package com.joinflatshare.ui
 
+import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
@@ -11,6 +12,7 @@ import com.joinflatshare.FlatshareCentral.BuildConfig
 import com.joinflatshare.FlatshareCentral.R
 import com.joinflatshare.FlatshareCentral.databinding.ActivitySplashBinding
 import com.joinflatshare.constants.AppConstants
+import com.joinflatshare.constants.IntentConstants
 import com.joinflatshare.constants.RequestCodeConstants
 import com.joinflatshare.customviews.alert.AlertDialog
 import com.joinflatshare.customviews.alert.AlertImageDialog
@@ -184,11 +186,11 @@ class SplashActivity : RegisterBaseActivity() {
                                     NotificationPermissionHandler(this@SplashActivity).showNotificationPermission {
                                         DeviceInformationCollector()
                                         // Check if firebase token matches with API user's token
-                                        if (userData.deviceToken!=firebaseToken) {
+                                        if (userData.deviceToken != firebaseToken) {
                                             FlatShareApplication.getDbInstance().userDao()
                                                 .insert(UserDao.USER_NEED_FCM_UPDATE, "1")
                                         }
-                                        intent = Intent(
+                                        val intent = Intent(
                                             this@SplashActivity,
                                             ExploreActivity::class.java
                                         )
@@ -213,8 +215,9 @@ class SplashActivity : RegisterBaseActivity() {
                 ) { text ->
                     if (!text.isNullOrBlank() || !text.equals("0")) {
                         CommonMethods.makeLog("dynamic link", text)
-                        mainIntent.putExtra("deepLink", true)
+                        mainIntent.putExtra(IntentConstants.INTENT_DEEPLINK, true)
                         mainIntent.putExtra("param1", text)
+                        mainIntent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP)
                         CommonMethod.switchActivity(this, mainIntent, true)
                     } else CommonMethod.switchActivity(this, mainIntent, true)
                 }

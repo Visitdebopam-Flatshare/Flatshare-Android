@@ -187,8 +187,6 @@
                                 android:layout_marginStart="@dimen/_10sdp"
                                 android:background="@android:color/transparent"
                                 android:fontFamily="@font/font_regular"
-                                android:imeOptions="actionNext"
-                                android:inputType="textCapSentences"
                                 android:paddingTop="@dimen/_5sdp"
                                 android:paddingBottom="@dimen/_5sdp"
                                 android:textColor="@color/black"

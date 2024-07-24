@@ -8,61 +8,56 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="?android:attr/actionBarSize"
         android:background="@color/chat_header"
-        android:paddingHorizontal="@dimen/_10sdp"
-        android:paddingVertical="@dimen/_5sdp">
+        android:paddingEnd="@dimen/_10sdp">
 
         <ImageView
             android:id="@+id/img_topbar_chat_back"
-            android:layout_width="@dimen/_15sdp"
-            android:layout_height="@dimen/_12sdp"
+            android:layout_width="?android:attr/actionBarSize"
+            android:layout_height="?android:attr/actionBarSize"
             android:layout_centerVertical="true"
-            android:layout_marginEnd="@dimen/_10sdp"
             android:background="@android:color/transparent"
-            android:scaleType="fitXY"
+            android:scaleType="center"
             android:src="@drawable/ic_back"
-            android:visibility="gone" />
+            android:visibility="visible" />
 
-        <FrameLayout
+        <com.google.android.material.card.MaterialCardView
             android:id="@+id/frame_topbar_photo"
-            android:layout_width="@dimen/_25sdp"
-            android:layout_height="@dimen/_25sdp"
+            android:layout_width="@dimen/_35sdp"
+            android:layout_height="@dimen/_35sdp"
             android:layout_centerVertical="true"
             android:layout_marginEnd="@dimen/_10sdp"
             android:layout_toEndOf="@id/img_topbar_chat_back"
-            android:visibility="gone">
+            app:cardBackgroundColor="@android:color/transparent"
+            app:cardCornerRadius="@dimen/_80sdp"
+            app:cardElevation="0dp"
+            app:cardPreventCornerOverlap="false"
+            app:cardUseCompatPadding="false"
+            app:strokeColor="@color/grey7"
+            app:strokeWidth="@dimen/_1sdp">
 
-            <com.makeramen.roundedimageview.RoundedImageView
+            <de.hdodenhof.circleimageview.CircleImageView
                 android:id="@+id/img_profile"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:scaleType="fitCenter"
-                app:riv_mutate_background="true"
-                app:riv_oval="true"
-                app:riv_tile_mode="clamp" />
+                android:layout_margin="@dimen/_2sdp" />
+
 
             <TextView
                 android:id="@+id/txt_photo"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:layout_margin="@dimen/_2sdp"
                 android:background="@drawable/drawable_blue_circle"
+                android:fontFamily="@font/font_semibold"
                 android:gravity="center"
+                android:text="YA"
                 android:textAllCaps="true"
                 android:textColor="@color/white"
-                android:textSize="@dimen/_10sdp"
+                android:textSize="@dimen/_11sdp"
                 android:visibility="gone" />
-
-            <TextView
-                android:layout_width="@dimen/_15sdp"
-                android:layout_height="@dimen/_15sdp"
-                android:layout_gravity="bottom|end"
-                android:fontFamily="@font/font_regular"
-                android:gravity="center"
-                android:textSize="@dimen/_12sdp"
-                android:visibility="gone" />
-
-        </FrameLayout>
+        </com.google.android.material.card.MaterialCardView>
 
         <LinearLayout
             android:id="@+id/ll_chat_topbar_user"

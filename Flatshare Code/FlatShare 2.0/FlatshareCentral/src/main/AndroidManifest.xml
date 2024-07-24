@@ -162,19 +162,6 @@
             android:windowSoftInputMode="stateAlwaysHidden" />
 
         <activity
-            android:name="com.joinflatshare.ui.checks.request_chat.ChatRequestActivity"
-            android:screenOrientation="portrait"
-            android:windowSoftInputMode="stateAlwaysHidden" />
-        <activity
-            android:name="com.joinflatshare.ui.checks.request_invitation.InvitationRequestActivity"
-            android:screenOrientation="portrait"
-            android:windowSoftInputMode="stateAlwaysHidden" />
-        <activity
-            android:name="com.joinflatshare.ui.checks.request_friend.FriendRequestActivity"
-            android:screenOrientation="portrait"
-            android:windowSoftInputMode="stateAlwaysHidden" />
-
-        <activity
             android:name="com.joinflatshare.utils.permission.PermissionManager"
             android:screenOrientation="portrait"
             android:theme="@style/DialogTheme"

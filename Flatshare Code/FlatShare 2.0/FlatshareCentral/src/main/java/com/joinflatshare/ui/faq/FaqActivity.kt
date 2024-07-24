@@ -83,7 +83,7 @@ class FaqActivity : BaseActivity() {
 
         faqItems.add(
             FaqItem(
-                "What is FlatScore?",
+                "What is Flatscore?",
                 true
             )
         )
@@ -171,7 +171,7 @@ class FaqActivity : BaseActivity() {
         )
         faqItems.add(
             FaqItem(
-                "f you have any suggestions, feature requests, or feedback, please reach out to us at hello@flatshare.club. We'd love to hear from you.",
+                "If you have any suggestions, feature requests, or feedback, please reach out to us at hello@flatshare.club. We'd love to hear from you.",
                 false
             )
         )

@@ -3,6 +3,9 @@ package com.joinflatshare.ui.chat.details
 import android.view.View
 import android.widget.TextView
 import com.joinflatshare.FlatshareCentral.databinding.ActivityChatDetailsBinding
+import com.joinflatshare.interfaces.OnUserFetched
+import com.joinflatshare.pojo.user.User
+import com.joinflatshare.pojo.user.UserResponse
 import com.joinflatshare.utils.helper.CommonMethod
 import com.joinflatshare.utils.helper.ImageHelper
 
@@ -20,32 +23,20 @@ class ChatDetailsTopbarHandler(
             viewBind.includeChatTopbar.imgTopbarChatBack.setOnClickListener {
                 CommonMethod.finishActivity(activity)
             }
-        } else viewBind.includeChatTopbar.imgTopbarChatBack.visibility = View.GONE;
+        } else viewBind.includeChatTopbar.imgTopbarChatBack.visibility = View.GONE
         if (showUserImage) {
-            viewBind.includeChatTopbar.frameTopbarPhoto.visibility = View.VISIBLE;
-            val link = activity.sendBirdChannel.getChannelDisplayImage(activity.groupChannel);
-            val txt2 =
-                viewBind.includeChatTopbar.frameTopbarPhoto.getChildAt(1) as TextView
-
-            viewBind.includeChatTopbar.imgProfile.visibility = View.VISIBLE
-            viewBind.includeChatTopbar.txtPhoto.visibility = View.GONE
-            ImageHelper.loadImageWithException(
-                activity,
-                0,
-                viewBind.includeChatTopbar.imgProfile,
-                link
-            ) {
-                viewBind.includeChatTopbar.imgProfile.visibility = View.GONE
-                viewBind.includeChatTopbar.txtPhoto.visibility = View.VISIBLE
-                var name = viewBind.includeChatTopbar.txtChatTopbarUser.text.toString()
-                var initial = "" + name[0]
-                if (name.contains(" ")) {
-                    name = name.substring(name.lastIndexOf(" ") + 1)
-                    initial += name[0]
+            viewBind.includeChatTopbar.frameTopbarPhoto.visibility = View.VISIBLE
+            val id = activity.sendBirdChannel.getChannelDisplayUserId(activity.groupChannel)
+            activity.baseApiController.getUser(false, id, object : OnUserFetched {
+                override fun userFetched(resp: UserResponse?) {
+                    ImageHelper.loadProfileImage(
+                        activity,
+                        viewBind.includeChatTopbar.imgProfile,
+                        viewBind.includeChatTopbar.txtPhoto,
+                        resp?.data
+                    )
                 }
-                viewBind.includeChatTopbar.txtPhoto.text = initial
-            }
-            txt2.text = activity.getEmojiByUnicode(0x1F603);
+            })
         } else viewBind.includeChatTopbar.frameTopbarPhoto.visibility = View.GONE;
     }
 

@@ -83,7 +83,7 @@ class ChatDetailsBottomMenu(
                 "Report " + activity.sendBirdChannel.getChannelDisplayName(
                     groupChannel
                 ),
-                3
+                4
             )
         )
         // Check blocked status

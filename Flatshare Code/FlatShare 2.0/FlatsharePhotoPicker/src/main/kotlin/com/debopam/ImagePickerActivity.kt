@@ -86,18 +86,21 @@ class ImagePickerActivity : AppCompatActivity() {
                 // Pick Gallery Image
                 savedInstanceState ?: mGalleryProvider?.startIntent()
             }
+
             ImageProvider.CAMERA -> {
                 mCameraProvider = CameraProvider(this)
                 mCameraProvider?.onRestoreInstanceState(savedInstanceState)
                 // Pick Camera Image
                 savedInstanceState ?: mCameraProvider?.startIntent()
             }
+
             ImageProvider.ANDROID_PICKER_13 -> {
                 mAndroidPickerProvider = AndroidPickerProvider(this)
                 mAndroidPickerProvider?.onRestoreInstanceState(savedInstanceState)
                 // Pick Camera Image
                 savedInstanceState ?: mAndroidPickerProvider?.startIntent()
             }
+
             else -> {
                 // Something went Wrong! This case should never happen
                 Log.e(TAG, "Image provider can not be null")
@@ -132,7 +135,9 @@ class ImagePickerActivity : AppCompatActivity() {
      * Handle Activity Back Press
      */
     override fun onBackPressed() {
-        setResultCancel()
+        setResult(Activity.RESULT_CANCELED, getCancelledIntent(this))
+        super.onBackPressed()
+//        setResultCancel()
     }
 
     /**

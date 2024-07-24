@@ -28,7 +28,6 @@ class ChatDetailsListener(
     var micListener: ChatDetailsMicListener? = null
 
     init {
-//        micListener = ChatDetailsMicListener(activity, dataBinder);
         chatSendButtonToggle()
         viewBind.includeChatTopbar.frameTopbarPhoto.setOnClickListener(this)
         viewBind.imgChatMessageSend.setOnClickListener(this)

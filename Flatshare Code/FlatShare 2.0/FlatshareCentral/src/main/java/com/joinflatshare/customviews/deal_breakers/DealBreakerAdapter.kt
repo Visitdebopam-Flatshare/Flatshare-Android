@@ -84,6 +84,8 @@ class DealBreakerAdapter(
                 CommonMethod.makeLog("Value", "" + value)
 
                 if (value == 0) {
+                    holder.imgDealTick.setImageResource(R.drawable.ic_tick)
+                    holder.imgDealUntick.setImageResource(R.drawable.ic_cross_circle)
                     holder.imgDealTick.setColorFilter(0)
                     holder.imgDealUntick.setColorFilter(0)
                 }
@@ -99,18 +101,15 @@ class DealBreakerAdapter(
                             R.color.red
                         )
                     )
+                    holder.imgDealTick.setImageResource(R.drawable.ic_tick)
                     holder.imgDealTick.setColorFilter(
                         ContextCompat.getColor(
                             dealBreaker.activity,
                             R.color.red
                         )
                     )
-                    holder.imgDealUntick.setColorFilter(
-                        ContextCompat.getColor(
-                            dealBreaker.activity,
-                            R.color.red
-                        )
-                    )
+                    holder.imgDealUntick.setImageResource(R.drawable.ic_cross_circle_red)
+                    holder.imgDealUntick.setColorFilter(0)
                 } else if (value == 1) {
                     // Tick Selected
                     holder.rlDealHolder.background = ContextCompat.getDrawable(
@@ -123,12 +122,9 @@ class DealBreakerAdapter(
                             R.color.blue_dark
                         )
                     )
-                    holder.imgDealTick.setColorFilter(
-                        ContextCompat.getColor(
-                            dealBreaker.activity,
-                            R.color.blue_dark
-                        )
-                    )
+                    holder.imgDealTick.setImageResource(R.drawable.ic_tick_blue)
+                    holder.imgDealTick.setColorFilter(0)
+                    holder.imgDealUntick.setImageResource(R.drawable.ic_cross_circle)
                     holder.imgDealUntick.setColorFilter(
                         ContextCompat.getColor(
                             dealBreaker.activity,

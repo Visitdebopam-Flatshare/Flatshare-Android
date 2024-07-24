@@ -63,14 +63,19 @@ class BottomSheetAdapter extends RecyclerView.Adapter<BottomSheetAdapter.ViewHol
                 holder.img_bottomsheet.setImageResource(item.getIcon());
             }
         }
+        holder.img_bottomsheet.setColorFilter(0);
         if (item.getType() == 1 && item.getName().contains("_"))
             holder.txt_bottomsheet.setText(item.getName().substring(0, item.getName().indexOf("_")));
         else
             holder.txt_bottomsheet.setText(item.getName());
-        if (item.getType() == 3)
+        if (item.getType() == 3 || item.getType() == 4) {
             holder.txt_bottomsheet.setTextColor(ContextCompat.getColor(activity, R.color.red));
-        else
+            if (item.getType() == 4) {
+                holder.img_bottomsheet.setColorFilter(ContextCompat.getColor(activity, R.color.red));
+            }
+        } else
             holder.txt_bottomsheet.setTextColor(ContextCompat.getColor(activity, R.color.grey2));
+
 
         if (item.getCount() > 0) {
             holder.llBottomCountHolder.setVisibility(View.VISIBLE);

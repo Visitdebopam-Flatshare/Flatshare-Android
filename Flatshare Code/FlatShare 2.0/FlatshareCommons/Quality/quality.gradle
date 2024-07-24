@@ -1,0 +1,42 @@
+apply plugin: 'checkstyle'
+apply plugin: 'pmd'
+
+task checkstyle(type: Checkstyle) {
+    source 'src'
+    include '**/*.java'
+    exclude '**/gen/**', '**/R.java'
+
+    classpath = files()
+
+    reports {
+        xml.destination = file("$project.rootDir/testReports/$project.name/checkstyle.xml")
+    }
+}
+
+task pmd(type: Pmd) {
+    source 'src'
+    include '**/*.java'
+    exclude '**/gen/**', '**/R.java'
+
+    reports {
+        xml.required = true
+        xml.destination = file("$project.rootDir/testReports/$project.name/pmd.xml")
+        html.required = false
+    }
+}
+
+pmd {
+    toolVersion = "6.55.0"
+    ruleSets = ["$project.rootDir/FlatshareCommons/Quality/PMDRules.xml"]
+}
+
+checkstyle {
+    toolVersion = "10.17.0"
+    configFile file("$project.rootDir/FlatshareCommons/Quality/CheckstyleRules.xml")
+}
+
+dependencies {
+    checkstyle('com.puppycrawl.tools:checkstyle:10.17.0') {
+        exclude group: 'com.google.collections', module: 'google-collections'
+    }
+}

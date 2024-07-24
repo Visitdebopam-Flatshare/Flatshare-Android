@@ -20,6 +20,8 @@ class ExploreBinder(
     fun hideAll() {
         viewBind.llNoFeed.visibility = View.GONE
         viewBind.frameViewHolder.visibility = View.GONE
+        viewBind.includePagerExplore.llExploreHolder.visibility = View.GONE
+        viewBind.includePagerExplore.llExploreButtons.visibility = View.GONE
     }
 
     fun setup() {
@@ -32,6 +34,8 @@ class ExploreBinder(
     fun showEmptyData(text: String, button: String) {
         viewBind.llNoFeed.visibility = View.VISIBLE
         viewBind.frameViewHolder.visibility = View.GONE
+        viewBind.includePagerExplore.llExploreHolder.visibility = View.GONE
+        viewBind.includePagerExplore.llExploreButtons.visibility = View.GONE
         viewBind.imgNoFeed.setImageResource(R.drawable.ic_no_feed)
         if (text.isNotEmpty()) viewBind.txtNoFeed.text = text
         if (button.isNotEmpty()) viewBind.btnNoFeed.text = button
@@ -40,6 +44,8 @@ class ExploreBinder(
     fun showContentData() {
         viewBind.llNoFeed.visibility = View.GONE
         viewBind.frameViewHolder.visibility = View.VISIBLE
+        viewBind.includePagerExplore.llExploreHolder.visibility = View.VISIBLE
+        viewBind.includePagerExplore.llExploreButtons.visibility = View.VISIBLE
     }
 
     fun showUser() {
@@ -50,7 +56,7 @@ class ExploreBinder(
             } else {
                 // There is no more data
                 showEmptyData(
-                    "Sorry, we’ve run out of potential flatmates for you.",
+                    "Sorry, we’ve run out of potential\nflatmates for you.",
                     "Edit Preferences"
                 )
             }
@@ -66,19 +72,11 @@ class ExploreBinder(
     private fun animateView() {
         // hide View
         viewBind.frameViewHolder.visibility = View.GONE
-        val animate = TranslateAnimation(0f, 0f, viewBind.frameViewHolder.height.toFloat(), -100f)
-        animate.duration = 300
-        viewBind.frameViewHolder.startAnimation(animate)
-
-        Handler(Looper.getMainLooper()).postDelayed({ viewBind.frameViewHolder.visibility = View.VISIBLE }, 1000)
-
-
-        /*viewBind.frameViewHolder.visibility = View.GONE
         // Show View
         viewBind.frameViewHolder.visibility = View.VISIBLE
         val animate = TranslateAnimation(0f, 0f, viewBind.frameViewHolder.height.toFloat(), 0f)
         animate.duration = 500
         animate.fillAfter = true
-        viewBind.frameViewHolder.startAnimation(animate)*/
+        viewBind.frameViewHolder.startAnimation(animate)
     }
 }

@@ -198,12 +198,14 @@
                                     android:id="@+id/img_message_camera"
                                     android:layout_width="@dimen/_17sdp"
                                     android:layout_height="@dimen/_17sdp"
-                                    android:src="@drawable/ic_camera"/>
+                                    android:src="@drawable/ic_camera"
+                                    app:tint="@color/grey2" />
 
                                 <ImageView
                                     android:id="@+id/img_message_addmultimedia"
                                     android:layout_width="@dimen/_17sdp"
                                     android:layout_height="@dimen/_17sdp"
+                                    app:tint="@color/grey2"
                                     android:layout_marginStart="@dimen/_10sdp"
                                     android:src="@drawable/ic_chat_plus"/>
                             </LinearLayout>
