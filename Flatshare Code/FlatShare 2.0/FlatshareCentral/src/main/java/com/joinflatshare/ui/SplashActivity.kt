@@ -3,6 +3,7 @@ package com.joinflatshare.ui
 import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
+import android.text.TextUtils
 import android.view.View
 import com.google.android.gms.tasks.OnCompleteListener
 import com.google.firebase.messaging.FirebaseMessaging
@@ -211,20 +212,12 @@ class SplashActivity : RegisterBaseActivity() {
             val path = data.path
             if (!path.isNullOrEmpty()) {
                 CommonMethods.makeLog("path", path)
-                DeepLinkHandler.getContentFromLink(
-                    this, intent
-                ) { text ->
-                    if (!text.isNullOrBlank() || !text.equals("0")) {
-                        CommonMethods.makeLog("dynamic link", text)
-                        mainIntent.putExtra(IntentConstants.INTENT_DEEPLINK, true)
-                        mainIntent.putExtra("param1", text)
-                        mainIntent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP)
-                        CommonMethod.switchActivity(this, mainIntent, true)
-                    } else CommonMethod.switchActivity(this, mainIntent, true)
-                }
-
-            } else
-                CommonMethod.switchActivity(this, mainIntent, true)
+                mainIntent.putExtra(IntentConstants.INTENT_DEEPLINK, true)
+                mainIntent.putExtra("param1", path)
+                mainIntent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP)
+                mainIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
+            }
+            CommonMethod.switchActivity(this, mainIntent, true)
         } else checkNotification(mainIntent)
     }
 

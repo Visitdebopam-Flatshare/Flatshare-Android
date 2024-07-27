@@ -1,6 +1,7 @@
 package com.joinflatshare.ui.chat.list
 
 import android.content.Intent
+import android.text.TextUtils
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -12,6 +13,8 @@ import com.joinflatshare.FlatshareCentral.databinding.ItemChatListBinding
 import com.joinflatshare.chat.metadata.MessageMetaData
 import com.joinflatshare.chat.utils.DateUtils
 import com.joinflatshare.constants.SendBirdConstants
+import com.joinflatshare.interfaces.OnUserFetched
+import com.joinflatshare.pojo.user.UserResponse
 import com.joinflatshare.ui.chat.details.ChatDetailsActivity
 import com.joinflatshare.utils.helper.CommonMethod
 import com.joinflatshare.utils.helper.ImageHelper
@@ -51,42 +54,33 @@ class ChatListAdapter(
         ) {
 
             val channel: GroupChannel = adapter.items[position]
+            var name = ""
             if (channel.url.startsWith("FLAT")) {
-                holder.txtChatName.text = channel.name
+                name = channel.name
             } else if (channel.url.startsWith("USER")) {
                 val displayUserId = activity.sendBirdChannel.getChannelDisplayUserId(channel)
-                for (member in channel.members) {
-                    if (member.userId == displayUserId) {
-                        holder.txtChatName.text = member.nickname
-                        break
+                if (TextUtils.isEmpty(displayUserId))
+                    name = "No Name"
+                else
+                    for (member in channel.members) {
+                        if (member.userId == displayUserId) {
+                            if (TextUtils.isEmpty(member.nickname))
+                                name = "No Name"
+                            else
+                                name = member.nickname
+                            break
+                        }
                     }
-                }
             }
+            holder.txtChatName.text = name
 
-            // Image
             val link = activity.sendBirdChannel.getChannelDisplayImage(channel)
-            CommonMethod.makeLog("Channel DP Link", link)
-            holder.imgChat.visibility = View.VISIBLE
-            holder.txtPhoto.visibility = View.GONE
-            ImageHelper.loadImageWithException(
+            ImageHelper.loadProfileImage(
                 activity,
-                if (channel.url.startsWith("USER")) R.drawable.ic_user else if (channel.url.startsWith(
-                        "FLATMATE_"
-                    )
-                ) R.drawable.ic_flat_chat else R.drawable.ic_flat_bg,
                 holder.imgChat,
-                link
-            ) {
-                holder.imgChat.visibility = View.GONE
-                holder.txtPhoto.visibility = View.VISIBLE
-                var name = holder.txtChatName.text.toString()
-                var initial = "" + name[0]
-                if (name.contains(" ")) {
-                    name = name.substring(name.lastIndexOf(" ")+1)
-                    initial += name[0]
-                }
-                holder.txtPhoto.text = initial
-            }
+                holder.txtPhoto,
+                link, name
+            )
 
             // Typing indicator
             if (channel.isTyping) {

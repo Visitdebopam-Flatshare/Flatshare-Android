@@ -50,6 +50,8 @@ class ExploreListener(
                     ) { activity.binder.showUser() }
                     return
                 }
+                if (activity.userData.isNotEmpty())
+                    return
                 val rejectLikeUrl = WebserviceCustomRequestHandler.getRejectLikeRequest(
                     BaseActivity.TYPE_FHT, ChatRequestConstants.CHAT_REQUEST_CONSTANT_FHT,
                     activity.userData[0].data!!.id
@@ -72,6 +74,8 @@ class ExploreListener(
                     ) { activity.binder.showUser() }
                     return
                 }
+                if (activity.userData.isNotEmpty())
+                    return
                 val likeUrl = WebserviceCustomRequestHandler.getLikeRequestUrl(
                     BaseActivity.TYPE_FHT, ChatRequestConstants.CHAT_REQUEST_CONSTANT_FHT,
                     activity.userData[0].data!!.id
@@ -95,6 +99,8 @@ class ExploreListener(
                     ) { activity.binder.showUser() }
                     return
                 }
+                if (activity.userData.isNotEmpty())
+                    return
                 WebserviceManager().sendChatRequest(
                     activity,
                     ChatRequestConstants.CHAT_REQUEST_CONSTANT_FHT,

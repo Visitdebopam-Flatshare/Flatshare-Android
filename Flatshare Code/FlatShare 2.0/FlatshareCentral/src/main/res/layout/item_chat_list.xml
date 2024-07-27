@@ -20,36 +20,38 @@
             android:gravity="center_vertical"
             android:orientation="horizontal">
 
-            <FrameLayout
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/frame_topbar_photo"
                 android:layout_width="@dimen/_50sdp"
-                android:layout_height="@dimen/_50sdp">
+                android:layout_height="@dimen/_50sdp"
+                app:cardBackgroundColor="@android:color/transparent"
+                app:cardCornerRadius="@dimen/_80sdp"
+                app:cardElevation="0dp"
+                app:cardPreventCornerOverlap="false"
+                app:cardUseCompatPadding="false"
+                app:strokeColor="@color/grey7"
+                app:strokeWidth="@dimen/_1sdp">
 
-                <com.makeramen.roundedimageview.RoundedImageView
+                <de.hdodenhof.circleimageview.CircleImageView
                     android:id="@+id/img_chat"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:background="#eaeaea"
-                    android:scaleType="fitCenter"
-                    app:riv_border_color="@color/color_hint"
-                    app:riv_border_width="0.4dp"
-                    android:visibility="gone"
-                    app:riv_mutate_background="true"
-                    app:riv_oval="true"
-                    app:riv_tile_mode="clamp" />
+                    android:layout_margin="@dimen/_2sdp" />
+
 
                 <TextView
                     android:id="@+id/txt_photo"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:layout_margin="@dimen/_2sdp"
                     android:background="@drawable/drawable_blue_circle"
+                    android:fontFamily="@font/font_semibold"
                     android:gravity="center"
                     android:textAllCaps="true"
                     android:textColor="@color/white"
-                    android:textSize="@dimen/_20sdp"
+                    android:textSize="@dimen/_16sdp"
                     android:visibility="gone" />
-
-            </FrameLayout>
-
+            </com.google.android.material.card.MaterialCardView>
 
             <LinearLayout
                 android:layout_width="match_parent"

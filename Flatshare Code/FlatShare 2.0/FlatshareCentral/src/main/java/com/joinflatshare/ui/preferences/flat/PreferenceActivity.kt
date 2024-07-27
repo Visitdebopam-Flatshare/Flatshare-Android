@@ -5,6 +5,8 @@ import androidx.core.content.ContextCompat
 import com.joinflatshare.FlatShareApplication
 import com.joinflatshare.FlatshareCentral.R
 import com.joinflatshare.FlatshareCentral.databinding.ActivityPrefFlatBinding
+import com.joinflatshare.constants.AppConstants
+import com.joinflatshare.constants.IntentConstants
 import com.joinflatshare.customviews.deal_breakers.DealBreakerView
 import com.joinflatshare.ui.base.BaseActivity
 import com.joinflatshare.utils.helper.DateUtils
@@ -22,6 +24,8 @@ class PreferenceActivity : BaseActivity() {
         showTopBar(this, true, "Preferences", 0, 0)
         listener = PreferenceListener(this)
         bind()
+        if (intent.getBooleanExtra(IntentConstants.INTENT_MOVE_TO_PREFERENCE, false))
+            AppConstants.isFeedReloadRequired = true
     }
 
     private fun bind() {
@@ -140,7 +144,7 @@ class PreferenceActivity : BaseActivity() {
             ContextCompat.getColor(this, R.color.black)
         )
 
-        when(user?.flatProperties?.profession) {
+        when (user?.flatProperties?.profession) {
             "Student" -> {
                 viewBind.includePrefFlatmate.txtStudents.background =
                     ContextCompat.getDrawable(this, R.drawable.drawable_button_blue)
@@ -148,6 +152,7 @@ class PreferenceActivity : BaseActivity() {
                     ContextCompat.getColor(this, R.color.white)
                 )
             }
+
             "Working Professional" -> {
                 viewBind.includePrefFlatmate.txtWorking.background =
                     ContextCompat.getDrawable(this, R.drawable.drawable_button_blue)

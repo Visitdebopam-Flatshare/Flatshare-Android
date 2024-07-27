@@ -11,7 +11,6 @@ object ConfigConstants {
     const val API_ERROR_CODE_LOGOUT = 403
     const val API_ERROR_CODE_NOT_FOUND = 404
 
-    const val COMPLETION_MINIMUM_FOR_USERS = 40
     const val COMPLETION_MINIMUM_FOR_FLATS = 50
 
     init {
@@ -31,5 +30,6 @@ object ConfigConstants {
         locationBypassNumbers.add("9421804757")
         locationBypassNumbers.add("9836952801")
         locationBypassNumbers.add("8637326796")
+        locationBypassNumbers.add("9871157238")
     }
 }

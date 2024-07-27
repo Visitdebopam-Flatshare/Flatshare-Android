@@ -146,6 +146,36 @@ public class ImageHelper {
         }
     }
 
+    public static void loadProfileImage(Context context, CircleImageView img_profile, TextView txtDp, String url, String name) {
+        try {
+            txtDp.setVisibility(View.GONE);
+            CommonMethod.INSTANCE.makeLog("Image URL", url);
+            Glide.with(context).clear(img_profile);
+            RequestOptions options = new RequestOptions().diskCacheStrategy(DiskCacheStrategy.NONE).skipMemoryCache(true).signature(new ObjectKey(System.currentTimeMillis()));
+            Glide.with(context).load(url).diskCacheStrategy(DiskCacheStrategy.RESOURCE).apply(options).listener(new RequestListener<Drawable>() {
+                @Override
+                public boolean onLoadFailed(@androidx.annotation.Nullable GlideException e, @androidx.annotation.Nullable Object model, @NonNull Target<Drawable> target, boolean isFirstResource) {
+                    char fname = name.charAt(0);
+                    char lname = name.charAt(0);
+                    txtDp.setVisibility(View.VISIBLE);
+                    img_profile.setVisibility(View.GONE);
+                    txtDp.setText("" + fname + lname);
+                    return false;
+                }
+
+                @Override
+                public boolean onResourceReady(@NonNull Drawable resource, @NonNull Object model, Target<Drawable> target, @NonNull DataSource dataSource, boolean isFirstResource) {
+                    img_profile.setVisibility(View.VISIBLE);
+                    img_profile.setImageDrawable(resource);
+                    return false;
+                }
+            }).into(img_profile);
+        } catch (Exception exception) {
+            exception.printStackTrace();
+            Logger.log(Logger.LOG_TYPE_ERROR, exception.getMessage() == null ? "" : exception.getMessage());
+        }
+    }
+
 
     public static void loadImageWithCacheClear(Activity activity, int defaultIcon, ImageView img_profile, String url) {
         try {
@@ -278,6 +308,6 @@ public class ImageHelper {
     public static void deleteOldProfileImage() {
         assert AppConstants.loggedInUser != null;
         String oldDp = AppConstants.loggedInUser.getDp();
-        if (oldDp!=null && !oldDp.isEmpty()) new AmazonDeleteFile().delete(oldDp, null);
+        if (oldDp != null && !oldDp.isEmpty()) new AmazonDeleteFile().delete(oldDp, null);
     }
 }

@@ -50,6 +50,7 @@ class ExploreActivity : BaseActivity() {
         if (intent.getBooleanExtra(IntentConstants.INTENT_MOVE_TO_PREFERENCE, false)) {
             intent.removeExtra(IntentConstants.INTENT_MOVE_TO_PREFERENCE)
             val intent = Intent(this, PreferenceActivity::class.java)
+            intent.putExtra(IntentConstants.INTENT_MOVE_TO_PREFERENCE, true)
             CommonMethod.switchActivity(this, intent, false)
         } else {
             reloadFeed()

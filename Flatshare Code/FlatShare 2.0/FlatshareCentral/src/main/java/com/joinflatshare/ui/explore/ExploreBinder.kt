@@ -1,7 +1,5 @@
 package com.joinflatshare.ui.explore
 
-import android.os.Handler
-import android.os.Looper
 import android.view.View
 import android.view.animation.TranslateAnimation
 import com.joinflatshare.FlatshareCentral.R
@@ -31,12 +29,12 @@ class ExploreBinder(
         activity.apiController?.getRecommendedFHTUsers()
     }
 
-    fun showEmptyData(text: String, button: String) {
+    fun showEmptyData(image:Int,text: String, button: String) {
         viewBind.llNoFeed.visibility = View.VISIBLE
         viewBind.frameViewHolder.visibility = View.GONE
         viewBind.includePagerExplore.llExploreHolder.visibility = View.GONE
         viewBind.includePagerExplore.llExploreButtons.visibility = View.GONE
-        viewBind.imgNoFeed.setImageResource(R.drawable.ic_no_feed)
+        viewBind.imgNoFeed.setImageResource(image)
         if (text.isNotEmpty()) viewBind.txtNoFeed.text = text
         if (button.isNotEmpty()) viewBind.btnNoFeed.text = button
     }
@@ -55,8 +53,8 @@ class ExploreBinder(
                 activity.apiController?.getRecommendedFHTUsers()
             } else {
                 // There is no more data
-                showEmptyData(
-                    "Sorry, we’ve run out of potential\nflatmates for you.",
+                showEmptyData(R.drawable.img_no_feed,
+                    "We’ve run out of potential\nflatmates for you.",
                     "Edit Preferences"
                 )
             }

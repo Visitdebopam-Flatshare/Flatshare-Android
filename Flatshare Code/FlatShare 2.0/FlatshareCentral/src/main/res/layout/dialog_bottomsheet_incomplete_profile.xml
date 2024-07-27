@@ -52,16 +52,9 @@
             android:background="@drawable/drawable_button_black_elliptical"
             android:gravity="center">
 
-            <ImageView
-                android:layout_width="@dimen/_15sdp"
-                android:layout_height="@dimen/_15sdp"
-                android:src="@drawable/ic_edit_status"
-                app:tint="@color/white" />
-
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/_10sdp"
                 android:fontFamily="@font/font_semibold"
                 android:text="Complete Profile"
                 android:textColor="@color/white"

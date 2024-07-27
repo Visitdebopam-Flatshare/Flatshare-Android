@@ -50,16 +50,9 @@
             android:background="@drawable/drawable_button_black_elliptical"
             android:gravity="center">
 
-            <ImageView
-                android:layout_width="@dimen/_20sdp"
-                android:layout_height="@dimen/_20sdp"
-                android:src="@drawable/ic_tick_verified_blue"
-                app:tint="@color/white" />
-
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/_4sdp"
                 android:fontFamily="@font/font_semibold"
                 android:text="Get Verified For Free"
                 android:textColor="@color/white"

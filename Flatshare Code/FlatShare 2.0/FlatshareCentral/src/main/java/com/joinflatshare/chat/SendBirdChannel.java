@@ -107,7 +107,11 @@ public class SendBirdChannel {
                 if (members.size() == 2) {
                     for (Member member : members) {
                         if (!member.getUserId().equals(SendbirdChat.getCurrentUser().getUserId())) {
-                            image = ImageHelper.getProfileImageWithAwsFromPath(member.getProfileUrl());
+                            String url = member.getProfileUrl();
+                            if (url.contains("flatshare"))
+                                image = url;
+                            else
+                                image = ImageHelper.getProfileImageWithAwsFromPath(member.getProfileUrl());
                             break;
                         }
 

@@ -38,8 +38,6 @@ public class BaseClickListener {
                             }
                             return;
                         }
-                        ExploreActivity act = (ExploreActivity) activity;
-//                        act.viewBind.rvExplore.smoothScrollToPosition(0);
                         break;
                     case 1:
                         if (AppConstants.isSendbirdLive)

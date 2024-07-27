@@ -1,6 +1,7 @@
 package com.joinflatshare.ui.explore
 
 import com.google.gson.Gson
+import com.joinflatshare.FlatshareCentral.R
 import com.joinflatshare.FlatshareCentral.databinding.ActivityExploreBinding
 import com.joinflatshare.api.retrofit.ApiManager
 import com.joinflatshare.constants.AppConstants
@@ -64,11 +65,12 @@ class ExploreApiController(
                             }
                             if (isLocationFilled) {
                                 activity.binder.showEmptyData(
-                                    "Sorry, we’ve run out of potential\nflatmates for you.",
+                                    R.drawable.img_no_feed,
+                                    "We’ve run out of potential\nflatmates for you.",
                                     "Edit Preferences"
                                 )
                             } else {
-                                activity.binder.showEmptyData(
+                                activity.binder.showEmptyData(R.drawable.img_feed_friends,
                                     "Find flatmates like friends.",
                                     "Add Preferred Location"
                                 )
