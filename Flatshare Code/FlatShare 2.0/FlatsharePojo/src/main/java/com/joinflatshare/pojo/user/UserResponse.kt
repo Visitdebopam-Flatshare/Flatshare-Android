@@ -6,9 +6,6 @@ import com.joinflatshare.pojo.flat.DealBreakers
 import java.io.Serializable
 
 data class UserResponse(
-    @field:SerializedName("invite")
-    val invite: Invite? = null,
-
     @field:SerializedName("data")
     var data: User? = null,
 
@@ -85,9 +82,6 @@ data class User(
     @field:SerializedName("status")
     var status: String? = "",
 
-    @field:SerializedName("deepLinks")
-    var deepLinks: Deeplinks? = null,
-
     @field:SerializedName("invites")
     var invites: Int = 0,
 
@@ -141,16 +135,6 @@ data class Loc(
     @field:SerializedName("coordinates")
     val coordinates: ArrayList<Double> = ArrayList(),
 
-    @field:SerializedName("type")
-    val type: String = "Point"
-) : Serializable
-
-data class Deeplinks(
-    @field:SerializedName("sfs")
-    var sfs: String? = null,
-
-    @field:SerializedName("fht")
-    var fht: String? = null,
 ) : Serializable
 
 data class FlatProperties(

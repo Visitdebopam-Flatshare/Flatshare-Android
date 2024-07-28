@@ -29,35 +29,35 @@
             android:orientation="vertical">
 
             <ImageView
-                android:layout_width="match_parent"
                 android:id="@+id/img_alert"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:src="@drawable/img_internet" />
 
             <TextView
-            android:fontFamily="@font/font_regular"
                 android:id="@+id/txt_alert_desc"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/_5sdp"
+                android:fontFamily="@font/font_medium"
                 android:gravity="center_horizontal"
+                android:text="No Internet Connection"
                 android:textColor="@color/black"
-                android:textSize="@dimen/_13sdp"
-                android:text="No Internet Connection"/>
+                android:textSize="@dimen/_13sdp" />
 
 
             <com.joinflatshare.customviews.CustomButton
-                android:fontFamily="@font/font_regular"
                 android:id="@+id/btn_alert_blue"
                 android:layout_width="@dimen/_90sdp"
                 android:layout_height="@dimen/_35sdp"
-                android:visibility="gone"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginBottom="@dimen/_20sdp"
                 android:background="@drawable/drawable_button_blue"
+                android:fontFamily="@font/font_regular"
                 android:text="Cancel"
                 android:textColor="@color/white"
-                android:textSize="@dimen/_14sdp" />
+                android:textSize="@dimen/_14sdp"
+                android:visibility="gone" />
         </LinearLayout>
     </com.google.android.material.card.MaterialCardView>
 </RelativeLayout>
