@@ -100,9 +100,9 @@ class ProfileCreateListener(
 
             viewBind.btnCreateProfile.id -> {
                 if (isAllDataFilled) {
-                    if (viewBind.edtFname.text.toString().length == 1)
+                    if (viewBind.edtFname.text.toString().trim().length == 1)
                         CommonMethod.makeToast("First name must be minimum 2 characters long")
-                    else if (viewBind.edtLname.text.toString().length == 1)
+                    else if (viewBind.edtLname.text.toString().trim().length == 1)
                         CommonMethod.makeToast("Last name must be minimum 2 characters long")
                     else {
                         AlertDialog.showAlert(

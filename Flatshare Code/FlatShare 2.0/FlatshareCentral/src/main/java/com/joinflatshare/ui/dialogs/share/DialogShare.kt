@@ -225,11 +225,14 @@ class DialogShare(
                         ", ",
                         user.flatProperties.interests
                     )
-                    val lastIndex = interests.lastIndexOf(",")
-                    interests = interests.substring(
-                        0,
-                        lastIndex
-                    ) + " and" + interests.substring(lastIndex + 1)
+                    var lastIndex = interests.lastIndexOf(",")
+                    if (lastIndex > 0) {
+                        interests = interests.substring(
+                            0,
+                            lastIndex
+                        ) + " and" + interests.substring(lastIndex + 1)
+                    }
+
                     userShareText += "${user.name?.firstName} is into $interests."
 
                     if (!user.flatProperties.languages.isNullOrEmpty()) {
@@ -237,11 +240,13 @@ class DialogShare(
                             ", ",
                             user.flatProperties.languages
                         )
-                        val lastIndex = interests.lastIndexOf(",")
-                        interests =
-                            interests.substring(0, lastIndex) + " and" + interests.substring(
-                                lastIndex + 1
-                            )
+                        lastIndex = interests.lastIndexOf(",")
+                        if (lastIndex > 0) {
+                            interests =
+                                interests.substring(0, lastIndex) + " and" + interests.substring(
+                                    lastIndex + 1
+                                )
+                        }
                         userShareText += "\n$pronoun speaks $interests."
                     } else userShareText += ". "
                 } else {
@@ -251,10 +256,12 @@ class DialogShare(
                             user.flatProperties.languages
                         )
                         val lastIndex = interests.lastIndexOf(",")
-                        interests =
-                            interests.substring(0, lastIndex) + " and" + interests.substring(
-                                lastIndex + 1
-                            )
+                        if (lastIndex > 0) {
+                            interests =
+                                interests.substring(0, lastIndex) + " and" + interests.substring(
+                                    lastIndex + 1
+                                )
+                        }
                         userShareText += "${user.name?.firstName} speaks $interests."
                     }
                 }

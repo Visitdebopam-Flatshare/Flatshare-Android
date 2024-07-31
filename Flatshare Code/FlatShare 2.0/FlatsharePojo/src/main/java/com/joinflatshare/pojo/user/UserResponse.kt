@@ -135,6 +135,9 @@ data class Loc(
     @field:SerializedName("coordinates")
     val coordinates: ArrayList<Double> = ArrayList(),
 
+    @field:SerializedName("type")
+    val type: String = "Point"
+
 ) : Serializable
 
 data class FlatProperties(

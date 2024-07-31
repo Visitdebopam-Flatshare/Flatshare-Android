@@ -125,11 +125,15 @@ public class ImageHelper {
             Glide.with(context).load(url).diskCacheStrategy(DiskCacheStrategy.RESOURCE).apply(options).listener(new RequestListener<Drawable>() {
                 @Override
                 public boolean onLoadFailed(@androidx.annotation.Nullable GlideException e, @androidx.annotation.Nullable Object model, @NonNull Target<Drawable> target, boolean isFirstResource) {
-                    char fname = user.getName().getFirstName().charAt(0);
-                    char lname = user.getName().getLastName().charAt(0);
+                    try {
+                        char fname = user.getName().getFirstName().charAt(0);
+                        char lname = user.getName().getLastName().charAt(0);
+                        txtDp.setText("" + fname + lname);
+                    } catch (Exception ex) {
+                        txtDp.setText("NA");
+                    }
                     txtDp.setVisibility(View.VISIBLE);
                     img_profile.setVisibility(View.GONE);
-                    txtDp.setText("" + fname + lname);
                     return false;
                 }
 
@@ -155,11 +159,16 @@ public class ImageHelper {
             Glide.with(context).load(url).diskCacheStrategy(DiskCacheStrategy.RESOURCE).apply(options).listener(new RequestListener<Drawable>() {
                 @Override
                 public boolean onLoadFailed(@androidx.annotation.Nullable GlideException e, @androidx.annotation.Nullable Object model, @NonNull Target<Drawable> target, boolean isFirstResource) {
-                    char fname = name.charAt(0);
-                    char lname = name.charAt(0);
+                    try {
+                        char fname = name.charAt(0);
+                        char lname = name.charAt(0);
+                        txtDp.setText("" + fname + lname);
+                    } catch (Exception ex) {
+                        txtDp.setText("NA");
+                    }
                     txtDp.setVisibility(View.VISIBLE);
                     img_profile.setVisibility(View.GONE);
-                    txtDp.setText("" + fname + lname);
+
                     return false;
                 }
 
