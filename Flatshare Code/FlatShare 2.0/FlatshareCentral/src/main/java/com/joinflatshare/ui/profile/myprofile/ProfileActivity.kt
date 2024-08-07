@@ -31,8 +31,10 @@ class ProfileActivity : BaseActivity() {
     private fun setUserData() {
         user = FlatShareApplication.getDbInstance().userDao().getUser()
         ImageHelper.loadProfileImage(this, viewBind.imgPhoto, viewBind.txtPhoto, user)
-        viewBind.txtProfileName.text =
-            "${user?.name?.firstName} ${user?.name?.lastName}, ${CommonMethod.getAge(user?.dob)}"
+        // Name & DOB
+        val name = "${user?.name?.firstName} ${user?.name?.lastName}"
+        val dob = CommonMethod.getAge(user?.dob)
+        viewBind.txtProfileName.text = if (dob.isEmpty()) name else "$name, $dob"
 
         setCompletionPercentage()
 
