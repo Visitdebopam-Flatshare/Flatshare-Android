@@ -24,9 +24,11 @@ class ExploreListener(
     init {
         viewBind.btnNoFeed.setOnClickListener(this)
         viewBind.cardPreferences.setOnClickListener(this)
-        viewBind.includePagerExplore.imgCross.setOnClickListener(this)
-        viewBind.includePagerExplore.imgCheck.setOnClickListener(this)
-        viewBind.includePagerExplore.imgSuperCheck.setOnClickListener(this)
+        viewBind.btnExploreLoad.setOnClickListener(this)
+        viewBind.pullToRefresh.setOnRefreshListener {
+            activity.binder.setup()
+            viewBind.pullToRefresh.isRefreshing = false
+        }
     }
 
     override fun onClick(view: View?) {
@@ -42,31 +44,11 @@ class ExploreListener(
                 }
             }
 
-            viewBind.includePagerExplore.imgCross.id -> {
-                val completion = AppConstants.loggedInUser?.completed?.isConsideredCompleted
-                if (completion == false) {
-                    IncompleteProfileBottomSheet(
-                        activity
-                    ) { activity.binder.showUser() }
-                    return
-                }
-                if (activity.userData.isEmpty())
-                    return
-                val rejectLikeUrl = WebserviceCustomRequestHandler.getRejectLikeRequest(
-                    BaseActivity.TYPE_FHT, ChatRequestConstants.CHAT_REQUEST_CONSTANT_FHT,
-                    activity.userData[0].data!!.id
-                )
-                WebserviceManager().rejectLike(activity, rejectLikeUrl,
-                    object : OnFlatshareResponseCallBack<Response<ResponseBody>> {
-                        override fun onResponseCallBack(response: String) {
-                            MixpanelUtils.onButtonClicked("Feed Reject")
-                            activity.userData.removeAt(0)
-                            activity.binder.showUser()
-                        }
-                    })
+            viewBind.btnExploreLoad.id -> {
+                activity.apiController?.getRecommendedFHTUsers()
             }
 
-            viewBind.includePagerExplore.imgCheck.id -> {
+            /*viewBind.includePagerExplore.ll.id -> {
                 val completion = AppConstants.loggedInUser?.completed?.isConsideredCompleted
                 if (completion == false) {
                     IncompleteProfileBottomSheet(
@@ -89,30 +71,8 @@ class ExploreListener(
                             activity.binder.showUser()
                         }
                     })
-            }
+            }*/
 
-            viewBind.includePagerExplore.imgSuperCheck.id -> {
-                val completion = AppConstants.loggedInUser?.completed?.isConsideredCompleted
-                if (completion == false) {
-                    IncompleteProfileBottomSheet(
-                        activity
-                    ) { activity.binder.showUser() }
-                    return
-                }
-                if (activity.userData.isEmpty())
-                    return
-                WebserviceManager().sendChatRequest(
-                    activity,
-                    ChatRequestConstants.CHAT_REQUEST_CONSTANT_FHT,
-                    activity.userData[0].data!!.id,
-                    object : OnFlatshareResponseCallBack<Response<ResponseBody>> {
-                        override fun onResponseCallBack(response: String) {
-                            MixpanelUtils.onButtonClicked("Feed SuperCheck")
-                            activity.userData.removeAt(0)
-                            activity.binder.showUser()
-                        }
-                    })
-            }
         }
     }
 }

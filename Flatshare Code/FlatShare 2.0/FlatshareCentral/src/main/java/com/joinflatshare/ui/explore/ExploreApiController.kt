@@ -54,7 +54,6 @@ class ExploreApiController(
                         currentPage++
                         activity.userData.addAll(data)
                         activity.binder.showContentData()
-                        activity.binder.showUser()
                     } else {
                         hasMoreData = false
                         if (currentPage == 0) {

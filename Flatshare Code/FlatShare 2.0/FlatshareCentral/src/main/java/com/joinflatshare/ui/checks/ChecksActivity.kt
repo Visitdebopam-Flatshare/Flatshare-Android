@@ -24,7 +24,7 @@ class ChecksActivity : BaseActivity() {
         super.onCreate(savedInstanceState)
         viewBind = ActivityCheckListBinding.inflate(layoutInflater)
         setContentView(viewBind.root)
-        showTopBar(this, true, "", 0, 0)
+        showTopBar(this, false, "Chat Requests", 0, 0)
         showBottomMenu(this)
         dataBinder = ChecksDataBinder(this, viewBind)
         fetchData()
