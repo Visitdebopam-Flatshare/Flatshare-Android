@@ -4,6 +4,7 @@ import static com.joinflatshare.constants.RequestCodeConstants.REQUEST_CODE_PICK
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.AsyncTask;
@@ -14,6 +15,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.activity.ComponentActivity;
+import androidx.activity.result.ActivityResultLauncher;
 import androidx.annotation.NonNull;
 import androidx.core.content.ContextCompat;
 
@@ -263,6 +265,15 @@ public class ImageHelper {
         builder.start(REQUEST_CODE_PICK_IMAGE);
     }
 
+    public static void pickImageFromCamera(ComponentActivity activity, ActivityResultLauncher<Intent> launcher, float cropWidth, float cropHeight) {
+        ImagePicker.Builder builder = ImagePicker.Companion.with(activity);
+        builder.galleryMimeTypes(new String[]{"image/png", "image/jpg", "image/jpeg"}).cameraOnly().compress(1024);
+        if (cropWidth > 0 && cropHeight > 0) {
+            builder.crop(cropWidth, cropHeight);
+        }
+        builder.start(REQUEST_CODE_PICK_IMAGE, launcher);
+    }
+
     public static void pickImageFromCamera(ComponentActivity activity, float cropWidth, float cropHeight,
                                            int requestCode) {
         ImagePicker.Builder builder = ImagePicker.Companion.with(activity);
@@ -273,9 +284,18 @@ public class ImageHelper {
         builder.start(requestCode);
     }
 
-    public static void pickImageFromGallery(ComponentActivity activity, float cropWidth, float cropHeight) {
+    public static void pickImageFromGallery(ComponentActivity activity, ActivityResultLauncher<Intent> launcher, float cropWidth, float cropHeight) {
         ImagePicker.Builder builder = ImagePicker.Companion.with(activity);
         builder.galleryMimeTypes(new String[]{"image/png", "image/jpg", "image/jpeg"}).galleryOnly().compress(1024);
+        if (cropWidth > 0 && cropHeight > 0) {
+            builder.crop(cropWidth, cropHeight);
+        }
+        builder.start(REQUEST_CODE_PICK_IMAGE, launcher);
+    }
+
+    public static void pickImageFromGallery(ComponentActivity activity, float cropWidth, float cropHeight) {
+        ImagePicker.Builder builder = ImagePicker.Companion.with(activity);
+        builder.galleryMimeTypes(new String[]{"image/png", "image/jpg", "image/jpeg"}).galleryOnly().compress(500);
         if (cropWidth > 0 && cropHeight > 0) {
             builder.crop(cropWidth, cropHeight);
         }

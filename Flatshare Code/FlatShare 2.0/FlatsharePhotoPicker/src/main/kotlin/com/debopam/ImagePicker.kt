@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Build
 import android.os.Bundle
 import androidx.activity.ComponentActivity
+import androidx.activity.result.ActivityResultLauncher
 import androidx.fragment.app.Fragment
 import com.debopam.constant.ImageProvider
 import com.debopam.listener.DismissListener
@@ -284,6 +285,18 @@ open class ImagePicker {
         }
 
         /**
+         * Start Image Picker Activity
+         */
+        fun start(reqCode: Int, launcher: ActivityResultLauncher<Intent>) {
+            if (imageProvider == ImageProvider.BOTH) {
+                // Pick Image Provider if not specified
+                showImageProviderDialog(reqCode)
+            } else {
+                startActivity(launcher)
+            }
+        }
+
+        /**
          * Prefer {@see createIntentFromDialog} over this method, as
          *
          *  Only used with ImageProvider.GALLERY or ImageProvider.CAMERA
@@ -368,6 +381,15 @@ open class ImagePicker {
             } else {
                 activity.startActivityForResult(intent, reqCode)
             }
+        }
+
+        /**
+         * Start ImagePickerActivity with given Argument
+         */
+        private fun startActivity(launcher: ActivityResultLauncher<Intent>) {
+            val intent = Intent(activity, ImagePickerActivity::class.java)
+            intent.putExtras(getBundle())
+            launcher.launch(intent)
         }
     }
 }

@@ -15,11 +15,11 @@ class SmsReaderBroadcast : BroadcastReceiver() {
     override fun onReceive(context: Context, intent: Intent?) {
         if (SmsRetriever.SMS_RETRIEVED_ACTION == intent!!.action) {
             val extras: Bundle? = intent.extras
-            val status: Status = extras?.get(SmsRetriever.EXTRA_STATUS) as Status
-            when (status.statusCode) {
+            val status = extras?.get(SmsRetriever.EXTRA_STATUS) as Status?
+            when (status?.statusCode) {
                 CommonStatusCodes.SUCCESS -> {
                     // Get SMS message contents
-                    val message = extras.get(SmsRetriever.EXTRA_SMS_MESSAGE) as String
+                    val message = extras?.get(SmsRetriever.EXTRA_SMS_MESSAGE) as String?
                     CommonMethod.makeLog("Message", message)
                     if (!message.isNullOrBlank()) {
                         val intent = Intent(IntentFilterConstants.INTENT_FILTER_CONSTANT_READ_SMS)

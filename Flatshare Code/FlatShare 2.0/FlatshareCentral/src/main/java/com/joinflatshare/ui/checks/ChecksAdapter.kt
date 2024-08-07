@@ -27,8 +27,10 @@ class ChecksAdapter(
     }
 
     fun removeItem(position: Int) {
-        items.removeAt(position)
-        notifyItemRemoved(position)
+        if (position > items.size) {
+            items.removeAt(position)
+            notifyItemRemoved(position)
+        }
     }
 
     class ViewHolder(

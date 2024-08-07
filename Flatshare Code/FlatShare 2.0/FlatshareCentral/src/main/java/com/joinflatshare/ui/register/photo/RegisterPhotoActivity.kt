@@ -1,7 +1,13 @@
 package com.joinflatshare.ui.register.photo
 
+import android.app.Activity
 import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
+import androidx.activity.result.ActivityResult
+import androidx.activity.result.ActivityResultLauncher
+import androidx.activity.result.ActivityResultRegistry
+import androidx.activity.result.contract.ActivityResultContracts
 import com.debopam.ImagePicker
 import com.debopam.ImagePicker.Companion.getError
 import com.debopam.progressdialog.DialogCustomProgress
@@ -40,50 +46,53 @@ class RegisterPhotoActivity : BaseActivity() {
     }
 
     fun pickImage(fromGallery: Boolean) {
-        if (fromGallery) ImageHelper.pickImageFromGallery(this, 1f, 1f)
-        else ImageHelper.pickImageFromCamera(this, 1f, 1f)
+        if (fromGallery) ImageHelper.pickImageFromGallery(this, imageResult, 1f, 1f)
+        else ImageHelper.pickImageFromCamera(this, imageResult, 1f, 1f)
     }
 
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
-        if (resultCode == RESULT_OK) {
-            //Image Uri will not be null for RESULT_OK
-            if (data != null) {
-                DialogCustomProgress.showProgress(this)
-                val uri = data.data
-                val ap = AmazonUploadFile()
-                ap.upload(
-                    File(uri?.path), AmazonUploadFile.AWS_TYPE_PROFILE_IMAGE
-                ) { intent: Intent, requestCode1: Int ->
-                    DialogCustomProgress.hideProgress(this)
-                    if (requestCode1 == AmazonUploadFile.REQUEST_CODE_SUCCESS) {
-                        val serverPath = intent.getStringExtra("localpath")
-                        deleteOldProfileImage()
-                        user?.dp = serverPath
-                        baseApiController.updateUser(true, user, object : OnUserFetched {
-                            override fun userFetched(resp: UserResponse?) {
-                                viewBind.imgPhoto?.setImageURI(uri)
-                                updateSendbirdUserProfile()
-                                CommonMethod.makeToast("Profile picture updated")
-                                MixpanelUtils.sendToMixPanel("Photo Uploaded")
-                                viewBind.btnUploadPhoto.text = "Next"
-                                viewBind.btnSkip.text = "Change Photo"
-                                viewBind.txtHeader.text = "Set as profile photo"
-                            }
+    private val imageResult =
+        registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result: ActivityResult ->
+            if (result.resultCode == Activity.RESULT_OK) {
+                val data:Intent? = result.data
+                //Image Uri will not be null for RESULT_OK
+                if (data != null) {
+                    DialogCustomProgress.showProgress(this)
+                    val uri = data.data
+                    val ap = AmazonUploadFile()
+                    ap.upload(
+                        File(uri?.path), AmazonUploadFile.AWS_TYPE_PROFILE_IMAGE
+                    ) { intent: Intent, requestCode1: Int ->
+                        DialogCustomProgress.hideProgress(this)
+                        if (requestCode1 == AmazonUploadFile.REQUEST_CODE_SUCCESS) {
+                            val serverPath = intent.getStringExtra("localpath")
+                            deleteOldProfileImage()
+                            user?.dp = serverPath
+                            baseApiController.updateUser(true, user, object : OnUserFetched {
+                                override fun userFetched(resp: UserResponse?) {
+                                    viewBind.imgPhoto.setImageURI(uri)
+                                    updateSendbirdUserProfile()
+                                    CommonMethod.makeToast("Profile picture updated")
+                                    MixpanelUtils.sendToMixPanel("Photo Uploaded")
+                                    viewBind.btnUploadPhoto.text = "Next"
+                                    viewBind.btnSkip.text = "Change Photo"
+                                    viewBind.txtHeader.text = "Set as profile photo"
+                                }
 
-                        })
-                    } else {
-                        Logger.log(
-                            "Failed to update profile picture", Logger.LOG_TYPE_ERROR
-                        )
-                        CommonMethod.makeToast("Failed to update profile picture")
+                            })
+                        } else {
+                            Logger.log(
+                                "Failed to update profile picture", Logger.LOG_TYPE_ERROR
+                            )
+                            CommonMethod.makeToast("Failed to update profile picture")
+                        }
                     }
                 }
+            } else if (result.resultCode == ImagePicker.RESULT_ERROR) {
+                CommonMethod.makeToast(getError(result.data))
             }
-        } else if (resultCode == ImagePicker.RESULT_ERROR) {
-            CommonMethod.makeToast(getError(data))
+
         }
-    }
+
 
     private fun updateSendbirdUserProfile() {
         val sendBirdUser = SendBirdUser(this)

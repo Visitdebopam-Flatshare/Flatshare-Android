@@ -9,6 +9,7 @@ import com.joinflatshare.FlatshareCentral.R
 import com.joinflatshare.FlatshareCentral.databinding.ActivityOtpBinding
 import com.joinflatshare.constants.AppConstants
 import com.joinflatshare.ui.register.RegisterBaseActivity
+import com.joinflatshare.utils.helper.CommonMethod
 import com.joinflatshare.utils.helper.CommonMethod.makeLog
 import java.util.regex.Pattern
 
@@ -25,6 +26,10 @@ class OtpActivity : RegisterBaseActivity() {
         super.onCreate(savedInstanceState)
         viewBind = ActivityOtpBinding.inflate(layoutInflater)
         setContentView(viewBind.root)
+        if (!intent.hasExtra("phone")) {
+            CommonMethod.finishActivity(this)
+            return
+        }
         phone = intent.getStringExtra("phone")!!
         init()
     }

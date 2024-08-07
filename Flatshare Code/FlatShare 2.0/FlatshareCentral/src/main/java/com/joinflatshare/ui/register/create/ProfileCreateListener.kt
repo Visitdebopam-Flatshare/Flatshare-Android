@@ -100,9 +100,9 @@ class ProfileCreateListener(
 
             viewBind.btnCreateProfile.id -> {
                 if (isAllDataFilled) {
-                    if (viewBind.edtFname.text.toString().trim().length == 1)
+                    if (viewBind.edtFname.text.toString().trim().length < 2)
                         CommonMethod.makeToast("First name must be minimum 2 characters long")
-                    else if (viewBind.edtLname.text.toString().trim().length == 1)
+                    else if (viewBind.edtLname.text.toString().trim().length < 2)
                         CommonMethod.makeToast("Last name must be minimum 2 characters long")
                     else {
                         AlertDialog.showAlert(
@@ -143,9 +143,9 @@ class ProfileCreateListener(
 
             override fun afterTextChanged(p0: Editable?) {
                 var allFilled = true
-                if (viewBind.edtFname.text.toString().isEmpty())
+                if (viewBind.edtFname.text.toString().trim().length < 2)
                     allFilled = false
-                else if (viewBind.edtLname.text.toString().isEmpty())
+                else if (viewBind.edtLname.text.toString().trim().length < 2)
                     allFilled = false
                 else if (viewBind.txtDob.text.toString().isEmpty())
                     allFilled = false
