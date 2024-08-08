@@ -39,11 +39,11 @@ public class BaseClickListener {
                             return;
                         }
                         break;
-                    case 1:
+                    case 2:
                         if (AppConstants.isSendbirdLive)
                             intent = new Intent(activity, ChatListActivity.class);
                         break;
-                    case 2:
+                    case 1:
                         intent = new Intent(activity, ChecksActivity.class);
                         break;
                     case 3:
