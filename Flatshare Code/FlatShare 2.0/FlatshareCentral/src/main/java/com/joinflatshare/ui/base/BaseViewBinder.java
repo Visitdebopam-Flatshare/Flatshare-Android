@@ -34,7 +34,7 @@ public class BaseViewBinder {
     public LinearLayout[] ll_menu;
     public CircleImageView img_menu_profile;
     public View view_menu_explore_circle, view_menu_chat_circle;
-    private final int[] icon = {R.drawable.ic_menu_explore, R.drawable.ic_menu_chat, R.drawable.ic_menu_check};
+    private final int[] icon = {R.drawable.ic_menu_explore, R.drawable.ic_menu_check, R.drawable.ic_menu_chat};
 
     protected void showBack(Activity activity) {
         btn_back = activity.findViewById(R.id.img_topbar_back);
