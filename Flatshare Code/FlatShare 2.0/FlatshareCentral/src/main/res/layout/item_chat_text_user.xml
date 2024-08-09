@@ -6,7 +6,6 @@
     android:orientation="vertical">
 
     <TextView
-            android:fontFamily="@font/font_regular"
         android:id="@+id/txt_chat_date"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -14,6 +13,7 @@
         android:layout_marginTop="@dimen/_10sdp"
         android:layout_marginBottom="@dimen/_10sdp"
         android:background="@drawable/drawable_chat_time"
+        android:fontFamily="@font/font_regular"
         android:gravity="center"
         android:paddingStart="@dimen/_8sdp"
         android:paddingTop="@dimen/_4sdp"
@@ -91,19 +91,19 @@
                             android:orientation="vertical">
 
                             <TextView
-            android:fontFamily="@font/font_regular"
                                 android:id="@+id/txt_chat_reply_sender"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
+                                android:fontFamily="@font/font_regular"
                                 android:textColor="@color/color_blue_light"
                                 android:textSize="@dimen/_10sdp" />
 
                             <TextView
-            android:fontFamily="@font/font_regular"
                                 android:id="@+id/txt_chat_reply_message"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="@dimen/_2sdp"
+                                android:fontFamily="@font/font_regular"
                                 android:textColor="@color/black"
                                 android:textSize="@dimen/_8sdp" />
 
@@ -136,10 +136,10 @@
                         android:src="@drawable/ic_user_grey" />
 
                     <TextView
-            android:fontFamily="@font/font_regular"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginHorizontal="@dimen/_10sdp"
+                        android:fontFamily="@font/font_regular"
                         android:gravity="center"
                         android:text="Contact Shared"
                         android:textColor="@color/black"
@@ -147,22 +147,22 @@
                 </LinearLayout>
 
                 <TextView
-            android:fontFamily="@font/font_regular"
                     android:id="@+id/txt_message"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="@dimen/_20sdp"
+                    android:fontFamily="@font/font_regular"
                     android:textColor="@color/black"
                     android:textSize="@dimen/_14sdp" />
 
                 <TextView
-            android:fontFamily="@font/font_regular"
                     android:id="@+id/txt_message_timestamp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="end"
                     android:layout_marginStart="@dimen/_20sdp"
                     android:layout_marginTop="@dimen/_5sdp"
+                    android:fontFamily="@font/font_regular"
                     android:textColor="@color/black"
                     android:textSize="@dimen/_7sdp" />
 
