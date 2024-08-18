@@ -24,6 +24,7 @@ import com.joinflatshare.api.retrofit.OnResponseCallback
 import com.joinflatshare.chat.api.SendBirdApiManager
 import com.joinflatshare.chat.metadata.MessageMetaData
 import com.joinflatshare.chat.pojo.user.ModelChatUserResponse
+import com.joinflatshare.constants.AppConstants
 import com.joinflatshare.constants.ChatRequestConstants
 import com.joinflatshare.constants.IntentFilterConstants
 import com.joinflatshare.constants.NotificationConstants
@@ -281,6 +282,8 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
         }
 
         fun generateTestNotification() {
+            if (AppConstants.isAppLive)
+                return
             val notificationManager = ContextCompat.getSystemService(
                 FlatShareApplication.instance,
                 NotificationManager::class.java

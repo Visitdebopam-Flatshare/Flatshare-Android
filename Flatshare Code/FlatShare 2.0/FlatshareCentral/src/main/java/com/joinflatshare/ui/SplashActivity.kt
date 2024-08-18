@@ -63,7 +63,7 @@ class SplashActivity : RegisterBaseActivity() {
     private fun printAppVersion() {
         if (BuildConfig.DEBUG) {
             viewBind.txtAppVersion.visibility = View.VISIBLE
-            viewBind.txtAppVersion.text = "App Version ${BuildConfig.VERSION_NAME}"
+            viewBind.txtAppVersion.text = "Version ${BuildConfig.VERSION_CODE}"
         }
     }
 
@@ -237,10 +237,10 @@ class SplashActivity : RegisterBaseActivity() {
     override fun onResume() {
         super.onResume()
         if (ConnectivityListener.checkInternet()) {
-            AppConstants.hasNetworkConnection = true
+            /*AppConstants.hasNetworkConnection = true
             if (BuildConfig.DEBUG || !AppConstants.isAppLive)
                 checkConfig()
-            else
+            else*/
                 AppUpdater(this).checkStore { text ->
                     if (text.equals("1"))
                         checkConfig()

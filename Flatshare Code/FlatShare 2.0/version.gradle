@@ -2,7 +2,7 @@ def MINIMUM_SDK_VERSION = 24
 def TARGET_SDK_VERSION = 34
 def JAVA_VERSION = JavaVersion.VERSION_17
 def JVM_TARGET = '17'
-def VERSION_CODE = 52
+def VERSION_CODE = 53
 def VERSION_NAME = "4.4"
 android {
     def projectName = project.name
