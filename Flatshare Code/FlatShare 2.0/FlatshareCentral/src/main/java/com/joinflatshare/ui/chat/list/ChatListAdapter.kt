@@ -157,11 +157,11 @@ class ChatListAdapter(
 
         private fun getLastMessage(lastMessage: BaseMessage): String {
             var htmlMessage = ""
-            val metaData = Gson().fromJson(
+            val metaData: MessageMetaData? = Gson().fromJson(
                 lastMessage.data,
                 MessageMetaData::class.java
             )
-            if (metaData.messageType != null)
+            if (metaData?.messageType != null)
                 when (metaData.messageType) {
                     SendBirdConstants.MESSAGE_TYPE_TEXT -> if (lastMessage is UserMessage || lastMessage is AdminMessage) {
                         htmlMessage = lastMessage.message

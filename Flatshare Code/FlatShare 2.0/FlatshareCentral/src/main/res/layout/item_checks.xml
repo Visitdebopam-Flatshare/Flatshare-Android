@@ -239,16 +239,16 @@
         <LinearLayout
             android:id="@+id/ll_explore_buttons"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/_60sdp"
+            android:layout_height="@dimen/_45sdp"
             android:layout_marginHorizontal="@dimen/_40sdp"
-            android:layout_marginTop="@dimen/_7sdp"
+            android:layout_marginTop="@dimen/_8sdp"
             android:gravity="center"
             android:orientation="horizontal">
 
             <LinearLayout
                 android:id="@+id/ll_check_reject"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:background="@drawable/drawable_button_black_less_elliptical"
                 android:gravity="center"
@@ -278,7 +278,7 @@
             <LinearLayout
                 android:id="@+id/ll_check_accept"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:background="@drawable/drawable_button_black_less_elliptical"
                 android:gravity="center"
@@ -304,4 +304,8 @@
 
         </LinearLayout>
     </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_30sdp" />
 </LinearLayout>

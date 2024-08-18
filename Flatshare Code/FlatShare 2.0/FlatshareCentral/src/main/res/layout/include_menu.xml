@@ -45,21 +45,13 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:orientation="horizontal"
-            android:gravity="center">
+            android:gravity="center"
+            android:orientation="horizontal">
 
             <ImageView
                 android:layout_width="@dimen/menu_width"
                 android:layout_height="@dimen/menu_width"
                 android:src="@drawable/ic_menu_chat" />
-
-            <View
-                android:id="@+id/view_menu_chat_circle"
-                android:layout_width="@dimen/_5sdp"
-                android:layout_height="@dimen/_5sdp"
-                android:layout_gravity="center"
-                android:background="@drawable/drawable_button_blue_circle"
-                android:visibility="visible" />
 
         </LinearLayout>
 
@@ -76,6 +68,13 @@
                 android:layout_gravity="center"
                 android:src="@drawable/ic_menu_check" />
 
+            <View
+                android:id="@+id/view_menu_chat_circle"
+                android:layout_width="@dimen/_5sdp"
+                android:layout_height="@dimen/_5sdp"
+                android:layout_gravity="center"
+                android:background="@drawable/drawable_button_blue_circle"
+                android:visibility="visible" />
         </LinearLayout>
 
         <LinearLayout

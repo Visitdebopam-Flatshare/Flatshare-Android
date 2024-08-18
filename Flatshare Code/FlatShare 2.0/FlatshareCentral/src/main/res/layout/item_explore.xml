@@ -190,16 +190,16 @@
     <LinearLayout
         android:id="@+id/ll_explore_buttons"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/_60sdp"
+        android:layout_height="@dimen/_45sdp"
         android:layout_marginHorizontal="@dimen/_40sdp"
-        android:layout_marginVertical="@dimen/_15sdp"
+        android:layout_marginVertical="@dimen/_8sdp"
         android:orientation="horizontal"
         android:weightSum="2">
 
         <LinearLayout
             android:id="@+id/ll_explore_reject"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_weight="0.45"
             android:background="@drawable/drawable_button_black_less_elliptical"
             android:gravity="center"
@@ -216,22 +216,22 @@
 
         <View
             android:layout_width="@dimen/_20sdp"
-            android:layout_height="@dimen/_20sdp" />
+            android:layout_height="match_parent" />
 
         <LinearLayout
             android:id="@+id/ll_explore_chat_request"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_weight="1.55"
             android:background="@drawable/drawable_button_black_less_elliptical"
             android:gravity="center"
             android:orientation="horizontal">
 
             <ImageView
-                android:layout_width="@dimen/_13sdp"
-                android:layout_height="@dimen/_13sdp"
+                android:layout_width="@dimen/_18sdp"
+                android:layout_height="@dimen/_18sdp"
                 android:layout_marginTop="@dimen/_1sdp"
-                android:src="@drawable/ic_menu_chat"
+                android:src="@drawable/ic_menu_check"
                 app:tint="@color/white" />
 
             <TextView
@@ -246,4 +246,7 @@
 
     </LinearLayout>
 
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_30sdp" />
 </LinearLayout>

@@ -37,13 +37,6 @@ class ChatListActivity : ChatBaseActivity() {
         super.onResume()
         AppConstants.menuSelected = 2
         baseViewBinder.applyMenuClick()
-        initialiseChat(object : OnStringFetched {
-            override fun onFetched(text: String?) {
-                getChatList()
-                ChatListHandler(this@ChatListActivity)
-            }
-
-        })
     }
 
 
@@ -51,6 +44,10 @@ class ChatListActivity : ChatBaseActivity() {
         viewBind.rvFriends.layoutManager = LinearLayoutManager(this)
         adapter = ChatListAdapter(this, searchedGroupChannelList)
         viewBind.rvFriends.adapter = adapter
+        initialiseChat {
+            getChatList()
+            ChatListHandler(this@ChatListActivity)
+        }
     }
 
     private fun getChatList() {

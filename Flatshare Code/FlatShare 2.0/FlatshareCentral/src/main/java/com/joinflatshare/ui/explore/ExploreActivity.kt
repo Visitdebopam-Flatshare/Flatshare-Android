@@ -14,6 +14,7 @@ import com.joinflatshare.constants.AppConstants
 import com.joinflatshare.constants.IntentConstants
 import com.joinflatshare.constants.IntentFilterConstants
 import com.joinflatshare.fcm.FcmNavigationUtils
+import com.joinflatshare.fcm.MyFirebaseMessagingService
 import com.joinflatshare.services.MutualContactHandler
 import com.joinflatshare.ui.base.BaseActivity
 import com.joinflatshare.ui.preferences.flat.PreferenceActivity
@@ -94,7 +95,7 @@ class ExploreActivity : BaseActivity() {
         if (intent.getBooleanExtra(IntentConstants.INTENT_NOTIFICATION, false)) {
             intent.removeExtra(IntentConstants.INTENT_NOTIFICATION)
             FcmNavigationUtils(this, intent)
-        }
+        } else MyFirebaseMessagingService.generateTestNotification()
     }
 
     override fun onDestroy() {

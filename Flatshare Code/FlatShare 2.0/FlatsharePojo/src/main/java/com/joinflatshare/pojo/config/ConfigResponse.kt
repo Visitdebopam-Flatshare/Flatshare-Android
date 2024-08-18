@@ -22,22 +22,14 @@ data class ConfigData(
     @field:SerializedName("appAccess")
     val appAccess: Boolean = true,
 
-    @field:SerializedName("dating")
-    val dating: Dating? = null,
-
     @field:SerializedName("userAccessDenied")
     val userAccessDenied: ArrayList<String> = ArrayList(),
 
     @field:SerializedName("cdn")
-    val cdn: Cdn? = null
-)
+    val cdn: Cdn? = null,
 
-data class Dating(
-    @field:SerializedName("plans")
-    val plans: List<String> = ArrayList(),
-
-    @field:SerializedName("activities")
-    val activities: List<String> = ArrayList(),
+    @field:SerializedName("allowedSkips")
+    val allowedSkips: AllowedSkipOnBoarding? = null
 )
 
 data class FlatDefault(
@@ -90,3 +82,18 @@ data class Cdn(
     @field:SerializedName("pro")
     val pro: String = ""
 ) : Serializable
+
+data class AllowedSkipOnBoarding(
+    @field:SerializedName("isSkippingInterestsAllowed")
+    val isSkippingInterestsAllowed: Boolean = true,
+
+    @field:SerializedName("isSkippingLanguagesAllowed")
+    val isSkippingLanguagesAllowed: Boolean = true,
+
+    @field:SerializedName("isSkippingProfilePictureAllowed")
+    val isSkippingProfilePictureAllowed: Boolean = true,
+
+    @field:SerializedName("isSkippingLocationAccessAllowed")
+    val isSkippingLocationAccessAllowed: Boolean = true
+) : Serializable
+

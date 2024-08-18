@@ -7,6 +7,5 @@ import com.joinflatshare.pojo.config.FlatDefault
  * Created by debopam on 21/08/23
  */
 object AppData {
-    var configResponse: ConfigResponse? = null
     var flatData: FlatDefault? = null
 }

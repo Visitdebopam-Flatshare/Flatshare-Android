@@ -151,6 +151,7 @@ class PreferenceListener(private val activity: PreferenceActivity) : View.OnClic
 
     private fun setVerified(checked: Boolean) {
         viewBind.includePrefFlatmate.switchVerifiedMember.isChecked = checked
+        activity.user?.flatProperties?.isVerifiedOnly = checked
         if (checked) {
             viewBind.includePrefFlatmate.imgVerified.setColorFilter(
                 ContextCompat.getColor(

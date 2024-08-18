@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.text.TextUtils
 import android.view.View
 import androidx.core.content.ContextCompat
+import com.joinflatshare.FlatShareApplication
 import com.joinflatshare.FlatshareCentral.R
 import com.joinflatshare.FlatshareCentral.databinding.ActivityProfileInterestBinding
 import com.joinflatshare.constants.AppConstants
@@ -55,6 +56,10 @@ class InterestActivity : BaseActivity() {
                 )
             )
         } else {
+            val response = FlatShareApplication.getDbInstance().appDao().getConfigResponse()
+            if (response?.data?.allowedSkips?.isSkippingInterestsAllowed == false) {
+                viewBind.btnSkip.visibility = View.INVISIBLE
+            }
             if (!AppConstants.loggedInUser?.flatProperties?.interests.isNullOrEmpty())
                 interestsView.matchedContent.addAll(AppConstants.loggedInUser?.flatProperties?.interests!!)
         }
