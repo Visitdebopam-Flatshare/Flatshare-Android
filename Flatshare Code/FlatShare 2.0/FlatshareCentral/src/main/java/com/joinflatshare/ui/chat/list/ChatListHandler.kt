@@ -15,32 +15,32 @@ class ChatListHandler(private val activity: ChatListActivity) {
     private fun setHandler() {
         addChannelHandler(activity.CHANNEL_HANDLER_ID, object : GroupChannelHandler() {
             override fun onMessageReceived(channel: BaseChannel, message: BaseMessage) {
-                if (activity.adapter != null) activity.adapter!!.notifyDataSetChanged()
+                notifyAdapter(channel)
             }
 
             override fun onMessageDeleted(channel: BaseChannel, msgId: Long) {
                 super.onMessageDeleted(channel, msgId)
-                if (activity.adapter != null) activity.adapter!!.notifyDataSetChanged()
+                notifyAdapter(channel)
             }
 
             override fun onMessageUpdated(channel: BaseChannel, message: BaseMessage) {
                 super.onMessageUpdated(channel, message)
-                if (activity.adapter != null) activity.adapter!!.notifyDataSetChanged()
+                notifyAdapter(channel)
             }
 
             override fun onReadStatusUpdated(channel: GroupChannel) {
                 super.onReadStatusUpdated(channel)
-                if (activity.adapter != null) activity.adapter!!.notifyDataSetChanged()
+                notifyAdapter(channel)
             }
 
             override fun onTypingStatusUpdated(channel: GroupChannel) {
                 super.onTypingStatusUpdated(channel)
-                if (activity.adapter != null) activity.adapter!!.notifyDataSetChanged()
+                notifyAdapter(channel)
             }
 
             override fun onDeliveryStatusUpdated(channel: GroupChannel) {
                 super.onDeliveryStatusUpdated(channel)
-                if (activity.adapter != null) activity.adapter!!.notifyDataSetChanged()
+                notifyAdapter(channel)
             }
 
             override fun onChannelDeleted(
@@ -48,9 +48,27 @@ class ChatListHandler(private val activity: ChatListActivity) {
                 channelType: ChannelType
             ) {
                 super.onChannelDeleted(channelUrl, channelType)
-                if (activity.adapter != null) activity.adapter!!.notifyDataSetChanged()
+                if (activity.adapter != null) {
+                    for (position in activity.allGroupChannelList.indices) {
+                        if (activity.allGroupChannelList[position].url == channelUrl) {
+                            activity.adapter!!.notifyItemRemoved(position)
+                            break
+                        }
+                    }
+                }
             }
         }
         )
+    }
+
+    private fun notifyAdapter(channel: BaseChannel) {
+        if (activity.adapter != null) {
+            for (position in activity.allGroupChannelList.indices) {
+                if (activity.allGroupChannelList[position].url == channel.url) {
+                    activity.adapter!!.notifyItemChanged(position)
+                    break
+                }
+            }
+        }
     }
 }

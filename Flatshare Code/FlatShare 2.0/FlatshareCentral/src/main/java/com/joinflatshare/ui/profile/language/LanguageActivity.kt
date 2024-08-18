@@ -6,11 +6,14 @@ import android.os.Bundle
 import android.text.TextUtils
 import android.view.View
 import androidx.core.content.ContextCompat
+import com.joinflatshare.FlatShareApplication
 import com.joinflatshare.FlatshareCentral.R
 import com.joinflatshare.FlatshareCentral.databinding.ActivityProfileLanguageBinding
 import com.joinflatshare.constants.AppConstants
+import com.joinflatshare.constants.ConfigConstants
 import com.joinflatshare.customviews.interests.InterestsView
 import com.joinflatshare.interfaces.OnUserFetched
+import com.joinflatshare.pojo.config.ConfigData
 import com.joinflatshare.pojo.user.UserResponse
 import com.joinflatshare.ui.base.BaseActivity
 import com.joinflatshare.ui.profile.interest.InterestActivity
@@ -55,6 +58,10 @@ class LanguageActivity : BaseActivity() {
                 )
             )
         } else {
+            val response = FlatShareApplication.getDbInstance().appDao().getConfigResponse()
+            if (response?.data?.allowedSkips?.isSkippingLanguagesAllowed == false) {
+                viewBind.btnSkip.visibility = View.INVISIBLE
+            }
             if (!AppConstants.loggedInUser?.flatProperties?.languages.isNullOrEmpty())
                 interestsView.matchedContent.addAll(AppConstants.loggedInUser?.flatProperties?.languages!!)
         }

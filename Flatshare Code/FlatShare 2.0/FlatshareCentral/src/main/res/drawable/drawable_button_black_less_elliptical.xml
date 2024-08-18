@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle">
+    <corners android:radius="@dimen/_12sdp" />
+    <size android:height="@dimen/button_height_large" />
+    <gradient
+        android:angle="270"
+        android:endColor="#0B0623"
+        android:startColor="#36334A"
+        android:type="linear" />
+    <stroke
+        android:width="@dimen/_3sdp"
+        android:color="#38FFFFFF" />
+</shape>

@@ -24,7 +24,6 @@ class ChecksActivity : BaseActivity() {
         super.onCreate(savedInstanceState)
         viewBind = ActivityCheckListBinding.inflate(layoutInflater)
         setContentView(viewBind.root)
-        showTopBar(this, true, "", 0, 0)
         showBottomMenu(this)
         dataBinder = ChecksDataBinder(this, viewBind)
         fetchData()
@@ -43,7 +42,7 @@ class ChecksActivity : BaseActivity() {
 
     override fun onResume() {
         super.onResume()
-        AppConstants.menuSelected = 2
+        AppConstants.menuSelected = 1
         baseViewBinder.applyMenuClick()
     }
 }

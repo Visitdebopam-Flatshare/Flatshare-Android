@@ -13,9 +13,11 @@ import com.joinflatshare.chat.metadata.MessageMetaData;
 import com.joinflatshare.constants.SendBirdConstants;
 import com.joinflatshare.ui.chat.details.holder.HolderChatFileMe;
 import com.joinflatshare.ui.chat.details.holder.HolderChatFileUser;
+import com.joinflatshare.ui.chat.details.holder.HolderChatTextAdmin;
 import com.joinflatshare.ui.chat.details.holder.HolderChatTextMe;
 import com.joinflatshare.ui.chat.details.holder.HolderChatTextUser;
 import com.sendbird.android.SendbirdChat;
+import com.sendbird.android.message.AdminMessage;
 import com.sendbird.android.message.BaseMessage;
 import com.sendbird.android.message.FileMessage;
 import com.sendbird.android.message.UserMessage;
@@ -35,6 +37,7 @@ public class ChatDetailsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
     private static final int VIEW_TYPE_FILE_MESSAGE_LOCATION_OTHER = 41;
     private static final int VIEW_TYPE_FILE_MESSAGE_CONTACT_ME = 50;
     private static final int VIEW_TYPE_FILE_MESSAGE_CONTACT_USER = 51;
+    private static final int VIEW_TYPE_ADMIN_MESSAGE = 60;
     public BaseMessage selectedMessage = null;
 
     public ChatDetailsAdapter(ChatDetailsActivity activity, List<BaseMessage> items) {
@@ -64,6 +67,10 @@ public class ChatDetailsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
                 myUserMsgView = LayoutInflater.from(parent.getContext())
                         .inflate(R.layout.item_chat_image_user, parent, false);
                 return new HolderChatFileUser(myUserMsgView);
+            case VIEW_TYPE_ADMIN_MESSAGE:
+                View adminMsgView = LayoutInflater.from(parent.getContext())
+                        .inflate(R.layout.item_chat_text_user, parent, false);
+                return new HolderChatTextAdmin(adminMsgView);
             default:
                 return null;
         }
@@ -72,34 +79,35 @@ public class ChatDetailsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
     @Override
     public int getItemViewType(int position) {
         BaseMessage message = items.get(position);
+        if (message instanceof AdminMessage) {
+            return VIEW_TYPE_ADMIN_MESSAGE;
+        }
         if (message instanceof UserMessage) {
-            UserMessage userMessage = (UserMessage) message;
             // If the sender is current user
-            if (userMessage.getSender().getUserId().equals(SendbirdChat.getCurrentUser().getUserId())) {
+            if (message.getSender().getUserId().equals(SendbirdChat.getCurrentUser().getUserId())) {
                 return VIEW_TYPE_USER_MESSAGE_ME;
             } else {
                 return VIEW_TYPE_USER_MESSAGE_USER;
             }
         } else if (message instanceof FileMessage) {
-            FileMessage fileMessage = (FileMessage) message;
-            MessageMetaData metaData = new Gson().fromJson(fileMessage.getData(), MessageMetaData.class);
+            MessageMetaData metaData = new Gson().fromJson(message.getData(), MessageMetaData.class);
             if (metaData != null) {
                 if (metaData.getMessageType().equals(SendBirdConstants.MESSAGE_TYPE_IMAGE)
                         || metaData.getMessageType().equals(SendBirdConstants.MESSAGE_TYPE_LOCATION)) {
                     // If the sender is current user
-                    if (fileMessage.getSender().getUserId().equals(SendbirdChat.getCurrentUser().getUserId())) {
+                    if (message.getSender().getUserId().equals(SendbirdChat.getCurrentUser().getUserId())) {
                         return VIEW_TYPE_FILE_MESSAGE_IMAGE_ME;
                     } else {
                         return VIEW_TYPE_FILE_MESSAGE_IMAGE_USER;
                     }
                 } else if (metaData.getMessageType().equals(SendBirdConstants.MESSAGE_TYPE_VIDEO)) {
-                    if (fileMessage.getSender().getUserId().equals(SendbirdChat.getCurrentUser().getUserId())) {
+                    if (message.getSender().getUserId().equals(SendbirdChat.getCurrentUser().getUserId())) {
                         return VIEW_TYPE_FILE_MESSAGE_VIDEO_ME;
                     } else {
                         return VIEW_TYPE_FILE_MESSAGE_VIDEO_OTHER;
                     }
                 } else if (metaData.getMessageType().equals(SendBirdConstants.MESSAGE_TYPE_AUDIO)) {
-                    if (fileMessage.getSender().getUserId().equals(SendbirdChat.getCurrentUser().getUserId())) {
+                    if (message.getSender().getUserId().equals(SendbirdChat.getCurrentUser().getUserId())) {
                         return VIEW_TYPE_FILE_MESSAGE_IMAGE_ME;
                     } else {
                         return VIEW_TYPE_FILE_MESSAGE_IMAGE_USER;
@@ -128,6 +136,10 @@ public class ChatDetailsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
             case VIEW_TYPE_FILE_MESSAGE_IMAGE_USER:
                 ((HolderChatFileUser) holder).bind(activity, this, holder.getAbsoluteAdapterPosition());
                 break;
+            case VIEW_TYPE_ADMIN_MESSAGE:
+                ((HolderChatTextAdmin) holder).bind(activity, this, holder.getAbsoluteAdapterPosition());
+                break;
+
         }
     }
 

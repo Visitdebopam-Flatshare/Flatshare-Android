@@ -19,7 +19,7 @@ class ChecksAdapter(
 
     override fun onBindViewHolder(mainHolder: RecyclerView.ViewHolder, position: Int) {
         val holder = mainHolder as ViewHolder
-        holder.bind(mainHolder.bindingAdapterPosition, this)
+        holder.bind(mainHolder.layoutPosition, this)
     }
 
     override fun getItemCount(): Int {
@@ -27,9 +27,10 @@ class ChecksAdapter(
     }
 
     fun removeItem(position: Int) {
-        if (position > items.size) {
-            items.removeAt(position)
+        if (position < items.size) {
             notifyItemRemoved(position)
+            notifyItemRangeChanged(position, itemCount)
+            items.removeAt(position)
         }
     }
 

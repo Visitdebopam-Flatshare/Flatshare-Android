@@ -4,6 +4,8 @@ import android.Manifest
 import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
+import android.view.View
+import com.joinflatshare.FlatShareApplication
 import com.joinflatshare.FlatshareCentral.databinding.ActivityProfileLocationBinding
 import com.joinflatshare.constants.AppConstants
 import com.joinflatshare.constants.IntentConstants
@@ -31,6 +33,10 @@ class LocationActivity : BaseActivity() {
     }
 
     private fun init() {
+        val response = FlatShareApplication.getDbInstance().appDao().getConfigResponse()
+        if (response?.data?.allowedSkips?.isSkippingLocationAccessAllowed == false) {
+            viewBind.btnSkip.visibility = View.INVISIBLE
+        }
         viewBind.btnBack.setOnClickListener {
             CommonMethod.finishActivity(this)
         }

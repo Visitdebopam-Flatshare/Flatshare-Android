@@ -6,6 +6,7 @@ import android.view.View
 import com.google.gson.Gson
 import com.joinflatshare.FlatshareCentral.databinding.ItemChecksBinding
 import com.joinflatshare.FlatshareCentral.databinding.ItemExploreBinding
+import com.joinflatshare.api.retrofit.WebserviceCustomRequestHandler
 import com.joinflatshare.constants.AppConstants
 import com.joinflatshare.constants.ChatRequestConstants
 import com.joinflatshare.pojo.BaseResponse
@@ -16,6 +17,7 @@ import com.joinflatshare.ui.bottomsheet.IncompleteProfileBottomSheet
 import com.joinflatshare.ui.bottomsheet.MatchBottomSheet
 import com.joinflatshare.ui.checks.ChecksActivity
 import com.joinflatshare.ui.explore.ExploreActivity
+import com.joinflatshare.ui.explore.ExploreAdapter
 import com.joinflatshare.ui.profile.details.ProfileDetailsActivity
 import com.joinflatshare.utils.helper.CommonMethod
 import com.joinflatshare.utils.helper.DistanceCalculator
@@ -32,15 +34,18 @@ import retrofit2.Response
 class AdapterUserHolder {
 
     fun bindUser(
-        activity: ExploreActivity,
-        user: User, holder: ItemExploreBinding
+        adapter: ExploreAdapter,
+        details: UserRecommendationItem, holder: ItemExploreBinding, position: Int
     ) {
+        val user = details.data!!
+        val activity = adapter.activity
 
         ImageHelper.loadProfileImage(activity, holder.imgProfile, holder.txtPhoto, user)
 
-        // Name
-        holder.txtName.text =
-            "${user.name?.firstName} ${user.name?.lastName}, ${CommonMethod.getAge(user.dob)}"
+        // Name & DOB
+        val name = "${user.name?.firstName} ${user.name?.lastName}"
+        val dob = CommonMethod.getAge(user.dob)
+        holder.txtName.text = if (dob.isEmpty()) name else "$name, $dob"
 
         // Distance
         holder.llDistance.visibility = View.GONE
@@ -67,6 +72,47 @@ class AdapterUserHolder {
             CommonMethod.switchActivity(activity, intent, false)
         }
 
+        holder.llExploreReject.setOnClickListener {
+            val completion = AppConstants.loggedInUser?.completed?.isConsideredCompleted
+            if (completion == false) {
+                IncompleteProfileBottomSheet(
+                    activity
+                ) { }
+                return@setOnClickListener
+            }
+            val rejectLikeUrl = WebserviceCustomRequestHandler.getRejectLikeRequest(
+                BaseActivity.TYPE_FHT, ChatRequestConstants.CHAT_REQUEST_CONSTANT_FHT,
+                activity.userData[0].data!!.id
+            )
+            WebserviceManager().rejectLike(activity, rejectLikeUrl,
+                object : OnFlatshareResponseCallBack<Response<ResponseBody>> {
+                    override fun onResponseCallBack(response: String) {
+                        MixpanelUtils.onButtonClicked("Feed Reject")
+                        adapter.removeItem(position)
+                    }
+                })
+        }
+
+        holder.llExploreChatRequest.setOnClickListener {
+            val completion = AppConstants.loggedInUser?.completed?.isConsideredCompleted
+            if (completion == false) {
+                IncompleteProfileBottomSheet(
+                    activity
+                ) {}
+                return@setOnClickListener
+            }
+            WebserviceManager().sendChatRequest(
+                activity,
+                ChatRequestConstants.CHAT_REQUEST_CONSTANT_FHT,
+                activity.userData[0].data!!.id,
+                object : OnFlatshareResponseCallBack<Response<ResponseBody>> {
+                    override fun onResponseCallBack(response: String) {
+                        MixpanelUtils.onButtonClicked("Feed SuperCheck")
+                        adapter.removeItem(position)
+                    }
+                })
+        }
+
         AdapterUserVpHolder.bindVp(activity, holder.includeExploreVp, user)
     }
 
@@ -78,9 +124,10 @@ class AdapterUserHolder {
 
         ImageHelper.loadProfileImage(activity, holder.imgProfile, holder.txtPhoto, user)
 
-        // Name
-        holder.txtName.text =
-            "${user.name?.firstName} ${user.name?.lastName}, ${CommonMethod.getAge(user.dob)}"
+        // Name & DOB
+        val name = "${user.name?.firstName} ${user.name?.lastName}"
+        val dob = CommonMethod.getAge(user.dob)
+        holder.txtName.text = if (dob.isEmpty()) name else "$name, $dob"
 
         // Distance
         holder.llDistance.visibility = View.GONE
@@ -133,10 +180,7 @@ class AdapterUserHolder {
         } else {
             holder.llExploreSuperCheck.visibility = View.GONE
             holder.llExploreButtons.visibility = View.VISIBLE
-            holder.imgBlock.setOnClickListener {
-                // TODO implement block
-            }
-            holder.imgReject.setOnClickListener {
+            holder.llCheckReject.setOnClickListener {
                 val completion = AppConstants.loggedInUser?.completed?.isConsideredCompleted
                 if (completion == false) {
                     IncompleteProfileBottomSheet(
@@ -156,7 +200,7 @@ class AdapterUserHolder {
                         }
                     })
             }
-            holder.imgAccept.setOnClickListener {
+            holder.llCheckAccept.setOnClickListener {
                 val completion = AppConstants.loggedInUser?.completed?.isConsideredCompleted
                 if (completion == false) {
                     IncompleteProfileBottomSheet(

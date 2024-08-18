@@ -29,26 +29,28 @@ class AppUpdater(
     }
 
     private fun handleAppUpdateInfo(
-        appUpdateManager: AppUpdateManager?,
+        appUpdateManager: AppUpdateManager,
         appUpdateInfo: AppUpdateInfo?,
         callback: OnStringFetched
     ) {
         when (appUpdateInfo?.updateAvailability()) {
             UpdateAvailability.DEVELOPER_TRIGGERED_UPDATE_IN_PROGRESS -> {
                 // If an in-app update is already running, resume the update.
-                appUpdateManager?.startUpdateFlowForResult(
+                appUpdateManager.startUpdateFlowForResult(
                     appUpdateInfo,
                     IMMEDIATE,
                     activity,
                     REQUEST_CODE_UPDATE_APP
                 )
             }
+
             UpdateAvailability.UPDATE_AVAILABLE -> {
                 if (appUpdateInfo.isUpdateTypeAllowed(IMMEDIATE)
                 ) {
-                    checkLatestVersion(appUpdateManager, appUpdateInfo, callback)
+                    checkLatestVersion(appUpdateInfo, callback)
                 } else callback.onFetched("1")
             }
+
             else -> {
                 callback.onFetched("1")
             }
@@ -56,8 +58,7 @@ class AppUpdater(
     }
 
     private fun checkLatestVersion(
-        appUpdateManager: AppUpdateManager?,
-        appUpdateInfo: AppUpdateInfo?,
+        appUpdateInfo: AppUpdateInfo,
         callback: OnStringFetched
     ) {
         DbAppVersionRetriever().getLatestVersion {
@@ -72,16 +73,18 @@ class AppUpdater(
                         "Update Now", "Don't Update",
                     ) { _, requestCode ->
                         if (requestCode == 1)
-                            appUpdateManager?.startUpdateFlowForResult(
-                                appUpdateInfo!!, IMMEDIATE,
+                            appUpdateManager.startUpdateFlowForResult(
+                                appUpdateInfo, IMMEDIATE,
                                 activity, REQUEST_CODE_UPDATE_APP
                             )
                         else {
                             activity.finishAffinity()
                         }
                     }
+                    return@getLatestVersion
                 }
-            } else callback.onFetched("1")
+            }
+            callback.onFetched("1")
         }
     }
 }

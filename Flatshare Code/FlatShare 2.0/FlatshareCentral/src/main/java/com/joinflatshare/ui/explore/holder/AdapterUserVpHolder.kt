@@ -46,7 +46,7 @@ object AdapterUserVpHolder {
             dealBreakerView.show()
         }
 
-        if (user.work.isNullOrEmpty()) holder.llVpWork.visibility = View.GONE
+        /*if (user.work.isNullOrEmpty()) holder.llVpWork.visibility = View.GONE
         else {
             holder.llVpWork.visibility = View.VISIBLE
             holder.txtWork.text = user.work
@@ -64,7 +64,7 @@ object AdapterUserVpHolder {
         else {
             holder.llVpHometown.visibility = View.VISIBLE
             holder.txtHometown.text = user.hometown?.name
-        }
+        }*/
 
         holder.txtScore.text = "" + user.score
 

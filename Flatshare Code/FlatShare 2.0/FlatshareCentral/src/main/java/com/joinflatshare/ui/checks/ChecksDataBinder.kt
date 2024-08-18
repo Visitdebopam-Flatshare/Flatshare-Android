@@ -145,7 +145,7 @@ class ChecksDataBinder(
                         viewBind.pullToRefresh.visibility = View.GONE
                         viewBind.rlNoChecks.visibility = View.VISIBLE
                         viewBind.imgNoData.setImageResource(R.drawable.img_no_super_check)
-                        viewBind.txtNoData.text = "Superchecks you receive will show up here."
+                        viewBind.txtNoData.text = "Chat requests you receive will show up here."
                     } else {
                         viewBind.pullToRefresh.visibility = View.VISIBLE
                         viewBind.rlNoChecks.visibility = View.GONE

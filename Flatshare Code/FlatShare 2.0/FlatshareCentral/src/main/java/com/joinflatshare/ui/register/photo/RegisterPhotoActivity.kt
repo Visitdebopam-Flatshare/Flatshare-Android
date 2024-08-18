@@ -4,6 +4,7 @@ import android.app.Activity
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
+import android.view.View
 import androidx.activity.result.ActivityResult
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.ActivityResultRegistry
@@ -43,6 +44,10 @@ class RegisterPhotoActivity : BaseActivity() {
     private fun init() {
         user = FlatShareApplication.getDbInstance().userDao().getUser()
         RegisterPhotoListener(this, viewBind)
+        val response = FlatShareApplication.getDbInstance().appDao().getConfigResponse()
+        if (response?.data?.allowedSkips?.isSkippingProfilePictureAllowed == false) {
+            viewBind.btnSkip.visibility = View.INVISIBLE
+        }
     }
 
     fun pickImage(fromGallery: Boolean) {
