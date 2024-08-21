@@ -78,7 +78,7 @@ interface ApiInterface {
 
     @PATCH("flats/{id}")
     fun updateFlat(
-        @Path("id") id: String,
+        @Path("id") id: String?,
         @Body dataResponse: MyFlatData?
     ): Observable<FlatResponse?>
 

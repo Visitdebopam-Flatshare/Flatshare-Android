@@ -1,6 +1,5 @@
 package com.joinflatshare.ui.explore
 
-import android.app.Activity
 import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
@@ -15,9 +14,8 @@ import com.joinflatshare.constants.IntentConstants
 import com.joinflatshare.constants.IntentFilterConstants
 import com.joinflatshare.fcm.FcmNavigationUtils
 import com.joinflatshare.fcm.MyFirebaseMessagingService
-import com.joinflatshare.services.MutualContactHandler
 import com.joinflatshare.ui.base.BaseActivity
-import com.joinflatshare.ui.preferences.flat.PreferenceActivity
+import com.joinflatshare.ui.preferences.PreferenceActivity
 import com.joinflatshare.utils.deeplink.DeepLinkHandler
 import com.joinflatshare.utils.helper.CommonMethod
 import com.joinflatshare.utils.helper.ImageHelper

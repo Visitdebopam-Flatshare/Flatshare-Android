@@ -219,7 +219,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginTop="@dimen/_10sdp"
                             android:fontFamily="@font/font_semibold"
-                            android:text="Get verified and connect with other verified members."
+                            android:text="Connect with verified member &amp; earn 500 flatcoins. "
                             android:textColor="@color/grey4"
                             android:textSize="@dimen/_12sdp" />
                     </LinearLayout>

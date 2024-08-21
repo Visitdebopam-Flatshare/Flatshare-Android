@@ -33,8 +33,8 @@ public class BaseViewBinder {
     // Bottom Menu
     public LinearLayout[] ll_menu;
     public CircleImageView img_menu_profile;
-    public View view_menu_explore_circle, view_menu_chat_circle;
-    private final int[] icon = {R.drawable.ic_menu_explore, R.drawable.ic_menu_check, R.drawable.ic_menu_chat};
+    public View view_menu_chat_circle;
+    private TextView[] menu_textView;
 
     protected void showBack(Activity activity) {
         btn_back = activity.findViewById(R.id.img_topbar_back);
@@ -48,15 +48,16 @@ public class BaseViewBinder {
     }
 
     protected void initBottomMenu(BaseActivity activity) {
-        view_menu_explore_circle = activity.findViewById(R.id.view_menu_explore_circle);
         view_menu_chat_circle = activity.findViewById(R.id.view_menu_chat_circle);
         LinearLayout llHolder = activity.findViewById(R.id.ll_menu_holder);
         ll_menu = new LinearLayout[]{(LinearLayout) llHolder.getChildAt(0),
                 (LinearLayout) llHolder.getChildAt(1), (LinearLayout) llHolder.getChildAt(2),
                 (LinearLayout) llHolder.getChildAt(3)};
+        menu_textView = new TextView[]{activity.findViewById(R.id.txt_menu_explore), activity.findViewById(R.id.txt_menu_checks),
+                activity.findViewById(R.id.txt_menu_chats), activity.findViewById(R.id.txt_menu_profile)};
 
         img_menu_profile = (CircleImageView) ll_menu[3].getChildAt(0);
-        TextView txt = (TextView) ll_menu[3].getChildAt(1);
+        TextView txt = activity.findViewById(R.id.txt_photo);
 
         ImageHelper.loadProfileImage(activity, img_menu_profile, txt, AppConstants.loggedInUser);
         applyMenuClick();
@@ -67,16 +68,16 @@ public class BaseViewBinder {
         for (int i = 0; i < ll_menu.length; i++) {
             if (i == ll_menu.length - 1) {
                 if (i == AppConstants.menuSelected)
-                    ((CircleImageView) ll_menu[i].getChildAt(0)).setBorderWidth(4);
+                    menu_textView[i].setTextColor(ContextCompat.getColor(FlatShareApplication.instance, R.color.blue));
                 else
-                    ((CircleImageView) ll_menu[i].getChildAt(0)).setBorderWidth(2);
+                    menu_textView[i].setTextColor(ContextCompat.getColor(FlatShareApplication.instance, R.color.grey2));
             } else {
                 if (i == AppConstants.menuSelected) {
-                    ((ImageView) ll_menu[i].getChildAt(0)).setImageResource(icon[i]);
-                    ((ImageView) ll_menu[i].getChildAt(0)).setColorFilter(ContextCompat.getColor(FlatShareApplication.instance, R.color.black));
+                    ((ImageView) ll_menu[i].getChildAt(0)).setColorFilter(ContextCompat.getColor(FlatShareApplication.instance, R.color.blue));
+                    menu_textView[i].setTextColor(ContextCompat.getColor(FlatShareApplication.instance, R.color.blue));
                 } else {
-                    ((ImageView) ll_menu[i].getChildAt(0)).setImageResource(icon[i]);
                     ((ImageView) ll_menu[i].getChildAt(0)).setColorFilter(0);
+                    menu_textView[i].setTextColor(ContextCompat.getColor(FlatShareApplication.instance, R.color.grey2));
                 }
             }
         }

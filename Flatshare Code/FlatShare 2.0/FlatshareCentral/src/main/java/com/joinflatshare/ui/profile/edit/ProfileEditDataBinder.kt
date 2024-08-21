@@ -17,8 +17,8 @@ class ProfileEditDataBinder(
 
     var adapter: ProfileEditImageAdapter? = null
     var edt_profile: Array<TextView> = arrayOf(
-        viewBind.edtProfileHometown,
-        viewBind.edtProfileCollege
+        viewBind.edtProfileCollege,
+        viewBind.edtProfileHometown
     )
     var imgSearch: Array<ImageView> = arrayOf(
         viewBind.imgSearch1,

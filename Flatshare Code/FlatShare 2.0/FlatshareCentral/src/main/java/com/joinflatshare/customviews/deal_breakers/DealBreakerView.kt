@@ -9,12 +9,13 @@ import com.google.android.flexbox.JustifyContent
 import com.joinflatshare.FlatshareCentral.R
 import com.joinflatshare.customviews.bottomsheet.ModelBottomSheet
 import com.joinflatshare.pojo.flat.DealBreakers
+import com.joinflatshare.ui.base.ApplicationBaseActivity
 import com.joinflatshare.ui.base.BaseActivity
 
 /**
  * Created by debopam on 17/12/22
  */
-class DealBreakerView(val activity: BaseActivity, private val recyclerView: RecyclerView) {
+class DealBreakerView(val activity: ApplicationBaseActivity, private val recyclerView: RecyclerView) {
     private val items = ArrayList<ModelBottomSheet>()
     private var isEditable: Boolean = false
     private lateinit var dealBreakers: DealBreakers

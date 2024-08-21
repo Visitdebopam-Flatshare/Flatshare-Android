@@ -14,7 +14,7 @@ import com.joinflatshare.customviews.interests.InterestsView
 import com.joinflatshare.interfaces.OnUserFetched
 import com.joinflatshare.pojo.user.UserResponse
 import com.joinflatshare.ui.base.BaseActivity
-import com.joinflatshare.ui.profile.location.LocationActivity
+import com.joinflatshare.ui.register.deal.RegisterDealActivity
 import com.joinflatshare.utils.helper.CommonMethod
 
 /**
@@ -88,7 +88,7 @@ class InterestActivity : BaseActivity() {
             user?.flatProperties?.interests = ArrayList()
             baseApiController.updateUser(true, user, object : OnUserFetched {
                 override fun userFetched(resp: UserResponse?) {
-                    val intent = Intent(this@InterestActivity, LocationActivity::class.java)
+                    val intent = Intent(this@InterestActivity, RegisterDealActivity::class.java)
                     CommonMethod.switchActivity(this@InterestActivity, intent, false)
                 }
             })
@@ -117,7 +117,7 @@ class InterestActivity : BaseActivity() {
                         baseApiController.updateUser(true, user, object : OnUserFetched {
                             override fun userFetched(resp: UserResponse?) {
                                 val intent =
-                                    Intent(this@InterestActivity, LocationActivity::class.java)
+                                    Intent(this@InterestActivity, RegisterDealActivity::class.java)
                                 CommonMethod.switchActivity(this@InterestActivity, intent, false)
                             }
 

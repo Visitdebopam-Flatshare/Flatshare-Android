@@ -281,7 +281,7 @@
                         android:src="@drawable/ic_search" />
 
                     <TextView
-                        android:id="@+id/edt_profile_hometown"
+                        android:id="@+id/edt_profile_college"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="@dimen/_10sdp"
@@ -316,7 +316,7 @@
                         android:src="@drawable/ic_search" />
 
                     <TextView
-                        android:id="@+id/edt_profile_college"
+                        android:id="@+id/edt_profile_hometown"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="@dimen/_10sdp"

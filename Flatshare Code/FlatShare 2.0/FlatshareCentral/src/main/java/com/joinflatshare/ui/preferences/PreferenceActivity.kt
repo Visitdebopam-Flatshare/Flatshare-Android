@@ -1,4 +1,4 @@
-package com.joinflatshare.ui.preferences.flat
+package com.joinflatshare.ui.preferences
 
 import android.os.Bundle
 import androidx.core.content.ContextCompat

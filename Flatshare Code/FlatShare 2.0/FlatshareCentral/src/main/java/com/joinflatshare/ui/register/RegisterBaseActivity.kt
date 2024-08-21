@@ -3,8 +3,10 @@ package com.joinflatshare.ui.register
 import com.google.gson.Gson
 import com.joinflatshare.api.retrofit.WebserviceCustomResponseHandler
 import com.joinflatshare.interfaces.OnUserFetched
+import com.joinflatshare.pojo.user.User
 import com.joinflatshare.pojo.user.UserResponse
 import com.joinflatshare.ui.base.gpsfetcher.GpsHandler
+import com.joinflatshare.utils.helper.CommonMethods
 import com.joinflatshare.webservice.api.WebserviceManager
 import com.joinflatshare.webservice.api.interfaces.OnFlatshareResponseCallBack
 import okhttp3.ResponseBody
@@ -26,6 +28,17 @@ open class RegisterBaseActivity : GpsHandler() {
                     val resp: UserResponse? = Gson().fromJson(response, UserResponse::class.java)
                     WebserviceCustomResponseHandler.handleUserResponse(resp)
                     callback.userFetched(resp)
+                }
+            })
+    }
+
+    fun updateUser(user: User?, callback: OnUserFetched?) {
+        WebserviceManager().updateProfile(true, this, user,
+            object : OnFlatshareResponseCallBack<Response<ResponseBody>> {
+                override fun onResponseCallBack(response: String) {
+                    val resp: UserResponse? = Gson().fromJson(response, UserResponse::class.java)
+                    CommonMethods.registerUser(resp)
+                    callback?.userFetched(resp)
                 }
             })
     }

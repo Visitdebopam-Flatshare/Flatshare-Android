@@ -1,7 +1,5 @@
-package com.joinflatshare.ui.preferences.flat
+package com.joinflatshare.ui.preferences
 
-import android.app.Activity
-import android.content.Intent
 import android.view.View
 import androidx.core.content.ContextCompat
 import com.google.android.material.datepicker.CalendarConstraints

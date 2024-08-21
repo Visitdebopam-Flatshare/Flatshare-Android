@@ -213,15 +213,15 @@ class ApiManager() {
     }
 
     fun updateFlat(
-        showProgress: Boolean, request: MyFlatData, onResponseCallback: OnResponseCallback<Any?>
+        showProgress: Boolean, request: MyFlatData?, onResponseCallback: OnResponseCallback<Any?>
     ) {
         if (ConnectivityListener.checkInternet()) {
             if (showProgress) {
                 showProgress()
                 isLoaderShownByApimanager = true
             }
-            request.deepLink = DEEPLINK_BASE_URL
-            CompositeDisposable().add(getClient()?.updateFlat(request.id, request)!!
+            request?.deepLink = DEEPLINK_BASE_URL
+            CompositeDisposable().add(getClient()?.updateFlat(request?.id, request)!!
                 .observeOn(AndroidSchedulers.mainThread()).subscribeOn(Schedulers.io())
                 .subscribe({ trendsResponse ->
                     if (trendsResponse?.data?.name?.isBlank() == true && trendsResponse.message.isNotBlank()) {

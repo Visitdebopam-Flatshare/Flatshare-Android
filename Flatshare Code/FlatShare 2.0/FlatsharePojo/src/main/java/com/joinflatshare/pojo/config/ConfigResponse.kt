@@ -94,6 +94,12 @@ data class AllowedSkipOnBoarding(
     val isSkippingProfilePictureAllowed: Boolean = true,
 
     @field:SerializedName("isSkippingLocationAccessAllowed")
-    val isSkippingLocationAccessAllowed: Boolean = true
+    val isSkippingLocationAccessAllowed: Boolean = true,
+
+    @field:SerializedName("isSkippingDealBreakersAllowed")
+    val isSkippingDealBreakersAllowed: Boolean = true,
+
+    @field:SerializedName("isSkippingAboutAllowed")
+    val isSkippingAboutAllowed: Boolean = true
 ) : Serializable
 

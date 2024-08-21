@@ -1,5 +1,6 @@
 package com.joinflatshare.utils.helper
 
+import com.joinflatshare.pojo.user.User
 import java.text.DecimalFormat
 import kotlin.math.atan2
 import kotlin.math.cos
@@ -18,7 +19,12 @@ object DistanceCalculator {
         return String.format("%.1f", km) + " km"
     }
 
-    fun calculateDistance(lon1: Double, lat1: Double, lon2: Double, lat2: Double): String {
+    fun calculateDistance(user1: User, user2: User): String {
+        val lat1 = user1.flatProperties.preferredLocation[0].loc.coordinates[1]
+        val lon1 = user1.flatProperties.preferredLocation[0].loc.coordinates[0]
+
+        val lat2 = user2.flatProperties.preferredLocation[0].loc.coordinates[1]
+        val lon2 = user2.flatProperties.preferredLocation[0].loc.coordinates[0]
         try {
             if ((lat1 == 0.0 && lon1 == 0.0) || (lat2 == 0.0 && lon2 == 0.0)) return "NA"
             // radius in meters
