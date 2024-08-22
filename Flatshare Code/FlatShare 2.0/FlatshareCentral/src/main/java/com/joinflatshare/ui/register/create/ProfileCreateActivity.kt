@@ -11,6 +11,7 @@ import com.joinflatshare.chat.ApplicationChatHandler
 import com.joinflatshare.chat.SendBirdUser
 import com.joinflatshare.constants.AppConstants
 import com.joinflatshare.fcm.NotificationPermissionHandler
+import com.joinflatshare.interfaces.OnUserFetched
 import com.joinflatshare.pojo.user.User
 import com.joinflatshare.pojo.user.UserResponse
 import com.joinflatshare.ui.register.RegisterBaseActivity
@@ -72,15 +73,11 @@ class ProfileCreateActivity : RegisterBaseActivity() {
     }
 
     fun updateUser(modelUser: User?) {
-        // Update Profile
-        WebserviceManager().updateProfile(true, this, modelUser,
-            object : OnFlatshareResponseCallBack<Response<ResponseBody>> {
-                override fun onResponseCallBack(response: String) {
-                    val resp: UserResponse? = Gson().fromJson(response, UserResponse::class.java)
-                    CommonMethods.registerUser(resp)
-                    callAfterRegister(resp?.data!!)
-                }
-            })
+        updateUser(modelUser, object : OnUserFetched {
+            override fun userFetched(resp: UserResponse?) {
+                callAfterRegister(resp?.data!!)
+            }
+        })
     }
 
     private fun callAfterRegister(modelUser: User) {

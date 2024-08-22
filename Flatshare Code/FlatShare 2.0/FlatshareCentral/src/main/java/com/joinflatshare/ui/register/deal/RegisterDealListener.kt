@@ -3,20 +3,21 @@ package com.joinflatshare.ui.register.deal
 import android.content.Intent
 import android.view.View
 import android.view.View.OnClickListener
-import com.joinflatshare.FlatshareCentral.databinding.ActivityProfileDealBinding
+import com.joinflatshare.FlatshareCentral.databinding.ActivityRegisterDealBinding
 import com.joinflatshare.constants.AppConstants
 import com.joinflatshare.interfaces.OnUserFetched
 import com.joinflatshare.pojo.flat.DealBreakers
 import com.joinflatshare.pojo.user.UserResponse
 import com.joinflatshare.ui.register.about.RegisterAboutActivity
 import com.joinflatshare.utils.helper.CommonMethod
+import com.joinflatshare.utils.mixpanel.MixpanelUtils
 
 /**
  * Created by debopam on 04/02/24
  */
 class RegisterDealListener(
     private val activity: RegisterDealActivity,
-    private val viewBind: ActivityProfileDealBinding
+    private val viewBind: ActivityRegisterDealBinding
 ) : OnClickListener {
 
     init {
@@ -45,6 +46,7 @@ class RegisterDealListener(
                 user?.flatProperties?.dealBreakers = activity.dealBreakerView.getDealBreakers()
                 activity.updateUser(user, object : OnUserFetched {
                     override fun userFetched(resp: UserResponse?) {
+                        MixpanelUtils.onButtonClicked("Onboarding Deals Updated")
                         val intent = Intent(activity, RegisterAboutActivity::class.java)
                         CommonMethod.switchActivity(activity, intent, false)
                     }
@@ -56,6 +58,7 @@ class RegisterDealListener(
                 user?.flatProperties?.dealBreakers = DealBreakers()
                 activity.updateUser(user, object : OnUserFetched {
                     override fun userFetched(resp: UserResponse?) {
+                        MixpanelUtils.onButtonClicked("Onboarding Deals Skipped")
                         val intent = Intent(activity, RegisterAboutActivity::class.java)
                         CommonMethod.switchActivity(activity, intent, false)
                     }

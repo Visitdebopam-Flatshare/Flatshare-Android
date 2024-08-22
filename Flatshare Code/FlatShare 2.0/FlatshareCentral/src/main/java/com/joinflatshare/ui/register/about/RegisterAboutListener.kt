@@ -9,25 +9,24 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.core.content.ContextCompat
 import com.joinflatshare.FlatshareCentral.R
-import com.joinflatshare.FlatshareCentral.databinding.ActivityProfileAboutBinding
-import com.joinflatshare.FlatshareCentral.databinding.ActivityProfileDealBinding
+import com.joinflatshare.FlatshareCentral.databinding.ActivityRegisterAboutBinding
 import com.joinflatshare.constants.AppConstants
 import com.joinflatshare.constants.RequestCodeConstants.REQUEST_CODE_LOCATION
 import com.joinflatshare.interfaces.OnUserFetched
-import com.joinflatshare.pojo.flat.DealBreakers
 import com.joinflatshare.pojo.user.Loc
 import com.joinflatshare.pojo.user.ModelLocation
 import com.joinflatshare.pojo.user.UserResponse
-import com.joinflatshare.ui.register.about.RegisterAboutActivity
+import com.joinflatshare.ui.register.preference.RegisterPreferenceActivity
 import com.joinflatshare.utils.google.AutoCompletePlaces.getPlaces
 import com.joinflatshare.utils.helper.CommonMethod
+import com.joinflatshare.utils.mixpanel.MixpanelUtils
 
 /**
  * Created by debopam on 04/02/24
  */
 class RegisterAboutListener(
     private val activity: RegisterAboutActivity,
-    private val viewBind: ActivityProfileAboutBinding
+    private val viewBind: ActivityRegisterAboutBinding
 ) : OnClickListener {
     var edt_profile: Array<TextView> = arrayOf(
         viewBind.edtProfileCollege,
@@ -107,7 +106,8 @@ class RegisterAboutListener(
 
                     activity.updateUser(user, object : OnUserFetched {
                         override fun userFetched(resp: UserResponse?) {
-                            val intent = Intent(activity, RegisterAboutActivity::class.java)
+                            MixpanelUtils.onButtonClicked("Onboarding About Updated")
+                            val intent = Intent(activity, RegisterPreferenceActivity::class.java)
                             CommonMethod.switchActivity(activity, intent, false)
                         }
                     })
@@ -121,7 +121,8 @@ class RegisterAboutListener(
                 user?.hometown = ModelLocation()
                 activity.updateUser(user, object : OnUserFetched {
                     override fun userFetched(resp: UserResponse?) {
-                        val intent = Intent(activity, RegisterAboutActivity::class.java)
+                        MixpanelUtils.onButtonClicked("Onboarding About Skipped")
+                        val intent = Intent(activity, RegisterPreferenceActivity::class.java)
                         CommonMethod.switchActivity(activity, intent, false)
                     }
                 })

@@ -81,48 +81,53 @@ class PreferenceListener(private val activity: PreferenceActivity) : View.OnClic
             }
 
             viewBind.includePrefFlat.txtPrefFlatPrivateRoom.id -> {
-                activity.user?.flatProperties?.roomType = "Private Room"
+                var roomType = activity.user?.flatProperties?.roomType
+                roomType = if (roomType == "Private Room") "" else "Private Room"
+                activity.user?.flatProperties?.roomType = roomType
                 activity.setRoomType()
             }
 
             viewBind.includePrefFlat.txtPrefFlatSharedRoom.id -> {
-                activity.user?.flatProperties?.roomType = "Shared Room"
+                var roomType = activity.user?.flatProperties?.roomType
+                roomType = if (roomType == "Shared Room") "" else "Shared Room"
+                activity.user?.flatProperties?.roomType = roomType
                 activity.setRoomType()
             }
 
             viewBind.includePrefFlatmate.txtMale.id -> {
-                if (activity.user?.flatProperties?.gender != "Male") {
-                    activity.user?.flatProperties?.gender = "Male"
-                    activity.setGender()
-                }
+                var gender = activity.user?.flatProperties?.gender
+                gender = if (gender == "Male") "" else "Male"
+                activity.user?.flatProperties?.gender = gender
+                activity.setGender()
             }
 
             viewBind.includePrefFlatmate.txtFemale.id -> {
-                if (activity.user?.flatProperties?.gender != "Female") {
-                    activity.user?.flatProperties?.gender = "Female"
-                    activity.setGender()
-                }
+                var gender = activity.user?.flatProperties?.gender
+                gender = if (gender == "Female") "" else "Female"
+                activity.user?.flatProperties?.gender = gender
+                activity.setGender()
             }
 
             viewBind.includePrefFlatmate.txtall.id -> {
-                if (activity.user?.flatProperties?.gender != "All") {
-                    activity.user?.flatProperties?.gender = "All"
-                    activity.setGender()
-                }
+                var gender = activity.user?.flatProperties?.gender
+                gender = if (gender == "All") "" else "All"
+                activity.user?.flatProperties?.gender = gender
+                activity.setGender()
             }
 
             viewBind.includePrefFlatmate.txtStudents.id -> {
-                if (activity.user?.flatProperties?.profession != "Student") {
-                    activity.user?.flatProperties?.profession = "Student"
-                    activity.setProfession()
-                }
+                var profession = activity.user?.flatProperties?.profession
+                profession = if (profession == "Student") "" else "Student"
+                activity.user?.flatProperties?.profession = profession
+                activity.setProfession()
             }
 
             viewBind.includePrefFlatmate.txtWorking.id -> {
-                if (activity.user?.flatProperties?.profession != "Working Professional") {
-                    activity.user?.flatProperties?.profession = "Working Professional"
-                    activity.setProfession()
-                }
+                var profession = activity.user?.flatProperties?.profession
+                profession =
+                    if (profession == "Working Professional") "" else "Working Professional"
+                activity.user?.flatProperties?.profession = profession
+                activity.setProfession()
             }
 
             activity.baseViewBinder.btn_back.id -> {

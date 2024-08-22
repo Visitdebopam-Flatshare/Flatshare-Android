@@ -3,18 +3,18 @@ package com.joinflatshare.ui.register.deal
 import android.os.Bundle
 import android.view.View
 import com.joinflatshare.FlatShareApplication
-import com.joinflatshare.FlatshareCentral.databinding.ActivityProfileDealBinding
+import com.joinflatshare.FlatshareCentral.databinding.ActivityRegisterDealBinding
 import com.joinflatshare.customviews.deal_breakers.DealBreakerView
 import com.joinflatshare.pojo.flat.DealBreakers
 import com.joinflatshare.ui.register.RegisterBaseActivity
 
 class RegisterDealActivity : RegisterBaseActivity() {
-    lateinit var viewBind: ActivityProfileDealBinding
+    lateinit var viewBind: ActivityRegisterDealBinding
     lateinit var dealBreakerView: DealBreakerView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        viewBind = ActivityProfileDealBinding.inflate(layoutInflater)
+        viewBind = ActivityRegisterDealBinding.inflate(layoutInflater)
         setContentView(viewBind.root)
         init()
         RegisterDealListener(this, viewBind)
