@@ -38,7 +38,6 @@ class RegisterDealListener(
                     && selectedDeals.flatparty == 0 && selectedDeals.nonveg == 0
                     && selectedDeals.workout == 0
                 ) {
-                    CommonMethod.makeToast("Please select at least one deal breaker")
                     return
                 }
 

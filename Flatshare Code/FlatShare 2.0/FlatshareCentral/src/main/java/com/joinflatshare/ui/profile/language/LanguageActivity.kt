@@ -12,6 +12,7 @@ import com.joinflatshare.FlatshareCentral.databinding.ActivityProfileLanguageBin
 import com.joinflatshare.constants.AppConstants
 import com.joinflatshare.constants.ConfigConstants
 import com.joinflatshare.customviews.interests.InterestsView
+import com.joinflatshare.db.daos.AppDao
 import com.joinflatshare.interfaces.OnUserFetched
 import com.joinflatshare.pojo.config.ConfigData
 import com.joinflatshare.pojo.user.UserResponse
@@ -29,6 +30,7 @@ class LanguageActivity : BaseActivity() {
         super.onCreate(savedInstanceState)
         viewBind = ActivityProfileLanguageBinding.inflate(layoutInflater)
         setContentView(viewBind.root)
+        FlatShareApplication.getDbInstance().appDao().insert(AppDao.ONBOARDING_SCREEN_PROGRESS, "2")
         init()
         click()
     }

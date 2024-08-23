@@ -18,6 +18,7 @@ abstract class AppDao {
         const val FIREBASE_TOKEN = "FIREBASE_TOKEN"
         const val MIXPANEL_TOKEN = "MIXPANEL_TOKEN"
         const val CONFIG_RESPONSE = "CONFIG_RESPONSE"
+        const val ONBOARDING_SCREEN_PROGRESS = "ONBOARDING_SCREEN_PROGRESS"
     }
 
     // String

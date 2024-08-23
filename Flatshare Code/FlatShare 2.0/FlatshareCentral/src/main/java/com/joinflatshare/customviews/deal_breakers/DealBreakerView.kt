@@ -10,19 +10,22 @@ import com.joinflatshare.FlatshareCentral.R
 import com.joinflatshare.customviews.bottomsheet.ModelBottomSheet
 import com.joinflatshare.pojo.flat.DealBreakers
 import com.joinflatshare.ui.base.ApplicationBaseActivity
-import com.joinflatshare.ui.base.BaseActivity
 
 /**
  * Created by debopam on 17/12/22
  */
-class DealBreakerView(val activity: ApplicationBaseActivity, private val recyclerView: RecyclerView) {
+class DealBreakerView(
+    val activity: ApplicationBaseActivity,
+    private val recyclerView: RecyclerView
+) {
     private val items = ArrayList<ModelBottomSheet>()
     private var isEditable: Boolean = false
     private lateinit var dealBreakers: DealBreakers
     private var adapter: DealBreakerAdapter? = null
+    private var callback: DealBreakerCallback? = null
 
-    @Deprecated("Removed")
     fun assignCallback(callback: DealBreakerCallback) {
+        this.callback = callback
     }
 
     fun getDealBreakers(): DealBreakers {
@@ -57,12 +60,39 @@ class DealBreakerView(val activity: ApplicationBaseActivity, private val recycle
             recyclerView.layoutManager = layoutManager
 
             // Set Values
-            if (dealBreakers.smoking == 1 || dealBreakers.smoking == 2) items.add(ModelBottomSheet("Smoking", dealBreakers.smoking))
-            if (dealBreakers.nonveg == 1 || dealBreakers.nonveg == 2) items.add(ModelBottomSheet("Eating Non-Veg", dealBreakers.nonveg))
-            if (dealBreakers.flatparty == 1 || dealBreakers.flatparty == 2) items.add(ModelBottomSheet("Drinking Alcohol", dealBreakers.flatparty))
-            if (dealBreakers.eggs == 1 || dealBreakers.eggs == 2) items.add(ModelBottomSheet("Eating Eggs", dealBreakers.eggs))
-            if (dealBreakers.workout == 1 || dealBreakers.workout == 2) items.add(ModelBottomSheet("Workout", dealBreakers.workout))
-            if (dealBreakers.pets == 1 || dealBreakers.pets == 2) items.add(ModelBottomSheet("Pets", dealBreakers.pets))
+            if (dealBreakers.smoking == 1 || dealBreakers.smoking == 2) items.add(
+                ModelBottomSheet(
+                    "Smoking",
+                    dealBreakers.smoking
+                )
+            )
+            if (dealBreakers.nonveg == 1 || dealBreakers.nonveg == 2) items.add(
+                ModelBottomSheet(
+                    "Eating Non-Veg",
+                    dealBreakers.nonveg
+                )
+            )
+            if (dealBreakers.flatparty == 1 || dealBreakers.flatparty == 2) items.add(
+                ModelBottomSheet("Drinking Alcohol", dealBreakers.flatparty)
+            )
+            if (dealBreakers.eggs == 1 || dealBreakers.eggs == 2) items.add(
+                ModelBottomSheet(
+                    "Eating Eggs",
+                    dealBreakers.eggs
+                )
+            )
+            if (dealBreakers.workout == 1 || dealBreakers.workout == 2) items.add(
+                ModelBottomSheet(
+                    "Workout",
+                    dealBreakers.workout
+                )
+            )
+            if (dealBreakers.pets == 1 || dealBreakers.pets == 2) items.add(
+                ModelBottomSheet(
+                    "Pets",
+                    dealBreakers.pets
+                )
+            )
         } else {
             if (recyclerView.layoutManager == null) {
                 // Editable as well. Set linear layout Manager
@@ -80,7 +110,7 @@ class DealBreakerView(val activity: ApplicationBaseActivity, private val recycle
             adapter =
                 DealBreakerAdapter(
                     this,
-                    dealBreakers, items, isEditable
+                    dealBreakers, items, isEditable, callback
                 )
             recyclerView.adapter = adapter
         } else adapter?.notifyDataSetChanged()

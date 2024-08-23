@@ -1,4 +1,4 @@
-package com.joinflatshare.utils.admin
+package com.joinflatshare.ui.admin.features
 
 import com.joinflatshare.api.retrofit.OnResponseCallback
 import com.joinflatshare.chat.SendBirdUser

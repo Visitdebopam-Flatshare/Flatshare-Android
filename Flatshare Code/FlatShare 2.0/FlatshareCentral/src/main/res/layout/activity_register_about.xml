@@ -53,6 +53,7 @@
             android:textSize="@dimen/_24sdp" />
 
         <TextView
+            android:id="@+id/txt_register_about_desc"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/_10sdp"

@@ -6,6 +6,7 @@ import android.view.View
 import com.joinflatshare.FlatShareApplication
 import com.joinflatshare.FlatshareCentral.databinding.ActivityRegisterAboutBinding
 import com.joinflatshare.constants.AppConstants
+import com.joinflatshare.db.daos.AppDao
 import com.joinflatshare.ui.register.RegisterBaseActivity
 
 class RegisterAboutActivity : RegisterBaseActivity() {
@@ -15,6 +16,7 @@ class RegisterAboutActivity : RegisterBaseActivity() {
         super.onCreate(savedInstanceState)
         viewBind = ActivityRegisterAboutBinding.inflate(layoutInflater)
         setContentView(viewBind.root)
+        FlatShareApplication.getDbInstance().appDao().insert(AppDao.ONBOARDING_SCREEN_PROGRESS, "5")
         init()
         RegisterAboutListener(this, viewBind)
     }
@@ -27,6 +29,8 @@ class RegisterAboutActivity : RegisterBaseActivity() {
 
         if (TextUtils.equals(AppConstants.loggedInUser?.profession, "Student")) {
             viewBind.llRegisterAboutWork.visibility = View.GONE
+            viewBind.txtRegisterAboutDesc.text =
+                "Tell us a bit about your college and hometown to help us find you your perfect flatmate."
         }
     }
 

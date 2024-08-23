@@ -116,7 +116,7 @@
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateAlwaysHidden" />
         <activity
-            android:name="com.joinflatshare.ui.preferences.flatmate.PrefFlatmateActivity"
+            android:name="com.joinflatshare.ui.admin.AdminFeatureActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateAlwaysHidden" />
         <activity

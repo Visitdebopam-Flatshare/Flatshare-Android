@@ -11,6 +11,7 @@ import com.joinflatshare.FlatshareCentral.R
 import com.joinflatshare.FlatshareCentral.databinding.ActivityProfileInterestBinding
 import com.joinflatshare.constants.AppConstants
 import com.joinflatshare.customviews.interests.InterestsView
+import com.joinflatshare.db.daos.AppDao
 import com.joinflatshare.interfaces.OnUserFetched
 import com.joinflatshare.pojo.user.UserResponse
 import com.joinflatshare.ui.base.BaseActivity
@@ -27,6 +28,7 @@ class InterestActivity : BaseActivity() {
         super.onCreate(savedInstanceState)
         viewBind = ActivityProfileInterestBinding.inflate(layoutInflater)
         setContentView(viewBind.root)
+        FlatShareApplication.getDbInstance().appDao().insert(AppDao.ONBOARDING_SCREEN_PROGRESS, "3")
         init()
         click()
     }

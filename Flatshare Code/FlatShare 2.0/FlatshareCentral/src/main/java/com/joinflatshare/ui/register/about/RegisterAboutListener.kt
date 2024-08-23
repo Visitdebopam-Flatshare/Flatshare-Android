@@ -81,37 +81,37 @@ class RegisterAboutListener(
             }
 
             viewBind.btnAboutNext.id -> {
+                if ((viewBind.edtProfileWork.visibility == View.VISIBLE &&
+                            viewBind.edtProfileWork.text.toString().trim().isEmpty())
+                    && latProfile[0] == null
+                    && latProfile[1] == null
+                )
+                    return
+                val user = AppConstants.loggedInUser
                 // Mandatory Checks
                 if (viewBind.edtProfileWork.visibility == View.VISIBLE &&
-                    viewBind.edtProfileWork.text.toString().trim().isEmpty()
+                    viewBind.edtProfileWork.text.toString().trim().isNotEmpty()
                 ) {
-                    CommonMethod.makeToast("Please enter work")
-                } else if (latProfile[0] == null) {
-                    CommonMethod.makeToast("Please enter college")
-                } else if (latProfile[1] == null) {
-                    CommonMethod.makeToast("Please enter hometown")
-                } else {
-                    val user = AppConstants.loggedInUser
                     user?.work = viewBind.edtProfileWork.text.toString().trim()
-
-                    var loc = Loc()
+                }
+                if (latProfile[0] != null) {
+                    val loc = Loc()
                     loc.coordinates.add(latProfile[0]?.coordinates!![0])
                     loc.coordinates.add(latProfile[0]?.coordinates!![1])
                     user?.college = ModelLocation(edt_profile[0].getText().toString(), loc)
-
-                    loc = Loc()
+                } else if (latProfile[1] != null) {
+                    val loc = Loc()
                     loc.coordinates.add(latProfile[1]?.coordinates!![0])
                     loc.coordinates.add(latProfile[1]?.coordinates!![1])
                     user?.hometown = ModelLocation(edt_profile[1].getText().toString(), loc)
-
-                    activity.updateUser(user, object : OnUserFetched {
-                        override fun userFetched(resp: UserResponse?) {
-                            MixpanelUtils.onButtonClicked("Onboarding About Updated")
-                            val intent = Intent(activity, RegisterPreferenceActivity::class.java)
-                            CommonMethod.switchActivity(activity, intent, false)
-                        }
-                    })
                 }
+                activity.updateUser(user, object : OnUserFetched {
+                    override fun userFetched(resp: UserResponse?) {
+                        MixpanelUtils.onButtonClicked("Onboarding About Updated")
+                        val intent = Intent(activity, RegisterPreferenceActivity::class.java)
+                        CommonMethod.switchActivity(activity, intent, false)
+                    }
+                })
             }
 
             viewBind.btnSkip.id -> {
@@ -133,8 +133,8 @@ class RegisterAboutListener(
     private fun checkButtonClickable() {
         if ((viewBind.edtProfileWork.visibility == View.VISIBLE &&
                     viewBind.edtProfileWork.text.toString().trim().isEmpty())
-            || latProfile[0] == null
-            || latProfile[1] == null
+            && latProfile[0] == null
+            && latProfile[1] == null
         ) {
             viewBind.btnAboutNext.background = ContextCompat.getDrawable(
                 activity,

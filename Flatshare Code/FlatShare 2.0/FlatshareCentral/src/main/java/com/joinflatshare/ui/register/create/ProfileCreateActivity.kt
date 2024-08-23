@@ -47,8 +47,8 @@ class ProfileCreateActivity : RegisterBaseActivity() {
 
 
     private fun setFilter() {
-        val filtertxt = arrayOfNulls<InputFilter>(1)
-        filtertxt[0] =
+        val filterText = arrayOfNulls<InputFilter>(1)
+        filterText[0] =
             InputFilter { source: CharSequence, start: Int, end: Int, dest: Spanned?, dstart: Int, dend: Int ->
                 if (end > start) {
                     val acceptedChars = charArrayOf(
@@ -68,8 +68,8 @@ class ProfileCreateActivity : RegisterBaseActivity() {
                 }
                 null
             }
-        viewBind.edtFname.filters = arrayOf(filtertxt[0])
-        viewBind.edtLname.filters = arrayOf(filtertxt[0])
+        viewBind.edtFname.filters = arrayOf(filterText[0])
+        viewBind.edtLname.filters = arrayOf(filterText[0])
     }
 
     fun updateUser(modelUser: User?) {
