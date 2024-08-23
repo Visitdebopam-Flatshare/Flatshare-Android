@@ -89,37 +89,6 @@ class SendBirdUserChannel(
             channelUrl = getChannelName(userId, loggedinUser?.id!!)
         CommonMethod.makeLog("Channel url", channelUrl)
         callback?.onFetched(channelUrl)
-        /*searchChannels(channelUrl, object : OnChannelsFetchedListener {
-            override fun onFetched(allChannels: MutableList<GroupChannel>?) {
-
-            }
-
-            override fun onFetched(allChannels: java.util.ArrayList<ChannelsItem>?) {
-                if (allChannels == null || allChannels.size == 0) {
-                    // channel does not exist. create one
-                    createUserChannel(
-                        user, type
-                    ) { channel ->
-                        if (channel == null)
-                            callback?.onFetched("0")
-                        else callback?.onFetched(channel.url)
-                    }
-                } else {
-                    val channel = allChannels[0]
-                    if (!channel.customType.equals(type) && !type.equals(SendBirdConstants.CHANNEL_TYPE_FLAT)) {
-                        val apiManager = SendBirdApiManager()
-                        val map = HashMap<String, String>()
-                        map.put("custom_type", type)
-                        apiManager.updateChannelDetail(
-                            channel.channelUrl,
-                            map
-                        ) { joinChannelrespond(channel, user, callback) }
-                    } else
-                        joinChannelrespond(channel, user, callback)
-                }
-            }
-
-        })*/
     }
 
     private fun joinChannelrespond(channel: ChannelsItem, user: User, callback: OnStringFetched?) {

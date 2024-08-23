@@ -12,12 +12,15 @@ import com.joinflatshare.pojo.BaseResponse;
 import com.joinflatshare.utils.helper.CommonMethod;
 import com.joinflatshare.utils.system.ConnectivityListener;
 
+import org.json.JSONObject;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.schedulers.Schedulers;
+import retrofit2.HttpException;
 
 public class SendBirdApiManager {
 
@@ -148,5 +151,22 @@ public class SendBirdApiManager {
 
     private void sendResponse(Object response, OnResponseCallback onResponseCallback) {
         onResponseCallback.oncallBack(response);
+    }
+
+    private void handleError(Throwable throwable, OnResponseCallback<BaseResponse> onResponseCallback) {
+        if (throwable instanceof HttpException) {
+            try {
+                String errorJson = ((HttpException) throwable).response().errorBody().string();
+                JSONObject jObject = new JSONObject(errorJson);
+                boolean isError = jObject.optBoolean("error");
+                String message = jObject.optString("message");
+                BaseResponse resp = new BaseResponse();
+                resp.setError(isError);
+                resp.setMessage(message);
+                onResponseCallback.oncallBack(resp);
+            } catch (Exception ignored) {
+                ignored.printStackTrace();
+            }
+        }
     }
 }

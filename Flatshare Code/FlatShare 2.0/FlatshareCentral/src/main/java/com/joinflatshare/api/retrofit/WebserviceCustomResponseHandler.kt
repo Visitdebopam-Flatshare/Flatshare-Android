@@ -2,6 +2,7 @@ package com.joinflatshare.api.retrofit
 
 import android.text.TextUtils
 import com.joinflatshare.FlatShareApplication
+import com.joinflatshare.constants.AppConstants
 import com.joinflatshare.db.daos.UserDao
 import com.joinflatshare.pojo.flat.FlatResponse
 import com.joinflatshare.pojo.user.UserResponse
@@ -14,8 +15,7 @@ object WebserviceCustomResponseHandler {
     fun handleUserResponse(response: UserResponse?) {
         val userData = response?.data
         if (userData != null) {
-            val userId = FlatShareApplication.getDbInstance().userDao()
-                .get(UserDao.USER_CONSTANT_USERID)
+            val userId = AppConstants.loggedInUser?.id
             if (TextUtils.equals(userData.id, userId)) {
                 CommonMethods.registerUser(response)
             }

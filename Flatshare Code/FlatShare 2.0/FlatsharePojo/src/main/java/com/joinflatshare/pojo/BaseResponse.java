@@ -19,6 +19,10 @@ public class BaseResponse {
     @SerializedName("success")
     private Boolean success;
 
+    // For sendbird
+    @SerializedName("error")
+    private Boolean error = false;
+
     public int getStatus() {
         return status;
     }
@@ -34,7 +38,20 @@ public class BaseResponse {
     public Boolean getMatched() {
         return matched;
     }
+
     public Boolean shouldShowReview() {
         return shouldShowReview;
+    }
+
+    public Boolean getError() {
+        return error;
+    }
+
+    public void setMessage(String message) {
+        this.message = message;
+    }
+
+    public void setError(Boolean error) {
+        this.error = error;
     }
 }

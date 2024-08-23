@@ -5,7 +5,7 @@ import com.joinflatshare.pojo.user.User
 
 object AppConstants {
 
-    const val isAppLive = true
+    const val isAppLive = false
     @JvmField
     var isSendbirdLive = true
 
