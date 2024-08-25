@@ -16,6 +16,7 @@ import com.joinflatshare.FlatShareApplication
 import com.joinflatshare.FlatshareCentral.databinding.ActivityRegisterPhotoBinding
 import com.joinflatshare.chat.SendBirdUser
 import com.joinflatshare.chat.pojo.user.ModelChatUserResponse
+import com.joinflatshare.db.daos.AppDao
 import com.joinflatshare.interfaces.OnUserFetched
 import com.joinflatshare.pojo.user.User
 import com.joinflatshare.pojo.user.UserResponse
@@ -38,6 +39,7 @@ class RegisterPhotoActivity : BaseActivity() {
         super.onCreate(savedInstanceState)
         viewBind = ActivityRegisterPhotoBinding.inflate(layoutInflater)
         setContentView(viewBind.root)
+        FlatShareApplication.getDbInstance().appDao().insert(AppDao.ONBOARDING_SCREEN_PROGRESS, "1")
         init()
     }
 

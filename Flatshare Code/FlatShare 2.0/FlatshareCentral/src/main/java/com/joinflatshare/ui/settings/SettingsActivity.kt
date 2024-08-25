@@ -1,7 +1,9 @@
 package com.joinflatshare.ui.settings
 
 import android.os.Bundle
+import android.view.View
 import com.joinflatshare.FlatshareCentral.databinding.ActivitySettingsBinding
+import com.joinflatshare.constants.AppConstants
 import com.joinflatshare.ui.base.BaseActivity
 import com.joinflatshare.utils.mixpanel.MixpanelUtils.onButtonClicked
 
@@ -19,5 +21,11 @@ class SettingsActivity : BaseActivity() {
         SettingsViewBind(viewBind)
         SettingsListener(this, viewBind)
         onButtonClicked("Settings")
+        checkAdminFeatures()
+    }
+
+    private fun checkAdminFeatures() {
+        if (!AppConstants.isAppLive && AppConstants.isAdmin)
+            viewBind.cardProfileAdmin.visibility = View.VISIBLE
     }
 }

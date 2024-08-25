@@ -34,7 +34,7 @@
                 android:fontFamily="@font/font_bold"
                 android:gravity="center_horizontal"
                 android:padding="@dimen/_10sdp"
-                android:textColor="#202020"
+                android:textColor="@color/black"
                 android:textSize="@dimen/_14sdp" />
 
             <View

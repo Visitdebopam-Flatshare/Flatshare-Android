@@ -57,11 +57,9 @@ class ExploreApiController(
                     } else {
                         hasMoreData = false
                         if (currentPage == 0) {
-                            // Check if user's flat location is filled up
-                            var isLocationFilled = false
-                            if (!CommonMethod.isLocationEmpty(AppConstants.loggedInUser?.location)) {
-                                isLocationFilled = true
-                            }
+                            // Check if user's preferred location is filled up
+                            val isLocationFilled =
+                                !CommonMethod.isLocationEmpty(AppConstants.loggedInUser?.flatProperties?.preferredLocation)
                             if (isLocationFilled) {
                                 activity.binder.showEmptyData(
                                     R.drawable.img_no_feed,
@@ -69,7 +67,8 @@ class ExploreApiController(
                                     "Edit Preferences"
                                 )
                             } else {
-                                activity.binder.showEmptyData(R.drawable.img_feed_friends,
+                                activity.binder.showEmptyData(
+                                    R.drawable.img_feed_friends,
                                     "Find flatmates like friends.",
                                     "Add Preferred Location"
                                 )

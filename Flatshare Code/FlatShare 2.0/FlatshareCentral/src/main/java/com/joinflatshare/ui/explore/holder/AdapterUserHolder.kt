@@ -52,13 +52,10 @@ class AdapterUserHolder {
         val locationLoggedInUser = AppConstants.loggedInUser?.flatProperties?.preferredLocation
         val locationUser = user.flatProperties.preferredLocation
         if (!(CommonMethod.isLocationEmpty(locationLoggedInUser)
-                    || CommonMethod.isLocationEmpty(locationLoggedInUser))
+                    || CommonMethod.isLocationEmpty(locationUser))
         ) {
             val distance = (DistanceCalculator.calculateDistance(
-                locationUser[0].loc.coordinates[1],
-                locationUser[0].loc.coordinates[0],
-                locationLoggedInUser!![0].loc.coordinates[1],
-                locationLoggedInUser[0].loc.coordinates[0]
+                user, AppConstants.loggedInUser!!
             ))
             if (!TextUtils.equals(distance, "NA")) {
                 holder.llDistance.visibility = View.VISIBLE
@@ -81,8 +78,7 @@ class AdapterUserHolder {
                 return@setOnClickListener
             }
             val rejectLikeUrl = WebserviceCustomRequestHandler.getRejectLikeRequest(
-                BaseActivity.TYPE_FHT, ChatRequestConstants.CHAT_REQUEST_CONSTANT_FHT,
-                activity.userData[0].data!!.id
+                BaseActivity.TYPE_FHT, ChatRequestConstants.CHAT_REQUEST_CONSTANT_FHT,user.id
             )
             WebserviceManager().rejectLike(activity, rejectLikeUrl,
                 object : OnFlatshareResponseCallBack<Response<ResponseBody>> {
@@ -103,8 +99,7 @@ class AdapterUserHolder {
             }
             WebserviceManager().sendChatRequest(
                 activity,
-                ChatRequestConstants.CHAT_REQUEST_CONSTANT_FHT,
-                activity.userData[0].data!!.id,
+                ChatRequestConstants.CHAT_REQUEST_CONSTANT_FHT,user.id,
                 object : OnFlatshareResponseCallBack<Response<ResponseBody>> {
                     override fun onResponseCallBack(response: String) {
                         MixpanelUtils.onButtonClicked("Feed SuperCheck")
@@ -131,15 +126,13 @@ class AdapterUserHolder {
 
         // Distance
         holder.llDistance.visibility = View.GONE
-        if (!(CommonMethod.isLocationEmpty(AppConstants.loggedInUser?.location) || CommonMethod.isLocationEmpty(
-                user.location
+        if (!(CommonMethod.isLocationEmpty(AppConstants.loggedInUser?.flatProperties?.preferredLocation)
+                    || CommonMethod.isLocationEmpty(
+                user.flatProperties.preferredLocation
             ))
         ) {
             val distance = (DistanceCalculator.calculateDistance(
-                user.location.loc.coordinates[1],
-                user.location.loc.coordinates[0],
-                AppConstants.loggedInUser?.location?.loc?.coordinates!![1],
-                AppConstants.loggedInUser?.location?.loc?.coordinates!![0]
+                user, AppConstants.loggedInUser!!
             ))
             if (!TextUtils.equals(distance, "NA")) {
                 holder.llDistance.visibility = View.VISIBLE

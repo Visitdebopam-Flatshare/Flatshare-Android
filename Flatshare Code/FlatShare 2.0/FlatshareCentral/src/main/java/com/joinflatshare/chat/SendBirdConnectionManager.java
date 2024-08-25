@@ -23,30 +23,34 @@ public class SendBirdConnectionManager {
         if (loggedInuser == null || loggedInuser.getId().isEmpty())
             return;
         long time = System.currentTimeMillis();
-        SendbirdChat.connect(loggedInuser.getId(), (user, e) -> {
-            if (e != null) {
-                isSendBirdConnected = false;
-                callback.onFetched("0");
-                return;
-            }
-            isSendBirdConnected = true;
-            long diff = System.currentTimeMillis() - time;
-            CommonMethod.INSTANCE.makeLog("Sendbird connect time", "" + diff);
-            registerPushNotifications();
-            // Update fcm token
-            String fcmToken = FlatShareApplication.Companion.getDbInstance().appDao().get(AppDao.FIREBASE_TOKEN);
-            if (fcmToken != null && !fcmToken.isEmpty()) {
-                new SendBirdApiManager().deleteAllPushTokens(response -> SendbirdChat.registerPushToken(fcmToken, (status, error) -> {
-                    if (error == null) {
-                        CommonMethod.INSTANCE.makeLog("Sendbird", "Push token Registered");
-                        CommonMethod.INSTANCE.makeLog("Sendbird", status.name());
-                    } else {
-                        CommonMethod.INSTANCE.makeLog("Sendbird", "Push token failed to Register");
-                    }
-                }));
-            }
-            callback.onFetched("1");
-        });
+        try {
+            SendbirdChat.connect(loggedInuser.getId(), (user, e) -> {
+                if (e != null) {
+                    isSendBirdConnected = false;
+                    callback.onFetched("0");
+                    return;
+                }
+                isSendBirdConnected = true;
+                long diff = System.currentTimeMillis() - time;
+                CommonMethod.INSTANCE.makeLog("Sendbird connect time", "" + diff);
+                registerPushNotifications();
+                // Update fcm token
+                String fcmToken = FlatShareApplication.Companion.getDbInstance().appDao().get(AppDao.FIREBASE_TOKEN);
+                if (fcmToken != null && !fcmToken.isEmpty()) {
+                    new SendBirdApiManager().deleteAllPushTokens(response -> SendbirdChat.registerPushToken(fcmToken, (status, error) -> {
+                        if (error == null) {
+                            CommonMethod.INSTANCE.makeLog("Sendbird", "Push token Registered");
+                            CommonMethod.INSTANCE.makeLog("Sendbird", status.name());
+                        } else {
+                            CommonMethod.INSTANCE.makeLog("Sendbird", "Push token failed to Register");
+                        }
+                    }));
+                }
+                callback.onFetched("1");
+            });
+        } catch (RuntimeException exception) {
+            isSendBirdConnected = false;
+        }
     }
 
     private static void registerPushNotifications() {

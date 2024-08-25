@@ -4,7 +4,7 @@
     <dimen name="button_height_large">@dimen/_45sdp</dimen>
     <dimen name="button_text_size">@dimen/_15sdp</dimen>
     <dimen name="menu_width">@dimen/_20sdp</dimen>
-    <dimen name="menu_height">@dimen/_40sdp</dimen>
+    <dimen name="menu_height">@dimen/_50sdp</dimen>
     <dimen name="dimen_topbar_icon">@dimen/_15sdp</dimen>
     <dimen name="dimen_drawable_corner_radius">@dimen/_12sdp</dimen>
 

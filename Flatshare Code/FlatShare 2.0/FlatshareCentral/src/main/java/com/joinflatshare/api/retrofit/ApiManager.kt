@@ -157,48 +157,6 @@ class ApiManager() {
         }
     }
 
-    fun acceptFriendRequest(
-        id: String, onResponseCallback: OnResponseCallback<Any?>
-    ) {
-        // TODO Fix first
-        /*if (ConnectivityListener.checkInternet()) {
-            showProgress()
-            isLoaderShownByApimanager = true
-            CompositeDisposable().add(getClient()?.acceptFriendRequest(id)!!
-                .observeOn(AndroidSchedulers.mainThread()).subscribeOn(Schedulers.io())
-                .subscribe({ trendsResponse ->
-                    sendResponse(trendsResponse, onResponseCallback)
-                }) { throwable -> handleError(throwable as Throwable, onResponseCallback) })
-        }*/
-    }
-
-    fun rejectFriendRequest(
-        id: String, onResponseCallback: OnResponseCallback<Any?>
-    ) {
-
-        if (ConnectivityListener.checkInternet()) {
-            showProgress()
-            isLoaderShownByApimanager = true
-            CompositeDisposable().add(getClient()?.rejectFriendRequest(id)!!
-                .observeOn(AndroidSchedulers.mainThread()).subscribeOn(Schedulers.io())
-                .subscribe({ trendsResponse ->
-                    sendResponse(trendsResponse, onResponseCallback)
-                }) { throwable -> handleError(throwable as Throwable, onResponseCallback) })
-        }
-    }
-
-    fun removeFriend(id: String, onResponseCallback: OnResponseCallback<Any?>) {
-        if (ConnectivityListener.checkInternet()) {
-            showProgress()
-            isLoaderShownByApimanager = true
-            CompositeDisposable().add(getClient()?.removeFriend(id)!!
-                .observeOn(AndroidSchedulers.mainThread()).subscribeOn(Schedulers.io())
-                .subscribe({ trendsResponse ->
-                    sendResponse(trendsResponse, onResponseCallback)
-                }) { throwable -> handleError(throwable as Throwable, onResponseCallback) })
-        }
-    }
-
     // FLAT
     fun createFlat(request: CreateFlatRequest, onResponseCallback: OnResponseCallback<Any?>) {
         if (ConnectivityListener.checkInternet()) {
@@ -213,15 +171,15 @@ class ApiManager() {
     }
 
     fun updateFlat(
-        showProgress: Boolean, request: MyFlatData, onResponseCallback: OnResponseCallback<Any?>
+        showProgress: Boolean, request: MyFlatData?, onResponseCallback: OnResponseCallback<Any?>
     ) {
         if (ConnectivityListener.checkInternet()) {
             if (showProgress) {
                 showProgress()
                 isLoaderShownByApimanager = true
             }
-            request.deepLink = DEEPLINK_BASE_URL
-            CompositeDisposable().add(getClient()?.updateFlat(request.id, request)!!
+            request?.deepLink = DEEPLINK_BASE_URL
+            CompositeDisposable().add(getClient()?.updateFlat(request?.id, request)!!
                 .observeOn(AndroidSchedulers.mainThread()).subscribeOn(Schedulers.io())
                 .subscribe({ trendsResponse ->
                     if (trendsResponse?.data?.name?.isBlank() == true && trendsResponse.message.isNotBlank()) {

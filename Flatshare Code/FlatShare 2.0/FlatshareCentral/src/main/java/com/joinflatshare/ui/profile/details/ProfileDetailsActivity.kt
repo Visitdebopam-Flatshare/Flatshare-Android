@@ -10,7 +10,7 @@ import com.joinflatshare.utils.mixpanel.MixpanelUtils
 /**
  * Created by debopam on 27/05/24
  */
-class ProfileDetailsActivity:BaseActivity() {
+class ProfileDetailsActivity : BaseActivity() {
     private lateinit var viewBinding: ActivityProfileDetailsBinding
     private var dataBinder: ProfileDetailsDataBinder? = null
     protected var listener: ProfileDetailsListener? = null
@@ -39,12 +39,14 @@ class ProfileDetailsActivity:BaseActivity() {
     internal fun initUserData(response: UserResponse?) {
         this.userResponse = response
         this.user = userResponse!!.data
-        var name = user!!.name!!.firstName + " " + user!!.name!!.lastName
+        val fname = user?.name?.firstName
+        val lname = user?.name?.lastName
+        var name = "$fname $lname"
         if (name.length > 25) {
             name = name.substring(0, 25) + "..."
         }
 
-        showTopBar(this, true, name, 0,0)
+        showTopBar(this, true, name, 0, 0)
         dataBinder?.setData()
         listener = ProfileDetailsListener(this, viewBinding)
     }

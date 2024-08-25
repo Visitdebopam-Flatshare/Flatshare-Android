@@ -5,5 +5,9 @@ package com.joinflatshare.api.retrofit;
  */
 public interface OnResponseCallback<T> {
     void oncallBack(T response);
+
+    default void onError(Throwable throwable) {
+
+    }
 }
 

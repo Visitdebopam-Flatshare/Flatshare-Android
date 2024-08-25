@@ -219,7 +219,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginTop="@dimen/_10sdp"
                             android:fontFamily="@font/font_semibold"
-                            android:text="Get verified and connect with other verified members."
+                            android:text="Connect with other verified member &amp; also add 500 to your flatscore."
                             android:textColor="@color/grey4"
                             android:textSize="@dimen/_12sdp" />
                     </LinearLayout>

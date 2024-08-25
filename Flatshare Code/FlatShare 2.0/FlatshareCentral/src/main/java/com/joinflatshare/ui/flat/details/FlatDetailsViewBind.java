@@ -117,7 +117,7 @@ public class FlatDetailsViewBind {
 
     // Distance
     private void showDistance(MyFlatData flatData) {
-        try {
+       /* try {
             String dist = DistanceCalculator.INSTANCE.calculateDistance(
                     AppConstants.loggedInUser.getLocation().getLoc().getCoordinates().get(0),
                     AppConstants.loggedInUser.getLocation().getLoc().getCoordinates().get(1),
@@ -126,7 +126,7 @@ public class FlatDetailsViewBind {
             viewBind.txtDistance.setText(dist);
         } catch (Exception exception) {
             viewBind.txtDistance.setText("NA");
-        }
+        }*/
     }
 
     private void setInterests() {

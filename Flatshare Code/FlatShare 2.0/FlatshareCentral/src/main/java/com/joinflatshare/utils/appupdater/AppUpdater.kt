@@ -1,5 +1,6 @@
 package com.joinflatshare.utils.appupdater
 
+import android.content.pm.PackageManager
 import com.google.android.play.core.appupdate.AppUpdateInfo
 import com.google.android.play.core.appupdate.AppUpdateManager
 import com.google.android.play.core.appupdate.AppUpdateManagerFactory
@@ -62,7 +63,14 @@ class AppUpdater(
         callback: OnStringFetched
     ) {
         DbAppVersionRetriever().getLatestVersion {
-            val appVersionCode = BuildConfig.VERSION_CODE
+            var appVersionCode:Long
+            try {
+                appVersionCode =
+                    activity.packageManager.getPackageInfo(activity.packageName, 0).longVersionCode
+            } catch (exception: Exception) {
+                appVersionCode = 0L
+            }
+
             val latestVersionCode = GoogleConstants.LATEST_APP_VERSION_CODE
             if (latestVersionCode != null) {
                 if (latestVersionCode > appVersionCode) {

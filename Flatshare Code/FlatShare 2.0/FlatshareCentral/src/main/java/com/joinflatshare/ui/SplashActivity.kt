@@ -12,6 +12,7 @@ import com.joinflatshare.FlatShareApplication
 import com.joinflatshare.FlatshareCentral.BuildConfig
 import com.joinflatshare.FlatshareCentral.R
 import com.joinflatshare.FlatshareCentral.databinding.ActivitySplashBinding
+import com.joinflatshare.api.retrofit.WebserviceCustomResponseHandler
 import com.joinflatshare.constants.AppConstants
 import com.joinflatshare.constants.IntentConstants
 import com.joinflatshare.constants.RequestCodeConstants
@@ -24,9 +25,15 @@ import com.joinflatshare.firestore.DbAppAccessRetriever
 import com.joinflatshare.firestore.DbAwsRetriever
 import com.joinflatshare.pojo.user.UserResponse
 import com.joinflatshare.ui.explore.ExploreActivity
+import com.joinflatshare.ui.profile.interest.InterestActivity
+import com.joinflatshare.ui.profile.language.LanguageActivity
 import com.joinflatshare.ui.register.RegisterBaseActivity
+import com.joinflatshare.ui.register.about.RegisterAboutActivity
 import com.joinflatshare.ui.register.create.ProfileCreateActivity
+import com.joinflatshare.ui.register.deal.RegisterDealActivity
 import com.joinflatshare.ui.register.login.LoginActivity
+import com.joinflatshare.ui.register.photo.RegisterPhotoActivity
+import com.joinflatshare.ui.register.preference.RegisterPreferenceActivity
 import com.joinflatshare.utils.appupdater.AppUpdater
 import com.joinflatshare.utils.deeplink.DeepLinkHandler
 import com.joinflatshare.utils.helper.CommonMethod
@@ -174,7 +181,7 @@ class SplashActivity : RegisterBaseActivity() {
                             if (userData == null) {
                                 CommonMethod.logout(this@SplashActivity)
                             } else {
-                                CommonMethods.registerUser(resp)
+                                WebserviceCustomResponseHandler.handleUserResponse(resp)
                                 if (userData.name?.firstName.isNullOrBlank()) {
                                     // User does not have a name
                                     val intent = Intent(
@@ -191,18 +198,50 @@ class SplashActivity : RegisterBaseActivity() {
                                             FlatShareApplication.getDbInstance().userDao()
                                                 .insert(UserDao.USER_NEED_FCM_UPDATE, "1")
                                         }
-                                        val intent = Intent(
-                                            this@SplashActivity,
-                                            ExploreActivity::class.java
-                                        )
+                                        checkOnboardingProgress()
                                         CommonMethod.sendUserToDB(userData)
-                                        checkDeepLink(intent)
                                     }
                                 }
                             }
                         }
                     })
             }
+        }
+    }
+
+    private fun checkOnboardingProgress() {
+        val progress =
+            FlatShareApplication.getDbInstance().appDao().get(AppDao.ONBOARDING_SCREEN_PROGRESS)
+        val intent = Intent(this@SplashActivity, ExploreActivity::class.java)
+        if (TextUtils.isEmpty(progress)) {
+            checkDeepLink(intent)
+        } else {
+            when (progress) {
+                "1" -> {
+                    intent.setClass(this, RegisterPhotoActivity::class.java)
+                }
+
+                "2" -> {
+                    intent.setClass(this, LanguageActivity::class.java)
+                }
+
+                "3" -> {
+                    intent.setClass(this, InterestActivity::class.java)
+                }
+
+                "4" -> {
+                    intent.setClass(this, RegisterDealActivity::class.java)
+                }
+
+                "5" -> {
+                    intent.setClass(this, RegisterAboutActivity::class.java)
+                }
+
+                "6" -> {
+                    intent.setClass(this, RegisterPreferenceActivity::class.java)
+                }
+            }
+            CommonMethod.switchActivity(this, intent, true)
         }
     }
 
@@ -241,10 +280,10 @@ class SplashActivity : RegisterBaseActivity() {
             if (BuildConfig.DEBUG || !AppConstants.isAppLive)
                 checkConfig()
             else*/
-                AppUpdater(this).checkStore { text ->
-                    if (text.equals("1"))
-                        checkConfig()
-                }
+            AppUpdater(this).checkStore { text ->
+                if (text.equals("1"))
+                    checkConfig()
+            }
         }
     }
 

@@ -201,11 +201,11 @@ class ChatDetailsBottomMenu(
                         if (requestCode == 1) {
                             when (items[position].name) {
                                 "Remove from Friends" -> {
-                                    activity.apiManager.removeFriend(
+                                    /*activity.apiManager.removeFriend(
                                         activity.sendBirdChannel.getChannelDisplayUserId(
                                             activity.groupChannel
                                         )
-                                    ) { CommonMethod.finishActivity(activity) }
+                                    ) { CommonMethod.finishActivity(activity) }*/
                                 }
 
                                 else -> {

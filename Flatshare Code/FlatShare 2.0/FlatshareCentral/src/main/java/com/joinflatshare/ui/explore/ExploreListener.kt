@@ -4,18 +4,9 @@ import android.app.Activity
 import android.content.Intent
 import android.view.View
 import com.joinflatshare.FlatshareCentral.databinding.ActivityExploreBinding
-import com.joinflatshare.api.retrofit.WebserviceCustomRequestHandler
 import com.joinflatshare.constants.AppConstants
-import com.joinflatshare.constants.ChatRequestConstants
-import com.joinflatshare.ui.base.BaseActivity
-import com.joinflatshare.ui.bottomsheet.IncompleteProfileBottomSheet
-import com.joinflatshare.ui.preferences.flat.PreferenceActivity
+import com.joinflatshare.ui.preferences.PreferenceActivity
 import com.joinflatshare.utils.helper.CommonMethod
-import com.joinflatshare.utils.mixpanel.MixpanelUtils
-import com.joinflatshare.webservice.api.WebserviceManager
-import com.joinflatshare.webservice.api.interfaces.OnFlatshareResponseCallBack
-import okhttp3.ResponseBody
-import retrofit2.Response
 
 class ExploreListener(
     private val activity: ExploreActivity, private val viewBind: ActivityExploreBinding

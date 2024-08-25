@@ -18,7 +18,8 @@ class DealBreakerAdapter(
     private val dealBreaker: DealBreakerView,
     val dealBreakers: DealBreakers,
     val items: ArrayList<ModelBottomSheet>,
-    private var isEditable: Boolean
+    private var isEditable: Boolean,
+    val callback: DealBreakerCallback?
 ) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
@@ -88,8 +89,7 @@ class DealBreakerAdapter(
                     holder.imgDealUntick.setImageResource(R.drawable.ic_cross_circle)
                     holder.imgDealTick.setColorFilter(0)
                     holder.imgDealUntick.setColorFilter(0)
-                }
-                else if (value == 2) {
+                } else if (value == 2) {
                     // Untick selected
                     holder.rlDealHolder.background = ContextCompat.getDrawable(
                         dealBreaker.activity,
@@ -170,6 +170,7 @@ class DealBreakerAdapter(
                         } else {
                             if (adapter.dealBreakers.smoking == 2) 0 else value
                         }
+                    adapter.callback?.onSmokingSelected(adapter.dealBreakers.smoking)
 
                 }
 
@@ -180,6 +181,7 @@ class DealBreakerAdapter(
                         } else {
                             if (adapter.dealBreakers.nonveg == 2) 0 else value
                         }
+                    adapter.callback?.onSmokingSelected(adapter.dealBreakers.smoking)
                 }
 
                 "Drinking Alcohol" -> {
@@ -189,6 +191,7 @@ class DealBreakerAdapter(
                         } else {
                             if (adapter.dealBreakers.flatparty == 2) 0 else value
                         }
+                    adapter.callback?.onPartySelected(adapter.dealBreakers.flatparty)
                 }
 
                 "Eating Eggs" -> {
@@ -198,6 +201,7 @@ class DealBreakerAdapter(
                         } else {
                             if (adapter.dealBreakers.eggs == 2) 0 else value
                         }
+                    adapter.callback?.onEggsSelected(adapter.dealBreakers.eggs)
                 }
 
                 "Workout" -> {
@@ -207,6 +211,7 @@ class DealBreakerAdapter(
                         } else {
                             if (adapter.dealBreakers.workout == 2) 0 else value
                         }
+                    adapter.callback?.onWorkoutSelected(adapter.dealBreakers.workout)
                 }
 
                 "Pets" -> {
@@ -216,6 +221,7 @@ class DealBreakerAdapter(
                         } else {
                             if (adapter.dealBreakers.pets == 2) 0 else value
                         }
+                    adapter.callback?.onPetsSelected(adapter.dealBreakers.pets)
                 }
             }
 

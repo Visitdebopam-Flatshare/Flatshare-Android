@@ -321,6 +321,29 @@
                         android:textSize="@dimen/button_text_size" />
                 </com.google.android.material.card.MaterialCardView>
 
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/card_profile_admin"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/button_height"
+                    android:layout_marginHorizontal="@dimen/_10sdp"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:visibility="gone"
+                    app:cardBackgroundColor="@color/white"
+                    app:cardCornerRadius="@dimen/_14sdp"
+                    app:cardElevation="@dimen/_2sdp"
+                    app:cardPreventCornerOverlap="false"
+                    app:cardUseCompatPadding="false">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:fontFamily="@font/font_semibold"
+                        android:text="Admin Features"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/button_text_size" />
+                </com.google.android.material.card.MaterialCardView>
+
                 <TextView
                     android:id="@+id/card_profile_delete"
                     android:layout_width="match_parent"

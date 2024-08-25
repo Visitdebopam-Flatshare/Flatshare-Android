@@ -161,14 +161,14 @@ class ProfileEditListener(
                 val loc = Loc()
                 loc.coordinates.add(activity.latProfile[0]?.coordinates!![0])
                 loc.coordinates.add(activity.latProfile[0]?.coordinates!![1])
-                user?.hometown =
+                user?.college =
                     ModelLocation(dataBinder.edt_profile[0].getText().toString(), loc)
             }
             if (activity.latProfile[1] != null) {
                 val loc = Loc()
                 loc.coordinates.add(activity.latProfile[1]?.coordinates!![0])
                 loc.coordinates.add(activity.latProfile[1]?.coordinates!![1])
-                user?.college =
+                user?.hometown =
                     ModelLocation(dataBinder.edt_profile[1].text.toString(), loc)
             }
 //            prepareImages(user)

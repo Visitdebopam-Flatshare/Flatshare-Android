@@ -12,8 +12,10 @@ import com.joinflatshare.customviews.bottomsheet.BottomSheetView
 import com.joinflatshare.customviews.bottomsheet.ModelBottomSheet
 import com.joinflatshare.interfaces.OnUserFetched
 import com.joinflatshare.pojo.user.UserResponse
+import com.joinflatshare.ui.admin.AdminFeatureActivity
 import com.joinflatshare.ui.profile.verify.ProfileVerifyActivity
 import com.joinflatshare.ui.register.otp.OtpActivity
+import com.joinflatshare.ui.admin.features.SendbirdChannelFix
 import com.joinflatshare.utils.helper.CommonMethod
 import com.joinflatshare.utils.mixpanel.MixpanelUtils
 import com.joinflatshare.webservice.api.WebserviceManager
@@ -38,6 +40,7 @@ class SettingsListener(
         viewBind.txtProfilePrivacy.setOnClickListener(this)
         viewBind.txtProfileTerms.setOnClickListener(this)
         viewBind.cardProfileLogout.setOnClickListener(this)
+        viewBind.cardProfileAdmin.setOnClickListener(this)
         viewBind.cardProfileDelete.setOnClickListener(this)
     }
 
@@ -100,10 +103,27 @@ class SettingsListener(
             }
 
             viewBind.cardProfileLogout.id -> {
-                CommonMethod.logout(activity)
+                AlertDialog.showAlert(
+                    activity,
+                    "Confirm",
+                    "Are you sure you want to\n" +
+                            "logout from flatshare?",
+                    "Yes",
+                    "Cancel"
+                ) { _, requestCode ->
+                    if (requestCode == 1) {
+                        CommonMethod.logout(activity)
+                    }
+                }
+            }
+
+            viewBind.cardProfileAdmin.id -> {
+                val intent = Intent(activity, AdminFeatureActivity::class.java)
+                CommonMethod.switchActivity(activity, intent, false)
             }
 
             viewBind.cardProfileDelete.id -> {
+//                SendbirdChannelFix().fix(activity)
                 AlertDialog.showAlert(
                     activity,
                     "Are you sure you want to\ndelete your account?",

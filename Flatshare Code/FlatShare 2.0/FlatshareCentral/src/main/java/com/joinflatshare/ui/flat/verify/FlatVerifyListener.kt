@@ -95,7 +95,7 @@ class FlatVerifyListener(
 
         viewBind.btnVerifyProfile.setOnClickListener {
             if (activity.videoPath.isBlank()) {
-                CommonMethod.makeToast( "Please select a video")
+                CommonMethod.makeToast("Please select a video")
             } else {
                 LocationCheckHandler(
                     activity,
@@ -120,7 +120,7 @@ class FlatVerifyListener(
                                     "Failed to upload video"
                                 )
                             }
-                        } else CommonMethod.makeToast( "The video does not exist")
+                        } else CommonMethod.makeToast("The video does not exist")
                     }
                 }
             }
@@ -165,7 +165,7 @@ class FlatVerifyListener(
                 if (requestCode == AmazonDeleteFile.REQUEST_CODE_SUCCESS) {
                     activity.isFileUploaded = false
                     clearVideoView()
-                } else CommonMethod.makeToast( "Failed to delete video")
+                } else CommonMethod.makeToast("Failed to delete video")
             }
         })
     }
@@ -181,7 +181,7 @@ class FlatVerifyListener(
         flat?.verifier?.id = AppConstants.loggedInUser?.id!!
         flat?.verifier?.coordinates = AppConstants.loggedInUser?.location?.loc?.coordinates!!
         flat?.verifier?.timestamp = DateUtils.getServerDate()
-        var distance = DistanceCalculator.calculateDistance(
+        /*var distance = DistanceCalculator.calculateDistance(
             AppConstants.loggedInUser?.location?.loc?.coordinates!![0],
             AppConstants.loggedInUser?.location?.loc?.coordinates!![1],
             flat?.flatProperties?.location?.loc?.coordinates!![0],
@@ -192,12 +192,10 @@ class FlatVerifyListener(
         else {
             distance = distance.replace(" km", "")
             flat.verifier.distance = distance.toDouble()
+        }*/
+        activity.apiManager.updateFlat(true, flat) {
+            CommonMethod.makeToast("Video uploaded")
+            CommonMethod.finishActivity(activity)
         }
-        activity.apiManager.updateFlat(true, flat, object : OnResponseCallback<Any?> {
-            override fun oncallBack(response: Any?) {
-                CommonMethod.makeToast( "Video uploaded")
-                CommonMethod.finishActivity(activity)
-            }
-        })
     }
 }

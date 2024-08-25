@@ -48,11 +48,6 @@ interface ApiInterface {
     /*------------------------------ Notification & Requests ------------------------------*/
 
     @DELETE()
-    fun rejectConnection(
-        @Url url: String
-    ): Observable<BaseResponse>
-
-    @DELETE()
     fun removeConnection(
         @Url url: String
     ): Observable<BaseResponse>
@@ -62,23 +57,13 @@ interface ApiInterface {
         @Path("id") id: String
     ): Observable<BaseResponse>
 
-    @DELETE("users/friends/reject/{id}")
-    fun rejectFriendRequest(
-        @Path("id") id: String
-    ): Observable<BaseResponse>
-
-    @DELETE("users/friends/remove/{id}")
-    fun removeFriend(
-        @Path("id") id: String
-    ): Observable<BaseResponse>
-
     /*------------------------------ Flat ------------------------------*/
     @POST("flats/create")
     fun createFlat(@Body request: CreateFlatRequest): Observable<FlatResponse?>
 
     @PATCH("flats/{id}")
     fun updateFlat(
-        @Path("id") id: String,
+        @Path("id") id: String?,
         @Body dataResponse: MyFlatData?
     ): Observable<FlatResponse?>
 

@@ -11,13 +11,14 @@ import com.joinflatshare.constants.RequestCodeConstants.REQUEST_CODE_LOCATION
 import com.joinflatshare.interfaces.OnUiEventClick
 import com.joinflatshare.pojo.user.Loc
 import com.joinflatshare.pojo.user.ModelLocation
+import com.joinflatshare.ui.base.ApplicationBaseActivity
 import com.joinflatshare.ui.base.BaseActivity
 import com.joinflatshare.utils.helper.CommonMethod
 import com.joinflatshare.utils.system.GlobalActivityResult
 import java.util.Arrays
 
 object AutoCompletePlaces {
-    fun getPlaces(activity: BaseActivity, callback: OnUiEventClick) {
+    fun getPlaces(activity: ApplicationBaseActivity, callback: OnUiEventClick) {
         initialiseGoogleSdk(activity) { text: String ->
             if (text == "1") {
                 val fields =
