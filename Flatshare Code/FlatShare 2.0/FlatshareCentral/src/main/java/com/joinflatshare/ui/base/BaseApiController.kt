@@ -50,7 +50,7 @@ class BaseApiController(private val activity: BaseActivity) {
             object : OnFlatshareResponseCallBack<Response<ResponseBody>> {
                 override fun onResponseCallBack(response: String) {
                     val resp: UserResponse? = Gson().fromJson(response, UserResponse::class.java)
-                    CommonMethods.registerUser(resp)
+                    WebserviceCustomResponseHandler.handleUserResponse(resp)
                     callback?.userFetched(resp)
                 }
             })

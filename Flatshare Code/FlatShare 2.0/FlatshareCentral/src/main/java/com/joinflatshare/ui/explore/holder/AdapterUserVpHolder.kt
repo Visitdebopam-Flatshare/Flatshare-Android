@@ -46,20 +46,24 @@ object AdapterUserVpHolder {
             dealBreakerView.show()
         }
 
-        /*if (user.work.isNullOrEmpty()) holder.llVpWork.visibility = View.GONE
-        else {
-            holder.llVpWork.visibility = View.VISIBLE
-            holder.txtWork.text = user.work
+        holder.llVpWork.visibility = View.GONE
+        holder.llVpEducation.visibility = View.GONE
+        when (user.profession) {
+            "Student" -> {
+                if (!user.college?.name.isNullOrEmpty()) {
+                    holder.llVpEducation.visibility = View.VISIBLE
+                    holder.txtEducation.text = user.college?.name
+                }
+            }
+            "Working Professional" -> {
+                if (!user.work.isNullOrEmpty()) {
+                    holder.llVpWork.visibility = View.VISIBLE
+                    holder.txtWork.text = user.work
+                }
+            }
         }
 
-        if (user.college?.name.isNullOrEmpty()) holder.llVpEducation.visibility =
-            View.GONE
-        else {
-            holder.llVpEducation.visibility = View.VISIBLE
-            holder.txtEducation.text = user.college?.name
-        }
-
-        if (user.hometown?.name.isNullOrEmpty()) holder.llVpHometown.visibility =
+        /*if (user.hometown?.name.isNullOrEmpty()) holder.llVpHometown.visibility =
             View.GONE
         else {
             holder.llVpHometown.visibility = View.VISIBLE

@@ -12,6 +12,7 @@ import com.joinflatshare.FlatShareApplication
 import com.joinflatshare.FlatshareCentral.BuildConfig
 import com.joinflatshare.FlatshareCentral.R
 import com.joinflatshare.FlatshareCentral.databinding.ActivitySplashBinding
+import com.joinflatshare.api.retrofit.WebserviceCustomResponseHandler
 import com.joinflatshare.constants.AppConstants
 import com.joinflatshare.constants.IntentConstants
 import com.joinflatshare.constants.RequestCodeConstants
@@ -180,7 +181,7 @@ class SplashActivity : RegisterBaseActivity() {
                             if (userData == null) {
                                 CommonMethod.logout(this@SplashActivity)
                             } else {
-                                CommonMethods.registerUser(resp)
+                                WebserviceCustomResponseHandler.handleUserResponse(resp)
                                 if (userData.name?.firstName.isNullOrBlank()) {
                                     // User does not have a name
                                     val intent = Intent(

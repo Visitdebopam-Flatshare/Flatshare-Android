@@ -78,8 +78,7 @@ class AdapterUserHolder {
                 return@setOnClickListener
             }
             val rejectLikeUrl = WebserviceCustomRequestHandler.getRejectLikeRequest(
-                BaseActivity.TYPE_FHT, ChatRequestConstants.CHAT_REQUEST_CONSTANT_FHT,
-                activity.userData[0].data!!.id
+                BaseActivity.TYPE_FHT, ChatRequestConstants.CHAT_REQUEST_CONSTANT_FHT,user.id
             )
             WebserviceManager().rejectLike(activity, rejectLikeUrl,
                 object : OnFlatshareResponseCallBack<Response<ResponseBody>> {
@@ -100,8 +99,7 @@ class AdapterUserHolder {
             }
             WebserviceManager().sendChatRequest(
                 activity,
-                ChatRequestConstants.CHAT_REQUEST_CONSTANT_FHT,
-                activity.userData[0].data!!.id,
+                ChatRequestConstants.CHAT_REQUEST_CONSTANT_FHT,user.id,
                 object : OnFlatshareResponseCallBack<Response<ResponseBody>> {
                     override fun onResponseCallBack(response: String) {
                         MixpanelUtils.onButtonClicked("Feed SuperCheck")

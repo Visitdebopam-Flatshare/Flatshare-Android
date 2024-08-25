@@ -107,7 +107,7 @@ dependencies {
     annotationProcessor 'com.github.bumptech.glide:compiler:4.16.0'
 
     // Amazon AWS
-    def versionAWS = "2.29.0"
+    def versionAWS = "2.77.0"
     implementation "com.amazonaws:aws-android-sdk-s3:${versionAWS}"
 
     // Two way seekbar

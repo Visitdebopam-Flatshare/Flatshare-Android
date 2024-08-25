@@ -9,6 +9,7 @@ import com.google.gson.Gson
 import com.joinflatshare.FlatShareApplication
 import com.joinflatshare.FlatshareCentral.BuildConfig
 import com.joinflatshare.api.retrofit.ApiManager
+import com.joinflatshare.api.retrofit.WebserviceCustomResponseHandler
 import com.joinflatshare.chat.SendBirdUser
 import com.joinflatshare.constants.AppConstants
 import com.joinflatshare.constants.IntentConstants
@@ -86,7 +87,7 @@ class OtpApiController(private val activity: OtpActivity) {
                     MixpanelUtils.otpEntered(activity.phone, otp)
                     FlatShareApplication.getDbInstance().userDao().clearUserTable()
                     val user = resp.data
-                    CommonMethods.registerUser(resp)
+                    WebserviceCustomResponseHandler.handleUserResponse(resp)
                     FlatShareApplication.getDbInstance().userDao()
                         .insert(UserDao.USER_KEY_API_TOKEN, resp.token)
                     if (user != null) {
@@ -97,7 +98,7 @@ class OtpApiController(private val activity: OtpActivity) {
                             activity.finishAffinity()
                         } else {
                             NotificationPermissionHandler(activity).showNotificationPermission {
-                                CommonMethods.registerUser(resp)
+                                WebserviceCustomResponseHandler.handleUserResponse(resp)
                                 CommonMethod.sendUserToDB(resp?.data!!)
                                 DeviceInformationCollector()
                                 val intent = Intent(activity, ExploreActivity::class.java)

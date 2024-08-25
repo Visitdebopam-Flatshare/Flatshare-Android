@@ -66,28 +66,29 @@ class ChatDetailsViewBind(
                 if (user != null) {
                     activity.chatUser = user
                     // Check blocked status
-                    val userIDs =
-                        ArrayList<String>()
+                    val userIDs = ArrayList<String>()
                     userIDs.add(activity.sendBirdChannel.getChannelDisplayUserId(activity.groupChannel))
-                    activity.sendBirdUser.getBlockedUserList(
-                        userIDs
-                    ) { users: List<User?> ->
-                        if (users.isEmpty()) {
-                            viewBind.includeChatTopbar.txtChatTopbarUser.text = user.nickname
-                            viewBind.rlChatBottom.visibility = View.VISIBLE
-                            setRefreshTimer()
-                        } else {
-                            CommonMethod.makeToast(
-                                "You have blocked " + user.nickname
-                            )
-                            viewBind.includeChatTopbar.txtChatTopbarStatus.text = "Blocked"
-                            viewBind.includeChatTopbar.txtChatTopbarUser.text = user.nickname
-                            viewBind.rlChatBottom.visibility = View.INVISIBLE
+                    if (userIDs.isNotEmpty()) {
+                        activity.sendBirdUser.getBlockedUserList(
+                            userIDs
+                        ) { users: List<User?> ->
+                            if (users.isEmpty()) {
+                                viewBind.includeChatTopbar.txtChatTopbarUser.text = user.nickname
+                                viewBind.rlChatBottom.visibility = View.VISIBLE
+                                setRefreshTimer()
+                            } else {
+                                CommonMethod.makeToast(
+                                    "You have blocked " + user.nickname
+                                )
+                                viewBind.includeChatTopbar.txtChatTopbarStatus.text = "Blocked"
+                                viewBind.includeChatTopbar.txtChatTopbarUser.text = user.nickname
+                                viewBind.rlChatBottom.visibility = View.INVISIBLE
+                            }
                         }
                     }
                 } else viewBind.includeChatTopbar.txtChatTopbarStatus.text = "Offline"
             }
-            if (!channelDisplayUserId.isEmpty()) for (member in activity.groupChannel.members) {
+            if (channelDisplayUserId.isNotEmpty()) for (member in activity.groupChannel.members) {
                 if (member.userId == channelDisplayUserId) {
                     if (member.connectionStatus == ConnectionStatus.ONLINE) viewBind.includeChatTopbar.txtChatTopbarStatus.text =
                         "Online" else viewBind.includeChatTopbar.txtChatTopbarStatus.text =

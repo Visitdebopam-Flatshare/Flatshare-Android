@@ -40,7 +40,7 @@
         </LinearLayout>
 
         <LinearLayout
-            android:id="@+id/ll_vp_about"
+            android:id="@+id/ll_vp_deals"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
@@ -49,17 +49,15 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/font_semibold"
-                android:text="About"
+                android:text="Deal-Breakers"
                 android:textColor="@color/white"
                 android:textSize="@dimen/_14sdp" />
 
-            <TextView
-                android:id="@+id/txt_about"
-                android:layout_width="wrap_content"
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_vp_deals"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/font_medium"
-                android:textColor="@color/white"
-                android:textSize="@dimen/_12sdp" />
+                tools:itemCount="1" />
 
             <View
                 android:layout_width="@dimen/_10sdp"
@@ -87,58 +85,6 @@
                 android:fontFamily="@font/font_medium"
                 android:textColor="@color/white"
                 android:textSize="@dimen/_12sdp" />
-
-            <View
-                android:layout_width="@dimen/_10sdp"
-                android:layout_height="@dimen/_12sdp" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/ll_vp_language"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/font_semibold"
-                android:text="Languages"
-                android:textColor="@color/white"
-                android:textSize="@dimen/_14sdp" />
-
-            <TextView
-                android:id="@+id/txt_language"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/font_medium"
-                android:textColor="@color/white"
-                android:textSize="@dimen/_12sdp" />
-
-            <View
-                android:layout_width="@dimen/_10sdp"
-                android:layout_height="@dimen/_12sdp" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/ll_vp_deals"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/font_semibold"
-                android:text="Deal-Breakers"
-                android:textColor="@color/white"
-                android:textSize="@dimen/_14sdp" />
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rv_vp_deals"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                tools:itemCount="1" />
 
             <View
                 android:layout_width="@dimen/_10sdp"
@@ -184,12 +130,66 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/font_semibold"
-                android:text="Education"
+                android:text="College"
                 android:textColor="@color/white"
                 android:textSize="@dimen/_14sdp" />
 
             <TextView
                 android:id="@+id/txt_education"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/font_medium"
+                android:textColor="@color/white"
+                android:textSize="@dimen/_12sdp" />
+
+            <View
+                android:layout_width="@dimen/_10sdp"
+                android:layout_height="@dimen/_12sdp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_vp_about"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/font_semibold"
+                android:text="About"
+                android:textColor="@color/white"
+                android:textSize="@dimen/_14sdp" />
+
+            <TextView
+                android:id="@+id/txt_about"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/font_medium"
+                android:textColor="@color/white"
+                android:textSize="@dimen/_12sdp" />
+
+            <View
+                android:layout_width="@dimen/_10sdp"
+                android:layout_height="@dimen/_12sdp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_vp_language"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/font_semibold"
+                android:text="Languages"
+                android:textColor="@color/white"
+                android:textSize="@dimen/_14sdp" />
+
+            <TextView
+                android:id="@+id/txt_language"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/font_medium"
