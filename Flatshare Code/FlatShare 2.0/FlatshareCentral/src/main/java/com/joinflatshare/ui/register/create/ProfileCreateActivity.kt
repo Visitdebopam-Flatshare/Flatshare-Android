@@ -75,6 +75,7 @@ class ProfileCreateActivity : RegisterBaseActivity() {
     fun updateUser(modelUser: User?) {
         updateUser(modelUser, object : OnUserFetched {
             override fun userFetched(resp: UserResponse?) {
+                CommonMethods.registerUser(resp)
                 callAfterRegister(resp?.data!!)
             }
         })

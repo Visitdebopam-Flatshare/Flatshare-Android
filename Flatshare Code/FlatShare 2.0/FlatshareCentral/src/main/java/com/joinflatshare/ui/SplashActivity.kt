@@ -181,7 +181,7 @@ class SplashActivity : RegisterBaseActivity() {
                             if (userData == null) {
                                 CommonMethod.logout(this@SplashActivity)
                             } else {
-                                WebserviceCustomResponseHandler.handleUserResponse(resp)
+                                CommonMethods.registerUser(resp)
                                 if (userData.name?.firstName.isNullOrBlank()) {
                                     // User does not have a name
                                     val intent = Intent(
