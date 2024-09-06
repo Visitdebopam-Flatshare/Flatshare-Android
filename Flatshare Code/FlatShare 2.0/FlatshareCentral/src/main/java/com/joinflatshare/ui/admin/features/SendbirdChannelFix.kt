@@ -1,5 +1,6 @@
 package com.joinflatshare.ui.admin.features
 
+import com.debopam.progressdialog.DialogCustomProgress
 import com.joinflatshare.api.retrofit.OnResponseCallback
 import com.joinflatshare.chat.SendBirdUser
 import com.joinflatshare.chat.api.SendBirdApiManager
@@ -11,6 +12,8 @@ import com.joinflatshare.interfaces.OnUserFetched
 import com.joinflatshare.pojo.user.UserResponse
 import com.joinflatshare.ui.base.BaseActivity
 import com.joinflatshare.utils.helper.CommonMethod
+import java.util.concurrent.Executor
+import java.util.concurrent.Executors
 
 /**
  * Created by debopam on 22/08/24
@@ -18,13 +21,17 @@ import com.joinflatshare.utils.helper.CommonMethod
 class SendbirdChannelFix {
     private val TAG = SendbirdChannelFix::class.java.simpleName
     private val sendBirdApiManager = SendBirdApiManager()
-    private var activity: BaseActivity? = null
+    private lateinit var activity: BaseActivity
     private var next = ""
-    val genuineNumbers = ArrayList<ChannelsItem>()
+    val channelsWithOneMember = ArrayList<ChannelsItem>()
 
     fun fix(activity: BaseActivity) {
         this.activity = activity
-        getAllChannels()
+        DialogCustomProgress.showProgress(activity)
+        val executor: Executor = Executors.newSingleThreadExecutor()
+        executor.execute {
+            getAllChannels()
+        }
     }
 
     private fun getAllChannels() {
@@ -35,55 +42,56 @@ class SendbirdChannelFix {
         params["show_member"] = "true"
         params["custom_types"] = SendBirdConstants.CHANNEL_TYPE_CONNECTION_FHT
         params["order"] = "chronological"
-        if (next.isNotEmpty())
-            params["token"] = next
+        if (next.isNotEmpty()) params["token"] = next
         sendBirdApiManager.searchChannel(params, object : OnResponseCallback<ChannelListResponse> {
             override fun oncallBack(response: ChannelListResponse?) {
                 next =
                     if (response?.next.isNullOrEmpty()) "" else if (response?.next == next) "" else response?.next!!
+                deleteChannels(response)
                 getActualChannels(response)
             }
         })
     }
 
-    private fun getActualChannels(response: ChannelListResponse?) {
+    private fun deleteChannels(response: ChannelListResponse?) {
         response?.channels?.forEach { channel ->
             run {
                 if (channel.members.isNullOrEmpty()) {
                     deleteChannel(channel)
-                } else {
-                    var url = channel.channelUrl
-                    url = url?.replace("USER_FHT_", "")
-                    val numbers = url?.split("_")
-                    if (numbers != null && numbers.size == 2) {
-                        if (isValidNumber(numbers[0]) && isValidNumber(numbers[1])) {
-                            if (channel.members.size == 1)
-                                genuineNumbers.add(channel)
-                        }
+                }
+            }
+        }
+    }
+
+    private fun getActualChannels(response: ChannelListResponse?) {
+        response?.channels?.forEach { channel ->
+            run {
+                var url = channel.channelUrl
+                url = url?.replace("USER_FHT_", "")
+                val numbers = url?.split("_")
+                if (numbers != null && numbers.size == 2) {
+                    if (numbers[0].length == 10 && numbers[1].length == 10 && channel.members?.size == 1) {
+                        channelsWithOneMember.add(channel)
                     }
                 }
             }
         }
-        if (genuineNumbers.isEmpty()) {
-            if (next.isNotEmpty())
+        if (next.isNotEmpty() && channelsWithOneMember.size < 20) getAllChannels()
+        else {
+            DialogCustomProgress.hideProgress(activity)
+            processChannels()
+        }
+    }
+
+    private fun processChannels() {
+        CommonMethod.makeLog(TAG, "Total count  " + channelsWithOneMember.size)
+        if (channelsWithOneMember.size > 0) {
+            checkForValidUser(channelsWithOneMember[0])
+        } else {
+            if (next.isNotEmpty()) {
+                DialogCustomProgress.showProgress(activity)
                 getAllChannels()
-        } else
-            printLog(genuineNumbers)
-    }
-
-    private fun isValidNumber(number: String): Boolean {
-        return (/*number.startsWith("6")
-                || number.startsWith("7")
-                || number.startsWith("8")
-                || number.startsWith("9")
-                && */number.length == 10)
-    }
-
-    private fun printLog(genuineNumbers: ArrayList<ChannelsItem>) {
-        CommonMethod.makeLog(TAG, "Total count  " + genuineNumbers.size)
-        genuineNumbers.forEach { channel ->
-            checkForValidUser(channel)
-            Thread.sleep(5000)
+            }
         }
     }
 
@@ -97,49 +105,20 @@ class SendbirdChannelFix {
                 run {
                     val userToAdd =
                         if (member?.userId.equals(numbers!![0])) numbers!![1] else numbers!![0]
-                    addUser(userToAdd, channel)
-//                    joinChannel(userToAdd, channel, true)
-
+                    getUserFromFlatShare(userToAdd, channel)
                 }
             }
         }
     }
 
-    private fun joinChannel(userToAdd: String, channel: ChannelsItem, shouldRetry: Boolean) {
-        // This member does not exist in the channel. Add him
-        CommonMethod.makeLog(TAG, "Calling join channel")
-        sendBirdApiManager.joinChannel(
-            channel.channelUrl, userToAdd
-        ) {
-            CommonMethod.makeLog(TAG, "Got callback from join channel")
-            /*if (!it.error)
-                CommonMethod.makeLog(
-                    TAG,
-                    "Member $userToAdd added in channel ${channel.channelUrl}"
-                )
-            else {
-                CommonMethod.makeLog(
-                    TAG,
-                    "Member $userToAdd does not exist"
-                )
-                addUser(userToAdd, channel)
-            }*/
-        }
-    }
-
-    private fun addUser(userToAdd: String, channel: ChannelsItem) {
-        CommonMethod.makeLog(TAG, "Calling Get user api")
+    private fun getUserFromFlatShare(userToAdd: String, channel: ChannelsItem) {
         activity?.baseApiController?.getUser(false, userToAdd, object : OnUserFetched {
             override fun userFetched(resp: UserResponse?) {
-                CommonMethod.makeLog(TAG, "Got callback from get user api")
                 val name = resp?.data?.name
-                if (!name?.firstName.isNullOrEmpty()
-                    && !name?.lastName.isNullOrEmpty()
-                    && AppConstants.isSendbirdLive
-                ) {
+                if (!name?.firstName.isNullOrEmpty() && AppConstants.isSendbirdLive) {
+                    if (name?.lastName.isNullOrEmpty()) name?.lastName = "Mehta"
                     val sendBirdUser = SendBirdUser(activity)
-                    val params =
-                        HashMap<String, String>()
+                    val params = HashMap<String, String>()
                     params["user_id"] = userToAdd
                     params["nickname"] =
                         resp?.data?.name?.firstName + " " + resp?.data?.name?.lastName
@@ -149,13 +128,23 @@ class SendbirdChannelFix {
                     sendBirdUser.createUser(
                         params
                     ) {
-                        CommonMethod.makeLog(TAG, "Got callback from create sendbird user api")
-                        joinChannel(userToAdd, channel, false)
+                        joinChannel(userToAdd, channel)
                     }
                 }
             }
 
         })
+    }
+
+    private fun joinChannel(userToAdd: String, channel: ChannelsItem) {
+        // This member does not exist in the channel. Add him
+        sendBirdApiManager.joinChannel(
+            channel.channelUrl, userToAdd
+        ) {
+            channelsWithOneMember.removeAt(0)
+            Thread.sleep(3000)
+            processChannels()
+        }
     }
 
     private fun deleteChannel(channel: ChannelsItem) {

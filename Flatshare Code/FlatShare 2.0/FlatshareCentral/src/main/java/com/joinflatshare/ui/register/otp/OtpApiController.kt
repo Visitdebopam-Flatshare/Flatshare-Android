@@ -159,6 +159,7 @@ class OtpApiController(private val activity: OtpActivity) {
                 params["profile_url"] =
                     if (AppConstants.loggedInUser?.dp.isNullOrBlank()) "" else AppConstants.loggedInUser?.dp!!
                 sendBirdUser.updateUser(
+                    AppConstants.loggedInUser?.id,
                     params
                 ) { }
                 activity.setResult(Activity.RESULT_OK)

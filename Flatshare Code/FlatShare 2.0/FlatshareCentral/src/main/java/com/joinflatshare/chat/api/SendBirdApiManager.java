@@ -7,6 +7,7 @@ import com.joinflatshare.chat.pojo.ModelUserMetadataRequest;
 import com.joinflatshare.chat.pojo.channel_detail.ChannelDetailResponse;
 import com.joinflatshare.chat.pojo.channel_list.ChannelListResponse;
 import com.joinflatshare.chat.pojo.user.ModelChatUserResponse;
+import com.joinflatshare.chat.pojo.user_list.ModelUserListResponse;
 import com.joinflatshare.constants.AppConstants;
 import com.joinflatshare.pojo.BaseResponse;
 import com.joinflatshare.utils.helper.CommonMethod;
@@ -23,6 +24,17 @@ import io.reactivex.schedulers.Schedulers;
 import retrofit2.HttpException;
 
 public class SendBirdApiManager {
+
+    public void getAllUsers(HashMap<String, String> params, OnResponseCallback<ModelUserListResponse> onResponseCallback) {
+        if (AppConstants.isSendbirdLive) {
+            if (ConnectivityListener.checkInternet()) {
+                new CompositeDisposable().add(getClient().getAllUsers(params).subscribeOn(Schedulers.computation())
+                        .observeOn(AndroidSchedulers.mainThread())
+                        .subscribe(trendsResponse -> sendResponse(trendsResponse, onResponseCallback),
+                                throwable -> onResponseCallback.oncallBack(null)));
+            }
+        }
+    }
 
     public void createUser(HashMap<String, String> params, OnResponseCallback<ModelChatUserResponse> onResponseCallback) {
         if (AppConstants.isSendbirdLive) {

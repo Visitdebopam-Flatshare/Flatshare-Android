@@ -5,6 +5,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.joinflatshare.FlatshareCentral.databinding.ItemAdminFeatureBinding
 import com.joinflatshare.ui.admin.features.SendbirdChannelFix
+import com.joinflatshare.ui.admin.features.SendbirdUserNameFix
 import com.joinflatshare.utils.helper.CommonMethod
 
 class AdminFeatureAdapter(
@@ -36,10 +37,14 @@ class AdminFeatureAdapter(
             view.txtAdminHeader.text = item
             view.txtAdminHeader.setOnClickListener {
                 CommonMethod.makeToast("Clicked on $item")
-            }
-            when (item) {
-                "Sendbird User Not Registered" -> {
-                    SendbirdChannelFix().fix(adapter.activity)
+                when (item) {
+                    "Sendbird User Not Registered" -> {
+                        SendbirdChannelFix().fix(adapter.activity)
+                    }
+
+                    "Sendbird User Name Fix" -> {
+                        SendbirdUserNameFix().fix(adapter.activity)
+                    }
                 }
             }
         }

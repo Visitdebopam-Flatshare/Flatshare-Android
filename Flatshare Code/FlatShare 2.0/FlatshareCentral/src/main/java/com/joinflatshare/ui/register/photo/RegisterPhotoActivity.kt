@@ -16,6 +16,7 @@ import com.joinflatshare.FlatShareApplication
 import com.joinflatshare.FlatshareCentral.databinding.ActivityRegisterPhotoBinding
 import com.joinflatshare.chat.SendBirdUser
 import com.joinflatshare.chat.pojo.user.ModelChatUserResponse
+import com.joinflatshare.constants.AppConstants
 import com.joinflatshare.db.daos.AppDao
 import com.joinflatshare.interfaces.OnUserFetched
 import com.joinflatshare.pojo.user.User
@@ -106,6 +107,7 @@ class RegisterPhotoActivity : BaseActivity() {
         val params: HashMap<String, String> = HashMap()
         params["profile_url"] = if (user?.dp.isNullOrEmpty()) "" else user?.dp!!
         sendBirdUser.updateUser(
+            user?.id,
             params
         ) { response: ModelChatUserResponse? -> }
     }

@@ -9,6 +9,7 @@ import com.joinflatshare.chat.chatInterfaces.OnUserListFetchedListener;
 import com.joinflatshare.chat.metadata.UserMetadata;
 import com.joinflatshare.chat.pojo.ModelUserMetadataRequest;
 import com.joinflatshare.chat.pojo.user.ModelChatUserResponse;
+import com.joinflatshare.chat.pojo.user_list.ModelUserListResponse;
 import com.joinflatshare.db.daos.UserDao;
 import com.joinflatshare.interfaces.OnitemClick;
 import com.joinflatshare.utils.helper.CommonMethod;
@@ -28,12 +29,16 @@ public class SendBirdUser {
         apiManager = new SendBirdApiManager();
     }
 
+    public void getAllUsers(HashMap<String, String> params, OnResponseCallback<ModelUserListResponse> callback) {
+        apiManager.getAllUsers(params, callback);
+    }
+
     public void createUser(HashMap<String, String> params, OnResponseCallback<ModelChatUserResponse> callback) {
         apiManager.createUser(params, callback);
     }
 
-    public void updateUser(HashMap<String, String> params, OnResponseCallback<ModelChatUserResponse> callback) {
-        apiManager.updateProfile(FlatShareApplication.Companion.getDbInstance().userDao().get(UserDao.USER_CONSTANT_USERID), params, callback);
+    public void updateUser(String userId,HashMap<String, String> params, OnResponseCallback<ModelChatUserResponse> callback) {
+        apiManager.updateProfile(userId, params, callback);
     }
 
     public void updateUserMetadata(UserMetadata metadata, OnResponseCallback<ModelChatUserResponse> user) {

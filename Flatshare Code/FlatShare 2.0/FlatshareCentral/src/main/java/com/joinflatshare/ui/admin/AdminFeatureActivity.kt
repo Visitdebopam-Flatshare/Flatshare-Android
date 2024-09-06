@@ -25,7 +25,7 @@ class AdminFeatureActivity : BaseActivity() {
         viewBind.rvAdminFeatures.layoutManager = LinearLayoutManager(this)
         val features = ArrayList<String>()
         features.add("Sendbird User Not Registered")
+        features.add("Sendbird User Name Fix")
         viewBind.rvAdminFeatures.adapter = AdminFeatureAdapter(this, features)
-
     }
 }

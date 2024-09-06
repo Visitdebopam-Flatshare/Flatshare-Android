@@ -5,6 +5,7 @@ import com.joinflatshare.chat.pojo.ModelUserMetadataRequest;
 import com.joinflatshare.chat.pojo.channel_detail.ChannelDetailResponse;
 import com.joinflatshare.chat.pojo.channel_list.ChannelListResponse;
 import com.joinflatshare.chat.pojo.user.ModelChatUserResponse;
+import com.joinflatshare.chat.pojo.user_list.ModelUserListResponse;
 import com.joinflatshare.pojo.BaseResponse;
 
 import java.util.ArrayList;
@@ -21,6 +22,9 @@ import retrofit2.http.Query;
 import retrofit2.http.QueryMap;
 
 public interface SendBirdApiInterface {
+
+    @GET("users")
+    Observable<ModelUserListResponse> getAllUsers(@QueryMap HashMap<String, String> params);
 
     @POST("users")
     Observable<ModelChatUserResponse> createUser(@Body HashMap<String, String> params);
