@@ -93,7 +93,7 @@ class ExploreActivity : BaseActivity() {
         if (intent.getBooleanExtra(IntentConstants.INTENT_NOTIFICATION, false)) {
             intent.removeExtra(IntentConstants.INTENT_NOTIFICATION)
             FcmNavigationUtils(this, intent)
-        } else MyFirebaseMessagingService.generateTestNotification()
+        } //else MyFirebaseMessagingService.generateTestNotification()
     }
 
     override fun onDestroy() {

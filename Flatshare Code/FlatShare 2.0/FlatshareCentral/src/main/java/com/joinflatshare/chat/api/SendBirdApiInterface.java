@@ -65,6 +65,9 @@ public interface SendBirdApiInterface {
     @DELETE("users/{userId}/push")
     Observable<BaseResponse> deleteAllPushTokens(@Path("userId") String userId);
 
+    @DELETE("users/{userId}")
+    Observable<BaseResponse> deleteUser(@Path("userId") String userId);
+
     /*@POST("profile")
     Observable<OtpResponse> updateProfile(@Body ModelUser user);
 

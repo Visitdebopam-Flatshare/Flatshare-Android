@@ -160,6 +160,18 @@ public class SendBirdApiManager {
             }
     }
 
+    public void deleteUser(String userId, OnResponseCallback<BaseResponse> onResponseCallback) {
+        if (AppConstants.isSendbirdLive)
+            if (ConnectivityListener.checkInternet()) {
+                new CompositeDisposable().add(getClient().deleteUser(userId).subscribeOn(Schedulers.computation())
+                        .observeOn(AndroidSchedulers.mainThread())
+                        .subscribe(trendsResponse -> {
+                                    sendResponse(trendsResponse, onResponseCallback);
+                                },
+                                throwable -> onResponseCallback.oncallBack(null)));
+            }
+    }
+
 
     private void sendResponse(Object response, OnResponseCallback onResponseCallback) {
         onResponseCallback.oncallBack(response);
