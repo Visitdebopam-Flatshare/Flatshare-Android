@@ -7,8 +7,7 @@ import com.android.billingclient.api.ProductDetails
  */
 interface OnProductDetailsFetched {
     fun onProductSelected(
-        products: List<ProductDetails>?,
-        amount: Int,
+        product: ProductDetails,
         callback: OnProductPurchaseCompleteListener
     )
 }

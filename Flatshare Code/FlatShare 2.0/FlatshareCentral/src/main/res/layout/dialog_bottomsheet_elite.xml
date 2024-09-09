@@ -12,20 +12,18 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/drawable_bottomsheet"
-        android:gravity="center"
         android:orientation="vertical"
         android:padding="@dimen/_10sdp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <ImageView
-            android:id="@+id/img_cross"
-            android:layout_width="@dimen/_20sdp"
-            android:layout_height="@dimen/_20sdp"
-            android:layout_gravity="end"
-            android:layout_margin="@dimen/_1sdp"
-            android:src="@drawable/ic_cross_black" />
+        <View
+            android:layout_width="@dimen/_30sdp"
+            android:layout_height="@dimen/_2sdp"
+            android:layout_gravity="center"
+            android:layout_marginTop="@dimen/_5sdp"
+            android:background="@color/grey4" />
 
         <ScrollView
             android:layout_width="match_parent"
@@ -37,55 +35,126 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
 
-
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="@dimen/_30sdp"
+                    android:layout_marginHorizontal="@dimen/_60sdp"
+                    android:layout_marginTop="@dimen/_20sdp"
                     android:gravity="center"
-                    android:orientation="horizontal">
+                    android:orientation="horizontal"
+                    android:weightSum="1">
 
-                    <com.google.android.material.card.MaterialCardView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        app:cardBackgroundColor="#E9F0FF"
-                        app:cardCornerRadius="@dimen/_40sdp"
-                        app:cardElevation="0dp"
-                        app:strokeWidth="0dp">
+                    <ImageView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="0.6"
+                        android:src="@drawable/ic_logo_black"
+                        app:tint="#000463" />
 
-                        <ImageView
-                            android:layout_width="@dimen/_20sdp"
-                            android:layout_height="@dimen/_20sdp"
-                            android:layout_margin="@dimen/_8sdp"
-                            android:src="@drawable/ic_menu_check"
-                            app:tint="@color/blue_dark" />
-                    </com.google.android.material.card.MaterialCardView>
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="@dimen/_10sdp"
-                        android:fontFamily="@font/font_bold"
-                        android:text="Chat Requests"
-                        android:textColor="@color/blue_dark"
-                        android:textSize="@dimen/_20sdp" />
+                    <ImageView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="0.3"
+                        android:src="@drawable/ic_elite"
+                        app:tint="#000463" />
 
                 </LinearLayout>
 
-                <TextView
-                    android:layout_width="wrap_content"
+                <FrameLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal"
-                    android:layout_marginTop="@dimen/_4sdp"
-                    android:fontFamily="@font/font_medium"
-                    android:text="Always seen."
-                    android:textColor="@color/blue_dark"
-                    android:textSize="@dimen/_12sdp" />
+                    android:layout_marginVertical="@dimen/_20sdp">
 
+                    <com.google.android.material.card.MaterialCardView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginTop="@dimen/_15sdp"
+                        app:cardBackgroundColor="@color/elite_blue"
+                        app:cardCornerRadius="@dimen/_20sdp"
+                        app:cardElevation="0dp"
+                        app:cardPreventCornerOverlap="false"
+                        app:cardUseCompatPadding="false">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="@dimen/_10sdp"
+                            android:gravity="start|center_vertical"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/_20sdp"
+                                android:drawableStart="@drawable/ic_tick_blue"
+                                android:drawablePadding="@dimen/_10sdp"
+                                android:fontFamily="@font/font_medium"
+                                android:text="50 Chat Requests every week."
+                                android:textColor="@color/white"
+                                android:textSize="@dimen/_14sdp"
+                                app:drawableTint="@color/white" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/_10sdp"
+                                android:drawableStart="@drawable/ic_tick_blue"
+                                android:drawablePadding="@dimen/_10sdp"
+                                android:fontFamily="@font/font_medium"
+                                android:text="Connect with other elite members."
+                                android:textColor="@color/white"
+                                android:textSize="@dimen/_14sdp"
+                                app:drawableTint="@color/white" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/_10sdp"
+                                android:layout_marginBottom="@dimen/_20sdp"
+                                android:drawableStart="@drawable/ic_tick_blue"
+                                android:drawablePadding="@dimen/_10sdp"
+                                android:fontFamily="@font/font_medium"
+                                android:text="Add {Pack Value} to your Flatscore."
+                                android:textColor="@color/white"
+                                android:textSize="@dimen/_14sdp"
+                                app:drawableTint="@color/white" />
+
+                        </LinearLayout>
+
+
+                    </com.google.android.material.card.MaterialCardView>
+
+                    <com.google.android.material.card.MaterialCardView
+                        android:layout_width="wrap_content"
+                        android:layout_height="@dimen/_30sdp"
+                        android:layout_gravity="center_horizontal"
+                        app:cardBackgroundColor="#323581"
+                        app:cardCornerRadius="@dimen/_15sdp"
+                        app:cardElevation="0dp"
+                        app:cardPreventCornerOverlap="false"
+                        app:cardUseCompatPadding="false"
+                        app:strokeColor="@color/white"
+                        app:strokeWidth="2dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginHorizontal="@dimen/_20sdp"
+                            android:fontFamily="@font/font_regular"
+                            android:text="Elite member benefits"
+                            android:textColor="@color/white"
+                            android:textSize="@dimen/_11sdp" />
+
+                    </com.google.android.material.card.MaterialCardView>
+
+
+                </FrameLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/_130sdp"
-                    android:layout_marginTop="@dimen/_30sdp"
                     android:gravity="bottom"
                     android:orientation="horizontal"
                     android:weightSum="3.1">
@@ -95,12 +164,12 @@
                         android:layout_width="0dp"
                         android:layout_height="@dimen/_110sdp"
                         android:layout_weight="1"
-                        android:alpha="0.4"
+                        android:alpha="0.5"
                         app:cardBackgroundColor="@android:color/transparent"
                         app:cardCornerRadius="@dimen/_10sdp"
                         app:cardPreventCornerOverlap="true"
                         app:cardUseCompatPadding="false"
-                        app:strokeColor="@color/blue_dark"
+                        app:strokeColor="@color/elite_blue"
                         app:strokeWidth="2dp">
 
                         <LinearLayout
@@ -114,11 +183,11 @@
                                 android:id="@+id/txt_elite_desc_1"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:fontFamily="@font/font_semibold"
+                                android:fontFamily="@font/font_bold"
                                 android:gravity="center"
                                 android:text="Week"
-                                android:textColor="@color/blue_dark"
-                                android:textSize="@dimen/_12sdp" />
+                                android:textColor="@color/elite_blue"
+                                android:textSize="@dimen/_16sdp" />
 
                             <com.google.android.material.card.MaterialCardView
                                 android:layout_width="wrap_content"
@@ -131,17 +200,17 @@
                                     android:layout_width="@dimen/_20sdp"
                                     android:layout_height="@dimen/_20sdp"
                                     android:layout_margin="@dimen/_5sdp"
-                                    android:src="@drawable/ic_menu_check"
-                                    app:tint="@color/blue_dark" />
+                                    android:src="@drawable/ic_elite"
+                                    app:tint="@color/elite_blue" />
                             </com.google.android.material.card.MaterialCardView>
 
                             <TextView
                                 android:id="@+id/txt_price_1"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:fontFamily="@font/font_semibold"
+                                android:fontFamily="@font/font_bold"
                                 android:text="15"
-                                android:textColor="@color/blue_dark"
+                                android:textColor="@color/elite_blue"
                                 android:textSize="@dimen/_16sdp" />
 
                         </LinearLayout>
@@ -162,7 +231,7 @@
                         app:cardCornerRadius="@dimen/_10sdp"
                         app:cardPreventCornerOverlap="true"
                         app:cardUseCompatPadding="false"
-                        app:strokeColor="@color/blue_dark"
+                        app:strokeColor="@color/elite_blue"
                         app:strokeWidth="2dp">
 
                         <LinearLayout
@@ -173,7 +242,7 @@
                             <TextView
                                 android:layout_width="match_parent"
                                 android:layout_height="@dimen/_30sdp"
-                                android:background="@color/blue_dark"
+                                android:background="@color/elite_blue"
                                 android:fontFamily="@font/font_regular"
                                 android:gravity="center"
                                 android:paddingVertical="@dimen/_3sdp"
@@ -192,11 +261,11 @@
                                     android:id="@+id/txt_elite_desc_2"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:fontFamily="@font/font_semibold"
+                                    android:fontFamily="@font/font_bold"
                                     android:gravity="center"
                                     android:text="Week"
-                                    android:textColor="@color/blue_dark"
-                                    android:textSize="@dimen/_12sdp" />
+                                    android:textColor="@color/color_text_primary"
+                                    android:textSize="@dimen/_16sdp" />
 
                                 <com.google.android.material.card.MaterialCardView
                                     android:layout_width="wrap_content"
@@ -210,8 +279,8 @@
                                         android:layout_height="@dimen/_20sdp"
                                         android:layout_gravity="center"
                                         android:layout_margin="@dimen/_5sdp"
-                                        android:src="@drawable/ic_menu_check"
-                                        app:tint="@color/blue_dark" />
+                                        android:src="@drawable/ic_elite"
+                                        app:tint="@color/elite_blue" />
                                 </com.google.android.material.card.MaterialCardView>
 
 
@@ -219,9 +288,9 @@
                                     android:id="@+id/txt_price_2"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:fontFamily="@font/font_semibold"
+                                    android:fontFamily="@font/font_bold"
                                     android:text="15"
-                                    android:textColor="@color/blue_dark"
+                                    android:textColor="@color/color_text_primary"
                                     android:textSize="@dimen/_16sdp" />
 
                             </LinearLayout>
@@ -240,12 +309,12 @@
                         android:layout_width="0dp"
                         android:layout_height="@dimen/_110sdp"
                         android:layout_weight="1"
-                        android:alpha="0.4"
+                        android:alpha="0.5"
                         app:cardBackgroundColor="@android:color/transparent"
                         app:cardCornerRadius="@dimen/_10sdp"
                         app:cardPreventCornerOverlap="true"
                         app:cardUseCompatPadding="false"
-                        app:strokeColor="@color/blue_dark"
+                        app:strokeColor="@color/elite_blue"
                         app:strokeWidth="2dp">
 
                         <LinearLayout
@@ -259,11 +328,11 @@
                                 android:id="@+id/txt_elite_desc_3"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:fontFamily="@font/font_semibold"
+                                android:fontFamily="@font/font_bold"
                                 android:gravity="center"
                                 android:text="Week"
-                                android:textColor="@color/blue_dark"
-                                android:textSize="@dimen/_12sdp" />
+                                android:textColor="@color/elite_blue"
+                                android:textSize="@dimen/_16sdp" />
 
                             <com.google.android.material.card.MaterialCardView
                                 android:layout_width="wrap_content"
@@ -276,17 +345,17 @@
                                     android:layout_width="@dimen/_20sdp"
                                     android:layout_height="@dimen/_20sdp"
                                     android:layout_margin="@dimen/_5sdp"
-                                    android:src="@drawable/ic_menu_check"
-                                    app:tint="@color/blue_dark" />
+                                    android:src="@drawable/ic_elite"
+                                    app:tint="@color/elite_blue" />
                             </com.google.android.material.card.MaterialCardView>
 
                             <TextView
                                 android:id="@+id/txt_price_3"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:fontFamily="@font/font_semibold"
+                                android:fontFamily="@font/font_bold"
                                 android:text="15"
-                                android:textColor="@color/blue_dark"
+                                android:textColor="@color/elite_blue"
                                 android:textSize="@dimen/_16sdp" />
 
                         </LinearLayout>
@@ -294,120 +363,29 @@
                     </com.google.android.material.card.MaterialCardView>
                 </LinearLayout>
 
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_30sdp"
+                    android:layout_marginBottom="@dimen/_10sdp"
+                    android:fontFamily="@font/font_semibold"
+                    android:gravity="center"
+                    android:text="This is a one time purchase.\nYou will not be charged recurringly."
+                    android:textColor="@color/elite_blue"
+                    android:textSize="@dimen/_12sdp" />
+
                 <com.joinflatshare.customviews.CustomButton
                     android:id="@+id/btn_elite"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/button_height_large"
                     android:layout_marginHorizontal="@dimen/_20sdp"
-                    android:layout_marginTop="@dimen/_20sdp"
-                    android:background="@drawable/drawable_button_blue"
+                    android:background="@drawable/drawable_button_elite"
                     android:fontFamily="@font/font_semibold"
                     android:text="Continue"
                     android:textAllCaps="false"
                     android:textColor="@color/white"
                     android:textSize="@dimen/button_text_size" />
-
-                <LinearLayout
-                    android:id="@+id/ll_elite_holder"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="@dimen/_20sdp"
-                    android:orientation="vertical">
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="0dp"
-                        android:layout_weight="1"
-                        android:gravity="center"
-                        android:orientation="horizontal">
-
-                        <View
-                            android:layout_width="0dp"
-                            android:layout_height="1dp"
-                            android:layout_weight="0.45"
-                            android:background="@color/grey5" />
-
-                        <TextView
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="0.1"
-                            android:fontFamily="@font/font_semibold"
-                            android:gravity="center"
-                            android:text=" OR "
-                            android:textColor="@color/grey5"
-                            android:textSize="@dimen/_12sdp" />
-
-                        <View
-                            android:layout_width="0dp"
-                            android:layout_height="1dp"
-                            android:layout_weight="0.45"
-                            android:background="@color/grey5" />
-
-                    </LinearLayout>
-
-                    <com.google.android.material.card.MaterialCardView
-                        android:id="@+id/card_elite"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/_20sdp"
-                        app:cardBackgroundColor="@android:color/transparent"
-                        app:cardCornerRadius="@dimen/_10sdp"
-                        app:cardElevation="0dp"
-                        app:cardPreventCornerOverlap="false"
-                        app:cardUseCompatPadding="false"
-                        app:strokeColor="@color/elite_blue"
-                        app:strokeWidth="1dp">
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_margin="@dimen/_10sdp"
-                            android:gravity="center"
-                            android:orientation="vertical">
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:fontFamily="@font/font_semibold"
-                                android:gravity="center"
-                                android:text="Get 50 chat requests every week"
-                                android:textColor="@color/elite_blue"
-                                android:textSize="@dimen/_10sdp" />
-
-                            <LinearLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="@dimen/_5sdp"
-                                android:gravity="center"
-                                android:orientation="horizontal">
-
-                                <ImageView
-                                    android:layout_width="@dimen/_20sdp"
-                                    android:layout_height="@dimen/_20sdp"
-                                    android:src="@drawable/ic_elite"
-                                    app:tint="@color/elite_blue" />
-
-                                <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginStart="@dimen/_5sdp"
-                                    android:fontFamily="@font/font_semibold"
-                                    android:gravity="center"
-                                    android:text="Join Flatshare Elite"
-                                    android:textColor="@color/elite_blue"
-                                    android:textSize="@dimen/_16sdp" />
-
-                            </LinearLayout>
-                        </LinearLayout>
-
-                    </com.google.android.material.card.MaterialCardView>
-
-                </LinearLayout>
-
-
             </LinearLayout>
-
-
         </ScrollView>
 
 

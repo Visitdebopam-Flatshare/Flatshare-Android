@@ -28,6 +28,8 @@ class AdminFeatureActivity : BaseActivity() {
         features.add("Reload Flatshare Users")
         features.add("Sendbird User Not Registered")
         features.add("Sendbird User Name Fix")
+        features.add("Sendbird User Image Fix")
+        features.add("Sendbird User Image HTTPS Fix")
         features.add("Sendbird Delete Unregistered Users")
         viewBind.rvAdminFeatures.adapter = AdminFeatureAdapter(this, features)
     }

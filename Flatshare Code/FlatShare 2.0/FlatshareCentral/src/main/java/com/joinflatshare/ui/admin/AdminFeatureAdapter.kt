@@ -8,6 +8,8 @@ import com.joinflatshare.ui.admin.features.DeleteUnregisteredUsersFromSendbird
 import com.joinflatshare.ui.admin.features.FlatshareUsersTableReload
 import com.joinflatshare.ui.admin.features.SendBirdUsersTableReload
 import com.joinflatshare.ui.admin.features.SendbirdChannelFix
+import com.joinflatshare.ui.admin.features.SendbirdImageFix
+import com.joinflatshare.ui.admin.features.SendbirdImagePathFix
 import com.joinflatshare.ui.admin.features.SendbirdUserNameFix
 import com.joinflatshare.utils.helper.CommonMethod
 
@@ -55,6 +57,14 @@ class AdminFeatureAdapter(
 
                     "Sendbird User Name Fix" -> {
                         SendbirdUserNameFix().fix(adapter.activity)
+                    }
+
+                    "Sendbird User Image Fix" -> {
+                        SendbirdImageFix().fix(adapter.activity)
+                    }
+
+                    "Sendbird User Image HTTPS Fix" -> {
+                        SendbirdImagePathFix().fix(adapter.activity)
                     }
 
                     "Sendbird Delete Unregistered Users" -> {

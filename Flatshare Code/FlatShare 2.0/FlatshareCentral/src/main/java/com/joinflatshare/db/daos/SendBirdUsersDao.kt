@@ -17,6 +17,12 @@ abstract class SendBirdUsersDao {
     @Query("Select * from TableSendbirdUser where name=''")
     abstract fun getSendbirdUsersWithoutName(): List<TableSendbirdUser>
 
+    @Query("Select * from TableSendbirdUser where dp=''")
+    abstract fun getSendbirdUsersWithoutImage(): List<TableSendbirdUser>
+
+    @Query("Select * from TableSendbirdUser where dp like ('%https%')")
+    abstract fun getSendbirdUsersWithWrongImagePath(): List<TableSendbirdUser>
+
     @Query("Delete from TableSendbirdUser where id=:id")
     abstract fun deleteUser(id: String)
 

@@ -10,9 +10,12 @@ import com.joinflatshare.FlatshareCentral.R
 import com.joinflatshare.FlatshareCentral.databinding.ActivityPrefFlatBinding
 import com.joinflatshare.constants.AppConstants
 import com.joinflatshare.constants.RequestCodeConstants
+import com.joinflatshare.interfaces.OnStringFetched
 import com.joinflatshare.interfaces.OnUserFetched
+import com.joinflatshare.payment.PaymentHandler
 import com.joinflatshare.pojo.user.ModelLocation
 import com.joinflatshare.pojo.user.UserResponse
+import com.joinflatshare.ui.bottomsheet.ElitePreferenceBottomSheet
 import com.joinflatshare.ui.bottomsheet.VerifiedBottomSheet
 import com.joinflatshare.utils.google.AutoCompletePlaces
 import com.joinflatshare.utils.helper.CommonMethod
@@ -150,9 +153,56 @@ class PreferenceListener(private val activity: PreferenceActivity) : View.OnClic
                 }
             }
         }
+        viewBind.includePrefFlatmate.switchEliteMember.setOnCheckedChangeListener { _, isChecked ->
+            setElite(isChecked)
+            if (isChecked) {
+                if (activity.user?.verification?.isVerified == false) {
+                    setElite(false)
+                    ElitePreferenceBottomSheet(activity
+                    ) { text ->
+                        if (text == "1")
+                            setElite(true)
+                    }
+                }
+            }
+        }
     }
 
     private fun setVerified(checked: Boolean) {
+        viewBind.includePrefFlatmate.switchVerifiedMember.isChecked = checked
+        activity.user?.flatProperties?.isVerifiedOnly = checked
+        if (checked) {
+            viewBind.includePrefFlatmate.imgVerified.setColorFilter(
+                ContextCompat.getColor(
+                    activity, R.color.blue_dark
+                )
+            )
+            viewBind.includePrefFlatmate.txtVerified.setTextColor(
+                ContextCompat.getColor(
+                    activity, R.color.blue_dark
+                )
+            )
+            viewBind.includePrefFlatmate.rlVerified.background = ContextCompat.getDrawable(
+                activity, R.drawable.drawable_button_blue_stroke_blue_bg
+            )
+        } else {
+            viewBind.includePrefFlatmate.imgVerified.setColorFilter(
+                ContextCompat.getColor(
+                    activity, R.color.grey2
+                )
+            )
+            viewBind.includePrefFlatmate.txtVerified.setTextColor(
+                ContextCompat.getColor(
+                    activity, R.color.grey2
+                )
+            )
+            viewBind.includePrefFlatmate.rlVerified.background = ContextCompat.getDrawable(
+                activity, R.drawable.drawable_button_grey_stroke
+            )
+        }
+    }
+
+    private fun setElite(checked: Boolean) {
         viewBind.includePrefFlatmate.switchVerifiedMember.isChecked = checked
         activity.user?.flatProperties?.isVerifiedOnly = checked
         if (checked) {

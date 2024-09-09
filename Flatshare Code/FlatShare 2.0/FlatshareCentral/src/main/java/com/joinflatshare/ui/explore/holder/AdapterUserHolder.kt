@@ -3,20 +3,19 @@ package com.joinflatshare.ui.explore.holder
 import android.content.Intent
 import android.text.TextUtils
 import android.view.View
-import com.google.gson.Gson
 import com.joinflatshare.FlatshareCentral.databinding.ItemChecksBinding
 import com.joinflatshare.FlatshareCentral.databinding.ItemExploreBinding
 import com.joinflatshare.api.retrofit.WebserviceCustomRequestHandler
 import com.joinflatshare.constants.AppConstants
 import com.joinflatshare.constants.ChatRequestConstants
-import com.joinflatshare.pojo.BaseResponse
+import com.joinflatshare.interfaces.OnStringFetched
 import com.joinflatshare.pojo.explore.UserRecommendationItem
 import com.joinflatshare.pojo.user.User
 import com.joinflatshare.ui.base.BaseActivity
+import com.joinflatshare.ui.bottomsheet.EliteLearnMoreBottomSheet
 import com.joinflatshare.ui.bottomsheet.IncompleteProfileBottomSheet
 import com.joinflatshare.ui.bottomsheet.MatchBottomSheet
 import com.joinflatshare.ui.checks.ChecksActivity
-import com.joinflatshare.ui.explore.ExploreActivity
 import com.joinflatshare.ui.explore.ExploreAdapter
 import com.joinflatshare.ui.profile.details.ProfileDetailsActivity
 import com.joinflatshare.utils.helper.CommonMethod
@@ -78,7 +77,7 @@ class AdapterUserHolder {
                 return@setOnClickListener
             }
             val rejectLikeUrl = WebserviceCustomRequestHandler.getRejectLikeRequest(
-                BaseActivity.TYPE_FHT, ChatRequestConstants.CHAT_REQUEST_CONSTANT_FHT,user.id
+                BaseActivity.TYPE_FHT, ChatRequestConstants.CHAT_REQUEST_CONSTANT_FHT, user.id
             )
             WebserviceManager().rejectLike(activity, rejectLikeUrl,
                 object : OnFlatshareResponseCallBack<Response<ResponseBody>> {
@@ -99,13 +98,17 @@ class AdapterUserHolder {
             }
             WebserviceManager().sendChatRequest(
                 activity,
-                ChatRequestConstants.CHAT_REQUEST_CONSTANT_FHT,user.id,
+                ChatRequestConstants.CHAT_REQUEST_CONSTANT_FHT, user.id,
                 object : OnFlatshareResponseCallBack<Response<ResponseBody>> {
                     override fun onResponseCallBack(response: String) {
                         MixpanelUtils.onButtonClicked("Feed SuperCheck")
                         adapter.removeItem(position)
                     }
                 })
+        }
+
+        holder.imgElite.setOnClickListener {
+            EliteLearnMoreBottomSheet(activity, user)
         }
 
         AdapterUserVpHolder.bindVp(activity, holder.includeExploreVp, user)

@@ -23,7 +23,7 @@ import java.util.concurrent.Executors
 @Database(
     entities = [TableDeviceConfiguration::class, TableUser::class, TableApp::class, TableRequests::class, TableSendbirdUser::class,
         TableFlatshareUser::class],
-    version = 9,
+    version = DBMigrations.latestDBVersion,
     exportSchema = false
 )
 abstract class FlatshareDbManager : RoomDatabase() {
@@ -37,13 +37,13 @@ abstract class FlatshareDbManager : RoomDatabase() {
                 val dbBuilder = Room.databaseBuilder(
                     ctx.applicationContext, FlatshareDbManager::class.java,
                     DB_NAME
-                )/*.fallbackToDestructiveMigration()*/.allowMainThreadQueries()
-                    .addMigrations(DBMigrations.migrate_8_9)
+                ).allowMainThreadQueries()
+                    .addMigrations(DBMigrations.migration_7_8, DBMigrations.migration_8_9)
                 dbBuilder.setQueryCallback({ sqlQuery, bindArgs ->
-                    CommonMethod.makeLog(
+                    /*CommonMethod.makeLog(
                         "Query",
                         sqlQuery
-                    )
+                    )*/
                 }, Executors.newSingleThreadExecutor())
                 instance = dbBuilder.build()
             }
