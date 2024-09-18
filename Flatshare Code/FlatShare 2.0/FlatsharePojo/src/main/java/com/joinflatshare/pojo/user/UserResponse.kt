@@ -58,6 +58,9 @@ data class User(
     @field:SerializedName("profession")
     var profession: String? = "",
 
+    @field:SerializedName("godMode")
+    var godMode: String? = "",
+
     @field:SerializedName("dp")
     var dp: String? = null,
 
@@ -86,10 +89,10 @@ data class User(
     var invites: Int = 0,
 
     @field:SerializedName("completedDetails")
-    val completed: CompletedDetails?=null,
+    val completed: CompletedDetails? = null,
 
     @field:SerializedName("completed")
-    val completedPercentage: Int?=0,
+    val completedPercentage: Int? = 0,
 
     @field:SerializedName("isFlatSearch")
     var isFlatSearch: IsFlatSearch = IsFlatSearch(),

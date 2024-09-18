@@ -16,6 +16,9 @@ data class PurchaseOrder(
 	@field:SerializedName("productId")
 	val productId: String? = null,
 
+	@field:SerializedName("productName")
+	var productName: String? = null,
+
 	@field:SerializedName("acknowledged")
 	val acknowledged: Boolean? = null,
 

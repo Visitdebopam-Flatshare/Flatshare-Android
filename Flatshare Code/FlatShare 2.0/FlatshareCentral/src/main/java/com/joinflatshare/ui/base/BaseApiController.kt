@@ -56,13 +56,13 @@ class BaseApiController(private val activity: BaseActivity) {
             })
     }
 
-    fun getUser(showProgress: Boolean, userId: String?, callback: OnUserFetched) {
+    fun getUser(showProgress: Boolean, userId: String?, callback: OnUserFetched?) {
         WebserviceManager().getProfile(showProgress, activity, userId,
             object : OnFlatshareResponseCallBack<Response<ResponseBody>> {
                 override fun onResponseCallBack(response: String) {
                     val resp: UserResponse? = Gson().fromJson(response, UserResponse::class.java)
                     WebserviceCustomResponseHandler.handleUserResponse(resp)
-                    callback.userFetched(resp)
+                    callback?.userFetched(resp)
                 }
             })
     }

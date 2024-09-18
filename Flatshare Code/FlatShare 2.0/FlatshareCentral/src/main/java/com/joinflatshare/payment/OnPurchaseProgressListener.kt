@@ -1,5 +1,6 @@
 package com.joinflatshare.payment
 
+import com.android.billingclient.api.ProductDetails
 import com.android.billingclient.api.Purchase
 
 /**
@@ -9,5 +10,5 @@ interface OnPurchaseProgressListener {
     fun onPurchaseFailed()
     fun onProductPurchasePending()
     fun onPurchaseSuccess(purchase: Purchase)
-    fun onProductPaymentSuccess(purchase: Purchase)
+    fun onProductPaymentSuccess(purchase: Purchase, selectedProduct: ProductDetails?)
 }

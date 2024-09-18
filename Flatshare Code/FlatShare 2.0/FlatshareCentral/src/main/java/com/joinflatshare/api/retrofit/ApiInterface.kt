@@ -85,12 +85,4 @@ interface ApiInterface {
     fun report(
         @Url url: String
     ): Observable<BaseResponse>
-
-
-    /*------------------------------ PURCHASE ------------------------------*/
-    @POST("users/purchase/product")
-    fun purchaseOrder(
-        @Body request: PurchaseRequest
-    ): Observable<BaseResponse>
-
 }

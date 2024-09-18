@@ -272,20 +272,6 @@ class ApiManager() {
         }
     }
 
-    fun purchaseProduct(
-        request: PurchaseRequest, purchase: Purchase?, onResponseCallback: OnResponseCallback<Any?>
-    ) {
-        if (ConnectivityListener.checkInternet()) {
-            showProgress()
-            isLoaderShownByApimanager = true
-            CompositeDisposable().add(getClient()?.purchaseOrder(request)!!
-                .observeOn(AndroidSchedulers.mainThread()).subscribeOn(Schedulers.io())
-                .subscribe({ trendsResponse ->
-                    sendResponse(trendsResponse, onResponseCallback)
-                }) { throwable -> handlePaymentError(throwable as Throwable, purchase) })
-        }
-    }
-
     private fun sendResponse(response: Any?, onResponseCallback: OnResponseCallback<Any?>?) {
         if (isLoaderShownByApimanager)
             hideProgress()

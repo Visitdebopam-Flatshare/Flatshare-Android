@@ -158,10 +158,31 @@ class PreferenceListener(private val activity: PreferenceActivity) : View.OnClic
             if (isChecked) {
                 if (activity.user?.verification?.isVerified == false) {
                     setElite(false)
-                    ElitePreferenceBottomSheet(activity
+                    PaymentHandler.showPaymentForElite(
+                        activity
                     ) { text ->
-                        if (text == "1")
-                            setElite(true)
+                        if (text == "1") {
+                            activity.baseApiController.getUser(
+                                true,
+                                AppConstants.loggedInUser?.id, null
+                            )
+                        }
+                    }
+
+
+                    ElitePreferenceBottomSheet(
+                        activity
+                    ) { text ->
+                        if (text == "1") {
+                            activity.baseApiController.getUser(
+                                true,
+                                AppConstants.loggedInUser?.id, object : OnUserFetched {
+                                    override fun userFetched(resp: UserResponse?) {
+                                        setElite(true)
+                                    }
+                                }
+                            )
+                        }
                     }
                 }
             }

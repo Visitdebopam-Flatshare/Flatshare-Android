@@ -2,6 +2,7 @@ package com.joinflatshare.ui.bottomsheet.restriction
 
 import android.os.Handler
 import android.os.Looper
+import android.view.View
 import androidx.core.content.ContextCompat
 import com.android.billingclient.api.ProductDetails
 import com.android.billingclient.api.Purchase
@@ -9,10 +10,17 @@ import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.joinflatshare.FlatshareCentral.R
 import com.joinflatshare.FlatshareCentral.databinding.DialogRestrictionBinding
+import com.joinflatshare.constants.AppConstants
+import com.joinflatshare.interfaces.OnStringFetched
+import com.joinflatshare.interfaces.OnUserFetched
 import com.joinflatshare.payment.OnProductDetailsFetched
 import com.joinflatshare.payment.OnProductPurchaseCompleteListener
 import com.joinflatshare.payment.PaymentHandler
+import com.joinflatshare.pojo.user.User
+import com.joinflatshare.pojo.user.UserResponse
 import com.joinflatshare.ui.base.BaseActivity
+import java.text.SimpleDateFormat
+import java.util.Locale
 
 /**
  * Created by debopam on 30/05/23
@@ -24,14 +32,12 @@ class RestrictionBottomSheet(
     private val callback: OnProductDetailsFetched
 ) {
     val TAG = RestrictionBottomSheet::class.java.simpleName
-    private val dialog: BottomSheetDialog
+    private val dialog: BottomSheetDialog = BottomSheetDialog(activity)
 
-    val viewBind: DialogRestrictionBinding
+    val viewBind: DialogRestrictionBinding = DialogRestrictionBinding.inflate(activity.layoutInflater)
     private var selectedProduct: ProductDetails? = null
 
     init {
-        dialog = BottomSheetDialog(activity)
-        viewBind = DialogRestrictionBinding.inflate(activity.layoutInflater)
         dialog.setContentView(viewBind.root)
         populateProducts()
         viewBind.cardWeek1.setOnClickListener { clickCard(1) }
@@ -42,14 +48,26 @@ class RestrictionBottomSheet(
             PaymentHandler.isPopUpShowing = false
             dialog.dismiss()
         }
+        viewBind.cardElite.visibility = if (isEliteMember()) View.GONE else View.VISIBLE
         viewBind.cardElite.setOnClickListener {
             PaymentHandler.isPopUpShowing = false
             dialog.dismiss()
             Handler(Looper.getMainLooper()).postDelayed(
-                { PaymentHandler.showPaymentForElite(activity, null) }, 500
+                {
+                    PaymentHandler.showPaymentForElite(
+                        activity
+                    ) { text ->
+                        if (text == "1") {
+                            activity.baseApiController.getUser(
+                                true,
+                                AppConstants.loggedInUser?.id, null
+                            )
+                        }
+                    }
+                }, 500
             )
         }
-        viewBind.btnElite.setOnClickListener {
+        viewBind.btnContinue.setOnClickListener {
             if (selectedProduct != null) {
                 callback.onProductSelected(
                     selectedProduct!!,
@@ -171,5 +189,23 @@ class RestrictionBottomSheet(
             }
         }
 
+    }
+
+    private fun isEliteMember(): Boolean {
+        var godMode = AppConstants.loggedInUser?.godMode
+        try {
+            if (!godMode.isNullOrEmpty() && godMode.contains(".")) {
+                godMode = godMode.substring(0, godMode.lastIndexOf("."))
+                val sdf = SimpleDateFormat("yyyy-MM-ddTHH:mm:ss", Locale.getDefault())
+                val currentTime = System.currentTimeMillis()
+                val godModeExpireTime = sdf.parse(godMode)!!
+                if (godModeExpireTime.time < currentTime) {
+                    return true
+                }
+            }
+            return false
+        } catch (ex: Exception) {
+            return false
+        }
     }
 }

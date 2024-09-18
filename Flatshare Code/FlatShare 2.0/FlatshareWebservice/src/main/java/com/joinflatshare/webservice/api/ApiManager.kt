@@ -139,10 +139,7 @@ class ApiManager {
                     }
 
                     ConfigConstants.API_ERROR_CODE_RESTRICT -> {
-                        val json = throwable.response()?.errorBody()?.string()
-                        val jObject = JSONObject(json)
-                        val receivedLikesCount = jObject.optInt("count")
-                        callback?.onCallBackPayment(receivedLikesCount)
+                        callback?.onCallBackPayment(0)
                     }
 
                     ConfigConstants.API_ERROR_CODE_LOGOUT -> WebserviceManager.uiWebserviceHandler.onLogout(

@@ -4,6 +4,7 @@ import android.os.Handler
 import android.os.Looper
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.joinflatshare.FlatshareCentral.databinding.DialogBottomsheetEliteLearnMoreBinding
+import com.joinflatshare.constants.AppConstants
 import com.joinflatshare.payment.PaymentHandler
 import com.joinflatshare.pojo.user.User
 import com.joinflatshare.ui.base.BaseActivity
@@ -46,7 +47,16 @@ class EliteLearnMoreBottomSheet(
         viewBind.llLearnMore.setOnClickListener {
             dialog.dismiss()
             Handler(Looper.getMainLooper()).postDelayed(
-                { PaymentHandler.showPaymentForChats(activity, null) }, 500
+                { PaymentHandler.showPaymentForElite(
+                    activity
+                ) { text ->
+                    if (text == "1") {
+                        activity.baseApiController.getUser(
+                            true,
+                            AppConstants.loggedInUser?.id, null
+                        )
+                    }
+                } }, 500
             )
 
         }

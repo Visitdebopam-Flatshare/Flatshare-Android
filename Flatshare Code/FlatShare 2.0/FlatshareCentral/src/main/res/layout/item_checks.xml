@@ -101,15 +101,30 @@
                             </FrameLayout>
                         </com.google.android.material.card.MaterialCardView>
 
-                        <TextView
-                            android:id="@+id/txt_name"
+                        <LinearLayout
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center_horizontal"
                             android:layout_marginTop="@dimen/_5sdp"
-                            android:fontFamily="@font/font_semibold"
-                            android:textColor="@color/white"
-                            android:textSize="@dimen/_16sdp" />
+                            android:gravity="center"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:id="@+id/txt_name"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_horizontal"
+                                android:fontFamily="@font/font_semibold"
+                                android:textColor="@color/white"
+                                android:textSize="@dimen/_16sdp" />
+
+                            <ImageView
+                                android:id="@+id/img_elite"
+                                android:layout_width="@dimen/_22sdp"
+                                android:layout_height="@dimen/_22sdp"
+                                android:layout_marginStart="@dimen/_5sdp"
+                                android:src="@drawable/ic_elite" />
+                        </LinearLayout>
 
                         <LinearLayout
                             android:id="@+id/ll_distance"

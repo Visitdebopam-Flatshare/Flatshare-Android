@@ -2,7 +2,6 @@ package com.joinflatshare.payment
 
 import com.android.billingclient.api.ProductDetails
 import com.android.billingclient.api.Purchase
-import com.debopam.progressdialog.DialogCustomProgress
 import com.google.gson.Gson
 import com.joinflatshare.FlatShareApplication
 import com.joinflatshare.constants.GooglePaymentConstants
@@ -15,6 +14,10 @@ import com.joinflatshare.ui.bottomsheet.restriction.RestrictionBottomSheet
 import com.joinflatshare.utils.helper.CommonMethod
 import com.joinflatshare.utils.logger.Logger
 import com.joinflatshare.utils.mixpanel.MixpanelUtils
+import com.joinflatshare.webservice.api.ApiManager
+import com.joinflatshare.webservice.api.interfaces.OnFlatshareResponseCallBack
+import okhttp3.ResponseBody
+import retrofit2.Response
 
 /**
  * Created by debopam on 26/05/23
@@ -143,7 +146,7 @@ object PaymentHandler : OnPurchaseProgressListener {
         activity.runOnUiThread {
             isPopUpShowing = true
             if (restrictionType == GooglePaymentConstants.PAYMENT_TYPE_GOD_MODE) {
-                EliteBottomSheet(activity, products, object : OnProductDetailsFetched {
+                EliteBottomSheet(activity, products,uiCallback, object : OnProductDetailsFetched {
                     override fun onProductSelected(
                         product: ProductDetails,
                         callback: OnProductPurchaseCompleteListener
@@ -199,7 +202,7 @@ object PaymentHandler : OnPurchaseProgressListener {
         uiCallback?.onProductPurchased(purchase)
     }
 
-    override fun onProductPaymentSuccess(purchase: Purchase) {
+    override fun onProductPaymentSuccess(purchase: Purchase, selectedProduct: ProductDetails?) {
         // Verify the purchase.
         if (FlatShareApplication.getDbInstance().userDao()
                 .isPurchaseOrderGenuine(purchase.orderId)
@@ -215,13 +218,21 @@ object PaymentHandler : OnPurchaseProgressListener {
             request.payment.purchaseAmount = purchaseAmount
             request.payment.purchaseOrder =
                 Gson().fromJson(purchase.originalJson, PurchaseOrder::class.java)
+            request.payment.purchaseOrder.productName = selectedProduct?.name
             CommonMethod.makeLog("Original Json", purchase.originalJson)
-            activity.apiManager.purchaseProduct(
-                request, purchase,
-            ) {
-                MixpanelUtils.onPurchaseSuccess(purchase.originalJson, Gson().toJson(request))
-                playClient?.acknowledgePurchase(purchase)
-            }
+            val observable = ApiManager.getApiInterface().purchaseOrder(request)
+            ApiManager().callApi(
+                activity,
+                observable,
+                object : OnFlatshareResponseCallBack<Response<ResponseBody>> {
+                    override fun onResponseCallBack(response: String) {
+                        MixpanelUtils.onPurchaseSuccess(
+                            purchase.originalJson,
+                            Gson().toJson(request)
+                        )
+                        playClient?.acknowledgePurchase(purchase)
+                    }
+                })
         }
     }
 

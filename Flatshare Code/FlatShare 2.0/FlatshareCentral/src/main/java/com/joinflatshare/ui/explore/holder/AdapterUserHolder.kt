@@ -9,6 +9,7 @@ import com.joinflatshare.api.retrofit.WebserviceCustomRequestHandler
 import com.joinflatshare.constants.AppConstants
 import com.joinflatshare.constants.ChatRequestConstants
 import com.joinflatshare.interfaces.OnStringFetched
+import com.joinflatshare.payment.PaymentHandler
 import com.joinflatshare.pojo.explore.UserRecommendationItem
 import com.joinflatshare.pojo.user.User
 import com.joinflatshare.ui.base.BaseActivity
@@ -26,6 +27,8 @@ import com.joinflatshare.webservice.api.WebserviceManager
 import com.joinflatshare.webservice.api.interfaces.OnFlatshareResponseCallBack
 import okhttp3.ResponseBody
 import retrofit2.Response
+import java.text.SimpleDateFormat
+import java.util.Locale
 
 /**
  * Created by debopam on 14/11/22
@@ -45,6 +48,9 @@ class AdapterUserHolder {
         val name = "${user.name?.firstName} ${user.name?.lastName}"
         val dob = CommonMethod.getAge(user.dob)
         holder.txtName.text = if (dob.isEmpty()) name else "$name, $dob"
+
+        // Elite
+        holder.imgElite.visibility = if (isEliteMember(user)) View.VISIBLE else View.GONE
 
         // Distance
         holder.llDistance.visibility = View.GONE
@@ -104,11 +110,16 @@ class AdapterUserHolder {
                         MixpanelUtils.onButtonClicked("Feed SuperCheck")
                         adapter.removeItem(position)
                     }
+
+                    override fun onCallBackPayment(count: Int) {
+                        PaymentHandler.showPaymentForChats(activity,null)
+                    }
                 })
         }
 
         holder.imgElite.setOnClickListener {
-            EliteLearnMoreBottomSheet(activity, user)
+            if (!isEliteMember(AppConstants.loggedInUser!!))
+                EliteLearnMoreBottomSheet(activity, user)
         }
 
         AdapterUserVpHolder.bindVp(activity, holder.includeExploreVp, user)
@@ -126,6 +137,9 @@ class AdapterUserHolder {
         val name = "${user.name?.firstName} ${user.name?.lastName}"
         val dob = CommonMethod.getAge(user.dob)
         holder.txtName.text = if (dob.isEmpty()) name else "$name, $dob"
+
+        // Elite
+        holder.imgElite.visibility = if (isEliteMember(user)) View.VISIBLE else View.GONE
 
         // Distance
         holder.llDistance.visibility = View.GONE
@@ -169,6 +183,10 @@ class AdapterUserHolder {
                                 MixpanelUtils.onButtonClicked("Send SuperCheck")
                                 details.details.chatRequestSent = true
                                 bindUser(activity, details, position, holder)
+                            }
+
+                            override fun onCallBackPayment(count: Int) {
+                                PaymentHandler.showPaymentForChats(activity,null)
                             }
                         })
                 }
@@ -218,6 +236,28 @@ class AdapterUserHolder {
                         }
                     })
             }
+        }
+        holder.imgElite.setOnClickListener {
+            if (!isEliteMember(AppConstants.loggedInUser!!))
+                EliteLearnMoreBottomSheet(activity, user)
+        }
+    }
+
+    private fun isEliteMember(user: User): Boolean {
+        var godMode = user.godMode
+        try {
+            if (!godMode.isNullOrEmpty() && godMode.contains(".")) {
+                godMode = godMode.substring(0, godMode.lastIndexOf("."))
+                val sdf = SimpleDateFormat("yyyy-MM-ddTHH:mm:ss", Locale.getDefault())
+                val currentTime = System.currentTimeMillis()
+                val godModeExpireTime = sdf.parse(godMode)!!
+                if (godModeExpireTime.time < currentTime) {
+                    return true
+                }
+            }
+            return false
+        } catch (ex: Exception) {
+            return false
         }
     }
 

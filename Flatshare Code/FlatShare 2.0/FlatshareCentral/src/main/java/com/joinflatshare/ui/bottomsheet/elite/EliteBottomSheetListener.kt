@@ -35,6 +35,7 @@ class EliteBottomSheetListener(
                         override fun onProductPurchased(purchase: Purchase?) {
                             PaymentHandler.isPopUpShowing = false
                             bottomSheet.dialog.dismiss()
+                            bottomSheet.uiCallback?.onFetched("1")
                         }
 
                         override fun onProductPurchaseFailed() {
