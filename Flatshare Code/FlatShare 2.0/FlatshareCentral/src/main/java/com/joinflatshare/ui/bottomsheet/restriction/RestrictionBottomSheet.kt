@@ -34,7 +34,8 @@ class RestrictionBottomSheet(
     val TAG = RestrictionBottomSheet::class.java.simpleName
     private val dialog: BottomSheetDialog = BottomSheetDialog(activity)
 
-    val viewBind: DialogRestrictionBinding = DialogRestrictionBinding.inflate(activity.layoutInflater)
+    val viewBind: DialogRestrictionBinding =
+        DialogRestrictionBinding.inflate(activity.layoutInflater)
     private var selectedProduct: ProductDetails? = null
 
     init {
@@ -50,38 +51,17 @@ class RestrictionBottomSheet(
         }
         viewBind.cardElite.visibility = if (isEliteMember()) View.GONE else View.VISIBLE
         viewBind.cardElite.setOnClickListener {
-            PaymentHandler.isPopUpShowing = false
             dialog.dismiss()
             Handler(Looper.getMainLooper()).postDelayed(
                 {
-                    PaymentHandler.showPaymentForElite(
-                        activity
-                    ) { text ->
-                        if (text == "1") {
-                            activity.baseApiController.getUser(
-                                true,
-                                AppConstants.loggedInUser?.id, null
-                            )
-                        }
-                    }
+                    PaymentHandler.showPaymentForElite(activity, null)
                 }, 500
             )
         }
         viewBind.btnContinue.setOnClickListener {
             if (selectedProduct != null) {
-                callback.onProductSelected(
-                    selectedProduct!!,
-                    object : OnProductPurchaseCompleteListener {
-                        override fun onProductPurchased(purchase: Purchase?) {
-                            PaymentHandler.isPopUpShowing = false
-                            dialog.dismiss()
-                        }
-
-                        override fun onProductPurchaseFailed() {
-                            PaymentHandler.isPopUpShowing = false
-                            dialog.dismiss()
-                        }
-                    })
+                dialog.dismiss()
+                callback.onProductSelected(selectedProduct!!)
             }
         }
         dialog.show()

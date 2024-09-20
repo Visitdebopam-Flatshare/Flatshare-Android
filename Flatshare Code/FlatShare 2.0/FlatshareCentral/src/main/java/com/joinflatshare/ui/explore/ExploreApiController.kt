@@ -42,6 +42,7 @@ class ExploreApiController(
                 override fun onResponseCallBack(response: String) {
                     isDataFetching = false
                     AppConstants.isFeedReloadRequired = false
+                    activity.checkGiftForUser()
                     val resp = Gson().fromJson(
                         response,
                         com.joinflatshare.pojo.explore.RecommendationResponse::class.java

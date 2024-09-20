@@ -50,7 +50,7 @@ class AdapterUserHolder {
         holder.txtName.text = if (dob.isEmpty()) name else "$name, $dob"
 
         // Elite
-        holder.imgElite.visibility = if (isEliteMember(user)) View.VISIBLE else View.GONE
+        holder.imgElite.visibility = if (CommonMethod.isEliteMember(user)) View.VISIBLE else View.GONE
 
         // Distance
         holder.llDistance.visibility = View.GONE
@@ -118,7 +118,7 @@ class AdapterUserHolder {
         }
 
         holder.imgElite.setOnClickListener {
-            if (!isEliteMember(AppConstants.loggedInUser!!))
+            if (!CommonMethod.isEliteMember(AppConstants.loggedInUser!!))
                 EliteLearnMoreBottomSheet(activity, user)
         }
 
@@ -139,7 +139,7 @@ class AdapterUserHolder {
         holder.txtName.text = if (dob.isEmpty()) name else "$name, $dob"
 
         // Elite
-        holder.imgElite.visibility = if (isEliteMember(user)) View.VISIBLE else View.GONE
+        holder.imgElite.visibility = if (CommonMethod.isEliteMember(user)) View.VISIBLE else View.GONE
 
         // Distance
         holder.llDistance.visibility = View.GONE
@@ -238,26 +238,8 @@ class AdapterUserHolder {
             }
         }
         holder.imgElite.setOnClickListener {
-            if (!isEliteMember(AppConstants.loggedInUser!!))
+            if (!CommonMethod.isEliteMember(AppConstants.loggedInUser!!))
                 EliteLearnMoreBottomSheet(activity, user)
-        }
-    }
-
-    private fun isEliteMember(user: User): Boolean {
-        var godMode = user.godMode
-        try {
-            if (!godMode.isNullOrEmpty() && godMode.contains(".")) {
-                godMode = godMode.substring(0, godMode.lastIndexOf("."))
-                val sdf = SimpleDateFormat("yyyy-MM-ddTHH:mm:ss", Locale.getDefault())
-                val currentTime = System.currentTimeMillis()
-                val godModeExpireTime = sdf.parse(godMode)!!
-                if (godModeExpireTime.time < currentTime) {
-                    return true
-                }
-            }
-            return false
-        } catch (ex: Exception) {
-            return false
         }
     }
 

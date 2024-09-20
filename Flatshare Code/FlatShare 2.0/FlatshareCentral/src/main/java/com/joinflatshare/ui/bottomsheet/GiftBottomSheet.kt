@@ -4,9 +4,12 @@ import android.os.Handler
 import android.os.Looper
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.joinflatshare.FlatshareCentral.databinding.DialogBottomsheetEliteLearnMoreBinding
+import com.joinflatshare.FlatshareCentral.databinding.DialogBottomsheetGiftBinding
 import com.joinflatshare.constants.AppConstants
+import com.joinflatshare.interfaces.OnUserFetched
 import com.joinflatshare.payment.PaymentHandler
 import com.joinflatshare.pojo.user.User
+import com.joinflatshare.pojo.user.UserResponse
 import com.joinflatshare.ui.base.BaseActivity
 import com.joinflatshare.ui.bottomsheet.elite.EliteBottomSheet
 import com.joinflatshare.utils.helper.ImageHelper
@@ -14,12 +17,11 @@ import com.joinflatshare.utils.helper.ImageHelper
 /**
  * Created by debopam on 20/06/24
  */
-class EliteLearnMoreBottomSheet(
+class GiftBottomSheet(
     private val activity: BaseActivity,
-    private val user: User
 ) {
 
-    private lateinit var viewBind: DialogBottomsheetEliteLearnMoreBinding
+    private lateinit var viewBind: DialogBottomsheetGiftBinding
     private lateinit var dialog: BottomSheetDialog
 
     init {
@@ -28,28 +30,14 @@ class EliteLearnMoreBottomSheet(
 
     private fun create() {
         dialog = BottomSheetDialog(activity)
-        viewBind = DialogBottomsheetEliteLearnMoreBinding.inflate(activity.layoutInflater)
+        viewBind = DialogBottomsheetGiftBinding.inflate(activity.layoutInflater)
         dialog.setContentView(viewBind.root)
         init()
-        click()
         dialog.show()
     }
 
     private fun init() {
-        viewBind.txtEliteUser.text = "${user?.name?.firstName} is an\nElite member"
-        ImageHelper.loadProfileImage(activity, viewBind.imgProfile, viewBind.txtPhoto, user)
-    }
-
-    private fun click() {
-        viewBind.imgCross.setOnClickListener {
-            dialog.dismiss()
-        }
-        viewBind.llLearnMore.setOnClickListener {
-            dialog.dismiss()
-            Handler(Looper.getMainLooper()).postDelayed(
-                { PaymentHandler.showPaymentForElite(activity, null) }, 500
-            )
-
-        }
+        AppConstants.loggedInUser?.isGiftPopupShown = true
+        activity.baseApiController.updateUser(false, AppConstants.loggedInUser, null)
     }
 }

@@ -2,14 +2,10 @@ package com.joinflatshare.ui.bottomsheet.elite
 
 import androidx.core.content.ContextCompat
 import com.android.billingclient.api.ProductDetails
-import com.android.billingclient.api.Purchase
 import com.joinflatshare.FlatshareCentral.R
 import com.joinflatshare.FlatshareCentral.databinding.DialogBottomsheetEliteBinding
 import com.joinflatshare.payment.OnProductDetailsFetched
-import com.joinflatshare.payment.OnProductPurchaseCompleteListener
-import com.joinflatshare.payment.PaymentHandler
 import com.joinflatshare.ui.base.BaseActivity
-import com.joinflatshare.utils.helper.CommonMethods
 
 /**
  * Created by debopam on 07/09/24
@@ -29,20 +25,8 @@ class EliteBottomSheetListener(
         viewBind.cardWeek2.performClick()
         viewBind.btnElite.setOnClickListener {
             if (selectedProduct != null) {
-                callback.onProductSelected(
-                    selectedProduct!!,
-                    object : OnProductPurchaseCompleteListener {
-                        override fun onProductPurchased(purchase: Purchase?) {
-                            PaymentHandler.isPopUpShowing = false
-                            bottomSheet.dialog.dismiss()
-                            bottomSheet.uiCallback?.onFetched("1")
-                        }
-
-                        override fun onProductPurchaseFailed() {
-                            PaymentHandler.isPopUpShowing = false
-                            bottomSheet.dialog.dismiss()
-                        }
-                    })
+                bottomSheet.dialog.dismiss()
+                callback.onProductSelected(selectedProduct!!)
             }
         }
     }

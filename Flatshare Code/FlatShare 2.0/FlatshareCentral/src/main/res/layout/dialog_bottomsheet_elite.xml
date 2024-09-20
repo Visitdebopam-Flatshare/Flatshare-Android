@@ -79,46 +79,83 @@
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_margin="@dimen/_10sdp"
+                            android:layout_marginHorizontal="@dimen/_20sdp"
+                            android:layout_marginVertical="@dimen/_10sdp"
                             android:gravity="start|center_vertical"
                             android:orientation="vertical">
 
-                            <TextView
-                                android:layout_width="wrap_content"
+                            <LinearLayout
+                                android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="@dimen/_20sdp"
-                                android:drawableStart="@drawable/ic_tick_blue"
-                                android:drawablePadding="@dimen/_10sdp"
-                                android:fontFamily="@font/font_medium"
-                                android:text="50 Chat Requests every week."
-                                android:textColor="@color/white"
-                                android:textSize="@dimen/_14sdp"
-                                app:drawableTint="@color/white" />
+                                android:gravity="top"
+                                android:orientation="horizontal">
 
-                            <TextView
-                                android:layout_width="wrap_content"
+                                <ImageView
+                                    android:layout_width="@dimen/_20sdp"
+                                    android:layout_height="@dimen/_20sdp"
+                                    android:src="@drawable/ic_tick_blue"
+                                    app:tint="@color/white" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="@dimen/_5sdp"
+                                    android:fontFamily="@font/font_medium"
+                                    android:text="50 Chat Requests every week."
+                                    android:textColor="@color/white"
+                                    android:textSize="@dimen/_14sdp" />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="@dimen/_10sdp"
-                                android:drawableStart="@drawable/ic_tick_blue"
-                                android:drawablePadding="@dimen/_10sdp"
-                                android:fontFamily="@font/font_medium"
-                                android:text="Connect with other elite members."
-                                android:textColor="@color/white"
-                                android:textSize="@dimen/_14sdp"
-                                app:drawableTint="@color/white" />
+                                android:gravity="top"
+                                android:orientation="horizontal">
 
-                            <TextView
-                                android:layout_width="wrap_content"
+                                <ImageView
+                                    android:layout_width="@dimen/_20sdp"
+                                    android:layout_height="@dimen/_20sdp"
+                                    android:layout_marginTop="@dimen/_3sdp"
+                                    android:src="@drawable/ic_tick_blue"
+                                    app:tint="@color/white" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="@dimen/_5sdp"
+                                    android:fontFamily="@font/font_medium"
+                                    android:text="Connect with other elite members."
+                                    android:textColor="@color/white"
+                                    android:textSize="@dimen/_14sdp"
+                                    app:drawableTint="@color/white" />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="@dimen/_10sdp"
-                                android:layout_marginBottom="@dimen/_20sdp"
-                                android:drawableStart="@drawable/ic_tick_blue"
-                                android:drawablePadding="@dimen/_10sdp"
-                                android:fontFamily="@font/font_medium"
-                                android:text="Add {Pack Value} to your Flatscore."
-                                android:textColor="@color/white"
-                                android:textSize="@dimen/_14sdp"
-                                app:drawableTint="@color/white" />
+                                android:gravity="top"
+                                android:orientation="horizontal">
+
+                                <ImageView
+                                    android:layout_width="@dimen/_20sdp"
+                                    android:layout_height="@dimen/_20sdp"
+                                    android:layout_marginTop="@dimen/_3sdp"
+                                    android:src="@drawable/ic_tick_blue"
+                                    app:tint="@color/white" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="@dimen/_5sdp"
+                                    android:fontFamily="@font/font_medium"
+                                    android:text="Add {Pack Value} to your Flatscore."
+                                    android:textColor="@color/white"
+                                    android:textSize="@dimen/_14sdp"
+                                    app:drawableTint="@color/white" />
+                            </LinearLayout>
 
                         </LinearLayout>
 
@@ -185,7 +222,6 @@
                                 android:layout_height="wrap_content"
                                 android:fontFamily="@font/font_bold"
                                 android:gravity="center"
-                                android:text="Week"
                                 android:textColor="@color/elite_blue"
                                 android:textSize="@dimen/_16sdp" />
 
@@ -209,7 +245,6 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:fontFamily="@font/font_bold"
-                                android:text="15"
                                 android:textColor="@color/elite_blue"
                                 android:textSize="@dimen/_16sdp" />
 
@@ -263,7 +298,6 @@
                                     android:layout_height="wrap_content"
                                     android:fontFamily="@font/font_bold"
                                     android:gravity="center"
-                                    android:text="Week"
                                     android:textColor="@color/color_text_primary"
                                     android:textSize="@dimen/_16sdp" />
 
@@ -289,7 +323,7 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:fontFamily="@font/font_bold"
-                                    android:text="15"
+
                                     android:textColor="@color/color_text_primary"
                                     android:textSize="@dimen/_16sdp" />
 
@@ -330,7 +364,6 @@
                                 android:layout_height="wrap_content"
                                 android:fontFamily="@font/font_bold"
                                 android:gravity="center"
-                                android:text="Week"
                                 android:textColor="@color/elite_blue"
                                 android:textSize="@dimen/_16sdp" />
 
@@ -354,7 +387,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:fontFamily="@font/font_bold"
-                                android:text="15"
+
                                 android:textColor="@color/elite_blue"
                                 android:textSize="@dimen/_16sdp" />
 

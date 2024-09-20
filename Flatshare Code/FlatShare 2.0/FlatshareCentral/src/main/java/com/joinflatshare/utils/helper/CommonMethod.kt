@@ -27,7 +27,9 @@ import com.joinflatshare.ui.base.ApplicationBaseActivity
 import com.joinflatshare.utils.mixpanel.MixpanelUtils
 import com.joinflatshare.utils.system.GlobalActivityResult.OnActivityResult
 import java.io.Serializable
+import java.text.SimpleDateFormat
 import java.util.Calendar
+import java.util.Locale
 import java.util.regex.Pattern
 
 /**
@@ -158,7 +160,25 @@ object CommonMethod {
             request.source = 3
             SendUserInfo.addUserToDB(request)
         }
+    }
 
+    // TODO move this method ot baseactivity after rewriting in kotlin
+    fun isEliteMember(user: User): Boolean {
+        var godMode = user.godMode
+        try {
+            if (!godMode.isNullOrEmpty() && godMode.contains(".")) {
+                godMode = godMode.substring(0, godMode.lastIndexOf("."))
+                val sdf = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss", Locale.getDefault())
+                val currentTime = System.currentTimeMillis()
+                val godModeExpireTime = sdf.parse(godMode)!!
+                if (godModeExpireTime.time > currentTime) {
+                    return true
+                }
+            }
+            return false
+        } catch (ex: Exception) {
+            return false
+        }
     }
 
 }

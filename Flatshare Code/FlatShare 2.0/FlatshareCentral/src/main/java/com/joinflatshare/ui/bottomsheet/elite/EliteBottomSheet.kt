@@ -13,7 +13,6 @@ import com.joinflatshare.ui.base.BaseActivity
 class EliteBottomSheet(
     val activity: BaseActivity,
     val products: List<ProductDetails>?,
-    val uiCallback: OnStringFetched?,
     val callback: OnProductDetailsFetched
 
 ) {

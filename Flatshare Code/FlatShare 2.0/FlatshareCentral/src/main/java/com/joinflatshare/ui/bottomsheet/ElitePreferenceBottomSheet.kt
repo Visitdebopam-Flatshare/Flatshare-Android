@@ -3,6 +3,7 @@ package com.joinflatshare.ui.bottomsheet
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.joinflatshare.FlatshareCentral.databinding.DialogBottomsheetElitePreferenceBinding
 import com.joinflatshare.interfaces.OnStringFetched
+import com.joinflatshare.payment.OnProductPurchaseCompleteListener
 import com.joinflatshare.payment.PaymentHandler
 import com.joinflatshare.ui.base.BaseActivity
 
@@ -11,7 +12,7 @@ import com.joinflatshare.ui.base.BaseActivity
  */
 class ElitePreferenceBottomSheet(
     private val activity: BaseActivity,
-    private val callback: OnStringFetched
+    private val callback: OnProductPurchaseCompleteListener?
 ) {
 
     private lateinit var viewBind: DialogBottomsheetElitePreferenceBinding
@@ -34,6 +35,7 @@ class ElitePreferenceBottomSheet(
             dialog.dismiss()
         }
         viewBind.llExploreElite.setOnClickListener {
+            dialog.dismiss()
             PaymentHandler.showPaymentForElite(activity, callback)
         }
     }

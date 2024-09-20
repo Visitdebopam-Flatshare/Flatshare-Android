@@ -33,6 +33,7 @@ class PreferenceActivity : BaseActivity() {
         setMoveInDate()
         setRoomType()
         setVerified()
+        setElite()
         setGender()
         setProfession()
         setDealBreakers()
@@ -86,6 +87,11 @@ class PreferenceActivity : BaseActivity() {
     private fun setVerified() {
         viewBind.includePrefFlatmate.switchVerifiedMember.isChecked =
             user?.flatProperties?.isVerifiedOnly == true
+    }
+
+    private fun setElite() {
+        viewBind.includePrefFlatmate.switchEliteMember.isChecked =
+            user?.flatProperties?.isEliteOnly == true
     }
 
     fun setGender() {

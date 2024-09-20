@@ -71,7 +71,7 @@ class FlatDetailsApiController(
             object : OnFlatshareResponseCallBack<Response<ResponseBody>> {
                 override fun onCallBackPayment(count: Int) {
                     // Checking payment gateway
-                    PaymentHandler.showPaymentForChecks(activity, null)
+//                    PaymentHandler.showPaymentForChecks(activity, null)
                 }
 
                 override fun onResponseCallBack(response: String) {

@@ -4,10 +4,13 @@ import com.android.billingclient.api.ProductDetails
 import com.android.billingclient.api.Purchase
 import com.google.gson.Gson
 import com.joinflatshare.FlatShareApplication
+import com.joinflatshare.constants.AppConstants
 import com.joinflatshare.constants.GooglePaymentConstants
 import com.joinflatshare.interfaces.OnStringFetched
+import com.joinflatshare.interfaces.OnUserFetched
 import com.joinflatshare.pojo.purchase.PurchaseOrder
 import com.joinflatshare.pojo.purchase.PurchaseRequest
+import com.joinflatshare.pojo.user.UserResponse
 import com.joinflatshare.ui.base.BaseActivity
 import com.joinflatshare.ui.bottomsheet.elite.EliteBottomSheet
 import com.joinflatshare.ui.bottomsheet.restriction.RestrictionBottomSheet
@@ -32,7 +35,7 @@ object PaymentHandler : OnPurchaseProgressListener {
     var isPopUpShowing = false
 
 
-    fun showPaymentForChecks(activity: BaseActivity, uiCallback: OnStringFetched?) {
+    /*fun showPaymentForChecks(activity: BaseActivity, uiCallback: OnStringFetched?) {
         if (isPopUpShowing)
             return
         this.activity = activity
@@ -51,11 +54,14 @@ object PaymentHandler : OnPurchaseProgressListener {
                 }
             }
         })
-    }
+    }*/
 
-    fun showPaymentForChats(activity: BaseActivity, uiCallback: OnStringFetched?) {
-        if (isPopUpShowing)
-            return
+    fun showPaymentForChats(
+        activity: BaseActivity,
+        uiCallback: OnProductPurchaseCompleteListener?
+    ) {
+//        if (isPopUpShowing)
+//            return
         this.activity = activity
         if (playClient == null)
             playClient = GooglePlayBillingClient(activity)
@@ -74,7 +80,7 @@ object PaymentHandler : OnPurchaseProgressListener {
         })
     }
 
-    fun showPaymentForProfiles(activity: BaseActivity, uiCallback: OnStringFetched?) {
+    /*fun showPaymentForProfiles(activity: BaseActivity, uiCallback: OnStringFetched?) {
         if (isPopUpShowing)
             return
         this.activity = activity
@@ -93,11 +99,14 @@ object PaymentHandler : OnPurchaseProgressListener {
                 }
             }
         })
-    }
+    }*/
 
-    fun showPaymentForElite(activity: BaseActivity, callBack: OnStringFetched?) {
-        if (isPopUpShowing)
-            return
+    fun showPaymentForElite(
+        activity: BaseActivity,
+        uiCallback: OnProductPurchaseCompleteListener?
+    ) {
+//        if (isPopUpShowing)
+//            return
         this.activity = activity
         if (playClient == null)
             playClient = GooglePlayBillingClient(activity)
@@ -110,13 +119,13 @@ object PaymentHandler : OnPurchaseProgressListener {
                 if (!products.isNullOrEmpty()) {
                     purchaseType = GooglePaymentConstants.PAYMENT_TYPE_GOD_MODE
                     logPaymentPopup(purchaseType)
-                    showPopUp(products, purchaseType, callBack)
+                    showPopUp(products, purchaseType, uiCallback)
                 }
             }
         })
     }
 
-    fun showPaymentForReveals(activity: BaseActivity, uiCallback: OnStringFetched?) {
+    /*fun showPaymentForReveals(activity: BaseActivity, uiCallback: OnStringFetched?) {
         if (isPopUpShowing)
             return
         this.activity = activity
@@ -135,27 +144,24 @@ object PaymentHandler : OnPurchaseProgressListener {
                 }
             }
         })
-    }
+    }*/
 
 
     private fun showPopUp(
         products: List<ProductDetails>,
         restrictionType: String,
-        uiCallback: OnStringFetched?
+        uiCallback: OnProductPurchaseCompleteListener?
     ) {
         activity.runOnUiThread {
             isPopUpShowing = true
             if (restrictionType == GooglePaymentConstants.PAYMENT_TYPE_GOD_MODE) {
-                EliteBottomSheet(activity, products,uiCallback, object : OnProductDetailsFetched {
-                    override fun onProductSelected(
-                        product: ProductDetails,
-                        callback: OnProductPurchaseCompleteListener
-                    ) {
+                EliteBottomSheet(activity, products, object : OnProductDetailsFetched {
+                    override fun onProductSelected(product: ProductDetails) {
                         var price =
                             product.oneTimePurchaseOfferDetails?.formattedPrice!!.substring(1)
                         price = price.substring(0, price.indexOf("."))
                         price = price.replace(",", "")
-                        this@PaymentHandler.uiCallback = callback
+                        this@PaymentHandler.uiCallback = uiCallback
                         this@PaymentHandler.purchaseAmount = Integer.valueOf(price)
                         purchaseProduct(product)
                     }
@@ -166,15 +172,12 @@ object PaymentHandler : OnPurchaseProgressListener {
                     products,
                     restrictionType,
                     object : OnProductDetailsFetched {
-                        override fun onProductSelected(
-                            product: ProductDetails,
-                            callback: OnProductPurchaseCompleteListener
-                        ) {
+                        override fun onProductSelected(product: ProductDetails) {
                             var price =
                                 product.oneTimePurchaseOfferDetails?.formattedPrice!!.substring(1)
                             price = price.substring(0, price.indexOf("."))
                             price = price.replace(",", "")
-                            this@PaymentHandler.uiCallback = callback
+                            this@PaymentHandler.uiCallback = uiCallback
                             this@PaymentHandler.purchaseAmount = Integer.valueOf(price)
                             purchaseProduct(product)
                         }
@@ -190,16 +193,25 @@ object PaymentHandler : OnPurchaseProgressListener {
     }
 
     override fun onPurchaseFailed() {
+        isPopUpShowing = false
         uiCallback?.onProductPurchaseFailed()
     }
 
     override fun onProductPurchasePending() {
-        uiCallback?.onProductPurchased(null)
+//        uiCallback?.onProductPurchased(null)
     }
 
     override fun onPurchaseSuccess(purchase: Purchase) {
         CommonMethod.makeLog(TAG, "Purchase successful")
-        uiCallback?.onProductPurchased(purchase)
+        isPopUpShowing = false
+        activity.baseApiController.getUser(
+            true,
+            AppConstants.loggedInUser?.id,
+            object : OnUserFetched {
+                override fun userFetched(resp: UserResponse?) {
+                    uiCallback?.onProductPurchased(purchase)
+                }
+            })
     }
 
     override fun onProductPaymentSuccess(purchase: Purchase, selectedProduct: ProductDetails?) {

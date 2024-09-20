@@ -2,6 +2,7 @@ package com.joinflatshare.ui.preferences
 
 import android.view.View
 import androidx.core.content.ContextCompat
+import com.android.billingclient.api.Purchase
 import com.google.android.material.datepicker.CalendarConstraints
 import com.google.android.material.datepicker.DateValidatorPointForward
 import com.google.android.material.datepicker.MaterialDatePicker
@@ -12,6 +13,7 @@ import com.joinflatshare.constants.AppConstants
 import com.joinflatshare.constants.RequestCodeConstants
 import com.joinflatshare.interfaces.OnStringFetched
 import com.joinflatshare.interfaces.OnUserFetched
+import com.joinflatshare.payment.OnProductPurchaseCompleteListener
 import com.joinflatshare.payment.PaymentHandler
 import com.joinflatshare.pojo.user.ModelLocation
 import com.joinflatshare.pojo.user.UserResponse
@@ -156,34 +158,20 @@ class PreferenceListener(private val activity: PreferenceActivity) : View.OnClic
         viewBind.includePrefFlatmate.switchEliteMember.setOnCheckedChangeListener { _, isChecked ->
             setElite(isChecked)
             if (isChecked) {
-                if (activity.user?.verification?.isVerified == false) {
+                if (!CommonMethod.isEliteMember(activity.user!!)) {
                     setElite(false)
-                    PaymentHandler.showPaymentForElite(
-                        activity
-                    ) { text ->
-                        if (text == "1") {
-                            activity.baseApiController.getUser(
-                                true,
-                                AppConstants.loggedInUser?.id, null
-                            )
-                        }
-                    }
+                    ElitePreferenceBottomSheet(activity,
+                        object : OnProductPurchaseCompleteListener {
+                            override fun onProductPurchased(purchase: Purchase?) {
+                                activity.user.godMode = AppConstants.loggedInUser?.godMode
+                                setElite(true)
+                            }
 
+                            override fun onProductPurchaseFailed() {
+                                setElite(false)
+                            }
 
-                    ElitePreferenceBottomSheet(
-                        activity
-                    ) { text ->
-                        if (text == "1") {
-                            activity.baseApiController.getUser(
-                                true,
-                                AppConstants.loggedInUser?.id, object : OnUserFetched {
-                                    override fun userFetched(resp: UserResponse?) {
-                                        setElite(true)
-                                    }
-                                }
-                            )
-                        }
-                    }
+                        })
                 }
             }
         }
@@ -224,34 +212,34 @@ class PreferenceListener(private val activity: PreferenceActivity) : View.OnClic
     }
 
     private fun setElite(checked: Boolean) {
-        viewBind.includePrefFlatmate.switchVerifiedMember.isChecked = checked
-        activity.user?.flatProperties?.isVerifiedOnly = checked
+        viewBind.includePrefFlatmate.switchEliteMember.isChecked = checked
+        activity.user?.flatProperties?.isEliteOnly = checked
         if (checked) {
-            viewBind.includePrefFlatmate.imgVerified.setColorFilter(
+            viewBind.includePrefFlatmate.imgElite.setColorFilter(
                 ContextCompat.getColor(
                     activity, R.color.blue_dark
                 )
             )
-            viewBind.includePrefFlatmate.txtVerified.setTextColor(
+            viewBind.includePrefFlatmate.txtElite.setTextColor(
                 ContextCompat.getColor(
                     activity, R.color.blue_dark
                 )
             )
-            viewBind.includePrefFlatmate.rlVerified.background = ContextCompat.getDrawable(
+            viewBind.includePrefFlatmate.rlElite.background = ContextCompat.getDrawable(
                 activity, R.drawable.drawable_button_blue_stroke_blue_bg
             )
         } else {
-            viewBind.includePrefFlatmate.imgVerified.setColorFilter(
+            viewBind.includePrefFlatmate.imgElite.setColorFilter(
                 ContextCompat.getColor(
                     activity, R.color.grey2
                 )
             )
-            viewBind.includePrefFlatmate.txtVerified.setTextColor(
+            viewBind.includePrefFlatmate.txtElite.setTextColor(
                 ContextCompat.getColor(
                     activity, R.color.grey2
                 )
             )
-            viewBind.includePrefFlatmate.rlVerified.background = ContextCompat.getDrawable(
+            viewBind.includePrefFlatmate.rlElite.background = ContextCompat.getDrawable(
                 activity, R.drawable.drawable_button_grey_stroke
             )
         }

@@ -5,16 +5,20 @@ import android.content.Context
 import android.content.Intent
 import android.content.IntentFilter
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import androidx.localbroadcastmanager.content.LocalBroadcastManager
 import com.joinflatshare.FlatShareApplication
 import com.joinflatshare.FlatshareCentral.R
 import com.joinflatshare.FlatshareCentral.databinding.ActivityExploreBinding
+import com.joinflatshare.FlatshareCentral.databinding.DialogBottomsheetGiftBinding
 import com.joinflatshare.constants.AppConstants
 import com.joinflatshare.constants.IntentConstants
 import com.joinflatshare.constants.IntentFilterConstants
 import com.joinflatshare.fcm.FcmNavigationUtils
 import com.joinflatshare.fcm.MyFirebaseMessagingService
 import com.joinflatshare.ui.base.BaseActivity
+import com.joinflatshare.ui.bottomsheet.GiftBottomSheet
 import com.joinflatshare.ui.preferences.PreferenceActivity
 import com.joinflatshare.utils.deeplink.DeepLinkHandler
 import com.joinflatshare.utils.helper.CommonMethod
@@ -114,6 +118,15 @@ class ExploreActivity : BaseActivity() {
                 }
             }
         }
+    }
 
+    fun checkGiftForUser() {
+        val isGiftPending = AppConstants.loggedInUser?.isGiftPopupShown
+        if (isGiftPending == false) {
+            Handler(Looper.getMainLooper()).postDelayed(
+                { GiftBottomSheet(this@ExploreActivity) },
+                1000
+            )
+        }
     }
 }

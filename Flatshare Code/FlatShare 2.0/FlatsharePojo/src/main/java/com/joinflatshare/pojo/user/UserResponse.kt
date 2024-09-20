@@ -107,7 +107,10 @@ data class User(
     var images: ArrayList<String> = ArrayList(),
 
     @field:SerializedName("deviceToken")
-    var deviceToken: String = ""
+    var deviceToken: String = "",
+
+    @field:SerializedName("isGiftPopupShown")
+    var isGiftPopupShown: Boolean = true
 ) : Serializable
 
 data class IsFlatSearch(
@@ -161,6 +164,9 @@ data class FlatProperties(
 
     @field:SerializedName("isVerifiedOnly")
     var isVerifiedOnly: Boolean = false,
+
+    @field:SerializedName("isEliteOnly")
+    var isEliteOnly: Boolean = false,
 
     @field:SerializedName("languages")
     var languages: ArrayList<String> = ArrayList(),
