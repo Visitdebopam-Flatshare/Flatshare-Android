@@ -158,12 +158,12 @@ class PreferenceListener(private val activity: PreferenceActivity) : View.OnClic
         viewBind.includePrefFlatmate.switchEliteMember.setOnCheckedChangeListener { _, isChecked ->
             setElite(isChecked)
             if (isChecked) {
-                if (!CommonMethod.isEliteMember(activity.user!!)) {
+                if (!CommonMethod.isEliteMember(activity.user)) {
                     setElite(false)
                     ElitePreferenceBottomSheet(activity,
                         object : OnProductPurchaseCompleteListener {
                             override fun onProductPurchased(purchase: Purchase?) {
-                                activity.user.godMode = AppConstants.loggedInUser?.godMode
+                                activity.user?.godMode = AppConstants.loggedInUser?.godMode
                                 setElite(true)
                             }
 

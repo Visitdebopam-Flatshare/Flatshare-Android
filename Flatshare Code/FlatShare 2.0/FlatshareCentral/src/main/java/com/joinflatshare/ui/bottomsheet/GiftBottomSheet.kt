@@ -19,7 +19,7 @@ import com.joinflatshare.utils.helper.ImageHelper
  */
 class GiftBottomSheet(
     private val activity: BaseActivity,
-) {
+):BottomSheetBaseView(activity) {
 
     private lateinit var viewBind: DialogBottomsheetGiftBinding
     private lateinit var dialog: BottomSheetDialog
@@ -33,7 +33,7 @@ class GiftBottomSheet(
         viewBind = DialogBottomsheetGiftBinding.inflate(activity.layoutInflater)
         dialog.setContentView(viewBind.root)
         init()
-        dialog.show()
+        showDialog(dialog)
     }
 
     private fun init() {

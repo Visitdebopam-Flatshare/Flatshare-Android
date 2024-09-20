@@ -44,10 +44,12 @@ class ProfileEditDataBinder(
     }
 
     private fun setData() {
-        viewBind.txtProfileInterest.text =
-            TextUtils.join(", ", AppConstants.loggedInUser?.flatProperties?.interests!!)
-        viewBind.txtProfileLanguages.text =
-            TextUtils.join(", ", AppConstants.loggedInUser?.flatProperties?.languages!!)
+        if (!AppConstants.loggedInUser?.flatProperties?.interests.isNullOrEmpty())
+            viewBind.txtProfileInterest.text =
+                TextUtils.join(", ", AppConstants.loggedInUser?.flatProperties?.interests!!)
+        if (!AppConstants.loggedInUser?.flatProperties?.languages.isNullOrEmpty())
+            viewBind.txtProfileLanguages.text =
+                TextUtils.join(", ", AppConstants.loggedInUser?.flatProperties?.languages!!)
         viewBind.edtProfileStatus.setText(AppConstants.loggedInUser?.status)
         viewBind.edtProfileWork.setText(AppConstants.loggedInUser?.work)
         bioLimit()

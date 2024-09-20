@@ -142,6 +142,7 @@ class OtpApiController(private val activity: OtpActivity) {
                         Gson().fromJson(response, com.joinflatshare.pojo.BaseResponse::class.java)
                     if (resp.status == 200) {
                         MixpanelUtils.onButtonClicked("Account Deleted")
+                        SendBirdUser(activity).deleteUser(activity.phone)
                         activity.setResult(Activity.RESULT_OK)
                         CommonMethod.finishActivity(activity)
                     }

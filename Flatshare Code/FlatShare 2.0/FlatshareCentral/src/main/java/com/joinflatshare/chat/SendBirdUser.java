@@ -12,6 +12,7 @@ import com.joinflatshare.chat.pojo.user.ModelChatUserResponse;
 import com.joinflatshare.chat.pojo.user_list.ModelUserListResponse;
 import com.joinflatshare.db.daos.UserDao;
 import com.joinflatshare.interfaces.OnitemClick;
+import com.joinflatshare.pojo.BaseResponse;
 import com.joinflatshare.utils.helper.CommonMethod;
 import com.sendbird.android.SendbirdChat;
 import com.sendbird.android.params.BlockedUserListQueryParams;
@@ -37,8 +38,14 @@ public class SendBirdUser {
         apiManager.createUser(params, callback);
     }
 
-    public void updateUser(String userId,HashMap<String, String> params, OnResponseCallback<ModelChatUserResponse> callback) {
+    public void updateUser(String userId, HashMap<String, String> params, OnResponseCallback<ModelChatUserResponse> callback) {
         apiManager.updateProfile(userId, params, callback);
+    }
+
+    public void deleteUser(String userId) {
+        apiManager.deleteUser(userId, response -> {
+
+        });
     }
 
     public void updateUserMetadata(UserMetadata metadata, OnResponseCallback<ModelChatUserResponse> user) {

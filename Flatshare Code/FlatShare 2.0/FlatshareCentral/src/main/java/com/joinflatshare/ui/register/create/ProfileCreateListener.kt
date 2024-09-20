@@ -32,7 +32,6 @@ class ProfileCreateListener(
 ) : OnClickListener {
     private var buttonListener: TextWatcher? = null
     var dob = ""
-    var isAllDataFilled = false
 
     init {
         viewBind.txtDob.setOnClickListener(this)
@@ -43,10 +42,7 @@ class ProfileCreateListener(
         initTextWatcher()
         if (buttonListener != null) {
             viewBind.edtFname.addTextChangedListener(buttonListener)
-            viewBind.edtFname.addTextChangedListener(buttonListener)
-            viewBind.txtDob.addTextChangedListener(buttonListener)
-            viewBind.txtGender.addTextChangedListener(buttonListener)
-            viewBind.txtMyself.addTextChangedListener(buttonListener)
+            viewBind.edtLname.addTextChangedListener(buttonListener)
         }
     }
 
@@ -60,6 +56,7 @@ class ProfileCreateListener(
                 list.add(ModelBottomSheet(0, "Trans"))
                 BottomSheetView(activity, list) { _, position ->
                     viewBind.txtGender.text = list[position].name
+                    checkValidation()
                 }
             }
 
@@ -82,6 +79,7 @@ class ProfileCreateListener(
                     viewBind.txtDob.text = sdf.format(calendar.time)
                     sdf = SimpleDateFormat("yyyy/MM/dd", Locale.getDefault())
                     dob = sdf.format(calendar.time)
+                    checkValidation()
                 }
             }
 
@@ -91,6 +89,7 @@ class ProfileCreateListener(
                 list.add(ModelBottomSheet(0, "Working Professional"))
                 BottomSheetView(activity, list) { _, position ->
                     viewBind.txtMyself.text = list[position].name
+                    checkValidation()
                 }
             }
 
@@ -99,34 +98,27 @@ class ProfileCreateListener(
             }
 
             viewBind.btnCreateProfile.id -> {
-                if (isAllDataFilled) {
-                    if (viewBind.edtFname.text.toString().trim().length < 2)
-                        CommonMethod.makeToast("First name must be minimum 2 characters long")
-                    else if (viewBind.edtLname.text.toString().trim().length < 2)
-                        CommonMethod.makeToast("Last name must be minimum 2 characters long")
-                    else {
-                        AlertDialog.showAlert(
-                            activity,
-                            "Alert",
-                            "You won't be able to edit your name, birthday, & gender. Is it confirmed?",
-                            "Yes, I know",
-                            "No"
-                        ) { _: Intent?, requestCode: Int ->
-                            if (requestCode == 1) {
-                                val name = Name()
-                                name.firstName = viewBind.edtFname.text.toString()
-                                name.lastName = viewBind.edtLname.text.toString()
-                                val modelUser = activity.user
-                                modelUser?.name = name
-                                modelUser?.dob = dob
-                                modelUser?.gender = viewBind.txtGender.text.toString()
-                                modelUser?.flatProperties?.rentRange = RentRange()
-                                modelUser?.profession = viewBind.txtMyself.text.toString()
-                                activity.updateUser(modelUser)
-                            }
+                if (checkValidation())
+                    AlertDialog.showAlert(
+                        activity,
+                        "Alert",
+                        "You won't be able to edit your name, birthday, & gender. Is it confirmed?",
+                        "Yes, I know",
+                        "No"
+                    ) { _: Intent?, requestCode: Int ->
+                        if (requestCode == 1) {
+                            val name = Name()
+                            name.firstName = viewBind.edtFname.text.toString()
+                            name.lastName = viewBind.edtLname.text.toString()
+                            val modelUser = activity.user
+                            modelUser?.name = name
+                            modelUser?.dob = dob
+                            modelUser?.gender = viewBind.txtGender.text.toString()
+                            modelUser?.flatProperties?.rentRange = RentRange()
+                            modelUser?.profession = viewBind.txtMyself.text.toString()
+                            activity.updateUser(modelUser)
                         }
                     }
-                }
             }
         }
     }
@@ -142,33 +134,38 @@ class ProfileCreateListener(
             }
 
             override fun afterTextChanged(p0: Editable?) {
-                var allFilled = true
-                if (viewBind.edtFname.text.toString().trim().length < 2)
-                    allFilled = false
-                else if (viewBind.edtLname.text.toString().trim().length < 2)
-                    allFilled = false
-                else if (viewBind.txtDob.text.toString().isEmpty())
-                    allFilled = false
-                else if (viewBind.txtGender.text.toString().isEmpty())
-                    allFilled = false
-                else if (viewBind.txtMyself.text.toString().isEmpty())
-                    allFilled = false
-                isAllDataFilled = allFilled
-                if (allFilled)
-                    viewBind.btnCreateProfile.setBackgroundDrawable(
-                        ContextCompat.getDrawable(
-                            activity,
-                            R.drawable.drawable_button_blue
-                        )
-                    )
-                else viewBind.btnCreateProfile.setBackgroundDrawable(
-                    ContextCompat.getDrawable(
-                        activity,
-                        R.drawable.drawable_button_light_blue
-                    )
-                )
+                checkValidation()
+
             }
         }
+    }
+
+    private fun checkValidation(): Boolean {
+        var allFilled = true
+        if (viewBind.edtFname.text.toString().trim().length < 2)
+            allFilled = false
+        else if (viewBind.edtLname.text.toString().trim().isEmpty())
+            allFilled = false
+        else if (viewBind.txtDob.text.toString().isEmpty())
+            allFilled = false
+        else if (viewBind.txtGender.text.toString().isEmpty())
+            allFilled = false
+        else if (viewBind.txtMyself.text.toString().isEmpty())
+            allFilled = false
+        if (allFilled)
+            viewBind.btnCreateProfile.setBackgroundDrawable(
+                ContextCompat.getDrawable(
+                    activity,
+                    R.drawable.drawable_button_blue
+                )
+            )
+        else viewBind.btnCreateProfile.setBackgroundDrawable(
+            ContextCompat.getDrawable(
+                activity,
+                R.drawable.drawable_button_light_blue
+            )
+        )
+        return allFilled
     }
 
 }

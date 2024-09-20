@@ -118,7 +118,7 @@ class AdapterUserHolder {
         }
 
         holder.imgElite.setOnClickListener {
-            if (!CommonMethod.isEliteMember(AppConstants.loggedInUser!!))
+            if (!CommonMethod.isEliteMember(AppConstants.loggedInUser))
                 EliteLearnMoreBottomSheet(activity, user)
         }
 
@@ -238,7 +238,7 @@ class AdapterUserHolder {
             }
         }
         holder.imgElite.setOnClickListener {
-            if (!CommonMethod.isEliteMember(AppConstants.loggedInUser!!))
+            if (!CommonMethod.isEliteMember(AppConstants.loggedInUser))
                 EliteLearnMoreBottomSheet(activity, user)
         }
     }

@@ -84,6 +84,7 @@ class RegisterPhotoActivity : BaseActivity() {
                                     viewBind.btnUploadPhoto.text = "Next"
                                     viewBind.btnSkip.text = "Change Photo"
                                     viewBind.txtHeader.text = "Set as profile photo"
+                                    viewBind.btnSkip.visibility = View.VISIBLE
                                 }
 
                             })

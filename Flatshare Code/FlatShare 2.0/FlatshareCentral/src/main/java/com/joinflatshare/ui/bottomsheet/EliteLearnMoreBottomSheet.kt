@@ -17,7 +17,7 @@ import com.joinflatshare.utils.helper.ImageHelper
 class EliteLearnMoreBottomSheet(
     private val activity: BaseActivity,
     private val user: User
-) {
+):BottomSheetBaseView(activity) {
 
     private lateinit var viewBind: DialogBottomsheetEliteLearnMoreBinding
     private lateinit var dialog: BottomSheetDialog
@@ -32,7 +32,7 @@ class EliteLearnMoreBottomSheet(
         dialog.setContentView(viewBind.root)
         init()
         click()
-        dialog.show()
+        showDialog(dialog)
     }
 
     private fun init() {
@@ -42,10 +42,10 @@ class EliteLearnMoreBottomSheet(
 
     private fun click() {
         viewBind.imgCross.setOnClickListener {
-            dialog.dismiss()
+            dismissDialog(dialog)
         }
         viewBind.llLearnMore.setOnClickListener {
-            dialog.dismiss()
+            dismissDialog(dialog)
             Handler(Looper.getMainLooper()).postDelayed(
                 { PaymentHandler.showPaymentForElite(activity, null) }, 500
             )

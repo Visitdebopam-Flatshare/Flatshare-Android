@@ -5,6 +5,7 @@ import android.content.Intent
 import android.view.View
 import com.joinflatshare.FlatshareCentral.databinding.ActivityExploreBinding
 import com.joinflatshare.constants.AppConstants
+import com.joinflatshare.payment.PaymentHandler
 import com.joinflatshare.ui.bottomsheet.GiftBottomSheet
 import com.joinflatshare.ui.preferences.PreferenceActivity
 import com.joinflatshare.utils.helper.CommonMethod
@@ -26,14 +27,16 @@ class ExploreListener(
     override fun onClick(view: View?) {
         when (view?.id) {
             viewBind.btnNoFeed.id, viewBind.cardPreferences.id -> {
-                val intent = Intent(activity, PreferenceActivity::class.java)
+                PaymentHandler.showPaymentForChats(activity,null)
+
+                /*val intent = Intent(activity, PreferenceActivity::class.java)
                 CommonMethod.switchActivity(
                     activity, intent
                 ) { result ->
                     if (result?.resultCode == Activity.RESULT_OK) {
                         AppConstants.isFeedReloadRequired = true
                     }
-                }
+                }*/
             }
 
             viewBind.btnExploreLoad.id -> {

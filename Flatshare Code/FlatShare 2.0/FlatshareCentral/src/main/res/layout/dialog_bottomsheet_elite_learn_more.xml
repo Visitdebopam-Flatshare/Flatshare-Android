@@ -67,7 +67,7 @@
                 app:cardElevation="0dp"
                 app:cardPreventCornerOverlap="false"
                 app:cardUseCompatPadding="false"
-                app:strokeColor="@color/elite_blue"
+                app:strokeColor="@color/white"
                 app:strokeWidth="@dimen/_2sdp">
 
                 <FrameLayout

@@ -87,12 +87,6 @@ public class BaseActivity extends GpsHandler {
         baseClickListener.manageTopbarClicks();
     }
 
-    public void showTopbarLogo() {
-        baseViewBinder.btn_back.setVisibility(View.GONE);
-        baseViewBinder.img_topbar_profile.setVisibility(View.GONE);
-        baseViewBinder.img_topbar_logo.setVisibility(View.VISIBLE);
-    }
-
     public void showBottomMenu(BaseActivity activity) {
         baseViewBinder.initBottomMenu(activity);
     }

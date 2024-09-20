@@ -163,8 +163,8 @@ object CommonMethod {
     }
 
     // TODO move this method ot baseactivity after rewriting in kotlin
-    fun isEliteMember(user: User): Boolean {
-        var godMode = user.godMode
+    fun isEliteMember(user: User?): Boolean {
+        var godMode = user?.godMode
         try {
             if (!godMode.isNullOrEmpty() && godMode.contains(".")) {
                 godMode = godMode.substring(0, godMode.lastIndexOf("."))

@@ -65,10 +65,10 @@
                 <TextView
                     android:id="@+id/txt_photo"
                     android:layout_width="match_parent"
-                    android:fontFamily="@font/font_semibold"
                     android:layout_height="match_parent"
                     android:layout_margin="@dimen/_5sdp"
                     android:background="@drawable/drawable_blue_circle"
+                    android:fontFamily="@font/font_semibold"
                     android:gravity="center"
                     android:textAllCaps="true"
                     android:textColor="@color/white"
@@ -110,13 +110,23 @@
                 android:layout_marginTop="@dimen/_2sdp"
                 android:src="@drawable/ic_tick_verified_blue"
                 app:tint="@color/blue_dark" />
+
+            <ImageView
+                android:id="@+id/img_profile_elite"
+                android:layout_width="@dimen/_15sdp"
+                android:layout_height="@dimen/_15sdp"
+                android:layout_marginStart="@dimen/_5sdp"
+                android:layout_marginTop="@dimen/_2sdp"
+                android:src="@drawable/ic_elite"
+                android:visibility="gone"
+                app:tint="@color/blue_dark" />
         </LinearLayout>
 
         <com.google.android.material.card.MaterialCardView
+            android:id="@+id/card_profile_complete"
             android:layout_width="@dimen/_160sdp"
             android:layout_height="@dimen/_35sdp"
             android:layout_gravity="center_horizontal"
-            android:id="@+id/card_profile_complete"
             android:layout_marginTop="@dimen/_10sdp"
             app:cardBackgroundColor="#B4B4B4"
             app:cardCornerRadius="@dimen/_20sdp"

@@ -13,7 +13,7 @@ import com.joinflatshare.ui.base.BaseActivity
 class ElitePreferenceBottomSheet(
     private val activity: BaseActivity,
     private val callback: OnProductPurchaseCompleteListener?
-) {
+):BottomSheetBaseView(activity) {
 
     private lateinit var viewBind: DialogBottomsheetElitePreferenceBinding
     private lateinit var dialog: BottomSheetDialog
@@ -27,15 +27,15 @@ class ElitePreferenceBottomSheet(
         viewBind = DialogBottomsheetElitePreferenceBinding.inflate(activity.layoutInflater)
         dialog.setContentView(viewBind.root)
         click()
-        dialog.show()
+        showDialog(dialog)
     }
 
     private fun click() {
         viewBind.imgCross.setOnClickListener {
-            dialog.dismiss()
+            dismissDialog(dialog)
         }
         viewBind.llExploreElite.setOnClickListener {
-            dialog.dismiss()
+            dismissDialog(dialog)
             PaymentHandler.showPaymentForElite(activity, callback)
         }
     }

@@ -65,102 +65,91 @@
                     android:layout_height="wrap_content"
                     android:layout_marginVertical="@dimen/_20sdp">
 
-                    <com.google.android.material.card.MaterialCardView
+                    <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="center_horizontal"
                         android:layout_marginTop="@dimen/_15sdp"
-                        app:cardBackgroundColor="@color/elite_blue"
-                        app:cardCornerRadius="@dimen/_20sdp"
-                        app:cardElevation="0dp"
-                        app:cardPreventCornerOverlap="false"
-                        app:cardUseCompatPadding="false">
+                        android:background="@drawable/drawable_elite_box"
+                        android:gravity="start|center_vertical"
+                        android:orientation="vertical"
+                        android:paddingHorizontal="@dimen/_20sdp"
+                        android:paddingVertical="@dimen/_10sdp">
 
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginHorizontal="@dimen/_20sdp"
-                            android:layout_marginVertical="@dimen/_10sdp"
-                            android:gravity="start|center_vertical"
-                            android:orientation="vertical">
+                            android:layout_marginTop="@dimen/_20sdp"
+                            android:gravity="top"
+                            android:orientation="horizontal">
 
-                            <LinearLayout
-                                android:layout_width="match_parent"
+                            <ImageView
+                                android:layout_width="@dimen/_20sdp"
+                                android:layout_height="@dimen/_20sdp"
+                                android:src="@drawable/ic_tick_blue"
+                                app:tint="@color/white" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_marginTop="@dimen/_20sdp"
-                                android:gravity="top"
-                                android:orientation="horizontal">
+                                android:layout_marginStart="@dimen/_5sdp"
+                                android:fontFamily="@font/font_medium"
+                                android:text="25 Chat Requests every week."
+                                android:textColor="@color/white"
+                                android:textSize="@dimen/_14sdp" />
+                        </LinearLayout>
 
-                                <ImageView
-                                    android:layout_width="@dimen/_20sdp"
-                                    android:layout_height="@dimen/_20sdp"
-                                    android:src="@drawable/ic_tick_blue"
-                                    app:tint="@color/white" />
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/_10sdp"
+                            android:gravity="top"
+                            android:orientation="horizontal">
 
-                                <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginStart="@dimen/_5sdp"
-                                    android:fontFamily="@font/font_medium"
-                                    android:text="50 Chat Requests every week."
-                                    android:textColor="@color/white"
-                                    android:textSize="@dimen/_14sdp" />
-                            </LinearLayout>
+                            <ImageView
+                                android:layout_width="@dimen/_20sdp"
+                                android:layout_height="@dimen/_20sdp"
+                                android:layout_marginTop="@dimen/_3sdp"
+                                android:src="@drawable/ic_tick_blue"
+                                app:tint="@color/white" />
 
-                            <LinearLayout
-                                android:layout_width="match_parent"
+                            <TextView
+                                android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_marginTop="@dimen/_10sdp"
-                                android:gravity="top"
-                                android:orientation="horizontal">
+                                android:layout_marginStart="@dimen/_5sdp"
+                                android:fontFamily="@font/font_medium"
+                                android:text="Connect with other elite members."
+                                android:textColor="@color/white"
+                                android:textSize="@dimen/_14sdp"
+                                app:drawableTint="@color/white" />
+                        </LinearLayout>
 
-                                <ImageView
-                                    android:layout_width="@dimen/_20sdp"
-                                    android:layout_height="@dimen/_20sdp"
-                                    android:layout_marginTop="@dimen/_3sdp"
-                                    android:src="@drawable/ic_tick_blue"
-                                    app:tint="@color/white" />
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/_10sdp"
+                            android:gravity="top"
+                            android:orientation="horizontal">
 
-                                <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginStart="@dimen/_5sdp"
-                                    android:fontFamily="@font/font_medium"
-                                    android:text="Connect with other elite members."
-                                    android:textColor="@color/white"
-                                    android:textSize="@dimen/_14sdp"
-                                    app:drawableTint="@color/white" />
-                            </LinearLayout>
+                            <ImageView
+                                android:layout_width="@dimen/_20sdp"
+                                android:layout_height="@dimen/_20sdp"
+                                android:layout_marginTop="@dimen/_3sdp"
+                                android:src="@drawable/ic_tick_blue"
+                                app:tint="@color/white" />
 
-                            <LinearLayout
-                                android:layout_width="match_parent"
+                            <TextView
+                                android:id="@+id/txt_flatscore"
+                                android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_marginTop="@dimen/_10sdp"
-                                android:gravity="top"
-                                android:orientation="horizontal">
-
-                                <ImageView
-                                    android:layout_width="@dimen/_20sdp"
-                                    android:layout_height="@dimen/_20sdp"
-                                    android:layout_marginTop="@dimen/_3sdp"
-                                    android:src="@drawable/ic_tick_blue"
-                                    app:tint="@color/white" />
-
-                                <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginStart="@dimen/_5sdp"
-                                    android:fontFamily="@font/font_medium"
-                                    android:text="Add {Pack Value} to your Flatscore."
-                                    android:textColor="@color/white"
-                                    android:textSize="@dimen/_14sdp"
-                                    app:drawableTint="@color/white" />
-                            </LinearLayout>
-
+                                android:layout_marginStart="@dimen/_5sdp"
+                                android:fontFamily="@font/font_medium"
+                                android:textColor="@color/white"
+                                android:textSize="@dimen/_14sdp"
+                                app:drawableTint="@color/white" />
                         </LinearLayout>
 
 
-                    </com.google.android.material.card.MaterialCardView>
+                    </LinearLayout>
 
                     <com.google.android.material.card.MaterialCardView
                         android:layout_width="wrap_content"
@@ -201,7 +190,6 @@
                         android:layout_width="0dp"
                         android:layout_height="@dimen/_110sdp"
                         android:layout_weight="1"
-                        android:alpha="0.5"
                         app:cardBackgroundColor="@android:color/transparent"
                         app:cardCornerRadius="@dimen/_10sdp"
                         app:cardPreventCornerOverlap="true"
@@ -343,7 +331,7 @@
                         android:layout_width="0dp"
                         android:layout_height="@dimen/_110sdp"
                         android:layout_weight="1"
-                        android:alpha="0.5"
+                        
                         app:cardBackgroundColor="@android:color/transparent"
                         app:cardCornerRadius="@dimen/_10sdp"
                         app:cardPreventCornerOverlap="true"

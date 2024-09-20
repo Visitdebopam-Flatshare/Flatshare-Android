@@ -100,7 +100,7 @@ class RegisterPreferenceListener(
             }
 
             viewBind.btnSearch.id -> {
-                if (location == null && moveIn.isNullOrEmpty())
+                if (location == null || moveIn.isNullOrEmpty())
                     return
                 else {
                     val user = AppConstants.loggedInUser

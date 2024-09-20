@@ -123,7 +123,6 @@ class SettingsListener(
             }
 
             viewBind.cardProfileDelete.id -> {
-//                SendbirdChannelFix().fix(activity)
                 AlertDialog.showAlert(
                     activity,
                     "Are you sure you want to\ndelete your account?",

@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.joinflatshare.FlatshareCentral.databinding.DialogBottomsheetBinding
 import com.joinflatshare.interfaces.OnitemClick
+import com.joinflatshare.ui.bottomsheet.BottomSheetBaseView
 
 /**
  * Created by debopam on 09/07/24
@@ -14,7 +15,7 @@ class BottomSheetView(
     private val activity: ComponentActivity,
     private val modelBottomSheets: ArrayList<ModelBottomSheet>,
     private val onItemClick: OnitemClick
-) {
+) : BottomSheetBaseView(activity) {
     private lateinit var viewBind: DialogBottomsheetBinding
     private lateinit var adapter: BottomSheetAdapter
     private lateinit var dialog: BottomSheetDialog
@@ -29,7 +30,7 @@ class BottomSheetView(
         dialog.setContentView(viewBind.root)
         setup()
         click()
-        dialog.show()
+        showDialog(dialog)
     }
 
     private fun setup() {
@@ -41,7 +42,7 @@ class BottomSheetView(
     private fun click() {
         adapter.setClickListener { view: View?, position: Int ->
             onItemClick.onitemclick(view, position)
-            dialog.dismiss()
+            dismissDialog(dialog)
         }
     }
 }

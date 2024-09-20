@@ -2,6 +2,7 @@ package com.joinflatshare.payment
 
 import com.android.billingclient.api.ProductDetails
 import com.android.billingclient.api.Purchase
+import com.debopam.progressdialog.DialogCustomProgress
 import com.google.gson.Gson
 import com.joinflatshare.FlatShareApplication
 import com.joinflatshare.constants.AppConstants
@@ -26,7 +27,7 @@ import retrofit2.Response
  * Created by debopam on 26/05/23
  */
 object PaymentHandler : OnPurchaseProgressListener {
-    private val TAG = PaymentFailureHandler::class.java.simpleName
+    private val TAG = PaymentHandler::class.java.simpleName
     private lateinit var activity: BaseActivity
     private var playClient: GooglePlayBillingClient? = null
     private var uiCallback: OnProductPurchaseCompleteListener? = null
@@ -63,6 +64,7 @@ object PaymentHandler : OnPurchaseProgressListener {
 //        if (isPopUpShowing)
 //            return
         this.activity = activity
+        DialogCustomProgress.showProgress(activity)
         if (playClient == null)
             playClient = GooglePlayBillingClient(activity)
         val productsIds = ArrayList<String>()
@@ -71,6 +73,7 @@ object PaymentHandler : OnPurchaseProgressListener {
         productsIds.add(GooglePaymentConstants.PRODUCT_CHAT_3)
         playClient?.fetchPrice(productsIds, object : OnProductPricesFetched {
             override fun onPriceFetched(products: List<ProductDetails>?) {
+                DialogCustomProgress.hideProgress(activity)
                 if (!products.isNullOrEmpty()) {
                     purchaseType = GooglePaymentConstants.PAYMENT_TYPE_CHAT
                     logPaymentPopup(purchaseType)
@@ -108,6 +111,7 @@ object PaymentHandler : OnPurchaseProgressListener {
 //        if (isPopUpShowing)
 //            return
         this.activity = activity
+        DialogCustomProgress.showProgress(activity)
         if (playClient == null)
             playClient = GooglePlayBillingClient(activity)
         val productsIds = ArrayList<String>()
@@ -116,6 +120,7 @@ object PaymentHandler : OnPurchaseProgressListener {
         productsIds.add(GooglePaymentConstants.PRODUCT_GOD_3)
         playClient?.fetchPrice(productsIds, object : OnProductPricesFetched {
             override fun onPriceFetched(products: List<ProductDetails>?) {
+                DialogCustomProgress.hideProgress(activity)
                 if (!products.isNullOrEmpty()) {
                     purchaseType = GooglePaymentConstants.PAYMENT_TYPE_GOD_MODE
                     logPaymentPopup(purchaseType)
@@ -157,12 +162,10 @@ object PaymentHandler : OnPurchaseProgressListener {
             if (restrictionType == GooglePaymentConstants.PAYMENT_TYPE_GOD_MODE) {
                 EliteBottomSheet(activity, products, object : OnProductDetailsFetched {
                     override fun onProductSelected(product: ProductDetails) {
-                        var price =
-                            product.oneTimePurchaseOfferDetails?.formattedPrice!!.substring(1)
-                        price = price.substring(0, price.indexOf("."))
-                        price = price.replace(",", "")
+                        val price =
+                            (product.oneTimePurchaseOfferDetails?.priceAmountMicros!! / 1000000)
                         this@PaymentHandler.uiCallback = uiCallback
-                        this@PaymentHandler.purchaseAmount = Integer.valueOf(price)
+                        this@PaymentHandler.purchaseAmount = price.toInt()
                         purchaseProduct(product)
                     }
                 })
@@ -173,12 +176,10 @@ object PaymentHandler : OnPurchaseProgressListener {
                     restrictionType,
                     object : OnProductDetailsFetched {
                         override fun onProductSelected(product: ProductDetails) {
-                            var price =
-                                product.oneTimePurchaseOfferDetails?.formattedPrice!!.substring(1)
-                            price = price.substring(0, price.indexOf("."))
-                            price = price.replace(",", "")
+                            val price =
+                                (product.oneTimePurchaseOfferDetails?.priceAmountMicros!! / 1000000)
                             this@PaymentHandler.uiCallback = uiCallback
-                            this@PaymentHandler.purchaseAmount = Integer.valueOf(price)
+                            this@PaymentHandler.purchaseAmount = price.toInt()
                             purchaseProduct(product)
                         }
                     })

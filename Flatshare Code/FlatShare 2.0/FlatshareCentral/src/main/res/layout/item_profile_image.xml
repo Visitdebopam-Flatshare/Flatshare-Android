@@ -9,7 +9,7 @@
         android:id="@+id/frame_image"
         android:layout_width="match_parent"
         android:layout_height="@dimen/_120sdp"
-        app:cardBackgroundColor="#E9F0FF"
+        app:cardBackgroundColor="@color/grey6"
         app:cardCornerRadius="@dimen/_10sdp"
         app:cardPreventCornerOverlap="true"
         app:cardUseCompatPadding="false">

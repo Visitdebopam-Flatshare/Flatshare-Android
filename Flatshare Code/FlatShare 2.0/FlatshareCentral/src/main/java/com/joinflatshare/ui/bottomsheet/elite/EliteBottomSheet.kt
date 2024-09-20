@@ -6,6 +6,8 @@ import com.joinflatshare.FlatshareCentral.databinding.DialogBottomsheetEliteBind
 import com.joinflatshare.interfaces.OnStringFetched
 import com.joinflatshare.payment.OnProductDetailsFetched
 import com.joinflatshare.ui.base.BaseActivity
+import com.joinflatshare.ui.bottomsheet.BottomSheetBaseView
+import com.joinflatshare.utils.helper.CommonMethod
 
 /**
  * Created by debopam on 20/06/24
@@ -15,7 +17,7 @@ class EliteBottomSheet(
     val products: List<ProductDetails>?,
     val callback: OnProductDetailsFetched
 
-) {
+):BottomSheetBaseView(activity) {
     private lateinit var viewBind: DialogBottomsheetEliteBinding
     lateinit var dialog: BottomSheetDialog
 
@@ -23,7 +25,7 @@ class EliteBottomSheet(
         create()
         populateProducts()
         EliteBottomSheetListener(activity, this, viewBind, callback)
-        dialog.show()
+        showDialog(dialog)
     }
 
     private fun create() {

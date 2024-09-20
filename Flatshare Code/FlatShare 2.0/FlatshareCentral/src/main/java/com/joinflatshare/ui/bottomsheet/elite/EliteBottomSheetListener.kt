@@ -1,7 +1,11 @@
 package com.joinflatshare.ui.bottomsheet.elite
 
+import android.widget.ImageView
+import android.widget.LinearLayout
+import android.widget.TextView
 import androidx.core.content.ContextCompat
 import com.android.billingclient.api.ProductDetails
+import com.google.android.material.card.MaterialCardView
 import com.joinflatshare.FlatshareCentral.R
 import com.joinflatshare.FlatshareCentral.databinding.DialogBottomsheetEliteBinding
 import com.joinflatshare.payment.OnProductDetailsFetched
@@ -25,102 +29,72 @@ class EliteBottomSheetListener(
         viewBind.cardWeek2.performClick()
         viewBind.btnElite.setOnClickListener {
             if (selectedProduct != null) {
-                bottomSheet.dialog.dismiss()
+                bottomSheet.dismissDialog(bottomSheet.dialog)
                 callback.onProductSelected(selectedProduct!!)
             }
         }
     }
 
+    private fun colorCard(card: MaterialCardView, isSelected: Boolean) {
+        val textColor = ContextCompat.getColor(
+            activity,
+            if (isSelected) R.color.white else R.color.grey4
+        )
+        val grey4 = ContextCompat.getColor(
+            activity,
+            if (isSelected) R.color.elite_blue else R.color.grey4
+        )
+        val grey5 = ContextCompat.getColor(
+            activity,
+            if (isSelected) R.color.elite_blue else R.color.grey5
+        )
+        val greyCircular = ContextCompat.getColor(
+            activity,
+            if (isSelected) R.color.grey6 else R.color.grey5
+        )
+        val grey6 = ContextCompat.getColor(
+            activity,
+            if (isSelected) R.color.elite_blue else R.color.grey6
+        )
+
+        card.strokeColor = grey6
+        val llHolder: LinearLayout
+        if (card.id == viewBind.cardWeek2.id) {
+            val txt = (card.getChildAt(0) as LinearLayout).getChildAt(0) as TextView
+            txt.setBackgroundColor(grey5)
+            txt.setTextColor(textColor)
+            llHolder = (card.getChildAt(0) as LinearLayout).getChildAt(1) as LinearLayout
+        } else {
+            llHolder = card.getChildAt(0) as LinearLayout
+        }
+        (llHolder.getChildAt(0) as TextView).setTextColor(grey4)
+        (llHolder.getChildAt(2) as TextView).setTextColor(grey4)
+        val circularCard = llHolder.getChildAt(1) as MaterialCardView
+        circularCard.setCardBackgroundColor(greyCircular)
+        (circularCard.getChildAt(0) as ImageView).setColorFilter(grey4)
+    }
+
     private fun click(position: Int) {
-        viewBind.cardWeek1.alpha = 0.5f
-        viewBind.cardWeek2.alpha = 0.5f
-        viewBind.cardWeek3.alpha = 0.5f
-        viewBind.txtPrice1.setTextColor(
-            ContextCompat.getColor(
-                activity,
-                R.color.color_text_primary
-            )
-        )
-        viewBind.txtPrice2.setTextColor(
-            ContextCompat.getColor(
-                activity,
-                R.color.color_text_primary
-            )
-        )
-        viewBind.txtPrice3.setTextColor(
-            ContextCompat.getColor(
-                activity,
-                R.color.color_text_primary
-            )
-        )
-        viewBind.txtEliteDesc1.setTextColor(
-            ContextCompat.getColor(
-                activity,
-                R.color.color_text_primary
-            )
-        )
-        viewBind.txtEliteDesc2.setTextColor(
-            ContextCompat.getColor(
-                activity,
-                R.color.color_text_primary
-            )
-        )
-        viewBind.txtEliteDesc3.setTextColor(
-            ContextCompat.getColor(
-                activity,
-                R.color.color_text_primary
-            )
-        )
+        colorCard(viewBind.cardWeek1, false)
+        colorCard(viewBind.cardWeek2, false)
+        colorCard(viewBind.cardWeek3, false)
         when (position) {
             1 -> {
-                viewBind.cardWeek1.alpha = 1f
-                viewBind.txtPrice1.setTextColor(
-                    ContextCompat.getColor(
-                        activity,
-                        R.color.elite_blue
-                    )
-                )
-                viewBind.txtEliteDesc1.setTextColor(
-                    ContextCompat.getColor(
-                        activity,
-                        R.color.elite_blue
-                    )
-                )
+                colorCard(viewBind.cardWeek1, true)
                 selectedProduct = bottomSheet.products?.get(0)
+                viewBind.txtFlatscore.text = "Add 250 to your Flatscore."
             }
 
             2 -> {
-                viewBind.cardWeek2.alpha = 1f
-                viewBind.txtPrice2.setTextColor(
-                    ContextCompat.getColor(
-                        activity,
-                        R.color.elite_blue
-                    )
-                )
-                viewBind.txtEliteDesc2.setTextColor(
-                    ContextCompat.getColor(
-                        activity,
-                        R.color.elite_blue
-                    )
-                )
+                colorCard(viewBind.cardWeek2, true)
                 selectedProduct = bottomSheet.products?.get(1)
+                viewBind.txtFlatscore.text = "Add 500 to your Flatscore."
             }
 
             3 -> {
-                viewBind.cardWeek3.alpha = 1f
-                viewBind.txtPrice3.setTextColor(
-                    ContextCompat.getColor(
-                        activity,
-                        R.color.elite_blue
-                    )
-                )
-                viewBind.txtEliteDesc3.setTextColor(
-                    ContextCompat.getColor(
-                        activity,
-                        R.color.elite_blue
-                    )
-                )
+                colorCard(viewBind.cardWeek3, true)
                 selectedProduct = bottomSheet.products?.get(2)
+                viewBind.txtFlatscore.text = "Add 1000 to your Flatscore."
             }
         }
 
