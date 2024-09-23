@@ -30,7 +30,8 @@ class AdminFeatureActivity : BaseActivity() {
         features.add("Sendbird User Name Fix")
         features.add("Sendbird User Image Fix")
         features.add("Sendbird User Image HTTPS Fix")
-        features.add("Sendbird Delete Unregistered Users")
+        features.add("Sendbird Delete Unregistered Users From JSON")
+        features.add("Sendbird Delete Unregistered Users From API")
         viewBind.rvAdminFeatures.adapter = AdminFeatureAdapter(this, features)
     }
 }

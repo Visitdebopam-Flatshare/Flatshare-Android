@@ -66,9 +66,15 @@ public class SendBirdChannel {
     }
 
     public void deleteChannel(String channelUrl) {
-        /*sendBirdApiManager.deleteChannel(channelUrl, response -> {
+        sendBirdApiManager.deleteChannel(channelUrl, response -> {
 
-        });*/
+        });
+    }
+
+    public void deleteChannel(String channelUrl, OnStringFetched callBack) {
+        sendBirdApiManager.deleteChannel(channelUrl, response -> {
+            callBack.onFetched("1");
+        });
     }
 
     public void leaveChannel(String channelUrl, ArrayList<String> userIds, OnStringFetched onStringFetched) {
@@ -181,5 +187,37 @@ public class SendBirdChannel {
         else if (url.startsWith("FLATMATE_") && url.length() >= 10)
             return url.substring(9, url.lastIndexOf("_"));
         return "";
+    }
+
+    public void deleteChannelsOnUserRemoval(String userId, OnStringFetched callback) {
+        List<String> userIdList = new ArrayList<>();
+        userIdList.add(userId);
+        GroupChannelListQueryParams params = new GroupChannelListQueryParams();
+        params.setIncludeEmpty(true);
+        params.setUserIdsExactFilter(userIdList);
+        params.setLimit(100);
+
+        GroupChannelListQuery listQuery = GroupChannel.createMyGroupChannelListQuery(params);
+        listQuery.next((list, e) -> {
+            if (e != null) {
+                AlertImageDialog.INSTANCE.somethingWentWrong(activity);
+                return;
+            }
+            deleteUserChannelsOnSync(list, callback);
+        });
+    }
+
+    private void deleteUserChannelsOnSync(List<GroupChannel> list, OnStringFetched callback) {
+        if (list != null && !list.isEmpty()) {
+            deleteChannel(list.get(0).getUrl(), text -> {
+                try {
+                    Thread.sleep(1000);
+                    list.remove(0);
+                    deleteUserChannelsOnSync(list, callback);
+                } catch (Exception exception) {
+                    callback.onFetched("1");
+                }
+            });
+        } else callback.onFetched("1");
     }
 }

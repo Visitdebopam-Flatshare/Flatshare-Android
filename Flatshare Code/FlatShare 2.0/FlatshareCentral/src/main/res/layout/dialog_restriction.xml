@@ -408,7 +408,7 @@
                                     android:layout_height="wrap_content"
                                     android:fontFamily="@font/font_semibold"
                                     android:gravity="center"
-                                    android:text="Get 50 chat requests every week"
+                                    android:text="Get 25 chat requests every week"
                                     android:textColor="@color/elite_blue"
                                     android:textSize="@dimen/_10sdp" />
 

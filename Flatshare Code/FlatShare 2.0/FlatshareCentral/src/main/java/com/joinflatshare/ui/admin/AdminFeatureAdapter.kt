@@ -67,8 +67,18 @@ class AdminFeatureAdapter(
                         SendbirdImagePathFix().fix(adapter.activity)
                     }
 
-                    "Sendbird Delete Unregistered Users" -> {
-                        DeleteUnregisteredUsersFromSendbird().deleteUnregisteredUsers(adapter.activity)
+                    "Sendbird Delete Unregistered Users From JSON" -> {
+                        DeleteUnregisteredUsersFromSendbird().deleteUnregisteredUsers(
+                            adapter.activity,
+                            true
+                        )
+                    }
+
+                    "Sendbird Delete Unregistered Users From API" -> {
+                        DeleteUnregisteredUsersFromSendbird().deleteUnregisteredUsers(
+                            adapter.activity,
+                            false
+                        )
                     }
                 }
             }

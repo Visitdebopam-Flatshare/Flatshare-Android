@@ -26,28 +26,27 @@ class SendBirdUsersTableReload {
         params["show_bot"] = "false"
         if (next.isNotEmpty())
             params["token"] = next
-        sendBirdApiManager.getAllUsers(params, object : OnResponseCallback<ModelUserListResponse> {
-            override fun oncallBack(response: ModelUserListResponse?) {
-                next =
-                    if (response?.next.isNullOrEmpty()) "" else if (response?.next == next) "" else response?.next!!
-                if (!response?.users.isNullOrEmpty()) {
-                    response?.users?.forEach {
-                        val tb = TableSendbirdUser(it.userId!!, it.nickname, it.profileUrl)
-                        userLists.add(tb)
-                    }
-                }
-                if (next.isNotEmpty())
-                    getAllSendbirdUsers(activity)
-                else {
-                    CommonMethod.makeLog("All Sendbird Users Count", "" + userLists.size)
-                    if (userLists.isNotEmpty()) {
-                        FlatshareDbManager.getInstance(activity).sendBirdUserDao()
-                            .deleteAllSendbirdUsers()
-                        FlatshareDbManager.getInstance(activity).sendBirdUserDao()
-                            .insertUser(userLists)
-                    }
+        sendBirdApiManager.getAllUsers(params
+        ) { response ->
+            next =
+                if (response?.next.isNullOrEmpty()) "" else if (response?.next == next) "" else response?.next!!
+            if (!response?.users.isNullOrEmpty()) {
+                response?.users?.forEach {
+                    val tb = TableSendbirdUser(it.userId!!, it.nickname, it.profileUrl)
+                    userLists.add(tb)
                 }
             }
-        })
+            if (next.isNotEmpty())
+                getAllSendbirdUsers(activity)
+            else {
+                CommonMethod.makeLog("All Sendbird Users Count", "" + userLists.size)
+                if (userLists.isNotEmpty()) {
+                    FlatshareDbManager.getInstance(activity).sendBirdUserDao()
+                        .deleteAllSendbirdUsers()
+                    FlatshareDbManager.getInstance(activity).sendBirdUserDao()
+                        .insertUser(userLists)
+                }
+            }
+        }
     }
 }

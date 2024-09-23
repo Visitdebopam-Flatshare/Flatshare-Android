@@ -2,12 +2,7 @@ package com.joinflatshare.ui.admin.features
 
 import com.google.gson.Gson
 import com.joinflatshare.FlatShareApplication
-import com.joinflatshare.api.retrofit.OnResponseCallback
-import com.joinflatshare.chat.api.SendBirdApiManager
-import com.joinflatshare.chat.pojo.user_list.ModelUserListResponse
-import com.joinflatshare.db.FlatshareDbManager
 import com.joinflatshare.db.tables.TableFlatshareUser
-import com.joinflatshare.db.tables.TableSendbirdUser
 import com.joinflatshare.ui.admin.features.model.SendbirdUserResponseItem
 import com.joinflatshare.ui.base.BaseActivity
 import com.joinflatshare.utils.helper.CommonMethod
@@ -27,7 +22,10 @@ class FlatshareUsersTableReload {
 
     private fun openFile() {
         val str = StringBuilder()
-        activity.assets.open("all-users.json").bufferedReader().use {
+        /*activity.assets.open("all-users.json").bufferedReader().use {
+            str.append(it.readText())
+        }*/
+        activity.assets.open("fake-users.json").bufferedReader().use {
             str.append(it.readText())
         }
         val jsonArray = JSONArray(str.toString())
@@ -43,7 +41,7 @@ class FlatshareUsersTableReload {
             if (lname.isNullOrEmpty())
                 lname = "Mehta"
             val dp = if (fObj?.dp.isNullOrEmpty()) "" else fObj.dp
-            userLists.add(TableFlatshareUser(fObj.id!!, fname + " " + lname, dp))
+            userLists.add(TableFlatshareUser(fObj.id!!, "$fname $lname", dp))
             jsonArray.remove(0)
             iterateJson(jsonArray)
         } else {

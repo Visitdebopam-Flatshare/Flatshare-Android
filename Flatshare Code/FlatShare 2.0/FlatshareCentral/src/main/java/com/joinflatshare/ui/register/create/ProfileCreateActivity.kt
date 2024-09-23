@@ -4,26 +4,23 @@ import android.content.Intent
 import android.os.Bundle
 import android.text.InputFilter
 import android.text.Spanned
-import com.google.gson.Gson
 import com.joinflatshare.FlatShareApplication
 import com.joinflatshare.FlatshareCentral.databinding.ActivityProfileCreateBinding
 import com.joinflatshare.chat.ApplicationChatHandler
 import com.joinflatshare.chat.SendBirdUser
+import com.joinflatshare.chat.pojo.user.ModelChatUserResponse
 import com.joinflatshare.constants.AppConstants
 import com.joinflatshare.fcm.NotificationPermissionHandler
 import com.joinflatshare.interfaces.OnUserFetched
 import com.joinflatshare.pojo.user.User
 import com.joinflatshare.pojo.user.UserResponse
 import com.joinflatshare.ui.register.RegisterBaseActivity
-import com.joinflatshare.ui.register.photo.RegisterPhotoActivity
+import com.joinflatshare.ui.settings.SettingsActivity
 import com.joinflatshare.utils.helper.CommonMethod
 import com.joinflatshare.utils.helper.CommonMethods
 import com.joinflatshare.utils.mixpanel.MixpanelUtils
 import com.joinflatshare.utils.system.DeviceInformationCollector
 import com.joinflatshare.webservice.api.WebserviceManager
-import com.joinflatshare.webservice.api.interfaces.OnFlatshareResponseCallBack
-import okhttp3.ResponseBody
-import retrofit2.Response
 
 /**
  * Created by debopam on 03/02/24
@@ -42,7 +39,17 @@ class ProfileCreateActivity : RegisterBaseActivity() {
             return
         }
         setFilter()
+//        setDemoData()
         ProfileCreateListener(this, viewBind)
+    }
+
+    private fun setDemoData() {
+        if (!AppConstants.isAppLive) {
+            viewBind.edtFname.setText("Sendbird")
+            viewBind.edtLname.setText("Test User")
+            viewBind.txtGender.text = "Male"
+            viewBind.txtMyself.text = "Student"
+        }
     }
 
 
@@ -76,7 +83,7 @@ class ProfileCreateActivity : RegisterBaseActivity() {
         updateUser(modelUser, object : OnUserFetched {
             override fun userFetched(resp: UserResponse?) {
                 CommonMethods.registerUser(resp)
-                callAfterRegister(resp?.data!!)
+                callAfterRegister(modelUser!!)
             }
         })
     }
@@ -88,29 +95,39 @@ class ProfileCreateActivity : RegisterBaseActivity() {
         CommonMethod.sendUserToDB(modelUser)
 
         //Register in Sendbird
-        if (AppConstants.isSendbirdLive) {
-            ApplicationChatHandler().initialise { text: String ->
-                if (text == "1") {
-                    val sendBirdUser = SendBirdUser(this@ProfileCreateActivity)
-                    val params =
-                        HashMap<String, String>()
-                    params["user_id"] = modelUser.id
-                    params["nickname"] =
-                        modelUser.name!!.firstName + " " + modelUser.name!!.lastName
-                    params["profile_url"] = ""
-                    sendBirdUser.createUser(
+        WebserviceManager.uiWebserviceHandler.showProgress(this)
+        ApplicationChatHandler().initialise { text: String ->
+            WebserviceManager.uiWebserviceHandler.hideProgress(this)
+            if (text == "1") {
+                val userName = modelUser.name!!.firstName + " " + modelUser.name!!.lastName
+                CommonMethod.makeLog("SendBird User Register", userName + "  " + modelUser.id)
+                val sendBirdUser = SendBirdUser(this@ProfileCreateActivity)
+                val params =
+                    HashMap<String, String>()
+                params["user_id"] = modelUser.id
+                params["nickname"] = userName
+                params["profile_url"] = ""
+                sendBirdUser.createUser(
+                    params
+                ) {
+                    // Update the User again since nickname is not registering
+                    params.remove("user_id")
+                    params.remove("profile_url")
+                    params["nickname"] = userName
+                    sendBirdUser.updateUser(
+                        user?.id,
                         params
-                    ) { }
+                    ) { response: ModelChatUserResponse? -> }
+
+                    // Requesting Notification permission for Android 13
+                    NotificationPermissionHandler(this).showNotificationPermission {
+                        MixpanelUtils.sendToMixPanel("Registration Complete")
+                        val intent = Intent(this, SettingsActivity::class.java)
+                        CommonMethod.switchActivity(this, intent, false)
+                        finishAffinity()
+                    }
                 }
             }
-        }
-
-        // Requesting Notification permission for Android 13
-        NotificationPermissionHandler(this).showNotificationPermission {
-            MixpanelUtils.sendToMixPanel("Registration Complete")
-            val intent = Intent(this, RegisterPhotoActivity::class.java)
-            CommonMethod.switchActivity(this, intent, false)
-            finishAffinity()
         }
     }
 }
