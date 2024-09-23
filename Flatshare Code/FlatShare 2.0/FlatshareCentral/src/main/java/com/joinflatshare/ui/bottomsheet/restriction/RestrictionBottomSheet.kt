@@ -71,6 +71,7 @@ class RestrictionBottomSheet(
             }
         }
         showDialog(dialog)
+        dialog.setOnDismissListener { PaymentHandler.isPopUpShowing=false }
     }
 
     private fun populateProducts() {

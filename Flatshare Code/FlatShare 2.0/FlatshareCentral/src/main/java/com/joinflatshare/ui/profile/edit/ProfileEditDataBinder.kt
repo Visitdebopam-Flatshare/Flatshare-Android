@@ -1,6 +1,7 @@
 package com.joinflatshare.ui.profile.edit
 
 import android.text.TextUtils
+import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.core.text.HtmlCompat
@@ -8,6 +9,7 @@ import androidx.recyclerview.widget.GridLayoutManager
 import com.joinflatshare.FlatshareCentral.databinding.ActivityProfileEditBinding
 import com.joinflatshare.constants.AppConstants
 import com.joinflatshare.customviews.GridSpacingItemDecoration
+import com.joinflatshare.pojo.user.User
 import com.joinflatshare.utils.helper.ImageHelper
 
 class ProfileEditDataBinder(
@@ -44,18 +46,25 @@ class ProfileEditDataBinder(
     }
 
     private fun setData() {
-        if (!AppConstants.loggedInUser?.flatProperties?.interests.isNullOrEmpty())
+        val user = AppConstants.loggedInUser
+        if (!user?.flatProperties?.interests.isNullOrEmpty())
             viewBind.txtProfileInterest.text =
-                TextUtils.join(", ", AppConstants.loggedInUser?.flatProperties?.interests!!)
-        if (!AppConstants.loggedInUser?.flatProperties?.languages.isNullOrEmpty())
+                TextUtils.join(", ", user?.flatProperties?.interests!!)
+        if (!user?.flatProperties?.languages.isNullOrEmpty())
             viewBind.txtProfileLanguages.text =
-                TextUtils.join(", ", AppConstants.loggedInUser?.flatProperties?.languages!!)
-        viewBind.edtProfileStatus.setText(AppConstants.loggedInUser?.status)
-        viewBind.edtProfileWork.setText(AppConstants.loggedInUser?.work)
+                TextUtils.join(", ", user?.flatProperties?.languages!!)
+        viewBind.edtProfileStatus.setText(user?.status)
+        if (user?.profession=="Student") {
+            viewBind.llProfileWork.visibility = View.GONE
+        }
+        else {
+            viewBind.llProfileWork.visibility= View.VISIBLE
+            viewBind.edtProfileWork.setText(user?.work)
+            workLimit()
+        }
         bioLimit()
-        workLimit()
-        if (AppConstants.loggedInUser?.hometown != null) {
-            val hometown = AppConstants.loggedInUser?.hometown
+        if (user?.hometown != null) {
+            val hometown = user?.hometown
             if (hometown!!.name.isEmpty()) {
                 edt_profile[0].text = ""
                 activity.latProfile[0] = null
@@ -65,8 +74,8 @@ class ProfileEditDataBinder(
                 activity.latProfile[0] = hometown.loc
             }
         }
-        if (AppConstants.loggedInUser!!.college != null) {
-            val hangout = AppConstants.loggedInUser!!.college
+        if (user!!.college != null) {
+            val hangout = user!!.college
             if (hangout!!.name.isEmpty()) {
                 edt_profile[1].text = ""
                 activity.latProfile[1] = null
@@ -79,17 +88,17 @@ class ProfileEditDataBinder(
 
 
         // Image
-        loadProfileImage()
+        loadProfileImage(user)
 //        loadImages()
 //        viewBind.rvProfileInfoImage.setAdapter(adapter)
     }
 
-    private fun loadProfileImage() {
+    private fun loadProfileImage(user: User) {
         ImageHelper.loadProfileImage(
             activity,
             viewBind.imgPhoto,
             viewBind.txtPhoto,
-            AppConstants.loggedInUser
+            user
         )
     }
 

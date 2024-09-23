@@ -5,6 +5,7 @@ import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.joinflatshare.FlatshareCentral.databinding.DialogBottomsheetEliteBinding
 import com.joinflatshare.interfaces.OnStringFetched
 import com.joinflatshare.payment.OnProductDetailsFetched
+import com.joinflatshare.payment.PaymentHandler
 import com.joinflatshare.ui.base.BaseActivity
 import com.joinflatshare.ui.bottomsheet.BottomSheetBaseView
 import com.joinflatshare.utils.helper.CommonMethod
@@ -32,6 +33,7 @@ class EliteBottomSheet(
         dialog = BottomSheetDialog(activity)
         viewBind = DialogBottomsheetEliteBinding.inflate(activity.layoutInflater)
         dialog.setContentView(viewBind.root)
+        dialog.setOnDismissListener { PaymentHandler.isPopUpShowing=false }
     }
 
     private fun populateProducts() {

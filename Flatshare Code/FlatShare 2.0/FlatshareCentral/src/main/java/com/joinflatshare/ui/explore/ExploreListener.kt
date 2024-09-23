@@ -27,16 +27,14 @@ class ExploreListener(
     override fun onClick(view: View?) {
         when (view?.id) {
             viewBind.btnNoFeed.id, viewBind.cardPreferences.id -> {
-                PaymentHandler.showPaymentForChats(activity,null)
-
-                /*val intent = Intent(activity, PreferenceActivity::class.java)
+                val intent = Intent(activity, PreferenceActivity::class.java)
                 CommonMethod.switchActivity(
                     activity, intent
                 ) { result ->
                     if (result?.resultCode == Activity.RESULT_OK) {
                         AppConstants.isFeedReloadRequired = true
                     }
-                }*/
+                }
             }
 
             viewBind.btnExploreLoad.id -> {

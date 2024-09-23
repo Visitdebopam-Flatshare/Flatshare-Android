@@ -38,7 +38,7 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/_30sdp"
-                    android:layout_marginHorizontal="@dimen/_60sdp"
+                    android:layout_marginHorizontal="@dimen/_70sdp"
                     android:layout_marginTop="@dimen/_20sdp"
                     android:gravity="center"
                     android:orientation="horizontal"
@@ -79,7 +79,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="@dimen/_20sdp"
-                            android:gravity="top"
+                            android:gravity="center_vertical"
                             android:orientation="horizontal">
 
                             <ImageView
@@ -102,13 +102,12 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="@dimen/_10sdp"
-                            android:gravity="top"
+                            android:gravity="center_vertical"
                             android:orientation="horizontal">
 
                             <ImageView
                                 android:layout_width="@dimen/_20sdp"
                                 android:layout_height="@dimen/_20sdp"
-                                android:layout_marginTop="@dimen/_3sdp"
                                 android:src="@drawable/ic_tick_blue"
                                 app:tint="@color/white" />
 
@@ -127,13 +126,12 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="@dimen/_10sdp"
-                            android:gravity="top"
+                            android:gravity="center_vertical"
                             android:orientation="horizontal">
 
                             <ImageView
                                 android:layout_width="@dimen/_20sdp"
                                 android:layout_height="@dimen/_20sdp"
-                                android:layout_marginTop="@dimen/_3sdp"
                                 android:src="@drawable/ic_tick_blue"
                                 app:tint="@color/white" />
 

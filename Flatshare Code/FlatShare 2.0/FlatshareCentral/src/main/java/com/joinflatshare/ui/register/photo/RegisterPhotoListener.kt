@@ -54,11 +54,11 @@ class RegisterPhotoListener(
                     "Change Photo" -> {
                         viewBind.imgPhoto.visibility = View.VISIBLE
                         viewBind.txtPhoto.visibility = View.GONE
-                        viewBind.btnSkip.text = "Skip for now"
                         takePhoto()
-                        val response = FlatShareApplication.getDbInstance().appDao().getConfigResponse()
-                        if (response?.data?.allowedSkips?.isSkippingProfilePictureAllowed == false) {
-                            viewBind.btnSkip.visibility = View.INVISIBLE
+                        val response =
+                            FlatShareApplication.getDbInstance().appDao().getConfigResponse()
+                        if (response?.data?.allowedSkips?.isSkippingProfilePictureAllowed == true) {
+                            viewBind.btnSkip.text = "Skip for now"
                         }
                     }
 

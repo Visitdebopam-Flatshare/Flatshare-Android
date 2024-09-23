@@ -61,8 +61,8 @@ object PaymentHandler : OnPurchaseProgressListener {
         activity: BaseActivity,
         uiCallback: OnProductPurchaseCompleteListener?
     ) {
-//        if (isPopUpShowing)
-//            return
+        if (isPopUpShowing)
+            return
         this.activity = activity
         DialogCustomProgress.showProgress(activity)
         if (playClient == null)
@@ -108,8 +108,8 @@ object PaymentHandler : OnPurchaseProgressListener {
         activity: BaseActivity,
         uiCallback: OnProductPurchaseCompleteListener?
     ) {
-//        if (isPopUpShowing)
-//            return
+        if (isPopUpShowing)
+            return
         this.activity = activity
         DialogCustomProgress.showProgress(activity)
         if (playClient == null)

@@ -59,7 +59,7 @@ data class User(
     var profession: String? = "",
 
     @field:SerializedName("godMode")
-    var godMode: String? = "",
+    var godMode: String? = null,
 
     @field:SerializedName("dp")
     var dp: String? = null,
@@ -108,6 +108,9 @@ data class User(
 
     @field:SerializedName("deviceToken")
     var deviceToken: String = "",
+
+    @field:SerializedName("hasBeenGiftedElite")
+    var hasBeenGiftedElite: Boolean = true,
 
     @field:SerializedName("isGiftPopupShown")
     var isGiftPopupShown: Boolean = true

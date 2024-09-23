@@ -257,6 +257,8 @@ class PreferenceListener(private val activity: PreferenceActivity) : View.OnClic
             true
         else if (actualUserData?.flatProperties?.isVerifiedOnly != activity.user?.flatProperties?.isVerifiedOnly) hasChanged =
             true
+        else if (actualUserData?.flatProperties?.isEliteOnly != activity.user?.flatProperties?.isEliteOnly) hasChanged =
+            true
         else if (actualUserData?.flatProperties?.gender != activity.user?.flatProperties?.gender) {
             hasChanged = true
         } else if (actualUserData?.flatProperties?.profession != activity.user?.flatProperties?.profession) {

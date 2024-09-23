@@ -122,7 +122,8 @@ class ExploreActivity : BaseActivity() {
 
     fun checkGiftForUser() {
         val isGiftPending = AppConstants.loggedInUser?.isGiftPopupShown
-        if (isGiftPending == false) {
+        val isGifted = AppConstants.loggedInUser?.hasBeenGiftedElite
+        if (isGiftPending == false && isGifted == true) {
             Handler(Looper.getMainLooper()).postDelayed(
                 { GiftBottomSheet(this@ExploreActivity) },
                 1000
