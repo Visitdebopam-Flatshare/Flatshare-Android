@@ -10,7 +10,6 @@ import com.anilokcun.uwmediapicker.UwMediaPicker
 import com.debopam.progressdialog.DialogCustomProgress
 import com.joinflatshare.FlatShareApplication
 import com.joinflatshare.FlatshareCentral.databinding.ActivityFlatVerifyBinding
-import com.joinflatshare.api.retrofit.OnResponseCallback
 import com.joinflatshare.constants.AppConstants
 import com.joinflatshare.constants.ConfigConstants
 import com.joinflatshare.constants.UrlConstants
@@ -22,7 +21,6 @@ import com.joinflatshare.utils.amazonaws.AmazonDeleteFile
 import com.joinflatshare.utils.amazonaws.AmazonUploadFile
 import com.joinflatshare.utils.helper.CommonMethod
 import com.joinflatshare.utils.helper.DateUtils
-import com.joinflatshare.utils.helper.DistanceCalculator
 import com.joinflatshare.utils.mixpanel.MixpanelUtils
 import com.joinflatshare.utils.permission.PermissionUtil
 import com.joinflatshare.utils.system.ThemeUtils

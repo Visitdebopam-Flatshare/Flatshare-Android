@@ -1,6 +1,5 @@
 package com.joinflatshare.customviews.interests
 
-import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.flexbox.FlexDirection
 import com.google.android.flexbox.FlexboxLayoutManager

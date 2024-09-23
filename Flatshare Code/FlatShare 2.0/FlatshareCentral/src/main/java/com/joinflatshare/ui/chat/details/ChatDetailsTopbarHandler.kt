@@ -1,10 +1,8 @@
 package com.joinflatshare.ui.chat.details
 
 import android.view.View
-import android.widget.TextView
 import com.joinflatshare.FlatshareCentral.databinding.ActivityChatDetailsBinding
 import com.joinflatshare.interfaces.OnUserFetched
-import com.joinflatshare.pojo.user.User
 import com.joinflatshare.pojo.user.UserResponse
 import com.joinflatshare.utils.helper.CommonMethod
 import com.joinflatshare.utils.helper.ImageHelper

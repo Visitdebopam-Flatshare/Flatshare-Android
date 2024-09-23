@@ -5,8 +5,6 @@ import android.content.Intent
 import android.view.View
 import com.joinflatshare.FlatshareCentral.databinding.ActivityExploreBinding
 import com.joinflatshare.constants.AppConstants
-import com.joinflatshare.payment.PaymentHandler
-import com.joinflatshare.ui.bottomsheet.GiftBottomSheet
 import com.joinflatshare.ui.preferences.PreferenceActivity
 import com.joinflatshare.utils.helper.CommonMethod
 

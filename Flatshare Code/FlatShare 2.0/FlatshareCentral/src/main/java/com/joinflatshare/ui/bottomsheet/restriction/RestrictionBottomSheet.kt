@@ -1,6 +1,5 @@
 package com.joinflatshare.ui.bottomsheet.restriction
 
-import android.graphics.Color
 import android.os.Handler
 import android.os.Looper
 import android.view.View
@@ -9,20 +8,13 @@ import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.core.content.ContextCompat
 import com.android.billingclient.api.ProductDetails
-import com.android.billingclient.api.Purchase
-import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.card.MaterialCardView
 import com.joinflatshare.FlatshareCentral.R
 import com.joinflatshare.FlatshareCentral.databinding.DialogRestrictionBinding
 import com.joinflatshare.constants.AppConstants
-import com.joinflatshare.interfaces.OnStringFetched
-import com.joinflatshare.interfaces.OnUserFetched
 import com.joinflatshare.payment.OnProductDetailsFetched
-import com.joinflatshare.payment.OnProductPurchaseCompleteListener
 import com.joinflatshare.payment.PaymentHandler
-import com.joinflatshare.pojo.user.User
-import com.joinflatshare.pojo.user.UserResponse
 import com.joinflatshare.ui.base.BaseActivity
 import com.joinflatshare.ui.bottomsheet.BottomSheetBaseView
 import java.text.SimpleDateFormat

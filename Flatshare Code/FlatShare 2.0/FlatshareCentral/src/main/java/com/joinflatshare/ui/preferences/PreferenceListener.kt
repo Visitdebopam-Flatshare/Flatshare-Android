@@ -11,10 +11,8 @@ import com.joinflatshare.FlatshareCentral.R
 import com.joinflatshare.FlatshareCentral.databinding.ActivityPrefFlatBinding
 import com.joinflatshare.constants.AppConstants
 import com.joinflatshare.constants.RequestCodeConstants
-import com.joinflatshare.interfaces.OnStringFetched
 import com.joinflatshare.interfaces.OnUserFetched
 import com.joinflatshare.payment.OnProductPurchaseCompleteListener
-import com.joinflatshare.payment.PaymentHandler
 import com.joinflatshare.pojo.user.ModelLocation
 import com.joinflatshare.pojo.user.UserResponse
 import com.joinflatshare.ui.bottomsheet.ElitePreferenceBottomSheet
@@ -66,6 +64,15 @@ class PreferenceListener(private val activity: PreferenceActivity) : View.OnClic
             viewBind.includePrefFlat.txtPrefFlatMovein.id -> {
                 val calendar = Calendar.getInstance()
                 val pickerNowTime = calendar.timeInMillis
+                /*if (!activity.user?.flatProperties?.moveinDate.isNullOrEmpty()) {
+                    val appTime = DateUtils.convertToAppFormat(
+                        activity.user?.flatProperties?.moveinDate
+                    )
+                    val sdf = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault())
+                    calendar.time = sdf.parse(appTime)!!
+                    calendar.add(Calendar.DAY_OF_MONTH, 1)
+                }*/
+
                 val constraints = CalendarConstraints.Builder().setStart(pickerNowTime)
                     .setValidator(DateValidatorPointForward.from(pickerNowTime))
                 val sdf = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault())

@@ -1,10 +1,7 @@
 package com.joinflatshare.ui.explore
 
 import android.view.View
-import android.view.animation.TranslateAnimation
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.joinflatshare.FlatshareCentral.R
-import com.joinflatshare.ui.explore.holder.AdapterUserHolder
 
 
 class ExploreBinder(

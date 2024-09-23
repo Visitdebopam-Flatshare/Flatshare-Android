@@ -2,12 +2,9 @@ package com.joinflatshare.ui.register.photo
 
 import android.app.Activity
 import android.content.Intent
-import android.net.Uri
 import android.os.Bundle
 import android.view.View
 import androidx.activity.result.ActivityResult
-import androidx.activity.result.ActivityResultLauncher
-import androidx.activity.result.ActivityResultRegistry
 import androidx.activity.result.contract.ActivityResultContracts
 import com.debopam.ImagePicker
 import com.debopam.ImagePicker.Companion.getError
@@ -16,7 +13,6 @@ import com.joinflatshare.FlatShareApplication
 import com.joinflatshare.FlatshareCentral.databinding.ActivityRegisterPhotoBinding
 import com.joinflatshare.chat.SendBirdUser
 import com.joinflatshare.chat.pojo.user.ModelChatUserResponse
-import com.joinflatshare.constants.AppConstants
 import com.joinflatshare.db.daos.AppDao
 import com.joinflatshare.interfaces.OnUserFetched
 import com.joinflatshare.pojo.user.User

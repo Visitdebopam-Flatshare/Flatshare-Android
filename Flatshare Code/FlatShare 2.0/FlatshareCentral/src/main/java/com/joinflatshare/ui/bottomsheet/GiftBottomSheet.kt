@@ -1,18 +1,9 @@
 package com.joinflatshare.ui.bottomsheet
 
-import android.os.Handler
-import android.os.Looper
 import com.google.android.material.bottomsheet.BottomSheetDialog
-import com.joinflatshare.FlatshareCentral.databinding.DialogBottomsheetEliteLearnMoreBinding
 import com.joinflatshare.FlatshareCentral.databinding.DialogBottomsheetGiftBinding
 import com.joinflatshare.constants.AppConstants
-import com.joinflatshare.interfaces.OnUserFetched
-import com.joinflatshare.payment.PaymentHandler
-import com.joinflatshare.pojo.user.User
-import com.joinflatshare.pojo.user.UserResponse
 import com.joinflatshare.ui.base.BaseActivity
-import com.joinflatshare.ui.bottomsheet.elite.EliteBottomSheet
-import com.joinflatshare.utils.helper.ImageHelper
 
 /**
  * Created by debopam on 20/06/24

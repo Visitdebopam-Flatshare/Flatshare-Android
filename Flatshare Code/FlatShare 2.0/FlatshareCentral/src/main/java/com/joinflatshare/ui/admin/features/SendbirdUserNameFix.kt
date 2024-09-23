@@ -2,14 +2,11 @@ package com.joinflatshare.ui.admin.features
 
 import com.joinflatshare.FlatShareApplication
 import com.joinflatshare.chat.SendBirdUser
-import com.joinflatshare.constants.AppConstants
 import com.joinflatshare.db.tables.TableSendbirdUser
 import com.joinflatshare.interfaces.OnUserFetched
 import com.joinflatshare.pojo.user.UserResponse
 import com.joinflatshare.ui.base.BaseActivity
 import com.joinflatshare.utils.helper.CommonMethod
-import java.util.concurrent.Executor
-import java.util.concurrent.Executors
 
 /**
  * Created by debopam on 22/08/24

@@ -5,7 +5,6 @@ import android.widget.TextView;
 
 import com.joinflatshare.constants.AppData;
 import com.joinflatshare.customviews.alert.AlertDialog;
-import com.joinflatshare.customviews.interests.InterestsView;
 import com.joinflatshare.interfaces.OnUiEventClick;
 import com.joinflatshare.ui.base.BaseActivity;
 import com.joinflatshare.ui.dialogs.DialogFlatOptions;
@@ -22,8 +21,6 @@ import com.joinflatshare.ui.flat.flatoptions.view_rent_range.RentRangeViewBind;
 import com.joinflatshare.ui.flat.flatoptions.view_roomsize.RoomSizeViewBind;
 import com.joinflatshare.ui.flat.flatoptions.view_roomtype.RoomTypeViewBind;
 import com.joinflatshare.utils.helper.CommonMethod;
-
-import java.util.ArrayList;
 
 public class FlatOptionActivity implements OnUiEventClick {
     public BaseActivity activity;

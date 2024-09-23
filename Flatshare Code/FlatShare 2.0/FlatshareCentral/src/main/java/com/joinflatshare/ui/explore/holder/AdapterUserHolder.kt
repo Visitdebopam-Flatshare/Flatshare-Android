@@ -8,7 +8,6 @@ import com.joinflatshare.FlatshareCentral.databinding.ItemExploreBinding
 import com.joinflatshare.api.retrofit.WebserviceCustomRequestHandler
 import com.joinflatshare.constants.AppConstants
 import com.joinflatshare.constants.ChatRequestConstants
-import com.joinflatshare.interfaces.OnStringFetched
 import com.joinflatshare.payment.PaymentHandler
 import com.joinflatshare.pojo.explore.UserRecommendationItem
 import com.joinflatshare.pojo.user.User
@@ -27,8 +26,6 @@ import com.joinflatshare.webservice.api.WebserviceManager
 import com.joinflatshare.webservice.api.interfaces.OnFlatshareResponseCallBack
 import okhttp3.ResponseBody
 import retrofit2.Response
-import java.text.SimpleDateFormat
-import java.util.Locale
 
 /**
  * Created by debopam on 14/11/22

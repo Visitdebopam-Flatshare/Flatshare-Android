@@ -1,7 +1,6 @@
 package com.joinflatshare.utils.helper
 
 import java.text.SimpleDateFormat
-import java.util.Calendar
 import java.util.Date
 import java.util.Locale
 
@@ -16,7 +15,7 @@ object DateUtils {
         return try {
             var sdf = SimpleDateFormat(appFormat, Locale.getDefault())
             val dt: Date = sdf.parse(date)
-            sdf = SimpleDateFormat(serverFormat)
+            sdf = SimpleDateFormat(serverFormat,Locale.getDefault())
             sdf.format(dt)
         } catch (ex: Exception) {
             ""
@@ -27,7 +26,7 @@ object DateUtils {
         return try {
             var sdf = SimpleDateFormat(serverFormat, Locale.getDefault())
             val dt: Date = sdf.parse(date)
-            sdf = SimpleDateFormat(appFormat)
+            sdf = SimpleDateFormat(appFormat, Locale.getDefault())
             sdf.format(dt)
         } catch (ex: Exception) {
             ""
@@ -35,12 +34,12 @@ object DateUtils {
     }
 
     fun getServerDate(): String {
-        val sdf = SimpleDateFormat(serverFormat)
+        val sdf = SimpleDateFormat(serverFormat, Locale.getDefault())
         return sdf.format(Date())
     }
 
     fun getLoggerDate(): String {
-        val sdf = SimpleDateFormat(loggerFormat)
+        val sdf = SimpleDateFormat(loggerFormat, Locale.getDefault())
         return sdf.format(Date())
     }
 
@@ -48,7 +47,7 @@ object DateUtils {
         return try {
             var sdf = SimpleDateFormat(serverFormat, Locale.getDefault())
             val dt: Date = sdf.parse(date)
-            sdf = SimpleDateFormat(shortMonthFormat)
+            sdf = SimpleDateFormat(shortMonthFormat, Locale.getDefault())
             sdf.format(dt)
         } catch (ex: Exception) {
             ""
@@ -56,27 +55,15 @@ object DateUtils {
     }
 
     private fun getNotificationDate(createdTime: String): Date {
-        val sdf = SimpleDateFormat(serverFormat)
+        val sdf = SimpleDateFormat(serverFormat, Locale.getDefault())
         return sdf.parse(createdTime)
-    }
-
-    fun getInviterDate(serverFormat: String): String {
-        try {
-            val onlyDate = serverFormat.substring(0, serverFormat.indexOf('T'))
-            var sdf = SimpleDateFormat("yyyy-MM-dd")
-            val serverDate = sdf.parse(onlyDate)
-            sdf = SimpleDateFormat("dd MMM yyyy")
-            return sdf.format(serverDate)
-        } catch (ex: Exception) {
-            return serverFormat
-        }
     }
 
     fun getDOB(date: String?): String {
         return try {
             var sdf = SimpleDateFormat(dobServerFormat, Locale.getDefault())
             val dt: Date = sdf.parse(date)
-            sdf = SimpleDateFormat(appFormat)
+            sdf = SimpleDateFormat(appFormat, Locale.getDefault())
             sdf.format(dt)
         } catch (ex: Exception) {
             ""
@@ -87,37 +74,5 @@ object DateUtils {
         var sdf = SimpleDateFormat(serverFormat, Locale.getDefault())
         val dt: Date = sdf.parse(date)
         return dt.time
-    }
-
-    fun getPostTime(createdTime: String?): String {
-        if (createdTime == null || createdTime.isEmpty()) return ""
-        val postTime: String
-        val date = getNotificationDate(createdTime)
-        val calendar = Calendar.getInstance()
-        calendar.timeInMillis = date.time
-        calendar.add(Calendar.HOUR_OF_DAY, 5)
-        calendar.add(Calendar.MINUTE, 30)
-        val postTimeinMillis = calendar.timeInMillis
-        val serverCurrentTime = Date().time
-        postTime = if (postTimeinMillis < serverCurrentTime) {
-            val timeDifference = serverCurrentTime - postTimeinMillis
-            // Difference within a hour
-            val minutesInSecond = (60 * 1000).toLong()
-            val minutesInHour = 60 * minutesInSecond
-            val hoursInDay = 24 * minutesInHour
-            val daysInWeek = 7 * hoursInDay
-            if (timeDifference < minutesInHour) {
-                "" + timeDifference / minutesInSecond + "m"
-            } else if (timeDifference < hoursInDay) {
-                // Difference within a day
-                "" + timeDifference / minutesInHour + "h"
-            } else if (timeDifference < daysInWeek) {
-                // Difference within a week
-                "" + timeDifference / hoursInDay + "d"
-            } else {
-                "" + timeDifference / daysInWeek + "w"
-            }
-        } else "1m"
-        return postTime
     }
 }

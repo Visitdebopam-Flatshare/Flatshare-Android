@@ -14,7 +14,6 @@ import com.joinflatshare.pojo.flat.CreateFlatRequest
 import com.joinflatshare.pojo.flat.MyFlatData
 import com.joinflatshare.pojo.invite.InvitedRequest
 import com.joinflatshare.pojo.invite.RequestSavedContacts
-import com.joinflatshare.pojo.purchase.PurchaseRequest
 import com.joinflatshare.ui.base.ApplicationBaseActivity
 import com.joinflatshare.utils.helper.CommonMethod
 import com.joinflatshare.utils.helper.CommonMethods

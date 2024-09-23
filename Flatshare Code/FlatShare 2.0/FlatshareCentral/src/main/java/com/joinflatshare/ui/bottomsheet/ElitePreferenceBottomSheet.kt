@@ -2,7 +2,6 @@ package com.joinflatshare.ui.bottomsheet
 
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.joinflatshare.FlatshareCentral.databinding.DialogBottomsheetElitePreferenceBinding
-import com.joinflatshare.interfaces.OnStringFetched
 import com.joinflatshare.payment.OnProductPurchaseCompleteListener
 import com.joinflatshare.payment.PaymentHandler
 import com.joinflatshare.ui.base.BaseActivity

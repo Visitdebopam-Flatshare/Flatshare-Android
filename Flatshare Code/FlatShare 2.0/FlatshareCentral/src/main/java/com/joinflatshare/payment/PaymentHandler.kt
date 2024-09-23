@@ -7,7 +7,6 @@ import com.google.gson.Gson
 import com.joinflatshare.FlatShareApplication
 import com.joinflatshare.constants.AppConstants
 import com.joinflatshare.constants.GooglePaymentConstants
-import com.joinflatshare.interfaces.OnStringFetched
 import com.joinflatshare.interfaces.OnUserFetched
 import com.joinflatshare.pojo.purchase.PurchaseOrder
 import com.joinflatshare.pojo.purchase.PurchaseRequest

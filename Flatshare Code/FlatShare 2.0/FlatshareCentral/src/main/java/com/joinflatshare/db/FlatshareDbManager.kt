@@ -17,7 +17,6 @@ import com.joinflatshare.db.tables.TableFlatshareUser
 import com.joinflatshare.db.tables.TableRequests
 import com.joinflatshare.db.tables.TableSendbirdUser
 import com.joinflatshare.db.tables.TableUser
-import com.joinflatshare.utils.helper.CommonMethod
 import java.util.concurrent.Executors
 
 @Database(

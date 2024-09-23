@@ -6,18 +6,10 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 
-import com.google.gson.Gson;
 import com.joinflatshare.FlatshareCentral.R;
-import com.joinflatshare.chat.metadata.MessageMetaData;
-import com.joinflatshare.constants.SendBirdConstants;
 import com.joinflatshare.ui.chat.details.ChatDetailsActivity;
 import com.joinflatshare.ui.chat.details.ChatDetailsAdapter;
-import com.joinflatshare.utils.helper.ImageHelper;
 import com.sendbird.android.message.AdminMessage;
-import com.sendbird.android.message.BaseMessage;
-import com.sendbird.android.message.UserMessage;
-
-import java.util.regex.Pattern;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 

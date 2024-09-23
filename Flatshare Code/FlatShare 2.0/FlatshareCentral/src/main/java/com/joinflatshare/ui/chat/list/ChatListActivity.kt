@@ -7,7 +7,6 @@ import com.joinflatshare.FlatshareCentral.databinding.ActivityChatListBinding
 import com.joinflatshare.chat.chatInterfaces.OnChannelsFetchedListener
 import com.joinflatshare.chat.pojo.channel_list.ChannelsItem
 import com.joinflatshare.constants.AppConstants
-import com.joinflatshare.interfaces.OnStringFetched
 import com.joinflatshare.ui.chat.ChatBaseActivity
 import com.joinflatshare.ui.chat.details.ChatDetailsActivity
 import com.joinflatshare.utils.helper.CommonMethod

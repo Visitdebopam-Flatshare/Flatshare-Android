@@ -14,7 +14,6 @@ import com.joinflatshare.pojo.user.ModelLocation
 import com.joinflatshare.pojo.user.User
 import com.joinflatshare.pojo.user.UserResponse
 import com.joinflatshare.utils.helper.CommonMethod.makeLog
-import com.joinflatshare.utils.helper.CommonMethods
 import com.joinflatshare.webservice.api.WebserviceManager
 import com.joinflatshare.webservice.api.interfaces.OnFlatshareResponseCallBack
 import com.sendbird.android.SendbirdChat.registerPushToken

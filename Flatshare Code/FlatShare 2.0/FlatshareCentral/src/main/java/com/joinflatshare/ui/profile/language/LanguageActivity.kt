@@ -10,11 +10,9 @@ import com.joinflatshare.FlatShareApplication
 import com.joinflatshare.FlatshareCentral.R
 import com.joinflatshare.FlatshareCentral.databinding.ActivityProfileLanguageBinding
 import com.joinflatshare.constants.AppConstants
-import com.joinflatshare.constants.ConfigConstants
 import com.joinflatshare.customviews.interests.InterestsView
 import com.joinflatshare.db.daos.AppDao
 import com.joinflatshare.interfaces.OnUserFetched
-import com.joinflatshare.pojo.config.ConfigData
 import com.joinflatshare.pojo.user.UserResponse
 import com.joinflatshare.ui.base.BaseActivity
 import com.joinflatshare.ui.profile.interest.InterestActivity

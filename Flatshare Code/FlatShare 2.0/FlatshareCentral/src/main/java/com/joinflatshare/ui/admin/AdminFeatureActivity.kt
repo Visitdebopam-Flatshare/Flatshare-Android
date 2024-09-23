@@ -1,7 +1,6 @@
 package com.joinflatshare.ui.admin
 
 import android.os.Bundle
-import android.view.View
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.joinflatshare.FlatshareCentral.databinding.ActivityAdminBinding
 import com.joinflatshare.ui.base.BaseActivity

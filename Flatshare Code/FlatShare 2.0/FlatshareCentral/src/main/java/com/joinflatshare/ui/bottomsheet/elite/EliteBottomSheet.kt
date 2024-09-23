@@ -3,12 +3,10 @@ package com.joinflatshare.ui.bottomsheet.elite
 import com.android.billingclient.api.ProductDetails
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.joinflatshare.FlatshareCentral.databinding.DialogBottomsheetEliteBinding
-import com.joinflatshare.interfaces.OnStringFetched
 import com.joinflatshare.payment.OnProductDetailsFetched
 import com.joinflatshare.payment.PaymentHandler
 import com.joinflatshare.ui.base.BaseActivity
 import com.joinflatshare.ui.bottomsheet.BottomSheetBaseView
-import com.joinflatshare.utils.helper.CommonMethod
 
 /**
  * Created by debopam on 20/06/24

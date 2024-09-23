@@ -1,8 +1,6 @@
 package com.joinflatshare.ui.admin.features
 
-import com.joinflatshare.api.retrofit.OnResponseCallback
 import com.joinflatshare.chat.api.SendBirdApiManager
-import com.joinflatshare.chat.pojo.user_list.ModelUserListResponse
 import com.joinflatshare.db.FlatshareDbManager
 import com.joinflatshare.db.tables.TableSendbirdUser
 import com.joinflatshare.ui.base.BaseActivity

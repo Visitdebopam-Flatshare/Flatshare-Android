@@ -5,7 +5,6 @@ import androidx.room.Insert
 import androidx.room.Query
 import androidx.room.Update
 import com.joinflatshare.db.tables.TableFlatshareUser
-import com.joinflatshare.db.tables.TableSendbirdUser
 
 @Dao
 abstract class FlatshareUsersDao {

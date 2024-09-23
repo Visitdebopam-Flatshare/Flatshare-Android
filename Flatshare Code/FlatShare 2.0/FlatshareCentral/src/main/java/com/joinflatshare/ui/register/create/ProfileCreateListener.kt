@@ -18,7 +18,6 @@ import com.joinflatshare.pojo.config.RentRange
 import com.joinflatshare.pojo.user.Name
 import com.joinflatshare.utils.helper.CommonMethod
 import com.joinflatshare.utils.helper.CommonMethods
-import com.joinflatshare.utils.helper.DateUtils
 import java.text.SimpleDateFormat
 import java.util.Calendar
 import java.util.Locale
@@ -64,6 +63,10 @@ class ProfileCreateListener(
                 val calendar = Calendar.getInstance()
                 calendar.add(Calendar.YEAR, -15)
                 val pickerNowTime = calendar.timeInMillis
+                /*if (dob.isNotEmpty()) {
+                    val sdf = SimpleDateFormat("yyyy/MM/dd", Locale.getDefault())
+                    calendar.time = sdf.parse(dob)!!
+                }*/
                 val constraints = CalendarConstraints.Builder().setEnd(pickerNowTime)
                     .setValidator(DateValidatorPointBackward.before(pickerNowTime))
                 var sdf = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault())

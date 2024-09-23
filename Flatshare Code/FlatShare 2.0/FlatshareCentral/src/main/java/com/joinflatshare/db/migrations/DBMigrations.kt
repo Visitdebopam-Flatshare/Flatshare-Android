@@ -2,8 +2,6 @@ package com.joinflatshare.db.migrations
 
 import androidx.room.migration.Migration
 import androidx.sqlite.db.SupportSQLiteDatabase
-import com.joinflatshare.FlatShareApplication
-import com.joinflatshare.db.daos.AppDao
 
 /**
  * Created by debopam on 06/09/24
