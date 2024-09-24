@@ -39,7 +39,6 @@
             android:layout_height="@dimen/_25sdp"
             android:layout_centerVertical="true"
             android:layout_marginStart="@dimen/_10sdp"
-            android:scaleType="fitCenter"
             android:src="@drawable/ic_profile"
             android:visibility="gone" />
 

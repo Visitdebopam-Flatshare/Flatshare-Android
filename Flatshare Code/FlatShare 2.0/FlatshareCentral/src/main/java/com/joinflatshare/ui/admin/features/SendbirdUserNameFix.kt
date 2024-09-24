@@ -2,6 +2,7 @@ package com.joinflatshare.ui.admin.features
 
 import com.joinflatshare.FlatShareApplication
 import com.joinflatshare.chat.SendBirdUser
+import com.joinflatshare.chat.api.SendBirdApiManager
 import com.joinflatshare.db.tables.TableSendbirdUser
 import com.joinflatshare.interfaces.OnUserFetched
 import com.joinflatshare.pojo.user.UserResponse
@@ -16,6 +17,7 @@ class SendbirdUserNameFix {
     private var next = ""
     val users = ArrayList<TableSendbirdUser>()
     private var isMehta: Boolean = false
+    private val sendBirdApiManager = SendBirdApiManager()
 
     fun fix(activity: BaseActivity) {
         this.activity = activity
@@ -84,24 +86,35 @@ class SendbirdUserNameFix {
     private fun checkApi(userToAdd: TableSendbirdUser) {
         activity.baseApiController.getUser(false, userToAdd.id, object : OnUserFetched {
             override fun userFetched(resp: UserResponse?) {
-                val sendBirdUser = SendBirdUser(activity)
-                val params = HashMap<String, String>()
-                val fname = resp?.data?.name?.firstName
-                var lname = resp?.data?.name?.lastName
-                if (lname.isNullOrEmpty())
-                    lname = ""
-                val dp: String = if (resp?.data?.dp.isNullOrEmpty()) "" else resp?.data?.dp!!
-                params["nickname"] = fname + " " + lname
-                params["profile_url"] = dp
-                sendBirdUser.updateUser(
-                    userToAdd.id, params
-                ) {
-                    userToAdd.name = params["nickname"]
-                    userToAdd.dp = params["profile_url"]
-                    FlatShareApplication.getDbInstance().sendBirdUserDao().updateUser(userToAdd)
-                    users.removeAt(0)
-                    Thread.sleep(1000)
-                    workOnEachUser()
+                if (resp?.message?.contains("does not exists.") == true) {
+                    sendBirdApiManager.deleteUser(
+                        userToAdd.id
+                    ) {
+                        CommonMethod.makeLog("Deleted User ", userToAdd.id)
+                        users.removeAt(0)
+                        Thread.sleep(1000)
+                        workOnEachUser()
+                    }
+                } else {
+                    val sendBirdUser = SendBirdUser(activity)
+                    val params = HashMap<String, String>()
+                    val fname = resp?.data?.name?.firstName
+                    var lname = resp?.data?.name?.lastName
+                    if (lname.isNullOrEmpty())
+                        lname = ""
+                    val dp: String = if (resp?.data?.dp.isNullOrEmpty()) "" else resp?.data?.dp!!
+                    params["nickname"] = fname + " " + lname
+                    params["profile_url"] = dp
+                    sendBirdUser.updateUser(
+                        userToAdd.id, params
+                    ) {
+                        userToAdd.name = params["nickname"]
+                        userToAdd.dp = params["profile_url"]
+                        FlatShareApplication.getDbInstance().sendBirdUserDao().updateUser(userToAdd)
+                        users.removeAt(0)
+                        Thread.sleep(1000)
+                        workOnEachUser()
+                    }
                 }
             }
 

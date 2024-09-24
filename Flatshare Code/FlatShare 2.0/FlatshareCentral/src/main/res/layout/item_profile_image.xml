@@ -22,8 +22,7 @@
                 android:id="@+id/img_profile_banner1"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="@color/color_icon"
-                android:scaleType="centerCrop" />
+                android:background="@color/color_icon" />
 
             <ImageView
                 android:id="@+id/img_profile_add1"

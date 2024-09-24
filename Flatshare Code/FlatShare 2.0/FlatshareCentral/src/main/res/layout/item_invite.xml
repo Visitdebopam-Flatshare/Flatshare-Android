@@ -47,8 +47,7 @@
             <de.hdodenhof.circleimageview.CircleImageView
                 android:id="@+id/img_invite"
                 android:layout_width="@dimen/_40sdp"
-                android:layout_height="@dimen/_40sdp"
-                android:scaleType="fitCenter"/>
+                android:layout_height="@dimen/_40sdp"/>
 
             <androidx.appcompat.widget.LinearLayoutCompat
                 android:layout_width="wrap_content"

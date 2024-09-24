@@ -26,8 +26,7 @@
             <de.hdodenhof.circleimageview.CircleImageView
                 android:id="@+id/img_flatmember"
                 android:layout_width="@dimen/_45sdp"
-                android:layout_height="@dimen/_45sdp"
-                android:scaleType="fitCenter" />
+                android:layout_height="@dimen/_45sdp" />
 
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/card_admin"
