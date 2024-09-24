@@ -33,7 +33,7 @@
                 android:visibility="gone" />
         </FrameLayout>
 
-        <com.makeramen.roundedimageview.RoundedImageView
+        <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/img_topbar_profile"
             android:layout_width="@dimen/_25sdp"
             android:layout_height="@dimen/_25sdp"
@@ -41,12 +41,7 @@
             android:layout_marginStart="@dimen/_10sdp"
             android:scaleType="fitCenter"
             android:src="@drawable/ic_profile"
-            android:visibility="gone"
-            app:riv_border_color="@color/button_bg_black"
-            app:riv_border_width="0.5dp"
-            app:riv_corner_radius="@dimen/_10sdp"
-            app:riv_mutate_background="false"
-            app:riv_tile_mode="clamp" />
+            android:visibility="gone" />
 
         <ImageView
             android:id="@+id/img_topbar_logo"

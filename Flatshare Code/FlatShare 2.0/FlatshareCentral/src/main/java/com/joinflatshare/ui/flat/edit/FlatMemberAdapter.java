@@ -38,9 +38,10 @@ import com.joinflatshare.ui.invite.InviteActivity;
 import com.joinflatshare.ui.profile.details.ProfileDetailsActivity;
 import com.joinflatshare.utils.helper.CommonMethod;
 import com.joinflatshare.utils.helper.ImageHelper;
-import com.makeramen.roundedimageview.RoundedImageView;
 
 import java.util.ArrayList;
+
+import de.hdodenhof.circleimageview.CircleImageView;
 
 public class FlatMemberAdapter extends RecyclerView.Adapter<FlatMemberAdapter.ViewHolder> {
     private final ArrayList<User> items;
@@ -224,7 +225,7 @@ public class FlatMemberAdapter extends RecyclerView.Adapter<FlatMemberAdapter.Vi
     }
 
     class ViewHolder extends RecyclerView.ViewHolder {
-        RoundedImageView img_flatmember;
+        CircleImageView img_flatmember;
         TextView txt_flatmember, txt_vacant_beds;
         ImageView img_flatmate_add;
         LinearLayout ll_member;

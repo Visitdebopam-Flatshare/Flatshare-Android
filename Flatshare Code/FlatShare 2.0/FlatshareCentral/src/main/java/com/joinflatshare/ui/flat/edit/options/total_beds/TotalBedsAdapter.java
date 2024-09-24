@@ -55,14 +55,14 @@ public class TotalBedsAdapter extends RecyclerView.Adapter<TotalBedsAdapter.View
         holder.txt_beds.setText(item.getName());
         holder.rdb_beds.setImageResource(item.isSelected() ? R.drawable.ic_rdb_selected : R.drawable.ic_rdb);
         if (item.isSelected())
-            lastCheckedPosition = holder.getBindingAdapterPosition();
+            lastCheckedPosition = holder.getAdapterPosition();
         holder.rl_beds.setOnClickListener(view -> rv.post(() -> {
             rv.post(() -> {
                 if (lastCheckedPosition > -1) {
                     items.get(lastCheckedPosition).setSelected(false);
                 }
-                items.get(holder.getBindingAdapterPosition()).setSelected(true);
-                lastCheckedPosition = holder.getBindingAdapterPosition();
+                items.get(holder.getAdapterPosition()).setSelected(true);
+                lastCheckedPosition = holder.getAdapterPosition();
                 rv.post(() -> notifyDataSetChanged());
                 if (activity instanceof FlatEditActivity) {
                     ((FlatEditActivity) activity).dataBind.setCompleteCount();

@@ -17,6 +17,7 @@ import com.joinflatshare.payment.OnProductDetailsFetched
 import com.joinflatshare.payment.PaymentHandler
 import com.joinflatshare.ui.base.BaseActivity
 import com.joinflatshare.ui.bottomsheet.BottomSheetBaseView
+import com.joinflatshare.utils.mixpanel.MixpanelUtils
 import java.text.SimpleDateFormat
 import java.util.Locale
 
@@ -55,11 +56,13 @@ class RestrictionBottomSheet(
         viewBind.btnContinue.setOnClickListener {
             if (selectedProduct != null) {
                 dismissDialog(dialog)
+                MixpanelUtils.onButtonClicked("Chat Request ${selectedProduct?.name} selected")
                 callback.onProductSelected(selectedProduct!!)
             }
         }
         showDialog(dialog)
         dialog.setOnDismissListener { PaymentHandler.isPopUpShowing=false }
+        MixpanelUtils.sendToMixPanel("Chat Request Payment Pop Up")
     }
 
     private fun populateProducts() {

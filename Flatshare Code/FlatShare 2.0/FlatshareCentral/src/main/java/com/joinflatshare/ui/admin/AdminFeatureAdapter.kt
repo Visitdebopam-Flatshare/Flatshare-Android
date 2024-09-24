@@ -67,6 +67,10 @@ class AdminFeatureAdapter(
                         SendbirdImagePathFix().fix(adapter.activity)
                     }
 
+                    "Sendbird User Null Mehta" -> {
+                        SendbirdUserNameFix().fixNullMehtaNames(adapter.activity)
+                    }
+
                     "Sendbird Delete Unregistered Users From JSON" -> {
                         DeleteUnregisteredUsersFromSendbird().deleteUnregisteredUsers(
                             adapter.activity,

@@ -15,17 +15,32 @@ class SendbirdUserNameFix {
     private lateinit var activity: BaseActivity
     private var next = ""
     val users = ArrayList<TableSendbirdUser>()
+    private var isMehta: Boolean = false
 
     fun fix(activity: BaseActivity) {
         this.activity = activity
+        isMehta = false
+        getAllUsers()
+    }
+
+    fun fixNullMehtaNames(activity: BaseActivity) {
+        this.activity = activity
+        isMehta = true
         getAllUsers()
     }
 
     private fun getAllUsers() {
-        users.addAll(
-            FlatShareApplication.getDbInstance().sendBirdUserDao().getSendbirdUsersWithoutName()
-        )
-        CommonMethod.makeLog("No Name User Count", "" + users.size)
+        if (isMehta) {
+            users.addAll(
+                FlatShareApplication.getDbInstance().sendBirdUserDao()
+                    .getSendbirdUsersWithNullName()
+            )
+        } else {
+            users.addAll(
+                FlatShareApplication.getDbInstance().sendBirdUserDao().getSendbirdUsersWithoutName()
+            )
+        }
+        CommonMethod.makeLog("User Count", "" + users.size)
         workOnEachUser()
     }
 
@@ -33,7 +48,11 @@ class SendbirdUserNameFix {
         if (users.isNotEmpty()) {
             CommonMethod.makeToast("Users Left " + users.size)
             CommonMethod.makeLog("Users Left", "" + users.size)
-            addUser(users[0])
+            if (isMehta)
+                checkApi(users[0])
+            else {
+                addUser(users[0])
+            }
         } else {
             CommonMethod.makeToast("Clear")
         }
@@ -70,8 +89,8 @@ class SendbirdUserNameFix {
                 val fname = resp?.data?.name?.firstName
                 var lname = resp?.data?.name?.lastName
                 if (lname.isNullOrEmpty())
-                    lname = "Mehta"
-                val dp:String = if (resp?.data?.dp.isNullOrEmpty()) "" else resp?.data?.dp!!
+                    lname = ""
+                val dp: String = if (resp?.data?.dp.isNullOrEmpty()) "" else resp?.data?.dp!!
                 params["nickname"] = fname + " " + lname
                 params["profile_url"] = dp
                 sendBirdUser.updateUser(

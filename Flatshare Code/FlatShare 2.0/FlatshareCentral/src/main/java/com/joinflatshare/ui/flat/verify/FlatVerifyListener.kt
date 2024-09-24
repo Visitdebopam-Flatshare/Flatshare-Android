@@ -3,10 +3,7 @@ package com.joinflatshare.ui.flat.verify
 import android.Manifest
 import android.content.Intent
 import android.media.MediaPlayer
-import android.net.Uri
 import android.view.View
-import androidx.appcompat.app.AppCompatDelegate
-import com.anilokcun.uwmediapicker.UwMediaPicker
 import com.debopam.progressdialog.DialogCustomProgress
 import com.joinflatshare.FlatShareApplication
 import com.joinflatshare.FlatshareCentral.databinding.ActivityFlatVerifyBinding
@@ -23,7 +20,6 @@ import com.joinflatshare.utils.helper.CommonMethod
 import com.joinflatshare.utils.helper.DateUtils
 import com.joinflatshare.utils.mixpanel.MixpanelUtils
 import com.joinflatshare.utils.permission.PermissionUtil
-import com.joinflatshare.utils.system.ThemeUtils
 import java.io.File
 
 
@@ -45,7 +41,7 @@ class FlatVerifyListener(
                 Manifest.permission.READ_EXTERNAL_STORAGE,
                 object : OnPermissionCallback {
                     override fun onCallback(granted: Boolean) {
-                        if (granted) {
+                        /*if (granted) {
                             UwMediaPicker
                                 .with(activity)                        // Activity or Fragment
                                 .setGalleryMode(UwMediaPicker.GalleryMode.VideoGallery) // GalleryMode: ImageGallery/VideoGallery/ImageAndVideoGallery, default is ImageGallery
@@ -85,7 +81,7 @@ class FlatVerifyListener(
                                         }
                                     }
                                 }
-                        }
+                        }*/
                     }
 
                 })

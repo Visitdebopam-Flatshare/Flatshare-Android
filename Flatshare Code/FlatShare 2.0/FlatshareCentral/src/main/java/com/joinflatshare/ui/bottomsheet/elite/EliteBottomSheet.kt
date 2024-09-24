@@ -7,6 +7,7 @@ import com.joinflatshare.payment.OnProductDetailsFetched
 import com.joinflatshare.payment.PaymentHandler
 import com.joinflatshare.ui.base.BaseActivity
 import com.joinflatshare.ui.bottomsheet.BottomSheetBaseView
+import com.joinflatshare.utils.mixpanel.MixpanelUtils
 
 /**
  * Created by debopam on 20/06/24
@@ -32,6 +33,7 @@ class EliteBottomSheet(
         viewBind = DialogBottomsheetEliteBinding.inflate(activity.layoutInflater)
         dialog.setContentView(viewBind.root)
         dialog.setOnDismissListener { PaymentHandler.isPopUpShowing=false }
+        MixpanelUtils.sendToMixPanel("Elite Payment Pop Up")
     }
 
     private fun populateProducts() {

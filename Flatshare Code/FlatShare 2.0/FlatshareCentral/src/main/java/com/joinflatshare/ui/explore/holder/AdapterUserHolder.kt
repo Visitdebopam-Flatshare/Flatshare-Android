@@ -46,8 +46,13 @@ class AdapterUserHolder {
         val dob = CommonMethod.getAge(user.dob)
         holder.txtName.text = if (dob.isEmpty()) name else "$name, $dob"
 
+        // Verified
+        holder.imgVerified.visibility =
+            if (user.verification?.isVerified == true) View.VISIBLE else View.GONE
+
         // Elite
-        holder.imgElite.visibility = if (CommonMethod.isEliteMember(user)) View.VISIBLE else View.GONE
+        holder.imgElite.visibility =
+            if (CommonMethod.isEliteMember(user)) View.VISIBLE else View.GONE
 
         // Distance
         holder.llDistance.visibility = View.GONE
@@ -109,7 +114,7 @@ class AdapterUserHolder {
                     }
 
                     override fun onCallBackPayment(count: Int) {
-                        PaymentHandler.showPaymentForChats(activity,null)
+                        PaymentHandler.showPaymentForChats(activity, null)
                     }
                 })
         }
@@ -135,8 +140,13 @@ class AdapterUserHolder {
         val dob = CommonMethod.getAge(user.dob)
         holder.txtName.text = if (dob.isEmpty()) name else "$name, $dob"
 
+        // Verified
+        holder.imgVerified.visibility =
+            if (user.verification?.isVerified == true) View.VISIBLE else View.GONE
+
         // Elite
-        holder.imgElite.visibility = if (CommonMethod.isEliteMember(user)) View.VISIBLE else View.GONE
+        holder.imgElite.visibility =
+            if (CommonMethod.isEliteMember(user)) View.VISIBLE else View.GONE
 
         // Distance
         holder.llDistance.visibility = View.GONE
@@ -183,7 +193,7 @@ class AdapterUserHolder {
                             }
 
                             override fun onCallBackPayment(count: Int) {
-                                PaymentHandler.showPaymentForChats(activity,null)
+                                PaymentHandler.showPaymentForChats(activity, null)
                             }
                         })
                 }

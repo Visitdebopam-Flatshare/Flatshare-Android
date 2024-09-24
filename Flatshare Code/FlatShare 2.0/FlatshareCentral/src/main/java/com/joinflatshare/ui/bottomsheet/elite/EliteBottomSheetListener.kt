@@ -10,6 +10,7 @@ import com.joinflatshare.FlatshareCentral.R
 import com.joinflatshare.FlatshareCentral.databinding.DialogBottomsheetEliteBinding
 import com.joinflatshare.payment.OnProductDetailsFetched
 import com.joinflatshare.ui.base.BaseActivity
+import com.joinflatshare.utils.mixpanel.MixpanelUtils
 
 /**
  * Created by debopam on 07/09/24
@@ -30,6 +31,7 @@ class EliteBottomSheetListener(
         viewBind.btnElite.setOnClickListener {
             if (selectedProduct != null) {
                 bottomSheet.dismissDialog(bottomSheet.dialog)
+                MixpanelUtils.onButtonClicked("Elite ${selectedProduct?.name} selected")
                 callback.onProductSelected(selectedProduct!!)
             }
         }

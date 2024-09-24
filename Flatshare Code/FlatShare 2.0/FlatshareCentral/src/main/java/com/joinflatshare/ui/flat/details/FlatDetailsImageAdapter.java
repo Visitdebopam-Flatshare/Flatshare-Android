@@ -60,7 +60,7 @@ public class FlatDetailsImageAdapter extends RecyclerView.Adapter<FlatDetailsIma
             ArrayList<String> images = new ArrayList<>();
             for (String url : items)
                 images.add(ImageHelper.getFlatImagesWithAws(url));
-            ImageHelper.showImageSlider(activity, images, holder.getBindingAdapterPosition());
+            ImageHelper.showImageSlider(activity, images, holder.getAdapterPosition());
         });
     }
 

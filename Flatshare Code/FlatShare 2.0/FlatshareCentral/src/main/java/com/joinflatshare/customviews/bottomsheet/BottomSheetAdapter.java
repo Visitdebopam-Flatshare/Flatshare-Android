@@ -15,9 +15,10 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.joinflatshare.FlatshareCentral.R;
 import com.joinflatshare.interfaces.OnitemClick;
 import com.joinflatshare.utils.helper.ImageHelper;
-import com.makeramen.roundedimageview.RoundedImageView;
 
 import java.util.ArrayList;
+
+import de.hdodenhof.circleimageview.CircleImageView;
 
 class BottomSheetAdapter extends RecyclerView.Adapter<BottomSheetAdapter.ViewHolder> {
     private final Activity activity;
@@ -82,7 +83,7 @@ class BottomSheetAdapter extends RecyclerView.Adapter<BottomSheetAdapter.ViewHol
             holder.txtBottomCount.setText("" + item.getCount());
         } else holder.llBottomCountHolder.setVisibility(View.GONE);
 
-        if (holder.getBindingAdapterPosition() == (items.size() - 1)) {
+        if (holder.getAdapterPosition() == (items.size() - 1)) {
             holder.view_botton_line.setVisibility(View.GONE);
         } else holder.view_botton_line.setVisibility(View.VISIBLE);
         holder.itemView.setOnClickListener(view -> {
@@ -100,7 +101,7 @@ class BottomSheetAdapter extends RecyclerView.Adapter<BottomSheetAdapter.ViewHol
         TextView txt_bottomsheet, txtBottomCount;
         LinearLayout ll_bottomsheet, llBottomCountHolder;
         View view_botton_line;
-        RoundedImageView img_bottom_rounded;
+        CircleImageView img_bottom_rounded;
 
         ViewHolder(View itemView) {
             super(itemView);

@@ -110,6 +110,13 @@
                                 android:textSize="@dimen/_16sdp" />
 
                             <ImageView
+                                android:id="@+id/img_verified"
+                                android:layout_width="@dimen/_22sdp"
+                                android:layout_height="@dimen/_22sdp"
+                                android:layout_marginStart="@dimen/_5sdp"
+                                android:src="@drawable/ic_tick_verified_blue" />
+
+                            <ImageView
                                 android:id="@+id/img_elite"
                                 android:layout_width="@dimen/_22sdp"
                                 android:layout_height="@dimen/_22sdp"
@@ -206,8 +213,8 @@
         android:id="@+id/ll_explore_buttons"
         android:layout_width="match_parent"
         android:layout_height="@dimen/_45sdp"
-        android:layout_marginHorizontal="@dimen/_40sdp"
         android:layout_marginVertical="@dimen/_8sdp"
+        android:gravity="center_horizontal"
         android:orientation="horizontal">
 
         <LinearLayout
@@ -236,8 +243,8 @@
             android:layout_height="match_parent"
             android:background="@drawable/drawable_button_black_less_elliptical"
             android:gravity="center"
-            android:paddingHorizontal="@dimen/_20sdp"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:paddingHorizontal="@dimen/_20sdp">
 
             <ImageView
                 android:layout_width="@dimen/_18sdp"

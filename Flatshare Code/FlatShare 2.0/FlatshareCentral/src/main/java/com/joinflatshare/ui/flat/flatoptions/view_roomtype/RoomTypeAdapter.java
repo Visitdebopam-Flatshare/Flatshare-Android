@@ -42,19 +42,19 @@ public class RoomTypeAdapter extends RecyclerView.Adapter<RoomTypeAdapter.ViewHo
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        final AmenitiesItem item = items.get(holder.getAbsoluteAdapterPosition());
+        final AmenitiesItem item = items.get(holder.getAdapterPosition());
         holder.rdb_roomsize.setText(item.getName());
         holder.rdb_roomsize.setChecked(item.isSelected());
         if (item.isSelected())
-            lastCheckedPosition = holder.getAbsoluteAdapterPosition();
+            lastCheckedPosition = holder.getAdapterPosition();
         holder.rdb_roomsize.setOnCheckedChangeListener((compoundButton, b) -> {
             rv.post(() -> {
                 if (lastCheckedPosition > -1) {
                     items.get(lastCheckedPosition).setSelected(false);
                     notifyItemChanged(lastCheckedPosition);
                 }
-                items.get(holder.getAbsoluteAdapterPosition()).setSelected(true);
-                lastCheckedPosition = holder.getAbsoluteAdapterPosition();
+                items.get(holder.getAdapterPosition()).setSelected(true);
+                lastCheckedPosition = holder.getAdapterPosition();
                 notifyItemChanged(lastCheckedPosition);
             });
         });

@@ -41,16 +41,19 @@ public class AmazonFileChecker {
                         AwsConstants.INSTANCE.getAWS_SECRET_KEY());
                 AmazonS3Client s3Client = new AmazonS3Client(awsCredentials, Region.getRegion(Regions.AP_SOUTH_1), clientConfiguration);
                 Thread thread = new Thread(() -> {
-                    if (AwsConstants.INSTANCE.getAMAZON_S3_BUCKET_NAME() != null &&
-                            !AwsConstants.INSTANCE.getAMAZON_S3_BUCKET_NAME().isEmpty()) {
-                        boolean check = s3Client.doesObjectExist(AwsConstants.INSTANCE.getAMAZON_S3_BUCKET_NAME(), object);
-                        activity.runOnUiThread(() -> {
-                            if (!check)
-                                onUiEventClick.onClick(null, REQUEST_CODE_FAILURE);
-                            else {
-                                onUiEventClick.onClick(null, REQUEST_CODE_SUCCESS);
-                            }
-                        });
+                    if (!AwsConstants.INSTANCE.getAMAZON_S3_BUCKET_NAME().isEmpty()) {
+                        try {
+                            boolean check = s3Client.doesObjectExist(AwsConstants.INSTANCE.getAMAZON_S3_BUCKET_NAME(), object);
+                            activity.runOnUiThread(() -> {
+                                if (!check)
+                                    onUiEventClick.onClick(null, REQUEST_CODE_FAILURE);
+                                else {
+                                    onUiEventClick.onClick(null, REQUEST_CODE_SUCCESS);
+                                }
+                            });
+                        } catch (Exception exception) {
+                            onUiEventClick.onClick(null, REQUEST_CODE_FAILURE);
+                        }
                     } else {
                         String userId = FlatShareApplication.Companion.getDbInstance().userDao().getUser().getId();
                         MixpanelUtils.INSTANCE.logError("Bucket name is empty for user " + userId, Logger.LOG_TYPE_ERROR);

@@ -15,6 +15,7 @@ import com.sendbird.android.channel.query.GroupChannelListQueryOrder;
 import com.sendbird.android.message.BaseMessage;
 import com.sendbird.android.params.GroupChannelListQueryParams;
 import com.sendbird.android.user.Member;
+import com.sendbird.android.user.User;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -137,8 +138,11 @@ public class SendBirdChannel {
         List<Member> members = groupChannel.getMembers();
         if (members.size() == 2) {
             for (Member member : members) {
-                if (!member.getUserId().equals(SendbirdChat.getCurrentUser().getUserId())) {
-                    return member.getUserId();
+                User currentUser = SendbirdChat.getCurrentUser();
+                if (currentUser != null) {
+                    if (!member.getUserId().equals(currentUser.getUserId())) {
+                        return member.getUserId();
+                    }
                 }
             }
         }

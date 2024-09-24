@@ -79,7 +79,7 @@ public class SendBirdUser {
 
     public void getBlockedUserList(ArrayList<String> userIds, OnUserListFetchedListener onUserListFetchedListener) {
         BlockedUserListQueryParams params = new BlockedUserListQueryParams();
-        if (userIds != null && userIds.size() > 0)
+        if (userIds != null && !userIds.isEmpty())
             params.setUserIdsFilter(userIds);
 
         BlockedUserListQuery listQuery = SendbirdChat.createBlockedUserListQuery(params);

@@ -124,20 +124,20 @@ public class ChatDetailsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
         switch (holder.getItemViewType()) {
             case VIEW_TYPE_USER_MESSAGE_ME:
             case VIEW_TYPE_FILE_MESSAGE_CONTACT_ME:
-                ((HolderChatTextMe) holder).bind(activity, this, holder.getAbsoluteAdapterPosition());
+                ((HolderChatTextMe) holder).bind(activity, this, holder.getAdapterPosition());
                 break;
             case VIEW_TYPE_USER_MESSAGE_USER:
             case VIEW_TYPE_FILE_MESSAGE_CONTACT_USER:
-                ((HolderChatTextUser) holder).bind(activity, this, holder.getAbsoluteAdapterPosition());
+                ((HolderChatTextUser) holder).bind(activity, this, holder.getAdapterPosition());
                 break;
             case VIEW_TYPE_FILE_MESSAGE_IMAGE_ME:
-                ((HolderChatFileMe) holder).bind(activity, this, holder.getAbsoluteAdapterPosition());
+                ((HolderChatFileMe) holder).bind(activity, this, holder.getAdapterPosition());
                 break;
             case VIEW_TYPE_FILE_MESSAGE_IMAGE_USER:
-                ((HolderChatFileUser) holder).bind(activity, this, holder.getAbsoluteAdapterPosition());
+                ((HolderChatFileUser) holder).bind(activity, this, holder.getAdapterPosition());
                 break;
             case VIEW_TYPE_ADMIN_MESSAGE:
-                ((HolderChatTextAdmin) holder).bind(activity, this, holder.getAbsoluteAdapterPosition());
+                ((HolderChatTextAdmin) holder).bind(activity, this, holder.getAdapterPosition());
                 break;
 
         }

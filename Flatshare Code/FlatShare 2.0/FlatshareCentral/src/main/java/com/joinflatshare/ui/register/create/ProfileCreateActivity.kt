@@ -89,35 +89,38 @@ class ProfileCreateActivity : RegisterBaseActivity() {
         ApplicationChatHandler().initialise { text: String ->
             WebserviceManager.uiWebserviceHandler.hideProgress(this)
             if (text == "1") {
-                val userName = modelUser.name!!.firstName + " " + modelUser.name!!.lastName
-                CommonMethod.makeLog("SendBird User Register", userName + "  " + modelUser.id)
-                val sendBirdUser = SendBirdUser(this@ProfileCreateActivity)
-                val params =
-                    HashMap<String, String>()
-                params["user_id"] = modelUser.id
-                params["nickname"] = userName
-                params["profile_url"] = ""
-                sendBirdUser.createUser(
-                    params
-                ) {
-                    // Update the User again since nickname is not registering
-                    params.remove("user_id")
-                    params.remove("profile_url")
-                    params["nickname"] = userName
-                    sendBirdUser.updateUser(
-                        user?.id,
-                        params
-                    ) { response: ModelChatUserResponse? -> }
-
-                    // Requesting Notification permission for Android 13
-                    NotificationPermissionHandler(this).showNotificationPermission {
-                        MixpanelUtils.sendToMixPanel("Registration Complete")
-                        val intent = Intent(this, RegisterPhotoActivity::class.java)
-                        CommonMethod.switchActivity(this, intent, false)
-                        finishAffinity()
-                    }
+                registerSendbird(modelUser)
+                // Requesting Notification permission for Android 13
+                NotificationPermissionHandler(this).showNotificationPermission {
+                    MixpanelUtils.sendToMixPanel("Registration Complete")
+                    val intent = Intent(this, RegisterPhotoActivity::class.java)
+                    CommonMethod.switchActivity(this, intent, false)
+                    finishAffinity()
                 }
             }
+        }
+    }
+
+    private fun registerSendbird(modelUser: User) {
+        val userName = modelUser.name!!.firstName + " " + modelUser.name!!.lastName
+        CommonMethod.makeLog("SendBird User Register", userName + "  " + modelUser.id)
+        val sendBirdUser = SendBirdUser(this@ProfileCreateActivity)
+        val params =
+            HashMap<String, String>()
+        params["user_id"] = modelUser.id
+        params["nickname"] = userName
+        params["profile_url"] = ""
+        sendBirdUser.createUser(
+            params
+        ) {
+            // Update the User again since nickname is not registering
+            params.remove("user_id")
+            params.remove("profile_url")
+            params["nickname"] = userName
+            sendBirdUser.updateUser(
+                user?.id,
+                params
+            ) { response: ModelChatUserResponse? -> }
         }
     }
 }

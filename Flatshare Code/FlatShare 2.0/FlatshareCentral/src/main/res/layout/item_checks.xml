@@ -70,14 +70,7 @@
                                     android:layout_width="@dimen/dp_circular_width"
                                     android:layout_height="@dimen/dp_circular_width"
                                     android:layout_gravity="center"
-                                    android:src="@drawable/ic_user_grey"
-                                    app:civ_border_color="@color/grey2"
-                                    app:civ_border_width="0.01dp"
-                                    app:riv_border_color="@color/white"
-                                    app:riv_border_width="2dp"
-                                    app:riv_corner_radius="@dimen/_36sdp"
-                                    app:riv_mutate_background="true"
-                                    app:riv_tile_mode="clamp" />
+                                    android:src="@drawable/ic_user_grey" />
 
                                 <TextView
                                     android:id="@+id/txt_photo"
@@ -117,6 +110,13 @@
                                 android:fontFamily="@font/font_semibold"
                                 android:textColor="@color/white"
                                 android:textSize="@dimen/_16sdp" />
+
+                            <ImageView
+                                android:id="@+id/img_verified"
+                                android:layout_width="@dimen/_22sdp"
+                                android:layout_height="@dimen/_22sdp"
+                                android:layout_marginStart="@dimen/_5sdp"
+                                android:src="@drawable/ic_tick_verified_blue" />
 
                             <ImageView
                                 android:id="@+id/img_elite"
@@ -255,7 +255,6 @@
             android:id="@+id/ll_explore_buttons"
             android:layout_width="match_parent"
             android:layout_height="@dimen/_45sdp"
-            android:layout_marginHorizontal="@dimen/_40sdp"
             android:layout_marginTop="@dimen/_8sdp"
             android:gravity="center"
             android:orientation="horizontal">

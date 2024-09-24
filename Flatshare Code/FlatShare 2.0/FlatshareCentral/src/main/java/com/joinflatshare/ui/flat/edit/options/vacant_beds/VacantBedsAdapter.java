@@ -51,18 +51,18 @@ public class VacantBedsAdapter extends RecyclerView.Adapter<VacantBedsAdapter.Vi
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        final AmenitiesItem item = items.get(holder.getBindingAdapterPosition());
+        final AmenitiesItem item = items.get(holder.getAdapterPosition());
         holder.txt_beds.setText(item.getName());
         holder.rdb_beds.setImageResource(item.isSelected() ? R.drawable.ic_rdb_selected : R.drawable.ic_rdb);
         if (item.isSelected())
-            lastCheckedPosition = holder.getBindingAdapterPosition();
+            lastCheckedPosition = holder.getAdapterPosition();
         holder.rl_beds.setOnClickListener(view -> rv.post(() -> {
             if (lastCheckedPosition > -1) {
                 items.get(lastCheckedPosition).setSelected(false);
                 notifyItemChanged(lastCheckedPosition);
             }
-            items.get(holder.getBindingAdapterPosition()).setSelected(true);
-            lastCheckedPosition = holder.getBindingAdapterPosition();
+            items.get(holder.getAdapterPosition()).setSelected(true);
+            lastCheckedPosition = holder.getAdapterPosition();
             notifyItemChanged(lastCheckedPosition);
             if (activity instanceof FlatEditActivity) {
                 ((FlatEditActivity) activity).dataBind.setCompleteCount();
