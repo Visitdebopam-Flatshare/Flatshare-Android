@@ -262,12 +262,12 @@
 
             <LinearLayout
                 android:id="@+id/ll_check_reject"
-                android:layout_width="0dp"
+                android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:layout_weight="1"
                 android:background="@drawable/drawable_button_black_less_elliptical"
                 android:gravity="center"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:paddingHorizontal="@dimen/_20sdp">
 
                 <ImageView
                     android:layout_width="@dimen/_12sdp"
@@ -292,12 +292,12 @@
 
             <LinearLayout
                 android:id="@+id/ll_check_accept"
-                android:layout_width="0dp"
+                android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:layout_weight="1"
                 android:background="@drawable/drawable_button_black_less_elliptical"
                 android:gravity="center"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:paddingHorizontal="@dimen/_20sdp">
 
                 <ImageView
                     android:layout_width="@dimen/_12sdp"

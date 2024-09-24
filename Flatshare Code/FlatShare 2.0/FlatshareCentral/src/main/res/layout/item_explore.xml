@@ -208,22 +208,19 @@
         android:layout_height="@dimen/_45sdp"
         android:layout_marginHorizontal="@dimen/_40sdp"
         android:layout_marginVertical="@dimen/_8sdp"
-        android:orientation="horizontal"
-        android:weightSum="2">
+        android:orientation="horizontal">
 
         <LinearLayout
             android:id="@+id/ll_explore_reject"
-            android:layout_width="0dp"
+            android:layout_width="@dimen/_48sdp"
             android:layout_height="match_parent"
-            android:layout_weight="0.45"
             android:background="@drawable/drawable_button_black_less_elliptical"
             android:gravity="center"
             android:orientation="horizontal">
 
             <ImageView
-                android:layout_width="@dimen/_12sdp"
-                android:layout_height="@dimen/_12sdp"
-                android:layout_marginTop="@dimen/_1sdp"
+                android:layout_width="@dimen/_14sdp"
+                android:layout_height="@dimen/_14sdp"
                 android:src="@drawable/ic_cross_red"
                 app:tint="@color/white" />
 
@@ -235,11 +232,11 @@
 
         <LinearLayout
             android:id="@+id/ll_explore_chat_request"
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:layout_weight="1.55"
             android:background="@drawable/drawable_button_black_less_elliptical"
             android:gravity="center"
+            android:paddingHorizontal="@dimen/_20sdp"
             android:orientation="horizontal">
 
             <ImageView

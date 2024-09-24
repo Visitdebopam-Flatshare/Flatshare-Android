@@ -15,6 +15,7 @@ import com.joinflatshare.interfaces.OnUserFetched
 import com.joinflatshare.pojo.user.User
 import com.joinflatshare.pojo.user.UserResponse
 import com.joinflatshare.ui.register.RegisterBaseActivity
+import com.joinflatshare.ui.register.photo.RegisterPhotoActivity
 import com.joinflatshare.ui.settings.SettingsActivity
 import com.joinflatshare.utils.helper.CommonMethod
 import com.joinflatshare.utils.helper.CommonMethods
@@ -39,19 +40,8 @@ class ProfileCreateActivity : RegisterBaseActivity() {
             return
         }
         setFilter()
-//        setDemoData()
         ProfileCreateListener(this, viewBind)
     }
-
-    private fun setDemoData() {
-        if (!AppConstants.isAppLive) {
-            viewBind.edtFname.setText("Sendbird")
-            viewBind.edtLname.setText("Test User")
-            viewBind.txtGender.text = "Male"
-            viewBind.txtMyself.text = "Student"
-        }
-    }
-
 
     private fun setFilter() {
         val filterText = arrayOfNulls<InputFilter>(1)
@@ -122,7 +112,7 @@ class ProfileCreateActivity : RegisterBaseActivity() {
                     // Requesting Notification permission for Android 13
                     NotificationPermissionHandler(this).showNotificationPermission {
                         MixpanelUtils.sendToMixPanel("Registration Complete")
-                        val intent = Intent(this, SettingsActivity::class.java)
+                        val intent = Intent(this, RegisterPhotoActivity::class.java)
                         CommonMethod.switchActivity(this, intent, false)
                         finishAffinity()
                     }

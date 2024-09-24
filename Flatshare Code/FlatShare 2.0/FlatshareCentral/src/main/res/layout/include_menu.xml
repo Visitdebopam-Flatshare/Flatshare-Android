@@ -98,6 +98,7 @@
                     android:layout_width="@dimen/_5sdp"
                     android:layout_height="@dimen/_5sdp"
                     android:layout_gravity="center"
+                    android:layout_marginTop="@dimen/_1sdp"
                     android:layout_marginStart="@dimen/_5sdp"
                     android:background="@drawable/drawable_button_blue_circle"
                     android:visibility="visible" />

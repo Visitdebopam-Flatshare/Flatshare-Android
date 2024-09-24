@@ -119,7 +119,7 @@
                 android:layout_marginTop="@dimen/_2sdp"
                 android:src="@drawable/ic_elite"
                 android:visibility="gone"
-                app:tint="@color/blue_dark" />
+                app:tint="@color/elite_blue" />
         </LinearLayout>
 
         <com.google.android.material.card.MaterialCardView

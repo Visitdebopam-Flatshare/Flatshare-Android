@@ -43,10 +43,6 @@ class RestrictionBottomSheet(
         viewBind.cardWeek2.setOnClickListener { clickCard(2) }
         viewBind.cardWeek3.setOnClickListener { clickCard(3) }
         viewBind.cardWeek2.performClick()
-        viewBind.imgCross.setOnClickListener {
-            PaymentHandler.isPopUpShowing = false
-            dismissDialog(dialog)
-        }
         viewBind.cardElite.visibility = if (isEliteMember()) View.GONE else View.VISIBLE
         viewBind.cardElite.setOnClickListener {
             dismissDialog(dialog)

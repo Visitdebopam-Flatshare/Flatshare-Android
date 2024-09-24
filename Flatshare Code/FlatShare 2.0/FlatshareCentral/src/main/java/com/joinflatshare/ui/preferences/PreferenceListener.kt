@@ -1,5 +1,6 @@
 package com.joinflatshare.ui.preferences
 
+import android.content.res.ColorStateList
 import android.view.View
 import androidx.core.content.ContextCompat
 import com.android.billingclient.api.Purchase
@@ -201,6 +202,8 @@ class PreferenceListener(private val activity: PreferenceActivity) : View.OnClic
             viewBind.includePrefFlatmate.rlVerified.background = ContextCompat.getDrawable(
                 activity, R.drawable.drawable_button_blue_stroke_blue_bg
             )
+            viewBind.includePrefFlatmate.switchVerifiedMember.thumbTintList =
+                ColorStateList.valueOf(ContextCompat.getColor(activity, R.color.blue_dark))
         } else {
             viewBind.includePrefFlatmate.imgVerified.setColorFilter(
                 ContextCompat.getColor(
@@ -215,6 +218,8 @@ class PreferenceListener(private val activity: PreferenceActivity) : View.OnClic
             viewBind.includePrefFlatmate.rlVerified.background = ContextCompat.getDrawable(
                 activity, R.drawable.drawable_button_grey_stroke
             )
+            viewBind.includePrefFlatmate.switchVerifiedMember.thumbTintList =
+                ColorStateList.valueOf(ContextCompat.getColor(activity, R.color.grey2))
         }
     }
 
@@ -235,6 +240,8 @@ class PreferenceListener(private val activity: PreferenceActivity) : View.OnClic
             viewBind.includePrefFlatmate.rlElite.background = ContextCompat.getDrawable(
                 activity, R.drawable.drawable_button_blue_stroke_blue_bg
             )
+            viewBind.includePrefFlatmate.switchEliteMember.thumbTintList =
+                ColorStateList.valueOf(ContextCompat.getColor(activity, R.color.blue_dark))
         } else {
             viewBind.includePrefFlatmate.imgElite.setColorFilter(
                 ContextCompat.getColor(
@@ -249,6 +256,8 @@ class PreferenceListener(private val activity: PreferenceActivity) : View.OnClic
             viewBind.includePrefFlatmate.rlElite.background = ContextCompat.getDrawable(
                 activity, R.drawable.drawable_button_grey_stroke
             )
+            viewBind.includePrefFlatmate.switchEliteMember.thumbTintList =
+                ColorStateList.valueOf(ContextCompat.getColor(activity, R.color.grey2))
         }
     }
 

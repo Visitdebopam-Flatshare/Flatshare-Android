@@ -17,6 +17,7 @@ import com.joinflatshare.pojo.user.UserResponse
 import com.joinflatshare.ui.base.BaseActivity
 import com.joinflatshare.ui.profile.interest.InterestActivity
 import com.joinflatshare.utils.helper.CommonMethod
+import com.joinflatshare.utils.mixpanel.MixpanelUtils
 
 /**
  * Created by debopam on 08/03/24
@@ -89,6 +90,7 @@ class LanguageActivity : BaseActivity() {
             user?.flatProperties?.languages = ArrayList()
             baseApiController.updateUser(true, user, object : OnUserFetched {
                 override fun userFetched(resp: UserResponse?) {
+                    MixpanelUtils.onButtonClicked("Onboarding Language Skipped")
                     val intent = Intent(this@LanguageActivity, InterestActivity::class.java)
                     CommonMethod.switchActivity(this@LanguageActivity, intent, false)
                 }
@@ -118,6 +120,7 @@ class LanguageActivity : BaseActivity() {
                         user?.flatProperties?.languages?.addAll(interestsView.matchedContent)
                         baseApiController.updateUser(true, user, object : OnUserFetched {
                             override fun userFetched(resp: UserResponse?) {
+                                MixpanelUtils.onButtonClicked("Onboarding Language Saved")
                                 val intent =
                                     Intent(this@LanguageActivity, InterestActivity::class.java)
                                 CommonMethod.switchActivity(this@LanguageActivity, intent, false)

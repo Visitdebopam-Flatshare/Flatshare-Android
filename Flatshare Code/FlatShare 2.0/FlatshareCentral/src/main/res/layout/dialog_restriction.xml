@@ -55,14 +55,6 @@
 
                 </com.google.android.material.card.MaterialCardView>
 
-                <ImageView
-                    android:id="@+id/img_cross"
-                    android:layout_width="@dimen/_20sdp"
-                    android:layout_height="@dimen/_20sdp"
-                    android:layout_alignParentEnd="true"
-                    android:layout_gravity="end"
-                    android:layout_margin="@dimen/_1sdp"
-                    android:src="@drawable/ic_cross_black" />
             </RelativeLayout>
 
 
@@ -349,7 +341,8 @@
                         android:id="@+id/ll_elite_holder"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_margin="@dimen/_20sdp"
+                        android:layout_marginHorizontal="@dimen/_20sdp"
+                        android:layout_marginVertical="@dimen/_10sdp"
                         android:orientation="vertical">
 
                         <LinearLayout
@@ -387,7 +380,7 @@
                             android:id="@+id/card_elite"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="@dimen/_20sdp"
+                            android:layout_marginTop="@dimen/_10sdp"
                             app:cardBackgroundColor="@android:color/transparent"
                             app:cardCornerRadius="@dimen/_10sdp"
                             app:cardElevation="0dp"
