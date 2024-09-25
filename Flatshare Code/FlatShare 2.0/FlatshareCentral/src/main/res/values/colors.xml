@@ -13,10 +13,13 @@
     <color name="grey2">#6A6A6A</color>
     <color name="grey3">#4D4D4D</color>
     <color name="grey4">#BABABA</color>
+    <color name="grey5">#E9E9E9</color>
+    <color name="grey6">#E9F0FF</color>
     <color name="red">#FD1C1C</color>
     <color name="green">#14B463</color>
     <color name="purple">#7420FC</color>
-
+    <color name="elite_blue">#000463</color>
+    <color name="orange">#FF7E3D</color>
 
 
     <color name="color_text_primary">@color/black</color>

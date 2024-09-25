@@ -5,6 +5,7 @@ import com.joinflatshare.chat.pojo.ModelUserMetadataRequest;
 import com.joinflatshare.chat.pojo.channel_detail.ChannelDetailResponse;
 import com.joinflatshare.chat.pojo.channel_list.ChannelListResponse;
 import com.joinflatshare.chat.pojo.user.ModelChatUserResponse;
+import com.joinflatshare.chat.pojo.user.TokenResponse;
 import com.joinflatshare.chat.pojo.user_list.ModelUserListResponse;
 import com.joinflatshare.pojo.BaseResponse;
 
@@ -65,30 +66,9 @@ public interface SendBirdApiInterface {
     @DELETE("users/{userId}/push")
     Observable<BaseResponse> deleteAllPushTokens(@Path("userId") String userId);
 
-    /*@POST("profile")
-    Observable<OtpResponse> updateProfile(@Body ModelUser user);
+    @DELETE("users/{userId}/push/gcm")
+    Observable<TokenResponse> getPushToken(@Path("userId") String userId);
 
-    @GET("profile")
-    Observable<OtpResponse> getProfile(@Query("phone") String phone);
-
-    @GET("getflatoptions")
-    Observable<FlatAmenityResponse> getFlatOptions();
-
-    @GET("flatprofile")
-    Observable<FlatDataResponse> getMyFlat(@Query("phone") String phone);
-
-    @POST("flatprofile")
-    Observable<FlatDataResponse> updateFlat(@Body FlatDataResponse dataResponse);
-
-    @GET("getfaqs")
-    Observable<FaqResponse> getFaqs();
-
-    @GET("getAWSKeys")
-    Observable<AwsResponse> getAwsKeys();
-
-    @POST("remove_member")
-    Observable<FlatDataResponse> removeMember(@Body HashMap<String, String> params);
-
-    @POST("transfer_ownership")
-    Observable<FlatDataResponse> makeAdmin(@Body HashMap<String, String> params);*/
+    @DELETE("users/{userId}")
+    Observable<BaseResponse> deleteUser(@Path("userId") String userId);
 }

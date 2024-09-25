@@ -28,9 +28,9 @@ class ChecksAdapter(
 
     fun removeItem(position: Int) {
         if (position < items.size) {
+            items.removeAt(position)
             notifyItemRemoved(position)
             notifyItemRangeChanged(position, itemCount)
-            items.removeAt(position)
         }
     }
 

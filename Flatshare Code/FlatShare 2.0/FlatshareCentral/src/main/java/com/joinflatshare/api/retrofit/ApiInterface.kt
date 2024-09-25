@@ -7,7 +7,6 @@ import com.joinflatshare.pojo.flat.MyFlatData
 import com.joinflatshare.pojo.invite.InvitedRequest
 import com.joinflatshare.pojo.invite.InvitedResponse
 import com.joinflatshare.pojo.invite.RequestSavedContacts
-import com.joinflatshare.pojo.purchase.PurchaseRequest
 import io.reactivex.Observable
 import retrofit2.http.Body
 import retrofit2.http.DELETE
@@ -85,12 +84,4 @@ interface ApiInterface {
     fun report(
         @Url url: String
     ): Observable<BaseResponse>
-
-
-    /*------------------------------ PURCHASE ------------------------------*/
-    @POST("users/purchase/product")
-    fun purchaseOrder(
-        @Body request: PurchaseRequest
-    ): Observable<BaseResponse>
-
 }

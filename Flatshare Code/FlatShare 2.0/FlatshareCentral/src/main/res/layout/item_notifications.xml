@@ -20,15 +20,11 @@
             android:gravity="center_vertical"
             android:orientation="horizontal">
 
-            <com.makeramen.roundedimageview.RoundedImageView
+            <de.hdodenhof.circleimageview.CircleImageView
                 android:id="@+id/img_notification_dp"
                 android:layout_width="@dimen/_35sdp"
                 android:layout_height="@dimen/_35sdp"
-                android:layout_gravity="top"
-                android:scaleType="fitCenter"
-                app:riv_corner_radius="@dimen/_14sdp"
-                app:riv_mutate_background="false"
-                app:riv_tile_mode="clamp" />
+                android:layout_gravity="top"/>
 
             <LinearLayout
                 android:layout_width="wrap_content"

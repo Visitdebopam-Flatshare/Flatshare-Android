@@ -1,5 +1,7 @@
 package com.joinflatshare.webservice.api.interfaces
 
+import com.joinflatshare.pojo.BaseResponse
+import com.joinflatshare.pojo.purchase.PurchaseRequest
 import com.joinflatshare.pojo.user.AdhaarOtp
 import com.joinflatshare.pojo.user.AdhaarRequest
 import com.joinflatshare.pojo.user.User
@@ -146,5 +148,11 @@ interface ApiInterface {
     @DELETE()
     fun rejectLike(
         @Url url: String?
+    ): Observable<Response<ResponseBody>>
+
+    /*------------------------------ PURCHASE ------------------------------*/
+    @POST("users/purchase/android")
+    fun purchaseOrder(
+        @Body request: PurchaseRequest
     ): Observable<Response<ResponseBody>>
 }

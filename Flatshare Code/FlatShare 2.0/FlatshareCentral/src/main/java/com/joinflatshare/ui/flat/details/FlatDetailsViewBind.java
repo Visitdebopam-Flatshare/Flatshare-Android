@@ -12,13 +12,11 @@ import com.joinflatshare.FlatshareCentral.databinding.ActivityFlatDetailsBinding
 import com.joinflatshare.constants.AppConstants;
 import com.joinflatshare.customviews.GridSpacingItemDecoration;
 import com.joinflatshare.customviews.deal_breakers.DealBreakerView;
-import com.joinflatshare.customviews.interests.InterestsView;
 import com.joinflatshare.pojo.flat.FlatProperties;
 import com.joinflatshare.pojo.flat.MyFlatData;
 import com.joinflatshare.pojo.user.User;
 import com.joinflatshare.ui.flat.edit.FlatMemberAdapter;
 import com.joinflatshare.utils.helper.DateUtils;
-import com.joinflatshare.utils.helper.DistanceCalculator;
 
 import java.util.Collections;
 

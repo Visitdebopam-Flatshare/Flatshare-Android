@@ -23,22 +23,20 @@ object GoogleConstants {
                     if (activity != null)
                         DialogCustomProgress.hideProgress(activity)
                     if (it.equals("1")) {
-                        if (!Places.isInitialized()) Places.initialize(
-                            FlatShareApplication.instance,
-                            GOOGLE_API_KEY
-                        )
-                        callback.onFetched("1")
+                        initialisePlaces(callback)
                     } else {
                         callback.onFetched("0")
                     }
                 }
             } else {
-                if (!Places.isInitialized()) Places.initialize(
-                    FlatShareApplication.instance,
-                    GOOGLE_API_KEY
-                )
-                callback.onFetched("1")
+                initialisePlaces(callback)
             }
         }
+    }
+
+    private fun initialisePlaces(callback: OnStringFetched) {
+        if (!Places.isInitialized())
+            Places.initialize(FlatShareApplication.instance, GOOGLE_API_KEY)
+        callback.onFetched("1")
     }
 }

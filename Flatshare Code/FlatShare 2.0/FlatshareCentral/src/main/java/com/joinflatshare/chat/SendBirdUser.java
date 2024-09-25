@@ -37,8 +37,14 @@ public class SendBirdUser {
         apiManager.createUser(params, callback);
     }
 
-    public void updateUser(String userId,HashMap<String, String> params, OnResponseCallback<ModelChatUserResponse> callback) {
+    public void updateUser(String userId, HashMap<String, String> params, OnResponseCallback<ModelChatUserResponse> callback) {
         apiManager.updateProfile(userId, params, callback);
+    }
+
+    public void deleteUser(String userId) {
+        apiManager.deleteUser(userId, response -> {
+
+        });
     }
 
     public void updateUserMetadata(UserMetadata metadata, OnResponseCallback<ModelChatUserResponse> user) {
@@ -73,7 +79,7 @@ public class SendBirdUser {
 
     public void getBlockedUserList(ArrayList<String> userIds, OnUserListFetchedListener onUserListFetchedListener) {
         BlockedUserListQueryParams params = new BlockedUserListQueryParams();
-        if (userIds != null && userIds.size() > 0)
+        if (userIds != null && !userIds.isEmpty())
             params.setUserIdsFilter(userIds);
 
         BlockedUserListQuery listQuery = SendbirdChat.createBlockedUserListQuery(params);

@@ -6,7 +6,6 @@ import com.joinflatshare.interfaces.OnUserFetched
 import com.joinflatshare.pojo.user.User
 import com.joinflatshare.pojo.user.UserResponse
 import com.joinflatshare.ui.base.gpsfetcher.GpsHandler
-import com.joinflatshare.utils.helper.CommonMethods
 import com.joinflatshare.webservice.api.WebserviceManager
 import com.joinflatshare.webservice.api.interfaces.OnFlatshareResponseCallBack
 import okhttp3.ResponseBody

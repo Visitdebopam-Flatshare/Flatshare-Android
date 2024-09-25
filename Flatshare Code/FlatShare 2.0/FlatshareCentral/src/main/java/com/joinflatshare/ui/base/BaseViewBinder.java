@@ -14,7 +14,6 @@ import com.joinflatshare.FlatshareCentral.R;
 import com.joinflatshare.constants.AppConstants;
 import com.joinflatshare.constants.SendBirdConstants;
 import com.joinflatshare.utils.helper.ImageHelper;
-import com.makeramen.roundedimageview.RoundedImageView;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
@@ -27,7 +26,7 @@ public class BaseViewBinder {
     public ImageView btn_topbar_right;
     public ImageView img_topbar_logo, img_topbar_text_header;
     public TextView txt_topbar_header;
-    public RoundedImageView img_topbar_profile;
+    public CircleImageView img_topbar_profile;
     public View view_topbar_divider, view_topbar_back_circle;
 
     // Bottom Menu

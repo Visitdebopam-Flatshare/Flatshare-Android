@@ -33,5 +33,5 @@ object GooglePaymentConstants {
     const val PAYMENT_TYPE_CHAT = "chat"
     const val PAYMENT_TYPE_FEED = "feed"
     const val PAYMENT_TYPE_REVEAL = "reveal"
-    const val PAYMENT_TYPE_GOD_MODE = "godmode"
+    const val PAYMENT_TYPE_GOD_MODE = "elite"
 }

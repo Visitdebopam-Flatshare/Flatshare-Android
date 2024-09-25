@@ -58,6 +58,9 @@ data class User(
     @field:SerializedName("profession")
     var profession: String? = "",
 
+    @field:SerializedName("godMode")
+    var godMode: String? = null,
+
     @field:SerializedName("dp")
     var dp: String? = null,
 
@@ -86,10 +89,10 @@ data class User(
     var invites: Int = 0,
 
     @field:SerializedName("completedDetails")
-    val completed: CompletedDetails?=null,
+    val completed: CompletedDetails? = null,
 
     @field:SerializedName("completed")
-    val completedPercentage: Int?=0,
+    val completedPercentage: Int? = 0,
 
     @field:SerializedName("isFlatSearch")
     var isFlatSearch: IsFlatSearch = IsFlatSearch(),
@@ -104,7 +107,13 @@ data class User(
     var images: ArrayList<String> = ArrayList(),
 
     @field:SerializedName("deviceToken")
-    var deviceToken: String = ""
+    var deviceToken: String = "",
+
+    @field:SerializedName("hasBeenGiftedElite")
+    var hasBeenGiftedElite: Boolean = true,
+
+    @field:SerializedName("isGiftPopupShown")
+    var isGiftPopupShown: Boolean = true
 ) : Serializable
 
 data class IsFlatSearch(
@@ -158,6 +167,9 @@ data class FlatProperties(
 
     @field:SerializedName("isVerifiedOnly")
     var isVerifiedOnly: Boolean = false,
+
+    @field:SerializedName("isEliteOnly")
+    var isEliteOnly: Boolean = false,
 
     @field:SerializedName("languages")
     var languages: ArrayList<String> = ArrayList(),

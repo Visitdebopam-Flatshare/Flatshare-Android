@@ -11,7 +11,6 @@ import com.joinflatshare.customviews.deal_breakers.DealBreakerView
 import com.joinflatshare.db.daos.AppDao
 import com.joinflatshare.pojo.flat.DealBreakers
 import com.joinflatshare.ui.register.RegisterBaseActivity
-import com.joinflatshare.utils.helper.CommonMethod
 
 class RegisterDealActivity : RegisterBaseActivity() {
     lateinit var viewBind: ActivityRegisterDealBinding

@@ -15,7 +15,7 @@ import com.joinflatshare.utils.helper.CommonMethod
 class VerifiedBottomSheet(
     private val activity: ApplicationBaseActivity,
     private val callback: OnStringFetched
-) {
+) : BottomSheetBaseView(activity) {
 
     private lateinit var viewBind: DialogBottomsheetVerifiedBinding
     private lateinit var dialog: BottomSheetDialog
@@ -29,12 +29,12 @@ class VerifiedBottomSheet(
         viewBind = DialogBottomsheetVerifiedBinding.inflate(activity.layoutInflater)
         dialog.setContentView(viewBind.root)
         click()
-        dialog.show()
+        showDialog(dialog)
     }
 
     private fun click() {
         viewBind.imgCross.setOnClickListener {
-            dialog.dismiss()
+            dismissDialog(dialog)
         }
         viewBind.llExploreSuperCheck.setOnClickListener {
             val intent = Intent(activity, ProfileVerifyActivity::class.java)
@@ -44,7 +44,7 @@ class VerifiedBottomSheet(
             ) { result ->
                 if (result?.resultCode == Activity.RESULT_OK) {
                     callback.onFetched("1")
-                    dialog.dismiss()
+                    dismissDialog(dialog)
                 }
             }
         }

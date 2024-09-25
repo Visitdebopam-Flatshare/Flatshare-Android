@@ -40,7 +40,7 @@ class InterestAdapter(
 
     override fun onBindViewHolder(mainHolder: RecyclerView.ViewHolder, position: Int) {
         val holder = mainHolder as InterestAdapter.ViewHolder
-        holder.bind(mainHolder.bindingAdapterPosition, this)
+        holder.bind(mainHolder.adapterPosition, this)
     }
 
     override fun getItemCount(): Int {

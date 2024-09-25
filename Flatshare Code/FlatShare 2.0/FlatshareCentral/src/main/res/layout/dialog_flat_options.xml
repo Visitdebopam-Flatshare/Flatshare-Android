@@ -245,7 +245,7 @@
         android:orientation="vertical"
         android:visibility="gone">
 
-        <com.crystal.crystalrangeseekbar.widgets.CrystalRangeSeekbar
+       <!-- <com.crystal.crystalrangeseekbar.widgets.CrystalRangeSeekbar
             android:id="@+id/seekbar_rent"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -255,7 +255,7 @@
             app:gap="500"
             app:left_thumb_color="@color/color_hint"
             app:right_thumb_color="@color/color_hint"
-            app:steps="500" />
+            app:steps="500" />-->
 
         <RelativeLayout
             android:layout_width="match_parent"

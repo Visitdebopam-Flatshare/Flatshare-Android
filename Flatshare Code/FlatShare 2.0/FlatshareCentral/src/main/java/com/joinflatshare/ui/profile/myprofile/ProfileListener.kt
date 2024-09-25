@@ -1,6 +1,7 @@
 package com.joinflatshare.ui.profile.myprofile
 
 import android.content.Intent
+import android.net.Uri
 import android.view.View
 import android.view.View.OnClickListener
 import com.joinflatshare.FlatshareCentral.databinding.ActivityProfileBinding
@@ -28,6 +29,8 @@ class ProfileListener(
         viewBind.imgProfileSettings.setOnClickListener(this)
         viewBind.imgProfileEdit.setOnClickListener(this)
         viewBind.framePhoto.setOnClickListener(this)
+        viewBind.cardProfileRentedFlats.setOnClickListener(this)
+        viewBind.cardProfileListFlat.setOnClickListener(this)
     }
 
     override fun onClick(v: View?) {
@@ -55,6 +58,22 @@ class ProfileListener(
             viewBind.imgProfileEdit.id -> {
                 val intent = Intent(activity, ProfileEditActivity::class.java)
                 CommonMethod.switchActivity(activity, intent, false)
+            }
+
+            viewBind.cardProfileListFlat.id -> {
+                val browserIntent = Intent(
+                    Intent.ACTION_VIEW,
+                    Uri.parse("https://www.joinflatshare.com/list-my-flat")
+                )
+                CommonMethod.switchActivity(activity, browserIntent, false)
+            }
+
+            viewBind.cardProfileRentedFlats.id -> {
+                val browserIntent = Intent(
+                    Intent.ACTION_VIEW,
+                    Uri.parse("https://www.joinflatshare.com")
+                )
+                CommonMethod.switchActivity(activity, browserIntent, false)
             }
 
             viewBind.framePhoto.id -> {

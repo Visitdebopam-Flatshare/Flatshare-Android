@@ -19,11 +19,10 @@ import com.google.firebase.messaging.FirebaseMessagingService
 import com.google.firebase.messaging.RemoteMessage
 import com.google.gson.Gson
 import com.joinflatshare.FlatShareApplication
-import com.joinflatshare.FlatshareCentral.R;
+import com.joinflatshare.FlatshareCentral.R
 import com.joinflatshare.api.retrofit.OnResponseCallback
 import com.joinflatshare.chat.api.SendBirdApiManager
 import com.joinflatshare.chat.metadata.MessageMetaData
-import com.joinflatshare.chat.pojo.user.ModelChatUserResponse
 import com.joinflatshare.constants.AppConstants
 import com.joinflatshare.constants.ChatRequestConstants
 import com.joinflatshare.constants.IntentFilterConstants

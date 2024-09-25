@@ -45,7 +45,7 @@ class ProfileEditImageAdapter(
 
     override fun onBindViewHolder(mainHolder: RecyclerView.ViewHolder, position: Int) {
         val holder = mainHolder as ViewHolder
-        holder.bind(mainHolder.bindingAdapterPosition, this)
+        holder.bind(mainHolder.adapterPosition, this)
     }
 
     override fun getItemCount(): Int {

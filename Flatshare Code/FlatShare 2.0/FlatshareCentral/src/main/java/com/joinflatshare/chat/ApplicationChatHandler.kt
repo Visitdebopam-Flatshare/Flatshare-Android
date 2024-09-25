@@ -8,6 +8,7 @@ import com.joinflatshare.constants.IntentFilterConstants
 import com.joinflatshare.constants.SendBirdConstants
 import com.joinflatshare.firestore.DbSendbirdRetriever
 import com.joinflatshare.interfaces.OnStringFetched
+import com.joinflatshare.utils.helper.CommonMethod
 import com.sendbird.android.LogLevel
 import com.sendbird.android.SendbirdChat
 import com.sendbird.android.SendbirdChat.getTotalUnreadChannelCount
@@ -26,6 +27,7 @@ class ApplicationChatHandler {
     private var CONNECTION_RETRY = 3
     private val APPLICATION_CONNECTION_HANDLER_ID = "APPLICATION_CHANNEL_HANDLER_ID"
     private val APPLICATION_CHANNEL_HANDLER_ID = "APPLICATION_CHANNEL_HANDLER_ID"
+    private val TAG = ApplicationChatHandler::class.java.simpleName
 
     fun initialise(callback: OnStringFetched?) {
         if (AppConstants.isSendbirdLive) {
@@ -37,6 +39,7 @@ class ApplicationChatHandler {
 
 
     private fun getChatKeys(callback: OnStringFetched?) {
+        CommonMethod.makeLog(TAG, "Retrieving chat keys")
         DbSendbirdRetriever().getSendbirdKeys { text: String ->
             if (text == "1") {
                 initialiseSendbird(callback)
@@ -46,6 +49,7 @@ class ApplicationChatHandler {
 
     private fun initialiseSendbird(callback: OnStringFetched?) {
         // Initialize a SendbirdChat instance to use APIs in your app.
+        CommonMethod.makeLog(TAG, "Initializing Sendbird")
         val params = InitParams(
             SendBirdConstants.SENDBIRD_APPID,
             FlatShareApplication.instance,
@@ -55,10 +59,12 @@ class ApplicationChatHandler {
         init(params, object : InitResultHandler {
             override fun onMigrationStarted() {}
             override fun onInitFailed(e: SendbirdException) {
+                CommonMethod.makeLog(TAG, "Sendbird init failed")
                 onConnectionFailure(callback)
             }
 
             override fun onInitSucceed() {
+                CommonMethod.makeLog(TAG, "Sendbird init success")
                 connectChat(callback)
             }
         })
@@ -132,14 +138,17 @@ class ApplicationChatHandler {
     }
 
     private fun onConnectionSuccess(callback: OnStringFetched?) {
-        AppConstants.isSendbirdLive = true
-        SendBirdConnectionManager.isSendBirdConnected = true
-        getUnreadChannelCount()
-        setHandler()
+        if (!SendBirdConnectionManager.isSendBirdConnected) {
+            CommonMethod.makeLog(TAG, "Sendbird Connection Success")
+            SendBirdConnectionManager.isSendBirdConnected = true
+//        getUnreadChannelCount()
+            setHandler()
+        }
         callback?.onFetched("1")
     }
 
     private fun onConnectionFailure(callback: OnStringFetched?) {
+        CommonMethod.makeLog(TAG, "Sendbird Connection Failure")
         AppConstants.isSendbirdLive = false
         if (SendBirdConnectionManager.isSendBirdConnected) {
             SendbirdChat.removeAllConnectionHandlers()

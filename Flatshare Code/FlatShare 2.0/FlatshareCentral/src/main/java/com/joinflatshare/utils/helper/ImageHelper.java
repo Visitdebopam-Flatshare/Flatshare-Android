@@ -119,6 +119,18 @@ public class ImageHelper {
 
     public static void loadProfileImage(Context context, CircleImageView img_profile, TextView txtDp, User user) {
         try {
+            if (user.getDp() == null || user.getDp().isEmpty()) {
+                txtDp.setVisibility(View.VISIBLE);
+                img_profile.setVisibility(View.GONE);
+                try {
+                    char fname = user.getName().getFirstName().charAt(0);
+                    char lname = user.getName().getLastName().charAt(0);
+                    txtDp.setText("" + fname + lname);
+                } catch (Exception ex) {
+                    txtDp.setText("NA");
+                }
+                return;
+            }
             txtDp.setVisibility(View.GONE);
             String url = UrlConstants.INSTANCE.getIMAGE_URL() + user.getDp();
             CommonMethod.INSTANCE.makeLog("Image URL", url);

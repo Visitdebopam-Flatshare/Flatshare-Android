@@ -3,7 +3,6 @@ package com.joinflatshare.ui.explore
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.joinflatshare.FlatshareCentral.databinding.ItemChecksBinding
 import com.joinflatshare.FlatshareCentral.databinding.ItemExploreBinding
 import com.joinflatshare.pojo.explore.UserRecommendationItem
 import com.joinflatshare.ui.explore.holder.AdapterUserHolder

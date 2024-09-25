@@ -10,6 +10,9 @@ import androidx.core.content.ContextCompat
 import com.joinflatshare.FlatshareCentral.R
 import com.joinflatshare.FlatshareCentral.databinding.ActivityLoginBinding
 import com.joinflatshare.customviews.alert.AlertDialog
+import com.joinflatshare.customviews.bottomsheet.BottomSheetView
+import com.joinflatshare.customviews.bottomsheet.ModelBottomSheet
+import com.joinflatshare.interfaces.OnitemClick
 import com.joinflatshare.ui.register.otp.OtpActivity
 import com.joinflatshare.utils.helper.CommonMethod
 import com.joinflatshare.utils.mixpanel.MixpanelUtils
@@ -31,12 +34,31 @@ class LoginListener(
     override fun onClick(view: View?) {
         when (view?.id) {
             viewBind.txtLoginTerms.id -> {
-                activity.startActivity(
-                    Intent(
-                        Intent.ACTION_VIEW,
-                        Uri.parse("https://www.joinflatshare.com/terms.php")
-                    )
-                )
+                val list = ArrayList<ModelBottomSheet>()
+                list.add(ModelBottomSheet(0, "Terms & Conditions"))
+                list.add(ModelBottomSheet(0, "Privacy"))
+                BottomSheetView(activity, list
+                ) { _, position ->
+                    when (position) {
+                        0 -> {
+                            activity.startActivity(
+                                Intent(
+                                    Intent.ACTION_VIEW,
+                                    Uri.parse("https://www.joinflatshare.com/terms-and-condition")
+                                )
+                            )
+                        }
+
+                        1 -> {
+                            activity.startActivity(
+                                Intent(
+                                    Intent.ACTION_VIEW,
+                                    Uri.parse("https://www.joinflatshare.com/privacy-policy")
+                                )
+                            )
+                        }
+                    }
+                }
             }
 
             viewBind.btnLogin.id -> {

@@ -9,7 +9,7 @@ import com.google.gson.Gson
 import com.joinflatshare.FlatShareApplication
 import com.joinflatshare.FlatshareCentral.BuildConfig
 import com.joinflatshare.api.retrofit.ApiManager
-import com.joinflatshare.api.retrofit.WebserviceCustomResponseHandler
+import com.joinflatshare.chat.SendBirdChannel
 import com.joinflatshare.chat.SendBirdUser
 import com.joinflatshare.constants.AppConstants
 import com.joinflatshare.constants.IntentConstants
@@ -142,8 +142,17 @@ class OtpApiController(private val activity: OtpActivity) {
                         Gson().fromJson(response, com.joinflatshare.pojo.BaseResponse::class.java)
                     if (resp.status == 200) {
                         MixpanelUtils.onButtonClicked("Account Deleted")
-                        activity.setResult(Activity.RESULT_OK)
-                        CommonMethod.finishActivity(activity)
+                        WebserviceManager.uiWebserviceHandler.showProgress(activity)
+                        SendBirdChannel(activity).deleteChannelsOnUserRemoval(
+                            activity.phone
+                        ) { text ->
+                            WebserviceManager.uiWebserviceHandler.hideProgress(activity)
+                            if (text == "1") {
+                                SendBirdUser(activity).deleteUser(activity.phone)
+                                activity.setResult(Activity.RESULT_OK)
+                                CommonMethod.finishActivity(activity)
+                            }
+                        }
                     }
                 }
             })

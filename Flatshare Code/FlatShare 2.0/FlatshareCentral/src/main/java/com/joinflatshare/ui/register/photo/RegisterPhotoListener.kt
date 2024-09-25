@@ -4,6 +4,7 @@ import android.Manifest
 import android.content.Intent
 import android.view.View
 import android.view.View.OnClickListener
+import com.joinflatshare.FlatShareApplication
 import com.joinflatshare.FlatshareCentral.databinding.ActivityRegisterPhotoBinding
 import com.joinflatshare.constants.AppConstants
 import com.joinflatshare.customviews.bottomsheet.BottomSheetView
@@ -53,8 +54,12 @@ class RegisterPhotoListener(
                     "Change Photo" -> {
                         viewBind.imgPhoto.visibility = View.VISIBLE
                         viewBind.txtPhoto.visibility = View.GONE
-                        viewBind.btnSkip.text = "Skip for now"
                         takePhoto()
+                        val response =
+                            FlatShareApplication.getDbInstance().appDao().getConfigResponse()
+                        if (response?.data?.allowedSkips?.isSkippingProfilePictureAllowed == true) {
+                            viewBind.btnSkip.text = "Skip for now"
+                        }
                     }
 
                     "Skip for now" -> {
@@ -65,9 +70,9 @@ class RegisterPhotoListener(
                         if (!fname.isNullOrEmpty() && fname.length > 1
                             && !lname.isNullOrEmpty() && lname.length > 1
                         ) {
-                            viewBind.txtPhoto?.text = "" + fname[0] + lname[0]
+                            viewBind.txtPhoto.text = "" + fname[0] + lname[0]
                         } else {
-                            viewBind.txtPhoto?.text = "NA"
+                            viewBind.txtPhoto.text = "NA"
                         }
                         viewBind.btnUploadPhoto.text = "Next"
                         viewBind.btnSkip.text = "Change Photo"

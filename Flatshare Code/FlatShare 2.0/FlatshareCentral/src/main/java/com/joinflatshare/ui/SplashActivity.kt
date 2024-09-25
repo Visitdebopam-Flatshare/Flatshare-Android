@@ -1,6 +1,5 @@
 package com.joinflatshare.ui
 
-import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import android.text.TextUtils
@@ -12,7 +11,6 @@ import com.joinflatshare.FlatShareApplication
 import com.joinflatshare.FlatshareCentral.BuildConfig
 import com.joinflatshare.FlatshareCentral.R
 import com.joinflatshare.FlatshareCentral.databinding.ActivitySplashBinding
-import com.joinflatshare.api.retrofit.WebserviceCustomResponseHandler
 import com.joinflatshare.constants.AppConstants
 import com.joinflatshare.constants.IntentConstants
 import com.joinflatshare.constants.RequestCodeConstants
@@ -35,7 +33,6 @@ import com.joinflatshare.ui.register.login.LoginActivity
 import com.joinflatshare.ui.register.photo.RegisterPhotoActivity
 import com.joinflatshare.ui.register.preference.RegisterPreferenceActivity
 import com.joinflatshare.utils.appupdater.AppUpdater
-import com.joinflatshare.utils.deeplink.DeepLinkHandler
 import com.joinflatshare.utils.helper.CommonMethod
 import com.joinflatshare.utils.helper.CommonMethods
 import com.joinflatshare.utils.mixpanel.MixpanelUtils

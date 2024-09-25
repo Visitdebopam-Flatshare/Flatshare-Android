@@ -1,7 +1,6 @@
 package com.joinflatshare.ui.admin
 
 import android.os.Bundle
-import android.view.View
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.joinflatshare.FlatshareCentral.databinding.ActivityAdminBinding
 import com.joinflatshare.ui.base.BaseActivity
@@ -24,8 +23,15 @@ class AdminFeatureActivity : BaseActivity() {
     private fun init() {
         viewBind.rvAdminFeatures.layoutManager = LinearLayoutManager(this)
         val features = ArrayList<String>()
+        features.add("Reload Sendbird Users")
+        features.add("Reload Flatshare Users")
         features.add("Sendbird User Not Registered")
         features.add("Sendbird User Name Fix")
+        features.add("Sendbird User Image Fix")
+        features.add("Sendbird User Image HTTPS Fix")
+        features.add("Sendbird User Null Mehta")
+        features.add("Sendbird Delete Unregistered Users From JSON")
+        features.add("Sendbird Delete Unregistered Users From API")
         viewBind.rvAdminFeatures.adapter = AdminFeatureAdapter(this, features)
     }
 }

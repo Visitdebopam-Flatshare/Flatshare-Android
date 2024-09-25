@@ -15,7 +15,7 @@ import com.joinflatshare.utils.helper.CommonMethod
 class IncompleteProfileBottomSheet(
     private val activity: ApplicationBaseActivity,
     private val callback: OnStringFetched?
-) {
+):BottomSheetBaseView(activity) {
     private lateinit var viewBind: DialogBottomsheetIncompleteProfileBinding
     private lateinit var dialog: BottomSheetDialog
 
@@ -28,12 +28,12 @@ class IncompleteProfileBottomSheet(
         viewBind = DialogBottomsheetIncompleteProfileBinding.inflate(activity.layoutInflater)
         dialog.setContentView(viewBind.root)
         click()
-        dialog.show()
+        showDialog(dialog)
     }
 
     private fun click() {
         viewBind.imgCrossIncomplete.setOnClickListener {
-            dialog.dismiss()
+            dismissDialog(dialog)
         }
         viewBind.llCompleteProfile.setOnClickListener {
             val intent = Intent(activity, ProfileEditActivity::class.java)
@@ -43,7 +43,7 @@ class IncompleteProfileBottomSheet(
             ) { result ->
                 if (result?.resultCode == Activity.RESULT_OK) {
                     callback?.onFetched("1")
-                    dialog.dismiss()
+                    dismissDialog(dialog)
                 }
             }
         }

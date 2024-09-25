@@ -16,7 +16,7 @@ class MatchBottomSheet(
     private val activity: ApplicationBaseActivity,
     private val user1: User?,
     private val user2: User?
-) {
+) : BottomSheetBaseView(activity) {
     private lateinit var viewBind: DialogMatchBinding
     private lateinit var dialog: BottomSheetDialog
 
@@ -30,7 +30,7 @@ class MatchBottomSheet(
         dialog.setContentView(viewBind.root)
         setUserDP()
         click()
-        dialog.show()
+        showDialog(dialog)
     }
 
     private fun setUserDP() {
@@ -40,10 +40,10 @@ class MatchBottomSheet(
 
     private fun click() {
         viewBind.imgCrossIncomplete.setOnClickListener {
-            dialog.dismiss()
+            dismissDialog(dialog)
         }
         viewBind.llChat.setOnClickListener {
-            dialog.dismiss()
+            dismissDialog(dialog)
             val intent = Intent(activity, ChatListActivity::class.java)
             CommonMethod.switchActivity(activity, intent, false)
         }

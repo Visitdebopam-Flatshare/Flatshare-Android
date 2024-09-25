@@ -65,10 +65,10 @@
                 <TextView
                     android:id="@+id/txt_photo"
                     android:layout_width="match_parent"
-                    android:fontFamily="@font/font_semibold"
                     android:layout_height="match_parent"
                     android:layout_margin="@dimen/_5sdp"
                     android:background="@drawable/drawable_blue_circle"
+                    android:fontFamily="@font/font_semibold"
                     android:gravity="center"
                     android:textAllCaps="true"
                     android:textColor="@color/white"
@@ -110,13 +110,23 @@
                 android:layout_marginTop="@dimen/_2sdp"
                 android:src="@drawable/ic_tick_verified_blue"
                 app:tint="@color/blue_dark" />
+
+            <ImageView
+                android:id="@+id/img_profile_elite"
+                android:layout_width="@dimen/_15sdp"
+                android:layout_height="@dimen/_15sdp"
+                android:layout_marginStart="@dimen/_5sdp"
+                android:layout_marginTop="@dimen/_2sdp"
+                android:src="@drawable/ic_elite"
+                android:visibility="gone"
+                app:tint="@color/elite_blue" />
         </LinearLayout>
 
         <com.google.android.material.card.MaterialCardView
+            android:id="@+id/card_profile_complete"
             android:layout_width="@dimen/_160sdp"
             android:layout_height="@dimen/_35sdp"
             android:layout_gravity="center_horizontal"
-            android:id="@+id/card_profile_complete"
             android:layout_marginTop="@dimen/_10sdp"
             app:cardBackgroundColor="#B4B4B4"
             app:cardCornerRadius="@dimen/_20sdp"
@@ -210,7 +220,7 @@
                                 android:fontFamily="@font/font_bold"
                                 android:text="Get Verified"
                                 android:textColor="@color/blue_dark"
-                                android:textSize="@dimen/_20sdp" />
+                                android:textSize="@dimen/_18sdp" />
 
                         </RelativeLayout>
 
@@ -224,6 +234,133 @@
                             android:textSize="@dimen/_12sdp" />
                     </LinearLayout>
 
+
+                </com.google.android.material.card.MaterialCardView>
+
+
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/card_profile_rented_flats"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/_5sdp"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:visibility="visible"
+                    app:cardBackgroundColor="@color/white"
+                    app:cardCornerRadius="@dimen/_20sdp"
+                    app:cardElevation="@dimen/_5sdp"
+                    app:cardPreventCornerOverlap="false"
+                    app:cardUseCompatPadding="false">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/_16sdp"
+                        android:orientation="vertical">
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+
+                            <ImageView
+                                android:layout_width="@dimen/_16sdp"
+                                android:layout_height="@dimen/_16sdp"
+                                android:layout_alignParentEnd="true"
+                                android:layout_centerVertical="true"
+                                android:src="@drawable/ic_arrow_right"
+                                app:tint="@color/orange" />
+
+                            <ImageView
+                                android:layout_width="@dimen/_35sdp"
+                                android:layout_height="@dimen/_35sdp"
+                                android:layout_alignParentStart="true"
+                                android:layout_centerVertical="true"
+                                android:src="@drawable/ic_profile_rented_flats" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentStart="true"
+                                android:layout_centerVertical="true"
+                                android:layout_marginStart="@dimen/_45sdp"
+                                android:fontFamily="@font/font_bold"
+                                android:text="Verified Rental Flats"
+                                android:textColor="@color/orange"
+                                android:textSize="@dimen/_18sdp" />
+
+                        </RelativeLayout>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/_10sdp"
+                            android:fontFamily="@font/font_semibold"
+                            android:text="On Flatshare, 100% of the flats are verified.\nZero brokerage. Zero stress."
+                            android:textColor="@color/grey4"
+                            android:textSize="@dimen/_12sdp" />
+                    </LinearLayout>
+
+                </com.google.android.material.card.MaterialCardView>
+
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/card_profile_list_flat"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/_5sdp"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:visibility="visible"
+                    app:cardBackgroundColor="@color/white"
+                    app:cardCornerRadius="@dimen/_20sdp"
+                    app:cardElevation="@dimen/_5sdp"
+                    app:cardPreventCornerOverlap="false"
+                    app:cardUseCompatPadding="false">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/_16sdp"
+                        android:orientation="vertical">
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+
+                            <ImageView
+                                android:layout_width="@dimen/_16sdp"
+                                android:layout_height="@dimen/_16sdp"
+                                android:layout_alignParentEnd="true"
+                                android:layout_centerVertical="true"
+                                android:src="@drawable/ic_arrow_right"
+                                app:tint="@color/purple" />
+
+                            <ImageView
+                                android:layout_width="@dimen/_35sdp"
+                                android:layout_height="@dimen/_35sdp"
+                                android:layout_alignParentStart="true"
+                                android:layout_centerVertical="true"
+                                android:src="@drawable/ic_profile_myflat" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentStart="true"
+                                android:layout_centerVertical="true"
+                                android:layout_marginStart="@dimen/_45sdp"
+                                android:fontFamily="@font/font_bold"
+                                android:text="List My Flat"
+                                android:textColor="@color/purple"
+                                android:textSize="@dimen/_18sdp" />
+
+                        </RelativeLayout>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/_10sdp"
+                            android:fontFamily="@font/font_semibold"
+                            android:text="List your flat for free. Attract your preferred residents. Earn rental income."
+                            android:textColor="@color/grey4"
+                            android:textSize="@dimen/_12sdp" />
+                    </LinearLayout>
 
                 </com.google.android.material.card.MaterialCardView>
 
@@ -336,7 +473,7 @@
                                 android:fontFamily="@font/font_bold"
                                 android:text="FAQ"
                                 android:textColor="@color/red"
-                                android:textSize="@dimen/_20sdp" />
+                                android:textSize="@dimen/_18sdp" />
 
                         </RelativeLayout>
 

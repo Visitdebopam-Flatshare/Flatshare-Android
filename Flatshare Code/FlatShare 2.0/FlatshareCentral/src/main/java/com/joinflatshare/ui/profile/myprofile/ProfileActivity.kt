@@ -45,6 +45,9 @@ class ProfileActivity : BaseActivity() {
             viewBind.imgProfileVerified.visibility = View.GONE
             viewBind.cardProfileVerified.visibility = View.VISIBLE
         }
+
+        viewBind.imgProfileElite.visibility =
+            if (CommonMethod.isEliteMember(user)) View.VISIBLE else View.GONE
     }
 
     private fun setCompletionPercentage() {

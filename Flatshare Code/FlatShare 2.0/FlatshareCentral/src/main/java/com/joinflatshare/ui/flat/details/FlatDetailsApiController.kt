@@ -10,12 +10,10 @@ import com.joinflatshare.FlatshareCentral.R
 import com.joinflatshare.FlatshareCentral.databinding.ActivityFlatDetailsBinding
 import com.joinflatshare.api.retrofit.OnResponseCallback
 import com.joinflatshare.api.retrofit.WebserviceCustomRequestHandler.getLikeRequestUrl
-import com.joinflatshare.constants.AppConstants
 import com.joinflatshare.constants.ChatRequestConstants
 import com.joinflatshare.constants.RouteConstants
 import com.joinflatshare.customviews.inapp_review.InAppReview.show
 import com.joinflatshare.interfaces.OnStringFetched
-import com.joinflatshare.payment.PaymentHandler
 import com.joinflatshare.pojo.flat.FlatResponse
 import com.joinflatshare.pojo.invite.InvitedRequest
 import com.joinflatshare.ui.base.BaseActivity
@@ -71,7 +69,7 @@ class FlatDetailsApiController(
             object : OnFlatshareResponseCallBack<Response<ResponseBody>> {
                 override fun onCallBackPayment(count: Int) {
                     // Checking payment gateway
-                    PaymentHandler.showPaymentForChecks(activity, null)
+//                    PaymentHandler.showPaymentForChecks(activity, null)
                 }
 
                 override fun onResponseCallBack(response: String) {

@@ -77,13 +77,13 @@ public class FlatEditImageAdapter extends RecyclerView.Adapter<FlatEditImageAdap
         holder.img_profile_add1.setVisibility(View.VISIBLE);
         if (!item.isEmpty()) {
             holder.img_profile_add1.setVisibility(View.GONE);
-            if (item.startsWith("Images/") && items.size() > holder.getBindingAdapterPosition())
+            if (item.startsWith("Images/") && items.size() > holder.getAdapterPosition())
                 loadImage(position, ImageHelper.getFlatImagesWithAws(item), holder);
             else holder.img_profile_banner1.setImageURI(Uri.parse(item));
         }
 
         holder.frame_image.setOnClickListener(v -> {
-            CommonMethod.INSTANCE.makeLog("Position", "" + holder.getBindingAdapterPosition());
+            CommonMethod.INSTANCE.makeLog("Position", "" + holder.getAdapterPosition());
             if (!item.isEmpty()) {
                 ArrayList<ModelBottomSheet> menu = new ArrayList<>();
                 menu.add(new ModelBottomSheet(R.drawable.ic_cross_red, "Remove Photo"));
@@ -93,8 +93,8 @@ public class FlatEditImageAdapter extends RecyclerView.Adapter<FlatEditImageAdap
                         if (item.startsWith("Images/")) {
                             activity.dataBind.deletedUserImages.add(item);
                         }
-                        activity.dataBind.addedUserImages.remove(activity.dataBind.adapterUserImages.get(holder.getBindingAdapterPosition()));
-                        activity.dataBind.adapterUserImages.remove(holder.getBindingAdapterPosition());
+                        activity.dataBind.addedUserImages.remove(activity.dataBind.adapterUserImages.get(holder.getAdapterPosition()));
+                        activity.dataBind.adapterUserImages.remove(holder.getAdapterPosition());
                         if (activity.dataBind.adapterUserImages.size() < 10 && !activity.dataBind.adapterUserImages.get(0).isEmpty())
                             activity.dataBind.adapterUserImages.add(0, "");
                         notifyDataSetChanged();
@@ -102,7 +102,7 @@ public class FlatEditImageAdapter extends RecyclerView.Adapter<FlatEditImageAdap
                     }
                 });
             } else {
-                activity.imageClickPosition = holder.getBindingAdapterPosition();
+                activity.imageClickPosition = holder.getAdapterPosition();
                 PermissionUtil.INSTANCE.validatePermission(activity, Manifest.permission.READ_EXTERNAL_STORAGE, granted -> {
                     if (granted)
                         activity.pickImage();

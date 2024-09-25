@@ -17,6 +17,7 @@ import com.joinflatshare.pojo.user.UserResponse
 import com.joinflatshare.ui.base.BaseActivity
 import com.joinflatshare.ui.register.deal.RegisterDealActivity
 import com.joinflatshare.utils.helper.CommonMethod
+import com.joinflatshare.utils.mixpanel.MixpanelUtils
 
 /**
  * Created by debopam on 08/03/24
@@ -90,6 +91,7 @@ class InterestActivity : BaseActivity() {
             user?.flatProperties?.interests = ArrayList()
             baseApiController.updateUser(true, user, object : OnUserFetched {
                 override fun userFetched(resp: UserResponse?) {
+                    MixpanelUtils.onButtonClicked("Onboarding Interest Skipped")
                     val intent = Intent(this@InterestActivity, RegisterDealActivity::class.java)
                     CommonMethod.switchActivity(this@InterestActivity, intent, false)
                 }
@@ -118,6 +120,7 @@ class InterestActivity : BaseActivity() {
                         user?.flatProperties?.interests?.addAll(interestsView.matchedContent)
                         baseApiController.updateUser(true, user, object : OnUserFetched {
                             override fun userFetched(resp: UserResponse?) {
+                                MixpanelUtils.onButtonClicked("Onboarding Interest Saved")
                                 val intent =
                                     Intent(this@InterestActivity, RegisterDealActivity::class.java)
                                 CommonMethod.switchActivity(this@InterestActivity, intent, false)

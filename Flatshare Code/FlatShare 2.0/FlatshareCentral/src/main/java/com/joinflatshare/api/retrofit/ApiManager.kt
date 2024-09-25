@@ -14,7 +14,6 @@ import com.joinflatshare.pojo.flat.CreateFlatRequest
 import com.joinflatshare.pojo.flat.MyFlatData
 import com.joinflatshare.pojo.invite.InvitedRequest
 import com.joinflatshare.pojo.invite.RequestSavedContacts
-import com.joinflatshare.pojo.purchase.PurchaseRequest
 import com.joinflatshare.ui.base.ApplicationBaseActivity
 import com.joinflatshare.utils.helper.CommonMethod
 import com.joinflatshare.utils.helper.CommonMethods
@@ -269,20 +268,6 @@ class ApiManager() {
                 .subscribe({ trendsResponse ->
                     sendResponse(trendsResponse, onResponseCallback)
                 }) { throwable -> handleError(throwable as Throwable, onResponseCallback) })
-        }
-    }
-
-    fun purchaseProduct(
-        request: PurchaseRequest, purchase: Purchase?, onResponseCallback: OnResponseCallback<Any?>
-    ) {
-        if (ConnectivityListener.checkInternet()) {
-            showProgress()
-            isLoaderShownByApimanager = true
-            CompositeDisposable().add(getClient()?.purchaseOrder(request)!!
-                .observeOn(AndroidSchedulers.mainThread()).subscribeOn(Schedulers.io())
-                .subscribe({ trendsResponse ->
-                    sendResponse(trendsResponse, onResponseCallback)
-                }) { throwable -> handlePaymentError(throwable as Throwable, purchase) })
         }
     }
 

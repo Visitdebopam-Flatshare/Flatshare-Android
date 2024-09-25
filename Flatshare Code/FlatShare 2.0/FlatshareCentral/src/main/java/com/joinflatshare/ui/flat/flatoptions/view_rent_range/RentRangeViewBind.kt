@@ -23,7 +23,7 @@ class RentRangeViewBind() {
     }
 
     private fun bind() {
-        viewBind?.seekbarRent?.setMinValue(AppData.flatData?.rentRange?.startRange?.toFloat()!!)
+        /*viewBind?.seekbarRent?.setMinValue(AppData.flatData?.rentRange?.startRange?.toFloat()!!)
         viewBind?.seekbarRent?.setMaxValue(AppData.flatData?.rentRange?.endRange?.toFloat()!!)
         viewBind?.txtRentRangeMin?.text = try {
             dialogFlatOptions?.activity?.resources?.getString(R.string.currency) + viewBind?.seekbarRent?.selectedMinValue
@@ -50,6 +50,6 @@ class RentRangeViewBind() {
             viewBind?.txtRentRangeMax?.text = "" + end
             viewBind?.seekbarRent?.setMaxStartValue(end.toFloat())
             viewBind?.seekbarRent?.apply()
-        }
+        }*/
     }
 }

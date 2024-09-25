@@ -7,6 +7,7 @@ import com.joinflatshare.chat.pojo.ModelUserMetadataRequest;
 import com.joinflatshare.chat.pojo.channel_detail.ChannelDetailResponse;
 import com.joinflatshare.chat.pojo.channel_list.ChannelListResponse;
 import com.joinflatshare.chat.pojo.user.ModelChatUserResponse;
+import com.joinflatshare.chat.pojo.user.TokenResponse;
 import com.joinflatshare.chat.pojo.user_list.ModelUserListResponse;
 import com.joinflatshare.constants.AppConstants;
 import com.joinflatshare.pojo.BaseResponse;
@@ -154,6 +155,32 @@ public class SendBirdApiManager {
                         .observeOn(AndroidSchedulers.mainThread())
                         .subscribe(trendsResponse -> {
                                     CommonMethod.INSTANCE.makeLog("Sendbird", "Push Tokens deleted");
+                                    sendResponse(trendsResponse, onResponseCallback);
+                                },
+                                throwable -> onResponseCallback.oncallBack(null)));
+            }
+    }
+
+
+    public void getPushToken(OnResponseCallback<TokenResponse> onResponseCallback) {
+        if (AppConstants.isSendbirdLive)
+            if (ConnectivityListener.checkInternet()) {
+                new CompositeDisposable().add(getClient().getPushToken(AppConstants.loggedInUser.getId()).subscribeOn(Schedulers.computation())
+                        .observeOn(AndroidSchedulers.mainThread())
+                        .subscribe(trendsResponse -> {
+                                    CommonMethod.INSTANCE.makeLog("Sendbird", "Push Tokens Retrieved");
+                                    sendResponse(trendsResponse, onResponseCallback);
+                                },
+                                throwable -> onResponseCallback.oncallBack(null)));
+            }
+    }
+
+    public void deleteUser(String userId, OnResponseCallback<BaseResponse> onResponseCallback) {
+        if (AppConstants.isSendbirdLive)
+            if (ConnectivityListener.checkInternet()) {
+                new CompositeDisposable().add(getClient().deleteUser(userId).subscribeOn(Schedulers.computation())
+                        .observeOn(AndroidSchedulers.mainThread())
+                        .subscribe(trendsResponse -> {
                                     sendResponse(trendsResponse, onResponseCallback);
                                 },
                                 throwable -> onResponseCallback.oncallBack(null)));

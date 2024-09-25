@@ -1,12 +1,10 @@
 package com.joinflatshare.utils.appupdater
 
-import android.content.pm.PackageManager
 import com.google.android.play.core.appupdate.AppUpdateInfo
 import com.google.android.play.core.appupdate.AppUpdateManager
 import com.google.android.play.core.appupdate.AppUpdateManagerFactory
 import com.google.android.play.core.install.model.AppUpdateType.IMMEDIATE
 import com.google.android.play.core.install.model.UpdateAvailability
-import com.joinflatshare.FlatshareCentral.BuildConfig
 import com.joinflatshare.constants.GoogleConstants
 import com.joinflatshare.constants.RequestCodeConstants.REQUEST_CODE_UPDATE_APP
 import com.joinflatshare.customviews.alert.AlertDialog

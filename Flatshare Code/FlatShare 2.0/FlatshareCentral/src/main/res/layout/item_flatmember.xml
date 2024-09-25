@@ -23,16 +23,10 @@
             android:layout_width="wrap_content"
             android:layout_height="@dimen/_50sdp">
 
-            <com.makeramen.roundedimageview.RoundedImageView
+            <de.hdodenhof.circleimageview.CircleImageView
                 android:id="@+id/img_flatmember"
                 android:layout_width="@dimen/_45sdp"
-                android:layout_height="@dimen/_45sdp"
-                android:scaleType="fitCenter"
-                app:riv_border_color="@color/color_hint"
-                app:riv_border_width="0.4dp"
-                app:riv_corner_radius="@dimen/_17sdp"
-                app:riv_mutate_background="false"
-                app:riv_tile_mode="clamp" />
+                android:layout_height="@dimen/_45sdp" />
 
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/card_admin"

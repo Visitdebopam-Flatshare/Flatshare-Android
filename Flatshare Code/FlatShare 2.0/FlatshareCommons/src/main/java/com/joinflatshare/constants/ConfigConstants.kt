@@ -31,5 +31,6 @@ object ConfigConstants {
         locationBypassNumbers.add("9836952801")
         locationBypassNumbers.add("8637326796")
         locationBypassNumbers.add("9871157238")
+        locationBypassNumbers.add("9403556548")
     }
 }

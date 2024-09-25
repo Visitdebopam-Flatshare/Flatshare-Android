@@ -1,7 +1,9 @@
 package com.joinflatshare.ui.preferences
 
+import android.content.res.ColorStateList
 import android.view.View
 import androidx.core.content.ContextCompat
+import com.android.billingclient.api.Purchase
 import com.google.android.material.datepicker.CalendarConstraints
 import com.google.android.material.datepicker.DateValidatorPointForward
 import com.google.android.material.datepicker.MaterialDatePicker
@@ -11,8 +13,10 @@ import com.joinflatshare.FlatshareCentral.databinding.ActivityPrefFlatBinding
 import com.joinflatshare.constants.AppConstants
 import com.joinflatshare.constants.RequestCodeConstants
 import com.joinflatshare.interfaces.OnUserFetched
+import com.joinflatshare.payment.OnProductPurchaseCompleteListener
 import com.joinflatshare.pojo.user.ModelLocation
 import com.joinflatshare.pojo.user.UserResponse
+import com.joinflatshare.ui.bottomsheet.ElitePreferenceBottomSheet
 import com.joinflatshare.ui.bottomsheet.VerifiedBottomSheet
 import com.joinflatshare.utils.google.AutoCompletePlaces
 import com.joinflatshare.utils.helper.CommonMethod
@@ -61,6 +65,15 @@ class PreferenceListener(private val activity: PreferenceActivity) : View.OnClic
             viewBind.includePrefFlat.txtPrefFlatMovein.id -> {
                 val calendar = Calendar.getInstance()
                 val pickerNowTime = calendar.timeInMillis
+                /*if (!activity.user?.flatProperties?.moveinDate.isNullOrEmpty()) {
+                    val appTime = DateUtils.convertToAppFormat(
+                        activity.user?.flatProperties?.moveinDate
+                    )
+                    val sdf = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault())
+                    calendar.time = sdf.parse(appTime)!!
+                    calendar.add(Calendar.DAY_OF_MONTH, 1)
+                }*/
+
                 val constraints = CalendarConstraints.Builder().setStart(pickerNowTime)
                     .setValidator(DateValidatorPointForward.from(pickerNowTime))
                 val sdf = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault())
@@ -150,6 +163,26 @@ class PreferenceListener(private val activity: PreferenceActivity) : View.OnClic
                 }
             }
         }
+        viewBind.includePrefFlatmate.switchEliteMember.setOnCheckedChangeListener { _, isChecked ->
+            setElite(isChecked)
+            if (isChecked) {
+                if (!CommonMethod.isEliteMember(activity.user)) {
+                    setElite(false)
+                    ElitePreferenceBottomSheet(activity,
+                        object : OnProductPurchaseCompleteListener {
+                            override fun onProductPurchased(purchase: Purchase?) {
+                                activity.user?.godMode = AppConstants.loggedInUser?.godMode
+                                setElite(true)
+                            }
+
+                            override fun onProductPurchaseFailed() {
+                                setElite(false)
+                            }
+
+                        })
+                }
+            }
+        }
     }
 
     private fun setVerified(checked: Boolean) {
@@ -169,6 +202,8 @@ class PreferenceListener(private val activity: PreferenceActivity) : View.OnClic
             viewBind.includePrefFlatmate.rlVerified.background = ContextCompat.getDrawable(
                 activity, R.drawable.drawable_button_blue_stroke_blue_bg
             )
+            viewBind.includePrefFlatmate.switchVerifiedMember.thumbTintList =
+                ColorStateList.valueOf(ContextCompat.getColor(activity, R.color.blue_dark))
         } else {
             viewBind.includePrefFlatmate.imgVerified.setColorFilter(
                 ContextCompat.getColor(
@@ -183,6 +218,46 @@ class PreferenceListener(private val activity: PreferenceActivity) : View.OnClic
             viewBind.includePrefFlatmate.rlVerified.background = ContextCompat.getDrawable(
                 activity, R.drawable.drawable_button_grey_stroke
             )
+            viewBind.includePrefFlatmate.switchVerifiedMember.thumbTintList =
+                ColorStateList.valueOf(ContextCompat.getColor(activity, R.color.grey2))
+        }
+    }
+
+    private fun setElite(checked: Boolean) {
+        viewBind.includePrefFlatmate.switchEliteMember.isChecked = checked
+        activity.user?.flatProperties?.isEliteOnly = checked
+        if (checked) {
+            viewBind.includePrefFlatmate.imgElite.setColorFilter(
+                ContextCompat.getColor(
+                    activity, R.color.blue_dark
+                )
+            )
+            viewBind.includePrefFlatmate.txtElite.setTextColor(
+                ContextCompat.getColor(
+                    activity, R.color.blue_dark
+                )
+            )
+            viewBind.includePrefFlatmate.rlElite.background = ContextCompat.getDrawable(
+                activity, R.drawable.drawable_button_blue_stroke_blue_bg
+            )
+            viewBind.includePrefFlatmate.switchEliteMember.thumbTintList =
+                ColorStateList.valueOf(ContextCompat.getColor(activity, R.color.blue_dark))
+        } else {
+            viewBind.includePrefFlatmate.imgElite.setColorFilter(
+                ContextCompat.getColor(
+                    activity, R.color.grey2
+                )
+            )
+            viewBind.includePrefFlatmate.txtElite.setTextColor(
+                ContextCompat.getColor(
+                    activity, R.color.grey2
+                )
+            )
+            viewBind.includePrefFlatmate.rlElite.background = ContextCompat.getDrawable(
+                activity, R.drawable.drawable_button_grey_stroke
+            )
+            viewBind.includePrefFlatmate.switchEliteMember.thumbTintList =
+                ColorStateList.valueOf(ContextCompat.getColor(activity, R.color.grey2))
         }
     }
 
@@ -197,6 +272,8 @@ class PreferenceListener(private val activity: PreferenceActivity) : View.OnClic
         else if (actualUserData?.flatProperties?.roomType != activity.user?.flatProperties?.roomType) hasChanged =
             true
         else if (actualUserData?.flatProperties?.isVerifiedOnly != activity.user?.flatProperties?.isVerifiedOnly) hasChanged =
+            true
+        else if (actualUserData?.flatProperties?.isEliteOnly != activity.user?.flatProperties?.isEliteOnly) hasChanged =
             true
         else if (actualUserData?.flatProperties?.gender != activity.user?.flatProperties?.gender) {
             hasChanged = true

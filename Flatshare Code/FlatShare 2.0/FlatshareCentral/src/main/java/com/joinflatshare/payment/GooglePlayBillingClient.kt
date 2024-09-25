@@ -165,7 +165,6 @@ class GooglePlayBillingClient(private val activity: BaseActivity) : PurchasesUpd
                         callbackListener
                     )
                 }
-
             } else {
                 CommonMethod.makeLog(TAG, "Failed to launch Google Payment")
             }
@@ -184,7 +183,7 @@ class GooglePlayBillingClient(private val activity: BaseActivity) : PurchasesUpd
                     CommonMethod.makeToast("Please wait while we receive payment acknowledgement.")
                     callbackListener?.onProductPurchasePending()
                 } else {
-                    callbackListener?.onProductPaymentSuccess(purchase)
+                    callbackListener?.onProductPaymentSuccess(purchase,selectedProduct)
                 }
             }
         }
