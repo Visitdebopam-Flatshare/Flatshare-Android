@@ -90,7 +90,7 @@ class AdapterUserHolder {
             WebserviceManager().rejectLike(activity, rejectLikeUrl,
                 object : OnFlatshareResponseCallBack<Response<ResponseBody>> {
                     override fun onResponseCallBack(response: String) {
-                        MixpanelUtils.onButtonClicked("Feed Reject")
+                        MixpanelUtils.onChatRequestRejected(user.id)
                         adapter.removeItem(position)
                     }
                 })
@@ -109,7 +109,10 @@ class AdapterUserHolder {
                 ChatRequestConstants.CHAT_REQUEST_CONSTANT_FHT, user.id,
                 object : OnFlatshareResponseCallBack<Response<ResponseBody>> {
                     override fun onResponseCallBack(response: String) {
-                        MixpanelUtils.onButtonClicked("Feed SuperCheck")
+                        MixpanelUtils.onChatRequested(
+                            user.id,
+                            BaseActivity.TYPE_FHT
+                        )
                         adapter.removeItem(position)
                     }
 
@@ -187,7 +190,10 @@ class AdapterUserHolder {
                         user.id,
                         object : OnFlatshareResponseCallBack<Response<ResponseBody>> {
                             override fun onResponseCallBack(response: String) {
-                                MixpanelUtils.onButtonClicked("Send SuperCheck")
+                                MixpanelUtils.onChatRequested(
+                                    user.id,
+                                    BaseActivity.TYPE_FHT
+                                )
                                 details.details.chatRequestSent = true
                                 bindUser(activity, details, position, holder)
                             }
@@ -216,7 +222,7 @@ class AdapterUserHolder {
                     user.id,
                     object : OnFlatshareResponseCallBack<Response<ResponseBody>> {
                         override fun onResponseCallBack(response: String) {
-                            MixpanelUtils.onButtonClicked("Check Rejected")
+                            MixpanelUtils.onChatRequestRejected(user.id)
                             activity.dataBinder.adapter.removeItem(position)
                         }
                     })
@@ -236,7 +242,7 @@ class AdapterUserHolder {
                     user.id,
                     object : OnFlatshareResponseCallBack<Response<ResponseBody>> {
                         override fun onResponseCallBack(response: String) {
-                            MixpanelUtils.onButtonClicked("Check Accepted")
+                            MixpanelUtils.onChatRequestAccepted(user.id)
                             MixpanelUtils.onMatched(user.id, BaseActivity.TYPE_FHT)
                             showConnectionMatch(BaseActivity.TYPE_FHT, activity, user)
                             activity.dataBinder.adapter.removeItem(position)

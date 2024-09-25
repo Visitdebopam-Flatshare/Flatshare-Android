@@ -120,30 +120,12 @@ object MixpanelUtils {
         sendToMixPanel("$name Clicked")
     }
 
-    fun onFAQOpened(number: Int) {
-        val props = JSONObject()
-        sendToMixPanel("Open FAQ $number", props)
-    }
-
     fun onFriendRequested(user: User) {
         val props = JSONObject()
         props.put("Friend ID", user.id)
         if (!user.name?.firstName.isNullOrBlank())
             props.put("Friend Name", "${user.name?.firstName} ${user.name?.lastName}")
         sendToMixPanel("Friend Added", props)
-    }
-
-    fun onFriendRequestResponded(user: User?) {
-        val props = JSONObject()
-        props.put("Friend ID", user?.id)
-        if (!user?.name?.firstName.isNullOrBlank())
-            props.put("Friend Name", "${user?.name?.firstName} ${user?.name?.lastName}")
-        props.put("Responded By ID", AppConstants.loggedInUser?.id)
-        props.put(
-            "Responded By Name",
-            "${AppConstants.loggedInUser?.name?.firstName} ${AppConstants.loggedInUser?.name?.lastName}"
-        )
-        sendToMixPanel("Friend Request Accepted", props)
     }
 
     fun onUserInvited(user: User) {
@@ -154,17 +136,6 @@ object MixpanelUtils {
         sendToMixPanel("Friend Invited", props)
     }
 
-    fun onUserInvitationResponded(
-        invitedId: String, invitedById: String, invitedByName: String
-    ) {
-        val props = JSONObject()
-        props.put("User ID", invitedById)
-        props.put("User Name", invitedByName)
-        props.put("Responded By ID", invitedId)
-        props.put("Accepted", true)
-        sendToMixPanel("Friend Joined flatshare", props)
-    }
-
     fun onFlatmateInvited(user: User) {
         val props = JSONObject()
         props.put("Flatmate ID", user.id)
@@ -173,20 +144,7 @@ object MixpanelUtils {
         sendToMixPanel("Flatmate Invited", props)
     }
 
-    fun onFlatmateInvitationResponded(user: Requester?) {
-        val props = JSONObject()
-        props.put("Flatmate ID", user?.id)
-        if (!user?.name?.firstName.isNullOrBlank())
-            props.put("Flatmate Name", "${user?.name?.firstName} ${user?.name?.lastName}")
-        props.put("Responded By ID", AppConstants.loggedInUser?.id)
-        props.put(
-            "Responded By Name",
-            "${AppConstants.loggedInUser?.name?.firstName} ${AppConstants.loggedInUser?.name?.lastName}"
-        )
-        sendToMixPanel("Flat Invitation Accepted", props)
-    }
-
-    fun onLiked(to: String, searchType: String) {
+    fun onCheck(to: String, searchType: String) {
         val props = JSONObject()
         props.put("Checked By", AppConstants.loggedInUser?.id)
         props.put("Checked To", to)
@@ -202,21 +160,30 @@ object MixpanelUtils {
         sendToMixPanel("New Match", props)
     }
 
-    fun onChatRequested(from: String, to: String, searchType: String) {
+    fun onChatRequested(to: String, searchType: String) {
         val props = JSONObject()
-        props.put("Requested By", from)
+        props.put("Requested By", AppConstants.loggedInUser?.id)
         props.put("Requested To", to)
         props.put("Search Type", searchType)
-        sendToMixPanel("Chat Request Clicked", props)
+        sendToMixPanel("Super Check Request Clicked", props)
     }
 
-    fun onChatRequestAccepted(from: String, to: String) {
+    fun onChatRequestAccepted(to: String) {
         val props = JSONObject()
-        props.put("Accepted By", from)
+        props.put("Accepted By", AppConstants.loggedInUser?.id)
         props.put("Requested By", to)
         props.put("User 1", AppConstants.loggedInUser?.id)
         props.put("User 2", to)
         sendToMixPanel("New Connection", props)
+    }
+
+    fun onChatRequestRejected(to: String) {
+        val props = JSONObject()
+        props.put("Rejected By", AppConstants.loggedInUser?.id)
+        props.put("Requested By", to)
+        props.put("User 1", AppConstants.loggedInUser?.id)
+        props.put("User 2", to)
+        sendToMixPanel("Reject Connection", props)
     }
 
     fun onPaymentSuccess(paymentDetails: String, paymentType: String) {
@@ -244,7 +211,7 @@ object MixpanelUtils {
         val props = JSONObject()
         props.put("Api Request", apiRequest)
         props.put("Payment Details", paymentDetails)
-        sendToMixPanel("Purchase Failure", props)
+        sendToMixPanel("Purchase Success", props)
     }
 
 }
