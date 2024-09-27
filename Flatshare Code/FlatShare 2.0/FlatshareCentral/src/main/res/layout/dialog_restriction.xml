@@ -109,7 +109,8 @@
                         android:layout_gravity="center_horizontal"
                         android:layout_marginTop="@dimen/_4sdp"
                         android:fontFamily="@font/font_medium"
-                        android:text="Always seen."
+                        android:gravity="center"
+                        android:text="Limits ensure that members can\nconnect without getting spammed."
                         android:textColor="@color/blue_dark"
                         android:textSize="@dimen/_12sdp" />
 

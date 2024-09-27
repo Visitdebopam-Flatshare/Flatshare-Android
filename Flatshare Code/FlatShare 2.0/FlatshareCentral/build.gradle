@@ -125,6 +125,7 @@ dependencies {
     implementation 'com.google.firebase:firebase-messaging-ktx'
     implementation 'com.google.firebase:firebase-firestore-ktx'
     implementation 'com.google.firebase:firebase-dynamic-links-ktx'
+    implementation("com.google.firebase:firebase-analytics")
 
     // Flexbox for Flowlayout
     implementation 'com.google.android.flexbox:flexbox:3.0.0'
