@@ -107,7 +107,7 @@ class RegisterAboutListener(
                 }
                 activity.updateUser(user, object : OnUserFetched {
                     override fun userFetched(resp: UserResponse?) {
-                        MixpanelUtils.onButtonClicked("Onboarding About Updated")
+                        MixpanelUtils.onButtonClicked("Onboarding About Saved")
                         val intent = Intent(activity, RegisterPreferenceActivity::class.java)
                         CommonMethod.switchActivity(activity, intent, false)
                     }

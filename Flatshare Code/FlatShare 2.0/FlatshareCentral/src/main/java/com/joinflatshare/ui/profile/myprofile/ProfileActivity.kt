@@ -12,6 +12,7 @@ import com.joinflatshare.pojo.user.User
 import com.joinflatshare.ui.base.BaseActivity
 import com.joinflatshare.utils.helper.CommonMethod
 import com.joinflatshare.utils.helper.ImageHelper
+import com.joinflatshare.utils.mixpanel.MixpanelUtils
 
 /**
  * Created by debopam on 21/05/24
@@ -24,6 +25,7 @@ class ProfileActivity : BaseActivity() {
         super.onCreate(savedInstanceState)
         viewBind = ActivityProfileBinding.inflate(layoutInflater)
         setContentView(viewBind.root)
+        MixpanelUtils.onScreenOpened("Profile")
         showBottomMenu(this)
         ProfileListener(this, viewBind)
     }

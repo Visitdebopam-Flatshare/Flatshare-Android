@@ -29,6 +29,7 @@ import com.joinflatshare.utils.google.AutoCompletePlaces.getPlaces
 import com.joinflatshare.utils.helper.CommonMethod
 import com.joinflatshare.utils.helper.CommonMethod.makeToast
 import com.joinflatshare.utils.helper.ImageHelper
+import com.joinflatshare.utils.mixpanel.MixpanelUtils
 import com.joinflatshare.utils.permission.PermissionUtil
 import com.joinflatshare.utils.system.ConnectivityListener
 import java.io.File
@@ -257,6 +258,7 @@ class ProfileEditListener(
         activity.baseApiController.updateUser(true, user, object :
             OnUserFetched {
             override fun userFetched(resp: UserResponse?) {
+                MixpanelUtils.onButtonClicked("Profile Save")
                 CommonMethod.finishActivity(activity)
             }
         })

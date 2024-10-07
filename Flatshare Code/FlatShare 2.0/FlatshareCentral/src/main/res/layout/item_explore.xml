@@ -250,7 +250,7 @@
                 android:layout_width="@dimen/_18sdp"
                 android:layout_height="@dimen/_18sdp"
                 android:layout_marginTop="@dimen/_1sdp"
-                android:src="@drawable/ic_menu_check"
+                android:src="@drawable/ic_phone_call"
                 app:tint="@color/white" />
 
             <TextView
@@ -258,7 +258,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/_5sdp"
                 android:fontFamily="@font/font_semibold"
-                android:text="Chat Request"
+                android:text="Request"
                 android:textColor="@color/white"
                 android:textSize="@dimen/button_text_size" />
         </LinearLayout>

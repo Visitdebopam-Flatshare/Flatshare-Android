@@ -45,7 +45,7 @@ class RegisterDealListener(
                 user?.flatProperties?.dealBreakers = activity.dealBreakerView.getDealBreakers()
                 activity.updateUser(user, object : OnUserFetched {
                     override fun userFetched(resp: UserResponse?) {
-                        MixpanelUtils.onButtonClicked("Onboarding Deals Updated")
+                        MixpanelUtils.onButtonClicked("Onboarding Deal Breaker Saved")
                         val intent = Intent(activity, RegisterAboutActivity::class.java)
                         CommonMethod.switchActivity(activity, intent, false)
                     }
@@ -57,7 +57,7 @@ class RegisterDealListener(
                 user?.flatProperties?.dealBreakers = DealBreakers()
                 activity.updateUser(user, object : OnUserFetched {
                     override fun userFetched(resp: UserResponse?) {
-                        MixpanelUtils.onButtonClicked("Onboarding Deals Skipped")
+                        MixpanelUtils.onButtonClicked("Onboarding Deal Breaker Skipped")
                         val intent = Intent(activity, RegisterAboutActivity::class.java)
                         CommonMethod.switchActivity(activity, intent, false)
                     }

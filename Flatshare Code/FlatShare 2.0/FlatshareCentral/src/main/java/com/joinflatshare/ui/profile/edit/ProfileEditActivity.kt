@@ -21,6 +21,7 @@ import com.joinflatshare.utils.amazonaws.AmazonUploadFile
 import com.joinflatshare.utils.helper.CommonMethod
 import com.joinflatshare.utils.helper.ImageHelper
 import com.joinflatshare.utils.logger.Logger
+import com.joinflatshare.utils.mixpanel.MixpanelUtils
 import java.io.File
 
 class ProfileEditActivity : BaseActivity() {
@@ -36,6 +37,7 @@ class ProfileEditActivity : BaseActivity() {
         super.onCreate(savedInstanceState)
         viewBind = ActivityProfileEditBinding.inflate(layoutInflater)
         setContentView(viewBind.root)
+        MixpanelUtils.onScreenOpened("Edit Profile")
         showTopBar(
             this,
             true,

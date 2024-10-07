@@ -28,7 +28,7 @@ class ChecksActivity : BaseActivity() {
         dataBinder = ChecksDataBinder(this, viewBind)
         fetchData()
         ChecksListener(this, viewBind)
-        MixpanelUtils.onScreenOpened("Checks")
+        MixpanelUtils.onScreenOpened("Number Request")
     }
 
 

@@ -6,6 +6,7 @@ import com.joinflatshare.FlatshareCentral.databinding.DialogMatchBinding
 import com.joinflatshare.pojo.user.User
 import com.joinflatshare.ui.base.ApplicationBaseActivity
 import com.joinflatshare.ui.chat.list.ChatListActivity
+import com.joinflatshare.ui.connection.ConnectionListActivity
 import com.joinflatshare.utils.helper.CommonMethod
 import com.joinflatshare.utils.helper.ImageHelper
 
@@ -44,7 +45,7 @@ class MatchBottomSheet(
         }
         viewBind.llChat.setOnClickListener {
             dismissDialog(dialog)
-            val intent = Intent(activity, ChatListActivity::class.java)
+            val intent = Intent(activity, ConnectionListActivity::class.java)
             CommonMethod.switchActivity(activity, intent, false)
         }
     }

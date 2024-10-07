@@ -145,7 +145,7 @@ class ChecksDataBinder(
                         viewBind.pullToRefresh.visibility = View.GONE
                         viewBind.rlNoChecks.visibility = View.VISIBLE
                         viewBind.imgNoData.setImageResource(R.drawable.img_no_super_check)
-                        viewBind.txtNoData.text = "Chat requests you receive will show up here."
+                        viewBind.txtNoData.text = "Number requests you receive will show up here."
                     } else {
                         viewBind.pullToRefresh.visibility = View.VISIBLE
                         viewBind.rlNoChecks.visibility = View.GONE
@@ -176,7 +176,7 @@ class ChecksDataBinder(
                     viewBind.rlNoChecks.visibility = View.VISIBLE
                     viewBind.imgNoData.setImageResource(R.drawable.img_no_checks)
                     viewBind.txtNoData.text =
-                        if (activity.source == ChecksActivity.SOURCE_SENT) "Checks you send will show up here." else "Checks you receive will show up here."
+                        if (activity.source == ChecksActivity.SOURCE_SENT) "Checks you send will show up here." else "Number Requests you receive will show up here."
                 }
             } else {
                 viewBind.pullToRefresh.visibility = View.VISIBLE

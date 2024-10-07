@@ -10,7 +10,7 @@ object AppConstants {
     const val isAdmin = false
 
     @JvmField
-    var isSendbirdLive = true
+    var isSendbirdLive = false
 
     @JvmField
     var menuSelected = 0

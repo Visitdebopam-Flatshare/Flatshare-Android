@@ -301,6 +301,7 @@ class PreferenceListener(private val activity: PreferenceActivity) : View.OnClic
             activity.user,
             object : OnUserFetched {
                 override fun userFetched(resp: UserResponse?) {
+                    MixpanelUtils.onButtonClicked("Preference Saved")
                     AppConstants.isFeedReloadRequired = true
                     CommonMethod.finishActivity(activity)
                 }

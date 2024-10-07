@@ -317,7 +317,37 @@
 
 
         </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_connection_call"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="@dimen/_8sdp"
+            android:background="@drawable/drawable_button_black_less_elliptical"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:paddingHorizontal="@dimen/_20sdp"
+            android:visibility="gone">
+
+            <ImageView
+                android:layout_width="@dimen/_18sdp"
+                android:layout_height="@dimen/_18sdp"
+                android:layout_marginTop="@dimen/_1sdp"
+                android:src="@drawable/ic_phone_call"
+                app:tint="@color/white" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_5sdp"
+                android:fontFamily="@font/font_semibold"
+                android:text="Call"
+                android:textColor="@color/white"
+                android:textSize="@dimen/button_text_size" />
+        </LinearLayout>
     </LinearLayout>
+
 
     <View
         android:layout_width="match_parent"

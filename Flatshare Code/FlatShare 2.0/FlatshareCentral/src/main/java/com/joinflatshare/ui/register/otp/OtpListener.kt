@@ -8,6 +8,7 @@ import androidx.core.content.ContextCompat
 import com.joinflatshare.FlatshareCentral.R
 import com.joinflatshare.FlatshareCentral.databinding.ActivityOtpBinding
 import com.joinflatshare.utils.helper.CommonMethod
+import com.joinflatshare.utils.mixpanel.MixpanelUtils
 
 /**
  * Created by debopam on 03/02/24
@@ -29,8 +30,9 @@ class OtpListener(
                 val otp = viewBind.edtOtp.text.toString().trim()
                 if (otp.length != 6)
                     return
-                if (activity.intent.getBooleanExtra("aadhar", false))
+                if (activity.intent.getBooleanExtra("aadhar", false)) {
                     activity.apiController?.verifyAadhaar(otp)
+                }
                 else if (activity.intent.getBooleanExtra("delete", false))
                     activity.apiController?.deleteAccount(otp)
                 else

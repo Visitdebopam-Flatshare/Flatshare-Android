@@ -112,7 +112,7 @@ class RegisterPreferenceListener(
                         override fun userFetched(resp: UserResponse?) {
                             FlatShareApplication.getDbInstance().appDao()
                                 .delete(AppDao.ONBOARDING_SCREEN_PROGRESS)
-                            MixpanelUtils.onButtonClicked("Onboarding Flat Preference Updated")
+                            MixpanelUtils.onButtonClicked("Onboarding Preference Saved")
                             val intent = Intent(activity, ExploreActivity::class.java)
                             CommonMethod.switchActivity(activity, intent, false)
                             activity.finishAffinity()

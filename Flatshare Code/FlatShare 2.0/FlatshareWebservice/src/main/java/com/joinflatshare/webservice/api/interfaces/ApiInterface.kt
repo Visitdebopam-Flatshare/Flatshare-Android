@@ -75,6 +75,9 @@ interface ApiInterface {
         @Path("type") type: String?
     ): Observable<Response<ResponseBody>>
 
+    @GET("users/connections/list")
+    fun getConnectionList(): Observable<Response<ResponseBody>>
+
     @POST()
     fun sendChatRequest(
         @Url url: String
@@ -89,12 +92,12 @@ interface ApiInterface {
     @PUT("flats/accept/{id}")
     fun acceptFlatRequest(
         @Path("id") id: String
-    ): Observable<com.joinflatshare.pojo.BaseResponse>
+    ): Observable<BaseResponse>
 
     @PUT("users/friends/accept/{id}")
     fun acceptFriendRequest(
         @Path("id") id: String
-    ): Observable<com.joinflatshare.pojo.BaseResponse>
+    ): Observable<BaseResponse>
 
     // Contacts
     @GET("users/suggestions/{type}")

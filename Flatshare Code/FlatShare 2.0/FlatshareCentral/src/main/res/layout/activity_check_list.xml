@@ -18,7 +18,7 @@
             android:layout_marginHorizontal="@dimen/_10sdp"
             android:layout_marginTop="@dimen/_10sdp"
             android:fontFamily="@font/font_bold"
-            android:text="Chat Requests"
+            android:text="Number Requests"
             android:textColor="@color/black"
             android:textSize="@dimen/_20sdp" />
 

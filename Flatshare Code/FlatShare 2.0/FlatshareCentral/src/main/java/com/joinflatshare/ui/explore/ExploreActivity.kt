@@ -34,6 +34,7 @@ class ExploreActivity : BaseActivity() {
         super.onCreate(savedInstanceState)
         viewBind = ActivityExploreBinding.inflate(layoutInflater)
         setContentView(viewBind.root)
+        MixpanelUtils.onScreenOpened("Feed")
         showBottomMenu(this)
         init()
         moveToPreference()

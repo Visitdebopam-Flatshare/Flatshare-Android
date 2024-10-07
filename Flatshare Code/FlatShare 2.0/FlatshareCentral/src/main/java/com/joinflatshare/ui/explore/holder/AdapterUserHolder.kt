@@ -1,6 +1,7 @@
 package com.joinflatshare.ui.explore.holder
 
 import android.content.Intent
+import android.net.Uri
 import android.text.TextUtils
 import android.view.View
 import com.joinflatshare.FlatshareCentral.databinding.ItemChecksBinding
@@ -16,6 +17,7 @@ import com.joinflatshare.ui.bottomsheet.EliteLearnMoreBottomSheet
 import com.joinflatshare.ui.bottomsheet.IncompleteProfileBottomSheet
 import com.joinflatshare.ui.bottomsheet.MatchBottomSheet
 import com.joinflatshare.ui.checks.ChecksActivity
+import com.joinflatshare.ui.connection.ConnectionListActivity
 import com.joinflatshare.ui.explore.ExploreAdapter
 import com.joinflatshare.ui.profile.details.ProfileDetailsActivity
 import com.joinflatshare.utils.helper.CommonMethod
@@ -26,6 +28,7 @@ import com.joinflatshare.webservice.api.WebserviceManager
 import com.joinflatshare.webservice.api.interfaces.OnFlatshareResponseCallBack
 import okhttp3.ResponseBody
 import retrofit2.Response
+
 
 /**
  * Created by debopam on 14/11/22
@@ -128,6 +131,66 @@ class AdapterUserHolder {
         }
 
         AdapterUserVpHolder.bindVp(activity, holder.includeExploreVp, user)
+    }
+
+    fun bindUser(
+        activity: ConnectionListActivity,
+        details: UserRecommendationItem, position: Int, holder: ItemChecksBinding
+    ) {
+        val user = details.data!!
+
+        ImageHelper.loadProfileImage(activity, holder.imgProfile, holder.txtPhoto, user)
+
+        // Name & DOB
+        val name = "${user.name?.firstName} ${user.name?.lastName}"
+        val dob = CommonMethod.getAge(user.dob)
+        holder.txtName.text = if (dob.isEmpty()) name else "$name, $dob"
+
+        // Verified
+        holder.imgVerified.visibility =
+            if (user.verification?.isVerified == true) View.VISIBLE else View.GONE
+
+        // Elite
+        holder.imgElite.visibility =
+            if (CommonMethod.isEliteMember(user)) View.VISIBLE else View.GONE
+
+        // Distance
+        holder.llDistance.visibility = View.GONE
+        if (!(CommonMethod.isLocationEmpty(AppConstants.loggedInUser?.flatProperties?.preferredLocation)
+                    || CommonMethod.isLocationEmpty(
+                user.flatProperties.preferredLocation
+            ))
+        ) {
+            val distance = (DistanceCalculator.calculateDistance(
+                user, AppConstants.loggedInUser!!
+            ))
+            if (!TextUtils.equals(distance, "NA")) {
+                holder.llDistance.visibility = View.VISIBLE
+                holder.txtDistance.text = distance + " away"
+            }
+        }
+
+        holder.llChecksHolder.setOnClickListener {
+            val intent = Intent(activity, ProfileDetailsActivity::class.java)
+            intent.putExtra("phone", user.id)
+            CommonMethod.switchActivity(activity, intent, false)
+        }
+
+        AdapterUserVpHolder.bindVp(activity, holder.includeExploreVp, user)
+
+        holder.llExploreSuperCheck.visibility = View.GONE
+        holder.llExploreButtons.visibility = View.GONE
+        holder.llConnectionCall.visibility = View.VISIBLE
+
+        holder.llConnectionCall.setOnClickListener {
+            val intent = Intent(Intent.ACTION_DIAL, Uri.fromParts("tel", user.id, null))
+            CommonMethod.switchActivity(activity, intent, false)
+        }
+
+        holder.imgElite.setOnClickListener {
+            if (!CommonMethod.isEliteMember(AppConstants.loggedInUser))
+                EliteLearnMoreBottomSheet(activity, user)
+        }
     }
 
     fun bindUser(

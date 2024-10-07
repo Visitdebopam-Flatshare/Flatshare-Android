@@ -34,6 +34,7 @@ class ProfileCreateActivity : RegisterBaseActivity() {
         super.onCreate(savedInstanceState)
         viewBind = ActivityProfileCreateBinding.inflate(layoutInflater)
         setContentView(viewBind.root)
+        MixpanelUtils.onScreenOpened("Onboarding Registration")
         user = FlatShareApplication.getDbInstance().userDao().getUser()
         if (user == null) {
             CommonMethod.logout(this)

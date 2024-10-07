@@ -13,6 +13,7 @@ import com.joinflatshare.ui.profile.edit.ProfileEditActivity
 import com.joinflatshare.ui.profile.verify.ProfileVerifyActivity
 import com.joinflatshare.ui.settings.SettingsActivity
 import com.joinflatshare.utils.helper.CommonMethod
+import com.joinflatshare.utils.mixpanel.MixpanelUtils
 
 /**
  * Created by debopam on 21/05/24
@@ -69,6 +70,7 @@ class ProfileListener(
             }
 
             viewBind.cardProfileRentedFlats.id -> {
+                MixpanelUtils.onButtonClicked("Verified Rental Flats")
                 val browserIntent = Intent(
                     Intent.ACTION_VIEW,
                     Uri.parse("https://www.joinflatshare.com")

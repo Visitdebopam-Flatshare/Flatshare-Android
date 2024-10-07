@@ -202,12 +202,11 @@ class WebserviceManager {
         handleApiRequestWithProgress(activity, observable, callback)
     }
 
-    fun getDateRecommendation(
+    fun getConnectionList(
         activity: ComponentActivity,
-        pageNo: String?,
         callback: OnFlatshareResponseCallBack<Response<ResponseBody>>
     ) {
-        val observable = ApiManager.getApiInterface().getDateRecommendations(pageNo)
+        val observable = ApiManager.getApiInterface().getConnectionList()
         handleApiRequestWithProgress(activity, observable, callback)
     }
 

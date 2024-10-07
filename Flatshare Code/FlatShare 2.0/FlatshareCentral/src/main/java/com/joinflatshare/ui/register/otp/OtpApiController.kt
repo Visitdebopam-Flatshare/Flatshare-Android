@@ -125,7 +125,7 @@ class OtpApiController(private val activity: OtpActivity) {
                     val resp =
                         Gson().fromJson(response, com.joinflatshare.pojo.BaseResponse::class.java)
                     if (TextUtils.equals(resp.message, "Successfully verified.")) {
-                        MixpanelUtils.onButtonClicked("Aadhar OTP Submitted")
+                        MixpanelUtils.onButtonClicked("Profile Verify OTP")
                         getProfile()
                     } else AlertDialog.showAlert(activity, "Failed to verify profile with Aadhaar")
                 }

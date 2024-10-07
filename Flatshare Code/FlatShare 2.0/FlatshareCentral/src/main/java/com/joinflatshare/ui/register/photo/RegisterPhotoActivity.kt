@@ -36,6 +36,7 @@ class RegisterPhotoActivity : BaseActivity() {
         super.onCreate(savedInstanceState)
         viewBind = ActivityRegisterPhotoBinding.inflate(layoutInflater)
         setContentView(viewBind.root)
+        MixpanelUtils.onScreenOpened("Onboarding Photo")
         FlatShareApplication.getDbInstance().appDao().insert(AppDao.ONBOARDING_SCREEN_PROGRESS, "1")
         init()
     }

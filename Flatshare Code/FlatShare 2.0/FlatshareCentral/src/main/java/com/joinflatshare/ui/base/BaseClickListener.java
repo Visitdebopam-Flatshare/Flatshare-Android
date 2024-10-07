@@ -3,8 +3,8 @@ package com.joinflatshare.ui.base;
 import android.content.Intent;
 
 import com.joinflatshare.constants.AppConstants;
-import com.joinflatshare.ui.chat.list.ChatListActivity;
 import com.joinflatshare.ui.checks.ChecksActivity;
+import com.joinflatshare.ui.connection.ConnectionListActivity;
 import com.joinflatshare.ui.explore.ExploreActivity;
 import com.joinflatshare.ui.profile.myprofile.ProfileActivity;
 import com.joinflatshare.utils.helper.CommonMethod;
@@ -40,8 +40,8 @@ public class BaseClickListener {
                         }
                         break;
                     case 2:
-                        if (AppConstants.isSendbirdLive)
-                            intent = new Intent(activity, ChatListActivity.class);
+//                        if (AppConstants.isSendbirdLive)
+                            intent = new Intent(activity, ConnectionListActivity.class);
                         break;
                     case 1:
                         intent = new Intent(activity, ChecksActivity.class);
