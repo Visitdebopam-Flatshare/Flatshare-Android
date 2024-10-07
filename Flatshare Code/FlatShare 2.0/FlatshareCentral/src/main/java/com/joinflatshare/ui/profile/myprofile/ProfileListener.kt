@@ -62,6 +62,7 @@ class ProfileListener(
             }
 
             viewBind.cardProfileListFlat.id -> {
+                MixpanelUtils.onButtonClicked("List my flat")
                 val browserIntent = Intent(
                     Intent.ACTION_VIEW,
                     Uri.parse("https://www.joinflatshare.com/list-my-flat")

@@ -171,6 +171,7 @@ class AdapterUserHolder {
         }
 
         holder.llChecksHolder.setOnClickListener {
+            MixpanelUtils.onButtonClicked("Call Connection")
             val intent = Intent(activity, ProfileDetailsActivity::class.java)
             intent.putExtra("phone", user.id)
             CommonMethod.switchActivity(activity, intent, false)

@@ -38,7 +38,7 @@ import java.util.regex.Pattern
 object CommonMethod {
     fun logout(activity: ComponentActivity) {
         FirebaseMessaging.getInstance().deleteToken()
-        if (AppConstants.isSendbirdLive && !SendBirdConstants.SENDBIRD_APPID.isEmpty()) SendBirdConnectionManager.disconnect()
+        if (AppConstants.isSendbirdLive && SendBirdConstants.SENDBIRD_APPID.isNotEmpty()) SendBirdConnectionManager.disconnect()
         FlatShareApplication.getDbInstance().userDao().clearUserTable()
         FlatShareApplication.getDbInstance().requestDao().clearRequestTable()
         FlatShareApplication.getDbInstance().appDao().delete(AppDao.FIREBASE_TOKEN)

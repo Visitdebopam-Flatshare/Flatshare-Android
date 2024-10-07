@@ -2,8 +2,8 @@ def MINIMUM_SDK_VERSION = 28
 def TARGET_SDK_VERSION = 34
 def JAVA_VERSION = JavaVersion.VERSION_17
 def JVM_TARGET = '17'
-def VERSION_CODE = 60
-def VERSION_NAME = "5.1"
+def VERSION_CODE = 61
+def VERSION_NAME = "5.2"
 android {
     def projectName = project.name
     def nameSpace = "com.joinflatshare.$projectName"

@@ -10,7 +10,7 @@ object AppConstants {
     const val isAdmin = false
 
     @JvmField
-    var isSendbirdLive = false
+    var isSendbirdLive = true
 
     @JvmField
     var menuSelected = 0
@@ -27,5 +27,10 @@ object AppConstants {
     // Languages and Interests
     const val interestMaxCount = 5
     const val languageMaxCount = 3
+
+    // URLs
+    const val urlTerms = "https://joinflatshare.com/terms-of-use"
+    const val urlPrivacy = "https://joinflatshare.com/privacy-policy"
+
 
 }

@@ -85,8 +85,16 @@ class ProfileCreateActivity : RegisterBaseActivity() {
 
         CommonMethod.sendUserToDB(modelUser)
 
+        // Requesting Notification permission for Android 13
+        NotificationPermissionHandler(this).showNotificationPermission {
+            MixpanelUtils.sendToMixPanel("Registration Complete")
+            val intent = Intent(this, RegisterPhotoActivity::class.java)
+            CommonMethod.switchActivity(this, intent, false)
+            finishAffinity()
+        }
+
         //Register in Sendbird
-        WebserviceManager.uiWebserviceHandler.showProgress(this)
+        /*WebserviceManager.uiWebserviceHandler.showProgress(this)
         ApplicationChatHandler().initialise { text: String ->
             WebserviceManager.uiWebserviceHandler.hideProgress(this)
             if (text == "1") {
@@ -99,7 +107,7 @@ class ProfileCreateActivity : RegisterBaseActivity() {
                     finishAffinity()
                 }
             }
-        }
+        }*/
     }
 
     private fun registerSendbird(modelUser: User) {
