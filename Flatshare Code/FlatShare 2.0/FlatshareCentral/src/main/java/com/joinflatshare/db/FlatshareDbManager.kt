@@ -38,6 +38,7 @@ abstract class FlatshareDbManager : RoomDatabase() {
                     DB_NAME
                 ).allowMainThreadQueries()
                     .addMigrations(DBMigrations.migration_7_8, DBMigrations.migration_8_9)
+                    .fallbackToDestructiveMigration()
                 dbBuilder.setQueryCallback({ sqlQuery, bindArgs ->
                     /*CommonMethod.makeLog(
                         "Query",

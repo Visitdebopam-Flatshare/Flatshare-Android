@@ -78,13 +78,13 @@ interface ApiInterface {
     @GET("users/connections/list")
     fun getConnectionList(): Observable<Response<ResponseBody>>
 
-    @POST()
+    @POST
     fun sendChatRequest(
         @Url url: String
     ): Observable<Response<ResponseBody>>
 
 
-    @PUT()
+    @PUT
     fun sendChatRequestResponse(
         @Url url: String
     ): Observable<Response<ResponseBody>>

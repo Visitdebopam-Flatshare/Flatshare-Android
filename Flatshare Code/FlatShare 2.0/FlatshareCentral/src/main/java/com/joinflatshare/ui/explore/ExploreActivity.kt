@@ -15,6 +15,7 @@ import com.joinflatshare.constants.AppConstants
 import com.joinflatshare.constants.IntentConstants
 import com.joinflatshare.constants.IntentFilterConstants
 import com.joinflatshare.fcm.FcmNavigationUtils
+import com.joinflatshare.pojo.explore.UserRecommendationItem
 import com.joinflatshare.ui.base.BaseActivity
 import com.joinflatshare.ui.bottomsheet.GiftBottomSheet
 import com.joinflatshare.ui.preferences.PreferenceActivity
@@ -28,7 +29,7 @@ class ExploreActivity : BaseActivity() {
     lateinit var binder: ExploreBinder
     var apiController: ExploreApiController? = null
 
-    val userData = ArrayList<com.joinflatshare.pojo.explore.UserRecommendationItem>()
+    val userData = ArrayList<UserRecommendationItem>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

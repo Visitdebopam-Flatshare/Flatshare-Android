@@ -12,6 +12,7 @@ import com.joinflatshare.customviews.PaginationScrollListener
 import com.joinflatshare.pojo.explore.RecommendationResponse
 import com.joinflatshare.pojo.explore.UserRecommendationItem
 import com.joinflatshare.ui.base.BaseActivity
+import com.joinflatshare.ui.explore.ExploreAdapter
 import com.joinflatshare.webservice.api.WebserviceManager
 import com.joinflatshare.webservice.api.interfaces.OnFlatshareResponseCallBack
 import okhttp3.ResponseBody
@@ -26,11 +27,11 @@ class ChecksDataBinder(
     var currentPage = 0
     val list = ArrayList<UserRecommendationItem>()
     private val layoutManager: LinearLayoutManager = LinearLayoutManager(activity)
-    val adapter: ChecksAdapter
+    val adapter: ExploreAdapter
 
     init {
         viewBind.rvChecks.layoutManager = LinearLayoutManager(activity)
-        adapter = ChecksAdapter(activity, list)
+        adapter = ExploreAdapter(activity, list)
         viewBind.rvChecks.adapter = adapter
         prepareButtons()
         setScrollListener()

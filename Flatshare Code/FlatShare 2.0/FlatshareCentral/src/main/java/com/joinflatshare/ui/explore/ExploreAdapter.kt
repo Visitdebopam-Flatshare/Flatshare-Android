@@ -5,10 +5,11 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.joinflatshare.FlatshareCentral.databinding.ItemExploreBinding
 import com.joinflatshare.pojo.explore.UserRecommendationItem
+import com.joinflatshare.ui.base.BaseActivity
 import com.joinflatshare.ui.explore.holder.AdapterUserHolder
 
 class ExploreAdapter(
-    val activity: ExploreActivity,
+    val activity: BaseActivity,
     private val items: ArrayList<UserRecommendationItem>
 ) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
@@ -41,7 +42,7 @@ class ExploreAdapter(
             position: Int, adapter: ExploreAdapter
         ) {
             val item = adapter.items[position]
-            AdapterUserHolder().bindUser(adapter, item, view, position)
+            AdapterUserHolder().bindUser(adapter, position, view, item)
         }
     }
 }

@@ -66,10 +66,10 @@ class RegisterPhotoActivity : BaseActivity() {
                     val ap = AmazonUploadFile()
                     ap.upload(
                         File(uri?.path), AmazonUploadFile.AWS_TYPE_PROFILE_IMAGE
-                    ) { intent: Intent, requestCode1: Int ->
+                    ) { intent: Intent?, requestCode1: Int ->
                         DialogCustomProgress.hideProgress(this)
                         if (requestCode1 == AmazonUploadFile.REQUEST_CODE_SUCCESS) {
-                            val serverPath = intent.getStringExtra("localpath")
+                            val serverPath = intent?.getStringExtra("localpath")
                             deleteOldProfileImage()
                             user?.dp = serverPath
                             baseApiController.updateUser(true, user, object : OnUserFetched {

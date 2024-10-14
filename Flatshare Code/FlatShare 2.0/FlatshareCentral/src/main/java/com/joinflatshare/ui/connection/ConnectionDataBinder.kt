@@ -8,6 +8,7 @@ import com.joinflatshare.customviews.PaginationScrollListener
 import com.joinflatshare.pojo.explore.RecommendationResponse
 import com.joinflatshare.pojo.explore.UserRecommendationItem
 import com.joinflatshare.pojo.requests.ConnectionListResponse
+import com.joinflatshare.ui.explore.ExploreAdapter
 import com.joinflatshare.webservice.api.WebserviceManager
 import com.joinflatshare.webservice.api.interfaces.OnFlatshareResponseCallBack
 import okhttp3.ResponseBody
@@ -23,11 +24,11 @@ class ConnectionDataBinder(
     var currentPage = 0
     val list = ArrayList<UserRecommendationItem>()
     private val layoutManager: LinearLayoutManager = LinearLayoutManager(activity)
-    val adapter: ConnectionAdapter
+    val adapter: ExploreAdapter
 
     init {
         viewBind.rvConnections.layoutManager = layoutManager
-        adapter = ConnectionAdapter(activity, list)
+        adapter = ExploreAdapter(activity, list)
         viewBind.rvConnections.adapter = adapter
 //        setScrollListener()
         viewBind.pullToRefresh.setOnRefreshListener {

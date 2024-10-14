@@ -14,7 +14,7 @@ import com.joinflatshare.utils.helper.CommonMethod
  */
 class VerifiedBottomSheet(
     private val activity: ApplicationBaseActivity,
-    private val callback: OnStringFetched
+    private val callback: OnStringFetched?
 ) : BottomSheetBaseView(activity) {
 
     private lateinit var viewBind: DialogBottomsheetVerifiedBinding
@@ -43,7 +43,7 @@ class VerifiedBottomSheet(
                 intent
             ) { result ->
                 if (result?.resultCode == Activity.RESULT_OK) {
-                    callback.onFetched("1")
+                    callback?.onFetched("1")
                     dismissDialog(dialog)
                 }
             }

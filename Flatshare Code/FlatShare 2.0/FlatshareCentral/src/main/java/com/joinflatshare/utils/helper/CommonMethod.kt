@@ -1,5 +1,6 @@
 package com.joinflatshare.utils.helper
 
+import android.content.ActivityNotFoundException
 import android.content.Intent
 import android.os.Build
 import android.text.Html
@@ -18,6 +19,7 @@ import com.joinflatshare.FlatshareCentral.R
 import com.joinflatshare.chat.SendBirdConnectionManager
 import com.joinflatshare.constants.AppConstants
 import com.joinflatshare.constants.SendBirdConstants
+import com.joinflatshare.customviews.alert.AlertDialog
 import com.joinflatshare.db.daos.AppDao
 import com.joinflatshare.pojo.flat.DealBreakers
 import com.joinflatshare.pojo.user.ModelLocation
@@ -55,9 +57,15 @@ object CommonMethod {
     }
 
     fun switchActivity(activity: ComponentActivity, intent: Intent?, finish: Boolean) {
-        activity.startActivity(intent)
-        activity.overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left)
-        if (finish) finishActivity(activity)
+        try {
+            if (intent != null) {
+                activity.startActivity(intent)
+                activity.overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left)
+                if (finish) finishActivity(activity)
+            }
+        } catch (exception: ActivityNotFoundException) {
+            AlertDialog.showAlert(activity, "Sorry, we could not find an app to open this request.")
+        }
     }
 
     fun finishActivity(activity: ComponentActivity) {
@@ -70,10 +78,17 @@ object CommonMethod {
         intent: Intent?,
         onActivityResult: OnActivityResult<ActivityResult?>?
     ) {
-        if (onActivityResult != null) {
-            activity.activityLauncher.launch(intent, onActivityResult)
-            activity.overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left)
+        try {
+            if (intent != null) {
+                if (onActivityResult != null) {
+                    activity.activityLauncher.launch(intent, onActivityResult)
+                    activity.overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left)
+                }
+            }
+        } catch (exception: ActivityNotFoundException) {
+            AlertDialog.showAlert(activity, "Sorry, we could not find an app to open this request.")
         }
+
     }
 
     fun makeLog(tag: String?, message: String?) {
@@ -117,8 +132,7 @@ object CommonMethod {
     }
 
     fun getUserDP(user: User?): String {
-        return if (!user?.dp.isNullOrEmpty())
-            user?.dp!!
+        return if (!user?.dp.isNullOrEmpty()) user?.dp!!
         else {
             val fname = user?.name?.firstName!![0]
             val lname = user.name?.lastName!![0]
@@ -127,25 +141,18 @@ object CommonMethod {
     }
 
     fun isDealBreakerEmpty(breaker: DealBreakers?): Boolean {
-        if (breaker == null)
-            return true
-        if ((breaker.eggs < 1 || breaker.eggs > 2) && (breaker.pets < 1 || breaker.pets > 2)
-            && (breaker.flatparty < 1 || breaker.flatparty > 2) && (breaker.nonveg < 1 || breaker.nonveg > 2)
-            && (breaker.smoking < 1 || breaker.smoking > 2) && (breaker.workout < 1 || breaker.workout > 2)
-        )
-            return true
+        if (breaker == null) return true
+        if ((breaker.eggs < 1 || breaker.eggs > 2) && (breaker.pets < 1 || breaker.pets > 2) && (breaker.flatparty < 1 || breaker.flatparty > 2) && (breaker.nonveg < 1 || breaker.nonveg > 2) && (breaker.smoking < 1 || breaker.smoking > 2) && (breaker.workout < 1 || breaker.workout > 2)) return true
         return false
     }
 
     fun isLocationEmpty(location: ModelLocation?): Boolean {
-        if (location?.loc?.coordinates.isNullOrEmpty())
-            return true
+        if (location?.loc?.coordinates.isNullOrEmpty()) return true
         return false
     }
 
     fun isLocationEmpty(location: ArrayList<ModelLocation>?): Boolean {
-        if (location.isNullOrEmpty())
-            return true
+        if (location.isNullOrEmpty()) return true
         return isLocationEmpty(location[0])
     }
 

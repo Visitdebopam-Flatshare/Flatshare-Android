@@ -152,47 +152,12 @@
 
                     </LinearLayout>
 
-                    <FrameLayout
+                    <include
+                        android:id="@+id/include_explore_vp"
+                        layout="@layout/item_explore_vp"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginBottom="@dimen/_10sdp">
-
-                        <include
-                            android:id="@+id/include_explore_vp"
-                            layout="@layout/item_explore_vp" />
-
-                        <FrameLayout
-                            android:id="@+id/frame_incomplete_profile"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:visibility="gone">
-
-                            <LinearLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="@dimen/button_height"
-                                android:layout_gravity="center"
-                                android:layout_marginHorizontal="@dimen/_20sdp"
-                                android:background="@drawable/drawable_button_black_elliptical"
-                                android:gravity="center">
-
-                                <ImageView
-                                    android:layout_width="@dimen/_15sdp"
-                                    android:layout_height="@dimen/_15sdp"
-                                    android:src="@drawable/ic_edit_status"
-                                    app:tint="@color/white" />
-
-                                <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginStart="@dimen/_10sdp"
-                                    android:fontFamily="@font/font_semibold"
-                                    android:text="Complete Profile"
-                                    android:textColor="@color/white"
-                                    android:textSize="@dimen/_14sdp" />
-                            </LinearLayout>
-
-                        </FrameLayout>
-                    </FrameLayout>
+                        android:layout_marginBottom="@dimen/_10sdp" />
 
                 </LinearLayout>
 
@@ -210,7 +175,6 @@
 
 
     <LinearLayout
-        android:id="@+id/ll_explore_buttons"
         android:layout_width="match_parent"
         android:layout_height="@dimen/_45sdp"
         android:layout_marginVertical="@dimen/_8sdp"
@@ -218,29 +182,157 @@
         android:orientation="horizontal">
 
         <LinearLayout
-            android:id="@+id/ll_explore_reject"
-            android:layout_width="@dimen/_48sdp"
+            android:id="@+id/ll_buttons_explore"
+            android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@drawable/drawable_button_black_less_elliptical"
-            android:gravity="center"
-            android:orientation="horizontal">
+            android:gravity="center_horizontal"
+            android:orientation="horizontal"
+            android:visibility="gone">
 
-            <ImageView
-                android:layout_width="@dimen/_14sdp"
-                android:layout_height="@dimen/_14sdp"
-                android:src="@drawable/ic_cross_red"
-                app:tint="@color/white" />
+            <LinearLayout
+                android:id="@+id/ll_explore_reject"
+                android:layout_width="@dimen/_48sdp"
+                android:layout_height="match_parent"
+                android:background="@drawable/drawable_button_black_less_elliptical"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="@dimen/_14sdp"
+                    android:layout_height="@dimen/_14sdp"
+                    android:src="@drawable/ic_cross_red"
+                    app:tint="@color/white" />
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="@dimen/_20sdp"
+                android:layout_height="match_parent" />
+
+            <LinearLayout
+                android:id="@+id/ll_explore_chat_request"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:background="@drawable/drawable_button_black_less_elliptical"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:paddingHorizontal="@dimen/_20sdp">
+
+                <ImageView
+                    android:layout_width="@dimen/_18sdp"
+                    android:layout_height="@dimen/_18sdp"
+                    android:layout_marginTop="@dimen/_1sdp"
+                    android:src="@drawable/ic_phone_call"
+                    app:tint="@color/white" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_5sdp"
+                    android:fontFamily="@font/font_semibold"
+                    android:text="Request"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/button_text_size" />
+            </LinearLayout>
 
         </LinearLayout>
 
-        <View
-            android:layout_width="@dimen/_20sdp"
-            android:layout_height="match_parent" />
 
         <LinearLayout
-            android:id="@+id/ll_explore_chat_request"
+            android:id="@+id/ll_button_super_check"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/_20sdp"
+            android:background="@drawable/drawable_button_black_elliptical"
+            android:gravity="center"
+            android:visibility="gone">
+
+            <ImageView
+                android:layout_width="@dimen/_20sdp"
+                android:layout_height="@dimen/_20sdp"
+                android:src="@drawable/ic_send_super_check" />
+
+            <TextView
+                android:id="@+id/txt_checks_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_4sdp"
+                android:fontFamily="@font/font_semibold"
+                android:text="Send SuperCheck"
+                android:textColor="@color/white"
+                android:textSize="@dimen/button_text_size" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_buttons_checks"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center_horizontal"
+            android:orientation="horizontal"
+            android:visibility="gone">
+
+            <LinearLayout
+                android:id="@+id/ll_check_reject"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:background="@drawable/drawable_button_black_less_elliptical"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:paddingHorizontal="@dimen/_20sdp">
+
+                <ImageView
+                    android:layout_width="@dimen/_12sdp"
+                    android:layout_height="@dimen/_12sdp"
+                    android:layout_marginTop="@dimen/_1sdp"
+                    android:src="@drawable/ic_cross_red"
+                    app:tint="@color/white" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_5sdp"
+                    android:fontFamily="@font/font_semibold"
+                    android:text="Reject"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/button_text_size" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="@dimen/_20sdp"
+                android:layout_height="@dimen/_20sdp" />
+
+            <LinearLayout
+                android:id="@+id/ll_check_accept"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:background="@drawable/drawable_button_black_less_elliptical"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:paddingHorizontal="@dimen/_20sdp">
+
+                <ImageView
+                    android:layout_width="@dimen/_12sdp"
+                    android:layout_height="@dimen/_12sdp"
+                    android:layout_marginTop="@dimen/_1sdp"
+                    android:src="@drawable/ic_tick_blue_fat"
+                    app:tint="@color/white" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_5sdp"
+                    android:fontFamily="@font/font_semibold"
+                    android:text="Accept"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/button_text_size" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_button_connection"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
+            android:layout_gravity="center_horizontal"
             android:background="@drawable/drawable_button_black_less_elliptical"
             android:gravity="center"
             android:orientation="horizontal"
@@ -258,7 +350,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/_5sdp"
                 android:fontFamily="@font/font_semibold"
-                android:text="Request"
+                android:text="Call"
                 android:textColor="@color/white"
                 android:textSize="@dimen/button_text_size" />
         </LinearLayout>
