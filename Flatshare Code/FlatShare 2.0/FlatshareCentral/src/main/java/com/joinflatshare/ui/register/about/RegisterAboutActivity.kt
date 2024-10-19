@@ -8,6 +8,7 @@ import com.joinflatshare.FlatshareCentral.databinding.ActivityRegisterAboutBindi
 import com.joinflatshare.constants.AppConstants
 import com.joinflatshare.db.daos.AppDao
 import com.joinflatshare.ui.register.RegisterBaseActivity
+import com.joinflatshare.utils.mixpanel.MixpanelUtils
 
 class RegisterAboutActivity : RegisterBaseActivity() {
     lateinit var viewBind: ActivityRegisterAboutBinding
@@ -16,6 +17,7 @@ class RegisterAboutActivity : RegisterBaseActivity() {
         super.onCreate(savedInstanceState)
         viewBind = ActivityRegisterAboutBinding.inflate(layoutInflater)
         setContentView(viewBind.root)
+        MixpanelUtils.onScreenOpened("Onboarding About")
         FlatShareApplication.getDbInstance().appDao().insert(AppDao.ONBOARDING_SCREEN_PROGRESS, "5")
         init()
         RegisterAboutListener(this, viewBind)

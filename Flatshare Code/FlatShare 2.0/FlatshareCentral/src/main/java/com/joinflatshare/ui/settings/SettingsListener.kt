@@ -86,17 +86,19 @@ class SettingsListener(
             }
 
             viewBind.txtProfilePrivacy.id -> {
+                MixpanelUtils.onButtonClicked("Privacy Policy")
                 val browserIntent = Intent(
                     Intent.ACTION_VIEW,
-                    Uri.parse("https://www.joinflatshare.com/privacy.php")
+                    Uri.parse(AppConstants.urlPrivacy)
                 )
                 CommonMethod.switchActivity(activity, browserIntent, false)
             }
 
             viewBind.txtProfileTerms.id -> {
+                MixpanelUtils.onButtonClicked("Terms And Conditions")
                 val browserIntent = Intent(
                     Intent.ACTION_VIEW,
-                    Uri.parse("https://www.joinflatshare.com/terms.php")
+                    Uri.parse(AppConstants.urlTerms)
                 )
                 CommonMethod.switchActivity(activity, browserIntent, false)
             }
@@ -111,6 +113,7 @@ class SettingsListener(
                     "Cancel"
                 ) { _, requestCode ->
                     if (requestCode == 1) {
+                        MixpanelUtils.onButtonClicked("Logout")
                         CommonMethod.logout(activity)
                     }
                 }
@@ -130,6 +133,7 @@ class SettingsListener(
                     "Cancel"
                 ) { _, requestCode ->
                     if (requestCode == 1) {
+                        MixpanelUtils.onButtonClicked("Account Delete")
                         sendAccountDeletionOTP()
                     }
                 }

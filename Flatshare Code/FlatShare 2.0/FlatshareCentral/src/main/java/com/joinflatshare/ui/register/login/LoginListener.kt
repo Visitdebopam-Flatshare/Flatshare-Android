@@ -9,6 +9,7 @@ import android.view.View.OnClickListener
 import androidx.core.content.ContextCompat
 import com.joinflatshare.FlatshareCentral.R
 import com.joinflatshare.FlatshareCentral.databinding.ActivityLoginBinding
+import com.joinflatshare.constants.AppConstants
 import com.joinflatshare.customviews.alert.AlertDialog
 import com.joinflatshare.customviews.bottomsheet.BottomSheetView
 import com.joinflatshare.customviews.bottomsheet.ModelBottomSheet
@@ -44,7 +45,7 @@ class LoginListener(
                             activity.startActivity(
                                 Intent(
                                     Intent.ACTION_VIEW,
-                                    Uri.parse("https://www.joinflatshare.com/terms-and-condition")
+                                    Uri.parse(AppConstants.urlTerms)
                                 )
                             )
                         }
@@ -53,7 +54,7 @@ class LoginListener(
                             activity.startActivity(
                                 Intent(
                                     Intent.ACTION_VIEW,
-                                    Uri.parse("https://www.joinflatshare.com/privacy-policy")
+                                    Uri.parse(AppConstants.urlPrivacy)
                                 )
                             )
                         }

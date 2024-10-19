@@ -125,7 +125,7 @@ class OtpApiController(private val activity: OtpActivity) {
                     val resp =
                         Gson().fromJson(response, com.joinflatshare.pojo.BaseResponse::class.java)
                     if (TextUtils.equals(resp.message, "Successfully verified.")) {
-                        MixpanelUtils.onButtonClicked("Aadhar OTP Submitted")
+                        MixpanelUtils.onButtonClicked("Profile Verify OTP")
                         getProfile()
                     } else AlertDialog.showAlert(activity, "Failed to verify profile with Aadhaar")
                 }
@@ -142,7 +142,10 @@ class OtpApiController(private val activity: OtpActivity) {
                         Gson().fromJson(response, com.joinflatshare.pojo.BaseResponse::class.java)
                     if (resp.status == 200) {
                         MixpanelUtils.onButtonClicked("Account Deleted")
-                        WebserviceManager.uiWebserviceHandler.showProgress(activity)
+                        activity.setResult(Activity.RESULT_OK)
+                        CommonMethod.finishActivity(activity)
+
+                        /*WebserviceManager.uiWebserviceHandler.showProgress(activity)
                         SendBirdChannel(activity).deleteChannelsOnUserRemoval(
                             activity.phone
                         ) { text ->
@@ -152,7 +155,7 @@ class OtpApiController(private val activity: OtpActivity) {
                                 activity.setResult(Activity.RESULT_OK)
                                 CommonMethod.finishActivity(activity)
                             }
-                        }
+                        }*/
                     }
                 }
             })

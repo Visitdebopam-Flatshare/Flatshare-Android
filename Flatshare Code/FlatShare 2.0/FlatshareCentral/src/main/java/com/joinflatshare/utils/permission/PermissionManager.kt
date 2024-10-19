@@ -33,10 +33,13 @@ class PermissionManager : ApplicationBaseActivity() {
                 when (permissionName) {
                     Manifest.permission.READ_EXTERNAL_STORAGE ->
                         permName = "Storage"
+
                     Manifest.permission.READ_CONTACTS ->
                         permName = "Contacts"
+
                     Manifest.permission.ACCESS_FINE_LOCATION ->
                         permName = "Location"
+
                     Manifest.permission.CAMERA ->
                         permName = "Camera"
                 }
@@ -93,13 +96,15 @@ class PermissionManager : ApplicationBaseActivity() {
     ) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
         val requestedCode = intent.getIntExtra("requestCode", 0)
-        if (requestCode == requestedCode
-            && grantResults[0] == PackageManager.PERMISSION_GRANTED
-        ) {
-            setResult(Activity.RESULT_OK)
-        } else {
-            setResult(Activity.RESULT_CANCELED)
+        if (grantResults.isNotEmpty()) {
+            if (requestCode == requestedCode && grantResults[0] == PackageManager.PERMISSION_GRANTED
+            ) {
+                setResult(Activity.RESULT_OK)
+            } else {
+                setResult(Activity.RESULT_CANCELED)
+            }
         }
+
         CommonMethod.finishActivity(this)
     }
 }

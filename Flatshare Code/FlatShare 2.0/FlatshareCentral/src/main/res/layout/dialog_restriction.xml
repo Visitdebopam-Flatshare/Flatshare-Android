@@ -49,7 +49,7 @@
                         android:layout_marginHorizontal="@dimen/_15sdp"
                         android:layout_marginVertical="@dimen/_10sdp"
                         android:fontFamily="@font/font_semibold"
-                        android:text="You've used all the free chat requests."
+                        android:text="You've used all the free number requests."
                         android:textColor="@color/orange"
                         android:textSize="@dimen/_12sdp" />
 
@@ -88,7 +88,7 @@
                                 android:layout_width="@dimen/_25sdp"
                                 android:layout_height="@dimen/_25sdp"
                                 android:layout_margin="@dimen/_8sdp"
-                                android:src="@drawable/ic_menu_check"
+                                android:src="@drawable/ic_phone_call"
                                 app:tint="@color/blue_dark" />
                         </com.google.android.material.card.MaterialCardView>
 
@@ -97,7 +97,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginStart="@dimen/_10sdp"
                             android:fontFamily="@font/font_bold"
-                            android:text="Chat Requests"
+                            android:text="Number Requests"
                             android:textColor="@color/blue_dark"
                             android:textSize="@dimen/_24sdp" />
 
@@ -402,7 +402,7 @@
                                     android:layout_height="wrap_content"
                                     android:fontFamily="@font/font_semibold"
                                     android:gravity="center"
-                                    android:text="Get 25 chat requests every week"
+                                    android:text="Get 25 number requests every week"
                                     android:textColor="@color/elite_blue"
                                     android:textSize="@dimen/_10sdp" />
 

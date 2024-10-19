@@ -4,6 +4,7 @@ import android.os.Bundle
 import com.joinflatshare.FlatshareCentral.databinding.ActivityProfileVerifyBinding
 import com.joinflatshare.constants.AppConstants
 import com.joinflatshare.ui.base.BaseActivity
+import com.joinflatshare.utils.mixpanel.MixpanelUtils
 
 /**
  * Created by debopam on 27/05/24
@@ -15,6 +16,7 @@ class ProfileVerifyActivity : BaseActivity() {
         super.onCreate(savedInstanceState)
         viewBind = ActivityProfileVerifyBinding.inflate(layoutInflater)
         setContentView(viewBind.root)
+        MixpanelUtils.onScreenOpened("Profile Verify")
         init()
         bind()
     }

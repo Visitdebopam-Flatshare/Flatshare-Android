@@ -98,7 +98,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginStart="@dimen/_6sdp"
                             android:fontFamily="@font/font_medium"
-                            android:text="4 Free chat requests per day."
+                            android:text="4 Free number requests per day."
                             android:textColor="@color/white"
                             android:textSize="@dimen/_14sdp" />
                     </LinearLayout>

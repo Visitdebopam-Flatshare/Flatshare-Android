@@ -29,6 +29,7 @@ class InterestActivity : BaseActivity() {
         super.onCreate(savedInstanceState)
         viewBind = ActivityProfileInterestBinding.inflate(layoutInflater)
         setContentView(viewBind.root)
+
         FlatShareApplication.getDbInstance().appDao().insert(AppDao.ONBOARDING_SCREEN_PROGRESS, "3")
         init()
         click()
@@ -50,6 +51,7 @@ class InterestActivity : BaseActivity() {
     private fun checkIntent() {
         val isEdit = intent.getBooleanExtra("edit", false)
         if (isEdit) {
+            MixpanelUtils.onScreenOpened("Edit Profile Interest")
             viewBind.btnSkip.visibility = View.INVISIBLE
             viewBind.btnInterests.text = "Save"
             interestsView.matchedContent.addAll(
@@ -59,6 +61,7 @@ class InterestActivity : BaseActivity() {
                 )
             )
         } else {
+            MixpanelUtils.onScreenOpened("Onboarding Interest")
             val response = FlatShareApplication.getDbInstance().appDao().getConfigResponse()
             if (response?.data?.allowedSkips?.isSkippingInterestsAllowed == false) {
                 viewBind.btnSkip.visibility = View.INVISIBLE
@@ -86,6 +89,7 @@ class InterestActivity : BaseActivity() {
             CommonMethod.finishActivity(this)
         }
         viewBind.btnSkip.setOnClickListener {
+            MixpanelUtils.onButtonClicked("Interest Skipped")
             val user = AppConstants.loggedInUser
             user?.flatProperties?.interests?.clear()
             user?.flatProperties?.interests = ArrayList()
@@ -100,6 +104,7 @@ class InterestActivity : BaseActivity() {
         viewBind.btnInterests.setOnClickListener {
             when (viewBind.btnInterests.text) {
                 "Save" -> {
+                    MixpanelUtils.onButtonClicked("Interest Saved")
                     if (interestsView.matchedContent.isNotEmpty()) {
                         val intent = Intent()
                         intent.putExtra("type", InterestsView.VIEW_TYPE_INTERESTS)
@@ -113,6 +118,7 @@ class InterestActivity : BaseActivity() {
                 }
 
                 "Next" -> {
+                    MixpanelUtils.onButtonClicked("Interest Saved")
                     if (interestsView.matchedContent.isNotEmpty()) {
                         val user = AppConstants.loggedInUser
                         user?.flatProperties?.interests?.clear()

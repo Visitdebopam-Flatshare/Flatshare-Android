@@ -174,7 +174,7 @@ object MixpanelUtils {
         props.put("Requested By", to)
         props.put("User 1", AppConstants.loggedInUser?.id)
         props.put("User 2", to)
-        sendToMixPanel("New Connection", props)
+        sendToMixPanel("Super Check Accept", props)
     }
 
     fun onChatRequestRejected(to: String) {
@@ -183,7 +183,7 @@ object MixpanelUtils {
         props.put("Requested By", to)
         props.put("User 1", AppConstants.loggedInUser?.id)
         props.put("User 2", to)
-        sendToMixPanel("Reject Connection", props)
+        sendToMixPanel("Super Check Reject", props)
     }
 
     fun onPaymentSuccess(paymentDetails: String, paymentType: String) {

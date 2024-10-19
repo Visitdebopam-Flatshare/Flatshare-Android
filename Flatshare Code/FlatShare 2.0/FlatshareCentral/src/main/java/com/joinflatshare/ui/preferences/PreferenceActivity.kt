@@ -10,6 +10,7 @@ import com.joinflatshare.constants.IntentConstants
 import com.joinflatshare.customviews.deal_breakers.DealBreakerView
 import com.joinflatshare.ui.base.BaseActivity
 import com.joinflatshare.utils.helper.DateUtils
+import com.joinflatshare.utils.mixpanel.MixpanelUtils
 
 class PreferenceActivity : BaseActivity() {
     lateinit var viewBind: ActivityPrefFlatBinding
@@ -21,6 +22,7 @@ class PreferenceActivity : BaseActivity() {
         super.onCreate(savedInstanceState)
         viewBind = ActivityPrefFlatBinding.inflate(layoutInflater)
         setContentView(viewBind.root)
+        MixpanelUtils.onScreenOpened("Preference")
         showTopBar(this, true, "Preferences", 0, 0)
         listener = PreferenceListener(this)
         bind()

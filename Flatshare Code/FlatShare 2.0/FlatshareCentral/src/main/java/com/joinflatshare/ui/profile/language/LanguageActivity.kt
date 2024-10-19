@@ -50,6 +50,7 @@ class LanguageActivity : BaseActivity() {
     private fun checkIntent() {
         val isEdit = intent.getBooleanExtra("edit", false)
         if (isEdit) {
+            MixpanelUtils.onScreenOpened("Edit Profile Language")
             viewBind.btnSkip.visibility = View.INVISIBLE
             viewBind.btnLanguages.text = "Save"
             interestsView.matchedContent.addAll(
@@ -59,6 +60,7 @@ class LanguageActivity : BaseActivity() {
                 )
             )
         } else {
+            MixpanelUtils.onScreenOpened("Onboarding Language")
             val response = FlatShareApplication.getDbInstance().appDao().getConfigResponse()
             if (response?.data?.allowedSkips?.isSkippingLanguagesAllowed == false) {
                 viewBind.btnSkip.visibility = View.INVISIBLE
@@ -85,6 +87,7 @@ class LanguageActivity : BaseActivity() {
             CommonMethod.finishActivity(this)
         }
         viewBind.btnSkip.setOnClickListener {
+            MixpanelUtils.onButtonClicked("Language Skipped")
             val user = AppConstants.loggedInUser
             user?.flatProperties?.languages?.clear()
             user?.flatProperties?.languages = ArrayList()
@@ -100,6 +103,7 @@ class LanguageActivity : BaseActivity() {
         viewBind.btnLanguages.setOnClickListener {
             when (viewBind.btnLanguages.text) {
                 "Save" -> {
+                    MixpanelUtils.onButtonClicked("Language Saved")
                     if (interestsView.matchedContent.isNotEmpty()) {
                         val intent = Intent()
                         intent.putExtra("type", InterestsView.VIEW_TYPE_LANGUAGES)
@@ -113,6 +117,7 @@ class LanguageActivity : BaseActivity() {
                 }
 
                 "Next" -> {
+                    MixpanelUtils.onButtonClicked("Language Saved")
                     if (interestsView.matchedContent.isNotEmpty()) {
                         val user = AppConstants.loggedInUser
                         user?.flatProperties?.languages?.clear()

@@ -19,6 +19,7 @@ import com.joinflatshare.utils.deeplink.UserShareMessageGenerator
 import com.joinflatshare.utils.helper.CommonMethod
 import com.joinflatshare.utils.helper.CommonMethods
 import com.joinflatshare.utils.helper.DateUtils
+import com.joinflatshare.utils.mixpanel.MixpanelUtils
 
 
 class DialogShare(
@@ -71,6 +72,7 @@ class DialogShare(
                     text
                 )
                 sendIntent.type = "text/plain"
+                MixpanelUtils.onButtonClicked("Profile Share")
                 CommonMethod.switchActivity(activity, sendIntent, false)
                 CommonMethods.dismissDialog(activity, dialog)
             }

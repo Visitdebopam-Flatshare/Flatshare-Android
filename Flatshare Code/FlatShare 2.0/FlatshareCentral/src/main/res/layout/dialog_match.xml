@@ -33,7 +33,7 @@
             android:layout_marginTop="@dimen/_10sdp"
             android:fontFamily="@font/font_bold"
             android:gravity="center"
-            android:text="YOU’VE BEEN\nMATCHED!"
+            android:text="YOU’VE BEEN\nCONNECTED!"
             android:textColor="@color/blue_dark"
             android:textSize="@dimen/_28sdp" />
 
@@ -129,7 +129,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/_10sdp"
                 android:fontFamily="@font/font_semibold"
-                android:text="Chat Now"
+                android:text="See All Connections"
                 android:textColor="@color/white"
                 android:textSize="@dimen/_16sdp" />
         </LinearLayout>

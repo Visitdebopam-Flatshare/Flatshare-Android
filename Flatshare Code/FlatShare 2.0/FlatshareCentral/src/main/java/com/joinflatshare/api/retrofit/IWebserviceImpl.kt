@@ -29,11 +29,10 @@ class IWebserviceImpl : IWebservice {
                 if (retrofitHandler.getHeaderMap().isNotEmpty())
                     retrofitHandler.setHeaderMap(HashMap())
             } else {
-                if (!retrofitHandler.getHeaderMap().containsKey("x-access-token")) {
-                    val headerMap = HashMap<String, String>()
-                    headerMap["x-access-token"] = apiToken
-                    retrofitHandler.setHeaderMap(headerMap)
-                }
+                val headerMap = HashMap<String, String>()
+                headerMap["x-access-token"] = apiToken
+                headerMap["platform"] = "Android"
+                retrofitHandler.setHeaderMap(headerMap)
             }
             true
         } else false

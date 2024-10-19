@@ -14,6 +14,7 @@ import com.joinflatshare.constants.AppConstants
 import com.joinflatshare.constants.ConfigConstants
 import com.joinflatshare.constants.IntentFilterConstants
 import com.joinflatshare.customviews.alert.AlertImageDialog
+import com.joinflatshare.ui.SplashActivity
 import com.joinflatshare.utils.helper.CommonMethod
 import com.joinflatshare.utils.logger.Logger
 import com.joinflatshare.utils.system.ConnectivityListener
@@ -94,10 +95,11 @@ open class ApplicationBaseActivity : AppCompatActivity() {
         if (!AppConstants.hasNetworkConnection) {
             AppConstants.hasNetworkConnection = true
             if (dialog != null && dialog!!.isShowing)
-                dialog?.dismiss()
+                dialog!!.dismiss()
             finish();
-            overridePendingTransition(0, 0);
-            startActivity(this@ApplicationBaseActivity.intent);
+            if (intent == null)
+                intent = Intent(this, SplashActivity::class.java)
+            startActivity(intent);
             overridePendingTransition(0, 0);
 
         }

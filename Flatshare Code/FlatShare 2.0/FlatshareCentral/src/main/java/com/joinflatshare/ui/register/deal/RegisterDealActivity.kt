@@ -11,6 +11,7 @@ import com.joinflatshare.customviews.deal_breakers.DealBreakerView
 import com.joinflatshare.db.daos.AppDao
 import com.joinflatshare.pojo.flat.DealBreakers
 import com.joinflatshare.ui.register.RegisterBaseActivity
+import com.joinflatshare.utils.mixpanel.MixpanelUtils
 
 class RegisterDealActivity : RegisterBaseActivity() {
     lateinit var viewBind: ActivityRegisterDealBinding
@@ -20,6 +21,7 @@ class RegisterDealActivity : RegisterBaseActivity() {
         super.onCreate(savedInstanceState)
         viewBind = ActivityRegisterDealBinding.inflate(layoutInflater)
         setContentView(viewBind.root)
+        MixpanelUtils.onScreenOpened("Onboarding Deal Breaker")
         FlatShareApplication.getDbInstance().appDao().insert(AppDao.ONBOARDING_SCREEN_PROGRESS, "4")
         init()
         RegisterDealListener(this, viewBind)

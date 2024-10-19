@@ -93,7 +93,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_marginStart="@dimen/_6sdp"
                                 android:fontFamily="@font/font_medium"
-                                android:text="25 Chat Requests every week."
+                                android:text="25 Number Requests every week."
                                 android:textColor="@color/white"
                                 android:textSize="@dimen/_14sdp" />
                         </LinearLayout>

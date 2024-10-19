@@ -163,6 +163,10 @@
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateAlwaysHidden" />
         <activity
+            android:name="com.joinflatshare.ui.connection.ConnectionListActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateAlwaysHidden" />
+        <activity
             android:name="com.joinflatshare.ui.chat.details.ChatDetailsActivity"
             android:parentActivityName="com.joinflatshare.ui.chat.list.ChatListActivity"
             android:screenOrientation="portrait"
