@@ -32,6 +32,7 @@ class ProfileListener(
         viewBind.framePhoto.setOnClickListener(this)
         viewBind.cardProfileRentedFlats.setOnClickListener(this)
         viewBind.cardProfileListFlat.setOnClickListener(this)
+        viewBind.cardProfileEarnMoney.setOnClickListener(this)
     }
 
     override fun onClick(v: View?) {
@@ -65,7 +66,7 @@ class ProfileListener(
                 MixpanelUtils.onButtonClicked("List my flat")
                 val browserIntent = Intent(
                     Intent.ACTION_VIEW,
-                    Uri.parse("https://www.joinflatshare.com/list-my-flat")
+                    Uri.parse("https://joinflatshare.com/list-my-flat")
                 )
                 CommonMethod.switchActivity(activity, browserIntent, false)
             }
@@ -74,7 +75,16 @@ class ProfileListener(
                 MixpanelUtils.onButtonClicked("Verified Rental Flats")
                 val browserIntent = Intent(
                     Intent.ACTION_VIEW,
-                    Uri.parse("https://www.joinflatshare.com")
+                    Uri.parse("https://joinflatshare.com")
+                )
+                CommonMethod.switchActivity(activity, browserIntent, false)
+            }
+
+            viewBind.cardProfileEarnMoney.id -> {
+                MixpanelUtils.onButtonClicked("Earn Money")
+                val browserIntent = Intent(
+                    Intent.ACTION_VIEW,
+                    Uri.parse("https://joinflatshare.com/earn-money")
                 )
                 CommonMethod.switchActivity(activity, browserIntent, false)
             }
